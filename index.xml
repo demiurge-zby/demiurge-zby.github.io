@@ -14,8 +14,7 @@
         
         <guid>https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94/</guid>
         <description>&lt;h2 id=&#34;输入指令处理&#34;&gt;输入指令处理
-&lt;/h2&gt;&lt;hr&gt;
-&lt;h3 id=&#34;switch-case-与-各方法封装&#34;&gt;switch case 与 各方法封装
+&lt;/h2&gt;&lt;h3 id=&#34;switch-case-与-各方法封装&#34;&gt;switch case 与 各方法封装
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -24,7 +23,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;基本可用 但展开复杂
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;练习一些markdown操作（）&lt;/p&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;练习一些markdown操作（）&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;1&lt;/p&gt;
 &lt;/blockquote&gt;
