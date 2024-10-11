@@ -13,8 +13,8 @@
         <pubDate>Thu, 26 Sep 2024 21:30:15 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94/</guid>
-        <description>&lt;h1 id=&#34;输入指令处理&#34;&gt;输入指令处理
-&lt;/h1&gt;&lt;hr&gt;
+        <description>&lt;h2 id=&#34;输入指令处理&#34;&gt;输入指令处理
+&lt;/h2&gt;&lt;hr&gt;
 &lt;h3 id=&#34;switch-case-与-各方法封装&#34;&gt;switch case 与 各方法封装
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -27,12 +27,6 @@
 &lt;/div&gt;&lt;p&gt;练习一些markdown操作（）&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;1&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;22&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;333&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -58,11 +52,11 @@
 &lt;h3 id=&#34;commandutil&#34;&gt;CommandUtil
 &lt;/h3&gt;&lt;p&gt;提供command方法 // cmd&lt;/p&gt;
 &lt;h4 id=&#34;9835-manager类管理arraylist-commandutil-9835&#34;&gt;&lt;em&gt;♫ Manager类管理Arraylist commandUtil ♫&lt;/em&gt;
-&lt;/h4&gt;&lt;p&gt;cmdUtil = cmdUtilArray.get(operator - 1);&lt;strong&gt;✓&lt;/strong&gt;
-cmdUtil.command(&amp;hellip;);&lt;strong&gt;✓&lt;/strong&gt;&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;cmdUtil = cmdUtilArray.get(operator - 1);&lt;strong&gt;✓&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;cmdUtil.command(&amp;hellip;);&lt;strong&gt;✓&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;逻辑性错误&#34;&gt;逻辑性错误
-&lt;/h1&gt;&lt;ul&gt;
+&lt;h2 id=&#34;逻辑性错误&#34;&gt;逻辑性错误
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;数据流
 &lt;ol&gt;
 &lt;li&gt;引用（对象 or 方法）&lt;/li&gt;
@@ -83,8 +77,8 @@ cmdUtil.command(&amp;hellip;);&lt;strong&gt;✓&lt;/strong&gt;&lt;/p&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;引用错误&#34;&gt;引用错误
-&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;引用错误&#34;&gt;引用错误
+&lt;/h2&gt;&lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;访问空指针  报错java.lang.NullPointerException&lt;br&gt;
 （注意逻辑短路&lt;code&gt;先后顺序&lt;/code&gt;避免报错）&lt;/li&gt;
