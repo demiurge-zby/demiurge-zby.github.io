@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>OOpre on Demiurge</title>
+        <link>https://demiurge-zby.github.io/categories/oopre/</link>
+        <description>Recent content in OOpre on Demiurge</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Demiurge</copyright>
+        <lastBuildDate>Thu, 26 Sep 2024 21:30:15 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/oopre/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>oopre课堂随笔</title>
+        <link>https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94/</link>
+        <pubDate>Thu, 26 Sep 2024 21:30:15 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post oopre课堂随笔" /&gt;&lt;h2 id=&#34;输入指令处理&#34;&gt;输入指令处理
+&lt;/h2&gt;&lt;h3 id=&#34;switch-case-与-各方法封装&#34;&gt;switch case 与 各方法封装
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;基本可用 但展开复杂
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;练习一些markdown操作（）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;1&lt;/th&gt;
+          &lt;th&gt;2&lt;/th&gt;
+          &lt;th&gt;3&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;a&lt;/td&gt;
+          &lt;td&gt;b&lt;/td&gt;
+          &lt;td&gt;c&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;d&lt;/td&gt;
+          &lt;td&gt;e&lt;/td&gt;
+          &lt;td&gt;f&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;commandutil&#34;&gt;CommandUtil
+&lt;/h3&gt;&lt;p&gt;提供command方法 // cmd&lt;/p&gt;
+&lt;h4 id=&#34;9835-manager类管理arraylist-commandutil-9835&#34;&gt;&lt;em&gt;♫ Manager类管理Arraylist commandUtil ♫&lt;/em&gt;
+&lt;/h4&gt;&lt;p&gt;cmdUtil = cmdUtilArray.get(operator - 1);&lt;strong&gt;✓&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;cmdUtil.command(&amp;hellip;);&lt;strong&gt;✓&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;逻辑性错误&#34;&gt;逻辑性错误
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;数据流
+&lt;ol&gt;
+&lt;li&gt;引用（对象 or 方法）&lt;/li&gt;
+&lt;li&gt;运算（边界条件！）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;控制流
+&lt;ol&gt;
+&lt;li&gt;差一&lt;/li&gt;
+&lt;li&gt;意外分支&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;综合性
+&lt;ol&gt;
+&lt;li&gt;输入输出&lt;/li&gt;
+&lt;li&gt;拷贝&lt;/li&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;引用错误&#34;&gt;引用错误
+&lt;/h2&gt;&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;访问空指针  报错java.lang.NullPointerException&lt;br&gt;
+（注意逻辑短路&lt;code&gt;先后顺序&lt;/code&gt;避免报错）&lt;/li&gt;
+&lt;li&gt;越界异常&lt;/li&gt;
+&lt;li&gt;类型转换错误 报错java.lang.ClassCastException
+（可转化情况： 类型相同 有抽象层次关系&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
