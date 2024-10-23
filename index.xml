@@ -13,12 +13,12 @@
         <pubDate>Wed, 23 Oct 2024 12:30:15 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.jpg" alt="Featured image of post 单周期CPU的logisim搭建" /&gt;&lt;h1 id=&#34;设计文档&#34;&gt;&lt;em&gt;设计文档&lt;/em&gt;
-&lt;/h1&gt;&lt;h3 id=&#34;key-point-数据通路控制器及其连接&#34;&gt;$Key Point: 数据通路，控制器，及其连接$
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.jpg" alt="Featured image of post 单周期CPU的logisim搭建" /&gt;&lt;h2 id=&#34;设计文档&#34;&gt;设计文档
+&lt;/h2&gt;&lt;h3 id=&#34;key-point-数据通路控制器及其连接&#34;&gt;&lt;em&gt;Key Point: 数据通路，控制器及其连接&lt;/em&gt;
 &lt;/h3&gt;&lt;hr&gt;
-&lt;h3 id=&#34;要实现的核心指令&#34;&gt;&lt;em&gt;要实现的核心指令：&lt;/em&gt;
-&lt;/h3&gt;&lt;h3 id=&#34;addsubluiorilwswbeqnop&#34;&gt;&lt;em&gt;add,sub,lui,ori,lw,sw,beq,nop&lt;/em&gt;
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712.png&#34;
+&lt;h3 id=&#34;要实现的核心指令&#34;&gt;&lt;em&gt;要实现的核心指令&lt;/em&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;add,sub,lui,ori,lw,sw,beq,nop&lt;/em&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712.png&#34;
 	width=&#34;933&#34;
 	height=&#34;478&#34;
 	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu4521862066652988474.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu6527373637613627573.png 1024w&#34;
@@ -102,7 +102,7 @@
 		data-flex-basis=&#34;572px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;alt-textb72bd734f2e494bdf74c22a67d45d1epng&#34;&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e.png&#34;
 	width=&#34;919&#34;
 	height=&#34;423&#34;
 	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu10173568185453299968.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu11248677253474280199.png 1024w&#34;
@@ -115,8 +115,9 @@
 		data-flex-grow=&#34;217&#34;
 		data-flex-basis=&#34;521px&#34;
 	
-&gt;
-&lt;/h2&gt;&lt;h3 id=&#34;数据通路的建立&#34;&gt;数据通路的建立
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;数据通路的建立&#34;&gt;数据通路的建立
 &lt;/h3&gt;&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -138,7 +139,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;寄存器堆&lt;/td&gt;
-          &lt;td&gt;$32$ 个 $32$ 位寄存器&lt;/td&gt;
+          &lt;td&gt;32 个 32 位寄存器&lt;/td&gt;
           &lt;td&gt;GRF&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
@@ -163,19 +164,19 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;下面先对各数据通路进行分析，并在此过程中得到对控制器的需求
-(在每个数据通路中都只考虑自己&lt;code&gt;需要什么&lt;/code&gt;！
-&lt;code&gt;输出的东西如何被使用&lt;/code&gt;是其他数据通路考虑的事情！！)&lt;/p&gt;
+&lt;p&gt;下面先对各数据通路进行分析，并在此过程中得到对控制器的需求&lt;/p&gt;
+&lt;p&gt;(在每个数据通路中都只考虑自己&lt;code&gt;需要什么&lt;/code&gt;！&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;输出的东西如何被使用&lt;/code&gt;是其他数据通路考虑的事情！！)&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;PC&lt;/strong&gt;
-一个 $32$ 位寄存器即可
-输出引脚：输出当前指令所在地址，提供给&lt;code&gt;IM&lt;/code&gt;用于取指令
-输入引脚：由&lt;code&gt;NPC&lt;/code&gt;算出的下一条指令地址&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PC&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;作为整个设备中最核心的时序逻辑，在PC层面其本质应为&lt;code&gt;Moore机&lt;/code&gt;
-在&lt;code&gt;下一周期上升沿&lt;/code&gt;才可输出下一PC
-在输出PC以后，其他数据通路都基本呈现组合逻辑的形态，即时性进行输出内容的改变，即&lt;code&gt;Mealy机&lt;/code&gt;
-（ROM和GRF的写入操作还是要等下一上升沿的，但是关于其写入的各项信息都是即时性得到的）&lt;/p&gt;
+&lt;p&gt;一个 32 位寄存器即可&lt;/p&gt;
+&lt;p&gt;输出引脚：输出当前指令所在地址，提供给&lt;code&gt;IM&lt;/code&gt;用于取指令&lt;/p&gt;
+&lt;p&gt;输入引脚：由&lt;code&gt;NPC&lt;/code&gt;算出的下一条指令地址&lt;/p&gt;
+&lt;p&gt;作为整个设备中最核心的时序逻辑，在PC层面其本质应为&lt;code&gt;Moore机&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;下一周期上升沿&lt;/code&gt;才可输出下一PC&lt;/p&gt;
+&lt;p&gt;在输出PC以后，其他数据通路都基本呈现组合逻辑的形态，即时性进行输出内容的改变，即&lt;code&gt;Mealy机&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;（ROM和GRF的写入操作还是要等下一上升沿的，但是关于其写入的各项信息都是即时性得到的）&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image.png&#34;
 	width=&#34;182&#34;
 	height=&#34;295&#34;
@@ -191,9 +192,9 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;当然，最后输出PC值的时候要再加上 $3000$
-若用PC初始化3000的方法，在复位后PC还是会输出 $0$
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21.png&#34;
+&lt;p&gt;当然，最后输出PC值的时候要再加上 3000&lt;/p&gt;
+&lt;p&gt;若用PC初始化3000的方法，在复位后PC还是会输出 0&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21.png&#34;
 	width=&#34;377&#34;
 	height=&#34;144&#34;
 	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu14716474832504273100.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu12720420553382832580.png 1024w&#34;
@@ -209,19 +210,19 @@
 &gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;NPC&lt;/strong&gt;
-下一指令的地址可能是PC+4
-&lt;code&gt;对于beq跳转&lt;/code&gt; 也可能是PC+4+sign_ext(imm_16 || 00)
-&lt;code&gt;对于j, jal跳转&lt;/code&gt; 还可能是PC[31:28] || imm_26 || 00&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NPC&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;输入引脚：输入当前PC值，imm_16, imm_26
-选择信号：br, zero, j&lt;/p&gt;
+&lt;p&gt;下一指令的地址可能是PC+4&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;对于beq跳转&lt;/code&gt; 也可能是PC+4+sign_ext(imm_16 || 00)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;对于j, jal跳转&lt;/code&gt; 还可能是PC[31:28] || imm_26 || 00&lt;/p&gt;
+&lt;p&gt;输入引脚：输入当前PC值，imm_16, imm_26&lt;/p&gt;
+&lt;p&gt;选择信号：br, zero, j&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;这里区分br和zero是有原因的。
-详见zero产出地：ALU&lt;/p&gt;
+&lt;p&gt;这里区分br和zero是有原因的。&lt;/p&gt;
+&lt;p&gt;详见zero产出地：ALU&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;输出引脚：下一条指令PC值
-$！！$经后续分析，对于XXXAndLink指令，PC+4是被需要的，那就直接从NPC输出&lt;/p&gt;
+&lt;p&gt;输出引脚：下一条指令PC值&lt;/p&gt;
+&lt;p&gt;！！经后续分析，对于XXXAndLink指令，PC+4是被需要的，那就直接从NPC输出&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2.png&#34;
 	width=&#34;1410&#34;
 	height=&#34;774&#34;
@@ -236,8 +237,8 @@ $！！$经后续分析，对于XXXAndLink指令，PC+4是被需要的，那就�
 		data-flex-basis=&#34;437px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;具体分析：
-控制信号的使用：&lt;/p&gt;
+&lt;p&gt;具体分析：&lt;/p&gt;
+&lt;p&gt;控制信号的使用：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;只有br和zero同时为1时才是成功beq跳转&lt;/li&gt;
 &lt;li&gt;鉴别出j，jal等才使用imm_26直接地址跳转&lt;/li&gt;
@@ -245,16 +246,16 @@ $！！$经后续分析，对于XXXAndLink指令，PC+4是被需要的，那就�
 &lt;blockquote&gt;
 &lt;p&gt;Tips: 由于jal指令为本人后续添加，因此选择了新增了MUX而不是改变原MUX&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;计算过程实现：简单的加法，移位，位扩展，位拼接运算
-要注意位扩展一定是sign_ext，因此完全可以直接使用bit_sign_extender&lt;/p&gt;
+&lt;p&gt;计算过程实现：简单的加法，移位，位扩展，位拼接运算&lt;/p&gt;
+&lt;p&gt;要注意位扩展一定是sign_ext，因此完全可以直接使用bit_sign_extender&lt;/p&gt;
 &lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;IM&lt;/strong&gt;
-采用了$4096*32bit$的ROM 地址长度选项只需12位
-$！！$ROM的地址以字为单位，因此PC要右移2位才能传给ROM
-右移之后还需bit_extender到12位
-（一定要先右移再extend，因为实质上就是取PC[13:2]）
-其余的没什么内容了&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IM&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;采用了4096*32bit的ROM 地址长度选项只需12位&lt;/p&gt;
+&lt;p&gt;！！ROM的地址以字为单位，因此PC要右移2位才能传给ROM&lt;/p&gt;
+&lt;p&gt;右移之后还需bit_extender到12位&lt;/p&gt;
+&lt;p&gt;（一定要先右移再extend，因为实质上就是取PC[13:2]）&lt;/p&gt;
+&lt;p&gt;其余的没什么内容了&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-4.png&#34;
 	width=&#34;770&#34;
 	height=&#34;371&#34;
@@ -269,8 +270,8 @@ $！！$ROM的地址以字为单位，因此PC要右移2位才能传给ROM
 		data-flex-basis=&#34;498px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;3.5 &lt;strong&gt;Splitter&lt;/strong&gt;
-把这个东西单独拿出来写只是图个方便（）&lt;/p&gt;
+&lt;p&gt;3.5 &lt;strong&gt;Splitter&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;把这个东西单独拿出来写只是图个方便（）&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5.png&#34;
 	width=&#34;351&#34;
 	height=&#34;417&#34;
@@ -301,11 +302,11 @@ $！！$ROM的地址以字为单位，因此PC要右移2位才能传给ROM
 	
 &gt;&lt;/p&gt;
 &lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;&lt;strong&gt;EXT&lt;/strong&gt;
-EXT也是一个相对好说的部件
-根据EXTOp进行不同形式的位扩展
-（缺点（？）是只能用于$16bit$ -&amp;gt; $32bit$）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;EXT&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;EXT也是一个相对好说的部件&lt;/p&gt;
+&lt;p&gt;根据EXTOp进行不同形式的位扩展&lt;/p&gt;
+&lt;p&gt;（缺点（？）是只能用于16bit -&amp;gt; 32bit）&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -325,8 +326,8 @@ EXT也是一个相对好说的部件
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;EXTOp具体怎么得到就是Ctrl要考虑的了&lt;/p&gt;
-&lt;p&gt;外部构造：
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8.png&#34;
+&lt;p&gt;外部构造：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8.png&#34;
 	width=&#34;437&#34;
 	height=&#34;213&#34;
 	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu18409066551289080979.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu1629901207757935634.png 1024w&#34;
@@ -376,11 +377,11 @@ EXT也是一个相对好说的部件
 &lt;p&gt;但是我的EXT更好看（？）那就不改了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;&lt;strong&gt;GRF&lt;/strong&gt;
-GRF相对来说就复杂多了
-内部结构在P0课下已经搭好了，但其正确性仍需后续测试
-在此仅略加展示：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GRF&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;GRF相对来说就复杂多了&lt;/p&gt;
+&lt;p&gt;内部结构在P0课下已经搭好了，但其正确性仍需后续测试&lt;/p&gt;
+&lt;p&gt;在此仅略加展示：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11.png&#34;
 	width=&#34;1108&#34;
 	height=&#34;759&#34;
@@ -523,11 +524,11 @@ GRF相对来说就复杂多了
 	
 &gt;&lt;/p&gt;
 &lt;ol start=&#34;6&#34;&gt;
-&lt;li&gt;&lt;strong&gt;ALU&lt;/strong&gt;
-首先明确ALU要解决的问题：
-加法，减法，或，左移16位共4种运算
-显然ALUOp需要4种，即需要两位信号&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ALU&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;首先明确ALU要解决的问题：&lt;/p&gt;
+&lt;p&gt;加法，减法，或，左移16位共4种运算&lt;/p&gt;
+&lt;p&gt;显然ALUOp需要4种，即需要两位信号&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -554,11 +555,11 @@ GRF相对来说就复杂多了
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;不过，我并没有直接分四种器件进行操作
-采用了gxp老师课上提到的方法：
-加法和减法可使用同一加法器！！&lt;/p&gt;
-&lt;p&gt;$a - b = a + $  ~$b + 1$
-而两个数相加再加1正是加法器已经提供的功能！&lt;/p&gt;
+&lt;p&gt;不过，我并没有直接分四种器件进行操作&lt;/p&gt;
+&lt;p&gt;采用了gxp老师课上提到的方法：&lt;/p&gt;
+&lt;p&gt;加法和减法可使用同一加法器！！&lt;/p&gt;
+&lt;p&gt;a - b = a + ~b + 1&lt;/p&gt;
+&lt;p&gt;而两个数相加再加1正是加法器已经提供的功能！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15.png&#34;
 	width=&#34;127&#34;
 	height=&#34;112&#34;
@@ -573,11 +574,11 @@ GRF相对来说就复杂多了
 		data-flex-basis=&#34;272px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;最上方的接口即为进位接口
-！但是复用器件的代价就是更多的选择信号
-减法不仅仅要选择进位信号，还要选择参与运算的数
-对于整个ALU还需要区分进行了什么运算
-我们分为如下三个&lt;/p&gt;
+&lt;p&gt;最上方的接口即为进位接口&lt;/p&gt;
+&lt;p&gt;！但是复用器件的代价就是更多的选择信号&lt;/p&gt;
+&lt;p&gt;减法不仅仅要选择进位信号，还要选择参与运算的数&lt;/p&gt;
+&lt;p&gt;对于整个ALU还需要区分进行了什么运算&lt;/p&gt;
+&lt;p&gt;我们分为如下三个&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -629,10 +630,10 @@ GRF相对来说就复杂多了
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;如何根据ALUOp写出这些控制信号也一目了然：
-只需把上面两个表合起来，让ALUOp直接对应控制信号
-用Combinational Analysis给我们写出来就行了
-最终内部结构如下：&lt;/p&gt;
+&lt;p&gt;如何根据ALUOp写出这些控制信号也一目了然：&lt;/p&gt;
+&lt;p&gt;只需把上面两个表合起来，让ALUOp直接对应控制信号&lt;/p&gt;
+&lt;p&gt;用Combinational Analysis给我们写出来就行了&lt;/p&gt;
+&lt;p&gt;最终内部结构如下：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18.png&#34;
 	width=&#34;919&#34;
 	height=&#34;738&#34;
@@ -648,14 +649,14 @@ GRF相对来说就复杂多了
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;在此解释前文NPC中zero与br都需存在的原因：
-beq也是对rs,rt的值做减法，但关键在于结果值为0时输出zero信号为1
-因此zero信号也是会被sub甚至add干扰的
-所以在&lt;code&gt;zero==1&lt;/code&gt;时必须有&lt;code&gt;br==1&lt;/code&gt;才有效
-另一方向显然，&lt;code&gt;br==1&lt;/code&gt;时判跳转有效当然离不开&lt;code&gt;zero==1&lt;/code&gt;的判定&lt;/p&gt;
+&lt;p&gt;在此解释前文NPC中zero与br都需存在的原因：&lt;/p&gt;
+&lt;p&gt;beq也是对rs,rt的值做减法，但关键在于结果值为0时输出zero信号为1&lt;/p&gt;
+&lt;p&gt;因此zero信号也是会被sub甚至add干扰的&lt;/p&gt;
+&lt;p&gt;所以在&lt;code&gt;zero==1&lt;/code&gt;时必须有&lt;code&gt;br==1&lt;/code&gt;才有效&lt;/p&gt;
+&lt;p&gt;另一方向显然，&lt;code&gt;br==1&lt;/code&gt;时判跳转有效当然离不开&lt;code&gt;zero==1&lt;/code&gt;的判定&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;关于其外部连接，关键只是两个控制信号：
-我们把GRF处使用的表格稍有侧重点地修改&lt;/p&gt;
+&lt;p&gt;关于其外部连接，关键只是两个控制信号：&lt;/p&gt;
+&lt;p&gt;我们把GRF处使用的表格稍有侧重点地修改&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -686,8 +687,8 @@ beq也是对rs,rt的值做减法，但关键在于结果值为0时输出zero信�
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;将rs替换成RD1，将rt,rd按照对应法则替换到RD2
-可得到更清晰的表格&lt;/p&gt;
+&lt;p&gt;将rs替换成RD1，将rt,rd按照对应法则替换到RD2&lt;/p&gt;
+&lt;p&gt;可得到更清晰的表格&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -718,9 +719,9 @@ beq也是对rs,rt的值做减法，但关键在于结果值为0时输出zero信�
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;即可发现控制信号除了ALUOp之外，还有操作数2的选择
-操作数2可选择RD2或imm
-因此构造相应的控制信号与多路选择器即可&lt;/p&gt;
+&lt;p&gt;即可发现控制信号除了ALUOp之外，还有操作数2的选择&lt;/p&gt;
+&lt;p&gt;操作数2可选择RD2或imm&lt;/p&gt;
+&lt;p&gt;因此构造相应的控制信号与多路选择器即可&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -742,8 +743,8 @@ beq也是对rs,rt的值做减法，但关键在于结果值为0时输出zero信�
 &lt;blockquote&gt;
 &lt;p&gt;这里的imm都是imm_16经过EXT的结果&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;事已至此，可以顺便EXTOp也考虑清楚
-准确来说，只有ori需要无符号（&lt;code&gt;EXTOp == 0&lt;/code&gt;）&lt;/p&gt;
+&lt;p&gt;事已至此，可以顺便EXTOp也考虑清楚&lt;/p&gt;
+&lt;p&gt;准确来说，只有ori需要无符号（&lt;code&gt;EXTOp == 0&lt;/code&gt;）&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -767,8 +768,8 @@ beq也是对rs,rt的值做减法，但关键在于结果值为0时输出zero信�
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;blockquote&gt;
-&lt;p&gt;beq的sign_ext已经在NPC里面确认了
-EXTOp对于beq指令没有意义&lt;/p&gt;
+&lt;p&gt;beq的sign_ext已经在NPC里面确认了&lt;/p&gt;
+&lt;p&gt;EXTOp对于beq指令没有意义&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;外部连接如下图所示：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19.png&#34;
@@ -786,12 +787,12 @@ EXTOp对于beq指令没有意义&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;ol start=&#34;7&#34;&gt;
-&lt;li&gt;&lt;strong&gt;DM&lt;/strong&gt;
-我们采用了$3072*32bit$的RAM 地址长度选项只需9位
-DM和GRF逻辑类似
-但是由于我们直接使用RAM
-在一些内容的表达上需要按照RAM行事&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DM&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;我们采用了3072*32bit的RAM 地址长度选项只需9位&lt;/p&gt;
+&lt;p&gt;DM和GRF逻辑类似&lt;/p&gt;
+&lt;p&gt;但是由于我们直接使用RAM&lt;/p&gt;
+&lt;p&gt;在一些内容的表达上需要按照RAM行事&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;RAM 应使用双端口模式，即设置 RAM 的 Data Interface 属性为 Separate load and store ports&lt;/li&gt;
 &lt;li&gt;RAM的ld也需要特别激活，因此需要一个lw信号来控制它&lt;/li&gt;
@@ -801,9 +802,9 @@ DM和GRF逻辑类似
 &lt;li&gt;右移之后还需bit_extender到9位
 （一定要先右移再extend，因为实质上就是取PC[10:2]）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;DM的A接口是地址，由ALU算出
-要存入的信息则是GRF从rt读出来的RD2
-连接比较简单&lt;/p&gt;
+&lt;p&gt;DM的A接口是地址，由ALU算出&lt;/p&gt;
+&lt;p&gt;要存入的信息则是GRF从rt读出来的RD2&lt;/p&gt;
+&lt;p&gt;连接比较简单&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-20.png&#34;
 	width=&#34;743&#34;
 	height=&#34;360&#34;
@@ -819,11 +820,11 @@ DM和GRF逻辑类似
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;控制器的搭建&#34;&gt;控制器的搭建
-&lt;/h3&gt;&lt;p&gt;在数据通路的苦苦搭建之中，其实&lt;code&gt;控制信号&lt;/code&gt;已经都有了自己的定义
-我们发现，这些定义一般都依赖于&lt;code&gt;指令&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;那么控制器就可以建起这个桥梁：
-通过opcode和funct得到指令
-再由指令得出控制信号&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;在数据通路的苦苦搭建之中，其实&lt;code&gt;控制信号&lt;/code&gt;已经都有了自己的定义&lt;/p&gt;
+&lt;p&gt;我们发现，这些定义一般都依赖于&lt;code&gt;指令&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;那么控制器就可以建起这个桥梁：&lt;/p&gt;
+&lt;p&gt;通过opcode和funct得到指令&lt;/p&gt;
+&lt;p&gt;再由指令得出控制信号&lt;/p&gt;
 &lt;p&gt;这个过程我使用了比较器，因此构建过程非常简单&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22.png&#34;
 	width=&#34;961&#34;
@@ -842,13 +843,13 @@ DM和GRF逻辑类似
 &lt;blockquote&gt;
 &lt;p&gt;写了jal却又懒得写jr 有点猫饼&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;由指令到控制信号那可就更简单了
-除了 ALUOp（）
-我们使用OR阵列
-哪条指令需要这个信号，我们就给它&lt;code&gt;或&lt;/code&gt;到这个控制信号上&lt;/p&gt;
+&lt;p&gt;由指令到控制信号那可就更简单了&lt;/p&gt;
+&lt;p&gt;除了 ALUOp（）&lt;/p&gt;
+&lt;p&gt;我们使用OR阵列&lt;/p&gt;
+&lt;p&gt;哪条指令需要这个信号，我们就给它&lt;code&gt;或&lt;/code&gt;到这个控制信号上&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;这种拉线式的写法还是很方便的
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23.png&#34;
+&lt;p&gt;这种拉线式的写法还是很方便的&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23.png&#34;
 	width=&#34;1396&#34;
 	height=&#34;556&#34;
 	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12779756694418732884.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12424795517378101717.png 1024w&#34;
@@ -861,8 +862,8 @@ DM和GRF逻辑类似
 		data-flex-grow=&#34;251&#34;
 		data-flex-basis=&#34;602px&#34;
 	
-&gt;
-ALUOp就只能拜托我们亲爱的Combinational Analysis啦&lt;/p&gt;
+&gt;&lt;/p&gt;
+&lt;p&gt;ALUOp就只能拜托我们亲爱的Combinational Analysis啦&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;CTRL在整个main电路中的书写还是比较简单的&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24.png&#34;
@@ -884,8 +885,8 @@ ALUOp就只能拜托我们亲爱的Combinational Analysis啦&lt;/p&gt;
 &lt;p&gt;搭电路的过程中一些小惬意的时光就是在修改电路外观~&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;p&gt;那么至此，我们的基础版CPU算是实现了基本自洽
-接下来，就需要有大量的边界与随机指令去测试它了！&lt;/p&gt;
+&lt;p&gt;那么至此，我们的基础版CPU算是实现了基本自洽&lt;/p&gt;
+&lt;p&gt;接下来，就需要有大量的边界与随机指令去测试它了！&lt;/p&gt;
 </description>
         </item>
         <item>
