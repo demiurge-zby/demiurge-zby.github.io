@@ -293,10 +293,30 @@
   <ol>
     <li><a href="#设计文档">设计文档</a>
       <ol>
-        <li><a href="#key-point-数据通路控制器及其连接"><em>Key Point: 数据通路，控制器及其连接</em></a></li>
-        <li><a href="#要实现的核心指令"><em>要实现的核心指令</em></a></li>
-        <li><a href="#数据通路的建立">数据通路的建立</a></li>
-        <li><a href="#控制器的搭建">控制器的搭建</a></li>
+        <li><a href="#要实现的核心指令介绍"><em>要实现的核心指令介绍</em></a></li>
+        <li><a href="#数据通路的建立">数据通路的建立</a>
+          <ol>
+            <li><a href="#pc"><strong>PC</strong></a></li>
+            <li><a href="#npc"><strong>NPC</strong></a></li>
+            <li><a href="#im"><strong>IM</strong></a></li>
+            <li><a href="#splitter"><strong>Splitter</strong></a></li>
+            <li><a href="#ext"><strong>EXT</strong></a></li>
+            <li><a href="#grf"><strong>GRF</strong></a></li>
+            <li><a href="#alu"><strong>ALU</strong></a></li>
+            <li><a href="#dm"><strong>DM</strong></a></li>
+          </ol>
+        </li>
+        <li><a href="#控制器的搭建">控制器的搭建</a>
+          <ol>
+            <li><a href="#由外部信号到指令">由外部信号到指令</a></li>
+            <li><a href="#由指令到控制信号">由指令到控制信号</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#测试文档">测试文档</a>
+      <ol>
+        <li><a href="#边界测试">边界测试</a></li>
       </ol>
     </li>
   </ol>
@@ -394,18 +414,18 @@
     <section class="article-content">
     
     
-    <h2 id="设计文档">设计文档
-</h2><h3 id="key-point-数据通路控制器及其连接"><em>Key Point: 数据通路，控制器及其连接</em>
-</h3><hr>
-<h3 id="要实现的核心指令"><em>要实现的核心指令</em>
-</h3><p><em>add,sub,lui,ori,lw,sw,beq,nop</em>
-<img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712.png"
+    <hr>
+<h2 id="设计文档">设计文档
+</h2><p><strong>Key Point: 数据通路，控制器及其连接</strong></p>
+<h3 id="要实现的核心指令介绍"><em>要实现的核心指令介绍</em>
+</h3><p><em>add,sub,lui,ori,lw,sw,beq,nop</em></p>
+<p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712.png"
 	width="933"
 	height="478"
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu4521862066652988474.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu6527373637613627573.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="add"
 	
 	
 		class="gallery-image" 
@@ -419,7 +439,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15950696484665334809.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15030801855970980233.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="sub"
 	
 	
 		class="gallery-image" 
@@ -433,7 +453,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu1283075729208184123.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu549884947335130086.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="lui"
 	
 	
 		class="gallery-image" 
@@ -447,7 +467,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu6089035281481330811.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu15143189203310304875.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="ori"
 	
 	
 		class="gallery-image" 
@@ -461,7 +481,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu5787444218570001442.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu14363138147111407464.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="lw"
 	
 	
 		class="gallery-image" 
@@ -475,7 +495,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu14048915399541119807.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu15226301040041250481.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="sw"
 	
 	
 		class="gallery-image" 
@@ -489,7 +509,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu10173568185453299968.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu11248677253474280199.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="beq"
 	
 	
 		class="gallery-image" 
@@ -548,10 +568,8 @@
 <p>下面先对各数据通路进行分析，并在此过程中得到对控制器的需求</p>
 <p>(在每个数据通路中都只考虑自己<code>需要什么</code>！</p>
 <p><code>输出的东西如何被使用</code>是其他数据通路考虑的事情！！)</p>
-<ol>
-<li><strong>PC</strong></li>
-</ol>
-<p>一个 32 位寄存器即可</p>
+<h4 id="pc"><strong>PC</strong>
+</h4><p>一个 32 位寄存器即可</p>
 <p>输出引脚：输出当前指令所在地址，提供给<code>IM</code>用于取指令</p>
 <p>输入引脚：由<code>NPC</code>算出的下一条指令地址</p>
 <p>作为整个设备中最核心的时序逻辑，在PC层面其本质应为<code>Moore机</code></p>
@@ -564,7 +582,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu18402894227707405285.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu2088114210525228881.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="PC"
 	
 	
 		class="gallery-image" 
@@ -574,14 +592,18 @@
 ></p>
 <blockquote>
 <p>当然，最后输出PC值的时候要再加上 3000</p>
+</blockquote>
+<blockquote>
 <p>若用PC初始化3000的方法，在复位后PC还是会输出 0</p>
+</blockquote>
+<blockquote>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21.png"
 	width="377"
 	height="144"
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu14716474832504273100.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu12720420553382832580.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="PC最终输出"
 	
 	
 		class="gallery-image" 
@@ -590,10 +612,8 @@
 	
 ></p>
 </blockquote>
-<ol start="2">
-<li><strong>NPC</strong></li>
-</ol>
-<p>下一指令的地址可能是PC+4</p>
+<h4 id="npc"><strong>NPC</strong>
+</h4><p>下一指令的地址可能是PC+4</p>
 <p><code>对于beq跳转</code> 也可能是PC+4+sign_ext(imm_16 || 00)</p>
 <p><code>对于j, jal跳转</code> 还可能是PC[31:28] || imm_26 || 00</p>
 <p>输入引脚：输入当前PC值，imm_16, imm_26</p>
@@ -604,18 +624,33 @@
 </blockquote>
 <p>输出引脚：下一条指令PC值</p>
 <p>！！经后续分析，对于XXXAndLink指令，PC+4是被需要的，那就直接从NPC输出</p>
-<p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2.png"
-	width="1410"
-	height="774"
-	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu6476735985660804862.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu12844351898032879351.png 1024w"
+<p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1.png"
+	width="1406"
+	height="847"
+	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu2913832036464082849.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu14061697443525102259.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="NPC内部"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="182"
-		data-flex-basis="437px"
+		data-flex-grow="165"
+		data-flex-basis="398px"
+	
+></p>
+<p>NPC外部的连接也比较直白</p>
+<p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3.png"
+	width="759"
+	height="295"
+	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu7043441651966384228.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu12909454603822107241.png 1024w"
+	loading="lazy"
+	
+		alt="NPC外部"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="257"
+		data-flex-basis="617px"
 	
 ></p>
 <p>具体分析：</p>
@@ -629,37 +664,35 @@
 </blockquote>
 <p>计算过程实现：简单的加法，移位，位扩展，位拼接运算</p>
 <p>要注意位扩展一定是sign_ext，因此完全可以直接使用bit_sign_extender</p>
-<ol start="3">
-<li><strong>IM</strong></li>
-</ol>
-<p>采用了4096*32bit的ROM 地址长度选项只需12位</p>
+<h4 id="im"><strong>IM</strong>
+</h4><p>采用了4096*32bit的ROM 地址长度选项只需12位</p>
 <p>！！ROM的地址以字为单位，因此PC要右移2位才能传给ROM</p>
 <p>右移之后还需bit_extender到12位</p>
 <p>（一定要先右移再extend，因为实质上就是取PC[13:2]）</p>
 <p>其余的没什么内容了</p>
-<p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-4.png"
-	width="770"
-	height="371"
-	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-4_hu10125323970224870351.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-4_hu4065469488934319501.png 1024w"
+<p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6.png"
+	width="1356"
+	height="784"
+	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu5177617122232314587.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu16816121236644703043.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="IM"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="207"
-		data-flex-basis="498px"
+		data-flex-grow="172"
+		data-flex-basis="415px"
 	
 ></p>
-<p>3.5 <strong>Splitter</strong></p>
-<p>把这个东西单独拿出来写只是图个方便（）</p>
+<h4 id="splitter"><strong>Splitter</strong>
+</h4><p>把这个东西单独拿出来写只是图个方便（）</p>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5.png"
 	width="351"
 	height="417"
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu5375450194594662751.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu585130256717954054.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="Splitter外部"
 	
 	
 		class="gallery-image" 
@@ -674,7 +707,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-7_hu13710146897897921960.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-7_hu5453203937233001731.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="Splitter内部"
 	
 	
 		class="gallery-image" 
@@ -682,10 +715,8 @@
 		data-flex-basis="407px"
 	
 ></p>
-<ol start="4">
-<li><strong>EXT</strong></li>
-</ol>
-<p>EXT也是一个相对好说的部件</p>
+<h4 id="ext"><strong>EXT</strong>
+</h4><p>EXT也是一个相对好说的部件</p>
 <p>根据EXTOp进行不同形式的位扩展</p>
 <p>（缺点（？）是只能用于16bit -&gt; 32bit）</p>
 <div class="table-wrapper"><table>
@@ -714,7 +745,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu18409066551289080979.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu1629901207757935634.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="EXT外部"
 	
 	
 		class="gallery-image" 
@@ -729,7 +760,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu18307721998624566803.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu2551114675183221771.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="EXT内部"
 	
 	
 		class="gallery-image" 
@@ -746,7 +777,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu154531143146296665.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu17866711522868177896.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="含input的bit extender"
 	
 	
 		class="gallery-image" 
@@ -757,10 +788,8 @@
 <blockquote>
 <p>但是我的EXT更好看（？）那就不改了</p>
 </blockquote>
-<ol start="5">
-<li><strong>GRF</strong></li>
-</ol>
-<p>GRF相对来说就复杂多了</p>
+<h4 id="grf"><strong>GRF</strong>
+</h4><p>GRF相对来说就复杂多了</p>
 <p>内部结构在P0课下已经搭好了，但其正确性仍需后续测试</p>
 <p>在此仅略加展示：</p>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11.png"
@@ -769,7 +798,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu4210210374249256110.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu8953490536122227811.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="GRF内部结构"
 	
 	
 		class="gallery-image" 
@@ -882,7 +911,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu12886119237173023558.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu3228394010328776642.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="GRF外部结构"
 	
 	
 		class="gallery-image" 
@@ -896,7 +925,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu17698948292768786383.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu12492319156644773203.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="GRF外部结构之选择器"
 	
 	
 		class="gallery-image" 
@@ -904,10 +933,8 @@
 		data-flex-basis="1007px"
 	
 ></p>
-<ol start="6">
-<li><strong>ALU</strong></li>
-</ol>
-<p>首先明确ALU要解决的问题：</p>
+<h4 id="alu"><strong>ALU</strong>
+</h4><p>首先明确ALU要解决的问题：</p>
 <p>加法，减法，或，左移16位共4种运算</p>
 <p>显然ALUOp需要4种，即需要两位信号</p>
 <div class="table-wrapper"><table>
@@ -947,7 +974,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu7670816331985582121.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu2555603277317820934.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="加法器"
 	
 	
 		class="gallery-image" 
@@ -1021,7 +1048,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu15443408531244071137.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu18285911102885118521.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="ALU内部"
 	
 	
 		class="gallery-image" 
@@ -1159,7 +1186,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu15036609705169223080.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu13205994924990698473.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="ALU外部"
 	
 	
 		class="gallery-image" 
@@ -1167,10 +1194,8 @@
 		data-flex-basis="269px"
 	
 ></p>
-<ol start="7">
-<li><strong>DM</strong></li>
-</ol>
-<p>我们采用了3072*32bit的RAM 地址长度选项只需9位</p>
+<h4 id="dm"><strong>DM</strong>
+</h4><p>我们采用了3072*32bit的RAM 地址长度选项只需9位</p>
 <p>DM和GRF逻辑类似</p>
 <p>但是由于我们直接使用RAM</p>
 <p>在一些内容的表达上需要按照RAM行事</p>
@@ -1180,24 +1205,24 @@
 <li>str信号就是普通的写使能信号</li>
 <li>clr信号为异步复位信号</li>
 <li>和ROM类似，RAM的地址也以字为单位，因此PC要右移2位才能传入</li>
-<li>右移之后还需bit_extender到9位
-（一定要先右移再extend，因为实质上就是取PC[10:2]）</li>
+<li>右移之后还需bit_extender到9位</li>
 </ul>
+<p>（一定要先右移再extend，因为实质上就是取PC[10:2]）</p>
 <p>DM的A接口是地址，由ALU算出</p>
 <p>要存入的信息则是GRF从rt读出来的RD2</p>
 <p>连接比较简单</p>
-<p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-20.png"
-	width="743"
-	height="360"
-	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-20_hu2495951722354150875.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-20_hu1497702333473180564.png 1024w"
+<p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2.png"
+	width="1417"
+	height="781"
+	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu12523512501036799621.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu4579953089620044417.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="DM"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="206"
-		data-flex-basis="495px"
+		data-flex-grow="181"
+		data-flex-basis="435px"
 	
 ></p>
 <h3 id="控制器的搭建">控制器的搭建
@@ -1206,14 +1231,15 @@
 <p>那么控制器就可以建起这个桥梁：</p>
 <p>通过opcode和funct得到指令</p>
 <p>再由指令得出控制信号</p>
-<p>这个过程我使用了比较器，因此构建过程非常简单</p>
+<h4 id="由外部信号到指令">由外部信号到指令
+</h4><p>得到指令的过程我使用了比较器，因此构建过程非常简单</p>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22.png"
 	width="961"
 	height="457"
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu9875341364575394058.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu10601284135689048738.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="CTRL之指令"
 	
 	
 		class="gallery-image" 
@@ -1221,10 +1247,8 @@
 		data-flex-basis="504px"
 	
 ></p>
-<blockquote>
-<p>写了jal却又懒得写jr 有点猫饼</p>
-</blockquote>
-<p>由指令到控制信号那可就更简单了</p>
+<h4 id="由指令到控制信号">由指令到控制信号
+</h4><p>由指令到控制信号那可就更简单了</p>
 <p>除了 ALUOp（）</p>
 <p>我们使用OR阵列</p>
 <p>哪条指令需要这个信号，我们就给它<code>或</code>到这个控制信号上</p>
@@ -1236,7 +1260,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12779756694418732884.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12424795517378101717.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="CTRL之控制信号"
 	
 	
 		class="gallery-image" 
@@ -1253,7 +1277,7 @@
 	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu10412559772791498343.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu8922208367055689427.png 1024w"
 	loading="lazy"
 	
-		alt="alt text"
+		alt="CTRL外部"
 	
 	
 		class="gallery-image" 
@@ -1266,9 +1290,11 @@
 <p>搭电路的过程中一些小惬意的时光就是在修改电路外观~</p>
 </blockquote>
 <hr>
-<p>那么至此，我们的基础版CPU算是实现了基本自洽</p>
+<h2 id="测试文档">测试文档
+</h2><p>那么至此，我们的基础版CPU算是实现了基本自洽</p>
 <p>接下来，就需要有大量的边界与随机指令去测试它了！</p>
-
+<h3 id="边界测试">边界测试
+</h3>
 </section>
 
 
