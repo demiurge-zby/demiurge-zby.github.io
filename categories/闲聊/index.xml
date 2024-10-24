@@ -8,12 +8,12 @@
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
         <lastBuildDate>Thu, 26 Sep 2024 21:30:15 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/%E9%97%B2%E8%81%8A/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>oopre课堂随笔</title>
-        <link>https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94/</link>
+        <title>oopre课堂随笔-指令处理</title>
+        <link>https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/</link>
         <pubDate>Thu, 26 Sep 2024 21:30:15 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post oopre课堂随笔" /&gt;&lt;h2 id=&#34;输入指令处理&#34;&gt;输入指令处理
+        <guid>https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post oopre课堂随笔-指令处理" /&gt;&lt;h2 id=&#34;输入指令处理&#34;&gt;输入指令处理
 &lt;/h2&gt;&lt;h3 id=&#34;switch-case-与-各方法封装&#34;&gt;switch case 与 各方法封装
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

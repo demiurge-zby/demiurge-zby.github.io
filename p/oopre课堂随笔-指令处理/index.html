@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="">
-<title>档案</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="真的只是没有参考价值的随笔啦">
+<title>oopre课堂随笔-指令处理</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/archives/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="档案">
-<meta property='og:description' content="">
-<meta property='og:url' content='https://demiurge-zby.github.io/archives/'>
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="oopre课堂随笔-指令处理">
+<meta property='og:description' content="真的只是没有参考价值的随笔啦">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:published_time' content='2019-05-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-05-28T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="档案">
-<meta name="twitter:description" content="">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-09-26T21:30:15&#43;08:00'/><meta property='article:modified_time' content='2024-09-26T21:30:15&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg' />
+<meta name="twitter:title" content="oopre课堂随笔-指令处理">
+<meta name="twitter:description" content="真的只是没有参考价值的随笔啦"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
-    <body class="template-archives">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -157,7 +160,7 @@
         </li>
         
         
-        <li  class='current' >
+        <li >
             <a href='/archives/' >
                 
                 
@@ -243,181 +246,331 @@
     </ol>
 </aside>
 
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#输入指令处理">输入指令处理</a>
+      <ol>
+        <li><a href="#switch-case-与-各方法封装">switch case 与 各方法封装</a></li>
+        <li><a href="#commandutil">CommandUtil</a>
+          <ol>
+            <li><a href="#9835-manager类管理arraylist-commandutil-9835"><em>♫ Manager类管理Arraylist commandUtil ♫</em></a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#逻辑性错误">逻辑性错误</a></li>
+    <li><a href="#引用错误">引用错误</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
             <main class="main full-width">
-    <header>
-        <h2 class="section-title">Categories</h2>
-        <div class="subsection-list">
-            <div class="article-list--tile">
-                
-                    
-<article class="has-image">
-    <a href="/categories/oopre/">
-        
-        
-            <div class="article-image">
-                <img src="/categories/oopre/hutomo-abrianto-l2jk-uxb1BY-unsplash.bec89fe99958d89413edc0f93688bdd6_hu12733615224671643161.jpg" 
-                        width="250" 
-                        height="150" 
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/">
+                <img src="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/pawel-czerwinski-8uZPynIu-rQ-unsplash_hu13459586684579990428.jpg"
+                        srcset="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/pawel-czerwinski-8uZPynIu-rQ-unsplash_hu13459586684579990428.jpg 800w, /p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/pawel-czerwinski-8uZPynIu-rQ-unsplash_hu3425483315149503896.jpg 1600w"
+                        width="800" 
+                        height="534" 
                         loading="lazy"
-                        alt="Featured image of post OOpre"
-                        data-key="OOpre" 
-                        data-hash="md5-vsif6ZlY2JQT7cD5Noi91g==">
+                        alt="Featured image of post oopre课堂随笔-指令处理" />
                 
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%97%B2%E8%81%8A/" style="background-color: #2a9d8f; color: #fff;">
+                闲聊
+            </a>
+        
+            <a href="/categories/oopre/" style="background-color: #2a9d8f; color: #fff;">
+                OOpre
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/">oopre课堂随笔-指令处理</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            真的只是没有参考价值的随笔啦
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-09-26</time>
             </div>
         
 
-        <div class="article-details">
-            <h2 class="article-title">OOpre</h2>
-        </div>
-    </a>
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="输入指令处理">输入指令处理
+</h2><h3 id="switch-case-与-各方法封装">switch case 与 各方法封装
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">基本可用 但展开复杂
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>练习一些markdown操作（）</p>
+<blockquote>
+<p>1</p>
+</blockquote>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>a</td>
+          <td>b</td>
+          <td>c</td>
+      </tr>
+      <tr>
+          <td>d</td>
+          <td>e</td>
+          <td>f</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="commandutil">CommandUtil
+</h3><p>提供command方法 // cmd</p>
+<h4 id="9835-manager类管理arraylist-commandutil-9835"><em>♫ Manager类管理Arraylist commandUtil ♫</em>
+</h4><p>cmdUtil = cmdUtilArray.get(operator - 1);<strong>✓</strong></p>
+<p>cmdUtil.command(&hellip;);<strong>✓</strong></p>
+<hr>
+<h2 id="逻辑性错误">逻辑性错误
+</h2><ul>
+<li>数据流
+<ol>
+<li>引用（对象 or 方法）</li>
+<li>运算（边界条件！）</li>
+</ol>
+</li>
+<li>控制流
+<ol>
+<li>差一</li>
+<li>意外分支</li>
+</ol>
+</li>
+<li>综合性
+<ol>
+<li>输入输出</li>
+<li>拷贝</li>
+<li>String</li>
+</ol>
+</li>
+</ul>
+<h2 id="引用错误">引用错误
+</h2><hr>
+<ol>
+<li>访问空指针  报错java.lang.NullPointerException<br>
+（注意逻辑短路<code>先后顺序</code>避免报错）</li>
+<li>越界异常</li>
+<li>类型转换错误 报错java.lang.ClassCastException
+（可转化情况： 类型相同 有抽象层次关系</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
 </article>
 
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
                 
-                    
 <article class="has-image">
-    <a href="/categories/co/">
+    <a href="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E5%BA%8F%E5%88%97%E8%BE%93%E5%85%A5/">
         
         
             <div class="article-image">
-                <img src="/categories/co/15c277c39924c01bcd89e8f7b84de46.b8954420f39c56eb93d583a02c1bed17_hu2677999255548595129.jpg" 
+                <img src="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E5%BA%8F%E5%88%97%E8%BE%93%E5%85%A5/15c277c39924c01bcd89e8f7b84de46.b8954420f39c56eb93d583a02c1bed17_hu2677999255548595129.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post CO"
-                        data-key="CO" 
+                        alt="Featured image of post oopre课堂随笔-序列输入"
+                        
                         data-hash="md5-uJVEIPOcVuuT1YOgLBvtFw==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">CO</h2>
+            <h2 class="article-title">oopre课堂随笔-序列输入</h2>
         </div>
     </a>
 </article>
 
+            
                 
-                    
 <article class="has-image">
-    <a href="/categories/%E9%97%B2%E8%81%8A/">
+    <a href="/p/demiurgefirstblog/">
         
         
             <div class="article-image">
-                <img src="/categories/%E9%97%B2%E8%81%8A/hutomo-abrianto-l2jk-uxb1BY-unsplash.bec89fe99958d89413edc0f93688bdd6_hu12733615224671643161.jpg" 
+                <img src="/p/demiurgefirstblog/demiurge.c99854a39b6fa68c673ca9312f9f66f3_hu13119754826466261555.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 闲聊"
-                        data-key="闲聊" 
-                        data-hash="md5-vsif6ZlY2JQT7cD5Noi91g==">
+                        alt="Featured image of post DemiurgeFirstBlog"
+                        
+                        data-hash="md5-yZhUo5tvpoxnPKkxL59m8w==">
                 
             </div>
         
 
-        <div class="article-details">
-            <h2 class="article-title">闲聊</h2>
-        </div>
-    </a>
-</article>
-
-                
-            </div>
-        </div>
-        
-    </header>
-
-    
-    
-    
-
-    
-    
-    <div class="archives-group" id="2024">
-        <h2 class="archives-date section-title"><a href="/archives/#2024">2024</a></h2>
-        <div class="article-list--compact">
-            
-                <article>
-    <a href="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E5%BA%8F%E5%88%97%E8%BE%93%E5%85%A5/">
-        <div class="article-details">
-            <h2 class="article-title">oopre课堂随笔-序列输入</h2>
-            <footer class="article-time">
-                <time datetime='2024-10-24T15:30:00&#43;08:00'>2024-10-24</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E5%BA%8F%E5%88%97%E8%BE%93%E5%85%A5/15c277c39924c01bcd89e8f7b84de46_hu6067831623915793491.jpg" 
-                        width="120"
-                        height="120" 
-                        alt="oopre课堂随笔-序列输入"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-            
-                <article>
-    <a href="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/">
-        <div class="article-details">
-            <h2 class="article-title">单周期CPU的logisim搭建</h2>
-            <footer class="article-time">
-                <time datetime='2024-10-23T12:30:15&#43;08:00'>2024-10-23</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3_hu1946466944430747746.jpg" 
-                        width="120"
-                        height="120" 
-                        alt="单周期CPU的logisim搭建"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-            
-                <article>
-    <a href="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/">
-        <div class="article-details">
-            <h2 class="article-title">oopre课堂随笔-指令处理</h2>
-            <footer class="article-time">
-                <time datetime='2024-09-26T21:30:15&#43;08:00'>2024-09-26</time>
-            </footer>
-        </div>
-            <div class="article-image">
-                <img src="/p/oopre%E8%AF%BE%E5%A0%82%E9%9A%8F%E7%AC%94-%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86/pawel-czerwinski-8uZPynIu-rQ-unsplash_hu6307248181568134095.jpg" 
-                        width="120"
-                        height="120" 
-                        alt="oopre课堂随笔-指令处理"
-                        loading="lazy">
-                
-            </div>
-        
-    </a>
-</article>
-            
-                <article>
-    <a href="/p/demiurgefirstblog/">
         <div class="article-details">
             <h2 class="article-title">DemiurgeFirstBlog</h2>
-            <footer class="article-time">
-                <time datetime='2024-09-24T00:37:20&#43;08:00'>2024-09-24</time>
-            </footer>
         </div>
-            <div class="article-image">
-                <img src="/p/demiurgefirstblog/demiurge_hu5188072458766260427.png" 
-                        width="120"
-                        height="120" 
-                        alt="DemiurgeFirstBlog"
-                        loading="lazy">
-                
-            </div>
-        
     </a>
 </article>
+
             
         </div>
     </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
     
 
     <footer class="site-footer">
@@ -435,6 +588,84 @@
     </section>
 </footer>
 
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
 
             </main>
         </div>

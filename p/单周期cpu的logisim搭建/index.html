@@ -175,7 +175,7 @@
 
 
                 
-                <span>Archives</span>
+                <span>档案</span>
             </a>
         </li>
         
@@ -194,13 +194,13 @@
 
 
                 
-                <span>Search</span>
+                <span>搜索</span>
             </a>
         </li>
         
         
         <li >
-            <a href='/links/' >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
                 
                 
                 
@@ -213,35 +213,12 @@
 
 
                 
-                <span>Links</span>
+                <span>链接</span>
             </a>
         </li>
         
         <li class="menu-bottom-section">
             <ol class="menu">
-                    
-                        <li id="i18n-switch">  
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
-                                
-                                    <option value="https://demiurge-zby.github.io/en/" >English</option>
-                                
-                                    <option value="https://demiurge-zby.github.io/" selected>简体中文</option>
-                                
-                            </select>
-                        </li>
-                    
-                
 
                 
                     <li id="dark-mode-toggle">
@@ -316,7 +293,8 @@
     </li>
     <li><a href="#测试文档">测试文档</a>
       <ol>
-        <li><a href="#边界测试">边界测试</a></li>
+        <li><a href="#寄存器数据及跳转测试">寄存器数据及跳转测试</a></li>
+        <li><a href="#检验方法">检验方法</a></li>
       </ol>
     </li>
   </ol>
@@ -399,7 +377,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 7 分钟
+                    阅读时长: 8 分钟
                 </time>
             </div>
         
@@ -1293,8 +1271,174 @@
 <h2 id="测试文档">测试文档
 </h2><p>那么至此，我们的基础版CPU算是实现了基本自洽</p>
 <p>接下来，就需要有大量的边界与随机指令去测试它了！</p>
-<h3 id="边界测试">边界测试
-</h3>
+<p>我首先测试了课程组给出的附件，并翻译为MIPS</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="na">.text</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		<span class="no">$28</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		<span class="no">$29</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		 <span class="no">$1</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">0x3456</span>
+</span></span><span class="line"><span class="cl"><span class="nf">add</span>		 <span class="no">$1</span><span class="p">,</span> <span class="no">$1</span><span class="p">,</span> <span class="no">$1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">lw</span>		 <span class="no">$1</span><span class="p">,</span> <span class="mi">4</span><span class="p">(</span><span class="no">$0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sw</span>	 	 <span class="no">$1</span><span class="p">,</span> <span class="mi">4</span><span class="p">(</span><span class="no">$0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">lui</span>		 <span class="no">$2</span><span class="p">,</span> <span class="mi">0x7878</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sub</span>		 <span class="no">$3</span><span class="p">,</span> <span class="no">$2</span><span class="p">,</span> <span class="no">$1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">lui</span>		 <span class="no">$5</span><span class="p">,</span> <span class="mi">0x1234</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>	 	 <span class="no">$4</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="nf">nop</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sw</span>	 	 <span class="no">$5</span><span class="p">,</span> <span class="p">-</span><span class="mi">1</span><span class="p">(</span><span class="no">$4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">lw</span>	 	 <span class="no">$3</span><span class="p">,</span> <span class="p">-</span><span class="mi">1</span><span class="p">(</span><span class="no">$4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">beq</span>		 <span class="no">$3</span><span class="p">,</span> <span class="no">$5</span><span class="p">,</span> <span class="no">_1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">beq</span>		 <span class="no">$0</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="no">_13</span>
+</span></span><span class="line"><span class="cl"><span class="nl">_1:</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		 <span class="no">$7</span><span class="p">,</span> <span class="no">$3</span><span class="p">,</span> <span class="mi">0x404</span>
+</span></span><span class="line"><span class="cl"><span class="nf">beq</span>		 <span class="no">$7</span><span class="p">,</span> <span class="no">$3</span><span class="p">,</span> <span class="no">_11</span>
+</span></span><span class="line"><span class="cl"><span class="nf">nop</span>
+</span></span><span class="line"><span class="cl"><span class="nf">lui</span>		 <span class="no">$8</span><span class="p">,</span> <span class="mi">0x7777</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		 <span class="no">$8</span><span class="p">,</span> <span class="no">$8</span><span class="p">,</span> <span class="p">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sub</span>		 <span class="no">$0</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="no">$8</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		  <span class="mi">0</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">0x1100</span>
+</span></span><span class="line"><span class="cl"><span class="nf">add</span>		<span class="no">$10</span><span class="p">,</span> <span class="no">$7</span><span class="p">,</span> <span class="no">$6</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		 <span class="no">$8</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		 <span class="no">$9</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ori</span>		<span class="no">$10</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nl">_minus2:</span>
+</span></span><span class="line"><span class="cl"><span class="nf">add</span>		 <span class="no">$8</span><span class="p">,</span> <span class="no">$8</span><span class="p">,</span> <span class="no">$10</span>
+</span></span><span class="line"><span class="cl"><span class="nf">beq</span>		 <span class="no">$8</span><span class="p">,</span> <span class="no">$9</span><span class="p">,</span> <span class="no">_minus2</span>
+</span></span><span class="line"><span class="cl"><span class="nl">_13:</span>
+</span></span><span class="line"><span class="cl"><span class="nl">_11:</span>
+</span></span><span class="line"><span class="cl"><span class="nl">_minus1:</span>
+</span></span><span class="line"><span class="cl"><span class="nf">beq</span>		 <span class="no">$0</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="no">_minus1</span>  <span class="c1"># dead continue
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="寄存器数据及跳转测试">寄存器数据及跳转测试
+</h3><p>// 本测试的不足之处在于支持了MARS不支持的错误运算
+//如最大正数加1，最小负数减1，-1减最小负数等</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//记得写v2.0 raw   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">3c00ffff</span><span class="w"> </span><span class="c1">// 测试`$0`  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//下面是对低16位赋值  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">3c01ffff</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">3c028000</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">00000000</span><span class="w">  </span><span class="c1">//nop测试</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">3c047fff</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">3c058000</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//下面是对低16位赋值  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">3421ffff</span><span class="w">  </span><span class="c1">// `$1` = -1   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">34420000</span><span class="w">  </span><span class="c1">// `$2` = 最小负数  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">34630001</span><span class="w">  </span><span class="c1">// `$3` = 1  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">3484ffff</span><span class="w">  </span><span class="c1">// `$4` = 最大正数  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">34a50001</span><span class="w">  </span><span class="c1">// `$5` = 最小负数 + 1   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//sw与lw的简单测试   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ac64ffff</span><span class="w">  </span><span class="c1">//在0处存 `$4`  测试offset为负  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">bc200001</span><span class="w">  </span><span class="c1">//把0处的值给`$0` 测试`$0`    </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">8c040000</span><span class="w">  </span><span class="c1">//把0处的值给`$4` 测试offset为0   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">00253020</span><span class="w">  </span><span class="c1">// `$6` = `$5` + `$1`    </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">10460002</span><span class="w">  </span><span class="c1">//等于最小负数 跳2句   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//跳-8句跳回形成死循环  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">00643820</span><span class="w">  </span><span class="c1">//最大正数加一   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">10e20000</span><span class="w">  </span><span class="c1">//等于最小负数 跳0句  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">00a34022</span><span class="w">  </span><span class="c1">//最小负数+1减一   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">11020000</span><span class="w">  </span><span class="c1">//等于最小负数 跳0句  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">01034822</span><span class="w">  </span><span class="c1">//最小负数减一    </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">11240000</span><span class="w">  </span><span class="c1">//等于最大正数 跳0句   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">00225022</span><span class="w">  </span><span class="c1">//-1减最小负数  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">1144fff8</span><span class="w">  </span><span class="c1">//等于最大正数 跳-8句  </span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="检验方法">检验方法
+</h3><p>在保证sw无问题的前提下<br>
+将所有的敏感变量都及时存储<br>
+be like:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="na">.macro</span> <span class="no">save</span><span class="p">(</span><span class="nv">%data</span><span class="p">)</span> <span class="c1">#不保存$t0,$t1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">sw</span> <span class="nv">%data</span><span class="p">,</span> <span class="mi">0</span><span class="p">(</span><span class="no">$t0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 不能用addi
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ori</span> <span class="no">$t1</span><span class="p">,</span> <span class="no">$0</span><span class="p">,</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="nf">add</span> <span class="no">$t0</span><span class="p">,</span> <span class="no">$t0</span><span class="p">,</span> <span class="no">$t1</span>
+</span></span><span class="line"><span class="cl"><span class="na">.end_macro</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>之后只需要直接比对MARS和DM的存储区即可</p>
+
 </section>
 
 
