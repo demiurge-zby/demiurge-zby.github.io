@@ -570,11 +570,7 @@
 ></p>
 <blockquote>
 <p>当然，最后输出PC值的时候要再加上 3000</p>
-</blockquote>
-<blockquote>
 <p>若用PC初始化3000的方法，在复位后PC还是会输出 0</p>
-</blockquote>
-<blockquote>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21.png"
 	width="377"
 	height="144"
@@ -603,32 +599,32 @@
 <p>输出引脚：下一条指令PC值</p>
 <p>！！经后续分析，对于XXXAndLink指令，PC+4是被需要的，那就直接从NPC输出</p>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1.png"
-	width="1406"
-	height="847"
-	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu2913832036464082849.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu14061697443525102259.png 1024w"
+	width="1417"
+	height="781"
+	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu12523512501036799621.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu4579953089620044417.png 1024w"
 	loading="lazy"
 	
 		alt="NPC内部"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="165"
-		data-flex-basis="398px"
+		data-flex-grow="181"
+		data-flex-basis="435px"
 	
 ></p>
 <p>NPC外部的连接也比较直白</p>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3.png"
-	width="759"
-	height="295"
-	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu7043441651966384228.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu12909454603822107241.png 1024w"
+	width="669"
+	height="277"
+	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu6911733393574829166.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu17525786565924149063.png 1024w"
 	loading="lazy"
 	
 		alt="NPC外部"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="257"
-		data-flex-basis="617px"
+		data-flex-grow="241"
+		data-flex-basis="579px"
 	
 ></p>
 <p>具体分析：</p>
@@ -649,17 +645,17 @@
 <p>（一定要先右移再extend，因为实质上就是取PC[13:2]）</p>
 <p>其余的没什么内容了</p>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6.png"
-	width="1356"
-	height="784"
-	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu5177617122232314587.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu16816121236644703043.png 1024w"
+	width="573"
+	height="355"
+	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu6045991245181311816.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu16423451455378359301.png 1024w"
 	loading="lazy"
 	
 		alt="IM"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="172"
-		data-flex-basis="415px"
+		data-flex-grow="161"
+		data-flex-basis="387px"
 	
 ></p>
 <h4 id="splitter"><strong>Splitter</strong>
@@ -1190,17 +1186,17 @@
 <p>要存入的信息则是GRF从rt读出来的RD2</p>
 <p>连接比较简单</p>
 <p><img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2.png"
-	width="1417"
-	height="781"
-	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu12523512501036799621.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu4579953089620044417.png 1024w"
+	width="1020"
+	height="409"
+	srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu12922959104644849771.png 480w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu15321000782428197562.png 1024w"
 	loading="lazy"
 	
 		alt="DM"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="181"
-		data-flex-basis="435px"
+		data-flex-grow="249"
+		data-flex-basis="598px"
 	
 ></p>
 <h3 id="控制器的搭建">控制器的搭建
@@ -1454,6 +1450,39 @@ be like:</p>
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.caa15c4140a1ea3defd93b1a3142538f_hu12725383462063843859.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 单周期CPU的verilog搭建"
+                        
+                        data-hash="md5-yqFcQUCh6j3v2TsaMUJTjw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">单周期CPU的verilog搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
