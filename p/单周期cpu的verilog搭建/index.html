@@ -300,6 +300,7 @@
       </ol>
     </li>
     <li><a href="#测试文档">测试文档</a></li>
+    <li><a href="#测试题">测试题</a></li>
   </ol>
 </nav>
         </div>
@@ -380,7 +381,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 9 分钟
+                    阅读时长: 11 分钟
                 </time>
             </div>
         
@@ -2108,7 +2109,123 @@ MemData一定是RD2?<br>
 </span></span><span class="line"><span class="cl">@0000301c: $31 &lt;= 00006038
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h2 id="测试题">测试题
+</h2><ol>
+<li></li>
+</ol>
+<blockquote>
+<p>阅读下面给出的 DM 的输入示例中（示例 DM 容量为 4KB，即 32bit × 1024字），根据你的理解回答，这个 addr 信号又是从哪里来的？地址信号 addr 位数为什么是 [11:2] 而不是 [9:0] ?</p>
+</blockquote>
+<p>addr信号来自于ALU的计算，即GRF[base]+sign_ext(offset) <br>
+其中addr[11:2]意为取ALU计算结果从第2位开始的12位数字作为address。 <br>
+其原因在于对于lw指令，第0位和第1位均为0，自第2位起开始计数才是以32bit为单位，才能与DM寄存器堆的寄存器编号相对应。</p>
+<ol start="2">
+<li></li>
+</ol>
+<blockquote>
+<p>思考两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。</p>
+</blockquote>
+<p>控制信号每种取值所对应的指令：
+举例：</p>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Br</span> <span class="o">=</span> <span class="nv">beq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Jr</span> <span class="o">=</span> <span class="nv">jr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Link</span> <span class="o">=</span> <span class="nv">jal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">J</span> <span class="o">=</span> <span class="nv">jal</span> <span class="o">||</span> <span class="nv">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">WdSel</span> <span class="o">=</span> <span class="nv">lw</span> <span class="o">||</span> <span class="nv">lh</span> <span class="o">||</span> <span class="nv">lb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">WrSel</span> <span class="o">=</span> <span class="nv">add</span> <span class="o">||</span> <span class="nv">sub</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">EXTOp</span> <span class="o">=</span> <span class="nv">sw</span> <span class="o">||</span> <span class="nv">sh</span> <span class="o">||</span> <span class="nv">sb</span> <span class="o">||</span> <span class="nv">lw</span> <span class="o">||</span> <span class="nv">lh</span> <span class="o">||</span> <span class="nv">lb</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
+</div></blockquote>
+<p>每条指令对应的控制信号取值：</p>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">case</span> <span class="p">(</span><span class="nc">Operation</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="sc">`ADD : begin
+</span></span></span><span class="line"><span class="cl"><span class="sc">            Br = 1&#39;b0;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            Jr = 1&#39;b0;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            Link = 1&#39;b0;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            J = 1&#39;b0;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            WrSel = 1&#39;b1;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            ...
+</span></span></span><span class="line"><span class="cl"><span class="sc">         end
+</span></span></span><span class="line"><span class="cl"><span class="sc">        ...
+</span></span></span><span class="line"><span class="cl"><span class="sc">        default : begin
+</span></span></span><span class="line"><span class="cl"><span class="sc">        end
+</span></span></span><span class="line"><span class="cl"><span class="sc">end
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>分析优劣：
+由指令确定其控制信号：
+优点：考虑全面，不会有漏掉的指令，对每个指令也不会有漏掉的控制信号   <br>
+上机新增指令时直接对其分析，一个也不会漏
+缺点：代码重复冗长   <br>
+产生新的控制信号时还需要对每个指令都加句话</p>
+<p>对控制信号归纳其生效指令：
+优点：本质上是上一种方法的总结归纳，代码量少     <br>
+缺点：自行归纳时某些控制信号可能会忘记考虑一些指令</p>
+<p>PS：解决方法：对新指令在演草纸上进行所有控制信号枚举，之后再进行归纳，用于代码书写</p>
+<ol start="3">
+<li></li>
+</ol>
+<blockquote>
+<p>在相应的部件中，复位信号的设计都是同步复位，这与 P3 中的设计要求不同。请对比同步复位与异步复位这两种方式的 reset 信号与 clk 信号优先级的关系。</p>
+</blockquote>
+<p>同步复位：clk优先（还必须得是上升沿）
+异步复位：reset优先</p>
+<ol start="4">
+<li></li>
+</ol>
+<blockquote>
+<p>C 语言是一种弱类型程序设计语言。C 语言中不对计算结果溢出进行处理，这意味着 C 语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持 C 语言，MIPS 指令的所有计算指令均可以忽略溢出。 请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的。提示：阅读《MIPS32® Architecture For Programmers Volume II: The MIPS32® Instruction Set》中相关指令的 Operation 部分。</p>
+</blockquote>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">if</span> <span class="no">temp32</span> <span class="err">≠</span> <span class="no">temp31</span> <span class="no">then</span>
+</span></span><span class="line"><span class="cl"><span class="nf">SignalException</span><span class="p">(</span><span class="no">IntegerOverflow</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>这是add和addu、addi和addiu的唯一区别     <br>
+u的本意即为不考虑输出
+那在忽略输出的前提下自然就等价了。</p>
+
 </section>
 
 
