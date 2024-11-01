@@ -7,7 +7,107 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Thu, 31 Oct 2024 14:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 01 Nov 2024 13:30:00 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>oopre结课总结</title>
+        <link>https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</link>
+        <pubDate>Fri, 01 Nov 2024 13:30:00 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/d477300c36f0221527b9816c97bed3b.jpg" alt="Featured image of post oopre结课总结" /&gt;&lt;h2 id=&#34;作业最终的架构设计&#34;&gt;作业最终的架构设计
+&lt;/h2&gt;&lt;p&gt;经过轮轮迭代，面向对象先导课程也终于走向了尾声。&lt;/p&gt;
+&lt;h3 id=&#34;关于类&#34;&gt;关于类
+&lt;/h3&gt;&lt;p&gt;本次迭代任务中，共有24个类被创建：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1.png&#34;
+	width=&#34;802&#34;
+	height=&#34;631&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu3289743259887793063.png 480w, https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu15433014605120603975.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Class一览&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;他们分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;MainClass&lt;/code&gt;: 程序入口，实现数据读入操作和大量核心方法。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Adventurer&lt;/code&gt;: 核心操作对象，内含有关&lt;code&gt;Bottle&lt;/code&gt;，&lt;code&gt;Equipment&lt;/code&gt;，&lt;code&gt;Frag&lt;/code&gt;，&lt;code&gt;Employ&lt;/code&gt;类的相关容器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Bottle&lt;/code&gt;：内设三个子类，&lt;code&gt;HpBottle&lt;/code&gt;，&lt;code&gt;AtkBottle&lt;/code&gt;，&lt;code&gt;DefBottle&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Equipment&lt;/code&gt;：内设三个子类，&lt;code&gt;Axe&lt;/code&gt;，&lt;code&gt;Blade&lt;/code&gt;，&lt;code&gt;Sword&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Frag&lt;/code&gt;：表达碎片的相关属性与方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Employ&lt;/code&gt;：表达雇佣关系相关属性与方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Guard&lt;/code&gt;，&lt;code&gt;Treasure&lt;/code&gt;及其&lt;code&gt;Factory&lt;/code&gt;：秘境探险操作中的新对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体属性就不详细说了&lt;/p&gt;
+&lt;h3 id=&#34;关于容器&#34;&gt;关于容器
+&lt;/h3&gt;&lt;p&gt;在容器上的考虑，值得一提的便是&lt;code&gt;CarriedEquipment&lt;/code&gt;。它使用了以&lt;code&gt;name&lt;/code&gt;为索引的HashMap，这一方法十分契合题设要求。可惜的是，在处处以&lt;code&gt;id&lt;/code&gt;为核心标识的情境，使用以&lt;code&gt;name&lt;/code&gt;为索引的方法不可避免地要处理好在&lt;code&gt;carry&lt;/code&gt;操作之外的重名问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;那便是&lt;code&gt;deleteEquipment()&lt;/code&gt;方法在第三次迭代强测中带来的惨痛教训&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;关于迭代&#34;&gt;关于迭代
+&lt;/h3&gt;&lt;p&gt;迭代式开发的课程，着实是令我耳目一新的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;第一次迭代
+OMG，it&amp;rsquo;s LLM!
+从第一次迭代时拙劣地模仿IDEA的LLM，到现在理解&lt;del&gt;较为成熟地模仿&lt;/del&gt;LLM，大家每个人的进步都是肉眼可见的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二次迭代&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加了carry指令。当时没有想太多，直接为装备添加了isCarried属性（谁能想到后面装备还能援助给别人呢（）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;deleteCommodity()&lt;/code&gt;让我开始考虑将Bottle和Equipment结合起来，但其差异仍将大于其共性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第三次迭代
+这次迭代是让我最印象深刻的一次迭代，痛失40分（苦笑
+核心要点主要是：
+容器重构，carry，frag，fight&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;删掉了所有find函数，用上了高效简洁的HashMap&lt;/li&gt;
+&lt;li&gt;carry方法重写，建立了专属容器以存放Carried的物品。关于carriedEquipment以name为索引的潜在问题前面已经提到了。&lt;/li&gt;
+&lt;li&gt;frag的处理。就忽略id属性这一问题，我认为是合理的。frag的最核心属性就应该是name和count，以同名frag作为一个对象基本单元，在获取数量，消耗数量等操作上都是合理的。不过把id忽略掉这种行为本身，对于整个项目来说，可能还是有一定隐患的。&lt;/li&gt;
+&lt;li&gt;fight较为简单。强测错因是getAtk()误写成getCe()。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第四次迭代
+迭代任务确实一次比一次重&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;雇佣关系：建立Employ类，对于一个雇佣关系对象本身管理它的各项属性。这种思想让我缓了很久，万物皆为对象！曾经室友写了一个Fight类，让我懵懂地理解了一下什么是&lt;code&gt;过程&lt;/code&gt;对象，如今自己写的时候又更明白何为&lt;code&gt;关系&lt;/code&gt;对象。把一场战斗（函数&lt;code&gt;(函数其实也是关系，关系就是有序对)&lt;/code&gt;）当作一个对象，它有它的属性，有它的方法；把雇佣关系（有序偶对）作为对象，同样有自己的属性与方法。&lt;/li&gt;
+&lt;li&gt;递归攻击：倒是一个很容易克服的难点。&lt;/li&gt;
+&lt;li&gt;秘境探险：更多的是一种思想认知的改变，在具体实现上让我对接口有了新的认识。不同的类可以借助接口同一调用不同内容的方法，确实便利了很多&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;中测de了半天bug原来错在&lt;code&gt;getComprehensiveCe()&lt;/code&gt;也是没谁了（）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;使用junit的心得体会&#34;&gt;使用JUnit的心得体会
+&lt;/h2&gt;&lt;h3 id=&#34;覆盖率是一项任务&#34;&gt;覆盖率是一项任务
+&lt;/h3&gt;&lt;p&gt;起初，我确实没有意识到JUnit的功能。能在运行中构造样例运行出来的结果，为什么还要搞那么复杂去专门去测？我对各个方法进行了无意义的测试，完成了基础任务。&lt;/p&gt;
+&lt;h3 id=&#34;覆盖率赋予每一行代码意义&#34;&gt;覆盖率赋予每一行代码意义
+&lt;/h3&gt;&lt;p&gt;自第三次迭代作业开始，加入了分支覆盖率的要求。在我开始思考覆盖率的意义之时，我方才意识到，单元测试之所以是单元测试，便在于它使得代码中各种细微的地方都能被顾及得到。同样，覆盖率也能够帮助我写出更完善的测试代码。&lt;/p&gt;
+&lt;h3 id=&#34;单元测试但不仅仅是单元&#34;&gt;单元测试，但不仅仅是单元
+&lt;/h3&gt;&lt;p&gt;在单元测试中，我们不仅要编写对于单个方法的测试，更需要对较大的方法进行测试，在大方法中测试小方法相互作用关系的正确性。单元测试中的单元不仅是指最小单元，更是单元之间组合形成的层次化结构单元。&lt;/p&gt;
+&lt;h3 id=&#34;测试数据构造需要技巧&#34;&gt;测试数据构造需要技巧
+&lt;/h3&gt;&lt;p&gt;无论何时，以debug为目的的测试终究是要找到bug。因此要尽力去构造bug相关的测试点，构造较极端的情况进行分析，而不是为了达到覆盖率要求而进行大量的无意义测试。&lt;/p&gt;
+&lt;h2 id=&#34;学习oopre的心得体会&#34;&gt;学习OOpre的心得体会
+&lt;/h2&gt;&lt;h3 id=&#34;以方法为核心的逻辑&#34;&gt;以方法为核心的逻辑
+&lt;/h3&gt;&lt;p&gt;在学习C语言的时候，我曾畅想，如果各项基本操作都能靠函数实现，而函数的实现也依靠其他函数，人脑只需负责顶层逻辑，那些条条框框的小方法被封装起来等着用该多好&amp;hellip;&lt;/p&gt;
+&lt;p&gt;在OOpre的课程中可谓是&lt;del&gt;函数&lt;/del&gt;方法用的最多的一集，有大量好用的被封装好的方法，我只负责对方法进行封装，构造新的方法，再调用方法&amp;hellip;     &lt;br&gt;
+因此，在debug时，C语言和OOpre两门课带给我的感受是很不一样的。前面是对于方法具体实现细枝末节的深深考究，而OOpre的思路总是流畅贯通，哪里有问题它可以根据逻辑分析直接推理出漏洞&lt;/p&gt;
+&lt;h3 id=&#34;以对象为主体的视角&#34;&gt;以对象为主体的视角
+&lt;/h3&gt;&lt;p&gt;这一点，是我在第四次迭代中深刻体悟到的，万物皆为对象。前文已有讲述。&lt;/p&gt;
+&lt;h2 id=&#34;课程建议&#34;&gt;课程建议
+&lt;/h2&gt;&lt;p&gt;希望可以像CO一样提前有一定的基础知识学习期，提供资料自学容器，子类，接口等内容的基础知识，解决课上刚学会的知识总是不能快速理解运用的问题。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>单周期CPU的verilog搭建</title>
         <link>https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Thu, 31 Oct 2024 14:15:30 +0800</pubDate>
