@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="P5课下搭建任务    压力最大的一集">
+<title>流水线CPU搭建（1）</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="流水线CPU搭建（1）">
+<meta property='og:description' content="P5课下搭建任务    压力最大的一集">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-10T22:15:30&#43;08:00'/><meta property='article:modified_time' content='2024-11-10T22:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.jpg' />
+<meta name="twitter:title" content="流水线CPU搭建（1）">
+<meta name="twitter:description" content="P5课下搭建任务    压力最大的一集"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#说在前面">说在前面</a></li>
+    <li><a href="#设计文档">设计文档</a>
+      <ol>
+        <li><a href="#流水线寄存器">流水线寄存器</a>
+          <ol>
+            <li><a href="#f">F</a></li>
+            <li><a href="#f_d">F_D</a></li>
+            <li><a href="#d">D</a></li>
+            <li><a href="#d_e">D_E</a></li>
+            <li><a href="#e">E</a></li>
+            <li><a href="#e_m">E_M</a></li>
+            <li><a href="#m">M</a></li>
+            <li><a href="#m_w">M_W</a></li>
+            <li><a href="#w">W</a></li>
+          </ol>
+        </li>
+        <li><a href="#冒险处理">冒险处理</a>
+          <ol>
+            <li><a href="#转发">转发</a></li>
+            <li><a href="#阻塞">阻塞</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#测试文档">测试文档</a></li>
+    <li><a href="#思考题">思考题</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">
+                <img src="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893_hu2185593798465856294.jpg"
+                        srcset="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893_hu2185593798465856294.jpg 800w, /p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893_hu13376510697456572322.jpg 1600w"
+                        width="800" 
+                        height="360" 
+                        loading="lazy"
+                        alt="Featured image of post 流水线CPU搭建（1）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/co/" style="background-color: #2a9d8f; color: #fff;">
+                CO
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">流水线CPU搭建（1）</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            P5课下搭建任务    压力最大的一集
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-11-10</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 13 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <hr>
+<h2 id="说在前面">说在前面
+</h2><p>这周真的太忙了。 <br>
+不说流水线和数竞这两块大骨头，硬控两小时的党课，硬控两小时的挑战杯志愿者，硬控一小时的组会，硬控五小时的毛概PPT&hellip;</p>
+<p>虽说这周还买了曲包摘了星（如封面）</p>
+<p>但是流水线CPU真难写。    <br>
+读者可以看看我写设计文档心境的变化。</p>
+<p>（提交截止前2h突然发现bug。。5点半硬控到7点去上党课）</p>
+<p>为什么说这是流水线的（1）呢？
+因为目前还只有10条指令。流水线（2）是P6，30条指令的事了。</p>
+<p>那么，请君观之。</p>
+<h2 id="设计文档">设计文档
+</h2><p>流水线的设计与单周期的区别主要是两点：</p>
+<ul>
+<li>流水线寄存器的插入</li>
+<li>冒险的处理</li>
+</ul>
+<p>这两点说起来轻轻松松，但实操起来实在繁杂。</p>
+<p>在漫无目的地发愣了很久之后，我决心要先写出一篇设计文档，把思路理清了再去书写。</p>
+<p>发愣的核心原因在于总感觉自己处理不好寄存器要放什么，谁应该在哪个区（浅显的思考当然不能处理好）</p>
+<p>有的时候更是连第一步没想好就忙着转发阻塞什么的</p>
+<p>哪怕后续转发的时候再优化，现在把需求理清，车间划好，才能想下一步迈进。</p>
+<h3 id="流水线寄存器">流水线寄存器
+</h3><p>要将原来的单周期分割为五个周期，具体是什么样呢</p>
+<p>首先，我想理清楚有哪些操作</p>
+<p>(我最不明白的就是回环：NPC，GRF)</p>
+<h4 id="f">F
+</h4><p>pc出值给IM<br>
+IM出指令<br>
+pc+4得更新到pc</p>
+<blockquote>
+<p>这是一个恶心的点，使得你现在就必须考虑延迟槽的问题</p>
+<p>所有不是pc+4的npc，都是经过跳转的</p>
+<p>所有要跳转的，都要用延迟槽</p>
+<p>所有用延迟槽的，都要先执行pc+4，因为跳转结果在第二周期才得出来（哪怕你提前得出来了你也得等延迟槽！！）</p>
+<p>所以跳转结果是在下一个周期才赋值，是一种特殊的赋值</p>
+<p>所以pc应当默认使用pc+4，除非有NPC算出的东西进来</p>
+<p>这个控制信号应当是任何跳转语句都能引发，我称之为not_pc_4</p>
+<p>这个信号作用于PC，所以还是称它为PCSel吧</p>
+<p>PCSel为1的条件就是所有跳转语句</p>
+<p>其中beq跳转失败时还是要用pc+4</p>
+<p>因此NPC不能直接把pc_4的这一个输出值删掉</p>
+<p>这个信号在什么时候产生呢？</p>
+<p>肯定已经到D阶段了</p>
+<ol>
+<li>beq在F阶段，此时PCSel仍为0</li>
+</ol>
+<p>（因为跳转语句不在延迟槽，这一句不是延迟槽，则上一句不是跳转，则PCSel为0）</p>
+<ol start="2">
+<li>beq在D阶段，延迟槽语句在F阶段</li>
+</ol>
+<p>这时候PCSel为1</p>
+<p>因此下一个pc将是跳转的，没有问题！</p>
+<p>PCSel产生即使用，不经过流水线（虽然他其实能够在F阶段就拿出来，但是延迟槽使得你不能过早赋值，你还得等，反而要经过流水线）</p>
+<p>顺便谈到zero</p>
+<p>zero经过提前到D级，也是即拿即用，不需要经过流水线</p>
+</blockquote>
+<p>pc，Instr都给 F_D</p>
+<p>F_D拿到指令</p>
+<h4 id="f_d">F_D
+</h4><p>存储PC和Instr（这太好了）</p>
+<h4 id="d">D
+</h4><p>好，接下来看这条指令在D阶段要干些什么</p>
+<p>D阶段最核心莫过于GRF<br>
+但是其他内容也都同等重要</p>
+<p>首先是先前提到过的
+NPC和CMP</p>
+<blockquote>
+<p>单独搞一个CMP出来据说是为了解决P6大量b语句</p>
+</blockquote>
+<p>这个阶段要给imm_16变成IMM_32,imm_16已经没用了吗？</p>
+<p>我想一想，应该是不会再用了吧？<br>
+并不是！ALU里面怎么有个lui他还要用。哦他不需要。 <br>
+lui只取32位数的后16位，再左移16位<br>
+所以imm_16彻底无用。我要去删去他的_D标记啦！</p>
+<p>我刚刚又在想，为了可扩展性，要不要把他一直存着呢？我觉得还是存着吧。</p>
+<p>但我又想到，到时候用imm_16，直接从IMM_32里面取不就行了？所以我还是不存了。</p>
+<p>imm_26是j型指令，感觉存着也没用，毕竟得赶快给PC送过去呢！</p>
+<p>好的，那这个阶段把imm_16也解决掉了</p>
+<p>剩下最后一个，就是GRF了！</p>
+<p>读什么？读rs,rt呗还能读谁</p>
+<p>这个阶段又不写。</p>
+<p>所以rd也没什么用。</p>
+<p>要注意GRF的A3选择的时候是rd_W,rt_W之类的 <br>
+害，到时候再写吧</p>
+<p>对！写的时候那个pc也得是pc_W</p>
+<p>关于W阶段啥东西都应该是W</p>
+<p>到时候再说！！！</p>
+<h4 id="d_e">D_E
+</h4><p>存储很多很多东西 <br>
+还有用的控制信号（EXT，J，Jr当场使用了）     <br>
+还有用的数据（imm_16和imm_26应该都没用了） <br>
+当然还有pc</p>
+<h4 id="e">E
+</h4><p>好嘞，该读的信息都读了，该处理的信息也处理了<br>
+下面就是执行操作了</p>
+<p>关键的内容还是ALU</p>
+<p>而ALU的核心就是各个东西都是E</p>
+<p>（为什么这个模块异常的简单？）</p>
+<h4 id="e_m">E_M
+</h4><p>还是一个基本问题，后面需要什么   <br>
+pc是当然的   <br>
+后面有Mem取数和Write回写     <br>
+需要Mem写的地址，写的内容，GRF写的地址，写的内容 <br>
+还有他们的读写使能 <br>
+还是多存点好，就把ALUOp删了吧</p>
+<p>别忘了传递ALUData信息</p>
+<h4 id="m">M
+</h4><p>整体和单周期也没有区别</p>
+<h4 id="m_w">M_W
+</h4><p>我的建议是别删<br>
+没有什么理由。 就先别删吧&hellip;</p>
+<p>添加MemReadData_M
+MemData_M和Mem_Addr_M也带上吧</p>
+<h4 id="w">W
+</h4><p>回到GRF<br>
+该用W的都用上W即可</p>
+<p>意外地快。
+不处理冒险的数据通路搭好了？？</p>
+<h3 id="冒险处理">冒险处理
+</h3><p>我自己也没想到已经走到了这一步。 <br>
+这一基础性的工作就这样被我搁置了这么久。 <br>
+其实，接下来才是核心。</p>
+<p>转发和阻塞！！！</p>
+<h4 id="转发">转发
+</h4><p>首先要构建好转发的所有路径   <br>
+转发的核心矛盾，是读了还没写的东西   <br>
+（一定要注意0号寄存器！写进去了也还是0，因此不能转发）</p>
+<p>我在这里直接考虑所有路径</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">指令</th>
+          <th style="text-align: center">F</th>
+          <th style="text-align: center">D</th>
+          <th style="text-align: center">E</th>
+          <th style="text-align: center">M</th>
+          <th style="text-align: center">W</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">add,sub</td>
+          <td style="text-align: center">取指令</td>
+          <td style="text-align: center">取rs,rt</td>
+          <td style="text-align: center">算数</td>
+          <td style="text-align: center">得到数据进行转发rd</td>
+          <td style="text-align: center">写数rd</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ori,lui</td>
+          <td style="text-align: center">取指令,扩展imm</td>
+          <td style="text-align: center">取rs</td>
+          <td style="text-align: center">算数</td>
+          <td style="text-align: center">得到数据转发rt</td>
+          <td style="text-align: center">写数rt</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">lw</td>
+          <td style="text-align: center">取指令，扩展imm</td>
+          <td style="text-align: center">取base，rt</td>
+          <td style="text-align: center">算数</td>
+          <td style="text-align: center">寻址取数</td>
+          <td style="text-align: center">得到数据转发rt，写数rt</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">sw</td>
+          <td style="text-align: center">取指令，扩展imm</td>
+          <td style="text-align: center">取base，rt</td>
+          <td style="text-align: center">算数</td>
+          <td style="text-align: center">寻址存数</td>
+          <td style="text-align: center">无</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">j</td>
+          <td style="text-align: center">取指令，扩展imm</td>
+          <td style="text-align: center">算出NPC延迟槽后用</td>
+          <td style="text-align: center">无</td>
+          <td style="text-align: center">无</td>
+          <td style="text-align: center">无</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">jal</td>
+          <td style="text-align: center">取指令，扩展imm</td>
+          <td style="text-align: center">算出NPC延迟槽后用，算出PC_8</td>
+          <td style="text-align: center">可转发（但没人需要）</td>
+          <td style="text-align: center">可转发</td>
+          <td style="text-align: center">可转发，写数$31</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">jr</td>
+          <td style="text-align: center">取指令</td>
+          <td style="text-align: center">读rs并给NPC</td>
+          <td style="text-align: center">无</td>
+          <td style="text-align: center">无</td>
+          <td style="text-align: center">无</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>让我们分析一下根据这个表分析一下    <br>
+Tuse:最晚使用时间：  <br>
+例如我们add读寄存器值的时候可能数据还没出来，但是真正要用到的时候其实在ALU      <br>
+因此最晚转发时间在E级。</p>
+<p>我在此分如下几类指令：</p>
+<ul>
+<li>
+<p>R型读2求1型        <br>
+rs与rt要读，正常转发         <br>
+Tuse_rs = 1（ALU的时候有就行） <br>
+Tuse_rt = 1（ALU的时候有就行） <br>
+Tnew 初始（即相对于E）= 1 (M才能开转)  <br>
+RegAddr 现场算</p>
+</li>
+<li>
+<p>I型拿1读1求1型     <br>
+rs 要读，正常转发      <br>
+Tuse_rs = 1（ALU的时候有就行）     <br>
+Tuse_rt = inf      <br>
+imm正常传，传到了num_2,因此rt的值在E级要额外存为V2_E_Data<br>
+Tnew 初始 = 1 (M才能开转)</p>
+</li>
+<li>
+<p>读寄存器跳转型     <br>
+说白了就是jr（）  <br>
+Tuse_rs = 0 !!!
+Tuse_rt = inf  <br>
+所有跳转的特点都在于其必须在D级得出跳转结果。      <br>
+而jr就必须从V1_D拿到完全正确的值   <br>
+因此E-&gt;D的转发是有益的     <br>
+（但从E开始的转发需要是在D级就得出结果的指令（不经过ALU））
+符合条件的并不多。 <br>
+我暂时采用阻塞。</p>
+</li>
+<li>
+<p>直接跳转型
+j不必多说  <br>
+Tuse_rs = inf
+Tuse_rt = inf<br>
+RFWr = 0</p>
+</li>
+<li>
+<p>条件跳转型
+beq。关键在于br和zero两个指令。    <br>
+其中zero同样要保证在D级算对！必须拿到对的值。  <br>
+拿不到？我也先采用阻塞。<br>
+Tuse_rs = 0
+Tuse_rt = 0
+RFWr = 0</p>
+</li>
+<li>
+<p>Link型
+典例jal    <br>
+Tnew = 0 !!!!!(不过我还是把它当做Tnew = 1来用)
+Tuse_rs = inf  <br>
+Tuse_rt = inf</p>
+<p>E级就能用。因此E-&gt;D这条转发路径是有益的。我目前先用了阻塞。    <br>
+写$ra太慢了！必须转发！  <br>
+该怎么转？能在M和W转。（E也能转）      <br>
+一定要注意：一旦选择转它，你要拿他去覆盖转的值！！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">wire</span> <span class="p">[</span><span class="na">31</span><span class="p">:</span><span class="s">0</span><span class="p">]</span> <span class="nc">ALUData_E_true</span><span class="p">;</span>           
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">ALUData_E_true</span> <span class="o">=</span> <span class="p">(</span><span class="nc">Link_E</span><span class="p">)</span> <span class="kd">?</span> <span class="nv">pc_E</span> <span class="o">+</span> <span class="mi">32</span><span class="s1">&#39;d8 : ALUData_E;      
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个ALUData_E_true直接传进流水线E_M和M_W，         <br>
+即如果本指令为Link型，你就只能读到这一个$31数！</p>
+<p>诶诶，如果一个Link指令，既要写$ra，又要写其他寄存器        <br>
+呸呸呸想什么呢！一条指令最多写一个寄存器！！</p>
+</li>
+<li>
+<p>条件跳转Link型     <br>
+最关键的便是不跳转，就不Link！     <br>
+比如beqal，其link信号应为beqal&amp;&amp;zero(传Link信号的时候就控制好)</p>
+</li>
+<li>
+<p>L型
+rs rt 正常获取转发    Tuse_rs = 1  Tuse_rt = inf(看题意会不会旁敲侧击使用rt)           <br>
+imm正常扩展    <br>
+ALU算的值会在M级被转发！！ 但是在W级正确的值还会被转发过去。   <br>
+诶？我W级转发过去的数没有当时M级转过来的优先级高啊         <br>
+要是连着两句lw,值不就错了吗？      <br>
+所以我所有的lw都进行了阻塞。       <br>
+不过还是要注意，错误的值还是不要转发（？）             <br>
+经过思考，哪怕你不转发，原来的值也是错的。。那就坚决阻塞。</p>
+<p>Tnew = 2 最慢！！！（一直到M级取出来，W级才能用）</p>
+</li>
+<li>
+<p>S型
+Tuse_rs = 1, 在E级需要算对数rs，       <br>
+Tuse_rt = 2，在M级需要有正确的寄存器值rt   <br>
+RFWr = 0   <br>
+Tnew = 0，不对寄存器进行写</p>
+</li>
+</ul>
+<p>转发路径共四条：     <br>
+M-&gt;D 传ALUData_M(经过pc+4和ALUData的选择) RegAddr_M跟A1A2比  <br>
+W-&gt;D 传RegData(经过MemReadData_W和ALUData_W的选择) RegAdde_W跟A1A2比     <br>
+M-&gt;E 传ALUData_M(经过pc+4和ALUData的选择) RegAddr_M跟rs_E rt_E比     <br>
+W-&gt;E 传RegData(经过MemReadData_W和ALUData_W的选择) RegAddr_W跟rs_E rt_E比    <br>
+为什么没有到M的转发？    <br>
+////因为M级使用即Tuse = 2,而Tnew没有大于2的（Tnew = 3即W级才产出数据。这显然是荒谬的）    <br>
+这个言论本身才是荒谬的！！Tnew = 3 已经是阻塞的问题了！不是<code>是否转发</code>的判断！    <br>
+W-&gt;M 是必要的！！</p>
+<pre><code>转发这个操作本身，最重要的就是做到时时刻刻转发。
+1.能转则转，不能错过转发信息（若唯一转发信息为W级，此信息一旦错过，你将失去转发机会，从而导致数值错误）
+2.能转则转，一旦有转发信息就要进行覆盖，保证获取到的一定是最新数据。
+
+为什么没有E-&gt;D的转发？      
+E-&gt;D 即 Tnew = 0 且 Tuse = 0，满足需求只有jal（lui也可以。但是我已经把他塞进ALU了）                
+但是我还没写。 因此Tnew = 1，要阻塞。                  
+</code></pre>
+<h4 id="阻塞">阻塞
+</h4><p>我们采用把阻塞控制在D阶段完成的方法。    <br>
+<code>Tuse</code>:在D级的时候，读寄存器的<code>最晚周期</code>与<code>D级</code>的差  <br>
+<code>Tnew_X</code>:X周期的指令要写的内容<code>能够转发出去</code>的最早周期与<code>E级</code>的差     <br>
+（在<code>周期A</code>算出来，则可以在<code>周期A+1</code>转发）</p>
+<p>我们需要考虑D与E关系，D与M关系   <br>
+为什么不考虑D与W关系？？     <br>
+因为Tnew_W一定为0了（谁家指令在W级还没算出来数（笑））</p>
+<p>对于两个阻塞的关系，我们采用暴力地<code>或</code>起来   <br>
+一条通道可能不通就阻塞。</p>
+<p>阻塞只需满足:</p>
+<pre><code>    确实发生读写冲突且来不及转发（Tuse &lt; Tnew）     
+</code></pre>
+<p>我们先分为rs冲突与rt冲突</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl">    <span class="nv">assign</span> <span class="nv">stall</span> <span class="o">=</span> <span class="nv">stall_rs</span> <span class="o">||</span> <span class="nv">stall_rt</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后以rs为例：</p>
+<p>stall_rs = stall_rs_DE || stall_rs_DM</p>
+<p>以stall_rs_DE为例：</p>
+<p>确实发生读写冲突：   <br>
+(rs_D（即A1）== RegAddr_E) &amp;&amp; (RFWr_E) &amp;&amp; (A1 != 5&rsquo;b0) <br>
+且          &amp;&amp;   <br>
+来不及转发：     <br>
+(Tuse_rs &lt; Tnew_E)</p>
+<p>所以</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">stall</span> <span class="o">=</span> <span class="p">((</span><span class="nc">A1</span> <span class="o">==</span> <span class="nc">RegAddr_E</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nc">RFWr_E</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nc">A1</span> <span class="o">!=</span> <span class="mi">5</span><span class="s1">&#39;b0) &amp;&amp; (Tuse_rs &lt; Tnew_E)) ||
+</span></span></span><span class="line"><span class="cl"><span class="s1">        ((A1 == RegAddr_M) &amp;&amp; (RFWr_M) &amp;&amp; (A1 != 5&#39;</span><span class="nv">b0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nc">Tuse_rs</span> <span class="p">&lt;</span> <span class="nc">Tnew_M</span><span class="p">))</span> <span class="o">||</span>
+</span></span><span class="line"><span class="cl">        <span class="p">((</span><span class="nc">A2</span> <span class="o">==</span> <span class="nc">RegAddr_E</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nc">RFWr_E</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nc">A2</span> <span class="o">!=</span> <span class="mi">5</span><span class="s1">&#39;b0) &amp;&amp; (Tuse_rt &lt; Tnew_E)) ||
+</span></span></span><span class="line"><span class="cl"><span class="s1">        ((A2 == RegAddr_M) &amp;&amp; (RFWr_M) &amp;&amp; (A2 != 5&#39;</span><span class="nv">b0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nc">Tuse_rt</span> <span class="p">&lt;</span> <span class="nc">Tnew_M</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，只需对 Tuse 和 Tnew_X 下定义：</p>
+<p>功能还在CTRL中实现:          <br>
+因为我要用<code>指令</code>来描绘 Tnew 和 Tuse_rs 和 Tuse_rt</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">指令</th>
+          <th style="text-align: center">Tnew</th>
+          <th style="text-align: center">Tuse_rs</th>
+          <th style="text-align: center">Tuse_rt</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">add</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">sub</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ori</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">5</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">lui</td>
+          <td style="text-align: center">1(个人原因)</td>
+          <td style="text-align: center">5</td>
+          <td style="text-align: center">5</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">beq</td>
+          <td style="text-align: center">无(0)</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">jr</td>
+          <td style="text-align: center">无(0)</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">5</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">jal</td>
+          <td style="text-align: center">1(不转发导致的)</td>
+          <td style="text-align: center">5</td>
+          <td style="text-align: center">5</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">lw</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">无(5)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">sw</td>
+          <td style="text-align: center">无(0)</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">2</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>Tuse 直接生成         <br>
+Tnew_X 初值生成，递减操作</p>
+<p>递减操作的实现：     <br>
+放进流水线嘛，过个周期减一下</p>
+<h2 id="测试文档">测试文档
+</h2><p>刚搭完流水线寄存器，出来一堆compile bug  <br>
+或多或少的少加控制信号，打错字什么的。。     <br>
+然后运行了充斥着nop的代码，没什么问题。</p>
+<p>然后就向Hazard进军了！</p>
+<p>Hazard测试的编写很有针对性。     <br>
+前提是你要针对好所有的代码情况，事先分析好Tnew,Tuse关系  <br>
+才能模拟出所有的冒险。   <br>
+所有的转发，所有的阻塞，都要到位。
+共9^3种组合。</p>
+<h2 id="思考题">思考题
+</h2><ol>
+<li>
+<blockquote>
+<p>我们使用提前分支判断的方法尽早产生结果来减少因不确定而带来的开销，但实际上这种方法并非总能提高效率，请从流水线冒险的角度思考其原因并给出一个指令序列的例子。</p>
+</blockquote>
+<p>beq提前使得其Tuse降为0，这无疑提高了阻塞率。
+当这条指令前面是Tnew = 1的add,sub,ori等等均阻塞</p>
+<p>用原来的方法，虽有可能损失更大，但是也存在很多无损失的情况。提前分支判断则是较为稳定的损失。</p>
+<p>举例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"> <span class="nf">add</span> <span class="no">$16</span> <span class="no">$16</span> <span class="no">$16</span>        
+</span></span><span class="line"><span class="cl"> <span class="no">beq</span> <span class="no">$16</span> <span class="no">$0</span> <span class="no">label</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li></li>
+</ol>
+<blockquote>
+<p>因为延迟槽的存在，对于 jal 等需要将指令地址写入寄存器的指令，要写回 PC + 8，请思考为什么这样设计？</p>
+</blockquote>
+<p>正因题意所说，因为延迟槽的存在，jal语句后的那条指令是已被执行的，跳转回来时当然要跨过延迟槽这句话</p>
+<ol start="3">
+<li></li>
+</ol>
+<blockquote>
+<p>我们要求大家所有转发数据都来源于流水寄存器而不能是功能部件（如 DM、ALU），请思考为什么？</p>
+</blockquote>
+<p>功能部件本就耗时，如果再加上转发逻辑，二者必定是顺序关系，导致时钟周期长度增长，频率上限降低，效率也就低了。     <br>
+但是如果在下一周期，转发操作和下一周期的操作是独立并行的，不影响执行速度。</p>
+<ol start="4">
+<li></li>
+</ol>
+<blockquote>
+<p>我们为什么要使用 GPR 内部转发？该如何实现？</p>
+</blockquote>
+<p>GRF内部转发本质上是W到D的转发，只是W和D用了同一个部件    <br>
+有同学使用了negedge的办法进行W，这样posedge读的时候就一定已经被新值写入。<br>
+我采用了传统转发。无非转发的值是RegData_W,参与判断的是RegAddr_W罢了。</p>
+<ol start="5">
+<li></li>
+</ol>
+<blockquote>
+<p>我们转发时数据的需求者和供给者可能来源于哪些位置？共有哪些转发数据通路？</p>
+</blockquote>
+<p>需求者严格意义上有很多，不过他们是可以合并的。     <br>
+所有需要使用或传递的部件，都是需求者。   <br>
+但是我们可以先进行转发，再把结果给需求者们。  <br>
+总体来说，需求者可以是CMP的两个数，ALU的两个数，D_E和E_M流水线寄存器。</p>
+<p>需求者还有M级  sw时RD2的值！！！！！需要换上最新数据！！！</p>
+<p>供给者我们都安排到流水线寄存器的输出。   <br>
+M级的数据可以是ALUData,Pc+8  <br>
+W级的数据可以是MemReadData,ALUData,Pc+8</p>
+<p>前文也提到了，E到D的转发尚未考虑。</p>
+<p>因此，共有M-&gt;D，M-&gt;E，W-&gt;D，W-&gt;E，W-&gt;M五种。   <br>
+（以及E-&gt;D）（6种）</p>
+<p>!!刚de出的bug!!!还有W-&gt;M转发！！！！</p>
+<p>再总结一下所有被转发：</p>
+<p>RD1&ndash;MD,WD转发&ndash;&gt;V1_D&mdash;&gt;V1_E&ndash;ME,WE转发&ndash;&gt;num_1&mdash;&gt;运算</p>
+<p>RD2&ndash;MD,WD转发&ndash;&gt;V2_D&mdash;&gt;V2_E&ndash;ME,WE转发&ndash;&gt;V2_E_Data&mdash;&gt;V2_M_Data&ndash;WM转发&ndash;&gt;MemData_M&mdash;&gt;被写入</p>
+<p>RD2&ndash;MD,WD转发&ndash;&gt;V2_D&mdash;&gt;V2_E&ndash;ME,WE转发、选择&ndash;&gt;num_2&mdash;&gt;运算</p>
+<p>总结一下所有转发：</p>
+<p>M级为ALUData,Pc+8经过选择变为ALUData_true的转发
+W级为MemReadData,ALUData,Pc+8经过选择变为RegData的转发</p>
+<p>转发地址为RegAddr已各自计算</p>
+<ol start="6">
+<li></li>
+</ol>
+<blockquote>
+<p>在课上测试时，我们需要你现场实现新的指令，对于这些新的指令，你可能需要在原有的数据通路上做哪些扩展或修改？提示：你可以对指令进行分类，思考每一类指令可能修改或扩展哪些位置。</p>
+</blockquote>
+<p>这一问题在前文已有谈论。
+总结起来，关键还是处理好Tnew,Tuse,读谁，写谁这四个问题 （其中，读谁，写谁都是需要控制信号的）    <br>
+以及最核心，最有不确定性的“处理”这一部分</p>
+<ol start="7">
+<li></li>
+</ol>
+<blockquote>
+<p>确定你的译码方式，简要描述你的译码器架构，并思考该架构的优势以及不足。</p>
+</blockquote>
+<p>我使用的是对控制信号找相关指令的方式。   <br>
+先由opcode和funct得出结果，再得出指令；接下来由指令得到控制信号。         <br>
+优势是简洁，不足是容易漏写，错写。     <br>
+加指令时一定要分析好所有相关信号，再书写。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.caa15c4140a1ea3defd93b1a3142538f_hu12725383462063843859.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 单周期CPU的verilog搭建"
+                        
+                        data-hash="md5-yqFcQUCh6j3v2TsaMUJTjw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">单周期CPU的verilog搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.9a5154ce3599ee12edf7f4d6207e7271_hu8913948281270116246.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 单周期CPU的logisim搭建"
+                        
+                        data-hash="md5-mlFUzjWZ7hLt9/TWIH5ycQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">单周期CPU的logisim搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/song.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

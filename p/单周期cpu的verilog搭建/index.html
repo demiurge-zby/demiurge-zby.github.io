@@ -1878,7 +1878,7 @@ jr 控制$ra绝对寻址跳转</p>
 </span></span><span class="line"><span class="cl">    <span class="na">.imm_16</span><span class="p">(</span><span class="no">imm_16</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">    <span class="na">.imm_26</span><span class="p">(</span><span class="no">imm_26</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">    <span class="na">.pc</span><span class="p">(</span><span class="no">pc</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">    <span class="na">.reg_ra</span><span class="p">(</span><span class="no">RD2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.reg_ra</span><span class="p">(</span><span class="no">RD1</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">    <span class="na">.j</span><span class="p">(</span><span class="no">J</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">    <span class="na">.jr</span><span class="p">(</span><span class="no">Jr</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">    <span class="na">.pc_4</span><span class="p">(</span><span class="no">pc_4</span><span class="p">),</span>
@@ -1938,7 +1938,7 @@ jr 控制$ra绝对寻址跳转</p>
 </span></span><span class="line"><span class="cl"><span class="c1">// GRF 中间变量的赋值
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">LinkPC</span> <span class="err">=</span> <span class="no">pc_4</span><span class="c1">;
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">A1</span> <span class="err">=</span> <span class="no">rs</span><span class="c1">;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">A2</span> <span class="err">=</span> <span class="no">Jr</span> <span class="err">?</span> <span class="mi">5</span><span class="err">&#39;</span><span class="no">b11111</span> <span class="p">:</span> <span class="no">rt</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">A2</span> <span class="err">=</span> <span class="no">rt</span><span class="c1">;
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">RegAddr</span> <span class="err">=</span> <span class="no">Link</span> <span class="err">?</span> <span class="mi">5</span><span class="err">&#39;</span><span class="no">b11111</span> <span class="p">:</span>
 </span></span><span class="line"><span class="cl">                 <span class="nf">WrSel</span> <span class="err">?</span> <span class="no">rd</span> <span class="p">:</span> <span class="no">rt</span><span class="c1">;    
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">RegData</span> <span class="err">=</span> <span class="no">Link</span> <span class="err">?</span> <span class="no">LinkPC</span> <span class="p">:</span>
@@ -2246,6 +2246,30 @@ u的本意即为不考虑输出
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.b70983ec7a5cc8dd3f73de8d8a72d98d_hu3797343070853190223.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 流水线CPU搭建（1）"
+                        
+                        data-hash="md5-twmD7HpcyN0/c96NinLZjQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">流水线CPU搭建（1）</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">

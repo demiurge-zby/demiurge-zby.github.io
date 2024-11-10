@@ -7,7 +7,548 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Thu, 31 Oct 2024 14:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/co/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 10 Nov 2024 22:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/co/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>流水线CPU搭建（1）</title>
+        <link>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</link>
+        <pubDate>Sun, 10 Nov 2024 22:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post 流水线CPU搭建（1）" /&gt;&lt;hr&gt;
+&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;这周真的太忙了。 &lt;br&gt;
+不说流水线和数竞这两块大骨头，硬控两小时的党课，硬控两小时的挑战杯志愿者，硬控一小时的组会，硬控五小时的毛概PPT&amp;hellip;&lt;/p&gt;
+&lt;p&gt;虽说这周还买了曲包摘了星（如封面）&lt;/p&gt;
+&lt;p&gt;但是流水线CPU真难写。    &lt;br&gt;
+读者可以看看我写设计文档心境的变化。&lt;/p&gt;
+&lt;p&gt;（提交截止前2h突然发现bug。。5点半硬控到7点去上党课）&lt;/p&gt;
+&lt;p&gt;为什么说这是流水线的（1）呢？
+因为目前还只有10条指令。流水线（2）是P6，30条指令的事了。&lt;/p&gt;
+&lt;p&gt;那么，请君观之。&lt;/p&gt;
+&lt;h2 id=&#34;设计文档&#34;&gt;设计文档
+&lt;/h2&gt;&lt;p&gt;流水线的设计与单周期的区别主要是两点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;流水线寄存器的插入&lt;/li&gt;
+&lt;li&gt;冒险的处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这两点说起来轻轻松松，但实操起来实在繁杂。&lt;/p&gt;
+&lt;p&gt;在漫无目的地发愣了很久之后，我决心要先写出一篇设计文档，把思路理清了再去书写。&lt;/p&gt;
+&lt;p&gt;发愣的核心原因在于总感觉自己处理不好寄存器要放什么，谁应该在哪个区（浅显的思考当然不能处理好）&lt;/p&gt;
+&lt;p&gt;有的时候更是连第一步没想好就忙着转发阻塞什么的&lt;/p&gt;
+&lt;p&gt;哪怕后续转发的时候再优化，现在把需求理清，车间划好，才能想下一步迈进。&lt;/p&gt;
+&lt;h3 id=&#34;流水线寄存器&#34;&gt;流水线寄存器
+&lt;/h3&gt;&lt;p&gt;要将原来的单周期分割为五个周期，具体是什么样呢&lt;/p&gt;
+&lt;p&gt;首先，我想理清楚有哪些操作&lt;/p&gt;
+&lt;p&gt;(我最不明白的就是回环：NPC，GRF)&lt;/p&gt;
+&lt;h4 id=&#34;f&#34;&gt;F
+&lt;/h4&gt;&lt;p&gt;pc出值给IM&lt;br&gt;
+IM出指令&lt;br&gt;
+pc+4得更新到pc&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是一个恶心的点，使得你现在就必须考虑延迟槽的问题&lt;/p&gt;
+&lt;p&gt;所有不是pc+4的npc，都是经过跳转的&lt;/p&gt;
+&lt;p&gt;所有要跳转的，都要用延迟槽&lt;/p&gt;
+&lt;p&gt;所有用延迟槽的，都要先执行pc+4，因为跳转结果在第二周期才得出来（哪怕你提前得出来了你也得等延迟槽！！）&lt;/p&gt;
+&lt;p&gt;所以跳转结果是在下一个周期才赋值，是一种特殊的赋值&lt;/p&gt;
+&lt;p&gt;所以pc应当默认使用pc+4，除非有NPC算出的东西进来&lt;/p&gt;
+&lt;p&gt;这个控制信号应当是任何跳转语句都能引发，我称之为not_pc_4&lt;/p&gt;
+&lt;p&gt;这个信号作用于PC，所以还是称它为PCSel吧&lt;/p&gt;
+&lt;p&gt;PCSel为1的条件就是所有跳转语句&lt;/p&gt;
+&lt;p&gt;其中beq跳转失败时还是要用pc+4&lt;/p&gt;
+&lt;p&gt;因此NPC不能直接把pc_4的这一个输出值删掉&lt;/p&gt;
+&lt;p&gt;这个信号在什么时候产生呢？&lt;/p&gt;
+&lt;p&gt;肯定已经到D阶段了&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;beq在F阶段，此时PCSel仍为0&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;（因为跳转语句不在延迟槽，这一句不是延迟槽，则上一句不是跳转，则PCSel为0）&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;beq在D阶段，延迟槽语句在F阶段&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这时候PCSel为1&lt;/p&gt;
+&lt;p&gt;因此下一个pc将是跳转的，没有问题！&lt;/p&gt;
+&lt;p&gt;PCSel产生即使用，不经过流水线（虽然他其实能够在F阶段就拿出来，但是延迟槽使得你不能过早赋值，你还得等，反而要经过流水线）&lt;/p&gt;
+&lt;p&gt;顺便谈到zero&lt;/p&gt;
+&lt;p&gt;zero经过提前到D级，也是即拿即用，不需要经过流水线&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;pc，Instr都给 F_D&lt;/p&gt;
+&lt;p&gt;F_D拿到指令&lt;/p&gt;
+&lt;h4 id=&#34;f_d&#34;&gt;F_D
+&lt;/h4&gt;&lt;p&gt;存储PC和Instr（这太好了）&lt;/p&gt;
+&lt;h4 id=&#34;d&#34;&gt;D
+&lt;/h4&gt;&lt;p&gt;好，接下来看这条指令在D阶段要干些什么&lt;/p&gt;
+&lt;p&gt;D阶段最核心莫过于GRF&lt;br&gt;
+但是其他内容也都同等重要&lt;/p&gt;
+&lt;p&gt;首先是先前提到过的
+NPC和CMP&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;单独搞一个CMP出来据说是为了解决P6大量b语句&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这个阶段要给imm_16变成IMM_32,imm_16已经没用了吗？&lt;/p&gt;
+&lt;p&gt;我想一想，应该是不会再用了吧？&lt;br&gt;
+并不是！ALU里面怎么有个lui他还要用。哦他不需要。 &lt;br&gt;
+lui只取32位数的后16位，再左移16位&lt;br&gt;
+所以imm_16彻底无用。我要去删去他的_D标记啦！&lt;/p&gt;
+&lt;p&gt;我刚刚又在想，为了可扩展性，要不要把他一直存着呢？我觉得还是存着吧。&lt;/p&gt;
+&lt;p&gt;但我又想到，到时候用imm_16，直接从IMM_32里面取不就行了？所以我还是不存了。&lt;/p&gt;
+&lt;p&gt;imm_26是j型指令，感觉存着也没用，毕竟得赶快给PC送过去呢！&lt;/p&gt;
+&lt;p&gt;好的，那这个阶段把imm_16也解决掉了&lt;/p&gt;
+&lt;p&gt;剩下最后一个，就是GRF了！&lt;/p&gt;
+&lt;p&gt;读什么？读rs,rt呗还能读谁&lt;/p&gt;
+&lt;p&gt;这个阶段又不写。&lt;/p&gt;
+&lt;p&gt;所以rd也没什么用。&lt;/p&gt;
+&lt;p&gt;要注意GRF的A3选择的时候是rd_W,rt_W之类的 &lt;br&gt;
+害，到时候再写吧&lt;/p&gt;
+&lt;p&gt;对！写的时候那个pc也得是pc_W&lt;/p&gt;
+&lt;p&gt;关于W阶段啥东西都应该是W&lt;/p&gt;
+&lt;p&gt;到时候再说！！！&lt;/p&gt;
+&lt;h4 id=&#34;d_e&#34;&gt;D_E
+&lt;/h4&gt;&lt;p&gt;存储很多很多东西 &lt;br&gt;
+还有用的控制信号（EXT，J，Jr当场使用了）     &lt;br&gt;
+还有用的数据（imm_16和imm_26应该都没用了） &lt;br&gt;
+当然还有pc&lt;/p&gt;
+&lt;h4 id=&#34;e&#34;&gt;E
+&lt;/h4&gt;&lt;p&gt;好嘞，该读的信息都读了，该处理的信息也处理了&lt;br&gt;
+下面就是执行操作了&lt;/p&gt;
+&lt;p&gt;关键的内容还是ALU&lt;/p&gt;
+&lt;p&gt;而ALU的核心就是各个东西都是E&lt;/p&gt;
+&lt;p&gt;（为什么这个模块异常的简单？）&lt;/p&gt;
+&lt;h4 id=&#34;e_m&#34;&gt;E_M
+&lt;/h4&gt;&lt;p&gt;还是一个基本问题，后面需要什么   &lt;br&gt;
+pc是当然的   &lt;br&gt;
+后面有Mem取数和Write回写     &lt;br&gt;
+需要Mem写的地址，写的内容，GRF写的地址，写的内容 &lt;br&gt;
+还有他们的读写使能 &lt;br&gt;
+还是多存点好，就把ALUOp删了吧&lt;/p&gt;
+&lt;p&gt;别忘了传递ALUData信息&lt;/p&gt;
+&lt;h4 id=&#34;m&#34;&gt;M
+&lt;/h4&gt;&lt;p&gt;整体和单周期也没有区别&lt;/p&gt;
+&lt;h4 id=&#34;m_w&#34;&gt;M_W
+&lt;/h4&gt;&lt;p&gt;我的建议是别删&lt;br&gt;
+没有什么理由。 就先别删吧&amp;hellip;&lt;/p&gt;
+&lt;p&gt;添加MemReadData_M
+MemData_M和Mem_Addr_M也带上吧&lt;/p&gt;
+&lt;h4 id=&#34;w&#34;&gt;W
+&lt;/h4&gt;&lt;p&gt;回到GRF&lt;br&gt;
+该用W的都用上W即可&lt;/p&gt;
+&lt;p&gt;意外地快。
+不处理冒险的数据通路搭好了？？&lt;/p&gt;
+&lt;h3 id=&#34;冒险处理&#34;&gt;冒险处理
+&lt;/h3&gt;&lt;p&gt;我自己也没想到已经走到了这一步。 &lt;br&gt;
+这一基础性的工作就这样被我搁置了这么久。 &lt;br&gt;
+其实，接下来才是核心。&lt;/p&gt;
+&lt;p&gt;转发和阻塞！！！&lt;/p&gt;
+&lt;h4 id=&#34;转发&#34;&gt;转发
+&lt;/h4&gt;&lt;p&gt;首先要构建好转发的所有路径   &lt;br&gt;
+转发的核心矛盾，是读了还没写的东西   &lt;br&gt;
+（一定要注意0号寄存器！写进去了也还是0，因此不能转发）&lt;/p&gt;
+&lt;p&gt;我在这里直接考虑所有路径&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;指令&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;F&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;D&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;E&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;M&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;W&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;add,sub&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取指令&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取rs,rt&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;算数&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;得到数据进行转发rd&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;写数rd&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;ori,lui&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取指令,扩展imm&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取rs&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;算数&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;得到数据转发rt&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;写数rt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;lw&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取指令，扩展imm&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取base，rt&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;算数&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;寻址取数&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;得到数据转发rt，写数rt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;sw&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取指令，扩展imm&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取base，rt&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;算数&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;寻址存数&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;j&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取指令，扩展imm&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;算出NPC延迟槽后用&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;jal&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取指令，扩展imm&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;算出NPC延迟槽后用，算出PC_8&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;可转发（但没人需要）&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;可转发&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;可转发，写数$31&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;jr&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;取指令&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;读rs并给NPC&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;让我们分析一下根据这个表分析一下    &lt;br&gt;
+Tuse:最晚使用时间：  &lt;br&gt;
+例如我们add读寄存器值的时候可能数据还没出来，但是真正要用到的时候其实在ALU      &lt;br&gt;
+因此最晚转发时间在E级。&lt;/p&gt;
+&lt;p&gt;我在此分如下几类指令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;R型读2求1型        &lt;br&gt;
+rs与rt要读，正常转发         &lt;br&gt;
+Tuse_rs = 1（ALU的时候有就行） &lt;br&gt;
+Tuse_rt = 1（ALU的时候有就行） &lt;br&gt;
+Tnew 初始（即相对于E）= 1 (M才能开转)  &lt;br&gt;
+RegAddr 现场算&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I型拿1读1求1型     &lt;br&gt;
+rs 要读，正常转发      &lt;br&gt;
+Tuse_rs = 1（ALU的时候有就行）     &lt;br&gt;
+Tuse_rt = inf      &lt;br&gt;
+imm正常传，传到了num_2,因此rt的值在E级要额外存为V2_E_Data&lt;br&gt;
+Tnew 初始 = 1 (M才能开转)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;读寄存器跳转型     &lt;br&gt;
+说白了就是jr（）  &lt;br&gt;
+Tuse_rs = 0 !!!
+Tuse_rt = inf  &lt;br&gt;
+所有跳转的特点都在于其必须在D级得出跳转结果。      &lt;br&gt;
+而jr就必须从V1_D拿到完全正确的值   &lt;br&gt;
+因此E-&amp;gt;D的转发是有益的     &lt;br&gt;
+（但从E开始的转发需要是在D级就得出结果的指令（不经过ALU））
+符合条件的并不多。 &lt;br&gt;
+我暂时采用阻塞。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;直接跳转型
+j不必多说  &lt;br&gt;
+Tuse_rs = inf
+Tuse_rt = inf&lt;br&gt;
+RFWr = 0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;条件跳转型
+beq。关键在于br和zero两个指令。    &lt;br&gt;
+其中zero同样要保证在D级算对！必须拿到对的值。  &lt;br&gt;
+拿不到？我也先采用阻塞。&lt;br&gt;
+Tuse_rs = 0
+Tuse_rt = 0
+RFWr = 0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Link型
+典例jal    &lt;br&gt;
+Tnew = 0 !!!!!(不过我还是把它当做Tnew = 1来用)
+Tuse_rs = inf  &lt;br&gt;
+Tuse_rt = inf&lt;/p&gt;
+&lt;p&gt;E级就能用。因此E-&amp;gt;D这条转发路径是有益的。我目前先用了阻塞。    &lt;br&gt;
+写$ra太慢了！必须转发！  &lt;br&gt;
+该怎么转？能在M和W转。（E也能转）      &lt;br&gt;
+一定要注意：一旦选择转它，你要拿他去覆盖转的值！！&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ALUData_E_true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;           
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ALUData_E_true&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Link_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pc_E&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;d8 : ALUData_E;      
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这个ALUData_E_true直接传进流水线E_M和M_W，         &lt;br&gt;
+即如果本指令为Link型，你就只能读到这一个$31数！&lt;/p&gt;
+&lt;p&gt;诶诶，如果一个Link指令，既要写$ra，又要写其他寄存器        &lt;br&gt;
+呸呸呸想什么呢！一条指令最多写一个寄存器！！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;条件跳转Link型     &lt;br&gt;
+最关键的便是不跳转，就不Link！     &lt;br&gt;
+比如beqal，其link信号应为beqal&amp;amp;&amp;amp;zero(传Link信号的时候就控制好)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L型
+rs rt 正常获取转发    Tuse_rs = 1  Tuse_rt = inf(看题意会不会旁敲侧击使用rt)           &lt;br&gt;
+imm正常扩展    &lt;br&gt;
+ALU算的值会在M级被转发！！ 但是在W级正确的值还会被转发过去。   &lt;br&gt;
+诶？我W级转发过去的数没有当时M级转过来的优先级高啊         &lt;br&gt;
+要是连着两句lw,值不就错了吗？      &lt;br&gt;
+所以我所有的lw都进行了阻塞。       &lt;br&gt;
+不过还是要注意，错误的值还是不要转发（？）             &lt;br&gt;
+经过思考，哪怕你不转发，原来的值也是错的。。那就坚决阻塞。&lt;/p&gt;
+&lt;p&gt;Tnew = 2 最慢！！！（一直到M级取出来，W级才能用）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;S型
+Tuse_rs = 1, 在E级需要算对数rs，       &lt;br&gt;
+Tuse_rt = 2，在M级需要有正确的寄存器值rt   &lt;br&gt;
+RFWr = 0   &lt;br&gt;
+Tnew = 0，不对寄存器进行写&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;转发路径共四条：     &lt;br&gt;
+M-&amp;gt;D 传ALUData_M(经过pc+4和ALUData的选择) RegAddr_M跟A1A2比  &lt;br&gt;
+W-&amp;gt;D 传RegData(经过MemReadData_W和ALUData_W的选择) RegAdde_W跟A1A2比     &lt;br&gt;
+M-&amp;gt;E 传ALUData_M(经过pc+4和ALUData的选择) RegAddr_M跟rs_E rt_E比     &lt;br&gt;
+W-&amp;gt;E 传RegData(经过MemReadData_W和ALUData_W的选择) RegAddr_W跟rs_E rt_E比    &lt;br&gt;
+为什么没有到M的转发？    &lt;br&gt;
+////因为M级使用即Tuse = 2,而Tnew没有大于2的（Tnew = 3即W级才产出数据。这显然是荒谬的）    &lt;br&gt;
+这个言论本身才是荒谬的！！Tnew = 3 已经是阻塞的问题了！不是&lt;code&gt;是否转发&lt;/code&gt;的判断！    &lt;br&gt;
+W-&amp;gt;M 是必要的！！&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;转发这个操作本身，最重要的就是做到时时刻刻转发。
+1.能转则转，不能错过转发信息（若唯一转发信息为W级，此信息一旦错过，你将失去转发机会，从而导致数值错误）
+2.能转则转，一旦有转发信息就要进行覆盖，保证获取到的一定是最新数据。
+
+为什么没有E-&amp;gt;D的转发？      
+E-&amp;gt;D 即 Tnew = 0 且 Tuse = 0，满足需求只有jal（lui也可以。但是我已经把他塞进ALU了）                
+但是我还没写。 因此Tnew = 1，要阻塞。                  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;阻塞&#34;&gt;阻塞
+&lt;/h4&gt;&lt;p&gt;我们采用把阻塞控制在D阶段完成的方法。    &lt;br&gt;
+&lt;code&gt;Tuse&lt;/code&gt;:在D级的时候，读寄存器的&lt;code&gt;最晚周期&lt;/code&gt;与&lt;code&gt;D级&lt;/code&gt;的差  &lt;br&gt;
+&lt;code&gt;Tnew_X&lt;/code&gt;:X周期的指令要写的内容&lt;code&gt;能够转发出去&lt;/code&gt;的最早周期与&lt;code&gt;E级&lt;/code&gt;的差     &lt;br&gt;
+（在&lt;code&gt;周期A&lt;/code&gt;算出来，则可以在&lt;code&gt;周期A+1&lt;/code&gt;转发）&lt;/p&gt;
+&lt;p&gt;我们需要考虑D与E关系，D与M关系   &lt;br&gt;
+为什么不考虑D与W关系？？     &lt;br&gt;
+因为Tnew_W一定为0了（谁家指令在W级还没算出来数（笑））&lt;/p&gt;
+&lt;p&gt;对于两个阻塞的关系，我们采用暴力地&lt;code&gt;或&lt;/code&gt;起来   &lt;br&gt;
+一条通道可能不通就阻塞。&lt;/p&gt;
+&lt;p&gt;阻塞只需满足:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    确实发生读写冲突且来不及转发（Tuse &amp;lt; Tnew）     
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们先分为rs冲突与rt冲突&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;stall&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;stall_rs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;stall_rt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后以rs为例：&lt;/p&gt;
+&lt;p&gt;stall_rs = stall_rs_DE || stall_rs_DM&lt;/p&gt;
+&lt;p&gt;以stall_rs_DE为例：&lt;/p&gt;
+&lt;p&gt;确实发生读写冲突：   &lt;br&gt;
+(rs_D（即A1）== RegAddr_E) &amp;amp;&amp;amp; (RFWr_E) &amp;amp;&amp;amp; (A1 != 5&amp;rsquo;b0) &lt;br&gt;
+且          &amp;amp;&amp;amp;   &lt;br&gt;
+来不及转发：     &lt;br&gt;
+(Tuse_rs &amp;lt; Tnew_E)&lt;/p&gt;
+&lt;p&gt;所以&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;stall&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;A1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;RegAddr_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;RFWr_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;A1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b0) &amp;amp;&amp;amp; (Tuse_rs &amp;lt; Tnew_E)) ||
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;        ((A1 == RegAddr_M) &amp;amp;&amp;amp; (RFWr_M) &amp;amp;&amp;amp; (A1 != 5&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Tuse_rs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Tnew_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;A2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;RegAddr_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;RFWr_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;A2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b0) &amp;amp;&amp;amp; (Tuse_rt &amp;lt; Tnew_E)) ||
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;        ((A2 == RegAddr_M) &amp;amp;&amp;amp; (RFWr_M) &amp;amp;&amp;amp; (A2 != 5&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Tuse_rt&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Tnew_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下来，只需对 Tuse 和 Tnew_X 下定义：&lt;/p&gt;
+&lt;p&gt;功能还在CTRL中实现:          &lt;br&gt;
+因为我要用&lt;code&gt;指令&lt;/code&gt;来描绘 Tnew 和 Tuse_rs 和 Tuse_rt&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;指令&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Tnew&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Tuse_rs&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Tuse_rt&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;add&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;sub&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;ori&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;lui&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1(个人原因)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;5&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;beq&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无(0)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;jr&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无(0)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;jal&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1(不转发导致的)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;5&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;lw&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;2&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无(5)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;sw&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;无(0)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;2&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Tuse 直接生成         &lt;br&gt;
+Tnew_X 初值生成，递减操作&lt;/p&gt;
+&lt;p&gt;递减操作的实现：     &lt;br&gt;
+放进流水线嘛，过个周期减一下&lt;/p&gt;
+&lt;h2 id=&#34;测试文档&#34;&gt;测试文档
+&lt;/h2&gt;&lt;p&gt;刚搭完流水线寄存器，出来一堆compile bug  &lt;br&gt;
+或多或少的少加控制信号，打错字什么的。。     &lt;br&gt;
+然后运行了充斥着nop的代码，没什么问题。&lt;/p&gt;
+&lt;p&gt;然后就向Hazard进军了！&lt;/p&gt;
+&lt;p&gt;Hazard测试的编写很有针对性。     &lt;br&gt;
+前提是你要针对好所有的代码情况，事先分析好Tnew,Tuse关系  &lt;br&gt;
+才能模拟出所有的冒险。   &lt;br&gt;
+所有的转发，所有的阻塞，都要到位。
+共9^3种组合。&lt;/p&gt;
+&lt;h2 id=&#34;思考题&#34;&gt;思考题
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们使用提前分支判断的方法尽早产生结果来减少因不确定而带来的开销，但实际上这种方法并非总能提高效率，请从流水线冒险的角度思考其原因并给出一个指令序列的例子。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;beq提前使得其Tuse降为0，这无疑提高了阻塞率。
+当这条指令前面是Tnew = 1的add,sub,ori等等均阻塞&lt;/p&gt;
+&lt;p&gt;用原来的方法，虽有可能损失更大，但是也存在很多无损失的情况。提前分支判断则是较为稳定的损失。&lt;/p&gt;
+&lt;p&gt;举例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-asm&#34; data-lang=&#34;asm&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nf&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$16&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$16&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$16&lt;/span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;no&#34;&gt;beq&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$16&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$0&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;label&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;因为延迟槽的存在，对于 jal 等需要将指令地址写入寄存器的指令，要写回 PC + 8，请思考为什么这样设计？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;正因题意所说，因为延迟槽的存在，jal语句后的那条指令是已被执行的，跳转回来时当然要跨过延迟槽这句话&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们要求大家所有转发数据都来源于流水寄存器而不能是功能部件（如 DM、ALU），请思考为什么？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;功能部件本就耗时，如果再加上转发逻辑，二者必定是顺序关系，导致时钟周期长度增长，频率上限降低，效率也就低了。     &lt;br&gt;
+但是如果在下一周期，转发操作和下一周期的操作是独立并行的，不影响执行速度。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们为什么要使用 GPR 内部转发？该如何实现？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;GRF内部转发本质上是W到D的转发，只是W和D用了同一个部件    &lt;br&gt;
+有同学使用了negedge的办法进行W，这样posedge读的时候就一定已经被新值写入。&lt;br&gt;
+我采用了传统转发。无非转发的值是RegData_W,参与判断的是RegAddr_W罢了。&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们转发时数据的需求者和供给者可能来源于哪些位置？共有哪些转发数据通路？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;需求者严格意义上有很多，不过他们是可以合并的。     &lt;br&gt;
+所有需要使用或传递的部件，都是需求者。   &lt;br&gt;
+但是我们可以先进行转发，再把结果给需求者们。  &lt;br&gt;
+总体来说，需求者可以是CMP的两个数，ALU的两个数，D_E和E_M流水线寄存器。&lt;/p&gt;
+&lt;p&gt;需求者还有M级  sw时RD2的值！！！！！需要换上最新数据！！！&lt;/p&gt;
+&lt;p&gt;供给者我们都安排到流水线寄存器的输出。   &lt;br&gt;
+M级的数据可以是ALUData,Pc+8  &lt;br&gt;
+W级的数据可以是MemReadData,ALUData,Pc+8&lt;/p&gt;
+&lt;p&gt;前文也提到了，E到D的转发尚未考虑。&lt;/p&gt;
+&lt;p&gt;因此，共有M-&amp;gt;D，M-&amp;gt;E，W-&amp;gt;D，W-&amp;gt;E，W-&amp;gt;M五种。   &lt;br&gt;
+（以及E-&amp;gt;D）（6种）&lt;/p&gt;
+&lt;p&gt;!!刚de出的bug!!!还有W-&amp;gt;M转发！！！！&lt;/p&gt;
+&lt;p&gt;再总结一下所有被转发：&lt;/p&gt;
+&lt;p&gt;RD1&amp;ndash;MD,WD转发&amp;ndash;&amp;gt;V1_D&amp;mdash;&amp;gt;V1_E&amp;ndash;ME,WE转发&amp;ndash;&amp;gt;num_1&amp;mdash;&amp;gt;运算&lt;/p&gt;
+&lt;p&gt;RD2&amp;ndash;MD,WD转发&amp;ndash;&amp;gt;V2_D&amp;mdash;&amp;gt;V2_E&amp;ndash;ME,WE转发&amp;ndash;&amp;gt;V2_E_Data&amp;mdash;&amp;gt;V2_M_Data&amp;ndash;WM转发&amp;ndash;&amp;gt;MemData_M&amp;mdash;&amp;gt;被写入&lt;/p&gt;
+&lt;p&gt;RD2&amp;ndash;MD,WD转发&amp;ndash;&amp;gt;V2_D&amp;mdash;&amp;gt;V2_E&amp;ndash;ME,WE转发、选择&amp;ndash;&amp;gt;num_2&amp;mdash;&amp;gt;运算&lt;/p&gt;
+&lt;p&gt;总结一下所有转发：&lt;/p&gt;
+&lt;p&gt;M级为ALUData,Pc+8经过选择变为ALUData_true的转发
+W级为MemReadData,ALUData,Pc+8经过选择变为RegData的转发&lt;/p&gt;
+&lt;p&gt;转发地址为RegAddr已各自计算&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在课上测试时，我们需要你现场实现新的指令，对于这些新的指令，你可能需要在原有的数据通路上做哪些扩展或修改？提示：你可以对指令进行分类，思考每一类指令可能修改或扩展哪些位置。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这一问题在前文已有谈论。
+总结起来，关键还是处理好Tnew,Tuse,读谁，写谁这四个问题 （其中，读谁，写谁都是需要控制信号的）    &lt;br&gt;
+以及最核心，最有不确定性的“处理”这一部分&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;确定你的译码方式，简要描述你的译码器架构，并思考该架构的优势以及不足。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我使用的是对控制信号找相关指令的方式。   &lt;br&gt;
+先由opcode和funct得出结果，再得出指令；接下来由指令得到控制信号。         &lt;br&gt;
+优势是简洁，不足是容易漏写，错写。     &lt;br&gt;
+加指令时一定要分析好所有相关信号，再书写。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>单周期CPU的verilog搭建</title>
         <link>https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Thu, 31 Oct 2024 14:15:30 +0800</pubDate>
@@ -1495,7 +2036,7 @@ jr 控制$ra绝对寻址跳转&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;.imm_16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;imm_16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;.imm_26&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;imm_26&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;.pc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;pc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;.reg_ra&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;RD2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;.reg_ra&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;RD1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;.j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;J&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;.jr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Jr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;na&#34;&gt;.pc_4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;pc_4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
@@ -1555,7 +2096,7 @@ jr 控制$ra绝对寻址跳转&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// GRF 中间变量的赋值
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;LinkPC&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;pc_4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;A1&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rs&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;A2&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Jr&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;b11111&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rt&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;A2&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rt&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;RegAddr&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Link&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;b11111&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;nf&#34;&gt;WrSel&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rd&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;rt&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;;    
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;RegData&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Link&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;LinkPC&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
