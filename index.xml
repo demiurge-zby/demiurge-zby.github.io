@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Tue, 12 Nov 2024 14:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 14 Nov 2024 14:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>流水线CPU搭建（2）</title>
         <link>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</link>
-        <pubDate>Tue, 12 Nov 2024 14:15:30 +0800</pubDate>
+        <pubDate>Thu, 14 Nov 2024 14:15:30 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</guid>
         <description>&lt;img src="https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.jpg" alt="Featured image of post 流水线CPU搭建（2）" /&gt;&lt;hr&gt;
@@ -532,6 +532,7 @@ mf指令涉及到的写寄存器与转发的问题，都需要靠ALUData_E_true�
 &lt;p&gt;乘除法模块中计算指令就不说了，mf指令是组合逻辑assign，mt指令是写寄存器的时序逻辑。这和原ALU是不太兼容的。&lt;/p&gt;
 &lt;p&gt;其次，HI，LO寄存器也只有MDALU能用到，和ALU混用，就提高了内部耦合度，显得混乱。&lt;/p&gt;
 &lt;p&gt;这么做，把计算分为ALU和MDALU，最后再进行选择，其实相当于是形成了一个更大的ALU，含有原ALU和MDALU。因此，单独的乘除法部件更好地做到了“高内聚，低耦合”。&lt;/p&gt;
+&lt;p&gt;最大的好处：先前没有理解好乘除法的阻塞，事实上，只要乘除法运算过程中没有与乘除类有关的指令，就不需要阻塞。那咱们的效率可谓是大大提升了。&lt;/p&gt;
 &lt;p&gt;独立的HI,LO：
 首先，HI,LO有其自身特殊性，不能被直接读，只能靠mf指令读。    &lt;br&gt;
 其次，把HI，LO放在E区，与其他寄存器分离开来，能够实现即出即写，避免了读写冲突。&lt;/p&gt;
