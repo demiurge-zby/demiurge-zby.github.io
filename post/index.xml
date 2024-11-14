@@ -7,7 +7,718 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Sun, 10 Nov 2024 22:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 12 Nov 2024 14:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>流水线CPU搭建（2）</title>
+        <link>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</link>
+        <pubDate>Tue, 12 Nov 2024 14:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.jpg" alt="Featured image of post 流水线CPU搭建（2）" /&gt;&lt;hr&gt;
+&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;能通过P5实在是很好的一件事。 &lt;br&gt;
+在我第一道题直接AC确定课下无bug，在我很快做出前两道题确定自己能通过后，我真的如释重负。     &lt;br&gt;
+题目并不难，在课下提交截止前找出bug并修复真的是我能通过P5的重要原因。    &lt;br&gt;
+反思前两题，还可以做得更快。思路清晰，才能更精准更利索。&lt;/p&gt;
+&lt;p&gt;上次也说到了，咱们的P6要实现30条指令了！&lt;/p&gt;
+&lt;p&gt;具体地说：
+add, sub, and, or, slt, sltu, lui,
+addi, andi, ori,
+lb, lh, lw, sb, sh, sw,
+mult, multu, div, divu, mfhi, mflo, mthi, mtlo,
+beq, bne, j, jal, jr,
+nop&lt;/p&gt;
+&lt;p&gt;接下来，我们就开始吧！&lt;/p&gt;
+&lt;h2 id=&#34;设计文档&#34;&gt;设计文档
+&lt;/h2&gt;&lt;p&gt;本次P6搭建，我还是选择采用边搭建边写设计文档的方法。&lt;/p&gt;
+&lt;p&gt;通过记录设计文档来记录我的每一步更改进度，对于P6这种考验严谨性的工程是较有益的。&lt;/p&gt;
+&lt;p&gt;P6的主要任务，是在一个相对完善的架构上去增添大量的同类型新指令和少量的特殊指令。&lt;/p&gt;
+&lt;p&gt;add, sub, and, or, slt, sltu, lui,&lt;/p&gt;
+&lt;p&gt;addi, andi, ori,&lt;/p&gt;
+&lt;p&gt;lb, lh, lw, sb, sh, sw,&lt;/p&gt;
+&lt;p&gt;mult, multu, div, divu, mfhi, mflo, mthi, mtlo,&lt;/p&gt;
+&lt;p&gt;beq, bne, j, jal, jr,&lt;/p&gt;
+&lt;p&gt;nop&lt;/p&gt;
+&lt;p&gt;比较新鲜的指令有set型，字节访存，还有最特别的乘除模块指令！&lt;/p&gt;
+&lt;p&gt;我的搭建逻辑是最后处理乘除模块，先搭简单的，或者说白了，先搭非乘除模块（）&lt;/p&gt;
+&lt;h3 id=&#34;顶层模块的改装&#34;&gt;顶层模块的改装
+&lt;/h3&gt;&lt;p&gt;由于P6修改了IM和DM模块，在外部接入指令存储器与数据存储器，并在外部实现写入内容的输出&lt;/p&gt;
+&lt;p&gt;对于这些新的接口，&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i_inst_rdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_rdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i_inst_addr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_addr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_wdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_byteen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_inst_addr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;w_grf_we&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;w_grf_addr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;w_grf_wdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;w_inst_addr&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;为了较少地改动我们的原版CPU，我们采用    &lt;br&gt;
+&lt;code&gt;assign 顶层输出信号 = 部件输入信号&lt;/code&gt;     &lt;br&gt;
+&lt;code&gt;assign 部件输出信号 = 顶层输入信号&lt;/code&gt;           &lt;br&gt;
+的方式进行书写。&lt;/p&gt;
+&lt;p&gt;相当于：本来传给IM,DM部件的信号现在要作为顶层输出信号传给外部IM,DM、    &lt;br&gt;
+而本来从IM和DM部件得到的数据现在要由外部IM,DM通过顶层输入信号进行赋值。&lt;/p&gt;
+&lt;p&gt;其中只有m_data_byteen这一信号是我们从未出现过的，它涉及到了lh,lb,sh,sb四条新指令。&lt;/p&gt;
+&lt;h4 id=&#34;dm的写&#34;&gt;DM的写
+&lt;/h4&gt;&lt;p&gt;不难设计一个STORE模块：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;`timescale 1ns / 1ps
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;define&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;SW&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b01
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;`define SH 2&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;`define SB 2&amp;#39;b11
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;default_nettype&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;none&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;STORE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemAddr_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;byteen&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;by_te&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemAddr_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;by_te&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemAddr_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;byteen&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`SW)||((DMWr_M == `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;SH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b1))||((DMWr_M == `SB)&amp;amp;&amp;amp;(by_te == 2&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                      &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`SW)||((DMWr_M == `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;SH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b1))||((DMWr_M == `SB)&amp;amp;&amp;amp;(by_te == 2&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                      &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`SW)||((DMWr_M == `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;SH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b0))||((DMWr_M == `SB)&amp;amp;&amp;amp;(by_te == 2&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                      &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`SW)||((DMWr_M == `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;SH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b0))||((DMWr_M == `SB)&amp;amp;&amp;amp;(by_te == 2&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;endmodule&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在顶层,我们可以直接将m_data_byteen与byteen接口相连   &lt;br&gt;
+也可以新建信号以提高可扩展性&lt;/p&gt;
+&lt;p&gt;DM不需要读使能，它始终会读出该地址存储的值，只是后续再通过WdSel来判断你用不用这个信号罢了    &lt;br&gt;
+而且DM的写使能也很方便实现： &lt;code&gt;|byteen&lt;/code&gt; ,将它的各位或起来就可以作为写使能，即存在1就要写。    &lt;br&gt;
+&lt;code&gt;byteen&lt;/code&gt;本身又是控制信号，即哪是1哪被写。&lt;/p&gt;
+&lt;p&gt;DM的写就基本完成了 （毕竟功能本身已经由testbench全权负责了）&lt;/p&gt;
+&lt;p&gt;! 这样的执行逻辑与MARS是不同的！经过和学长的交流，m_data_wdata跟MemData显然应当是不同的。&lt;/p&gt;
+&lt;p&gt;在此加入对MemData做处理的语句，也不难写&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_wdata&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`LW) ? MemData_M :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;        (DMWr_M == `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;LH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;MemData_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemData_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`LB) ? {MemData_M[7:0], MemData_M[7:0], MemData_M[7:0], MemData_M[7:0]} 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;        : 32&amp;#39;b0;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;dm的读&#34;&gt;DM的读
+&lt;/h4&gt;&lt;p&gt;前文也说到，DM一直会读，但是lw,lh,lb就需要你来处理了。   &lt;br&gt;
+根据读出的整个字和控制信号，我们可以实现把MemReadData变成正确的值。      &lt;br&gt;
+相应地，我们需要通过一个模块将m_data_rdata变为MemRead    &lt;br&gt;
+再将MemRead赋值给MemReadData（同样是为了可扩展性）&lt;/p&gt;
+&lt;p&gt;这个模块也很好写：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;`timescale 1ns / 1ps
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;define&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;LW&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b01
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;`define LH 2&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;`define LB 2&amp;#39;b11
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;default_nettype&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;none&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;LOAD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DMRd_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_rdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemAddr_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemRead&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;wire&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;by_te&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemAddr_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;by_te&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemAddr_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemRead&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMRd_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`LW) ? m_data_rdata :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;             (DMRd_M == `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;LH&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;half&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b1) ? {{16{m_data_rdata[31]}}, m_data_rdata[31:16]} :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;             (DMRd_M == `LH &amp;amp;&amp;amp; half == 1&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;m_data_rdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}},&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_rdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMRd_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`LB &amp;amp;&amp;amp; by_te == 2&amp;#39;b11) ? {{24{m_data_rdata[31]}}, m_data_rdata[31:24]} :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;             (DMRd_M == `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;LB&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;by_te&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b10) ? {{24{m_data_rdata[23]}}, m_data_rdata[23:16]} :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;             (DMRd_M == `LB &amp;amp;&amp;amp; by_te == 2&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;m_data_rdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}},&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_rdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMRd_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`LB &amp;amp;&amp;amp; by_te == 2&amp;#39;b00) ? {{24{m_data_rdata[7]}}, m_data_rdata[7:0]} : 32&amp;#39;b0;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;endmodule
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;im&#34;&gt;IM
+&lt;/h4&gt;&lt;p&gt;这个就不用说了，两句话的事&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i_inst_addr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pc_F&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Instr_F&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i_inst_rdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;shsblhlb&#34;&gt;sh,sb,lh,lb
+&lt;/h4&gt;&lt;p&gt;做事做到底，就把他们直接都写完吧&lt;/p&gt;
+&lt;p&gt;书写逻辑：     &lt;br&gt;
+1.CTRL各项控制信号添加 (和lw，sw完全对应一致)    &lt;br&gt;
+2.CTRL中Tuse,Tnew (和lw，sw完全对应一致)   &lt;br&gt;
+3.具体实现（已完成）&lt;/p&gt;
+&lt;h3 id=&#34;简单的e级alu写数指令&#34;&gt;简单的E级ALU写数指令
+&lt;/h3&gt;&lt;p&gt;这类指令也很简单，在此也只有两类：   &lt;br&gt;
+add型: add, sub, and, or   &lt;br&gt;
+ori型：addi, andi, ori   &lt;br&gt;
+（在此add型再添加：slt, sltu   &lt;br&gt;
+原因在下一小节&lt;/p&gt;
+&lt;h4 id=&#34;读两个数-算一个数&#34;&gt;读两个数 算一个数
+&lt;/h4&gt;&lt;p&gt;也就是add型指令  &lt;br&gt;
+把它归为同一类的原因，主要是控制信号过于相似：       &lt;br&gt;
+相同调控（置相同的数）的信号有：WrSel, RFWr, Tuse_rs, Tuse_rt, Tnew_D          &lt;br&gt;
+特异性的信号是ALUOp,用宏定义增强可读性&lt;/p&gt;
+&lt;p&gt;书写时要额外注意slt和sltu&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;slt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;signed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;num_1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;signed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;num_2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;signed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;signed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 1和0是有符号数。但我还是保险起见
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sltu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;num_1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;num_2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b1 : 32&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;b0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 32&amp;#39;b1和32&amp;#39;b0都是无符号数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;读一个数-拿一个立即数-算一个数&#34;&gt;读一个数 拿一个立即数 算一个数
+&lt;/h4&gt;&lt;p&gt;也就是ori型指令      &lt;br&gt;
+其实和上一类很像，不过区别在于：     &lt;br&gt;
+num_2是IMM_32而非V2   写的寄存器是rt而非rd   &lt;br&gt;
+相同调控（置相同的数）的信号有：RFWr, ImmSel, Tuse_rs, Tuse_rt, Tnew_D  &lt;br&gt;
+！特异性： &lt;code&gt;ADDI是符号扩展&lt;/code&gt; ,&lt;code&gt;ORI,ANDI是零扩展&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;d级算数指令&#34;&gt;D级算数指令
+&lt;/h3&gt;&lt;h4 id=&#34;真的要在d级算数&#34;&gt;真的要在D级算数？
+&lt;/h4&gt;&lt;p&gt;这是我之前从未触及的一个点。在此，为提高效率，我将冒险进行优化：     &lt;br&gt;
+这类指令有slt, sltu, lui, jal    &lt;br&gt;
+把它们前移至D级改变了两件事：Tnew降低、Tuse降低      &lt;br&gt;
+我之前并没有写过E-D转发，使得lui和jal的Tnew均为1         &lt;br&gt;
+经过优化，他们的Tnew可以变成0，从而&lt;code&gt;避免后续指令被阻塞&lt;/code&gt;      &lt;br&gt;
+但他们也有风险：风险就是Tuse降低使得&lt;code&gt;他们本身的操之过急可能会使自己被阻塞&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;事实上，lui和jal是直接对立即数操作，因此并没有Tuse的风险问题。   &lt;br&gt;
+而slt和sltu则有风险。&lt;/p&gt;
+&lt;p&gt;因此我将slt和sltu放回了简单的E级ALU写数指令。&lt;/p&gt;
+&lt;h4 id=&#34;lui-和-jal-的-e-d转发&#34;&gt;lui 和 jal 的 E-&amp;gt;D转发
+&lt;/h4&gt;&lt;p&gt;接下来先说说我对lui和jal的改进吧。   &lt;br&gt;
+首先，jal的转发十分简单，只要当A1(A2)等于31且Link_E时把pc+8传过去而已。  &lt;br&gt;
+jal在后面把这个值选择赋给了ALUData_E_True,即&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ALUData_E_true&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Link_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pc_E&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;d8 : ALUData_E;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;那么相应地，lui的转发也可以很简单。   &lt;br&gt;
+真正要写入寄存器的lui的值当然还是ALU算出来的，相当于节省了把这个值选择赋给ALUData_E_True的过程。     &lt;br&gt;
+lui未曾有的，是他的独特信号，即Lui      &lt;br&gt;
+lui要转发的值，就是{IMM32_E[15:0], 16&amp;rsquo;b0}        &lt;br&gt;
+由于后续由ALU承包，Lui信号只需要坚持到E-&amp;gt;D转发就够了            &lt;br&gt;
+可知我们需要改动CTRL，D_E这两个子模块。&lt;/p&gt;
+&lt;p&gt;那么咱们的成效就要显露出来了：       &lt;br&gt;
+那就是减少阻塞！Tnew降为0！&lt;/p&gt;
+&lt;p&gt;在CTRL中更改Tnew信号后，这一段路，也算是走完了。&lt;/p&gt;
+&lt;h3 id=&#34;跳转指令&#34;&gt;跳转指令
+&lt;/h3&gt;&lt;p&gt;增添的新指令是bne    &lt;br&gt;
+已经可以称得上和beq完全一致了吧&amp;hellip;&lt;/p&gt;
+&lt;p&gt;主要差别只在于zero和!zero      &lt;br&gt;
+相同调控（置相同的数）的信号有：PCSel, Tuse_rs, Tuse_rt, (Tnew都不存在)&lt;/p&gt;
+&lt;p&gt;不过bne和beq要区分，所以还是需要有控制信号传出来。&lt;/p&gt;
+&lt;p&gt;主要就是NPC引入新接口bne,参与了npc的计算罢了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;beq&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;zero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bne&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;zero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;br_pc&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pc_D&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;d8;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下来，剩下的8个乘除模块指令，就要从零建起了。&lt;/p&gt;
+&lt;h3 id=&#34;乘除模块&#34;&gt;乘除模块
+&lt;/h3&gt;&lt;p&gt;乘除模块共8条指令    &lt;br&gt;
+mult, multu, div, divu, mfhi, mflo, mthi, mtlo&lt;/p&gt;
+&lt;h4 id=&#34;mdalu模块&#34;&gt;MDALU模块
+&lt;/h4&gt;&lt;p&gt;我们可以构建模块MDALU      &lt;br&gt;
+接口如下所示：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;名称&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;位宽&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;方向&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;clk&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;I&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;reset&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;I&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;MDALUOp&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;4&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;I&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;num_1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;32&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;I&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;num_2&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;32&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;I&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;start_busy&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;O&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;busy&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;O&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;HI&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;32&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;O&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;LO&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;32&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;O&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;clk和reset的功能就不多说了，要清空所有寄存器             &lt;br&gt;
+&lt;code&gt;start_busy&lt;/code&gt;:得知指令为 mult,multu,div,divu，引发运算，阻塞与busy &lt;br&gt;
+（在start_busy的时候就要为下一周期阻塞了，再不阻塞E级就要进来新指令了）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;MDALUOp&lt;/code&gt;:控制信号&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MDALUOp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mult&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`MULT :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;                 multu ? `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;MULTU&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;nv&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`DIV :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;                 divu ? `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DIVU&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;nv&#34;&gt;mfhi&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`MFHI :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;                 mflo ? `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;MFLO&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;nv&#34;&gt;mthi&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`MTHI :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;                 mtlo ? `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;MTLO&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`NONE;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;busy&lt;/code&gt;：这个可以说是最重要的一个点。 &lt;br&gt;
+在busy状态下，我们要进行阻塞，Pc、F_D级不动，D_E级清空，E级及以后顺延运算。    &lt;br&gt;
+问题的关键在于： &lt;br&gt;
+如何控制busy时间？&lt;/p&gt;
+&lt;p&gt;以乘法为例：     &lt;br&gt;
+每个时钟上升沿，start_busy信号为1时，给cnt归0，给busy赋1，算出LO，HI要被赋的值（现在再不算，等会阻塞的时候E级都清空了）   &lt;br&gt;
+(由于非阻塞赋值，在下一时钟上升沿cnt = 0, busy = 1)&lt;/p&gt;
+&lt;p&gt;busy为1时，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若&lt;code&gt;cnt == 4&lt;/code&gt;，busy和cnt清零，并对regHI，regLO赋值      &lt;br&gt;
+(由于非阻塞赋值，第五个时钟周期开始时cnt刚被赋值为4，      &lt;br&gt;
+那么下一个时钟上升沿是busy和cnt都清零，regHI和regLO被赋值，    &lt;br&gt;
+assign语句的即时性使得HI与LO直接出值)&lt;/li&gt;
+&lt;li&gt;否则cnt++&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;指令的控制信号&#34;&gt;指令的控制信号
+&lt;/h4&gt;&lt;p&gt;这八条指令除了MDALUOp以外，也有其对应的控制信号要处理。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;mult,multu,div,divu是完全同质的指令。    &lt;br&gt;
+特点是读GRF，直接写HI,LO，不写GRF和DM    &lt;br&gt;
+可以归纳其控制信号RFWr = DMWr = DMRd = 0;    &lt;br&gt;
+ImmSel = 0;运算数都是寄存器&lt;/p&gt;
+&lt;p&gt;Tuse_rs = Tuse_rt = 3&amp;rsquo;b1;&lt;/p&gt;
+&lt;p&gt;乘除法的Tnew不必担心：   &lt;br&gt;
+得出结果就直接塞到寄存器里了        &lt;br&gt;
+新指令一旦进来，就说明我的regHI和regLO已经写好了
+转发都不用，更别说阻塞了&lt;/p&gt;
+&lt;p&gt;再说了，乘除法不差你这一点阻塞，本身阻塞的也够多了（）&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;mfhi,mflo是一个访存指令。    &lt;br&gt;
+要读HI,LO，写GRF         &lt;br&gt;
+这考虑的就要多了。&lt;/p&gt;
+&lt;p&gt;首先，它写GRF，就决定了它需要去转发：    &lt;br&gt;
+指令的Tnew = 1,可进行M-&amp;gt;D,M-&amp;gt;E的转发。 &lt;br&gt;
+我们当然可以直接把它加入ALUData_E_true(像当初pc+8那样)&lt;/p&gt;
+&lt;p&gt;其次，写要写到哪：rd     &lt;br&gt;
+那么WrSel要置1&lt;/p&gt;
+&lt;p&gt;另外，写当然需要写使能：RFWr = 1&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;mthi,mtlo要对HI和LO进行写    &lt;br&gt;
+要读GRF 写HI,LO&lt;/p&gt;
+&lt;p&gt;那么其实这和第一类指令很相似     &lt;br&gt;
+不写GRF和DM，控制信号RFWr = DMWr = DMRd = 0;    &lt;br&gt;
+ImmSel = 0;运算数都是寄存器      &lt;br&gt;
+特点是Tuse_rs = 3&amp;rsquo;b1;    &lt;br&gt;
+但是不需要读GRF[rt]&lt;/p&gt;
+&lt;p&gt;同样类似地，它的值也是即拿即写   &lt;br&gt;
+不需要转发与阻塞&lt;/p&gt;
+&lt;h4 id=&#34;指令在模块内的书写&#34;&gt;指令在模块内的书写
+&lt;/h4&gt;&lt;p&gt;前四条已经较详细地描述过了   &lt;br&gt;
+但在实际书写上，还是存在一定问题：  &lt;br&gt;
+1. &lt;br&gt;
+在阻塞之后，什么值都丢了，那么你就必须有自己预先存好的Op，预先存好的计算结果，才能使得你这个周期还能按着原来的指令的轨迹去走。       &lt;br&gt;
+但是，op你应该怎么存？   &lt;br&gt;
+这至少需要一个时钟周期去存它，那么如果你只根据Op判断，你就已经丢失了一个时钟周期。不仅如此，对于一个周期就能完成的mf,ml指令而言，这更是荒唐。          &lt;br&gt;
+因此，我目前的写法是不仅对Op写case语句，还对MDALUOp写case语句。     &lt;br&gt;
+那么，Op的控制也应更加严格，即执行完语句后，应把Op置为`NONE。    &lt;br&gt;
+（注意：default的情况不要对Op处理！因为default可能是还没来得及赋值的Op,这下好了，同一上升沿两次赋值）&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;符号乘法要怎么写？   &lt;br&gt;
+鉴于曾经在这里WA过一发，我在此直接给出写法：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;tempHI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;tempLO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;signed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;num_1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;signed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;num_2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;就这么简单。不要担心位宽不一致。它会自动扩展。&lt;/p&gt;
+&lt;p&gt;mf指令是一个读HI，LO指令，而我们的HI与LO本就一直在输出。     &lt;br&gt;
+只需要MDALUOp的控制信号管理一下ALUData_E_true的选择即可。&lt;/p&gt;
+&lt;p&gt;mt指令为写HI，LO指令，直接在case语句里面写寄存器就行。         &lt;br&gt;
+！！这里要注意，我们写HI，LO寄存器其实是在下一时钟周期才完成的     &lt;br&gt;
+因此有人会担心，如果下一条指令就要读HI，LO会不会出错误？     &lt;br&gt;
+答案是不会。因为我们的assign一直在输出，HI,LO被写之后拿出来的数肯定是对的。&lt;/p&gt;
+&lt;p&gt;曾经又在这里WA过一发：mt指令读的都是rs!!!&lt;/p&gt;
+&lt;h4 id=&#34;模块在顶层的书写&#34;&gt;模块在顶层的书写
+&lt;/h4&gt;&lt;p&gt;作为少有的要改动顶层模块的设计       &lt;br&gt;
+首先要注意先前所提到的   &lt;br&gt;
+mf指令涉及到的写寄存器与转发的问题，都需要靠ALUData_E_true来解决&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ALUData_E_true&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Link_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pc_E&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;d8 :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;                        (MDALUOp_E == `MFHI) ? HI :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;                        (MDALUOp_E == `MFLO) ? LO :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;                        ALUData_E;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;当然还有模块本身的接口及其信息传递&lt;/p&gt;
+&lt;p&gt;另外要注意的就是阻塞：   &lt;br&gt;
+阻塞实际上也就是多&lt;code&gt;或&lt;/code&gt;上了两个信号start_busy和busy信号&lt;/p&gt;
+&lt;p&gt;那么接下来的，就是大量指令引发的巨量测试。&lt;/p&gt;
+&lt;h2 id=&#34;测试文档&#34;&gt;测试文档
+&lt;/h2&gt;&lt;h3 id=&#34;单个指令的测试&#34;&gt;单个指令的测试
+&lt;/h3&gt;&lt;p&gt;对于新加入的指令本身，我们需要进行一次较为彻底的测试。&lt;/p&gt;
+&lt;p&gt;一是功能本身的基础是否实现，二是一些特殊情况需要验证。&lt;/p&gt;
+&lt;p&gt;首先是lh,lb,sh,sb指令：  &lt;br&gt;
+侧重对符号扩展的测试&lt;/p&gt;
+&lt;p&gt;对于add, sub, and, or, slt, sltu, lui, addi, andi, ori   &lt;br&gt;
+要注意addi的符号扩展是否做到&lt;/p&gt;
+&lt;p&gt;对于bne就正常测试成功or失败跳转即可&lt;br&gt;
+对于乘除法模块则也要注意符号问题&lt;/p&gt;
+&lt;p&gt;这一层次的测试基本上是用于debug的，因为只涉及自身功能，不涉及冒险，课下的弱测强度基本足够了。&lt;/p&gt;
+&lt;p&gt;当然还是建议自行做足测试的。&lt;/p&gt;
+&lt;h3 id=&#34;指令之间的冲突处理&#34;&gt;指令之间的冲突处理
+&lt;/h3&gt;&lt;p&gt;利用思考题处的表格自行构造样例，再结合评测机进行测试。&lt;/p&gt;
+&lt;p&gt;我决定写多个小型测试，对各种转发与阻塞的情况编写特别代码来检测结果。在此不便展示。&lt;/p&gt;
+&lt;h2 id=&#34;思考题&#34;&gt;思考题
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么需要有单独的乘除法部件而不是整合进 ALU？为何需要有独立的 HI、LO 寄存器？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因为乘除法部件的运算逻辑与读写数据都与ALU截然不同。  &lt;br&gt;
+首先，乘除法的高强度阻塞与特别的时序逻辑决定了他不能和组合逻辑直接混用。&lt;/p&gt;
+&lt;p&gt;乘除法模块中计算指令就不说了，mf指令是组合逻辑assign，mt指令是写寄存器的时序逻辑。这和原ALU是不太兼容的。&lt;/p&gt;
+&lt;p&gt;其次，HI，LO寄存器也只有MDALU能用到，和ALU混用，就提高了内部耦合度，显得混乱。&lt;/p&gt;
+&lt;p&gt;这么做，把计算分为ALU和MDALU，最后再进行选择，其实相当于是形成了一个更大的ALU，含有原ALU和MDALU。因此，单独的乘除法部件更好地做到了“高内聚，低耦合”。&lt;/p&gt;
+&lt;p&gt;独立的HI,LO：
+首先，HI,LO有其自身特殊性，不能被直接读，只能靠mf指令读。    &lt;br&gt;
+其次，把HI，LO放在E区，与其他寄存器分离开来，能够实现即出即写，避免了读写冲突。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;真实的流水线 CPU 是如何使用实现乘除法的？请查阅相关资料进行简单说明。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;经过资料查阅，在真实的流水线CPU中，32位乘法是分部分计算的，一个周期可以32位对8位数的乘法（？），然后4个周期能算完。      &lt;br&gt;
+除法据说是用试商法，一次试4位，8个周期做完除法。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请结合自己的实现分析，你是如何处理 Busy 信号带来的周期阻塞的？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;start可以引发busy，而start和busy都能导致阻塞。   &lt;br&gt;
+通过计数器控制阻塞周期数，在最后一周期，清空busy,cnt，并完成寄存器赋值。     &lt;br&gt;
+由于阻塞清空了E寄存器，我将MDALUOp和运算结果进行了及时存储。当然，在最后一周期，这些存储的信号也要清空。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请问采用字节使能信号的方式处理写指令有什么好处？（提示：从清晰性、统一性等角度考虑）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;清晰性：       &lt;br&gt;
+提前将DMWr和addr共同作用的结果算出来，清晰明了地表达了究竟要写哪些字节，对每个字节执行独立的赋值。&lt;/p&gt;
+&lt;p&gt;统一性：     &lt;br&gt;
+sw,sh,sb都能用同样的按字节赋值的逻辑来执行。     &lt;br&gt;
+不过需要被写数据要进行一些预处理：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;m_data_wdata&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`LW) ? MemData_M :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;        (DMWr_M == `&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;LH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;MemData_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MemData_M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DMWr_M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;`LB) ? {MemData_M[7:0], MemData_M[7:0], MemData_M[7:0], MemData_M[7:0]} 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sc&#34;&gt;        : 32&amp;#39;b0;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请思考，我们在按字节读和按字节写时，实际从 DM 获得的数据和向 DM 写入的数据是否是一字节？在什么情况下我们按字节读和按字节写的效率会高于按字读和按字写呢？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;写入DM的确实只写了一个字节   &lt;br&gt;
+但从DM获取的是一整个字，要经过后续处理&lt;/p&gt;
+&lt;p&gt;执行lw和sw时当然还是按字读写更快     &lt;br&gt;
+但是执行对半字与字节的操作时，按字节读写效率更高&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为了对抗复杂性你采取了哪些抽象和规范手段？这些手段在译码和处理数据冲突的时候有什么样的特点与帮助？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;抽象：   &lt;br&gt;
+我对指令进行了归类，如设计文档所示。并按类地添加和处理指令   &lt;br&gt;
+最显著的作用如DMRd,DMWr,ALUOp,MDALUOp等等，单个多位信号传入流水线寄存器，相较于多个单位信号是更方便的。&lt;/p&gt;
+&lt;p&gt;规范：   &lt;br&gt;
+对于同一类指令，可以对其先归为一类，再统一为控制信号赋值         &lt;br&gt;
+（其实也没简单太多，比如addi这种符号扩展，还要单独写）&lt;/p&gt;
+&lt;p&gt;帮助：   &lt;br&gt;
+在译码和处理数据冲突的时候也就是在CTRL内，按类调整控制信号与T信号，省时省力&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在本实验中你遇到了哪些不同指令类型组合产生的冲突？你又是如何解决的？相应的测试样例是什么样的？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;新的冲突只有数据冒险。处理方法也别无二致。&lt;/p&gt;
+&lt;p&gt;阻塞：   &lt;br&gt;
+我在修改CTRL的时候，已经为各个指令赋好了Tuse_rs,Tuse_rt,Tnew，阻塞正常进行&lt;/p&gt;
+&lt;p&gt;转发：&lt;/p&gt;
+&lt;p&gt;新添的所有指令中，需要的位点没有改变：V1_D,V2_D,num_1,num_2（此处忽略lh,lb.sh,sb）           &lt;br&gt;
+新添的所有指令中，写寄存器的内容：大多都还是原来的路径，除了M级有新数据：即来自LO,HI的新数据。（要知道乘除运算指令本身是不写GRF的）      &lt;br&gt;
+对于这个的处理前文也有提及：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ALUData_E_true&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Link_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pc_E&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;d8 :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;                        (MDALUOp_E == `MFHI) ? HI :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;                        (MDALUOp_E == `MFLO) ? LO :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;                        ALUData_E;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;对于这个改动的测试样例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-asm&#34; data-lang=&#34;asm&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;mult&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$s1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$s2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;mfhi&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t0&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;## 写$t0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t0&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;## 读$t0，M-&amp;gt;E需转发，写$t1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mtlo&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t1&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;## 读$t1，M-&amp;gt;E需转发
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mflo&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t2&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;## 写$t2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t3&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t2&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t2&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;## 读$t2，M-&amp;gt;E需转发，写$t3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mthi&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t3&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;## 读$t3，M-&amp;gt;E需转发
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mfhi&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t4&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;## 写$t4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sw&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t4&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;$0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;## 读$t4，M-&amp;gt;E需转发
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;lw&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t5&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;$0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;## 写$t5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这个样例过多测试了M-&amp;gt;E转发，下面补充一个M-&amp;gt;D转发&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-asm&#34; data-lang=&#34;asm&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;mtlo&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t5&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;## 读$t5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mflo&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t6&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;## 写$t6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;label:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t6&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t6&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$0&lt;/span&gt;       &lt;span class=&#34;c1&#34;&gt;## 表示正在死循环
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;bne&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$0&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;$t6&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;label&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;## M-&amp;gt;D转发
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;nop&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你是手动构造的样例，请说明构造策略，说明你的测试程序如何保证覆盖了所有需要测试的情况；如果你是完全随机生成的测试样例，请思考完全随机的测试程序有何不足之处；如果你在生成测试样例时采用了特殊的策略，比如构造连续数据冒险序列，请你描述一下你使用的策略如何结合了随机性达到强测的效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我采用了手动构造法。   &lt;br&gt;
+通过建立策略矩阵，按照T的关系来进行构造        &lt;br&gt;
+具体分类方式如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image.png&#34;
+	width=&#34;495&#34;
+	height=&#34;168&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu8936851701592632260.png 480w, https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu17286652912400143360.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RS&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;294&#34;
+		data-flex-basis=&#34;707px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1.png&#34;
+	width=&#34;488&#34;
+	height=&#34;194&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu10810789901981881303.png 480w, https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu8469799539572825714.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RT&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;251&#34;
+		data-flex-basis=&#34;603px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这两张图还需添加关于lui和mf指令的测试，单独对这两个指令构造测试也是可行的。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>流水线CPU搭建（1）</title>
         <link>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</link>
         <pubDate>Sun, 10 Nov 2024 22:15:30 +0800</pubDate>
@@ -17,7 +728,7 @@
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;这周真的太忙了。 &lt;br&gt;
 不说流水线和数竞这两块大骨头，硬控两小时的党课，硬控两小时的挑战杯志愿者，硬控一小时的组会，硬控五小时的毛概PPT&amp;hellip;&lt;/p&gt;
-&lt;p&gt;虽说这周还买了曲包摘了星（如封面）&lt;/p&gt;
+&lt;p&gt;虽说这周还买了曲包摘了星&lt;/p&gt;
 &lt;p&gt;但是流水线CPU真难写。    &lt;br&gt;
 读者可以看看我写设计文档心境的变化。&lt;/p&gt;
 &lt;p&gt;（提交截止前2h突然发现bug。。5点半硬控到7点去上党课）&lt;/p&gt;
