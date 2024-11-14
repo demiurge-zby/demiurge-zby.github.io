@@ -503,7 +503,12 @@ mf指令涉及到的写寄存器与转发的问题，都需要靠ALUData_E_true�
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;当然还有模块本身的接口及其信息传递&lt;/p&gt;
 &lt;p&gt;另外要注意的就是阻塞：   &lt;br&gt;
-阻塞实际上也就是多&lt;code&gt;或&lt;/code&gt;上了两个信号start_busy和busy信号&lt;/p&gt;
+&lt;del&gt;阻塞实际上也就是多&lt;code&gt;或&lt;/code&gt;上了两个信号start_busy和busy信号&lt;/del&gt;   &lt;br&gt;
+并非如此！ &lt;br&gt;
+阻塞应该或上start_busy信号清空E级倒没错（防止ALUOp不变回0引发两个case语句都被执行）  &lt;br&gt;
+但是busy信号应当与MDALUOp_E&lt;code&gt;与&lt;/code&gt;起来再或    &lt;br&gt;
+因为乘除的结果放进HI，LO里是不影响其他指令的进行的，只有遇到与HI,LO相关的语句，我们才有阻塞的必要。  &lt;br&gt;
+通过这样优化，大大降低了阻塞率。&lt;/p&gt;
 &lt;p&gt;那么接下来的，就是大量指令引发的巨量测试。&lt;/p&gt;
 &lt;h2 id=&#34;测试文档&#34;&gt;测试文档
 &lt;/h2&gt;&lt;h3 id=&#34;单个指令的测试&#34;&gt;单个指令的测试

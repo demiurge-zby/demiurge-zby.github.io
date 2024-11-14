@@ -389,7 +389,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 14 分钟
+                    阅读时长: 15 分钟
                 </time>
             </div>
         
@@ -894,7 +894,12 @@ mf指令涉及到的写寄存器与转发的问题，都需要靠ALUData_E_true�
 </div>
 </div><p>当然还有模块本身的接口及其信息传递</p>
 <p>另外要注意的就是阻塞：   <br>
-阻塞实际上也就是多<code>或</code>上了两个信号start_busy和busy信号</p>
+<del>阻塞实际上也就是多<code>或</code>上了两个信号start_busy和busy信号</del>   <br>
+并非如此！ <br>
+阻塞应该或上start_busy信号清空E级倒没错（防止ALUOp不变回0引发两个case语句都被执行）  <br>
+但是busy信号应当与MDALUOp_E<code>与</code>起来再或    <br>
+因为乘除的结果放进HI，LO里是不影响其他指令的进行的，只有遇到与HI,LO相关的语句，我们才有阻塞的必要。  <br>
+通过这样优化，大大降低了阻塞率。</p>
 <p>那么接下来的，就是大量指令引发的巨量测试。</p>
 <h2 id="测试文档">测试文档
 </h2><h3 id="单个指令的测试">单个指令的测试
