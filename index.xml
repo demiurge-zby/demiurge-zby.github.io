@@ -884,7 +884,7 @@ add原来是数据信号啊不是控制信号！！！    &lt;br&gt;
 &lt;p&gt;害，M级如果发生异常中断了，那就也需要重新执行，也相当于未执行指令。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;好，一段小思考结束了。&lt;/p&gt;
-&lt;h4 id=&#34;存储异常中断的相关信息-1&#34;&gt;存储异常中断的相关信息
+&lt;h4 id=&#34;写入关键寄存器&#34;&gt;写入关键寄存器
 &lt;/h4&gt;&lt;p&gt;这一操作也应在CP0中完成  &lt;br&gt;
 其实也只是添加了如下内容。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
