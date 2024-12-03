@@ -1204,7 +1204,36 @@ req置1时，pc需变为0x00004180&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nc&#34;&gt;PCSel_E&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;reset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;PCSel_D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;外设及其交互&#34;&gt;外设及其交互
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;真的是这样吗？？&lt;/p&gt;
+&lt;p&gt;Update 12.2 上机debug&lt;/p&gt;
+&lt;p&gt;空泡要存的信息究竟是谁？&lt;/p&gt;
+&lt;p&gt;是&lt;code&gt;被阻塞指令&lt;/code&gt;的pc和&lt;code&gt;跳转指令&lt;/code&gt;的PCSel&lt;/p&gt;
+&lt;p&gt;因此&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;pc_E&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;reset&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;h00003000 :
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;               req ? 32&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;h00004180&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pc_D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;nc&#34;&gt;ExcCode_E_last&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;nc&#34;&gt;PCSel_E&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;reset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;PCSel_E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;两种继承方式！  PCSel直接继承，pc流水继承。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其次我已做了改动，eret不再是PCSel指令了。&lt;/p&gt;
+&lt;p&gt;为什么要这么做呢？&lt;/p&gt;
+&lt;p&gt;eret他要起到修正PCSel的作用这确实，但是他还有很多自己的特别作用！&lt;/p&gt;
+&lt;p&gt;你不能对它进行额外的流水处理！&lt;/p&gt;
+&lt;p&gt;你总不能让一句nop拥有eret性质吧，我们EXLClr可是跟eret很有关系的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;外设及其交互&#34;&gt;外设及其交互
 &lt;/h3&gt;&lt;p&gt;其实整体来说，外设的作用就只有信息存储与中断产生。&lt;/p&gt;
 &lt;h4 id=&#34;中断信号的导入&#34;&gt;中断信号的导入
 &lt;/h4&gt;&lt;p&gt;中断信号相对简单，只需要传递给HWInt接口。&lt;/p&gt;
@@ -1489,6 +1518,10 @@ if(`ctrl[2:1] == 2&amp;rsquo;b00)，那么就一直中断，进入IDLE继续循�
 &lt;p&gt;空泡应当是上一条指令生命的延续。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;我们处理的核心问题是EPC，所以说空泡要着重继承与之有关的PC值与Bd值。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;空泡要存的信息究竟是谁？&lt;/p&gt;
+&lt;p&gt;是&lt;code&gt;被阻塞指令&lt;/code&gt;的pc和&lt;code&gt;跳转指令&lt;/code&gt;的PCSel&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ol start=&#34;6&#34;&gt;
 &lt;li&gt;&lt;/li&gt;
 &lt;/ol&gt;

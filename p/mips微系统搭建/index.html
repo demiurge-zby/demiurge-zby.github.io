@@ -1591,7 +1591,36 @@ req置1时，pc需变为0x00004180</p>
 </span></span><span class="line"><span class="cl">        <span class="nc">PCSel_E</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nv">reset</span> <span class="o">||</span> <span class="nv">req</span><span class="p">)</span> <span class="kd">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="nc">PCSel_D</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="外设及其交互">外设及其交互
+</div><blockquote>
+<p>真的是这样吗？？</p>
+<p>Update 12.2 上机debug</p>
+<p>空泡要存的信息究竟是谁？</p>
+<p>是<code>被阻塞指令</code>的pc和<code>跳转指令</code>的PCSel</p>
+<p>因此</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl">        <span class="nv">pc_E</span> <span class="o">&lt;=</span> <span class="nv">reset</span> <span class="kd">?</span> <span class="mi">32</span><span class="s1">&#39;h00003000 :
+</span></span></span><span class="line"><span class="cl"><span class="s1">               req ? 32&#39;</span><span class="nv">h00004180</span> <span class="p">:</span> <span class="nv">pc_D</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">       <span class="nc">ExcCode_E_last</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">       <span class="nc">PCSel_E</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nv">reset</span> <span class="o">||</span> <span class="nv">req</span><span class="p">)</span> <span class="kd">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="nc">PCSel_E</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>两种继承方式！  PCSel直接继承，pc流水继承。</p>
+</blockquote>
+<blockquote>
+<p>其次我已做了改动，eret不再是PCSel指令了。</p>
+<p>为什么要这么做呢？</p>
+<p>eret他要起到修正PCSel的作用这确实，但是他还有很多自己的特别作用！</p>
+<p>你不能对它进行额外的流水处理！</p>
+<p>你总不能让一句nop拥有eret性质吧，我们EXLClr可是跟eret很有关系的。</p>
+</blockquote>
+<h3 id="外设及其交互">外设及其交互
 </h3><p>其实整体来说，外设的作用就只有信息存储与中断产生。</p>
 <h4 id="中断信号的导入">中断信号的导入
 </h4><p>中断信号相对简单，只需要传递给HWInt接口。</p>
@@ -1876,6 +1905,10 @@ if(`ctrl[2:1] == 2&rsquo;b00)，那么就一直中断，进入IDLE继续循环�
 <p>空泡应当是上一条指令生命的延续。</p>
 </blockquote>
 <p>我们处理的核心问题是EPC，所以说空泡要着重继承与之有关的PC值与Bd值。</p>
+<blockquote>
+<p>空泡要存的信息究竟是谁？</p>
+<p>是<code>被阻塞指令</code>的pc和<code>跳转指令</code>的PCSel</p>
+</blockquote>
 <ol start="6">
 <li></li>
 </ol>
