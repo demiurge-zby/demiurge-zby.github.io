@@ -264,12 +264,12 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
 </description>
         </item>
         <item>
-        <title>MIPS微系统搭建</title>
-        <link>https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</link>
+        <title>北航CO P7 MIPS微系统搭建</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Tue, 26 Nov 2024 20:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321.jpg" alt="Featured image of post MIPS微系统搭建" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321.jpg" alt="Featured image of post 北航CO P7 MIPS微系统搭建" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;还得是设计文档。     &lt;br&gt;
 每次一旦盯着理论看，又想看全又想做细，就会陷入P5当时的茫然       &lt;br&gt;
@@ -1217,10 +1217,10 @@ add原来是数据信号啊不是控制信号！！！    &lt;br&gt;
 &lt;p&gt;在这里我还是打算直接写好。因为这确实是一块很小的，而且与下一部分关系不大的内容。&lt;/p&gt;
 &lt;p&gt;核心就是添加mtc0,mfc0指令，放进流水线等等。&lt;/p&gt;
 &lt;p&gt;这个和mfhi,mthi的逻辑几乎完全相同。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image.png&#34;
 	width=&#34;835&#34;
 	height=&#34;338&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image_hu11000718608144521958.png 480w, https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image_hu9929124245675891110.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image_hu11000718608144521958.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image_hu9929124245675891110.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;mtc0&#34;
@@ -1235,10 +1235,10 @@ add原来是数据信号啊不是控制信号！！！    &lt;br&gt;
 写的地址是rd_M
 写的内容是MemData_M&lt;/p&gt;
 &lt;p&gt;注意控制信号Tuse_rt = 2&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1.png&#34;
 	width=&#34;821&#34;
 	height=&#34;325&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1_hu9237263761397138164.png 480w, https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1_hu10598161685923433414.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1_hu9237263761397138164.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1_hu10598161685923433414.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;mfc0&#34;
@@ -1743,10 +1743,10 @@ req置1时，pc需变为0x00004180&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并针对每一种模式绘制状态移图。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2.png&#34;
 	width=&#34;2836&#34;
 	height=&#34;1984&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2_hu10909008339873604075.png 480w, https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2_hu820388774512019784.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2_hu10909008339873604075.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2_hu820388774512019784.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;计时模式&#34;
@@ -1794,12 +1794,12 @@ if(`ctrl[2:1] == 2&amp;rsquo;b00)，那么就一直中断，进入IDLE继续循�
 </description>
         </item>
         <item>
-        <title>流水线CPU搭建（2）</title>
-        <link>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</link>
+        <title>北航CO P6 流水线CPU搭建（2）</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</link>
         <pubDate>Thu, 14 Nov 2024 14:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.jpg" alt="Featured image of post 流水线CPU搭建（2）" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.jpg" alt="Featured image of post 北航CO P6 流水线CPU搭建（2）" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;能通过P5实在是很好的一件事。 &lt;br&gt;
 在我第一道题直接AC确定课下无bug，在我很快做出前两道题确定自己能通过后，我真的如释重负。     &lt;br&gt;
@@ -2479,10 +2479,10 @@ sw,sh,sb都能用同样的按字节赋值的逻辑来执行。     &lt;br&gt;
 &lt;p&gt;我采用了手动构造法。   &lt;br&gt;
 通过建立策略矩阵，按照T的关系来进行构造        &lt;br&gt;
 具体分类方式如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image.png&#34;
 	width=&#34;495&#34;
 	height=&#34;168&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu8936851701592632260.png 480w, https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu17286652912400143360.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu8936851701592632260.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu17286652912400143360.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;RS&#34;
@@ -2493,10 +2493,10 @@ sw,sh,sb都能用同样的按字节赋值的逻辑来执行。     &lt;br&gt;
 		data-flex-basis=&#34;707px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1.png&#34;
 	width=&#34;488&#34;
 	height=&#34;194&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu10810789901981881303.png 480w, https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu8469799539572825714.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu10810789901981881303.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu8469799539572825714.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;RT&#34;
@@ -2511,12 +2511,12 @@ sw,sh,sb都能用同样的按字节赋值的逻辑来执行。     &lt;br&gt;
 </description>
         </item>
         <item>
-        <title>流水线CPU搭建（1）</title>
-        <link>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</link>
+        <title>北航CO P5 流水线CPU搭建（1）</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</link>
         <pubDate>Sun, 10 Nov 2024 22:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post 流水线CPU搭建（1）" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post 北航CO P5 流水线CPU搭建（1）" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;这周真的太忙了。 &lt;br&gt;
 不说流水线和数竞这两块大骨头，硬控两小时的党课，硬控两小时的挑战杯志愿者，硬控一小时的组会，硬控五小时的毛概PPT&amp;hellip;&lt;/p&gt;
@@ -3052,12 +3052,12 @@ W级为MemReadData,ALUData,Pc+8经过选择变为RegData的转发&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>单周期CPU的verilog搭建</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</link>
+        <title>北航CO P4 单周期CPU的verilog搭建</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Thu, 31 Oct 2024 14:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post 单周期CPU的verilog搭建" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post 北航CO P4 单周期CPU的verilog搭建" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;设计文档&#34;&gt;设计文档
 &lt;/h2&gt;&lt;h3 id=&#34;前情提要&#34;&gt;前情提要
 &lt;/h3&gt;&lt;p&gt;本次搭建需要实现的指令有&lt;/p&gt;
@@ -4889,20 +4889,20 @@ u的本意即为不考虑输出
 </description>
         </item>
         <item>
-        <title>单周期CPU的logisim搭建</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</link>
+        <title>北航CO P3 单周期CPU的logisim搭建</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Wed, 23 Oct 2024 12:30:15 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.jpg" alt="Featured image of post 单周期CPU的logisim搭建" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.jpg" alt="Featured image of post 北航CO P3 单周期CPU的logisim搭建" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;设计文档&#34;&gt;设计文档
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Key Point: 数据通路，控制器及其连接&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;要实现的核心指令介绍&#34;&gt;&lt;em&gt;要实现的核心指令介绍&lt;/em&gt;
 &lt;/h3&gt;&lt;p&gt;&lt;em&gt;add,sub,lui,ori,lw,sw,beq,nop&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712.png&#34;
 	width=&#34;933&#34;
 	height=&#34;478&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu4521862066652988474.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu6527373637613627573.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu4521862066652988474.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu6527373637613627573.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;add&#34;
@@ -4913,10 +4913,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;468px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c.png&#34;
 	width=&#34;681&#34;
 	height=&#34;615&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15950696484665334809.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15030801855970980233.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15950696484665334809.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15030801855970980233.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;sub&#34;
@@ -4927,10 +4927,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;265px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555.png&#34;
 	width=&#34;979&#34;
 	height=&#34;382&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu1283075729208184123.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu549884947335130086.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu1283075729208184123.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu549884947335130086.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;lui&#34;
@@ -4941,10 +4941,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;615px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0.png&#34;
 	width=&#34;859&#34;
 	height=&#34;364&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu6089035281481330811.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu15143189203310304875.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu6089035281481330811.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu15143189203310304875.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ori&#34;
@@ -4955,10 +4955,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;566px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd.png&#34;
 	width=&#34;1024&#34;
 	height=&#34;696&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu5787444218570001442.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu14363138147111407464.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu5787444218570001442.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu14363138147111407464.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;lw&#34;
@@ -4969,10 +4969,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;353px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb.png&#34;
 	width=&#34;1102&#34;
 	height=&#34;462&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu14048915399541119807.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu15226301040041250481.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu14048915399541119807.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu15226301040041250481.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;sw&#34;
@@ -4983,10 +4983,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;572px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e.png&#34;
 	width=&#34;919&#34;
 	height=&#34;423&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu10173568185453299968.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu11248677253474280199.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu10173568185453299968.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu11248677253474280199.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;beq&#34;
@@ -5056,10 +5056,10 @@ u的本意即为不考虑输出
 &lt;p&gt;在&lt;code&gt;下一周期上升沿&lt;/code&gt;才可输出下一PC&lt;/p&gt;
 &lt;p&gt;在输出PC以后，其他数据通路都基本呈现组合逻辑的形态，即时性进行输出内容的改变，即&lt;code&gt;Mealy机&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;（ROM和GRF的写入操作还是要等下一上升沿的，但是关于其写入的各项信息都是即时性得到的）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image.png&#34;
 	width=&#34;182&#34;
 	height=&#34;295&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu18402894227707405285.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu2088114210525228881.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu18402894227707405285.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu2088114210525228881.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;PC&#34;
@@ -5073,10 +5073,10 @@ u的本意即为不考虑输出
 &lt;blockquote&gt;
 &lt;p&gt;当然，最后输出PC值的时候要再加上 3000&lt;/p&gt;
 &lt;p&gt;若用PC初始化3000的方法，在复位后PC还是会输出 0&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21.png&#34;
 	width=&#34;377&#34;
 	height=&#34;144&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu14716474832504273100.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu12720420553382832580.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu14716474832504273100.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu12720420553382832580.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;PC最终输出&#34;
@@ -5100,10 +5100,10 @@ u的本意即为不考虑输出
 &lt;/blockquote&gt;
 &lt;p&gt;输出引脚：下一条指令PC值&lt;/p&gt;
 &lt;p&gt;！！经后续分析，对于XXXAndLink指令，PC+4是被需要的，那就直接从NPC输出&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1.png&#34;
 	width=&#34;1417&#34;
 	height=&#34;781&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu12523512501036799621.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu4579953089620044417.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu12523512501036799621.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu4579953089620044417.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;NPC内部&#34;
@@ -5115,10 +5115,10 @@ u的本意即为不考虑输出
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;NPC外部的连接也比较直白&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3.png&#34;
 	width=&#34;669&#34;
 	height=&#34;277&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu6911733393574829166.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu17525786565924149063.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu6911733393574829166.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu17525786565924149063.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;NPC外部&#34;
@@ -5146,10 +5146,10 @@ u的本意即为不考虑输出
 &lt;p&gt;右移之后还需bit_extender到12位&lt;/p&gt;
 &lt;p&gt;（一定要先右移再extend，因为实质上就是取PC[13:2]）&lt;/p&gt;
 &lt;p&gt;其余的没什么内容了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6.png&#34;
 	width=&#34;573&#34;
 	height=&#34;355&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu6045991245181311816.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu16423451455378359301.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu6045991245181311816.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu16423451455378359301.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;IM&#34;
@@ -5162,10 +5162,10 @@ u的本意即为不考虑输出
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;splitter&#34;&gt;&lt;strong&gt;Splitter&lt;/strong&gt;
 &lt;/h4&gt;&lt;p&gt;把这个东西单独拿出来写只是图个方便（）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5.png&#34;
 	width=&#34;351&#34;
 	height=&#34;417&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu5375450194594662751.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu585130256717954054.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu5375450194594662751.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu585130256717954054.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Splitter外部&#34;
@@ -5177,10 +5177,10 @@ u的本意即为不考虑输出
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Splitter内部的构造就只是一些小splitter&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-7.png&#34;
 	width=&#34;1283&#34;
 	height=&#34;755&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-7_hu13710146897897921960.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-7_hu5453203937233001731.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-7_hu13710146897897921960.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-7_hu5453203937233001731.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Splitter内部&#34;
@@ -5215,10 +5215,10 @@ u的本意即为不考虑输出
 &lt;/table&gt;
 &lt;p&gt;EXTOp具体怎么得到就是Ctrl要考虑的了&lt;/p&gt;
 &lt;p&gt;外部构造：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8.png&#34;
 	width=&#34;437&#34;
 	height=&#34;213&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu18409066551289080979.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu1629901207757935634.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu18409066551289080979.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu1629901207757935634.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;EXT外部&#34;
@@ -5230,10 +5230,10 @@ u的本意即为不考虑输出
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;内部结构：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9.png&#34;
 	width=&#34;1061&#34;
 	height=&#34;347&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu18307721998624566803.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu2551114675183221771.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu18307721998624566803.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu2551114675183221771.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;EXT内部&#34;
@@ -5247,10 +5247,10 @@ u的本意即为不考虑输出
 &lt;blockquote&gt;
 &lt;p&gt;好的我刚刚意识到bit_extender本来就可以输入EXTOp&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10.png&#34;
 	width=&#34;174&#34;
 	height=&#34;134&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu154531143146296665.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu17866711522868177896.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu154531143146296665.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu17866711522868177896.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;含input的bit extender&#34;
@@ -5268,10 +5268,10 @@ u的本意即为不考虑输出
 &lt;/h4&gt;&lt;p&gt;GRF相对来说就复杂多了&lt;/p&gt;
 &lt;p&gt;内部结构在P0课下已经搭好了，但其正确性仍需后续测试&lt;/p&gt;
 &lt;p&gt;在此仅略加展示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11.png&#34;
 	width=&#34;1108&#34;
 	height=&#34;759&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu4210210374249256110.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu8953490536122227811.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu4210210374249256110.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu8953490536122227811.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;GRF内部结构&#34;
@@ -5381,10 +5381,10 @@ u的本意即为不考虑输出
 &lt;/table&gt;
 &lt;p&gt;当然，除此之外还有最重要的&lt;code&gt;写使能信号&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;整体外部结构如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13.png&#34;
 	width=&#34;351&#34;
 	height=&#34;261&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu12886119237173023558.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu3228394010328776642.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu12886119237173023558.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu3228394010328776642.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;GRF外部结构&#34;
@@ -5395,10 +5395,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;322px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14.png&#34;
 	width=&#34;865&#34;
 	height=&#34;206&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu17698948292768786383.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu12492319156644773203.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu17698948292768786383.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu12492319156644773203.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;GRF外部结构之选择器&#34;
@@ -5444,10 +5444,10 @@ u的本意即为不考虑输出
 &lt;p&gt;加法和减法可使用同一加法器！！&lt;/p&gt;
 &lt;p&gt;a - b = a + ~b + 1&lt;/p&gt;
 &lt;p&gt;而两个数相加再加1正是加法器已经提供的功能！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15.png&#34;
 	width=&#34;127&#34;
 	height=&#34;112&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu7670816331985582121.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu2555603277317820934.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu7670816331985582121.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu2555603277317820934.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;加法器&#34;
@@ -5518,10 +5518,10 @@ u的本意即为不考虑输出
 &lt;p&gt;只需把上面两个表合起来，让ALUOp直接对应控制信号&lt;/p&gt;
 &lt;p&gt;用Combinational Analysis给我们写出来就行了&lt;/p&gt;
 &lt;p&gt;最终内部结构如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18.png&#34;
 	width=&#34;919&#34;
 	height=&#34;738&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu15443408531244071137.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu18285911102885118521.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu15443408531244071137.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu18285911102885118521.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ALU内部&#34;
@@ -5656,10 +5656,10 @@ u的本意即为不考虑输出
 &lt;p&gt;EXTOp对于beq指令没有意义&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;外部连接如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19.png&#34;
 	width=&#34;348&#34;
 	height=&#34;310&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu15036609705169223080.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu13205994924990698473.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu15036609705169223080.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu13205994924990698473.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ALU外部&#34;
@@ -5687,10 +5687,10 @@ u的本意即为不考虑输出
 &lt;p&gt;DM的A接口是地址，由ALU算出&lt;/p&gt;
 &lt;p&gt;要存入的信息则是GRF从rt读出来的RD2&lt;/p&gt;
 &lt;p&gt;连接比较简单&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2.png&#34;
 	width=&#34;1020&#34;
 	height=&#34;409&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu12922959104644849771.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu15321000782428197562.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu12922959104644849771.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu15321000782428197562.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;DM&#34;
@@ -5709,10 +5709,10 @@ u的本意即为不考虑输出
 &lt;p&gt;再由指令得出控制信号&lt;/p&gt;
 &lt;h4 id=&#34;由外部信号到指令&#34;&gt;由外部信号到指令
 &lt;/h4&gt;&lt;p&gt;得到指令的过程我使用了比较器，因此构建过程非常简单&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22.png&#34;
 	width=&#34;961&#34;
 	height=&#34;457&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu9875341364575394058.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu10601284135689048738.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu9875341364575394058.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu10601284135689048738.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CTRL之指令&#34;
@@ -5730,10 +5730,10 @@ u的本意即为不考虑输出
 &lt;p&gt;哪条指令需要这个信号，我们就给它&lt;code&gt;或&lt;/code&gt;到这个控制信号上&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这种拉线式的写法还是很方便的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23.png&#34;
 	width=&#34;1396&#34;
 	height=&#34;556&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12779756694418732884.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12424795517378101717.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12779756694418732884.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12424795517378101717.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CTRL之控制信号&#34;
@@ -5747,10 +5747,10 @@ u的本意即为不考虑输出
 &lt;p&gt;ALUOp就只能拜托我们亲爱的Combinational Analysis啦&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;CTRL在整个main电路中的书写还是比较简单的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24.png&#34;
 	width=&#34;430&#34;
 	height=&#34;404&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu10412559772791498343.png 480w, https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu8922208367055689427.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu10412559772791498343.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu8922208367055689427.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CTRL外部&#34;

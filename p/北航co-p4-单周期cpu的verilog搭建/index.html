@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="P4课下搭建任务">
-<title>单周期CPU的verilog搭建</title>
+<title>北航CO P4 单周期CPU的verilog搭建</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="单周期CPU的verilog搭建">
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航CO P4 单周期CPU的verilog搭建">
 <meta property='og:description' content="P4课下搭建任务">
-<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/'>
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-10-31T14:15:30&#43;08:00'/><meta property='article:modified_time' content='2024-10-31T14:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg' />
-<meta name="twitter:title" content="单周期CPU的verilog搭建">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-10-31T14:15:30&#43;08:00'/><meta property='article:modified_time' content='2024-10-31T14:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg' />
+<meta name="twitter:title" content="北航CO P4 单周期CPU的verilog搭建">
 <meta name="twitter:description" content="P4课下搭建任务"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg' />
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -315,13 +315,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">
-                <img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu18428968794692717903.jpg"
-                        srcset="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu18428968794692717903.jpg 800w, /p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu10752049279489191914.jpg 1600w"
+            <a href="/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">
+                <img src="/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu18428968794692717903.jpg"
+                        srcset="/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu18428968794692717903.jpg 800w, /p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu10752049279489191914.jpg 1600w"
                         width="800" 
                         height="1067" 
                         loading="lazy"
-                        alt="Featured image of post 单周期CPU的verilog搭建" />
+                        alt="Featured image of post 北航CO P4 单周期CPU的verilog搭建" />
                 
             </a>
         </div>
@@ -340,7 +340,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">单周期CPU的verilog搭建</a>
+            <a href="/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">北航CO P4 单周期CPU的verilog搭建</a>
         </h2>
     
         
@@ -2273,15 +2273,15 @@ u的本意即为不考虑输出
             
                 
 <article class="has-image">
-    <a href="/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/">
+    <a href="/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/">
         
         
             <div class="article-image">
-                <img src="/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321.862babfd3d031a2391163bb42862b527_hu11971392536427170347.jpg" 
+                <img src="/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321.862babfd3d031a2391163bb42862b527_hu11971392536427170347.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post MIPS微系统搭建"
+                        alt="Featured image of post 北航CO P7 MIPS微系统搭建"
                         
                         data-hash="md5-hiur/T0DGiORFju0KGK1Jw==">
                 
@@ -2289,7 +2289,7 @@ u的本意即为不考虑输出
         
 
         <div class="article-details">
-            <h2 class="article-title">MIPS微系统搭建</h2>
+            <h2 class="article-title">北航CO P7 MIPS微系统搭建</h2>
         </div>
     </a>
 </article>
@@ -2297,15 +2297,15 @@ u的本意即为不考虑输出
             
                 
 <article class="has-image">
-    <a href="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/">
+    <a href="/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/">
         
         
             <div class="article-image">
-                <img src="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.c966a98f5dc20403c6bdde606af63780_hu5151893074734151230.jpg" 
+                <img src="/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.c966a98f5dc20403c6bdde606af63780_hu5151893074734151230.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 流水线CPU搭建（2）"
+                        alt="Featured image of post 北航CO P6 流水线CPU搭建（2）"
                         
                         data-hash="md5-yWapj13CBAPGvd5gavY3gA==">
                 
@@ -2313,7 +2313,7 @@ u的本意即为不考虑输出
         
 
         <div class="article-details">
-            <h2 class="article-title">流水线CPU搭建（2）</h2>
+            <h2 class="article-title">北航CO P6 流水线CPU搭建（2）</h2>
         </div>
     </a>
 </article>
@@ -2321,15 +2321,15 @@ u的本意即为不考虑输出
             
                 
 <article class="has-image">
-    <a href="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">
+    <a href="/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">
         
         
             <div class="article-image">
-                <img src="/p/%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.6c83e8290b67f2c9655e6633dd9d5f9d_hu10155608615976178982.jpg" 
+                <img src="/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.6c83e8290b67f2c9655e6633dd9d5f9d_hu10155608615976178982.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 流水线CPU搭建（1）"
+                        alt="Featured image of post 北航CO P5 流水线CPU搭建（1）"
                         
                         data-hash="md5-bIPoKQtn8sllXmYz3Z1fnQ==">
                 
@@ -2337,7 +2337,7 @@ u的本意即为不考虑输出
         
 
         <div class="article-details">
-            <h2 class="article-title">流水线CPU搭建（1）</h2>
+            <h2 class="article-title">北航CO P5 流水线CPU搭建（1）</h2>
         </div>
     </a>
 </article>
@@ -2345,15 +2345,15 @@ u的本意即为不考虑输出
             
                 
 <article class="has-image">
-    <a href="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/">
+    <a href="/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/">
         
         
             <div class="article-image">
-                <img src="/p/%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.9a5154ce3599ee12edf7f4d6207e7271_hu8913948281270116246.jpg" 
+                <img src="/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.9a5154ce3599ee12edf7f4d6207e7271_hu8913948281270116246.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 单周期CPU的logisim搭建"
+                        alt="Featured image of post 北航CO P3 单周期CPU的logisim搭建"
                         
                         data-hash="md5-mlFUzjWZ7hLt9/TWIH5ycQ==">
                 
@@ -2361,7 +2361,7 @@ u的本意即为不考虑输出
         
 
         <div class="article-details">
-            <h2 class="article-title">单周期CPU的logisim搭建</h2>
+            <h2 class="article-title">北航CO P3 单周期CPU的logisim搭建</h2>
         </div>
     </a>
 </article>
