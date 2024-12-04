@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 18:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/%E9%97%B2%E8%81%8A/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 02 Dec 2024 18:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/%E9%97%B2%E8%81%8A/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>上机</title>
         <link>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</link>
-        <pubDate>Tue, 26 Nov 2024 18:15:30 +0800</pubDate>
+        <pubDate>Mon, 02 Dec 2024 18:15:30 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</guid>
         <description>&lt;img src="https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png" alt="Featured image of post 上机" /&gt;&lt;hr&gt;
@@ -190,7 +190,9 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
 &lt;p&gt;最终以0题通过幸终。&lt;/p&gt;
 &lt;h2 id=&#34;p6上机--2&#34;&gt;P6上机 —— 2
 &lt;/h2&gt;&lt;p&gt;时隔一个月的90min AK&lt;/p&gt;
-&lt;p&gt;怀揣着极度的不安与不满       &lt;br&gt;
+&lt;p&gt;怀揣着极度的不安与不满，&lt;/p&gt;
+&lt;p&gt;因为我真的不能保证我的课下确无问题。&lt;/p&gt;
+&lt;p&gt;就这样   &lt;br&gt;
 踏入了大家都在P7gap的空旷的考场&lt;/p&gt;
 &lt;p&gt;T1已经退化成add类指令了。。      &lt;br&gt;
 只是写入的值换成add结果的&lt;code&gt;最高位1&lt;/code&gt;&lt;/p&gt;
@@ -228,6 +230,37 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
 &lt;p&gt;另外，如果感觉自己课下没bug还课上全挂的别担心            &lt;br&gt;
 你的课下可能确无bug              &lt;br&gt;
 考场上的蠢度永远是自己无法想象的。&lt;/p&gt;
+&lt;h2 id=&#34;p7上机--1&#34;&gt;P7上机 —— 1
+&lt;/h2&gt;&lt;p&gt;紧接上文，考场外的蠢度你也无法想象。&lt;/p&gt;
+&lt;p&gt;四道强测：
+&lt;code&gt;功能强测&lt;/code&gt; &lt;code&gt;异常强测&lt;/code&gt; &lt;code&gt;中断强测&lt;/code&gt; &lt;code&gt;冒险强测&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;一道附加指令：Withdraw&lt;/p&gt;
+&lt;p&gt;120min&lt;/p&gt;
+&lt;p&gt;刚开始交前四题，全挂。&lt;/p&gt;
+&lt;p&gt;我有点崩溃，但是看到大家也是一片红，我深深感觉到强测之强。&lt;/p&gt;
+&lt;p&gt;（其实很多人都一遍过，只是我没看见）&lt;/p&gt;
+&lt;p&gt;直到&amp;hellip;&amp;hellip;zzy 60min交卷 zjy 70min交卷&lt;/p&gt;
+&lt;p&gt;我开始怀疑自己是不是真的写的太烂了。&lt;/p&gt;
+&lt;p&gt;一直到我看到ALE里面没引入Instr，我终于意识到：     &lt;br&gt;
+我最新版没提交！！！&lt;/p&gt;
+&lt;p&gt;一瞬间，像是通过了一束电流，整个人呆住了。&lt;/p&gt;
+&lt;p&gt;急忙地改回代码，中间还改错了一次，漏写了一个接口，让我期待落空了几分钟。。&lt;/p&gt;
+&lt;p&gt;不过当我把新版本改好，漫长的排队等待&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;绿了，绿了，绿了，都绿了！还差一个中断异常，2个点挂了。&lt;/p&gt;
+&lt;p&gt;中断区别于异常，我觉得比较易错的是空泡的处理，琢磨了一段时间，我好像意识到自己应当采用两种不同的流水方式。&lt;/p&gt;
+&lt;p&gt;但是这时已经8:55了。如果我提交并通过，我将没有机会再去不通过。&lt;/p&gt;
+&lt;p&gt;我迟迟没有提交。&lt;/p&gt;
+&lt;p&gt;我只顾着懊悔为什么没提交最新版，却没想到其实我可以先把前面一道题弄错，从而能够判断这题能不能过的同时顺利不通过。&lt;/p&gt;
+&lt;p&gt;希望能给大家一点启发吧。&lt;/p&gt;
+&lt;p&gt;Update 12.3  &lt;br&gt;
+没想到中测就能测出来这个问题。&lt;/p&gt;
+&lt;p&gt;我特意交了一版没修改nop流水方式的，居然挂掉了一个点，和当时中断强测的点略有类似。&lt;/p&gt;
+&lt;p&gt;而且修改之后便通过了。&lt;/p&gt;
+&lt;p&gt;那可能，就是这样了？&lt;/p&gt;
+&lt;p&gt;我好像安定下来了，但又诚惶诚恐。&lt;/p&gt;
+&lt;p&gt;跟P6好像啊，一场考试下来还不知道自己课下还有没有问题。&lt;/p&gt;
+&lt;p&gt;据说加指令的题也不简单。2h能拿下吗？&lt;/p&gt;
+&lt;p&gt;紧张，紧张。&lt;/p&gt;
 </description>
         </item>
         <item>

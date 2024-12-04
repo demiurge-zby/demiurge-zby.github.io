@@ -7,7 +7,263 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/co/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 02 Dec 2024 18:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/co/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>上机</title>
+        <link>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</link>
+        <pubDate>Mon, 02 Dec 2024 18:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png" alt="Featured image of post 上机" /&gt;&lt;hr&gt;
+&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;本系列从P6上机结束开始制作，因此靠前的一些P可能记不清楚&lt;/li&gt;
+&lt;li&gt;本系列主观色彩较强，不过尚有一定准确信息&lt;/li&gt;
+&lt;li&gt;作者在P6献出首挂，并玉玉了一周（？）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接下来，就以我的吐槽为主了&lt;/p&gt;
+&lt;h2 id=&#34;pre上机&#34;&gt;Pre上机
+&lt;/h2&gt;&lt;p&gt;考三道题，分别为logisim,verilog,MIPS&lt;/p&gt;
+&lt;p&gt;原120min延时到180min&lt;/p&gt;
+&lt;p&gt;logisim考查：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;同步复位&lt;/code&gt;：不能使用clk和reset的与（clk在上升沿与clk == 1是两个概念！）&lt;/p&gt;
+&lt;p&gt;正确的方法：1. 用reset，MUX控制输入数据，再把修正后的数据传给寄存器        &lt;br&gt;
+2. 不使用MUX，而是将reset取反（再位拓展）后与Data&lt;code&gt;与&lt;/code&gt;起来(reset==1时，结果为0&amp;amp;Data=0)，这样来控制输入数据       &lt;br&gt;
+实质上两种方法都是保证给要写入寄存器的值做一个实时修正        &lt;br&gt;
+保证只有上升沿那一瞬间，才能决定是否进行复位&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;状态机&lt;/code&gt;： 已经很久远了，个人认为把斐波那契这种高阶的弄会就好&lt;/p&gt;
+&lt;p&gt;加入An传进寄存器1，再传进寄存器2，再传进寄存器3,       &lt;br&gt;
+那么当寄存器3为An时，寄存器2即为A(n+1)，寄存器1为A(n+2)    &lt;br&gt;
+这就是logisim里暂时保留数据若干个时钟周期的途径&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;verilog和MIPS考得都很水&lt;/p&gt;
+&lt;p&gt;建议一定要学好verilog的组合逻辑循环怎么写    &lt;br&gt;
+或者你能够熟练地打表     &lt;br&gt;
+让你求32位的和，你就用C写出来一个a[0]+a[1]+&amp;hellip;倒也未尝不可&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;always&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;使用说明&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;全使用&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;初始化&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;所有变量&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;全是reg型和integer型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;有用的东西最后再assign到某个wire变量上去&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;p0上机&#34;&gt;P0上机
+&lt;/h2&gt;&lt;p&gt;三道题，logisim练习&lt;/p&gt;
+&lt;p&gt;原120min延时到180min&lt;/p&gt;
+&lt;p&gt;是谁国庆前一晚还在上机啊&lt;/p&gt;
+&lt;p&gt;但是贴心的助教们出了一次极水极水的题！&lt;/p&gt;
+&lt;p&gt;考察内容：善于封装子模块、Mealy(米利)机和Moore(摩尔)机的判别&lt;/p&gt;
+&lt;p&gt;大家都是一路AC&lt;/p&gt;
+&lt;p&gt;我WA了一次，&lt;code&gt;比较器&lt;/code&gt;要设置成Unsigned！！！&lt;/p&gt;
+&lt;h2 id=&#34;p1上机&#34;&gt;P1上机
+&lt;/h2&gt;&lt;p&gt;三道题，verilog练习&lt;/p&gt;
+&lt;p&gt;原120min延时到180min&lt;/p&gt;
+&lt;p&gt;一般是一个简单的组合逻辑加两个状态机&lt;/p&gt;
+&lt;p&gt;本来以为没有延时，差点以为要挂了，所以第二题做出来就开始摆了&lt;/p&gt;
+&lt;p&gt;错因没有什么价值，纯粹打错符号了&lt;/p&gt;
+&lt;p&gt;第三题是一个很复杂的状态机   &lt;br&gt;
+难度堪比cpu_checker(笑)&lt;/p&gt;
+&lt;p&gt;我最后搭出来了，但是WA了几个点，也没弄明白WA在哪&lt;/p&gt;
+&lt;h2 id=&#34;p2上机&#34;&gt;P2上机
+&lt;/h2&gt;&lt;p&gt;三道题，MIPS练习&lt;/p&gt;
+&lt;p&gt;原120min延时到180min&lt;/p&gt;
+&lt;p&gt;T1 未给出C代码       &lt;br&gt;
+题面如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;已知b,m,n，在[m,n]中找出一个整数a，使得a%b最小，输出a%b
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看起来还唬唬人，但是真从m循环到n不动一点脑子肯定是会TLE的&lt;/p&gt;
+&lt;p&gt;这东西他让你输出的是余数，那可就太简单了     &lt;br&gt;
+要么是0，要么是m%b   &lt;br&gt;
+如果是0，说明m到n存在b的倍数，那么n/b就不等于m/b     &lt;br&gt;
+所以其实就是考察div,mfhi,mflo的使用      &lt;br&gt;
+伪代码如下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有没有\n我忘了（）&lt;/p&gt;
+&lt;p&gt;T2考循环T3考递归
+都有C语言代码，静静翻译就好，一般不会有bug       &lt;br&gt;
+如果有，着重检查你的bgt,blt,beq,bne等等是否写反&lt;/p&gt;
+&lt;p&gt;递归就着重两个字“保护”       &lt;br&gt;
+保护的时间是jal前和jal后（物理意义，不是代码执行顺序）       &lt;br&gt;
+jal前表示进入递归之前做好现场保护        &lt;br&gt;
+jal后则是退出上一层递归回到jal的PC+4的位置,恢复当时现场&lt;/p&gt;
+&lt;h2 id=&#34;p3上机&#34;&gt;P3上机
+&lt;/h2&gt;&lt;p&gt;终于来到我们的CPU阶段！      &lt;br&gt;
+以及闯关制的开始。&lt;/p&gt;
+&lt;p&gt;最后一次使用logisim&lt;/p&gt;
+&lt;p&gt;自此开始，课上是否通过基本等价于课下搭的CPU是否有误&lt;/p&gt;
+&lt;p&gt;三道题，新指令添加&lt;/p&gt;
+&lt;p&gt;原120min延时到150min（这个不同届不一样）&lt;/p&gt;
+&lt;p&gt;本次没有明显感受，难度不太高     &lt;br&gt;
+课下的记忆点更充实些&lt;/p&gt;
+&lt;h2 id=&#34;p4上机&#34;&gt;P4上机
+&lt;/h2&gt;&lt;p&gt;三道题，新指令添加&lt;/p&gt;
+&lt;p&gt;120min 无延时。&lt;/p&gt;
+&lt;p&gt;题目也不难，和T3难度相当&lt;/p&gt;
+&lt;p&gt;作者没能AK。&lt;/p&gt;
+&lt;p&gt;因为有课下bug!!!!!&lt;/p&gt;
+&lt;p&gt;但是这个bug太小了。      &lt;br&gt;
+jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
+但是我写的其实是jr $rt&lt;/p&gt;
+&lt;p&gt;我的$rt在jr的时候又默认赋值31号   &lt;br&gt;
+确实很难理解当时为什么会这样写&lt;/p&gt;
+&lt;p&gt;玉玉随笔：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    历经了轮轮评测，
+    也从未想过要在课上debug。
+    但我看到了完全与题意无关的报错信息，
+    我意识到了课下着实存在着的bug，
+    我惊惶，但又或是接受，接受我真的会在P4倒下，会在这条闯关路上走得一坨烂泥。
+
+    在课上最终de出了bug，确是万幸。
+
+    只是那瞬间，无休止的荒诞涌进一触即破的思绪，
+    畏惧后怕质疑庆幸猛地迸发开来，
+    只留呆滞的躯体挪动着不太灵光的鼠标，悄悄地把RD2改成RD1，
+    看着界面的圆圈转着转着，拉着我去和P4说再见了。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;p5上机&#34;&gt;P5上机
+&lt;/h2&gt;&lt;p&gt;120min 无延时。&lt;/p&gt;
+&lt;p&gt;课上过一题 = 课下没问题 = P5必通过！&lt;/p&gt;
+&lt;p&gt;又一次玉玉评论：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;反思下今天的P5上机
+前两题顺风顺水
+第三题做的悠哉悠哉不知不觉只剩10min
+交了一发 10个点过9个 挂了个TLE
+意识到这题卡时间
+3min认真思考 优化效率，调整WM转发通路
+再交 还是TLE
+再次思考 阻塞条件再细化 但是始终没有落实到寄存器冲突上
+再交还是TLE
+哈哈 只剩下2min了
+那 就交卷吧
+越是静下来，越是容易意识到问题关键
+为什么当时不把那17个寄存器都排除呢？
+只是担心于它的不确定性，却不去研究他的变化范围，结果自然会失败。
+不过我真没想到这题卡时间卡这么死。
+2min很漫长。等了很久，等考试结束，
+等未通过的同学都离开考场，
+等问答环节来临，
+我问助教究竟要优化到什么等级：
+答案显然。
+对安全的15个寄存器，不转发的路当然可以不阻塞。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;p6上机--1&#34;&gt;P6上机 —— 1
+&lt;/h2&gt;&lt;p&gt;史上最惊为天人的一集&lt;/p&gt;
+&lt;p&gt;真的有人课下没bug课上还能全挂？！！&lt;/p&gt;
+&lt;p&gt;T1时序逻辑掺组合逻辑             &lt;br&gt;
+在乘除模块里求最高位1最低位0结果一直输出xxxx         &lt;br&gt;
+鉴定为初始化错误             &lt;br&gt;
+一de就是80min&lt;/p&gt;
+&lt;p&gt;T2更是荒谬       &lt;br&gt;
+32位累加没有设置位宽             &lt;br&gt;
+这么简单的问题在当时混乱的大脑下藏了40min&lt;/p&gt;
+&lt;p&gt;后续又做了一堆无用功，漫无目的地构造测试数据，感动自己地打表等等。。&lt;/p&gt;
+&lt;p&gt;最终以0题通过幸终。&lt;/p&gt;
+&lt;h2 id=&#34;p6上机--2&#34;&gt;P6上机 —— 2
+&lt;/h2&gt;&lt;p&gt;时隔一个月的90min AK&lt;/p&gt;
+&lt;p&gt;怀揣着极度的不安与不满，&lt;/p&gt;
+&lt;p&gt;因为我真的不能保证我的课下确无问题。&lt;/p&gt;
+&lt;p&gt;就这样   &lt;br&gt;
+踏入了大家都在P7gap的空旷的考场&lt;/p&gt;
+&lt;p&gt;T1已经退化成add类指令了。。      &lt;br&gt;
+只是写入的值换成add结果的&lt;code&gt;最高位1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;最高位1&lt;/code&gt;？这我可太熟了（苦笑    &lt;br&gt;
+这不上周给我绊死的那位嘛         &lt;br&gt;
+这周周中好好地跟他清算了一波         &lt;br&gt;
+没想到还能见面，那就再也不见了&lt;/p&gt;
+&lt;p&gt;T2一看条件存储，我先跳了哈&lt;/p&gt;
+&lt;p&gt;T3经典跳转类     &lt;br&gt;
+完成基础功能&lt;code&gt;TLE&lt;/code&gt;最后一个点              &lt;br&gt;
+&lt;code&gt;乘除模块偷跑&lt;/code&gt;却又&lt;code&gt;超速&lt;/code&gt;一个点       &lt;br&gt;
+意识到&lt;code&gt;不能暗改乘除&lt;/code&gt;         &lt;br&gt;
+但是我也不知道怎么做&lt;/p&gt;
+&lt;p&gt;此时我智慧的大脑居然认为题目出错了       &lt;br&gt;
+肯定有死循环             &lt;br&gt;
+不然我有的点过快了这个点还能过慢？&lt;/p&gt;
+&lt;p&gt;然后我开始等待助教说题目有误（抽象的大脑是这样的&lt;/p&gt;
+&lt;p&gt;然后去做P2了         &lt;br&gt;
+大致扫一眼：什么条件跳转。。标题欺诈。       &lt;br&gt;
+再定睛一看：啊？又是&lt;code&gt;最高位1&lt;/code&gt;？      &lt;br&gt;
+只是把DM写的&lt;code&gt;地址&lt;/code&gt;加上了一个与&lt;code&gt;最高位1&lt;/code&gt;有关的数&lt;/p&gt;
+&lt;p&gt;最麻烦的事大抵也就是DMWr的位扩展         &lt;br&gt;
+但是还好我提前改成三位了&lt;/p&gt;
+&lt;p&gt;T2过关，我开始回去看T3&lt;/p&gt;
+&lt;p&gt;诶诶         &lt;br&gt;
+这个T3一个点TLE      &lt;br&gt;
+这不就是我的P5吗？？&lt;/p&gt;
+&lt;p&gt;我P5的反思居然还派上用场了       &lt;br&gt;
+我开始去思考我的阻塞&amp;hellip;&amp;hellip;       &lt;br&gt;
+用不到，不需转发就不阻塞！！         &lt;br&gt;
+又写了四行优化阻塞逻辑       &lt;br&gt;
+交了一发终于AC。&lt;/p&gt;
+&lt;p&gt;最后，还是喷一下上周。       &lt;br&gt;
+课下无bug课上全挂真是神人了。&lt;/p&gt;
+&lt;p&gt;另外，如果感觉自己课下没bug还课上全挂的别担心            &lt;br&gt;
+你的课下可能确无bug              &lt;br&gt;
+考场上的蠢度永远是自己无法想象的。&lt;/p&gt;
+&lt;h2 id=&#34;p7上机--1&#34;&gt;P7上机 —— 1
+&lt;/h2&gt;&lt;p&gt;紧接上文，考场外的蠢度你也无法想象。&lt;/p&gt;
+&lt;p&gt;四道强测：
+&lt;code&gt;功能强测&lt;/code&gt; &lt;code&gt;异常强测&lt;/code&gt; &lt;code&gt;中断强测&lt;/code&gt; &lt;code&gt;冒险强测&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;一道附加指令：Withdraw&lt;/p&gt;
+&lt;p&gt;120min&lt;/p&gt;
+&lt;p&gt;刚开始交前四题，全挂。&lt;/p&gt;
+&lt;p&gt;我有点崩溃，但是看到大家也是一片红，我深深感觉到强测之强。&lt;/p&gt;
+&lt;p&gt;（其实很多人都一遍过，只是我没看见）&lt;/p&gt;
+&lt;p&gt;直到&amp;hellip;&amp;hellip;zzy 60min交卷 zjy 70min交卷&lt;/p&gt;
+&lt;p&gt;我开始怀疑自己是不是真的写的太烂了。&lt;/p&gt;
+&lt;p&gt;一直到我看到ALE里面没引入Instr，我终于意识到：     &lt;br&gt;
+我最新版没提交！！！&lt;/p&gt;
+&lt;p&gt;一瞬间，像是通过了一束电流，整个人呆住了。&lt;/p&gt;
+&lt;p&gt;急忙地改回代码，中间还改错了一次，漏写了一个接口，让我期待落空了几分钟。。&lt;/p&gt;
+&lt;p&gt;不过当我把新版本改好，漫长的排队等待&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;绿了，绿了，绿了，都绿了！还差一个中断异常，2个点挂了。&lt;/p&gt;
+&lt;p&gt;中断区别于异常，我觉得比较易错的是空泡的处理，琢磨了一段时间，我好像意识到自己应当采用两种不同的流水方式。&lt;/p&gt;
+&lt;p&gt;但是这时已经8:55了。如果我提交并通过，我将没有机会再去不通过。&lt;/p&gt;
+&lt;p&gt;我迟迟没有提交。&lt;/p&gt;
+&lt;p&gt;我只顾着懊悔为什么没提交最新版，却没想到其实我可以先把前面一道题弄错，从而能够判断这题能不能过的同时顺利不通过。&lt;/p&gt;
+&lt;p&gt;希望能给大家一点启发吧。&lt;/p&gt;
+&lt;p&gt;Update 12.3  &lt;br&gt;
+没想到中测就能测出来这个问题。&lt;/p&gt;
+&lt;p&gt;我特意交了一版没修改nop流水方式的，居然挂掉了一个点，和当时中断强测的点略有类似。&lt;/p&gt;
+&lt;p&gt;而且修改之后便通过了。&lt;/p&gt;
+&lt;p&gt;那可能，就是这样了？&lt;/p&gt;
+&lt;p&gt;我好像安定下来了，但又诚惶诚恐。&lt;/p&gt;
+&lt;p&gt;跟P6好像啊，一场考试下来还不知道自己课下还有没有问题。&lt;/p&gt;
+&lt;p&gt;据说加指令的题也不简单。2h能拿下吗？&lt;/p&gt;
+&lt;p&gt;紧张，紧张。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>MIPS微系统搭建</title>
         <link>https://demiurge-zby.github.io/p/mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Tue, 26 Nov 2024 20:15:30 +0800</pubDate>
@@ -1535,229 +1791,6 @@ if(`ctrl[2:1] == 2&amp;rsquo;b00)，那么就一直中断，进入IDLE继续循�
 异常中断在延迟槽发生，那么就屏蔽req时的写GRF，让此时W级的写指令无效。&lt;/p&gt;
 &lt;p&gt;下一次回到这句话的时候才是真正执行。&lt;/p&gt;
 &lt;p&gt;倘若延迟槽又出现问题，那就再让此时W级写使能无效即可。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>上机</title>
-        <link>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</link>
-        <pubDate>Tue, 26 Nov 2024 18:15:30 +0800</pubDate>
-        
-        <guid>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png" alt="Featured image of post 上机" /&gt;&lt;hr&gt;
-&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;本系列从P6上机结束开始制作，因此靠前的一些P可能记不清楚&lt;/li&gt;
-&lt;li&gt;本系列主观色彩较强，不过尚有一定准确信息&lt;/li&gt;
-&lt;li&gt;作者在P6献出首挂，并玉玉了一周（？）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;接下来，就以我的吐槽为主了&lt;/p&gt;
-&lt;h2 id=&#34;pre上机&#34;&gt;Pre上机
-&lt;/h2&gt;&lt;p&gt;考三道题，分别为logisim,verilog,MIPS&lt;/p&gt;
-&lt;p&gt;原120min延时到180min&lt;/p&gt;
-&lt;p&gt;logisim考查：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;同步复位&lt;/code&gt;：不能使用clk和reset的与（clk在上升沿与clk == 1是两个概念！）&lt;/p&gt;
-&lt;p&gt;正确的方法：1. 用reset，MUX控制输入数据，再把修正后的数据传给寄存器        &lt;br&gt;
-2. 不使用MUX，而是将reset取反（再位拓展）后与Data&lt;code&gt;与&lt;/code&gt;起来(reset==1时，结果为0&amp;amp;Data=0)，这样来控制输入数据       &lt;br&gt;
-实质上两种方法都是保证给要写入寄存器的值做一个实时修正        &lt;br&gt;
-保证只有上升沿那一瞬间，才能决定是否进行复位&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;状态机&lt;/code&gt;： 已经很久远了，个人认为把斐波那契这种高阶的弄会就好&lt;/p&gt;
-&lt;p&gt;加入An传进寄存器1，再传进寄存器2，再传进寄存器3,       &lt;br&gt;
-那么当寄存器3为An时，寄存器2即为A(n+1)，寄存器1为A(n+2)    &lt;br&gt;
-这就是logisim里暂时保留数据若干个时钟周期的途径&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;verilog和MIPS考得都很水&lt;/p&gt;
-&lt;p&gt;建议一定要学好verilog的组合逻辑循环怎么写    &lt;br&gt;
-或者你能够熟练地打表     &lt;br&gt;
-让你求32位的和，你就用C写出来一个a[0]+a[1]+&amp;hellip;倒也未尝不可&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-v&#34; data-lang=&#34;v&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;always&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;使用说明&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;全使用&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;初始化&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;所有变量&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;全是reg型和integer型&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;有用的东西最后再assign到某个wire变量上去&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;p0上机&#34;&gt;P0上机
-&lt;/h2&gt;&lt;p&gt;三道题，logisim练习&lt;/p&gt;
-&lt;p&gt;原120min延时到180min&lt;/p&gt;
-&lt;p&gt;是谁国庆前一晚还在上机啊&lt;/p&gt;
-&lt;p&gt;但是贴心的助教们出了一次极水极水的题！&lt;/p&gt;
-&lt;p&gt;考察内容：善于封装子模块、Mealy(米利)机和Moore(摩尔)机的判别&lt;/p&gt;
-&lt;p&gt;大家都是一路AC&lt;/p&gt;
-&lt;p&gt;我WA了一次，&lt;code&gt;比较器&lt;/code&gt;要设置成Unsigned！！！&lt;/p&gt;
-&lt;h2 id=&#34;p1上机&#34;&gt;P1上机
-&lt;/h2&gt;&lt;p&gt;三道题，verilog练习&lt;/p&gt;
-&lt;p&gt;原120min延时到180min&lt;/p&gt;
-&lt;p&gt;一般是一个简单的组合逻辑加两个状态机&lt;/p&gt;
-&lt;p&gt;本来以为没有延时，差点以为要挂了，所以第二题做出来就开始摆了&lt;/p&gt;
-&lt;p&gt;错因没有什么价值，纯粹打错符号了&lt;/p&gt;
-&lt;p&gt;第三题是一个很复杂的状态机   &lt;br&gt;
-难度堪比cpu_checker(笑)&lt;/p&gt;
-&lt;p&gt;我最后搭出来了，但是WA了几个点，也没弄明白WA在哪&lt;/p&gt;
-&lt;h2 id=&#34;p2上机&#34;&gt;P2上机
-&lt;/h2&gt;&lt;p&gt;三道题，MIPS练习&lt;/p&gt;
-&lt;p&gt;原120min延时到180min&lt;/p&gt;
-&lt;p&gt;T1 未给出C代码       &lt;br&gt;
-题面如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;已知b,m,n，在[m,n]中找出一个整数a，使得a%b最小，输出a%b
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;看起来还唬唬人，但是真从m循环到n不动一点脑子肯定是会TLE的&lt;/p&gt;
-&lt;p&gt;这东西他让你输出的是余数，那可就太简单了     &lt;br&gt;
-要么是0，要么是m%b   &lt;br&gt;
-如果是0，说明m到n存在b的倍数，那么n/b就不等于m/b     &lt;br&gt;
-所以其实就是考察div,mfhi,mflo的使用      &lt;br&gt;
-伪代码如下&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;有没有\n我忘了（）&lt;/p&gt;
-&lt;p&gt;T2考循环T3考递归
-都有C语言代码，静静翻译就好，一般不会有bug       &lt;br&gt;
-如果有，着重检查你的bgt,blt,beq,bne等等是否写反&lt;/p&gt;
-&lt;p&gt;递归就着重两个字“保护”       &lt;br&gt;
-保护的时间是jal前和jal后（物理意义，不是代码执行顺序）       &lt;br&gt;
-jal前表示进入递归之前做好现场保护        &lt;br&gt;
-jal后则是退出上一层递归回到jal的PC+4的位置,恢复当时现场&lt;/p&gt;
-&lt;h2 id=&#34;p3上机&#34;&gt;P3上机
-&lt;/h2&gt;&lt;p&gt;终于来到我们的CPU阶段！      &lt;br&gt;
-以及闯关制的开始。&lt;/p&gt;
-&lt;p&gt;最后一次使用logisim&lt;/p&gt;
-&lt;p&gt;自此开始，课上是否通过基本等价于课下搭的CPU是否有误&lt;/p&gt;
-&lt;p&gt;三道题，新指令添加&lt;/p&gt;
-&lt;p&gt;原120min延时到150min（这个不同届不一样）&lt;/p&gt;
-&lt;p&gt;本次没有明显感受，难度不太高     &lt;br&gt;
-课下的记忆点更充实些&lt;/p&gt;
-&lt;h2 id=&#34;p4上机&#34;&gt;P4上机
-&lt;/h2&gt;&lt;p&gt;三道题，新指令添加&lt;/p&gt;
-&lt;p&gt;120min 无延时。&lt;/p&gt;
-&lt;p&gt;题目也不难，和T3难度相当&lt;/p&gt;
-&lt;p&gt;作者没能AK。&lt;/p&gt;
-&lt;p&gt;因为有课下bug!!!!!&lt;/p&gt;
-&lt;p&gt;但是这个bug太小了。      &lt;br&gt;
-jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
-但是我写的其实是jr $rt&lt;/p&gt;
-&lt;p&gt;我的$rt在jr的时候又默认赋值31号   &lt;br&gt;
-确实很难理解当时为什么会这样写&lt;/p&gt;
-&lt;p&gt;玉玉随笔：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    历经了轮轮评测，
-    也从未想过要在课上debug。
-    但我看到了完全与题意无关的报错信息，
-    我意识到了课下着实存在着的bug，
-    我惊惶，但又或是接受，接受我真的会在P4倒下，会在这条闯关路上走得一坨烂泥。
-
-    在课上最终de出了bug，确是万幸。
-
-    只是那瞬间，无休止的荒诞涌进一触即破的思绪，
-    畏惧后怕质疑庆幸猛地迸发开来，
-    只留呆滞的躯体挪动着不太灵光的鼠标，悄悄地把RD2改成RD1，
-    看着界面的圆圈转着转着，拉着我去和P4说再见了。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;p5上机&#34;&gt;P5上机
-&lt;/h2&gt;&lt;p&gt;120min 无延时。&lt;/p&gt;
-&lt;p&gt;课上过一题 = 课下没问题 = P5必通过！&lt;/p&gt;
-&lt;p&gt;又一次玉玉评论：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;反思下今天的P5上机
-前两题顺风顺水
-第三题做的悠哉悠哉不知不觉只剩10min
-交了一发 10个点过9个 挂了个TLE
-意识到这题卡时间
-3min认真思考 优化效率，调整WM转发通路
-再交 还是TLE
-再次思考 阻塞条件再细化 但是始终没有落实到寄存器冲突上
-再交还是TLE
-哈哈 只剩下2min了
-那 就交卷吧
-越是静下来，越是容易意识到问题关键
-为什么当时不把那17个寄存器都排除呢？
-只是担心于它的不确定性，却不去研究他的变化范围，结果自然会失败。
-不过我真没想到这题卡时间卡这么死。
-2min很漫长。等了很久，等考试结束，
-等未通过的同学都离开考场，
-等问答环节来临，
-我问助教究竟要优化到什么等级：
-答案显然。
-对安全的15个寄存器，不转发的路当然可以不阻塞。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;p6上机--1&#34;&gt;P6上机 —— 1
-&lt;/h2&gt;&lt;p&gt;史上最惊为天人的一集&lt;/p&gt;
-&lt;p&gt;真的有人课下没bug课上还能全挂？！！&lt;/p&gt;
-&lt;p&gt;T1时序逻辑掺组合逻辑             &lt;br&gt;
-在乘除模块里求最高位1最低位0结果一直输出xxxx         &lt;br&gt;
-鉴定为初始化错误             &lt;br&gt;
-一de就是80min&lt;/p&gt;
-&lt;p&gt;T2更是荒谬       &lt;br&gt;
-32位累加没有设置位宽             &lt;br&gt;
-这么简单的问题在当时混乱的大脑下藏了40min&lt;/p&gt;
-&lt;p&gt;后续又做了一堆无用功，漫无目的地构造测试数据，感动自己地打表等等。。&lt;/p&gt;
-&lt;p&gt;最终以0题通过幸终。&lt;/p&gt;
-&lt;h2 id=&#34;p6上机--2&#34;&gt;P6上机 —— 2
-&lt;/h2&gt;&lt;p&gt;时隔一个月的90min AK&lt;/p&gt;
-&lt;p&gt;怀揣着极度的不安与不满       &lt;br&gt;
-踏入了大家都在P7gap的空旷的考场&lt;/p&gt;
-&lt;p&gt;T1已经退化成add类指令了。。      &lt;br&gt;
-只是写入的值换成add结果的&lt;code&gt;最高位1&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;最高位1&lt;/code&gt;？这我可太熟了（苦笑    &lt;br&gt;
-这不上周给我绊死的那位嘛         &lt;br&gt;
-这周周中好好地跟他清算了一波         &lt;br&gt;
-没想到还能见面，那就再也不见了&lt;/p&gt;
-&lt;p&gt;T2一看条件存储，我先跳了哈&lt;/p&gt;
-&lt;p&gt;T3经典跳转类     &lt;br&gt;
-完成基础功能&lt;code&gt;TLE&lt;/code&gt;最后一个点              &lt;br&gt;
-&lt;code&gt;乘除模块偷跑&lt;/code&gt;却又&lt;code&gt;超速&lt;/code&gt;一个点       &lt;br&gt;
-意识到&lt;code&gt;不能暗改乘除&lt;/code&gt;         &lt;br&gt;
-但是我也不知道怎么做&lt;/p&gt;
-&lt;p&gt;此时我智慧的大脑居然认为题目出错了       &lt;br&gt;
-肯定有死循环             &lt;br&gt;
-不然我有的点过快了这个点还能过慢？&lt;/p&gt;
-&lt;p&gt;然后我开始等待助教说题目有误（抽象的大脑是这样的&lt;/p&gt;
-&lt;p&gt;然后去做P2了         &lt;br&gt;
-大致扫一眼：什么条件跳转。。标题欺诈。       &lt;br&gt;
-再定睛一看：啊？又是&lt;code&gt;最高位1&lt;/code&gt;？      &lt;br&gt;
-只是把DM写的&lt;code&gt;地址&lt;/code&gt;加上了一个与&lt;code&gt;最高位1&lt;/code&gt;有关的数&lt;/p&gt;
-&lt;p&gt;最麻烦的事大抵也就是DMWr的位扩展         &lt;br&gt;
-但是还好我提前改成三位了&lt;/p&gt;
-&lt;p&gt;T2过关，我开始回去看T3&lt;/p&gt;
-&lt;p&gt;诶诶         &lt;br&gt;
-这个T3一个点TLE      &lt;br&gt;
-这不就是我的P5吗？？&lt;/p&gt;
-&lt;p&gt;我P5的反思居然还派上用场了       &lt;br&gt;
-我开始去思考我的阻塞&amp;hellip;&amp;hellip;       &lt;br&gt;
-用不到，不需转发就不阻塞！！         &lt;br&gt;
-又写了四行优化阻塞逻辑       &lt;br&gt;
-交了一发终于AC。&lt;/p&gt;
-&lt;p&gt;最后，还是喷一下上周。       &lt;br&gt;
-课下无bug课上全挂真是神人了。&lt;/p&gt;
-&lt;p&gt;另外，如果感觉自己课下没bug还课上全挂的别担心            &lt;br&gt;
-你的课下可能确无bug              &lt;br&gt;
-考场上的蠢度永远是自己无法想象的。&lt;/p&gt;
 </description>
         </item>
         <item>

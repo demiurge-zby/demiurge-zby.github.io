@@ -10,7 +10,7 @@
 <meta property='og:description' content="纯粹的杂谈">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-26T18:15:30&#43;08:00'/><meta property='article:modified_time' content='2024-11-26T18:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-02T18:15:30&#43;08:00'/><meta property='article:modified_time' content='2024-12-02T18:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png' />
 <meta name="twitter:title" content="上机">
 <meta name="twitter:description" content="纯粹的杂谈"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png' />
@@ -278,6 +278,7 @@
     <li><a href="#p5上机">P5上机</a></li>
     <li><a href="#p6上机--1">P6上机 —— 1</a></li>
     <li><a href="#p6上机--2">P6上机 —— 2</a></li>
+    <li><a href="#p7上机--1">P7上机 —— 1</a></li>
   </ol>
 </nav>
         </div>
@@ -347,7 +348,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2024-11-26</time>
+                <time class="article-time--published">2024-12-02</time>
             </div>
         
 
@@ -362,7 +363,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 6 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -554,7 +555,9 @@ jr <code>$rs</code>而非jr<code>$31</code>
 <p>最终以0题通过幸终。</p>
 <h2 id="p6上机--2">P6上机 —— 2
 </h2><p>时隔一个月的90min AK</p>
-<p>怀揣着极度的不安与不满       <br>
+<p>怀揣着极度的不安与不满，</p>
+<p>因为我真的不能保证我的课下确无问题。</p>
+<p>就这样   <br>
 踏入了大家都在P7gap的空旷的考场</p>
 <p>T1已经退化成add类指令了。。      <br>
 只是写入的值换成add结果的<code>最高位1</code></p>
@@ -592,6 +595,37 @@ jr <code>$rs</code>而非jr<code>$31</code>
 <p>另外，如果感觉自己课下没bug还课上全挂的别担心            <br>
 你的课下可能确无bug              <br>
 考场上的蠢度永远是自己无法想象的。</p>
+<h2 id="p7上机--1">P7上机 —— 1
+</h2><p>紧接上文，考场外的蠢度你也无法想象。</p>
+<p>四道强测：
+<code>功能强测</code> <code>异常强测</code> <code>中断强测</code> <code>冒险强测</code></p>
+<p>一道附加指令：Withdraw</p>
+<p>120min</p>
+<p>刚开始交前四题，全挂。</p>
+<p>我有点崩溃，但是看到大家也是一片红，我深深感觉到强测之强。</p>
+<p>（其实很多人都一遍过，只是我没看见）</p>
+<p>直到&hellip;&hellip;zzy 60min交卷 zjy 70min交卷</p>
+<p>我开始怀疑自己是不是真的写的太烂了。</p>
+<p>一直到我看到ALE里面没引入Instr，我终于意识到：     <br>
+我最新版没提交！！！</p>
+<p>一瞬间，像是通过了一束电流，整个人呆住了。</p>
+<p>急忙地改回代码，中间还改错了一次，漏写了一个接口，让我期待落空了几分钟。。</p>
+<p>不过当我把新版本改好，漫长的排队等待&hellip;&hellip;</p>
+<p>绿了，绿了，绿了，都绿了！还差一个中断异常，2个点挂了。</p>
+<p>中断区别于异常，我觉得比较易错的是空泡的处理，琢磨了一段时间，我好像意识到自己应当采用两种不同的流水方式。</p>
+<p>但是这时已经8:55了。如果我提交并通过，我将没有机会再去不通过。</p>
+<p>我迟迟没有提交。</p>
+<p>我只顾着懊悔为什么没提交最新版，却没想到其实我可以先把前面一道题弄错，从而能够判断这题能不能过的同时顺利不通过。</p>
+<p>希望能给大家一点启发吧。</p>
+<p>Update 12.3  <br>
+没想到中测就能测出来这个问题。</p>
+<p>我特意交了一版没修改nop流水方式的，居然挂掉了一个点，和当时中断强测的点略有类似。</p>
+<p>而且修改之后便通过了。</p>
+<p>那可能，就是这样了？</p>
+<p>我好像安定下来了，但又诚惶诚恐。</p>
+<p>跟P6好像啊，一场考试下来还不知道自己课下还有没有问题。</p>
+<p>据说加指令的题也不简单。2h能拿下吗？</p>
+<p>紧张，紧张。</p>
 
 </section>
 
