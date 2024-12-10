@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Mon, 02 Dec 2024 18:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 10 Dec 2024 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>上机</title>
         <link>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</link>
-        <pubDate>Mon, 02 Dec 2024 18:15:30 +0800</pubDate>
+        <pubDate>Tue, 10 Dec 2024 12:15:30 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</guid>
         <description>&lt;img src="https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png" alt="Featured image of post 上机" /&gt;&lt;hr&gt;
@@ -261,6 +261,89 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
 &lt;p&gt;跟P6好像啊，一场考试下来还不知道自己课下还有没有问题。&lt;/p&gt;
 &lt;p&gt;据说加指令的题也不简单。2h能拿下吗？&lt;/p&gt;
 &lt;p&gt;紧张，紧张。&lt;/p&gt;
+&lt;h2 id=&#34;p7上机--2&#34;&gt;P7上机 —— 2
+&lt;/h2&gt;&lt;p&gt;在开考前进行了龙芯杯的宣讲。     &lt;br&gt;
+考试时间7:40-9:40，注意时间把控。&lt;/p&gt;
+&lt;p&gt;其实对自己的MIPS还是略带自信的，因为我确实不相信他会加强测试点。&lt;/p&gt;
+&lt;p&gt;建议下载压缩包后直接速提交，不要再做解压，或是装进ISE等事项。你要提交的就是源代码。&lt;/p&gt;
+&lt;p&gt;否则就会喜提20min的gap，心神不宁地排300余人的队&lt;/p&gt;
+&lt;p&gt;弱测过了之后，完全不可懈怠！一定要严谨严肃。&lt;/p&gt;
+&lt;p&gt;本次题目为：     &lt;br&gt;
+添加异常&lt;code&gt;WATCH&lt;/code&gt;      &lt;br&gt;
+触发方式有二：&lt;code&gt;IMWATCH&lt;/code&gt;与&lt;code&gt;DMWATCH&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;PC0添加18号寄存器与19号寄存器（支持正常读写）&lt;/p&gt;
+&lt;p&gt;19号寄存器为异常判断使能     &lt;br&gt;
+18号寄存器高16位是IM敏感值，低16位是DM敏感值&lt;/p&gt;
+&lt;p&gt;异常逻辑就是  &lt;br&gt;
+当前pc与IM敏感值&lt;code&gt;相同&lt;/code&gt;时且19号寄存器使能满足要求时触发IMWATCH      &lt;br&gt;
+DM敏感值在sl指令读写地址&lt;code&gt;范围内&lt;/code&gt;时且19号寄存器使能满足要求时触发DMWATCH&lt;/p&gt;
+&lt;p&gt;几个注意点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;异常优先级。以往的异常是不会同时出现的，而如今IMWATCH随时可触发，DMWATCH可以与ADEL,ADES同时触发&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;IMWATCH优先级低于取指异常，高于其他异常。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;DMWATCH优先级低于ADES,ADEL（对于同时出现的异常）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;范围内。对于DMWATCH注意要匹配的是在范围内，如sw，DM敏感值是四个值中的一个即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里我们可以大胆用ADDR&amp;lt;= watchaddr &amp;lt;=ADDR+3, 他一定字对齐，否则会出现优先级更高的ADES异常。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;乘除槽。IMWATCH可以在任何指令上触发，因此乘除法也可能是异常指令，不能等到他走到M级在检测出来，此时为时已晚，乘除槽停不下来。   &lt;br&gt;
+因此需要提前判断好IMWATCH异常，将其加入MDALU模块。&lt;/li&gt;
+&lt;li&gt;阻塞。mtc0 18和19都是危险的，会直接影响WATCH的判断，因此必须阻塞。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这决定了IMWATCH不能在F级判断，因为这样会使D级为mfc0 18,19也需要阻塞，而这会导致死循环，因为我们的阻塞逻辑就是在D级实现的，那么mtc0就被卡在D级不得动弹。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在D级判断IMWATCH是较为正确的选择。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;作者其实没有一交即过。   &lt;br&gt;
+让我以为这个测试很强。&lt;/p&gt;
+&lt;p&gt;其实是因为写成了CP018号寄存器&lt;a class=&#34;link&#34; href=&#34;%e4%b9%9f%e5%b0%b1%e6%98%afDM%e6%95%8f%e6%84%9f%e5%80%bc&#34; &gt;31:16&lt;/a&gt; == pc[31:16]&amp;hellip;&lt;/p&gt;
+&lt;p&gt;应该是CP018号寄存器&lt;a class=&#34;link&#34; href=&#34;%e4%b9%9f%e5%b0%b1%e6%98%afDM%e6%95%8f%e6%84%9f%e5%80%bc&#34; &gt;31:16&lt;/a&gt; == pc[15:0]，     &lt;br&gt;
+或者{16&amp;rsquo;b0,CP018号寄存器&lt;a class=&#34;link&#34; href=&#34;%e4%b9%9f%e5%b0%b1%e6%98%afDM%e6%95%8f%e6%84%9f%e5%80%bc&#34; &gt;31:16&lt;/a&gt;} == pc.&lt;/p&gt;
+&lt;p&gt;改完没想到就直接过了。
+一瞬间，惊喜而释然。&lt;/p&gt;
+&lt;h2 id=&#34;说在最后&#34;&gt;说在最后
+&lt;/h2&gt;&lt;p&gt;计组上机就这样圆满结束了。&lt;/p&gt;
+&lt;p&gt;在提问环节，助教问我：
+你觉得你在计组闯关的收获是什么？&lt;/p&gt;
+&lt;p&gt;回首，一路走来实在坎坷。&lt;/p&gt;
+&lt;p&gt;Pre的茫然
+P1的无力
+P4的惊愕
+P5的懊悔
+P6的愚钝
+P7的畏惧&lt;/p&gt;
+&lt;p&gt;平稳，或是激荡地
+每一个Project都有着课上课下的呐喊&lt;/p&gt;
+&lt;p&gt;从第一个单周期CPU
+到封装流水线CPU可支持中断支持外设支持异常处理支持30余条指令的MIPS微系统
+诞辰不久的博客也日渐丰满&lt;/p&gt;
+&lt;p&gt;这像是一种高压下的凝聚
+引领着我们去稳健处理庞大的项目&lt;/p&gt;
+&lt;p&gt;从形象框架到代码实现
+从独立执行到高效流水
+从单一指令到复杂延时
+从固定运行到异常中断&lt;/p&gt;
+&lt;p&gt;不同的Project把步骤分离
+并予以较强的正确性检查
+使得P5不必担心P4部件的实现
+P6不必担心P5转发阻塞的实现
+P7不必担心P6CPU本身的实现&amp;hellip;&lt;/p&gt;
+&lt;p&gt;未来的项目倘若没有这些具象的规划
+根本不敢想有多困难。&lt;/p&gt;
+&lt;p&gt;当然，感谢每一位同行者的帮助与支持。非常感谢。&lt;/p&gt;
+&lt;p&gt;CO上机结束，我也终于可以好好躺下，大脑放得很空很空，吸入又呼出些跳动的空气，悄悄捕捉又一颗充满爱与自由的心。&lt;/p&gt;
 </description>
         </item>
         <item>
