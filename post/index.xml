@@ -1781,8 +1781,8 @@ req置1时，pc需变为0x00004180&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;防止漏判&#34;&gt;防止漏判
 &lt;/h3&gt;&lt;p&gt;构造出所有引发异常的组合。&lt;/p&gt;
-&lt;p&gt;你只需要对着你那个表格，一种种地敲&lt;/p&gt;
-&lt;p&gt;关键是看好ExcCode，这个最简单，但也往往是大量错误出现的源泉&lt;/p&gt;
+&lt;p&gt;你只需要对着你那个表格，一种种地敲，一种种检验。&lt;/p&gt;
+&lt;p&gt;关键是看好ExcCode，这个最简单，但也往往是大量错误出现的地方。&lt;/p&gt;
 &lt;h3 id=&#34;防止误判&#34;&gt;防止误判
 &lt;/h3&gt;&lt;p&gt;这个是比较难发现的，在使用COKiller之前，我碰运气确实找到了一些样例误判，但是用了COKiller我才发现div触发Ov没有被我发现。&lt;/p&gt;
 &lt;p&gt;我的建议就是多用评测机，多测点数据，认真看代码。&lt;/p&gt;
