@@ -173,7 +173,7 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;真的有人课下没bug课上还能全挂？！！&lt;/p&gt;
 &lt;p&gt;T1时序逻辑掺组合逻辑             &lt;br&gt;
 在乘除模块里求最高位1最低位0结果一直输出xxxx         &lt;br&gt;
-结果是为没初始化             &lt;br&gt;
+结果是因为没初始化             &lt;br&gt;
 一de就是80min&lt;/p&gt;
 &lt;p&gt;T2更是荒谬       &lt;br&gt;
 32位累加没有设置位宽             &lt;br&gt;
