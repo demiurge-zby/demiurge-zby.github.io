@@ -751,8 +751,7 @@ Ov:<code>add</code>,<code>addi</code>,<code>sub</code>的<code>算数溢出</cod
 </span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">AdES_E</span> <span class="o">=</span> <span class="p">(</span><span class="nc">DMWr_E</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">overflow_add</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>大错特错！大错特错！！！         <br>
-怎么把计算结果当成ALUOp用了！！</p>
+</div><p>大错特错！大错特错！！！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -764,22 +763,23 @@ Ov:<code>add</code>,<code>addi</code>,<code>sub</code>的<code>算数溢出</cod
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>de出这个bug真费了不少功夫。    <br>
-第一次de出来只是意识到ALUOp是ADD,未必指令就是ADD,还有可能是store与load指令       <br>
-结果还没过       <br>
-这次很随便一个数据居然de出来了       <br>
-因为一条ori指令出现了Ov!!!       <br>
-这让我感到极为震惊。我就看了看Ov的所有相关信号————           <br>
+第一次de出来是意识到ALUOp是ADD,未必指令就是ADD,    <br>
+还有可能是store与load指令！！</p>
+<p>结果还没过。。</p>
+<p>这次很随便一个数据居然de出来了       <br>
+因为一条ori指令出现了Ov!!!</p>
+<p>这让我感到极为震惊。我就看了看Ov的所有相关信号————           <br>
 当我看到add,并发现它是一个32位数时&hellip;&hellip;</p>
 <p>太抽象了！！！！！
 add原来是数据信号啊不是控制信号！！！    <br>
-控制信号是ALUOp啊喂！！！！！</p>
+控制信号是ALUOp！！！！！</p>
 <p>Update 12.1:     <br>
 这也太抽象了！！！       <br>
 感谢COKiller!!!  <br>
 没想到能在这里de三次。。</p>
-<p>第一次是因为sw犯了Ov让我de出来       <br>
-第二次是因为ori犯了Ov让我de出来
-第三次是div犯了Ov!!!!!!!</p>
+<p>第一次是因为sw犯了Ov       <br>
+第二次是因为ori犯了Ov    <br>
+第三次是因为div犯了Ov!!!!!!!</p>
 <p>天打五雷轰。</p>
 <p>multu,divu乃至于mfc0，mfhi都在ALUOp对应ADD！！！</p>
 <p>所以我老实了。   <br>
@@ -959,8 +959,8 @@ add原来是数据信号啊不是控制信号！！！    <br>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
-<p>不同的异常类型确实应该或起来，但是地址越界是一种异常！！</p>
-<p>且必须满足在所有区域之外！内部表述应使用<code>与</code></p>
+<p>不同的异常类型确实应该或起来，但是地址越界是<code>一</code>种异常！！   <br>
+必须同时满足在所有区域之外！内部表述应使用<code>与</code></p>
 <p>W级不产生异常。  <br>
 至此，我们貌似写完了所有异常。</p>
 <h3 id="cp0及异常处理">CP0及异常处理
@@ -1187,15 +1187,15 @@ add原来是数据信号啊不是控制信号！！！    <br>
 <pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">wire</span> <span class="nc">Exc_req</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">wire</span> <span class="nc">Int_req</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Exc_req</span> <span class="o">=</span> <span class="p">(</span><span class="nc">ExcCodeIn</span> <span class="o">!=</span> <span class="mi">5</span><span class="s1">&#39;b0) &amp;&amp; (`EXL == 1&#39;</span><span class="nv">b0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Int_req</span> <span class="o">=</span> <span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="nc">HWInt</span> <span class="o">&amp;</span> <span class="sc">`IM)) &amp;&amp; `</span><span class="nc">IE</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="sc">`EXL == 1&#39;b0);
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Exc_req</span> <span class="o">=</span> <span class="p">(</span><span class="nc">ExcCodeIn</span> <span class="o">!=</span> <span class="mi">5</span><span class="s1">&#39;b0) &amp;&amp; (`EXL == 1&#39;</span><span class="nv">b0</span><span class="p">);</span> <span class="c1">//我们不太确定EXL为1时能否触发异常。但是其实我是把EXL==1当成全局异常判断使能看待的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">assign</span> <span class="nc">Int_req</span> <span class="o">=</span> <span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="nc">HWInt</span> <span class="o">&amp;</span> <span class="sc">`IM)) &amp;&amp; `</span><span class="nc">IE</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="sc">`EXL == 1&#39;b0);
 </span></span></span><span class="line"><span class="cl"><span class="sc">
 </span></span></span><span class="line"><span class="cl"><span class="sc">assign req = Exc_req || Int_req;
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里比较巧妙的是 <strong>(|(HWInt &amp; `IM))</strong> 这一语句</p>
 <p>巧妙使用了按位与，先得到各个信号<code>是否中断</code>且<code>中断是否被允许</code>    <br>
-然后再把这6位或起来</p>
+然后再把这6位或起来（不或也可以）</p>
 <p>当然最后不能忘了全局使能与EXL限制</p>
 <h4 id="存储异常中断的相关信息">存储异常中断的相关信息
 </h4><div class="highlight"><div class="chroma">
@@ -1327,8 +1327,8 @@ add原来是数据信号啊不是控制信号！！！    <br>
 </span></span></span><span class="line"><span class="cl"><span class="cm">        if (EXLCLr) begin
 </span></span></span><span class="line"><span class="cl"><span class="cm">            `EXL &lt;= 1&#39;b0;
 </span></span></span><span class="line"><span class="cl"><span class="cm">        end*/</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">en</span><span class="p">)</span> <span class="nv">begin</span>
-</span></span><span class="line"><span class="cl">            <span class="nv">case</span> <span class="p">(</span><span class="nc">CP0Addr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">en</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">req</span><span class="p">)</span> <span class="nv">begin</span> <span class="c1">//执行mtc0时发生中断，则不予写入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nv">case</span> <span class="p">(</span><span class="nc">CP0Addr</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">                <span class="mi">5</span><span class="s1">&#39;d12 : begin
 </span></span></span><span class="line"><span class="cl"><span class="s1">                    SR &lt;= CP0In; 
 </span></span></span><span class="line"><span class="cl"><span class="s1">                end
@@ -1442,6 +1442,7 @@ add原来是数据信号啊不是控制信号！！！    <br>
 <p>语句清空
 利用CP0生成的req信号对所有流水线寄存器进行清空。
 （因为CP0在M级，那么此时W级的操作在本时钟周期已完成，由于同步复位，清空寄存器只会影响下一周期的内容，这样下一周期所有指令都已完成，不受干扰。）</p>
+<p>（注意精确异常，认真阅读教程中关于乘除槽精确异常的讲述。 ）</p>
 </li>
 </ul>
 <blockquote>
@@ -1449,6 +1450,8 @@ add原来是数据信号啊不是控制信号！！！    <br>
 <p>eret在D级，此时eret的下一条指令（物理层面）在F级</p>
 <p>我们需要F级的指令是EPC而非eret的下一条指令</p>
 </blockquote>
+<hr>
+<p>以下内容看乐子就行</p>
 <blockquote>
 <p>我们采用一种奇妙的做法：</p>
 <p>当eret在F级时，我们直接进行检测该指令是否是eret。</p>
@@ -1523,6 +1526,7 @@ npc是跳转指令算出来的npc</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们看似用的是D级的阻塞，但这样也能起到阻塞F级eret的作用</p>
+<hr>
 <blockquote>
 <p>这一段的写法过于创新。我们不得不有把这种设计毁掉的打算。</p>
 </blockquote>

@@ -76,7 +76,7 @@
 &lt;p&gt;错因没有什么价值，纯粹打错符号了&lt;/p&gt;
 &lt;p&gt;第三题是一个很复杂的状态机   &lt;br&gt;
 难度堪比cpu_checker(笑)&lt;/p&gt;
-&lt;p&gt;我最后搭出来了，但是WA了几个点，也没弄明白WA在哪&lt;/p&gt;
+&lt;p&gt;最后搭出来WA了几个点，也没弄明白WA在哪&lt;/p&gt;
 &lt;h2 id=&#34;p2上机&#34;&gt;P2上机
 &lt;/h2&gt;&lt;p&gt;三道题，MIPS练习&lt;/p&gt;
 &lt;p&gt;原120min延时到180min&lt;/p&gt;
@@ -132,10 +132,7 @@ jal后则是退出上一层递归回到jal的PC+4的位置,恢复当时现场&lt
 &lt;p&gt;作者没能AK。&lt;/p&gt;
 &lt;p&gt;因为有课下bug!!!!!&lt;/p&gt;
 &lt;p&gt;但是这个bug太小了。      &lt;br&gt;
-jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
-但是我写的其实是jr $rt&lt;/p&gt;
-&lt;p&gt;我的$rt在jr的时候又默认赋值31号   &lt;br&gt;
-确实很难理解当时为什么会这样写&lt;/p&gt;
+jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;玉玉随笔：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;    历经了轮轮评测，
     也从未想过要在课上debug。
@@ -147,41 +144,36 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
 
     只是那瞬间，无休止的荒诞涌进一触即破的思绪，
     畏惧后怕质疑庆幸猛地迸发开来，
-    只留呆滞的躯体挪动着不太灵光的鼠标，悄悄地把RD2改成RD1，
+    只留呆滞的躯体挪动着不太灵光的鼠标，            
     看着界面的圆圈转着转着，拉着我去和P4说再见了。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;p5上机&#34;&gt;P5上机
 &lt;/h2&gt;&lt;p&gt;120min 无延时。&lt;/p&gt;
 &lt;p&gt;课上过一题 = 课下没问题 = P5必通过！&lt;/p&gt;
-&lt;p&gt;又一次玉玉评论：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;反思下今天的P5上机
-前两题顺风顺水
-第三题做的悠哉悠哉不知不觉只剩10min
-交了一发 10个点过9个 挂了个TLE
-意识到这题卡时间
-3min认真思考 优化效率，调整WM转发通路
-再交 还是TLE
-再次思考 阻塞条件再细化 但是始终没有落实到寄存器冲突上
-再交还是TLE
-哈哈 只剩下2min了
-那 就交卷吧
-越是静下来，越是容易意识到问题关键
-为什么当时不把那17个寄存器都排除呢？
-只是担心于它的不确定性，却不去研究他的变化范围，结果自然会失败。
-不过我真没想到这题卡时间卡这么死。
-2min很漫长。等了很久，等考试结束，
-等未通过的同学都离开考场，
-等问答环节来临，
-我问助教究竟要优化到什么等级：
-答案显然。
-对安全的15个寄存器，不转发的路当然可以不阻塞。
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;前两题顺风顺水   &lt;br&gt;
+第三题做的悠哉悠哉不知不觉只剩10min&lt;/p&gt;
+&lt;p&gt;交了一发 10个点过9个 挂了个TLE&lt;/p&gt;
+&lt;p&gt;意识到这题卡时间    &lt;br&gt;
+阻塞条件再细化 但是始终没有落实到寄存器冲突上    &lt;br&gt;
+再交还是TLE      &lt;br&gt;
+只剩下2min了     &lt;br&gt;
+那 就交卷吧&lt;/p&gt;
+&lt;p&gt;越是静下来，越是容易意识到问题关键   &lt;br&gt;
+为什么当时不把那17个寄存器都排除呢？     &lt;br&gt;
+阻塞条件一定要细化！！   &lt;br&gt;
+只是担心于它的不确定性，怎么不去研究他的变化范围。&lt;/p&gt;
+&lt;p&gt;2min很漫长。等了很久，等考试结束，   &lt;br&gt;
+等未通过的同学都离开考场，   &lt;br&gt;
+等问答环节来临，     &lt;br&gt;
+我问助教究竟要优化到什么等级：   &lt;br&gt;
+答案显然。   &lt;br&gt;
+对于一定不被写的15个寄存器，不会有转发当然不必阻塞。&lt;/p&gt;
 &lt;h2 id=&#34;p6上机--1&#34;&gt;P6上机 —— 1
 &lt;/h2&gt;&lt;p&gt;史上最惊为天人的一集&lt;/p&gt;
 &lt;p&gt;真的有人课下没bug课上还能全挂？！！&lt;/p&gt;
 &lt;p&gt;T1时序逻辑掺组合逻辑             &lt;br&gt;
 在乘除模块里求最高位1最低位0结果一直输出xxxx         &lt;br&gt;
-鉴定为初始化错误             &lt;br&gt;
+结果是为没初始化             &lt;br&gt;
 一de就是80min&lt;/p&gt;
 &lt;p&gt;T2更是荒谬       &lt;br&gt;
 32位累加没有设置位宽             &lt;br&gt;
@@ -200,18 +192,17 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
 这不上周给我绊死的那位嘛         &lt;br&gt;
 这周周中好好地跟他清算了一波         &lt;br&gt;
 没想到还能见面，那就再也不见了&lt;/p&gt;
-&lt;p&gt;T2一看条件存储，我先跳了哈&lt;/p&gt;
+&lt;p&gt;T2一看条件存储，我先跳了&lt;/p&gt;
 &lt;p&gt;T3经典跳转类     &lt;br&gt;
 完成基础功能&lt;code&gt;TLE&lt;/code&gt;最后一个点              &lt;br&gt;
 &lt;code&gt;乘除模块偷跑&lt;/code&gt;却又&lt;code&gt;超速&lt;/code&gt;一个点       &lt;br&gt;
 意识到&lt;code&gt;不能暗改乘除&lt;/code&gt;         &lt;br&gt;
 但是我也不知道怎么做&lt;/p&gt;
-&lt;p&gt;此时我智慧的大脑居然认为题目出错了       &lt;br&gt;
+&lt;p&gt;此时我智慧的大脑居然认为测试点出错了       &lt;br&gt;
 肯定有死循环             &lt;br&gt;
 不然我有的点过快了这个点还能过慢？&lt;/p&gt;
-&lt;p&gt;然后我开始等待助教说题目有误（抽象的大脑是这样的&lt;/p&gt;
 &lt;p&gt;然后去做P2了         &lt;br&gt;
-大致扫一眼：什么条件跳转。。标题欺诈。       &lt;br&gt;
+大致扫一眼：什么条件跳转。。原来是标题欺诈。       &lt;br&gt;
 再定睛一看：啊？又是&lt;code&gt;最高位1&lt;/code&gt;？      &lt;br&gt;
 只是把DM写的&lt;code&gt;地址&lt;/code&gt;加上了一个与&lt;code&gt;最高位1&lt;/code&gt;有关的数&lt;/p&gt;
 &lt;p&gt;最麻烦的事大抵也就是DMWr的位扩展         &lt;br&gt;
@@ -246,14 +237,16 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
 &lt;p&gt;一瞬间，像是通过了一束电流，整个人呆住了。&lt;/p&gt;
 &lt;p&gt;急忙地改回代码，中间还改错了一次，漏写了一个接口，让我期待落空了几分钟。。&lt;/p&gt;
 &lt;p&gt;不过当我把新版本改好，漫长的排队等待&amp;hellip;&amp;hellip;&lt;/p&gt;
-&lt;p&gt;绿了，绿了，绿了，都绿了！还差一个中断异常，2个点挂了。&lt;/p&gt;
+&lt;p&gt;绿了，绿了，红了？绿了？ 还差一个中断异常，有2个点挂了。&lt;/p&gt;
 &lt;p&gt;中断区别于异常，我觉得比较易错的是空泡的处理，琢磨了一段时间，我好像意识到自己应当采用两种不同的流水方式。&lt;/p&gt;
 &lt;p&gt;但是这时已经8:55了。如果我提交并通过，我将没有机会再去不通过。&lt;/p&gt;
 &lt;p&gt;我迟迟没有提交。&lt;/p&gt;
 &lt;p&gt;我只顾着懊悔为什么没提交最新版，却没想到其实我可以先把前面一道题弄错，从而能够判断这题能不能过的同时顺利不通过。&lt;/p&gt;
 &lt;p&gt;希望能给大家一点启发吧。&lt;/p&gt;
-&lt;p&gt;Update 12.3  &lt;br&gt;
-没想到中测就能测出来这个问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Update 12.3&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;没想到中测就能测出来这个问题。&lt;/p&gt;
 &lt;p&gt;我特意交了一版没修改nop流水方式的，居然挂掉了一个点，和当时中断强测的点略有类似。&lt;/p&gt;
 &lt;p&gt;而且修改之后便通过了。&lt;/p&gt;
 &lt;p&gt;那可能，就是这样了？&lt;/p&gt;
@@ -267,7 +260,7 @@ jr &lt;code&gt;$rs&lt;/code&gt;而非jr&lt;code&gt;$31&lt;/code&gt;
 &lt;p&gt;其实对自己的MIPS还是略带自信的，因为我确实不相信他会加强测试点。&lt;/p&gt;
 &lt;p&gt;建议下载压缩包后直接速提交，不要再做解压，或是装进ISE等事项。你要提交的就是源代码。&lt;/p&gt;
 &lt;p&gt;否则就会喜提20min的gap，心神不宁地排300余人的队&lt;/p&gt;
-&lt;p&gt;弱测过了之后，完全不可懈怠！一定要严谨严肃。&lt;/p&gt;
+&lt;p&gt;强测过了之后，完全不可懈怠！一定要严谨严肃。&lt;/p&gt;
 &lt;p&gt;本次题目为：     &lt;br&gt;
 添加异常&lt;code&gt;WATCH&lt;/code&gt;      &lt;br&gt;
 触发方式有二：&lt;code&gt;IMWATCH&lt;/code&gt;与&lt;code&gt;DMWATCH&lt;/code&gt;&lt;/p&gt;
@@ -315,32 +308,32 @@ DM敏感值在sl指令读写地址&lt;code&gt;范围内&lt;/code&gt;时且19号�
 一瞬间，惊喜而释然。&lt;/p&gt;
 &lt;h2 id=&#34;说在最后&#34;&gt;说在最后
 &lt;/h2&gt;&lt;p&gt;计组上机就这样圆满结束了。&lt;/p&gt;
-&lt;p&gt;在提问环节，助教问我：
+&lt;p&gt;在提问环节，助教问我：   &lt;br&gt;
 你觉得你在计组闯关的收获是什么？&lt;/p&gt;
 &lt;p&gt;回首，一路走来实在坎坷。&lt;/p&gt;
-&lt;p&gt;Pre的茫然
-P1的无力
-P4的惊愕
-P5的懊悔
-P6的愚钝
+&lt;p&gt;Pre的茫然    &lt;br&gt;
+P1的无力     &lt;br&gt;
+P4的惊愕         &lt;br&gt;
+P5的懊悔     &lt;br&gt;
+P6的愚钝     &lt;br&gt;
 P7的畏惧&lt;/p&gt;
-&lt;p&gt;平稳，或是激荡地
+&lt;p&gt;平稳，或是激荡地     &lt;br&gt;
 每一个Project都有着课上课下的呐喊&lt;/p&gt;
-&lt;p&gt;从第一个单周期CPU
-到封装流水线CPU可支持中断支持外设支持异常处理支持30余条指令的MIPS微系统
+&lt;p&gt;从第一个单周期CPU    &lt;br&gt;
+到封装流水线CPU可支持中断支持外设支持异常处理支持30余条指令的MIPS微系统      &lt;br&gt;
 诞辰不久的博客也日渐丰满&lt;/p&gt;
-&lt;p&gt;这像是一种高压下的凝聚
+&lt;p&gt;这像是一种高压下的凝聚   &lt;br&gt;
 引领着我们去稳健处理庞大的项目&lt;/p&gt;
-&lt;p&gt;从形象框架到代码实现
-从独立执行到高效流水
-从单一指令到复杂延时
+&lt;p&gt;从形象框架到代码实现     &lt;br&gt;
+从独立执行到高效流水     &lt;br&gt;
+从单一指令到复杂延时     &lt;br&gt;
 从固定运行到异常中断&lt;/p&gt;
-&lt;p&gt;不同的Project把步骤分离
-并予以较强的正确性检查
-使得P5不必担心P4部件的实现
-P6不必担心P5转发阻塞的实现
+&lt;p&gt;不同的Project把步骤分离  &lt;br&gt;
+并予以较强的正确性检查   &lt;br&gt;
+使得P5不必担心P4部件的实现   &lt;br&gt;
+P6不必担心P5转发阻塞的实现   &lt;br&gt;
 P7不必担心P6CPU本身的实现&amp;hellip;&lt;/p&gt;
-&lt;p&gt;未来的项目倘若没有这些具象的规划
+&lt;p&gt;未来的项目倘若没有这些具象的规划     &lt;br&gt;
 根本不敢想有多困难。&lt;/p&gt;
 &lt;p&gt;当然，感谢每一位同行者的帮助与支持。非常感谢。&lt;/p&gt;
 &lt;p&gt;CO上机结束，我也终于可以好好躺下，大脑放得很空很空，吸入又呼出些跳动的空气，悄悄捕捉又一颗充满爱与自由的心。&lt;/p&gt;
