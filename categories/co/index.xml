@@ -2619,48 +2619,42 @@ sw,sh,sb都能用同样的按字节赋值的逻辑来执行。     &lt;br&gt;
 &lt;p&gt;有的时候更是连第一步没想好就忙着转发阻塞什么的&lt;/p&gt;
 &lt;p&gt;哪怕后续转发的时候再优化，现在把需求理清，车间划好，才能想下一步迈进。&lt;/p&gt;
 &lt;h3 id=&#34;流水线寄存器&#34;&gt;流水线寄存器
-&lt;/h3&gt;&lt;p&gt;要将原来的单周期分割为五个周期，具体是什么样呢&lt;/p&gt;
-&lt;p&gt;首先，我想理清楚有哪些操作&lt;/p&gt;
-&lt;p&gt;(我最不明白的就是回环：NPC，GRF)&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;要将原来的单周期分割为五个小阶段，具体是什么样呢？&lt;/p&gt;
+&lt;p&gt;哪些阶段有什么部件？又要干些什么？&lt;/p&gt;
 &lt;h4 id=&#34;f&#34;&gt;F
 &lt;/h4&gt;&lt;p&gt;pc出值给IM&lt;br&gt;
 IM出指令&lt;br&gt;
 pc+4得更新到pc&lt;/p&gt;
+&lt;p&gt;这里已经涉及到pc的问题了，我不得不现在想清楚延迟槽。&lt;/p&gt;
+&lt;p&gt;所有不是pc+4的npc，都是经过跳转的；所有要跳转的，都要用延迟槽&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;这是一个恶心的点，使得你现在就必须考虑延迟槽的问题&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;所有不是pc+4的npc，都是经过跳转的&lt;/p&gt;
-&lt;p&gt;所有要跳转的，都要用延迟槽&lt;/p&gt;
 &lt;p&gt;所有用延迟槽的，都要先执行pc+4，因为跳转结果在第二周期才得出来（哪怕你提前得出来了你也得等延迟槽！！）&lt;/p&gt;
-&lt;p&gt;所以跳转结果是在下一个周期才赋值，是一种特殊的赋值&lt;/p&gt;
+&lt;p&gt;所以跳转结果是在下一个周期才赋值，是一种特殊的赋值！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;pc应当默认使用pc+4，除非有NPC算出的东西进来&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这需要一个控制信号，并且应当是任何跳转语句都能引发，我称之为not_pc_4&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;所以pc应当默认使用pc+4，除非有NPC算出的东西进来&lt;/p&gt;
-&lt;p&gt;这个控制信号应当是任何跳转语句都能引发，我称之为not_pc_4&lt;/p&gt;
-&lt;p&gt;这个信号作用于PC，所以还是称它为PCSel吧&lt;/p&gt;
-&lt;p&gt;PCSel为1的条件就是所有跳转语句&lt;/p&gt;
+&lt;p&gt;这个信号作用于PC，所以还是称它为PCSel吧  &lt;br&gt;
+PCSel为1的条件就是所有跳转语句&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这个信号在什么时候产生呢？&lt;/p&gt;
-&lt;p&gt;肯定已经到D阶段了&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
+&lt;p&gt;这个信号在什么时候产生呢？   &lt;br&gt;
+肯定已经到D阶段了&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;beq在F阶段，此时PCSel仍为0&lt;/li&gt;
 &lt;/ol&gt;
+&lt;blockquote&gt;
 &lt;p&gt;（因为跳转语句不在延迟槽，这一句不是延迟槽，则上一句不是跳转，则PCSel为0）&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;beq在D阶段，延迟槽语句在F阶段&lt;/li&gt;
 &lt;/ol&gt;
+&lt;blockquote&gt;
 &lt;p&gt;这时候PCSel为1&lt;/p&gt;
 &lt;p&gt;因此下一个pc将是跳转的结果，没有问题！&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;
 &lt;p&gt;PCSel产生即使用，不经过流水线（虽然他其实能够在F阶段就拿出来，但是拿出来也要流水到下一周期才能用。此外译码一般都放在D级）&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;顺便谈到zero&lt;/p&gt;
 &lt;p&gt;zero经过提前到D级后，也是即拿即用，不需要经过流水线&lt;/p&gt;
@@ -2668,9 +2662,15 @@ pc+4得更新到pc&lt;/p&gt;
 &lt;p&gt;pc，Instr都给 F_D&lt;/p&gt;
 &lt;p&gt;F_D拿到指令&lt;/p&gt;
 &lt;h4 id=&#34;f_d&#34;&gt;F_D
-&lt;/h4&gt;&lt;p&gt;存储PC和Instr（这很简单）&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;存储PC和Instr,实现流水。&lt;/p&gt;
+&lt;p&gt;一个流水线寄存器是要干什么？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;暂存信息（时钟、复位信号与其他信息）&lt;/li&gt;
+&lt;li&gt;从寄存器出信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;搞明白这一点，后面的流水线寄存器都大同小异了。&lt;/p&gt;
 &lt;h4 id=&#34;d&#34;&gt;D
-&lt;/h4&gt;&lt;p&gt;好，接下来看这条指令在D阶段要干些什么&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;好，接下来看一条指令在D阶段要干些什么&lt;/p&gt;
 &lt;p&gt;D阶段最核心莫过于GRF&lt;br&gt;
 但是其他内容也都同等重要&lt;/p&gt;
 &lt;p&gt;首先是先前提到过的
@@ -2680,50 +2680,42 @@ NPC和CMP&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这个阶段要给imm_16变成IMM_32, imm_16已经没用了吗？要把它加入流水吗？&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;我想了一想，应该是不会再用了&lt;/p&gt;
+&lt;p&gt;为了可扩展性，要不要把他一直存着呢？&lt;/p&gt;
+&lt;p&gt;但到时候哪怕用imm_16，直接从IMM_32里面取就行了。完全没必要存。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;但是，为了可扩展性，要不要把他一直存着呢？我觉得还是存着吧。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;但我又想到，到时候哪怕用imm_16，直接从IMM_32里面取不就行了？所以完全没必要存。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;imm_26是j型指令，感觉存着也没用，毕竟即拿即用，得赶快给PC送过去呢！&lt;/p&gt;
+&lt;p&gt;imm_26是j型指令用的，存着也没用，毕竟即拿即用，得赶快给PC送过去呢！&lt;/p&gt;
 &lt;p&gt;好的，那这个阶段把imm_16也解决掉了&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;剩下最后一个，就是GRF了！&lt;/p&gt;
-&lt;p&gt;读什么？读rs,rt呗还能读谁&lt;/p&gt;
+&lt;p&gt;读什么？根据rs,rt读呗。&lt;/p&gt;
 &lt;p&gt;这个阶段又不写。所以rd目前也没什么用。&lt;/p&gt;
-&lt;p&gt;是不是要注意GRF的A3选择的时候是rd_W,rt_W这些？&lt;/p&gt;
-&lt;p&gt;对！写的时候那个pc也得是pc_W？&lt;/p&gt;
-&lt;p&gt;关于W阶段啥东西都应该是W？&lt;/p&gt;
-&lt;p&gt;想太多了！到时候再说！现在只考虑D级！&lt;/p&gt;
+&lt;p&gt;是不是要注意GRF的A3选择的时候是rd_W,rt_W这些？写的时候那个pc也得是pc_W？关于W阶段啥东西都应该是W？&lt;/p&gt;
+&lt;p&gt;那就是W阶段的事。看似是一个部件，不同的功能要分开考虑。不能想着GRF在D级，就一口气把GRF接口都连好。 &lt;br&gt;
+现在只考虑D级！&lt;/p&gt;
 &lt;h4 id=&#34;d_e&#34;&gt;D_E
 &lt;/h4&gt;&lt;p&gt;存储很多很多东西 &lt;br&gt;
 还有用的控制信号（EXT，J，Jr当场使用了）     &lt;br&gt;
 还有用的数据（imm_16和imm_26都没用了） &lt;br&gt;
 当然还有pc&lt;/p&gt;
-&lt;p&gt;多存点吧，说不好就有用呢&lt;/p&gt;
+&lt;p&gt;多存点，说不定会有用的。&lt;/p&gt;
 &lt;h4 id=&#34;e&#34;&gt;E
 &lt;/h4&gt;&lt;p&gt;好嘞，该读的信息都读了，该处理的信息也处理了&lt;br&gt;
 下面就是执行操作了&lt;/p&gt;
 &lt;p&gt;关键的内容还是ALU&lt;/p&gt;
 &lt;p&gt;而ALU的核心就是各个东西都是E&lt;/p&gt;
-&lt;p&gt;（为什么这个模块异常的简单？）&lt;/p&gt;
+&lt;p&gt;（这个模块异常的简单？）&lt;/p&gt;
 &lt;h4 id=&#34;e_m&#34;&gt;E_M
 &lt;/h4&gt;&lt;p&gt;还是一个基本问题，后面需要什么&lt;/p&gt;
-&lt;p&gt;要传递过去的信号，也要传递新生成的数据&lt;/p&gt;
+&lt;p&gt;要传递一脉相承的信号，也要传递新生成的数据&lt;/p&gt;
 &lt;p&gt;pc是当然的   &lt;br&gt;
 后面有Mem取数和Write回写     &lt;br&gt;
 需要Mem写的地址，写的内容，GRF写的地址，写的内容 &lt;br&gt;
 还有他们的读写使能&lt;/p&gt;
 &lt;p&gt;别忘了还要传递ALUData信息&lt;/p&gt;
 &lt;h4 id=&#34;m&#34;&gt;M
-&lt;/h4&gt;&lt;p&gt;整体和单周期也基本没有区别&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;整体和单周期也基本没有区别，只有这一个模块在工作而已。&lt;/p&gt;
 &lt;h4 id=&#34;m_w&#34;&gt;M_W
-&lt;/h4&gt;&lt;p&gt;我的建议是别删&lt;br&gt;
-没有什么理由。 就先别删吧&amp;hellip;&lt;/p&gt;
-&lt;p&gt;添加MemReadData_M
+&lt;/h4&gt;&lt;p&gt;添加MemReadData_M
 MemData_M和Mem_Addr_M也带上吧&lt;/p&gt;
 &lt;h4 id=&#34;w&#34;&gt;W
 &lt;/h4&gt;&lt;p&gt;回到GRF&lt;br&gt;
@@ -2732,8 +2724,9 @@ MemData_M和Mem_Addr_M也带上吧&lt;/p&gt;
 不处理冒险的数据通路搭好了？？&lt;/p&gt;
 &lt;h3 id=&#34;冒险处理&#34;&gt;冒险处理
 &lt;/h3&gt;&lt;p&gt;我自己也没想到已经走到了这一步。 &lt;br&gt;
-这一基础性的工作就这样被我搁置了这么久。 &lt;br&gt;
-其实，接下来才是核心。&lt;/p&gt;
+这一基础性的工作就这样被我搁置了这么久。&lt;/p&gt;
+&lt;p&gt;你也能够发现，上面的无非是添加接口，新建流水级的体力活。   &lt;br&gt;
+接下来才是头脑风暴的核心。&lt;/p&gt;
 &lt;p&gt;转发和阻塞！！！&lt;/p&gt;
 &lt;h4 id=&#34;转发&#34;&gt;转发
 &lt;/h4&gt;&lt;p&gt;首先要构建好转发的所有路径   &lt;br&gt;
@@ -2913,22 +2906,51 @@ RFWr = 0   &lt;br&gt;
 Tnew = 0，不对寄存器进行写&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;转发路径共四条：     &lt;br&gt;
-M-&amp;gt;D 传ALUData_M(经过pc+4和ALUData的选择) RegAddr_M跟A1A2比  &lt;br&gt;
-W-&amp;gt;D 传RegData(经过MemReadData_W和ALUData_W的选择) RegAdde_W跟A1A2比     &lt;br&gt;
-M-&amp;gt;E 传ALUData_M(经过pc+4和ALUData的选择) RegAddr_M跟rs_E rt_E比     &lt;br&gt;
-W-&amp;gt;E 传RegData(经过MemReadData_W和ALUData_W的选择) RegAddr_W跟rs_E rt_E比&lt;/p&gt;
+&lt;p&gt;转发路径共四条：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;转发方向&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;数据&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;判断&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;M-&amp;gt;D&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;传ALUData_M(经过pc+4和ALUData的选择)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;RegAddr_M跟A1A2比&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;W-&amp;gt;D&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;传RegData(经过MemReadData_W和ALUData_W的选择)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;RegAdde_W跟A1A2比&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;M-&amp;gt;E&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;传ALUData_M(经过pc+4和ALUData的选择)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;RegAddr_M跟rs_E rt_E比&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;W-&amp;gt;E&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;传RegData(经过MemReadData_W和ALUData_W的选择)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;RegAddr_W跟rs_E rt_E比&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 &lt;blockquote&gt;
 &lt;p&gt;为什么没有到M的转发？    &lt;br&gt;
-因为M级使用即Tuse = 2,而Tnew没有大于2的（Tnew = 3即W级才产出数据。这显然是荒谬的）&lt;/p&gt;
+因为M级使用即Tuse = 2,而Tnew没有大于2的（Tnew = 3即W级才产出数据。这显然是荒谬的？）&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;事实上，W-&amp;gt;M 是必要的！！   
+&lt;pre&gt;&lt;code&gt;事实上，W-&amp;gt;M 是必要的！！  
 
-让我来进行解释：如果你写了Tnew=2，那你就表明了自己能在W级转发数据，怎么能不写W级转发通路呢？
+要知道，Tnew从来不是产出时间，而是最早转发时间！ 
+
+如果你写了Tnew=2，那你就表明了自己能在W级转发数据，怎么能不写W级转发通路呢？
 
 咱们在编写Tnew的时候，一定要和我们能实现的转发通路一一对应。      
-只有在你做到能转则转的情况下，你才能说Tnew是正确数据的最早生成时间。
-否则，你的效率会更低，且你需要修改你的Tnew表。
+只有在你做到能转则转的情况下，你才能说Tnew是正确数据的最早生成时间。  
+否则，你的效率会更低，且你需要修改你的Tnew表。    
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;为什么没有E-&amp;gt;D的转发？   &lt;br&gt;
 E-&amp;gt;D 即 Tnew = 0 且 Tuse = 0，满足需求只有jal（lui也可以。但是我已经把他塞进ALU了）             &lt;br&gt;
