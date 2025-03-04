@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>OS on Demiurge</title>
+        <link>https://demiurge-zby.github.io/categories/os/</link>
+        <description>Recent content in OS on Demiurge</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Demiurge</copyright>
+        <lastBuildDate>Thu, 27 Feb 2025 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/os/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>北航OS Lab0 预备知识</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/</link>
+        <pubDate>Thu, 27 Feb 2025 12:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png" alt="Featured image of post 北航OS Lab0 预备知识" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+&lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
+&lt;/h2&gt;&lt;h3 id=&#34;thinking-01&#34;&gt;Thinking 0.1
+&lt;/h3&gt;&lt;p&gt;文本内容如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image.png&#34;
+	width=&#34;466&#34;
+	height=&#34;565&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu15829322080962621648.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu11849206786200839682.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;git status&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;82&#34;
+		data-flex-basis=&#34;197px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;刚刚创建文件后，文件处于未跟踪状态，即&lt;code&gt;Untracked&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文件被&lt;code&gt;git add&lt;/code&gt;之后，被建立跟踪并且进入&lt;code&gt;Staged&lt;/code&gt;状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当文件被&lt;code&gt;git commit&lt;/code&gt;后，进入未修改状态&lt;code&gt;Unmodified&lt;/code&gt;，若增加修改，则变为&lt;code&gt;Modified&lt;/code&gt;状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此结果并不一样。因为第一次add之前，文件尚未被跟踪，文件作出修改也仍会处于&lt;code&gt;Untracked&lt;/code&gt;状态。&lt;/p&gt;
+&lt;p&gt;而在add与commit之后，文件被跟踪，提交过后的修改会被记录为&lt;code&gt;Modified&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;thinking-02&#34;&gt;Thinking 0.2
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;add the file&lt;/code&gt;对应&lt;code&gt;git add&lt;/code&gt; （第一次add文件）        &lt;br&gt;
+&lt;code&gt;stage the file&lt;/code&gt;对应&lt;code&gt;git add&lt;/code&gt; （已跟踪的文件经过修改后进行的add，添加到暂存区）       &lt;br&gt;
+&lt;code&gt;commit&lt;/code&gt;对应&lt;code&gt;git commit&lt;/code&gt; (把暂存区里的内容commit)&lt;/p&gt;
+&lt;h3 id=&#34;thinking-03&#34;&gt;Thinking 0.3
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;代码文件print.c被错误删除时，应当使用什么命令将其恢复？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;应当使用&lt;code&gt;git restore print.c&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;print.c仍然在暂存区，只是在工作区被删除，只需将工作区恢复到暂存区状态即可。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代码文件print.c被错误删除后，执行了&lt;code&gt;git rm print.c&lt;/code&gt;命令，此时应当
+使用什么命令将其恢复？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;应当先后使用&lt;code&gt;git reset HEAD print.c&lt;/code&gt;与&lt;code&gt;git restore print.c&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;因为执行了&lt;code&gt;git rm print.c&lt;/code&gt;，暂存区已被改动，所以需要先恢复暂存区的内容。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;无关文件hello.txt已经被添加到暂存区时，如何在不删除此文件的前提下
+将其移出暂存区？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;应当使用&lt;code&gt;git rm -cached hello.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thinking-04&#34;&gt;Thinking 0.4
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;git log&lt;/code&gt;结果如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1.png&#34;
+	width=&#34;530&#34;
+	height=&#34;631&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu3297354720116851202.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu6840445999607377668.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;git log&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;83&#34;
+		data-flex-basis=&#34;201px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;版本回退后&lt;code&gt;git log&lt;/code&gt;结果如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2.png&#34;
+	width=&#34;528&#34;
+	height=&#34;547&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu2569888871527426734.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu4451645708424704670.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;git log&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;96&#34;
+		data-flex-basis=&#34;231px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;版本切换的结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3.png&#34;
+	width=&#34;684&#34;
+	height=&#34;440&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu2447533878860350817.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu12117117513593335777.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;git log&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4.png&#34;
+	width=&#34;744&#34;
+	height=&#34;670&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu14216853382266145143.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu9645650563847857658.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;git log&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;111&#34;
+		data-flex-basis=&#34;266px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看出&lt;code&gt;git reset --hard HEAD^&lt;/code&gt;执行后，&lt;code&gt;git log&lt;/code&gt;结果并不是1-2-3-2，而是直接变为1-2&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git reset --hard &amp;lt;hash&amp;gt;&lt;/code&gt;对于版本的控制也并不改变目录树，而是在原有的目录树上切换结点。&lt;/p&gt;
+&lt;h3 id=&#34;thinking-05&#34;&gt;Thinking 0.5
+&lt;/h3&gt;&lt;p&gt;运行结果如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5.png&#34;
+	width=&#34;501&#34;
+	height=&#34;248&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu18119050952445327974.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu17127191734205273665.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;&amp;gt; and &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;202&#34;
+		data-flex-basis=&#34;484px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;gt;&lt;/code&gt; 的重定向是覆盖，而&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;的重定向是追加。&lt;/p&gt;
+&lt;h3 id=&#34;thinking-06&#34;&gt;Thinking 0.6
+&lt;/h3&gt;&lt;p&gt;command内容为：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6.png&#34;
+	width=&#34;425&#34;
+	height=&#34;416&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu6965343964014852431.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu7513391156839822228.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Command&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;102&#34;
+		data-flex-basis=&#34;245px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;result内容为：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8.png&#34;
+	width=&#34;319&#34;
+	height=&#34;288&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu13913448634350666254.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu16136104289695794963.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Result&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;110&#34;
+		data-flex-basis=&#34;265px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;解释说明：&lt;/p&gt;
+&lt;p&gt;为了原样输出test，command每一行的内容为：    &lt;br&gt;
+echo &amp;rsquo; &lt;code&gt;Content&lt;/code&gt; &amp;rsquo; &amp;raquo; test (第一行是&amp;gt;)&lt;/p&gt;
+&lt;p&gt;其中单引号的目的是保证原样输出，不触发文本中的任何$符号与&amp;gt;符号&lt;/p&gt;
+&lt;p&gt;result的内容有两部分，   &lt;br&gt;
+一是test运行的输出结果会重定向到result，     &lt;br&gt;
+二是test文件本身也有重定向到result的代码&lt;/p&gt;
+&lt;p&gt;思考问题：&lt;/p&gt;
+&lt;p&gt;若把&lt;code&gt;echo echo Shell Start&lt;/code&gt;的&lt;code&gt;echo Shell Start&lt;/code&gt;用反引号引起来         &lt;br&gt;
+则会将反引号内指令的运算结果变为一个字符串&lt;code&gt;&amp;quot;Shell Start&amp;quot;&lt;/code&gt;    &lt;br&gt;
+最终整条指令结果为Shell Start&lt;/p&gt;
+&lt;p&gt;而&lt;code&gt;echo echo Shell Start&lt;/code&gt;的结果是echo Shell Start&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;echo echo $c&amp;gt;file1&lt;/code&gt;则同理，加上反引号后指令会输出3  &lt;br&gt;
+而不加反引号应输出echo $c&amp;gt;file1，结果不同。&lt;/p&gt;
+&lt;h2 id=&#34;难点分析&#34;&gt;难点分析
+&lt;/h2&gt;&lt;p&gt;Lab0作为大家走向OS的过渡课程，其思维难度不高，重难点在于对各种指令的运用。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

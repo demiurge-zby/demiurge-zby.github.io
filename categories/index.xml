@@ -7,7 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Tue, 10 Dec 2024 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 03 Mar 2025 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>OO</title>
+        <link>https://demiurge-zby.github.io/categories/oo/</link>
+        <pubDate>Mon, 03 Mar 2025 12:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/categories/oo/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/categories/oo/OO.jpg" alt="Featured image of post OO" /&gt;</description>
+        </item>
+        <item>
+        <title>OS</title>
+        <link>https://demiurge-zby.github.io/categories/os/</link>
+        <pubDate>Thu, 27 Feb 2025 12:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/categories/os/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/categories/os/OS.jpg" alt="Featured image of post OS" /&gt;</description>
+        </item>
+        <item>
         <title>CO</title>
         <link>https://demiurge-zby.github.io/categories/co/</link>
         <pubDate>Tue, 10 Dec 2024 12:15:30 +0800</pubDate>
@@ -29,7 +45,7 @@
         <pubDate>Fri, 01 Nov 2024 13:30:00 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/categories/oopre/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/categories/oopre/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post OOpre" /&gt;</description>
+        <description>&lt;img src="https://demiurge-zby.github.io/categories/oopre/OOpre.jpg" alt="Featured image of post OOpre" /&gt;</description>
         </item>
         
     </channel>
