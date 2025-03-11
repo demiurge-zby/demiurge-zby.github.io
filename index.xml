@@ -536,6 +536,11 @@ echo &amp;rsquo; &lt;code&gt;Content&lt;/code&gt; &amp;rsquo; &amp;raquo; test (
 而不加反引号应输出echo $c&amp;gt;file1，结果不同。&lt;/p&gt;
 &lt;h2 id=&#34;难点分析&#34;&gt;难点分析
 &lt;/h2&gt;&lt;p&gt;Lab0作为大家走向OS的过渡课程，其思维难度不高，重难点在于对各种指令的运用。&lt;/p&gt;
+&lt;p&gt;如sed awk grep等方法的运用，单引号、双引号与反引号的灵活使用等等&lt;/p&gt;
+&lt;h2 id=&#34;实验体会&#34;&gt;实验体会
+&lt;/h2&gt;&lt;p&gt;目前尚未进行上机的限时测试，而日常实验的训练，很像我第一次搭建OO评测机时，一点点探索与学习的过程。&lt;/p&gt;
+&lt;p&gt;感性的话不必多说，但是to be honest,  &lt;br&gt;
+OS的lab0相较于CO的P0-P2以及OO的U1，已然是非常温和了。&lt;/p&gt;
 </description>
         </item>
         <item>
