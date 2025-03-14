@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验报告">
-<title>北航OS Lab0 预备知识</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="诶woc你怎么这么难啊">
+<title>北航OS Lab0 上机</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab0 预备知识">
-<meta property='og:description' content="实验报告">
-<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/'>
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab0 上机">
+<meta property='og:description' content="诶woc你怎么这么难啊">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-27T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-02-27T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png' />
-<meta name="twitter:title" content="北航OS Lab0 预备知识">
-<meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-14T11:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-14T11:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123.png' />
+<meta name="twitter:title" content="北航OS Lab0 上机">
+<meta name="twitter:description" content="诶woc你怎么这么难啊"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -268,18 +268,21 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#思考题">思考题</a>
+    <li><a href="#exam">exam</a>
       <ol>
-        <li><a href="#thinking-01">Thinking 0.1</a></li>
-        <li><a href="#thinking-02">Thinking 0.2</a></li>
-        <li><a href="#thinking-03">Thinking 0.3</a></li>
-        <li><a href="#thinking-04">Thinking 0.4</a></li>
-        <li><a href="#thinking-05">Thinking 0.5</a></li>
-        <li><a href="#thinking-06">Thinking 0.6</a></li>
+        <li><a href="#makefile">Makefile</a></li>
+        <li><a href="#shell">Shell</a></li>
       </ol>
     </li>
-    <li><a href="#难点分析">难点分析</a></li>
-    <li><a href="#实验体会">实验体会</a></li>
+    <li><a href="#extra">extra</a>
+      <ol>
+        <li><a href="#gencode">genCode</a></li>
+        <li><a href="#selectcode">selectCode</a></li>
+        <li><a href="#selectdata">selectData</a></li>
+        <li><a href="#未知">未知</a></li>
+      </ol>
+    </li>
+    <li><a href="#后记">后记</a></li>
   </ol>
 </nav>
         </div>
@@ -294,13 +297,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
-                <img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu12315729080435056966.png"
-                        srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu12315729080435056966.png 800w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu9458574184818487192.png 1600w"
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123_hu16551671144142155971.png"
+                        srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123_hu16551671144142155971.png 800w, /p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123_hu14080018086528647288.png 1600w"
                         width="800" 
                         height="422" 
                         loading="lazy"
-                        alt="Featured image of post 北航OS Lab0 预备知识" />
+                        alt="Featured image of post 北航OS Lab0 上机" />
                 
             </a>
         </div>
@@ -319,12 +322,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">北航OS Lab0 预备知识</a>
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/">北航OS Lab0 上机</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            实验报告
+            诶woc你怎么这么难啊
         </h3>
         
     </div>
@@ -345,7 +348,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-02-27</time>
+                <time class="article-time--published">2025-03-14</time>
             </div>
         
 
@@ -360,7 +363,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -375,189 +378,169 @@
     <section class="article-content">
     
     
-    <h1 id="实验报告">实验报告
-</h1><h2 id="思考题">思考题
-</h2><h3 id="thinking-01">Thinking 0.1
-</h3><p>文本内容如下图：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image.png"
-	width="466"
-	height="565"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu15829322080962621648.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu11849206786200839682.png 1024w"
-	loading="lazy"
-	
-		alt="git status"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="82"
-		data-flex-basis="197px"
-	
-></p>
-<ul>
+    <h2 id="exam">exam
+</h2><p>不错的exam。考核内容完全来自于指导书与作业，并且足够全面。        <br>
+这在lab上机中是很好的设计，掌握不那么牢固的可以通过花费一点时间阅读指导书拿到exam这一主要分数，提升掌握水平      <br>
+而相对熟练的同学则可以更快地解决exam去攻克extra了。</p>
+<p>另外，一定要认真读前言里的要求！本次exam题就需要先bash init.sh才能得到所需文件</p>
+<p>题目有两道：Makefile与Shell</p>
+<h3 id="makefile">Makefile
+</h3><p>Makefile考的仍然是gcc,run和clean三件套</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">.PHONY: clean
+</span></span><span class="line"><span class="cl">all: check.o
+</span></span><span class="line"><span class="cl">	make check
+</span></span><span class="line"><span class="cl">	gcc -I ./src/include ./src/main.c ./src/output.c -o ./out/main
+</span></span><span class="line"><span class="cl">check: check.c
+</span></span><span class="line"><span class="cl">	gcc -c check.o check.c
+</span></span><span class="line"><span class="cl">run: out/main
+</span></span><span class="line"><span class="cl">	./out/main
+</span></span><span class="line"><span class="cl">clean:
+</span></span><span class="line"><span class="cl">	rm -rf check.o
+</span></span><span class="line"><span class="cl">	rm -rf ./out/main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不过这次在gcc上的考点比较新：</p>
+<ol>
+<li>编译不链接 gcc -c</li>
+<li>非标准库头文件 gcc -I 头文件目录</li>
+</ol>
+<p>此外，还考查了make A任务内调用make B的内容</p>
+<p>也可以考察跨目录make调用<br>
+即 cd 目录 &amp;&amp; make</p>
+<h3 id="shell">Shell
+</h3><p>本题一共有九问，也就是九个功能，    <br>
+比较惹人烦的点在于这九个功能要在9个脚本中分别实现</p>
+<p>如果你足够熟悉，  <br>
+你可以直接
+<code>sed -i '1i#!/bin/bash' exam_*.sh</code>
+来为每一行开头加上<code>#!/bin/bash</code></p>
+<p>九个脚本的内容是：</p>
+<ol>
+<li>在指定目录下新建目录</li>
+<li>grep指令</li>
+<li>mv指令</li>
+<li>cp -r指令</li>
+<li>循环语句与sed 替换</li>
+<li>通配符*</li>
+<li>2&raquo;</li>
+<li>chmod</li>
+<li>条件语句</li>
+</ol>
+<p>需要注意的一些点：</p>
+<ol>
 <li>
-<p>刚刚创建文件后，文件处于未跟踪状态，即<code>Untracked</code>。</p>
+<p>双引号，单引号 <br>
+取决你是否要解析引号内的内容</p>
+<p>对于awk中$1有特殊含义，便需要单引号处理</p>
+<p>而sed中如果需要$1参数，那当然是要用双引号的</p>
 </li>
 <li>
-<p>文件被<code>git add</code>之后，被建立跟踪并且进入<code>Staged</code>状态。</p>
+<p>$符号作为尾行，又是参数解析符号，若要从$1到$进行p，如果写成sed -n &lsquo;$1,$p&rsquo;的话，$1不能解析；写成sed -n &ldquo;$1,$p&quot;的话，p又会被解析。 <br>
+那么我们可以用空格分隔开。即sed -n &ldquo;$1,$ p&rdquo;</p>
 </li>
 <li>
-<p>当文件被<code>git commit</code>后，进入未修改状态<code>Unmodified</code>，若增加修改，则变为<code>Modified</code>状态。</p>
+<p>脚本内加减运算的写法，if,for,while,case的写法</p>
 </li>
-</ul>
-<p>因此结果并不一样。因为第一次add之前，文件尚未被跟踪，文件作出修改也仍会处于<code>Untracked</code>状态。</p>
-<p>而在add与commit之后，文件被跟踪，提交过后的修改会被记录为<code>Modified</code>。</p>
-<h3 id="thinking-02">Thinking 0.2
-</h3><p><code>add the file</code>对应<code>git add</code> （第一次add文件）        <br>
-<code>stage the file</code>对应<code>git add</code> （已跟踪的文件经过修改后进行的add，添加到暂存区）       <br>
-<code>commit</code>对应<code>git commit</code> (把暂存区里的内容commit)</p>
-<h3 id="thinking-03">Thinking 0.3
-</h3><blockquote>
-<p>代码文件print.c被错误删除时，应当使用什么命令将其恢复？</p>
-</blockquote>
-<p>应当使用<code>git restore print.c</code></p>
-<p>print.c仍然在暂存区，只是在工作区被删除，只需将工作区恢复到暂存区状态即可。</p>
+</ol>
+<h2 id="extra">extra
+</h2><p>接下来来到万恶的extra   <br>
+其本身的难度可能也不能直接称之为高，但是我还是认为应该明确地表示充分利用hint的内容</p>
+<p>因为hint中的内容，不仅太多，而且太重要，太必要！</p>
+<p>对于第二问ln -s的超链接写法，这显然是回去看hint的，因为完全没有听说过</p>
+<p>但是第一问不仅hint很晚才更新，另外还伪装成不用hint也能解决的问题，使很多同学花费了很多时间去用man来看已知指令的参数</p>
+<p>其次，后置测试点依赖前置测试点。虽然他确实对于评测是更方便的，但是偏偏在第一问出现hint的缺失，从而影响到整个题目的得分，给人的体验还是不太好的。</p>
+<h3 id="gencode">genCode
+</h3><p>第一问的主要任务是： <br>
+对于指定目录下的所有.sh文件，将其经过一些简单的sed文件处理后，以<code>原名称(不含.sh).c</code>的新名字存放在新的指定目录。</p>
+<p>其他的都不难，最难的就在于怎么实现获取文件名与文件重命名</p>
+<p>大多数同学都尝试过<code>sed xxxxxx *.sy &gt; *.c</code> 然后意外的发现只生成了一个名为<code>'*.c'</code>的文件&hellip;&hellip;</p>
+<p>笔者找了找mv的man</p>
 <blockquote>
-<p>代码文件print.c被错误删除后，执行了<code>git rm print.c</code>命令，此时应当
-使用什么命令将其恢复？</p>
+<p>mv是笔者知道的唯一的重命名指令</p>
 </blockquote>
-<p>应当先后使用<code>git reset HEAD print.c</code>与<code>git restore print.c</code></p>
-<p>因为执行了<code>git rm print.c</code>，暂存区已被改动，所以需要先恢复暂存区的内容。</p>
-<blockquote>
-<p>无关文件hello.txt已经被添加到暂存区时，如何在不删除此文件的前提下
-将其移出暂存区？</p>
-</blockquote>
-<p>应当使用<code>git rm -cached hello.txt</code></p>
-<h3 id="thinking-04">Thinking 0.4
-</h3><p><code>git log</code>结果如下图：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1.png"
-	width="530"
-	height="631"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu3297354720116851202.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu6840445999607377668.png 1024w"
+<p>然后找到了-S, &ndash;suffix=[后缀名]这样的东西。</p>
+<p>当然并没能实现功能。</p>
+<p>后来助教说extra内容更新了。我看了眼题面，感觉没变，以为是第四第五题改了，就没在意。实际上发布的正是第一题的hint,能够实现对一个目录下所有文件都访问，并获取其文件名。</p>
+<p>那么本题的考点就是awk指令  <br>
+awk -F.并取$1来获得.sy前面的内容</p>
+<h3 id="selectcode">selectCode
+</h3><ol>
+<li>
+<p>若存在则删除xxx</p>
+<p>考察的其实是rm -f强制执行（若不存在则自动忽视）</p>
+</li>
+<li>
+<p>ln -s （hint 超链接操作）</p>
+</li>
+<li>
+<p>gcc -I -o</p>
+</li>
+</ol>
+<h3 id="selectdata">selectData
+</h3><p>本小问需要实现将所有的xx_yy.in与xx_yy.out文件根据参数进行复制。(xx与yy都是随机的)</p>
+<p>若参数为all，则全部复制到指定目录 <br>
+否则，仅复制参数_yy.in与参数_yy.out到指定目录</p>
+<p>这里可以使用case语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-.sh" data-lang=".sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>mkdir dataSet
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="nv">$1</span> in
+</span></span><span class="line"><span class="cl"> all <span class="o">)</span> 
+</span></span><span class="line"><span class="cl"> 	cp -r ./data ./dataSet<span class="p">;;</span>
+</span></span><span class="line"><span class="cl"> * <span class="o">)</span>
+</span></span><span class="line"><span class="cl">	cp ./data/<span class="nv">$1</span>* ./dataSet<span class="p">;;</span>
+</span></span><span class="line"><span class="cl"><span class="k">esac</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意好格式。</p>
+<h3 id="未知">未知
+</h3><p>很遗憾，在我做完二三问，并发现有测试点依赖后，就全力研究第一问了。没能获得第四、五问的题目。同学们可以参考其它博客。</p>
+<h2 id="后记">后记
+</h2><p>不同于往年，今年的题目难度确实是大。大多数人都extra都喜提0分（或者未提交）  <br>
+<img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image.png"
+	width="223"
+	height="226"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image_hu1178097306729725857.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image_hu1454011011673143592.png 1024w"
 	loading="lazy"
 	
-		alt="git log"
+		alt="0"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="83"
-		data-flex-basis="201px"
+		data-flex-grow="98"
+		data-flex-basis="236px"
 	
-></p>
-<p>版本回退后<code>git log</code>结果如下图：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2.png"
-	width="528"
-	height="547"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu2569888871527426734.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu4451645708424704670.png 1024w"
-	loading="lazy"
-	
-		alt="git log"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="96"
-		data-flex-basis="231px"
-	
-></p>
-<p>版本切换的结果：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3.png"
-	width="684"
-	height="440"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu2447533878860350817.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu12117117513593335777.png 1024w"
-	loading="lazy"
-	
-		alt="git log"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="155"
-		data-flex-basis="373px"
-	
-></p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4.png"
-	width="744"
-	height="670"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu14216853382266145143.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu9645650563847857658.png 1024w"
-	loading="lazy"
-	
-		alt="git log"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="111"
-		data-flex-basis="266px"
-	
-></p>
-<p>可以看出<code>git reset --hard HEAD^</code>执行后，<code>git log</code>结果并不是1-2-3-2，而是直接变为1-2</p>
-<p><code>git reset --hard &lt;hash&gt;</code>对于版本的控制也并不改变目录树，而是在原有的目录树上切换结点。</p>
-<h3 id="thinking-05">Thinking 0.5
-</h3><p>运行结果如下：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5.png"
-	width="501"
-	height="248"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu18119050952445327974.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu17127191734205273665.png 1024w"
-	loading="lazy"
-	
-		alt="&gt; and "
-	
-	
-		class="gallery-image" 
-		data-flex-grow="202"
-		data-flex-basis="484px"
-	
-></p>
-<p><code>&gt;</code> 的重定向是覆盖，而<code>&gt;&gt;</code>的重定向是追加。</p>
-<h3 id="thinking-06">Thinking 0.6
-</h3><p>command内容为：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6.png"
-	width="425"
-	height="416"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu6965343964014852431.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu7513391156839822228.png 1024w"
-	loading="lazy"
-	
-		alt="Command"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="102"
-		data-flex-basis="245px"
-	
-></p>
-<p>result内容为：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8.png"
-	width="319"
-	height="288"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu13913448634350666254.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu16136104289695794963.png 1024w"
-	loading="lazy"
-	
-		alt="Result"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="110"
-		data-flex-basis="265px"
-	
-></p>
-<p>解释说明：</p>
-<p>为了原样输出test，command每一行的内容为：    <br>
-echo &rsquo; <code>Content</code> &rsquo; &raquo; test (第一行是&gt;)</p>
-<p>其中单引号的目的是保证原样输出，不触发文本中的任何$符号与&gt;符号</p>
-<p>result的内容有两部分，   <br>
-一是test运行的输出结果会重定向到result，     <br>
-二是test文件本身也有重定向到result的代码</p>
-<p>思考问题：</p>
-<p>若把<code>echo echo Shell Start</code>的<code>echo Shell Start</code>用反引号引起来         <br>
-则会将反引号内指令的运算结果变为一个字符串<code>&quot;Shell Start&quot;</code>    <br>
-最终整条指令结果为Shell Start</p>
-<p>而<code>echo echo Shell Start</code>的结果是echo Shell Start</p>
-<p><code>echo echo $c&gt;file1</code>则同理，加上反引号后指令会输出3  <br>
-而不加反引号应输出echo $c&gt;file1，结果不同。</p>
-<h2 id="难点分析">难点分析
-</h2><p>Lab0作为大家走向OS的过渡课程，其思维难度不高，重难点在于对各种指令的运用。</p>
-<p>如sed awk grep等方法的运用，单引号、双引号与反引号的灵活使用等等</p>
-<h2 id="实验体会">实验体会
-</h2><p>目前尚未进行上机的限时测试，而日常实验的训练，很像我第一次搭建OO评测机时，一点点探索与学习的过程。</p>
-<p>感性的话不必多说，但是to be honest,  <br>
-OS的lab0相较于CO的P0-P2以及OO的U1，已然是非常温和了。</p>
+>   <br>
+倘若第一问hint能够正常给出，本次lab的体验感应该还是不错的。</p>
+<p>笔者给extra留了一整个小时还攻不下第一问，可见该hint的重要性（）</p>
+<p>现在想起自己实验报告里写OS多温和什么的，，，</p>
+<p>OS的磨难才刚刚开始。</p>
 
 </section>
 
@@ -582,23 +565,23 @@ OS的lab0相较于CO的P0-P2以及OO的U1，已然是非常温和了。</p>
             
                 
 <article class="has-image">
-    <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
         
         
             <div class="article-image">
-                <img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123.283231a1efefaf24fed9de538cd80c98_hu16110634320324550554.png" 
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.d2540c9d55ec4185e0edd3b3612c88bf_hu6329847636727818116.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 北航OS Lab0 上机"
+                        alt="Featured image of post 北航OS Lab0 预备知识"
                         
-                        data-hash="md5-KDIxoe/vryT&#43;2d5TjNgMmA==">
+                        data-hash="md5-0lQMnVXsQYXg7dOzYSyIvw==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">北航OS Lab0 上机</h2>
+            <h2 class="article-title">北航OS Lab0 预备知识</h2>
         </div>
     </a>
 </article>
