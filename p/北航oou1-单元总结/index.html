@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="表达式解析">
+<title>北航OOU1 单元总结</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OOU1 单元总结">
+<meta property='og:description' content="表达式解析">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-18T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-18T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/123.png' />
+<meta name="twitter:title" content="北航OOU1 单元总结">
+<meta name="twitter:description" content="表达式解析"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/123.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#迭代过程综述">迭代过程综述</a>
+      <ol>
+        <li><a href="#预处理的迭代">预处理的迭代</a></li>
+        <li><a href="#解析的迭代">解析的迭代</a></li>
+        <li><a href="#化简的迭代">化简的迭代</a></li>
+        <li><a href="#输出的迭代">输出的迭代</a></li>
+      </ol>
+    </li>
+    <li><a href="#第一次作业">第一次作业</a>
+      <ol>
+        <li><a href="#代码量">代码量</a></li>
+        <li><a href="#uml类图">UML类图</a></li>
+        <li><a href="#复杂度">复杂度</a></li>
+        <li><a href="#类的设计">类的设计</a></li>
+      </ol>
+    </li>
+    <li><a href="#第二次作业">第二次作业</a>
+      <ol>
+        <li><a href="#代码量-1">代码量</a></li>
+        <li><a href="#uml类图-1">UML类图</a></li>
+        <li><a href="#复杂度-1">复杂度</a></li>
+        <li><a href="#类的设计-1">类的设计</a></li>
+      </ol>
+    </li>
+    <li><a href="#第三次作业">第三次作业</a>
+      <ol>
+        <li><a href="#代码量-2">代码量</a></li>
+        <li><a href="#uml类图-2">UML类图</a></li>
+        <li><a href="#复杂度-2">复杂度</a></li>
+        <li><a href="#类的设计-2">类的设计</a></li>
+      </ol>
+    </li>
+    <li><a href="#可扩展性">可扩展性</a></li>
+    <li><a href="#bug">BUG</a></li>
+    <li><a href="#评测机搭建">评测机搭建</a>
+      <ol>
+        <li><a href="#checkpy比对">check.py比对</a></li>
+        <li><a href="#dataexe数据生成">data.exe数据生成</a></li>
+        <li><a href="#bat批处理程序运行">bat批处理程序运行</a></li>
+      </ol>
+    </li>
+    <li><a href="#bug分析">BUG分析</a></li>
+    <li><a href="#优化">优化</a>
+      <ol>
+        <li><a href="#输出符号优化">输出符号优化</a></li>
+        <li><a href="#sin-cos正负号优化">sin cos正负号优化</a></li>
+        <li><a href="#sin-2cos-2-sin-2-cos-2--sin-4-cos-4">sin^ 2+cos^ 2 sin^ 2-cos^ 2  sin^ 4-cos^ 4</a></li>
+      </ol>
+    </li>
+    <li><a href="#心得体会">心得体会</a></li>
+    <li><a href="#未来方向">未来方向</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/">
+                <img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/123_hu4573091468675399124.png"
+                        srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/123_hu4573091468675399124.png 800w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/123_hu15206472647394196458.png 1600w"
+                        width="800" 
+                        height="422" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OOU1 单元总结" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/oo/" style="background-color: #2a9d8f; color: #fff;">
+                OO
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/">北航OOU1 单元总结</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            表达式解析
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-03-18</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>本次作业以解析表达式并简化后输出为核心任务。</p>
+<p>主要的实现过程为：   <br>
+<code>预处理</code>-&gt;<code>解析</code>-&gt;<code>化简</code>-&gt;<code>输出</code></p>
+<h2 id="迭代过程综述">迭代过程综述
+</h2><h3 id="预处理的迭代">预处理的迭代
+</h3><p>第一次作业：空白字符与正负号     <br>
+第二次作业：递推函数     <br>
+第三次作业：自定义函数</p>
+<h3 id="解析的迭代">解析的迭代
+</h3><p>第一次作业：常数因子、幂函数因子、表达式因子    <br>
+第二次作业：三角因子
+第三次作业：求导因子</p>
+<h3 id="化简的迭代">化简的迭代
+</h3><p>第一次作业：多项式的加乘幂   <br>
+第二次作业：含三角函数的加乘幂及其化简   <br>
+第三次作业：求导运算</p>
+<h3 id="输出的迭代">输出的迭代
+</h3><p>第一次作业：输出多项式   <br>
+第二次作业：输出含三角函数的表达式
+第三次作业：无</p>
+<h2 id="第一次作业">第一次作业
+</h2><p>刚刚走进面向对象课堂的第一天，就被HW1深刻地击溃了。      <br>
+不同于其他同学只是担心可扩展性不够强而不肯动笔————我的大脑是完全空白的。</p>
+<p><strong>我知道是这个道理，但是到底怎么写？</strong></p>
+<p>我认为理解递归下降实际运行的关键，在于深刻理解lexer的执行逻辑，lexer作为parser的属性，是唯一确定的，<strong>当我解析完成，lexer也就走完了。解析的过程就是lexer的前进过程。</strong></p>
+<p>而我们做的事情，就是根据读取expression，<strong>自行出构建一个新的、有结构的Expr。</strong></p>
+<p>接下来的toPoly便也是递归下降的一种体现。<strong>我已经知道最小单元Mono与Power有它具体的toPoly()方法</strong>，那么我就可以采用递归下降，对每一个类只着眼于它自身的运算过程。</p>
+<h3 id="代码量">代码量
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines.png"
+	width="1744"
+	height="357"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines_hu1348462638036344911.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines_hu679612040571503907.png 1024w"
+	loading="lazy"
+	
+		alt="hw1_lines"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="488"
+		data-flex-basis="1172px"
+	
+></p>
+<p>可以看出核心代码在于解析Parser与化简Poly这两个类中。</p>
+<h3 id="uml类图">UML类图
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph.png"
+	width="2452"
+	height="1604"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph_hu9410046640435313302.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph_hu6616560314303406624.png 1024w"
+	loading="lazy"
+	
+		alt="hw1_graph"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="152"
+		data-flex-basis="366px"
+	
+></p>
+<p>方法数则是Poly类遥遥领先，不过都是加、乘、幂、去零、取反、输出等基本方法</p>
+<h3 id="复杂度">复杂度
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class.png"
+	width="664"
+	height="445"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class_hu14704900314256740387.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class_hu14458279921066147853.png 1024w"
+	loading="lazy"
+	
+		alt="hw1_class"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="149"
+		data-flex-basis="358px"
+	
+></p>
+<p>同样的，Parser与Poly的复杂度是远高于其他类的。</p>
+<h3 id="类的设计">类的设计
+</h3><p>PreProcess为预处理类，直接把空格与连续正负号解决掉，简化Parser的处理。</p>
+<p>Mono类与Power类则对应了最小解析单元（因子中的常数，幂函数与表达式因子），这里将常数与幂函数都归为Mono类是很方便的。</p>
+<h2 id="第二次作业">第二次作业
+</h2><p>如果说第一次作业是从零到一的突破，那么第二次作业可能就是从1到x的蜕变。    <br>
+三角因子本身的复杂性太强，不能像之前一样简单的归类，更没有统一的计算方法。</p>
+<p>曾经Poly里的加与乘，如今全部都复杂起来了！   <br>
+我们只能进行重构。</p>
+<p>对于加法，我们没有曾经直接看x的幂次来进行合并同类项的简单解法，  <br>
+因此只有写出同类项判别方法，才能实现加法的简化</p>
+<p>对于乘法，我们需要先实现最小单元之间幂函数幂次与三角因子幂次的累积   <br>
+再进行所有乘积项的求和</p>
+<h3 id="代码量-1">代码量
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines.png"
+	width="1759"
+	height="426"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines_hu2733324857433404355.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines_hu12539274716514737244.png 1024w"
+	loading="lazy"
+	
+		alt="hw2_lines"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="412"
+		data-flex-basis="990px"
+	
+></p>
+<p>较上次作业新增了近800行，其中parser变化不大，而Mono与Poly代码量激增  <br>
+此外还有新增的类: 递归函数RecursiveFunc</p>
+<h3 id="uml类图-1">UML类图
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph.png"
+	width="2362"
+	height="2781"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph_hu4824547250586139424.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph_hu2263586557949589371.png 1024w"
+	loading="lazy"
+	
+		alt="hw2_graph"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="84"
+		data-flex-basis="203px"
+	
+></p>
+<p>我调整了类的相对位置使之更加清晰。</p>
+<p>图片从上到下分别是函数预处理，表达式解析，表达式化简运算与输出</p>
+<h3 id="复杂度-1">复杂度
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class.png"
+	width="664"
+	height="489"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class_hu1209901690595859210.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class_hu15904561665040355737.png 1024w"
+	loading="lazy"
+	
+		alt="hw2_class"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="325px"
+	
+></p>
+<p>Parser与Poly不出意外的高复杂度。     <br>
+但是递推函数类的复杂度异常的高，我承认我当时采用的方法过于粗暴。     <br>
+后续果然发现了bug，只是到了第三次作业的环境中才得以体现出来。</p>
+<h3 id="类的设计-1">类的设计
+</h3><p>Mono类秉承着原来解析的最小单元的地位，现在的它，是一个除了表达式因子以外可以包罗万象的Factor,含有常数，幂函数的幂次，三角函数的HashMap&lt;Poly, BigInteger&gt;。</p>
+<p>因此，他也仍然是最终运算的最小单位，充当最终表达式中的项（Term）。</p>
+<p>Poly则是所有Mono的和，用ArrayList实现。</p>
+<p>接下来是RecursiveFunc类。我将函数翻译作为了预处理操作的一部分，实现了在解析开始之前就解决掉了所有的函数问题。这个类的核心作用就是根据已知信息，直接获得一个从0到5的函数Map。</p>
+<p>接着process类也将被重写，并增添替换操作。</p>
+<h2 id="第三次作业">第三次作业
+</h2><p>经历了HW1的无力茫然与HW2的大刀阔斧           <br>
+站在HW3面前的你，    <br>
+应当充满了决心！</p>
+<h3 id="代码量-2">代码量
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines.png"
+	width="1749"
+	height="517"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines_hu14879122926649187208.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines_hu3319448293189894400.png 1024w"
+	loading="lazy"
+	
+		alt="hw3_lines"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="338"
+		data-flex-basis="811px"
+	
+></p>
+<p>代码行数增加的并不多</p>
+<p>主要内容是新类的添加，更多的函数代入操作以及求导计算</p>
+<h3 id="uml类图-2">UML类图
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph.png"
+	width="2882"
+	height="3286"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph_hu856977851820666993.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph_hu16451727185006472704.png 1024w"
+	loading="lazy"
+	
+		alt="hw3_graph"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="87"
+		data-flex-basis="210px"
+	
+></p>
+<p>相较于hw2，在Factor上新增了求导因子，在预处理上新增了NormalFunc以及一个数据功能类Func。</p>
+<h3 id="复杂度-2">复杂度
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class.png"
+	width="654"
+	height="603"
+	srcset="/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class_hu5027182664871553546.png 480w, /p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class_hu11158960634192581642.png 1024w"
+	loading="lazy"
+	
+		alt="hw3_class"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="108"
+		data-flex-basis="260px"
+	
+></p>
+<h3 id="类的设计-2">类的设计
+</h3><p>Derivation类作为一个Factor，需要toPoly()方法，只需要将expr先toPoly，在调用Poly()的derive方法。</p>
+<p>NormalFunc类的设计与RecursiveFunc的思路基本一致，只是少了递推这一步。</p>
+<h2 id="可扩展性">可扩展性
+</h2><ul>
+<li>函数的扩展：
+exp函数，只需对Mono类添加一个Poly属性，用于记录指数。
+ln函数，同理，只需记录真数。</li>
+<li>变元的扩展：
+只需Mono的power变为power1和power2，分别作为两个变元的幂指数</li>
+</ul>
+<h2 id="bug">BUG
+</h2><ul>
+<li>
+<p>第一次作业 0 bug</p>
+</li>
+<li>
+<p>第二次作业 强测 0 bug 互测 2 bugs
+错因是在截止前20min才意识到忘记处理sin(0)与cos(0)，这会对性能产生极大的损害。  <br>
+而在优化了这一点之后，由于从未对数字0 ^ 0有过定义，sin(0)^0就变为了0     <br>
+而在时间紧迫的情况下，我也没来得及用评测机进行评测。提交截止之后，评测机很快就跑出了该问题。</p>
+<p>另一处bug是犯了很多次的二重循环初始化错误，修改了之后还是遗漏了一个地方。</p>
+<p>正如教程所说，这两个点都是高行与圈复杂度的类（Mono与Poly）所出现的问题，耦合性强，不易被发现。</p>
+<p>若想降低复杂度，也就是解耦合，就需要做好一些预先的规划，将谁该做什么事分清楚。不过Poly与Mono的耦合度高，个人认为是较难避免的。因为Poly里会用到Mono的同类项判别方法，这个方法中又会涉及会Poly(三角函数内)的equal方法，这一equal方法又会归结于Mono</p>
+<p>或者说，Poly跟Mono的关系，就很有一种Expr与Factor的感觉。</p>
+</li>
+<li>
+<p>第三次作业 0 bug</p>
+</li>
+</ul>
+<h2 id="评测机搭建">评测机搭建
+</h2><p>这三周以来很有成就感的一件事，就是我终于主动尝试着搭出了自己的评测机！</p>
+<h3 id="checkpy比对">check.py比对
+</h3><p>利用了sympy库中的函数    <br>
+python库就是神通广大（）</p>
+<h3 id="dataexe数据生成">data.exe数据生成
+</h3><p>核心内容</p>
+<p>我使用的是随机暴力生成的方法</p>
+<p>构建的逻辑就是递归下降咯</p>
+<p>printExpr-&gt;printTerm-&gt;printFactor</p>
+<h3 id="bat批处理程序运行">bat批处理程序运行
+</h3><p>学习了一些基本运行语句： <br>
+java -jar .jar
+python .py
+.exe</p>
+<p>利用了一些基础的重定向。</p>
+<h2 id="bug分析">BUG分析
+</h2><p>首先是评测机暴力跑数据，通过简化数据点抓住核心问题数据，再定位到代码的具体漏洞位置。这一招在hw2中就大杀四方，获得了5个不同质的bug。</p>
+<p>其次便是手动构造边界数据，尤其是0,0次幂，1次幂等特殊情况，多加测试。</p>
+<p>遗憾的是，由于代码阅读能力不够强，我常常没有心力去认真观察他人的代码来寻找bug。</p>
+<h2 id="优化">优化
+</h2><h3 id="输出符号优化">输出符号优化
+</h3><p>hw1便涉及到的，存在正项则提前</p>
+<h3 id="sin-cos正负号优化">sin cos正负号优化
+</h3><p>对于因子内部全为负的三角因子，我会直接对该Poly使用negate方法，使其含有正项，从而缩短长度</p>
+<p>这一处理在某种程度上也统一了一些格式，便于同类项的判断</p>
+<p>不足之处在于还是不能用于全面的判断两个Poly是Opposite的，例如1-x与x-1，便不会经过处理，从而后续不会被判定为同类项</p>
+<p>改进： 我们可以采用相加等于0的方法来判断Poly的isOpposite</p>
+<h3 id="sin-2cos-2-sin-2-cos-2--sin-4-cos-4">sin^ 2+cos^ 2 sin^ 2-cos^ 2  sin^ 4-cos^ 4
+</h3><p>为了能够处理嵌套括号内的该类内容，我选择了在每次addPoly()时都加以判断，并且提取了公因式（不过无法处理幂次的公因式，比如sin(x)^ 3+cos(x)^ 2*sin(x)）。</p>
+<p>一处问题：在二倍角过程中，我改变了三角因子的Poly。这一行为决定了我们必须使用深克隆！</p>
+<p>另一处问题：过于频繁与紧急的匹配会导致<strong>贪心</strong>，例如sin(x)^ 2 - cos(x) ^2 + cos(x) ^2, 便会被我使用二倍角，从而闹出笑话。</p>
+<p>改进：在最后再处理化简工作，至于嵌套，可选择遍历内部嵌套进行化简。</p>
+<h2 id="心得体会">心得体会
+</h2><p>作为第一章，面向对象的思想已经比较清晰地发散开来了。递归下降这一算法，本身就是十分符合面向对象的思维方式，每个类做好自己的算法，问题一定能得到解决。</p>
+<p>hw2是很不错的一次体验，虽然是最辛苦的一周，但是无畏地向前探索，不合适就重构的勇气是很宝贵的。</p>
+<p>搭建评测机也是很奇妙的一次体验。自主学习的收获总是刻骨铭心。</p>
+<h2 id="未来方向">未来方向
+</h2><p>个人认为递归下降的内容如果能在理论课上详细结合代码来讲解运行逻辑，可能hw1就不会显得那么痛苦（）</p>
+<p>但是这种痛苦也是有益的，至少它让我从懵懂的第一周里清醒过来：</p>
+<p>面向对象的挑战，已然开始。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAoou1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAoou1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.2c3ae67d1543d8bf8f7f7fe3e1dd785e_hu6681761682986551058.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OOU1 HW1 表达式解析"
+                        
+                        data-hash="md5-LDrmfRVD2L&#43;Pf3/j4d14Xg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OOU1 HW1 表达式解析</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

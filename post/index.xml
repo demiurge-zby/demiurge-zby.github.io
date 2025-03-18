@@ -7,7 +7,283 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Fri, 14 Mar 2025 11:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 18 Mar 2025 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>北航OOU1 单元总结</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/</link>
+        <pubDate>Tue, 18 Mar 2025 12:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/123.png" alt="Featured image of post 北航OOU1 单元总结" /&gt;&lt;p&gt;本次作业以解析表达式并简化后输出为核心任务。&lt;/p&gt;
+&lt;p&gt;主要的实现过程为：   &lt;br&gt;
+&lt;code&gt;预处理&lt;/code&gt;-&amp;gt;&lt;code&gt;解析&lt;/code&gt;-&amp;gt;&lt;code&gt;化简&lt;/code&gt;-&amp;gt;&lt;code&gt;输出&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
+&lt;/h2&gt;&lt;h3 id=&#34;预处理的迭代&#34;&gt;预处理的迭代
+&lt;/h3&gt;&lt;p&gt;第一次作业：空白字符与正负号     &lt;br&gt;
+第二次作业：递推函数     &lt;br&gt;
+第三次作业：自定义函数&lt;/p&gt;
+&lt;h3 id=&#34;解析的迭代&#34;&gt;解析的迭代
+&lt;/h3&gt;&lt;p&gt;第一次作业：常数因子、幂函数因子、表达式因子    &lt;br&gt;
+第二次作业：三角因子
+第三次作业：求导因子&lt;/p&gt;
+&lt;h3 id=&#34;化简的迭代&#34;&gt;化简的迭代
+&lt;/h3&gt;&lt;p&gt;第一次作业：多项式的加乘幂   &lt;br&gt;
+第二次作业：含三角函数的加乘幂及其化简   &lt;br&gt;
+第三次作业：求导运算&lt;/p&gt;
+&lt;h3 id=&#34;输出的迭代&#34;&gt;输出的迭代
+&lt;/h3&gt;&lt;p&gt;第一次作业：输出多项式   &lt;br&gt;
+第二次作业：输出含三角函数的表达式
+第三次作业：无&lt;/p&gt;
+&lt;h2 id=&#34;第一次作业&#34;&gt;第一次作业
+&lt;/h2&gt;&lt;p&gt;刚刚走进面向对象课堂的第一天，就被HW1深刻地击溃了。      &lt;br&gt;
+不同于其他同学只是担心可扩展性不够强而不肯动笔————我的大脑是完全空白的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我知道是这个道理，但是到底怎么写？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我认为理解递归下降实际运行的关键，在于深刻理解lexer的执行逻辑，lexer作为parser的属性，是唯一确定的，&lt;strong&gt;当我解析完成，lexer也就走完了。解析的过程就是lexer的前进过程。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;而我们做的事情，就是根据读取expression，&lt;strong&gt;自行出构建一个新的、有结构的Expr。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;接下来的toPoly便也是递归下降的一种体现。&lt;strong&gt;我已经知道最小单元Mono与Power有它具体的toPoly()方法&lt;/strong&gt;，那么我就可以采用递归下降，对每一个类只着眼于它自身的运算过程。&lt;/p&gt;
+&lt;h3 id=&#34;代码量&#34;&gt;代码量
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines.png&#34;
+	width=&#34;1744&#34;
+	height=&#34;357&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines_hu1348462638036344911.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines_hu679612040571503907.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw1_lines&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;488&#34;
+		data-flex-basis=&#34;1172px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看出核心代码在于解析Parser与化简Poly这两个类中。&lt;/p&gt;
+&lt;h3 id=&#34;uml类图&#34;&gt;UML类图
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph.png&#34;
+	width=&#34;2452&#34;
+	height=&#34;1604&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph_hu9410046640435313302.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph_hu6616560314303406624.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw1_graph&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;366px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;方法数则是Poly类遥遥领先，不过都是加、乘、幂、去零、取反、输出等基本方法&lt;/p&gt;
+&lt;h3 id=&#34;复杂度&#34;&gt;复杂度
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class.png&#34;
+	width=&#34;664&#34;
+	height=&#34;445&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class_hu14704900314256740387.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class_hu14458279921066147853.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw1_class&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;358px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;同样的，Parser与Poly的复杂度是远高于其他类的。&lt;/p&gt;
+&lt;h3 id=&#34;类的设计&#34;&gt;类的设计
+&lt;/h3&gt;&lt;p&gt;PreProcess为预处理类，直接把空格与连续正负号解决掉，简化Parser的处理。&lt;/p&gt;
+&lt;p&gt;Mono类与Power类则对应了最小解析单元（因子中的常数，幂函数与表达式因子），这里将常数与幂函数都归为Mono类是很方便的。&lt;/p&gt;
+&lt;h2 id=&#34;第二次作业&#34;&gt;第二次作业
+&lt;/h2&gt;&lt;p&gt;如果说第一次作业是从零到一的突破，那么第二次作业可能就是从1到x的蜕变。    &lt;br&gt;
+三角因子本身的复杂性太强，不能像之前一样简单的归类，更没有统一的计算方法。&lt;/p&gt;
+&lt;p&gt;曾经Poly里的加与乘，如今全部都复杂起来了！   &lt;br&gt;
+我们只能进行重构。&lt;/p&gt;
+&lt;p&gt;对于加法，我们没有曾经直接看x的幂次来进行合并同类项的简单解法，  &lt;br&gt;
+因此只有写出同类项判别方法，才能实现加法的简化&lt;/p&gt;
+&lt;p&gt;对于乘法，我们需要先实现最小单元之间幂函数幂次与三角因子幂次的累积   &lt;br&gt;
+再进行所有乘积项的求和&lt;/p&gt;
+&lt;h3 id=&#34;代码量-1&#34;&gt;代码量
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines.png&#34;
+	width=&#34;1759&#34;
+	height=&#34;426&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines_hu2733324857433404355.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines_hu12539274716514737244.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw2_lines&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;412&#34;
+		data-flex-basis=&#34;990px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;较上次作业新增了近800行，其中parser变化不大，而Mono与Poly代码量激增  &lt;br&gt;
+此外还有新增的类: 递归函数RecursiveFunc&lt;/p&gt;
+&lt;h3 id=&#34;uml类图-1&#34;&gt;UML类图
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph.png&#34;
+	width=&#34;2362&#34;
+	height=&#34;2781&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph_hu4824547250586139424.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph_hu2263586557949589371.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw2_graph&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;84&#34;
+		data-flex-basis=&#34;203px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我调整了类的相对位置使之更加清晰。&lt;/p&gt;
+&lt;p&gt;图片从上到下分别是函数预处理，表达式解析，表达式化简运算与输出&lt;/p&gt;
+&lt;h3 id=&#34;复杂度-1&#34;&gt;复杂度
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class.png&#34;
+	width=&#34;664&#34;
+	height=&#34;489&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class_hu1209901690595859210.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class_hu15904561665040355737.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw2_class&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;325px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Parser与Poly不出意外的高复杂度。     &lt;br&gt;
+但是递推函数类的复杂度异常的高，我承认我当时采用的方法过于粗暴。     &lt;br&gt;
+后续果然发现了bug，只是到了第三次作业的环境中才得以体现出来。&lt;/p&gt;
+&lt;h3 id=&#34;类的设计-1&#34;&gt;类的设计
+&lt;/h3&gt;&lt;p&gt;Mono类秉承着原来解析的最小单元的地位，现在的它，是一个除了表达式因子以外可以包罗万象的Factor,含有常数，幂函数的幂次，三角函数的HashMap&amp;lt;Poly, BigInteger&amp;gt;。&lt;/p&gt;
+&lt;p&gt;因此，他也仍然是最终运算的最小单位，充当最终表达式中的项（Term）。&lt;/p&gt;
+&lt;p&gt;Poly则是所有Mono的和，用ArrayList实现。&lt;/p&gt;
+&lt;p&gt;接下来是RecursiveFunc类。我将函数翻译作为了预处理操作的一部分，实现了在解析开始之前就解决掉了所有的函数问题。这个类的核心作用就是根据已知信息，直接获得一个从0到5的函数Map。&lt;/p&gt;
+&lt;p&gt;接着process类也将被重写，并增添替换操作。&lt;/p&gt;
+&lt;h2 id=&#34;第三次作业&#34;&gt;第三次作业
+&lt;/h2&gt;&lt;p&gt;经历了HW1的无力茫然与HW2的大刀阔斧           &lt;br&gt;
+站在HW3面前的你，    &lt;br&gt;
+应当充满了决心！&lt;/p&gt;
+&lt;h3 id=&#34;代码量-2&#34;&gt;代码量
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines.png&#34;
+	width=&#34;1749&#34;
+	height=&#34;517&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines_hu14879122926649187208.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines_hu3319448293189894400.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw3_lines&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;338&#34;
+		data-flex-basis=&#34;811px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;代码行数增加的并不多&lt;/p&gt;
+&lt;p&gt;主要内容是新类的添加，更多的函数代入操作以及求导计算&lt;/p&gt;
+&lt;h3 id=&#34;uml类图-2&#34;&gt;UML类图
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph.png&#34;
+	width=&#34;2882&#34;
+	height=&#34;3286&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph_hu856977851820666993.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph_hu16451727185006472704.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw3_graph&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;87&#34;
+		data-flex-basis=&#34;210px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;相较于hw2，在Factor上新增了求导因子，在预处理上新增了NormalFunc以及一个数据功能类Func。&lt;/p&gt;
+&lt;h3 id=&#34;复杂度-2&#34;&gt;复杂度
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class.png&#34;
+	width=&#34;654&#34;
+	height=&#34;603&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class_hu5027182664871553546.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class_hu11158960634192581642.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;hw3_class&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;108&#34;
+		data-flex-basis=&#34;260px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;类的设计-2&#34;&gt;类的设计
+&lt;/h3&gt;&lt;p&gt;Derivation类作为一个Factor，需要toPoly()方法，只需要将expr先toPoly，在调用Poly()的derive方法。&lt;/p&gt;
+&lt;p&gt;NormalFunc类的设计与RecursiveFunc的思路基本一致，只是少了递推这一步。&lt;/p&gt;
+&lt;h2 id=&#34;可扩展性&#34;&gt;可扩展性
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;函数的扩展：
+exp函数，只需对Mono类添加一个Poly属性，用于记录指数。
+ln函数，同理，只需记录真数。&lt;/li&gt;
+&lt;li&gt;变元的扩展：
+只需Mono的power变为power1和power2，分别作为两个变元的幂指数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bug&#34;&gt;BUG
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;第一次作业 0 bug&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二次作业 强测 0 bug 互测 2 bugs
+错因是在截止前20min才意识到忘记处理sin(0)与cos(0)，这会对性能产生极大的损害。  &lt;br&gt;
+而在优化了这一点之后，由于从未对数字0 ^ 0有过定义，sin(0)^0就变为了0     &lt;br&gt;
+而在时间紧迫的情况下，我也没来得及用评测机进行评测。提交截止之后，评测机很快就跑出了该问题。&lt;/p&gt;
+&lt;p&gt;另一处bug是犯了很多次的二重循环初始化错误，修改了之后还是遗漏了一个地方。&lt;/p&gt;
+&lt;p&gt;正如教程所说，这两个点都是高行与圈复杂度的类（Mono与Poly）所出现的问题，耦合性强，不易被发现。&lt;/p&gt;
+&lt;p&gt;若想降低复杂度，也就是解耦合，就需要做好一些预先的规划，将谁该做什么事分清楚。不过Poly与Mono的耦合度高，个人认为是较难避免的。因为Poly里会用到Mono的同类项判别方法，这个方法中又会涉及会Poly(三角函数内)的equal方法，这一equal方法又会归结于Mono&lt;/p&gt;
+&lt;p&gt;或者说，Poly跟Mono的关系，就很有一种Expr与Factor的感觉。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第三次作业 0 bug&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;评测机搭建&#34;&gt;评测机搭建
+&lt;/h2&gt;&lt;p&gt;这三周以来很有成就感的一件事，就是我终于主动尝试着搭出了自己的评测机！&lt;/p&gt;
+&lt;h3 id=&#34;checkpy比对&#34;&gt;check.py比对
+&lt;/h3&gt;&lt;p&gt;利用了sympy库中的函数    &lt;br&gt;
+python库就是神通广大（）&lt;/p&gt;
+&lt;h3 id=&#34;dataexe数据生成&#34;&gt;data.exe数据生成
+&lt;/h3&gt;&lt;p&gt;核心内容&lt;/p&gt;
+&lt;p&gt;我使用的是随机暴力生成的方法&lt;/p&gt;
+&lt;p&gt;构建的逻辑就是递归下降咯&lt;/p&gt;
+&lt;p&gt;printExpr-&amp;gt;printTerm-&amp;gt;printFactor&lt;/p&gt;
+&lt;h3 id=&#34;bat批处理程序运行&#34;&gt;bat批处理程序运行
+&lt;/h3&gt;&lt;p&gt;学习了一些基本运行语句： &lt;br&gt;
+java -jar .jar
+python .py
+.exe&lt;/p&gt;
+&lt;p&gt;利用了一些基础的重定向。&lt;/p&gt;
+&lt;h2 id=&#34;bug分析&#34;&gt;BUG分析
+&lt;/h2&gt;&lt;p&gt;首先是评测机暴力跑数据，通过简化数据点抓住核心问题数据，再定位到代码的具体漏洞位置。这一招在hw2中就大杀四方，获得了5个不同质的bug。&lt;/p&gt;
+&lt;p&gt;其次便是手动构造边界数据，尤其是0,0次幂，1次幂等特殊情况，多加测试。&lt;/p&gt;
+&lt;p&gt;遗憾的是，由于代码阅读能力不够强，我常常没有心力去认真观察他人的代码来寻找bug。&lt;/p&gt;
+&lt;h2 id=&#34;优化&#34;&gt;优化
+&lt;/h2&gt;&lt;h3 id=&#34;输出符号优化&#34;&gt;输出符号优化
+&lt;/h3&gt;&lt;p&gt;hw1便涉及到的，存在正项则提前&lt;/p&gt;
+&lt;h3 id=&#34;sin-cos正负号优化&#34;&gt;sin cos正负号优化
+&lt;/h3&gt;&lt;p&gt;对于因子内部全为负的三角因子，我会直接对该Poly使用negate方法，使其含有正项，从而缩短长度&lt;/p&gt;
+&lt;p&gt;这一处理在某种程度上也统一了一些格式，便于同类项的判断&lt;/p&gt;
+&lt;p&gt;不足之处在于还是不能用于全面的判断两个Poly是Opposite的，例如1-x与x-1，便不会经过处理，从而后续不会被判定为同类项&lt;/p&gt;
+&lt;p&gt;改进： 我们可以采用相加等于0的方法来判断Poly的isOpposite&lt;/p&gt;
+&lt;h3 id=&#34;sin-2cos-2-sin-2-cos-2--sin-4-cos-4&#34;&gt;sin^ 2+cos^ 2 sin^ 2-cos^ 2  sin^ 4-cos^ 4
+&lt;/h3&gt;&lt;p&gt;为了能够处理嵌套括号内的该类内容，我选择了在每次addPoly()时都加以判断，并且提取了公因式（不过无法处理幂次的公因式，比如sin(x)^ 3+cos(x)^ 2*sin(x)）。&lt;/p&gt;
+&lt;p&gt;一处问题：在二倍角过程中，我改变了三角因子的Poly。这一行为决定了我们必须使用深克隆！&lt;/p&gt;
+&lt;p&gt;另一处问题：过于频繁与紧急的匹配会导致&lt;strong&gt;贪心&lt;/strong&gt;，例如sin(x)^ 2 - cos(x) ^2 + cos(x) ^2, 便会被我使用二倍角，从而闹出笑话。&lt;/p&gt;
+&lt;p&gt;改进：在最后再处理化简工作，至于嵌套，可选择遍历内部嵌套进行化简。&lt;/p&gt;
+&lt;h2 id=&#34;心得体会&#34;&gt;心得体会
+&lt;/h2&gt;&lt;p&gt;作为第一章，面向对象的思想已经比较清晰地发散开来了。递归下降这一算法，本身就是十分符合面向对象的思维方式，每个类做好自己的算法，问题一定能得到解决。&lt;/p&gt;
+&lt;p&gt;hw2是很不错的一次体验，虽然是最辛苦的一周，但是无畏地向前探索，不合适就重构的勇气是很宝贵的。&lt;/p&gt;
+&lt;p&gt;搭建评测机也是很奇妙的一次体验。自主学习的收获总是刻骨铭心。&lt;/p&gt;
+&lt;h2 id=&#34;未来方向&#34;&gt;未来方向
+&lt;/h2&gt;&lt;p&gt;个人认为递归下降的内容如果能在理论课上详细结合代码来讲解运行逻辑，可能hw1就不会显得那么痛苦（）&lt;/p&gt;
+&lt;p&gt;但是这种痛苦也是有益的，至少它让我从懵懂的第一周里清醒过来：&lt;/p&gt;
+&lt;p&gt;面向对象的挑战，已然开始。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>北航OS Lab0 上机</title>
         <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Fri, 14 Mar 2025 11:15:30 +0800</pubDate>
