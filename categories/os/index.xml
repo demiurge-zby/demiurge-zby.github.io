@@ -542,7 +542,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;用readelf解析文件本身&#34;&gt;用readelf解析文件本身
-&lt;/h4&gt;&lt;p&gt;我们发现与运行没有任何输出结果。&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;我们发现运行没有任何输出结果。&lt;/p&gt;
 &lt;p&gt;根据hint，我们使用readelf -h来研究文件头。&lt;/p&gt;
 &lt;p&gt;下图是可被&lt;code&gt;自己的readelf&lt;/code&gt;分析的mos与hello的信息。 &lt;br&gt;
 &lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5.png&#34;
