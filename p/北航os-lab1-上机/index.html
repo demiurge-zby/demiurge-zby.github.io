@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验报告">
-<title>北航OS Lab0 预备知识</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="C功底大考察">
+<title>北航OS Lab1 上机</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab0 预备知识">
-<meta property='og:description' content="实验报告">
-<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/'>
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab1 上机">
+<meta property='og:description' content="C功底大考察">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-27T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-02-27T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png' />
-<meta name="twitter:title" content="北航OS Lab0 预备知识">
-<meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-28T11:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-28T11:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/123.png' />
+<meta name="twitter:title" content="北航OS Lab1 上机">
+<meta name="twitter:description" content="C功底大考察"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/123.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -268,18 +268,23 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#思考题">思考题</a>
+    <li><a href="#exam">exam</a>
       <ol>
-        <li><a href="#thinking-01">Thinking 0.1</a></li>
-        <li><a href="#thinking-02">Thinking 0.2</a></li>
-        <li><a href="#thinking-03">Thinking 0.3</a></li>
-        <li><a href="#thinking-04">Thinking 0.4</a></li>
-        <li><a href="#thinking-05">Thinking 0.5</a></li>
-        <li><a href="#thinking-06">Thinking 0.6</a></li>
+        <li><a href="#21级r">21级：%R</a></li>
+        <li><a href="#22级p">22级：%P</a></li>
+        <li><a href="#mygo--k">MYGO!!!!! : %k</a></li>
       </ol>
     </li>
-    <li><a href="#难点分析">难点分析</a></li>
-    <li><a href="#实验体会">实验体会</a></li>
+    <li><a href="#extra">extra</a>
+      <ol>
+        <li><a href="#fmemopen">fmemopen</a></li>
+        <li><a href="#fmemoutput此函数为自主命名实现">fmemoutput(此函数为自主命名实现)</a></li>
+        <li><a href="#fmemprintf">fmemprintf</a></li>
+        <li><a href="#fseek">fseek</a></li>
+        <li><a href="#fclose">fclose</a></li>
+      </ol>
+    </li>
+    <li><a href="#后记">后记</a></li>
   </ol>
 </nav>
         </div>
@@ -294,13 +299,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
-                <img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu12315729080435056966.png"
-                        srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu12315729080435056966.png 800w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu9458574184818487192.png 1600w"
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/123_hu8344348774698623485.png"
+                        srcset="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/123_hu8344348774698623485.png 800w, /p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/123_hu12481977893465114782.png 1600w"
                         width="800" 
                         height="422" 
                         loading="lazy"
-                        alt="Featured image of post 北航OS Lab0 预备知识" />
+                        alt="Featured image of post 北航OS Lab1 上机" />
                 
             </a>
         </div>
@@ -319,12 +324,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">北航OS Lab0 预备知识</a>
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/">北航OS Lab1 上机</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            实验报告
+            C功底大考察
         </h3>
         
     </div>
@@ -345,7 +350,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-02-27</time>
+                <time class="article-time--published">2025-03-28</time>
             </div>
         
 
@@ -360,7 +365,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -375,189 +380,249 @@
     <section class="article-content">
     
     
-    <h1 id="实验报告">实验报告
-</h1><h2 id="思考题">思考题
-</h2><h3 id="thinking-01">Thinking 0.1
-</h3><p>文本内容如下图：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image.png"
-	width="466"
-	height="565"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu15829322080962621648.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu11849206786200839682.png 1024w"
-	loading="lazy"
-	
-		alt="git status"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="82"
-		data-flex-basis="197px"
-	
-></p>
+    <h2 id="exam">exam
+</h2><p>exam难度相较上次已大幅降低，如果lab1本身实现没有问题，再看过一点点学长博客或代码，基本就约等于点击即送了。</p>
+<p>在此统计一下近三年的exam。再往前lab1就主要学习readelf，考核点不在于vprintfmt了。</p>
+<p>近三年的exam均采用了新增%&hellip;[字母]的形式，也不必担心新的字母有什么新的实现，一般就是%d,%s,%c等等的组合罢了。</p>
+<h3 id="21级r">21级：%R
+</h3><p>21级（2023上机）：</p>
+<p>实现 <code>%...R</code>:	
+<code>%...R</code>等价于<code>(%...d,%...d)</code></p>
+<p>所以只需要</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">case</span> <span class="sc">&#39;R&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">print_char</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="sc">&#39;(&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">//...  照搬case &#39;d&#39;的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">print_char</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="sc">&#39;,&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">// width可无脑取0，因为width是最小长度限制，大于此长度不会截断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//...  再次照搬case &#39;d&#39;的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">print_char</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="sc">&#39;)&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="k">break</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不用畏惧两个参数，无非是两次va_arg，照搬两次case &rsquo;d&rsquo;的内容的时候都是实现了的。</p>
+<p>具体可参见nr的博客：https://www.cnblogs.com/juantify/p/17238949.html</p>
+<h3 id="22级p">22级：%P
+</h3><p>22级堪称与21级一模一样，唯一的改变是读两个参数需要输出三个数：<br>
+<code>%...P</code>等价于<code>(%...d,%...d,%...d)</code></p>
+<p>读取两个数x,y	
+输出三个数x,y,z		
+其中z=(x+y)*(x-y)</p>
+<blockquote>
+<p>记不大清了，反正只是x,y某种简单计算后的结果</p>
+</blockquote>
+<p>所以也只需要</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">case</span> <span class="sc">&#39;P&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">print_char</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="sc">&#39;(&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">//...  照搬case &#39;d&#39;的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">print_char</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="sc">&#39;,&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">// width可无脑取0，因为width是最小长度限制，大于此长度不会截断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//...  再次照搬case &#39;d&#39;的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">print_char</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="sc">&#39;,&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">//...  再再次照搬case &#39;d&#39;的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">print_char</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="sc">&#39;)&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="k">break</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是，第三次照搬就不需要通过va_arg了，而是直接计算出来。</p>
+<h3 id="mygo--k">MYGO!!!!! : %k
+</h3><p>我们的上机相较过去有一定的突破，但也不多：	
+<code>%...k</code>等价于<code>%...s =&gt; %...d</code></p>
+<p>但是<code>%...k</code>中的<code>...</code>的属性并不是全部无脑分配给%s与%d了</p>
+<p>这些属性具体给谁按照题意要求即可</p>
+<p>其实也只需要</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">case</span> <span class="sc">&#39;k&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//...  照搬case &#39;s&#39;的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">print_str</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s">&#34; =&gt; &#34;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">// 这里width还可以可无脑取0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//...  照搬case &#39;d&#39;的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">break</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果lab1不出意外还出这类题的话，相信你看完这些讲解，应当是能直接秒杀了。</p>
+<p>这里给你一点更快的建议：</p>
 <ul>
-<li>
-<p>刚刚创建文件后，文件处于未跟踪状态，即<code>Untracked</code>。</p>
-</li>
-<li>
-<p>文件被<code>git add</code>之后，被建立跟踪并且进入<code>Staged</code>状态。</p>
-</li>
-<li>
-<p>当文件被<code>git commit</code>后，进入未修改状态<code>Unmodified</code>，若增加修改，则变为<code>Modified</code>状态。</p>
-</li>
+<li><code>nyy</code>可以复制自光标起的n行</li>
+<li><code>p</code>可以实现粘贴</li>
+<li>在实验报告中也提到过的，print_char,print_num,print_str之类的函数也可以提前了解一下		
+<img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image.png"
+	width="930"
+	height="165"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image_hu5098189660382361303.png 480w, /p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image_hu10744170451247688252.png 1024w"
+	loading="lazy"
+	
+		alt="HINT"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="563"
+		data-flex-basis="1352px"
+	
+></li>
 </ul>
-<p>因此结果并不一样。因为第一次add之前，文件尚未被跟踪，文件作出修改也仍会处于<code>Untracked</code>状态。</p>
-<p>而在add与commit之后，文件被跟踪，提交过后的修改会被记录为<code>Modified</code>。</p>
-<h3 id="thinking-02">Thinking 0.2
-</h3><p><code>add the file</code>对应<code>git add</code> （第一次add文件）        <br>
-<code>stage the file</code>对应<code>git add</code> （已跟踪的文件经过修改后进行的add，添加到暂存区）       <br>
-<code>commit</code>对应<code>git commit</code> (把暂存区里的内容commit)</p>
-<h3 id="thinking-03">Thinking 0.3
-</h3><blockquote>
-<p>代码文件print.c被错误删除时，应当使用什么命令将其恢复？</p>
+<h2 id="extra">extra
+</h2><blockquote>
+<p>本次extra题考验你C语言指针功夫！</p>
 </blockquote>
-<p>应当使用<code>git restore print.c</code></p>
-<p>print.c仍然在暂存区，只是在工作区被删除，只需将工作区恢复到暂存区状态即可。</p>
+<p>其实和往年题也比较类似的：	
+考查你对out函数的理解。</p>
+<p>一般来说都会设置一个比较新的背景，</p>
+<ul>
+<li>21级的<code>sprintf</code>写入到字符串</li>
+<li>22级的模仿<code>print</code>写<code>scan</code></li>
+<li>23级的<code>fmemprintf</code>写入到内存信息流</li>
+</ul>
+<p>本质上都是仿照着<code>kern/printk.c</code>来书写</p>
+<p><img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-1.png"
+	width="541"
+	height="419"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-1_hu3223776084633213653.png 480w, /p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-1_hu10942874812690793761.png 1024w"
+	loading="lazy"
+	
+		alt="printk"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="309px"
+	
+></p>
 <blockquote>
-<p>代码文件print.c被错误删除后，执行了<code>git rm print.c</code>命令，此时应当
-使用什么命令将其恢复？</p>
+<p>HINT也会提示你去参考这个函数（）</p>
 </blockquote>
-<p>应当先后使用<code>git reset HEAD print.c</code>与<code>git restore print.c</code></p>
-<p>因为执行了<code>git rm print.c</code>，暂存区已被改动，所以需要先恢复暂存区的内容。</p>
+<p>核心的方法就是写一个新的out函数</p>
+<p>因为调用vprintfmt的时候，最终都是落实到out函数上，vprintfmt主要做的就是格式解析的工作。因此只需要写好自定义out函数，就能实现自定义支持格式的新功能。</p>
+<p>其他的内容在此不愿详细解释，大家根据题面与HINT努力实现就好，都是一些很简单的，功能明确的C函数。（大多数人挂都是这些环节的C语言bug）</p>
+<p>题目背景：	
+FILE*结构体：	
+char *base; 基地址（起始地址）
+char *ptr; 写地址（当前地址）
+char *end; 末地址</p>
+<p>可以理解为FILE*掌管着一段字符串以及一个用于操作的指针</p>
+<p>下面是实现的五个函数，其中四个函数是明确要求的必需函数，还有一个是实现过程中需要自主实现并调用的。</p>
+<h3 id="fmemopen">fmemopen
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-3.png"
+	width="674"
+	height="501"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-3_hu11318191534096634854.png 480w, /p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-3_hu7506707342549681504.png 1024w"
+	loading="lazy"
+	
+		alt="fmemopen"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="134"
+		data-flex-basis="322px"
+	
+></p>
+<p>笔者debug了30min便在于strcmp前面忘加<code>!</code></p>
 <blockquote>
-<p>无关文件hello.txt已经被添加到暂存区时，如何在不删除此文件的前提下
-将其移出暂存区？</p>
+<p>OS的debug难度实在太大。  	
+当你出现错误，你得不到任何有效信息，有可能就只是make run之后系统卡死			
+如果错的不那么错误（例如我这样），也许会返回一个无厘头的错误结果，但事实上这个结果反而误导了我的debug过程</p>
 </blockquote>
-<p>应当使用<code>git rm -cached hello.txt</code></p>
-<h3 id="thinking-04">Thinking 0.4
-</h3><p><code>git log</code>结果如下图：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1.png"
-	width="530"
-	height="631"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu3297354720116851202.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu6840445999607377668.png 1024w"
+<h3 id="fmemoutput此函数为自主命名实现">fmemoutput(此函数为自主命名实现)
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-2.png"
+	width="656"
+	height="252"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-2_hu6057164202547327138.png 480w, /p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-2_hu15851709451076136935.png 1024w"
 	loading="lazy"
 	
-		alt="git log"
+		alt="fmemoutput"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="83"
-		data-flex-basis="201px"
+		data-flex-grow="260"
+		data-flex-basis="624px"
 	
 ></p>
-<p>版本回退后<code>git log</code>结果如下图：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2.png"
-	width="528"
-	height="547"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu2569888871527426734.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu4451645708424704670.png 1024w"
+<h3 id="fmemprintf">fmemprintf
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-4.png"
+	width="619"
+	height="224"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-4_hu17310796173340444160.png 480w, /p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-4_hu16551857561496039213.png 1024w"
 	loading="lazy"
 	
-		alt="git log"
+		alt="fmemprintf"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="96"
-		data-flex-basis="231px"
+		data-flex-grow="276"
+		data-flex-basis="663px"
 	
 ></p>
-<p>版本切换的结果：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3.png"
-	width="684"
-	height="440"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu2447533878860350817.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu12117117513593335777.png 1024w"
+<h3 id="fseek">fseek
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-5.png"
+	width="880"
+	height="759"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-5_hu15700125719621771634.png 480w, /p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-5_hu6023779320294445988.png 1024w"
 	loading="lazy"
 	
-		alt="git log"
+		alt="fseek"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="155"
-		data-flex-basis="373px"
+		data-flex-grow="115"
+		data-flex-basis="278px"
 	
 ></p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4.png"
-	width="744"
-	height="670"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu14216853382266145143.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu9645650563847857658.png 1024w"
+<h3 id="fclose">fclose
+</h3><p><img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-6.png"
+	width="344"
+	height="112"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-6_hu9550176449336341182.png 480w, /p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-6_hu16928510939773274666.png 1024w"
 	loading="lazy"
 	
-		alt="git log"
+		alt="fclose"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="111"
-		data-flex-basis="266px"
+		data-flex-grow="307"
+		data-flex-basis="737px"
 	
 ></p>
-<p>可以看出<code>git reset --hard HEAD^</code>执行后，<code>git log</code>结果并不是1-2-3-2，而是直接变为1-2</p>
-<p><code>git reset --hard &lt;hash&gt;</code>对于版本的控制也并不改变目录树，而是在原有的目录树上切换结点。</p>
-<h3 id="thinking-05">Thinking 0.5
-</h3><p>运行结果如下：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5.png"
-	width="501"
-	height="248"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu18119050952445327974.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu17127191734205273665.png 1024w"
-	loading="lazy"
-	
-		alt="&gt; and "
-	
-	
-		class="gallery-image" 
-		data-flex-grow="202"
-		data-flex-basis="484px"
-	
-></p>
-<p><code>&gt;</code> 的重定向是覆盖，而<code>&gt;&gt;</code>的重定向是追加。</p>
-<h3 id="thinking-06">Thinking 0.6
-</h3><p>command内容为：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6.png"
-	width="425"
-	height="416"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu6965343964014852431.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu7513391156839822228.png 1024w"
-	loading="lazy"
-	
-		alt="Command"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="102"
-		data-flex-basis="245px"
-	
-></p>
-<p>result内容为：</p>
-<p><img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8.png"
-	width="319"
-	height="288"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu13913448634350666254.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu16136104289695794963.png 1024w"
-	loading="lazy"
-	
-		alt="Result"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="110"
-		data-flex-basis="265px"
-	
-></p>
-<p>解释说明：</p>
-<p>为了原样输出test，command每一行的内容为：    <br>
-echo &rsquo; <code>Content</code> &rsquo; &raquo; test (第一行是&gt;)</p>
-<p>其中单引号的目的是保证原样输出，不触发文本中的任何$符号与&gt;符号</p>
-<p>result的内容有两部分，   <br>
-一是test运行的输出结果会重定向到result，     <br>
-二是test文件本身也有重定向到result的代码</p>
-<p>思考问题：</p>
-<p>若把<code>echo echo Shell Start</code>的<code>echo Shell Start</code>用反引号引起来         <br>
-则会将反引号内指令的运算结果变为一个字符串<code>&quot;Shell Start&quot;</code>    <br>
-最终整条指令结果为Shell Start</p>
-<p>而<code>echo echo Shell Start</code>的结果是echo Shell Start</p>
-<p><code>echo echo $c&gt;file1</code>则同理，加上反引号后指令会输出3  <br>
-而不加反引号应输出echo $c&gt;file1，结果不同。</p>
-<h2 id="难点分析">难点分析
-</h2><p>Lab0作为大家走向OS的过渡课程，其思维难度不高，重难点在于对各种指令的运用。</p>
-<p>如sed awk grep等方法的运用，单引号、双引号与反引号的灵活使用等等</p>
-<h2 id="实验体会">实验体会
-</h2><p>目前尚未进行上机的限时测试，而日常实验的训练，很像我第一次搭建OO评测机时，一点点探索与学习的过程。</p>
-<p>感性的话不必多说，但是to be honest,  <br>
-OS的lab0相较于CO的P0-P2以及OO的U1，已然是非常温和了。</p>
+<h2 id="后记">后记
+</h2><p>在OOU2hw5电梯、冯如杯、lab2等多项繁杂事务的强压之下，居然还能抽出时间点开这篇文章复习OS的lab1，真切希望我的内容可以帮助到你！！！</p>
+<blockquote>
+<p>大概率很多人是没有怎么看extra的代码的，因为确实没必要看。
+在这里放出来，是希望大家能对extra的整体代码量与实现难度有一定基础的认知。</p>
+</blockquote>
+<p>祝上机顺利！</p>
 
 </section>
 
@@ -579,30 +644,6 @@ OS的lab0相较于CO的P0-P2以及OO的U1，已然是非常温和了。</p>
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/">
-        
-        
-            <div class="article-image">
-                <img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/123.24891379d815b03279c0a701f662ba52_hu12182975097152057230.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 北航OS Lab1 上机"
-                        
-                        data-hash="md5-JIkTedgVsDJ5wKcB9mK6Ug==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">北航OS Lab1 上机</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="has-image">
@@ -647,6 +688,30 @@ OS的lab0相较于CO的P0-P2以及OO的U1，已然是非常温和了。</p>
 
         <div class="article-details">
             <h2 class="article-title">北航OS Lab0 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.d2540c9d55ec4185e0edd3b3612c88bf_hu6329847636727818116.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab0 预备知识"
+                        
+                        data-hash="md5-0lQMnVXsQYXg7dOzYSyIvw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab0 预备知识</h2>
         </div>
     </a>
 </article>
