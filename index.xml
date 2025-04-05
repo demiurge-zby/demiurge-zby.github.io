@@ -7,7 +7,486 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Fri, 28 Mar 2025 11:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 05 Apr 2025 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>北航OS Lab2 内存管理</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+        <pubDate>Sat, 05 Apr 2025 12:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg.png" alt="Featured image of post 北航OS Lab2 内存管理" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+&lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
+&lt;/h2&gt;&lt;h3 id=&#34;thinking-21&#34;&gt;Thinking 2.1
+&lt;/h3&gt;&lt;p&gt;在编写的 C 程序中，指针变量中存储的地址被视为&lt;code&gt;虚拟地址&lt;/code&gt;。     &lt;br&gt;
+MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟地址&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;参见实验指导书：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在计算机组成原理等硬件实验中，CPU 通常直接发送物理地址，这是为了简化内存操作，让大家关注 CPU 内部的计算与控制逻辑。而在实际程序中，访存、跳转等指令以及用于取指的 PC 寄存器中的访存目标地址都是&lt;code&gt;虚拟地址&lt;/code&gt;。我们编写的 C 程序中也经常通过对指针解引用来进行访存，其中指针的值也会被视为&lt;code&gt;虚拟地址&lt;/code&gt;，经过编译后生成相应的访存指令。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;thinking-22&#34;&gt;Thinking 2.2
+&lt;/h3&gt;&lt;h4 id=&#34;用宏实现链表的好处&#34;&gt;用宏实现链表的好处
+&lt;/h4&gt;&lt;p&gt;首先，在可重用性上自然是能够被多次反复使用，便于代码书写与阅读。     &lt;br&gt;
+其次，宏相较于函数，其自由度大大增加。它可以支持不同数据类型的链表，因为其本质上只是字符串替换，可操作性更强。    &lt;br&gt;
+第三，宏不是函数调用，不需额外占用函数栈空间。&lt;/p&gt;
+&lt;h4 id=&#34;比较单向双向循环链表&#34;&gt;比较单向、双向、循环链表
+&lt;/h4&gt;&lt;p&gt;由于 &lt;code&gt;/usr/include/sys/queue.h&lt;/code&gt; 里面的双向链表和我们自己实现的差别不大，因此都使用了&lt;code&gt;/usr/include/sys/queue.h&lt;/code&gt;的进行对比分析。&lt;/p&gt;
+&lt;p&gt;单向链表：  &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1.png&#34;
+	width=&#34;888&#34;
+	height=&#34;405&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1_hu15072774150551891593.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1_hu7660962741785960241.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;单向链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;219&#34;
+		data-flex-basis=&#34;526px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;双向链表：  &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2.png&#34;
+	width=&#34;850&#34;
+	height=&#34;424&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2_hu5945114192631768838.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2_hu13934510025857460306.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;双向链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;481px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;循环链表：     &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image.png&#34;
+	width=&#34;868&#34;
+	height=&#34;458&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image_hu2012991216943849946.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image_hu11233287312304373731.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;循环链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;454px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看出，在结构体定义上，单向链表与双向链表都只需要头指针，而循环链表需要头尾两个指针；    &lt;br&gt;
+在link定义上，单向链表只有next，而双向链表与循环链表都有next与prev。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;需要注意的是：循环链表的next与prev都是数据的指针，而双向链表的prev是前一数据的next指针的指针！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在功能性上的差异在此不再赘述了，实现的功能越多，效率上可能就会有折损。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;插入
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3.png&#34;
+	width=&#34;711&#34;
+	height=&#34;255&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3_hu5453767599776232582.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3_hu3893599034676677987.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;单向链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;278&#34;
+		data-flex-basis=&#34;669px&#34;
+	
+&gt;    &lt;br&gt;
+单向链表只能实现插入到某个节点之后，但相应的语句也只有两条。     &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4.png&#34;
+	width=&#34;877&#34;
+	height=&#34;563&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4_hu5411641350732979300.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4_hu5491134792678881312.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;双向链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
+	
+&gt;   &lt;br&gt;
+双向链表能够实现插入到前、后两种位置，但是每个方法都需要四条语句。      &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5.png&#34;
+	width=&#34;844&#34;
+	height=&#34;505&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5_hu8236949126515540414.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5_hu16317842035363967724.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;循环链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;401px&#34;
+	
+&gt;   &lt;br&gt;
+循环链表能实现插入到前、后两种位置，需要的语句更加复杂。 &lt;br&gt;
+此外，循环链表出了插入到HEAD之外，还有独有的插入到TAIL&lt;/li&gt;
+&lt;li&gt;删除
+三种链表在删除上的区别更加显著：  &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6.png&#34;
+	width=&#34;852&#34;
+	height=&#34;318&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6_hu12676226490457632374.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6_hu17222394798821486483.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;单向链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;267&#34;
+		data-flex-basis=&#34;643px&#34;
+	
+&gt; &lt;br&gt;
+单向链表要想删除某个结点，必须通过遍历来定位好他的位置，才能让它前面的结点链接上它后面的结点。   &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7.png&#34;
+	width=&#34;823&#34;
+	height=&#34;175&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7_hu1775133871085579657.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7_hu13794736907260181710.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;双向链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;470&#34;
+		data-flex-basis=&#34;1128px&#34;
+	
+&gt;   &lt;br&gt;
+而双向链表可以直接知晓其前一结点的next指针，因此只需要O(1)的操作  &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8.png&#34;
+	width=&#34;869&#34;
+	height=&#34;315&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8_hu9547383370689560170.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8_hu12873222633953228363.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;循环链表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;275&#34;
+		data-flex-basis=&#34;662px&#34;
+	
+&gt;   &lt;br&gt;
+循环链表也是O(1)的，但是对于head指针要特殊处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;整体来看，双向链表是权衡了时间复杂度与空间复杂度的不错设计，性能优良。&lt;/p&gt;
+&lt;h3 id=&#34;thinking-23&#34;&gt;Thinking 2.3
+&lt;/h3&gt;&lt;p&gt;选择C项。&lt;/p&gt;
+&lt;p&gt;接下来分析一下Page_list的结构。&lt;/p&gt;
+&lt;h4 id=&#34;page_list_entry_t&#34;&gt;Page_LIST_entry_t
+&lt;/h4&gt;&lt;p&gt;结合     &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9.png&#34;
+	width=&#34;826&#34;
+	height=&#34;156&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9_hu3801529794239292768.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9_hu4045160301837978091.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;529&#34;
+		data-flex-basis=&#34;1270px&#34;
+	
+&gt;    &lt;br&gt;
+与    &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10.png&#34;
+	width=&#34;536&#34;
+	height=&#34;42&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10_hu8612394660481041232.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10_hu9835370867112699285.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1276&#34;
+		data-flex-basis=&#34;3062px&#34;
+	
+&gt;   &lt;br&gt;
+得知&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Page&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;le_next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Page&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;le_prev&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;构成了结构体&lt;code&gt;Page_LIST_entry_t&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;page&#34;&gt;Page
+&lt;/h4&gt;&lt;p&gt;接着根据    &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11.png&#34;
+	width=&#34;844&#34;
+	height=&#34;295&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11_hu16149775748210277383.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11_hu16760772668446011204.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;286&#34;
+		data-flex-basis=&#34;686px&#34;
+	
+&gt;   &lt;br&gt;
+得知&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Page_LIST_entry_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pp_link&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;u_short&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pp_ref&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;构成了结构体&lt;code&gt;struct Page&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;page_list&#34;&gt;Page_list
+&lt;/h4&gt;&lt;p&gt;根据        &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12.png&#34;
+	width=&#34;327&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12_hu11742448621651462290.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12_hu13741518102078949684.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1090&#34;
+		data-flex-basis=&#34;2616px&#34;
+	
+&gt;   &lt;br&gt;
+与    &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13.png&#34;
+	width=&#34;637&#34;
+	height=&#34;121&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13_hu5010262874759753169.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13_hu8021967337604878703.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;526&#34;
+		data-flex-basis=&#34;1263px&#34;
+	
+&gt;   &lt;br&gt;
+得知&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Page&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lh_first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;构成了结构体&lt;code&gt;struct Page_list&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;answer&#34;&gt;Answer
+&lt;/h4&gt;&lt;p&gt;经过整理总结，也即：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Page_list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Page&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;le_next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Page&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;le_prev&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pp_link&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;u_short&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pp_ref&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lh_first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;thinking-24&#34;&gt;Thinking 2.4
+&lt;/h3&gt;&lt;p&gt;根据任务指导书：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ASID：Address Space IDentifier   &lt;br&gt;
+用于区分不同的地址空间。   &lt;br&gt;
+查找 TLB 表项时，除了需要提供 VPN，还需要提供ASID
+同一虚拟地址在不同的地址空间中通常映射到不同的物理地址&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在多进程操作系统中，每个进程都有自己独立的虚拟地址空间。ASID 作为唯一的标识符，要用于区分不同进程的地址空间。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14.png&#34;
+	width=&#34;811&#34;
+	height=&#34;66&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14_hu18408539902230633037.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14_hu8212261378777013766.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ASID&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1228&#34;
+		data-flex-basis=&#34;2949px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;ASID通常为8位，即有256种ASID，就可以支持256个不同的地址空间。&lt;/p&gt;
+&lt;h3 id=&#34;thinking-25&#34;&gt;Thinking 2.5
+&lt;/h3&gt;&lt;p&gt;调用关系显然： &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15.png&#34;
+	width=&#34;795&#34;
+	height=&#34;93&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15_hu12396460553871558354.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15_hu4106646982107807543.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;854&#34;
+		data-flex-basis=&#34;2051px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;tlb_invalidate函数通过调用tlb_out函数，把va对应的页表项清空。  &lt;br&gt;
+其中(va &amp;amp; ~GENMASK(PGSHIFT, 0)) | (asid &amp;amp; (NASID - 1)) 是传入的参数，也就是$a0。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-asm&#34; data-lang=&#34;asm&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;LEAF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;tlb_out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 定义为叶函数，这决定了它的栈帧结构
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;.set&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;noreorder&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 确保指令按照代码中的顺序依次执行
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;# 保存和修改 CP0_ENTRYHI 寄存器
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;mfc0&lt;/span&gt;    &lt;span class=&#34;no&#34;&gt;t0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;CP0_ENTRYHI&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 保存 CP0_ENTRYHI 寄存器
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;mtc0&lt;/span&gt;    &lt;span class=&#34;no&#34;&gt;a0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;CP0_ENTRYHI&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 修改 CP0_ENTRYHI 寄存器
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;nop&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nf&#34;&gt;tlbp&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 查找与 ENTRYHI 寄存器中值匹配的条目，存入CP0_INDEX
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;nop&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nf&#34;&gt;mfc0&lt;/span&gt;    &lt;span class=&#34;no&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;CP0_INDEX&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 取出index
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;.set&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;reorder&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 即将有分支跳转，允许汇编器对指令进行重新排序
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;bltz&lt;/span&gt;    &lt;span class=&#34;no&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;NO_SUCH_ENTRY&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# index == -1 即不存在对应的tlb
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;.set&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;noreorder&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# tlb表项存在，继续顺序执行
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;mtc0&lt;/span&gt;    &lt;span class=&#34;no&#34;&gt;zero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;CP0_ENTRYHI&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 清空
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;mtc0&lt;/span&gt;    &lt;span class=&#34;no&#34;&gt;zero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;CP0_ENTRYLO0&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 清空
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;mtc0&lt;/span&gt;    &lt;span class=&#34;no&#34;&gt;zero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;CP0_ENTRYLO1&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 清空
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;nop&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nf&#34;&gt;tlbwi&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 把这些值写入tlb，也就是清空该tlb表项
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;.set&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;reorder&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 不管 tlbp 指令是否找到匹配的 TLB 条目
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 执行完 tlbwi 之后
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 程序最终都会恢复 ENTRYHI 寄存器的值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 并且返回到调用者处
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nl&#34;&gt;NO_SUCH_ENTRY:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nf&#34;&gt;mtc0&lt;/span&gt;    &lt;span class=&#34;no&#34;&gt;t0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;CP0_ENTRYHI&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 恢复CP0_ENTRYHI
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nf&#34;&gt;j&lt;/span&gt;       &lt;span class=&#34;no&#34;&gt;ra&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 返回到tlb_invalidate函数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;END&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;tlb_out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;参考：   &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16.png&#34;
+	width=&#34;388&#34;
+	height=&#34;211&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16_hu8795999730384798224.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16_hu3072628788898734460.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LEAF&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thinking-a1&#34;&gt;Thinking A.1
+&lt;/h3&gt;&lt;p&gt;页面大小4KB，页内偏移为12位。&lt;/p&gt;
+&lt;p&gt;一级页表指向512个二级页表，每个二级页表指向512个三级页表。&lt;/p&gt;
+&lt;p&gt;若三级页表的基地址为PTbase，  &lt;br&gt;
+则三级页表页目录的基地址应当是PTbase + PTbase&amp;raquo;9&lt;/p&gt;
+&lt;p&gt;映射到页目录自身的页目录项地址为PTbase + PTbase&amp;raquo;9 + PTbase&amp;raquo;18&lt;/p&gt;
+&lt;h3 id=&#34;thinking-26&#34;&gt;Thinking 2.6
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;函数调用需要开启进程，env_init就需要pgdir_alloc为其分配页。&lt;/li&gt;
+&lt;li&gt;load_icode在加载进程指令代码时，需要page_alloc和page_insert为加载二进制代码到内存而分配物理页并建立映射。&lt;/li&gt;
+&lt;li&gt;当进程结束或内存区域不再使用时使用env_free，需要page_remove从页表移除相关映射，page_decref减少物理页引用计数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;thinking-27&#34;&gt;Thinking 2.7
+&lt;/h3&gt;&lt;p&gt;X86 存在逻辑地址、线性地址和物理地址三种地址。     &lt;br&gt;
+逻辑地址由段基址和偏移量构成，是程序直接使用的地址。  &lt;br&gt;
+通过分段机制，逻辑地址转换为线性地址；    &lt;br&gt;
+再利用分页机制，线性地址转换为物理地址用于实际访存。&lt;/p&gt;
+&lt;p&gt;比较来说，X86有分段和分页两层地址转换，先分段后分页；  &lt;br&gt;
+MIPS主要是分页机制，内存管理粒度更统一。&lt;/p&gt;
+&lt;h2 id=&#34;难点分析&#34;&gt;难点分析
+&lt;/h2&gt;&lt;p&gt;本次实验整体来说看还是蛮大的，从物理内存到虚拟内存再到TLB，形成了综合的一体化架构。&lt;/p&gt;
+&lt;h3 id=&#34;pmapc&#34;&gt;pmap.c
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;pmap.c&lt;/code&gt;是本次实验最核心的文件之一。主要函数如下：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mips_detect_memory&lt;/code&gt;: 得知可用物理页数&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;alloc&lt;/code&gt;：增大freemem，返回申请的物理空间&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mips_vm_init&lt;/code&gt;：为两级页表alloc物理空间&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;page_init&lt;/code&gt;：把物理空间划分为物理页，根据freemem区分已用页与未用页，并将未用页都放进page_free_list&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;page_alloc&lt;/code&gt;：从page_free_list申请物理页&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;page_free&lt;/code&gt;：将物理页放回page_free_list&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pgdir_walk&lt;/code&gt;：得到va对应的二级页表中的对应项的索引&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;page_insert&lt;/code&gt;：建立pgdir_walk找到的项与物理页的映射&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;page_lookup&lt;/code&gt;：找到va对应的物理页&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;page_decref&lt;/code&gt;：降低物理页引用次数，降低到0时自动执行page_free&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;page_remove&lt;/code&gt;：降低va对应物理页的引用次数，并清空va对应的TLB表项&lt;/p&gt;
+&lt;p&gt;其中关于Pde、Pte指针的阅读理解难度比较大，并且涉及到大量的头文件，需要反复阅读&lt;code&gt;pmap.h&lt;/code&gt;与&lt;code&gt;queue.h&lt;/code&gt;才能解决问题。&lt;/p&gt;
+&lt;h3 id=&#34;tlb&#34;&gt;TLB
+&lt;/h3&gt;&lt;p&gt;关于TLB表项的清空与重填，我们主要进行阅读与理解的工作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;由于TLB miss，do_tlb_refill被触发。&lt;/li&gt;
+&lt;li&gt;do_tlb_refill为_do_tlb_refill传参&lt;/li&gt;
+&lt;li&gt;_do_tlb_refill调用tlb_invalidate进行TLB清空&lt;/li&gt;
+&lt;li&gt;_do_tlb_refill寻找page并进行页表重填&lt;/li&gt;
+&lt;li&gt;_do_tlb_refill返回值用于do_tlb_refill重填TLB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;实验体会&#34;&gt;实验体会
+&lt;/h2&gt;&lt;p&gt;第一次接触这些内容的时候，会感受到一片茫然。不过实验指导书从内到外的引导还是很到位的，跟着指导书读完源代码后，基本上知道内存管理干了什么事，是如何实现的。&lt;/p&gt;
+&lt;p&gt;在具体实现代码内容的时候，基本上是被HINT牵着走，没有HINT的话，我也确实不能直接明白该怎么去实现具体的功能。&lt;/p&gt;
+&lt;p&gt;Lab2只顺着过一遍大抵是会忘光的。如果能够为所有的函数都写上自己的注释，可能理解会更加深入一点。&lt;/p&gt;
+&lt;p&gt;近期事务很多很乱，如果能像解决Lab2的诸多函数一样，逐个攻克，希望会有好的结果。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>北航OS Lab1 上机</title>
         <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Fri, 28 Mar 2025 11:15:30 +0800</pubDate>
