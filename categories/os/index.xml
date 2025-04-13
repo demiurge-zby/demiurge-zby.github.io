@@ -204,7 +204,8 @@ cur_page = page_lookup(pgdir, addr, &amp;amp;pte_entryp); 这时候为什么不�
 &lt;p&gt;往年题extra就像笔者的lab1_extra一样，例如page_alloc改写为buddy_alloc、swap_alloc&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;题面&#34;&gt;题面
-&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;lab2_extra.pdf&#34; &gt;点击阅读&lt;/a&gt;&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E4%B8%8A%E6%9C%BA/lab2_extra.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;点击阅读&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;解答&#34;&gt;解答
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
