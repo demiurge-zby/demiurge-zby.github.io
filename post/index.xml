@@ -7,7 +7,235 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Sun, 13 Apr 2025 11:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 17 Apr 2025 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>北航OO U2 多线程与电梯</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</link>
+        <pubDate>Thu, 17 Apr 2025 12:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.png" alt="Featured image of post 北航OO U2 多线程与电梯" /&gt;&lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
+&lt;/h2&gt;&lt;h3 id=&#34;请求的迭代&#34;&gt;请求的迭代
+&lt;/h3&gt;&lt;p&gt;第一次作业：PersonRequest            &lt;br&gt;
+第二次作业：ScheRequest           &lt;br&gt;
+第三次作业：UpdateRequest&lt;/p&gt;
+&lt;h3 id=&#34;分配的迭代&#34;&gt;分配的迭代
+&lt;/h3&gt;&lt;p&gt;第一次作业：指定分配 &lt;br&gt;
+第二次作业：手动分配、SCHE静默
+第三次作业：Update静默、高低楼层分配&lt;/p&gt;
+&lt;h3 id=&#34;运行的迭代&#34;&gt;运行的迭代
+&lt;/h3&gt;&lt;p&gt;第一次作业：LOOK   &lt;br&gt;
+第二次作业：专属SCHE运行      &lt;br&gt;
+第三次作业：专属UPDATE运行、重写MOVE方法&lt;/p&gt;
+&lt;h3 id=&#34;输出的迭代&#34;&gt;输出的迭代
+&lt;/h3&gt;&lt;p&gt;第一次作业：ARRIVE/OPEN/OUT/IN/CLOSE       &lt;br&gt;
+第二次作业：SCHE、RECEIVE以及OUT-F/S   &lt;br&gt;
+第三次作业：UPDATE&lt;/p&gt;
+&lt;h2 id=&#34;迭代分析&#34;&gt;迭代分析
+&lt;/h2&gt;&lt;h3 id=&#34;作业核心内容&#34;&gt;作业核心内容
+&lt;/h3&gt;&lt;p&gt;hw5核心实现：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;生产者消费者模型&lt;/li&gt;
+&lt;li&gt;LOOK算法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;hw6核心实现：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;调度器&lt;/li&gt;
+&lt;li&gt;SCHE策略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;hw7核心实现：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;UPDATE策略&lt;/li&gt;
+&lt;li&gt;强制中转&lt;/li&gt;
+&lt;li&gt;双轿厢的同步与互斥&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;uml类图&#34;&gt;UML类图
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1.png&#34;
+	width=&#34;1241&#34;
+	height=&#34;800&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu2800710375844316694.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu16159373750419713481.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;372px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;红色为hw5，绿色为hw6，蓝色为hw7&lt;/p&gt;
+&lt;p&gt;其中对于&lt;code&gt;RequestCoordinator&lt;/code&gt;，每个电梯都有一把这样的锁，当电梯没有request时，就会调用这个里的条件变量的wait,也即封装好的&lt;code&gt;waitForRequest()&lt;/code&gt;函数。被唤醒则通过分发线程分给各个Queue后触发唤醒。&lt;/p&gt;
+&lt;h3 id=&#34;sequence&#34;&gt;sequence
+&lt;/h3&gt;&lt;p&gt;电梯线程的run方法：  &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run.png&#34;
+	width=&#34;679&#34;
+	height=&#34;981&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu7559287381418978283.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu4541188798760296372.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;69&#34;
+		data-flex-basis=&#34;166px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;主线程(?)的main方法：   &lt;br&gt;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main.png&#34;
+	width=&#34;769&#34;
+	height=&#34;415&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu12254519656876251287.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu5792283028725187188.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;444px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;稳定与易变&#34;&gt;稳定与易变
+&lt;/h3&gt;&lt;p&gt;稳定：   &lt;br&gt;
+生产者消费者模型的整体框架与类的构建     &lt;br&gt;
+strategy中的LOOK算法     &lt;br&gt;
+poll、open、setEnd等基本函数的实现&lt;/p&gt;
+&lt;p&gt;易变：   &lt;br&gt;
+具体的运行方法，如doubleGo()、sche()、update()   &lt;br&gt;
+电梯的属性要不断增添以适应需求&lt;/p&gt;
+&lt;p&gt;整体感受下来，   &lt;br&gt;
+hw5是初识多线程、生产者消费者模型与LOOK算法，主要是接受&lt;strong&gt;多线程的并发感&lt;/strong&gt;，掌握一对一的通信方法（End的实现）&lt;/p&gt;
+&lt;p&gt;hw6开始出现&lt;strong&gt;单锁双开&lt;/strong&gt;：不再是一对一的通信，scheRequest与personRequest都能让正在wait的电梯苏醒。&lt;/p&gt;
+&lt;p&gt;hw7则出现了更加复杂的线程通信。主要体现在&lt;strong&gt;同类对象同一方法&lt;/strong&gt;过程中的互相通信。如果不做好同步就擅自拿锁，很容易触发死锁。&lt;/p&gt;
+&lt;h2 id=&#34;同步块的设置和锁的选择&#34;&gt;同步块的设置和锁的选择
+&lt;/h2&gt;&lt;p&gt;在第一次作业中，我基本掌握了&lt;strong&gt;synchronize块&lt;/strong&gt;的用法，配套使用wait与notify。到了第二次作业，我突然决定尝试使用&lt;strong&gt;读写锁&lt;/strong&gt;。在自学了条件变量及其await和notify后，我由于不熟悉、不确定而深受其扰，也常常感到后悔为何要自作主张，但逐渐地，也终于感受到了读写锁的清晰与直白。&lt;/p&gt;
+&lt;p&gt;在两者的关系上：     &lt;br&gt;
+同步块其实是&lt;strong&gt;隐式使用&lt;/strong&gt;了对象的内置锁   &lt;br&gt;
+而显式锁可以&lt;strong&gt;跨方法&lt;/strong&gt;使用，可以设置公平性，还更加清晰易读。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;条件变量&lt;/strong&gt;的引入与传递也极大便利了线程之间的通信。&lt;/p&gt;
+&lt;h2 id=&#34;调度器设计&#34;&gt;调度器设计
+&lt;/h2&gt;&lt;p&gt;虽然我采用了随机分配的策略，但是在正确性上要考虑的问题依旧存在。&lt;/p&gt;
+&lt;h3 id=&#34;被scheupdate时不能receive&#34;&gt;被SCHE/UPDATE时不能RECEIVE
+&lt;/h3&gt;&lt;p&gt;在调度器中当然需要拿到电梯的相关信息，六部电梯Elevators是调度器的属性之一。&lt;/p&gt;
+&lt;p&gt;但是在判断到isSche()后，我并不采用重新选电梯的方法，而是用wait方法等待这个电梯SCHE结束，再把那个任务分配给电梯。&lt;/p&gt;
+&lt;p&gt;这样写自然是有缺陷的，你的调度器线程居然为了一个随机分配的结果而&lt;strong&gt;等待&lt;/strong&gt;？   &lt;br&gt;
+但是正相对地，他保证了分配结果一定是完全随机的。（hw6 mid5的教训）   &lt;br&gt;
+此外，随机性也导致等待这一现象的发生也是随机的，并不容易导致调度器被恶意阻塞。&lt;/p&gt;
+&lt;h3 id=&#34;不能receive我接不到的人&#34;&gt;不能RECEIVE我接不到的人
+&lt;/h3&gt;&lt;p&gt;一旦你被升级，且RECEIVE了你接管范围外的人：  &lt;br&gt;
+在接到这个人之前，你将没有机会把RECEIVE转让。    &lt;br&gt;
+而你也并不能接到这个人。&lt;/p&gt;
+&lt;p&gt;在这里，我则强制让它的伙伴来接。&lt;/p&gt;
+&lt;p&gt;何为范围外：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;cannotArrive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Elevator&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PersonRequest&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;upperCannot&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getFromFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getTransferFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getFromFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getTransferFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getToFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getFromFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()));&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lowerCannot&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getFromFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getTransferFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getFromFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getTransferFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getToFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getFloorNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getFromFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()));&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;isUpper&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;upperCannot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;isUpper&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lowerCannot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;同步与防撞设计&#34;&gt;同步与防撞设计
+&lt;/h2&gt;&lt;p&gt;在这两处上我都是用了信号+while+sleep的方法。  &lt;br&gt;
+他看起来很像轮询，但他可慢太多了，循环的次数不会超过15次。&lt;/p&gt;
+&lt;h3 id=&#34;同步启动update&#34;&gt;同步启动UPDATE
+&lt;/h3&gt;&lt;p&gt;当电梯满足UPDATE条件时，我会设置该电梯的canUpdate属性为true。    &lt;br&gt;
+当upper电梯已经setCanUpdate(true)，试图发送UPDATE-BEGIN之前，      &lt;br&gt;
+在大家准备sleep(1000)之前，     &lt;br&gt;
+便会经历&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;canStartUpdate&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;other&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getCanStartUpdate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//System.out.println(othId + &amp;#34; is closing&amp;#34;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;sleep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;InterruptedException&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;throw&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RuntimeException&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;电梯防撞&#34;&gt;电梯防撞
+&lt;/h3&gt;&lt;p&gt;我将transferFloor楼层的运转高度规范化。&lt;/p&gt;
+&lt;p&gt;对于advice为GO时，会根据当前电梯是否为双轿厢而执行go()或doubleGo()&lt;/p&gt;
+&lt;p&gt;doubleGo()存在一个判断，就是你是不是正在前往transferFloor。&lt;/p&gt;
+&lt;p&gt;如果不是就正常go，如果是的话，会触发：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;other&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;curFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;equals&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;transferFloor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;halt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;和一个tryToGo()操作。&lt;/p&gt;
+&lt;p&gt;tryToGo()会直接先把电梯的楼层设置为transferFloor，避免撞车。接着进行睡200与输出ARRIVE，接着进行开门放人与进人，接着关门和离开这一楼层，最后再更新电梯楼层。&lt;/p&gt;
+&lt;p&gt;核心目标就是transferFloor的操作要尽可能的规范与固定，这样虽然死板，但是可控性很强。&lt;/p&gt;
+&lt;h2 id=&#34;bug与debug&#34;&gt;BUG与DEBUG
+&lt;/h2&gt;&lt;p&gt;不忍提及。本次作业的滑铁卢是我始料未及的，也许从我放弃搭评测机的那一刻就决定了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;没有评测机的话，我只能识别出最基本的RTLE与CTLE。&lt;/p&gt;
+&lt;p&gt;hw5没有什么好说的。  &lt;br&gt;
+hw6已经初现端倪：强测1bug，互测1bug      &lt;br&gt;
+hw7的bug已经数不胜数了。&lt;/p&gt;
+&lt;p&gt;这其中最最重要的原因，就是DispatchThread的终结控制。         &lt;br&gt;
+实际上，这可能是我这一整次迭代作业最大的败笔。&lt;/p&gt;
+&lt;p&gt;一般来说，应当设置一个计数器，记录request的完成情况。没有完成就不要让分发线程终结。对于需要重新分发的请求，只需要扔回分发线程即可。&lt;/p&gt;
+&lt;p&gt;可我并非如此。&lt;/p&gt;
+&lt;p&gt;我所有的OUT-F、SCHE、UPDATE导致的无效化，全部都是手动分配电梯，手动输出RECEIVE。&lt;/p&gt;
+&lt;p&gt;这么做的漏洞：  RECEIVE重复！&lt;/p&gt;
+&lt;p&gt;可能你一个任务被dispatch分发给了电梯A，而电梯A自身的RECEIVE逻辑与dispatch并没有沟通交流，使得电梯A极有可能把dispatch给他的新请求当作无效请求分配出去。除此之外，其他电梯给电梯A分配的新请求在某种时机下也会被重新分配。&lt;/p&gt;
+&lt;p&gt;但是只要交给dispatch，RECEIVE一定能在这个电梯离开无效状态后才会分配给他。&lt;/p&gt;
+&lt;p&gt;其实本质上就是，自己由于对死锁的畏惧，并没有增添电梯对分发线程的信息获取。&lt;/p&gt;
+&lt;p&gt;直到bug修复阶段，经过评测机的重重评测，我在重构了receive和发现隐藏bug后，终于实现了稳定通过bug修复。&lt;/p&gt;
+&lt;p&gt;评测机是必要的！OOU2不能没有评测机！&lt;/p&gt;
+&lt;h2 id=&#34;心得体会&#34;&gt;心得体会
+&lt;/h2&gt;&lt;p&gt;今天回顾了OOU1的单元总结。哈，还真是高高在上呢。&lt;/p&gt;
+&lt;p&gt;直到现实重击才清醒过来吗？优美的层次化结构并不是轻易就能实现的。&lt;/p&gt;
+&lt;p&gt;在bug修复的重重测试之下，终于交出一份满意答卷后，方才意识到自己的问题，竟在于没有做好elevator到requestQueue的回撤，导致自己自行添加了混乱的数据线，毁坏了原有的逻辑链条。在大家都在de撞车、de静默状态RECEIVE的同步问题时，我却在为自己特有的无意义实现而缝缝补补。&lt;/p&gt;
+&lt;p&gt;层次化结构很重要，也很值得考量。要在局部书写的时候尽力保有全局观。&lt;/p&gt;
+&lt;p&gt;至于线程安全，我认为线程之间的通信接口主要就是getter与setter，只是取当前时间的情况进行策略决断，可以避免长时间占用锁。&lt;/p&gt;
+&lt;p&gt;此外避免死锁可以通过规避相互调用。尤其是在两个同类线程在相互上锁的时候，死锁率极高。因此一般考虑用对地位不等、也就是不会相互调用的两个对象上锁，例如在做receive回撤的时候，就直接返回到allrequest中，对它上锁当然是不会死锁的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在电梯反复运行中感受时间的流逝，从线程的独立与交融中培养多核大脑。&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>北航OS Lab2 上机</title>
         <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Sun, 13 Apr 2025 11:15:30 +0800</pubDate>
@@ -1904,12 +2132,12 @@ char *end; 末地址&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OOU1 单元总结</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/</link>
+        <title>北航OO U1 递归下降与表达式解析</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
         <pubDate>Tue, 18 Mar 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/123.png" alt="Featured image of post 北航OOU1 单元总结" /&gt;&lt;p&gt;本次作业以解析表达式并简化后输出为核心任务。&lt;/p&gt;
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post 北航OO U1 递归下降与表达式解析" /&gt;&lt;p&gt;本次作业以解析表达式并简化后输出为核心任务。&lt;/p&gt;
 &lt;p&gt;主要的实现过程为：   &lt;br&gt;
 &lt;code&gt;预处理&lt;/code&gt;-&amp;gt;&lt;code&gt;解析&lt;/code&gt;-&amp;gt;&lt;code&gt;化简&lt;/code&gt;-&amp;gt;&lt;code&gt;输出&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
@@ -1937,10 +2165,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;而我们做的事情，就是根据读取expression，&lt;strong&gt;自行出构建一个新的、有结构的Expr。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;接下来的toPoly便也是递归下降的一种体现。&lt;strong&gt;我已经知道最小单元Mono与Power有它具体的toPoly()方法&lt;/strong&gt;，那么我就可以采用递归下降，对每一个类只着眼于它自身的运算过程。&lt;/p&gt;
 &lt;h3 id=&#34;代码量&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines.png&#34;
 	width=&#34;1744&#34;
 	height=&#34;357&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines_hu1348462638036344911.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_lines_hu679612040571503907.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu1348462638036344911.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu679612040571503907.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_lines&#34;
@@ -1953,10 +2181,10 @@ char *end; 末地址&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;可以看出核心代码在于解析Parser与化简Poly这两个类中。&lt;/p&gt;
 &lt;h3 id=&#34;uml类图&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph.png&#34;
 	width=&#34;2452&#34;
 	height=&#34;1604&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph_hu9410046640435313302.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_graph_hu6616560314303406624.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu9410046640435313302.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu6616560314303406624.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_graph&#34;
@@ -1969,10 +2197,10 @@ char *end; 末地址&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;方法数则是Poly类遥遥领先，不过都是加、乘、幂、去零、取反、输出等基本方法&lt;/p&gt;
 &lt;h3 id=&#34;复杂度&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class.png&#34;
 	width=&#34;664&#34;
 	height=&#34;445&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class_hu14704900314256740387.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw1_class_hu14458279921066147853.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14704900314256740387.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14458279921066147853.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_class&#34;
@@ -1997,10 +2225,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;对于乘法，我们需要先实现最小单元之间幂函数幂次与三角因子幂次的累积   &lt;br&gt;
 再进行所有乘积项的求和&lt;/p&gt;
 &lt;h3 id=&#34;代码量-1&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines.png&#34;
 	width=&#34;1759&#34;
 	height=&#34;426&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines_hu2733324857433404355.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_lines_hu12539274716514737244.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu2733324857433404355.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu12539274716514737244.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_lines&#34;
@@ -2014,10 +2242,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;较上次作业新增了近800行，其中parser变化不大，而Mono与Poly代码量激增  &lt;br&gt;
 此外还有新增的类: 递归函数RecursiveFunc&lt;/p&gt;
 &lt;h3 id=&#34;uml类图-1&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph.png&#34;
 	width=&#34;2362&#34;
 	height=&#34;2781&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph_hu4824547250586139424.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_graph_hu2263586557949589371.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu4824547250586139424.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu2263586557949589371.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_graph&#34;
@@ -2031,10 +2259,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;我调整了类的相对位置使之更加清晰。&lt;/p&gt;
 &lt;p&gt;图片从上到下分别是函数预处理，表达式解析，表达式化简运算与输出&lt;/p&gt;
 &lt;h3 id=&#34;复杂度-1&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class.png&#34;
 	width=&#34;664&#34;
 	height=&#34;489&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class_hu1209901690595859210.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw2_class_hu15904561665040355737.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu1209901690595859210.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu15904561665040355737.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_class&#34;
@@ -2059,10 +2287,10 @@ char *end; 末地址&lt;/p&gt;
 站在HW3面前的你，    &lt;br&gt;
 应当充满了决心！&lt;/p&gt;
 &lt;h3 id=&#34;代码量-2&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines.png&#34;
 	width=&#34;1749&#34;
 	height=&#34;517&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines_hu14879122926649187208.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_lines_hu3319448293189894400.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu14879122926649187208.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu3319448293189894400.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_lines&#34;
@@ -2076,10 +2304,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;代码行数增加的并不多&lt;/p&gt;
 &lt;p&gt;主要内容是新类的添加，更多的函数代入操作以及求导计算&lt;/p&gt;
 &lt;h3 id=&#34;uml类图-2&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph.png&#34;
 	width=&#34;2882&#34;
 	height=&#34;3286&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph_hu856977851820666993.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_graph_hu16451727185006472704.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu856977851820666993.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu16451727185006472704.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_graph&#34;
@@ -2092,10 +2320,10 @@ char *end; 末地址&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;相较于hw2，在Factor上新增了求导因子，在预处理上新增了NormalFunc以及一个数据功能类Func。&lt;/p&gt;
 &lt;h3 id=&#34;复杂度-2&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class.png&#34;
 	width=&#34;654&#34;
 	height=&#34;603&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class_hu5027182664871553546.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/hw3_class_hu11158960634192581642.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu5027182664871553546.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu11158960634192581642.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_class&#34;
@@ -2351,12 +2579,12 @@ awk -F.并取$1来获得.sy前面的内容&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OOU1 HW1 表达式解析</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
+        <title>北航OO U1 HW1 表达式解析</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
         <pubDate>Mon, 03 Mar 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoou1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post 北航OOU1 HW1 表达式解析" /&gt;&lt;h2 id=&#34;作业实现&#34;&gt;作业实现
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post 北航OO U1 HW1 表达式解析" /&gt;&lt;h2 id=&#34;作业实现&#34;&gt;作业实现
 &lt;/h2&gt;&lt;h3 id=&#34;预处理&#34;&gt;预处理
 &lt;/h3&gt;&lt;p&gt;replaceAll()函数 &lt;br&gt;
 解决空白符与连续正负号&lt;/p&gt;
