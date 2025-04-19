@@ -723,7 +723,7 @@ hw5是初识多线程、生产者消费者模型与LOOK算法，主要是接受&
 &lt;p&gt;hw6开始出现&lt;strong&gt;单锁双开&lt;/strong&gt;：不再是一对一的通信，scheRequest与personRequest都能让正在wait的电梯苏醒。&lt;/p&gt;
 &lt;p&gt;hw7则出现了更加复杂的线程通信。主要体现在&lt;strong&gt;同类对象同一方法&lt;/strong&gt;过程中的互相通信。如果不做好同步就擅自拿锁，很容易触发死锁。&lt;/p&gt;
 &lt;h2 id=&#34;同步块的设置和锁的选择&#34;&gt;同步块的设置和锁的选择
-&lt;/h2&gt;&lt;p&gt;在第一次作业中，我基本掌握了&lt;strong&gt;synchronize块&lt;/strong&gt;的用法，配套使用wait与notify。到了第二次作业，我突然决定尝试使用&lt;strong&gt;读写锁&lt;/strong&gt;。在自学了条件变量及其await和notify后，我由于不熟悉、不确定而深受其扰，也常常感到后悔为何要自作主张，但逐渐地，也终于感受到了读写锁的清晰与直白。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;在第一次作业中，我基本掌握了&lt;strong&gt;synchronize块&lt;/strong&gt;的用法，配套使用wait与notify。到了第二次作业，我突然决定尝试使用&lt;strong&gt;读写锁&lt;/strong&gt;。在自学了条件变量及其await和signal后，我由于不熟悉、不确定而深受其扰，也常常感到后悔为何要自作主张，但逐渐地，也终于感受到了读写锁的清晰与直白。&lt;/p&gt;
 &lt;p&gt;在两者的关系上：     &lt;br&gt;
 同步块其实是&lt;strong&gt;隐式使用&lt;/strong&gt;了对象的内置锁   &lt;br&gt;
 而显式锁可以&lt;strong&gt;跨方法&lt;/strong&gt;使用，可以设置公平性，还更加清晰易读。&lt;/p&gt;
