@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="诶woc你怎么这么难啊">
-<title>北航OS Lab0 上机</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="exam通过不能？？">
+<title>北航OS Lab3 上机</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab0 上机">
-<meta property='og:description' content="诶woc你怎么这么难啊">
-<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/'>
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab3 上机">
+<meta property='og:description' content="exam通过不能？？">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-14T11:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-14T11:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123.png' />
-<meta name="twitter:title" content="北航OS Lab0 上机">
-<meta name="twitter:description" content="诶woc你怎么这么难啊"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-27T11:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-04-27T11:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.png' />
+<meta name="twitter:title" content="北航OS Lab3 上机">
+<meta name="twitter:description" content="exam通过不能？？"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -270,16 +270,14 @@
   <ol>
     <li><a href="#exam">exam</a>
       <ol>
-        <li><a href="#makefile">Makefile</a></li>
-        <li><a href="#shell">Shell</a></li>
+        <li><a href="#预备任务">预备任务</a></li>
+        <li><a href="#核心任务">核心任务</a></li>
+        <li><a href="#23级题面摘要">23级题面摘要</a></li>
       </ol>
     </li>
     <li><a href="#extra">extra</a>
       <ol>
-        <li><a href="#gencode">genCode</a></li>
-        <li><a href="#selectcode">selectCode</a></li>
-        <li><a href="#selectdata">selectData</a></li>
-        <li><a href="#未知">未知</a></li>
+        <li><a href="#题面">题面</a></li>
       </ol>
     </li>
     <li><a href="#后记">后记</a></li>
@@ -297,13 +295,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/">
-                <img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123_hu16551671144142155971.png"
-                        srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123_hu16551671144142155971.png 800w, /p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123_hu14080018086528647288.png 1600w"
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123_hu9343945849398157827.png"
+                        srcset="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123_hu9343945849398157827.png 800w, /p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123_hu7015480425910336899.png 1600w"
                         width="800" 
                         height="422" 
                         loading="lazy"
-                        alt="Featured image of post 北航OS Lab0 上机" />
+                        alt="Featured image of post 北航OS Lab3 上机" />
                 
             </a>
         </div>
@@ -322,12 +320,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/">北航OS Lab0 上机</a>
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/">北航OS Lab3 上机</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            诶woc你怎么这么难啊
+            exam通过不能？？
         </h3>
         
     </div>
@@ -348,7 +346,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-03-14</time>
+                <time class="article-time--published">2025-04-27</time>
             </div>
         
 
@@ -363,7 +361,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 4 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -379,13 +377,134 @@
     
     
     <h2 id="exam">exam
-</h2><p>不错的exam。考核内容完全来自于指导书与作业，并且足够全面。        <br>
-这在lab上机中是很好的设计，掌握不那么牢固的可以通过花费一点时间阅读指导书拿到exam这一主要分数，提升掌握水平      <br>
-而相对熟练的同学则可以更快地解决exam去攻克extra了。</p>
-<p>另外，一定要认真读前言里的要求！本次exam题就需要先bash init.sh才能得到所需文件</p>
-<p>题目有两道：Makefile与Shell</p>
-<h3 id="makefile">Makefile
-</h3><p>Makefile考的仍然是gcc,run和clean三件套</p>
+</h2><p>往年题资源约等于无。只能对着学长git仓库的源码疯狂地想象题目&hellip;</p>
+<p>个人认为lab3的exam相对来说随机性比较大，很有extra的风格。</p>
+<p>题面大概率是实现一种新的调度算法。</p>
+<h3 id="预备任务">预备任务
+</h3><p>在实现这个任务之前，会有许多复制粘贴的操作。</p>
+<p>如Env结构体中新属性的增添，新的宏，新的全局变量，新的初始化等等。</p>
+<p>这些内容虽然都需要自己手动去改，但是代码基本都已经在题面中明确给出了。</p>
+<h3 id="核心任务">核心任务
+</h3><p>新的调度算法的原理在题面上会十分详尽地讲解，容易出现bug的点与解决方法也都有加粗标志。</p>
+<p>题面复杂时甚至会直接给出部分实现框架。但是不能过于依赖，可能有重要的句子是没有在框架里体现出来的。</p>
+<h3 id="23级题面摘要">23级题面摘要
+</h3><p>实现RR算法与原来的时间片流转算法的混合使用。</p>
+<p>每个进程在建立时已经确定它采用哪种调度算法。</p>
+<p>RR算法可抢占时间片流转算法。时间片流转被抢占结束后会默认回到被抢占的进程。</p>
+<p>大家可以看一下sched.c的核心代码。</p>
+<p>除了我添加注释的几行，其他内容都是题面上已经把代码内容全部用文字描述了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">struct</span> <span class="n">Env</span><span class="o">*</span> <span class="n">lastenv</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="c1">//这句话有简单引导
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">schedule</span><span class="p">(</span><span class="kt">int</span> <span class="n">yield</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">static</span> <span class="kt">int</span> <span class="n">clock</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">clock</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">env</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">	<span class="nf">LIST_FOREACH</span> <span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">env_edf_sched_list</span><span class="p">,</span> <span class="n">env_edf_sched_link</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">clock</span> <span class="o">==</span> <span class="n">env</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">env</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span> <span class="o">+=</span> <span class="n">env</span><span class="o">-&gt;</span><span class="n">env_edf_period</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">env</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span> <span class="o">=</span> <span class="n">env</span><span class="o">-&gt;</span><span class="n">env_edf_runtime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>	
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">en</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">min</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">LIST_EMPTY</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_edf_sched_list</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">min</span> <span class="o">=</span> <span class="nf">LIST_FIRST</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_edf_sched_list</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">LIST_FOREACH</span> <span class="p">(</span><span class="n">en</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">env_edf_sched_list</span><span class="p">,</span> <span class="n">env_edf_sched_link</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">en</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="p">((</span><span class="n">min</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">en</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span> <span class="o">&lt;</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span><span class="p">)</span> <span class="o">||</span> <span class="p">((</span><span class="n">en</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span> <span class="o">==</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">en</span><span class="o">-&gt;</span><span class="n">env_id</span> <span class="o">&lt;</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">env_id</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">min</span> <span class="o">=</span> <span class="n">en</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">min</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//printk(&#34;%x\n&#34;, min-&gt;env_id);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">min</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span><span class="o">--</span><span class="p">;</span>  <span class="c1">// 这句话是没有提示的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nf">env_run</span><span class="p">(</span><span class="n">min</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="n">lastenv</span><span class="p">;</span>  <span class="c1">//这句话是有简单引导的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//printk(&#34;%x\n&#34;, e-&gt;env_id);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">env_status</span> <span class="o">!=</span> <span class="n">ENV_RUNNABLE</span> <span class="o">||</span> <span class="n">yield</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">env_status</span> <span class="o">==</span> <span class="n">ENV_RUNNABLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">TAILQ_REMOVE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_sched_list</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">env_sched_link</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">TAILQ_INSERT_TAIL</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_sched_list</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">env_sched_link</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">e</span> <span class="o">=</span> <span class="nf">TAILQ_FIRST</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_sched_list</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">lastenv</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span> <span class="c1">//没有引导，但也不需要引导
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">//printk(&#34;%x\n&#34;, e-&gt;env_id);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">panic</span><span class="p">(</span><span class="s">&#34;schedule: no runnable envs</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">count</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">env_pri</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">count</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">env_run</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="extra">extra
+</h2><p>基本上都是书写异常处理函数，可能要调整epc,或者调整指令本身。</p>
+<p>不再多说，送你一段重要代码。</p>
+<blockquote>
+<p>这里以I型指令为例。</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -401,146 +520,43 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">.PHONY: clean
-</span></span><span class="line"><span class="cl">all: check.o
-</span></span><span class="line"><span class="cl">	make check
-</span></span><span class="line"><span class="cl">	gcc -I ./src/include ./src/main.c ./src/output.c -o ./out/main
-</span></span><span class="line"><span class="cl">check: check.c
-</span></span><span class="line"><span class="cl">	gcc -c check.o check.c
-</span></span><span class="line"><span class="cl">run: out/main
-</span></span><span class="line"><span class="cl">	./out/main
-</span></span><span class="line"><span class="cl">clean:
-</span></span><span class="line"><span class="cl">	rm -rf check.o
-</span></span><span class="line"><span class="cl">	rm -rf ./out/main
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="n">u_long</span> <span class="n">va</span> <span class="o">=</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">cp0_epc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Pte</span> <span class="o">*</span><span class="n">pte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">page_lookup</span><span class="p">(</span><span class="n">curenv</span><span class="o">-&gt;</span><span class="n">env_pgdir</span><span class="p">,</span> <span class="n">va</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pte</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_long</span> <span class="n">va</span> <span class="o">=</span> <span class="nf">PTE_ADDR</span><span class="p">(</span><span class="o">*</span><span class="n">pte</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">va</span> <span class="o">&amp;</span> <span class="mh">0xfff</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_long</span> <span class="n">kva</span> <span class="o">=</span> <span class="nf">KADDR</span><span class="p">(</span><span class="n">pa</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="o">*</span><span class="n">instr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">kva</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">opcode</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">26</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">_base</span> <span class="o">=</span> <span class="p">((</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">21</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x1f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">_rt</span> <span class="o">=</span> <span class="p">((</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x1f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">imm</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xffff</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>不过这次在gcc上的考点比较新：</p>
-<ol>
-<li>编译不链接 gcc -c</li>
-<li>非标准库头文件 gcc -I 头文件目录</li>
-</ol>
-<p>此外，还考查了make A任务内调用make B的内容</p>
-<p>也可以考察跨目录make调用<br>
-即 cd 目录 &amp;&amp; make</p>
-<h3 id="shell">Shell
-</h3><p>本题一共有九问，也就是九个功能，    <br>
-比较惹人烦的点在于这九个功能要在9个脚本中分别实现</p>
-<p>如果你足够熟悉，  <br>
-你可以直接
-<code>sed -i '1i#!/bin/bash' exam_*.sh</code>
-来为每一行开头加上<code>#!/bin/bash</code></p>
-<p>九个脚本的内容是：</p>
-<ol>
-<li>在指定目录下新建目录</li>
-<li>grep指令</li>
-<li>mv指令</li>
-<li>cp -r指令</li>
-<li>循环语句与sed 替换</li>
-<li>通配符*</li>
-<li>2&raquo;</li>
-<li>chmod</li>
-<li>条件语句</li>
-</ol>
-<p>需要注意的一些点：</p>
-<ol>
-<li>
-<p>双引号，单引号 <br>
-取决你是否要解析引号内的内容</p>
-<p>对于awk中$1有特殊含义，便需要单引号处理</p>
-<p>而sed中如果需要$1参数，那当然是要用双引号的</p>
-</li>
-<li>
-<p>$符号作为尾行，又是参数解析符号，若要从$1到$进行p，如果写成sed -n &lsquo;$1,$p&rsquo;的话，$1不能解析；写成sed -n &ldquo;$1,$p&quot;的话，p又会被解析。 <br>
-那么我们可以用空格分隔开。即sed -n &ldquo;$1,$ p&rdquo;</p>
-</li>
-<li>
-<p>脚本内加减运算的写法，if,for,while,case的写法</p>
-</li>
-</ol>
-<h2 id="extra">extra
-</h2><p>接下来来到万恶的extra   <br>
-其本身的难度可能也不能直接称之为高，但是我还是认为应该明确地表示充分利用hint的内容</p>
-<p>因为hint中的内容，不仅太多，而且太重要，太必要！</p>
-<p>对于第二问ln -s的超链接写法，这显然是回去看hint的，因为完全没有听说过</p>
-<p>但是第一问不仅hint很晚才更新，另外还伪装成不用hint也能解决的问题，使很多同学花费了很多时间去用man来看已知指令的参数</p>
-<p>其次，后置测试点依赖前置测试点。虽然他确实对于评测是更方便的，但是偏偏在第一问出现hint的缺失，从而影响到整个题目的得分，给人的体验还是不太好的。</p>
-<h3 id="gencode">genCode
-</h3><p>第一问的主要任务是： <br>
-对于指定目录下的所有.sh文件，将其经过一些简单的sed文件处理后，以<code>原名称(不含.sh).c</code>的新名字存放在新的指定目录。</p>
-<p>其他的都不难，最难的就在于怎么实现获取文件名与文件重命名</p>
-<p>大多数同学都尝试过<code>sed xxxxxx *.sy &gt; *.c</code> 然后意外的发现只生成了一个名为<code>'*.c'</code>的文件&hellip;&hellip;</p>
-<p>笔者找了找mv的man</p>
-<blockquote>
-<p>mv是笔者知道的唯一的重命名指令</p>
-</blockquote>
-<p>然后找到了-S, &ndash;suffix=[后缀名]这样的东西。</p>
-<p>当然并没能实现功能。</p>
-<p>后来助教说extra内容更新了。我看了眼题面，感觉没变，以为是第四第五题改了，就没在意。实际上发布的正是第一题的hint,能够实现对一个目录下所有文件都访问，并获取其文件名。</p>
-<p>那么本题的考点就是awk指令  <br>
-awk -F.并取$1来获得.sy前面的内容</p>
-<h3 id="selectcode">selectCode
-</h3><ol>
-<li>
-<p>若存在则删除xxx</p>
-<p>考察的其实是rm -f强制执行（若不存在则自动忽视）</p>
-</li>
-<li>
-<p>ln -s （hint 超链接操作）</p>
-</li>
-<li>
-<p>gcc -I -o</p>
-</li>
-</ol>
-<h3 id="selectdata">selectData
-</h3><p>本小问需要实现将所有的xx_yy.in与xx_yy.out文件根据参数进行复制。(xx与yy都是随机的)</p>
-<p>若参数为all，则全部复制到指定目录 <br>
-否则，仅复制参数_yy.in与参数_yy.out到指定目录</p>
-<p>这里可以使用case语句</p>
+</div><h3 id="题面">题面
+</h3><p>见：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-.sh" data-lang=".sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>mkdir dataSet
-</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="nv">$1</span> in
-</span></span><span class="line"><span class="cl"> all <span class="o">)</span> 
-</span></span><span class="line"><span class="cl"> 	cp -r ./data ./dataSet<span class="p">;;</span>
-</span></span><span class="line"><span class="cl"> * <span class="o">)</span>
-</span></span><span class="line"><span class="cl">	cp ./data/<span class="nv">$1</span>* ./dataSet<span class="p">;;</span>
-</span></span><span class="line"><span class="cl"><span class="k">esac</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/lab3_extra.pdf
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>注意好格式。</p>
-<h3 id="未知">未知
-</h3><p>很遗憾，在我做完二三问，并发现有测试点依赖后，就全力研究第一问了。没能获得第四、五问的题目。同学们可以参考其它博客。</p>
-<h2 id="后记">后记
-</h2><p>不同于往年，今年的题目难度确实是大。大多数人都extra都喜提0分（或者未提交）  <br>
-<img src="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image.png"
-	width="223"
-	height="226"
-	srcset="/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image_hu1178097306729725857.png 480w, /p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image_hu1454011011673143592.png 1024w"
-	loading="lazy"
-	
-		alt="0"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="98"
-		data-flex-basis="236px"
-	
->   <br>
-倘若第一问hint能够正常给出，本次lab的体验感应该还是不错的。</p>
-<p>笔者给extra留了一整个小时还攻不下第一问，可见该hint的重要性（）</p>
-<p>现在想起自己实验报告里写OS多温和什么的，，，</p>
-<p>OS的磨难才刚刚开始。</p>
+</div><h2 id="后记">后记
+</h2><p>exam做了110min才过，真的是心惊胆战呢。</p>
+<p>刚开始是没有min-&gt;env_runtime_left&ndash;;导致任务一直做不完死循环，但是这个问题读了题面很快就解决了。</p>
+<p>不再死循环后，我交上第一发，居然只有30分。根据测试点的正确情况，矛头指向了不同调度算法的抢占。</p>
+<p>我本来写的是struct Env *e = (lastenv == NULL) ? TAILQ_FIRST(&amp;env_sched_list) : lastenv;</p>
+<p>事实上完全不应该对NULL特判。反而是你自作主张地先定为TAILQ_FIRST(&amp;env_sched_list)，会被视作这个进程已经被执行过了一次的。更何况此时count == 0，第一个进程直接就被吞了。</p>
+<p>这个bug我第一次修复失败了，我修复的方法是：	
+if (e != lastenv || e == NULL || count == 0 || e-&gt;env_status != ENV_RUNNABLE || yield)</p>
+<p>这更是荒唐可笑的，但是e == lastenv就更不对了。</p>
+<p>没想到最终正解却是最简单的：	
+struct Env *e = lastenv;</p>
+<p>在考场上啼笑皆非。</p>
+<p>毕竟这次extra并不难，但已经没时间了。</p>
+<p>事后复盘exam也不难，不容易想到的东西都已经告诉你了。个人的启示是exam往往很简单。所以首先想想最简单的语句。</p>
 
 </section>
 
@@ -562,30 +578,6 @@ awk -F.并取$1来获得.sy前面的内容</p>
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/">
-        
-        
-            <div class="article-image">
-                <img src="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.0979bae152efeb9b5b7dcbea76f8504d_hu8186758832790077266.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 北航OS Lab3 上机"
-                        
-                        data-hash="md5-CXm64VLv65tbfcvqdvhQTQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">北航OS Lab3 上机</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="has-image">
@@ -678,6 +670,30 @@ awk -F.并取$1来获得.sy前面的内容</p>
 
         <div class="article-details">
             <h2 class="article-title">北航OS Lab1 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/jpg.aadd08af9a55dd0ad8f4a3ef6303bfb0_hu17915082695670340145.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab1 内核、启动与printk"
+                        
+                        data-hash="md5-qt0Ir5pV3QrY9KPvYwO/sA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab1 内核、启动与printk</h2>
         </div>
     </a>
 </article>
