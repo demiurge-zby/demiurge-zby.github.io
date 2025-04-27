@@ -278,6 +278,7 @@
     <li><a href="#extra">extra</a>
       <ol>
         <li><a href="#题面">题面</a></li>
+        <li><a href="#重要代码">重要代码</a></li>
       </ol>
     </li>
     <li><a href="#后记">后记</a></li>
@@ -501,7 +502,18 @@
 </div>
 </div><h2 id="extra">extra
 </h2><p>基本上都是书写异常处理函数，可能要调整epc,或者调整指令本身。</p>
-<p>不再多说，送你一段重要代码。</p>
+<h3 id="题面">题面
+</h3><p>见：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/lab3_extra.pdf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="重要代码">重要代码
+</h3><p>不再多说，送你一段重要代码。</p>
 <blockquote>
 <p>这里以I型指令为例。</p>
 </blockquote>
@@ -533,27 +545,17 @@
 </span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">imm</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xffff</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="题面">题面
-</h3><p>见：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/lab3_extra.pdf
-</span></span></code></pre></td></tr></table>
-</div>
 </div><h2 id="后记">后记
 </h2><p>exam做了110min才过，真的是心惊胆战呢。</p>
-<p>刚开始是没有min-&gt;env_runtime_left&ndash;;导致任务一直做不完死循环，但是这个问题读了题面很快就解决了。</p>
+<p>刚开始是没有<code>min-&gt;env_runtime_left--;</code>导致任务一直做不完死循环，但是这个问题读了题面很快就解决了。</p>
 <p>不再死循环后，我交上第一发，居然只有30分。根据测试点的正确情况，矛头指向了不同调度算法的抢占。</p>
-<p>我本来写的是struct Env *e = (lastenv == NULL) ? TAILQ_FIRST(&amp;env_sched_list) : lastenv;</p>
+<p>我本来写的是<code>struct Env *e = (lastenv == NULL) ? TAILQ_FIRST(&amp;env_sched_list) : lastenv;</code></p>
 <p>事实上完全不应该对NULL特判。反而是你自作主张地先定为TAILQ_FIRST(&amp;env_sched_list)，会被视作这个进程已经被执行过了一次的。更何况此时count == 0，第一个进程直接就被吞了。</p>
 <p>这个bug我第一次修复失败了，我修复的方法是：	
-if (e != lastenv || e == NULL || count == 0 || e-&gt;env_status != ENV_RUNNABLE || yield)</p>
+<code>if (e != lastenv || e == NULL || count == 0 || e-&gt;env_status != ENV_RUNNABLE || yield)</code></p>
 <p>这更是荒唐可笑的，但是e == lastenv就更不对了。</p>
 <p>没想到最终正解却是最简单的：	
-struct Env *e = lastenv;</p>
+<code>struct Env *e = lastenv; </code></p>
 <p>在考场上啼笑皆非。</p>
 <p>毕竟这次extra并不难，但已经没时间了。</p>
 <p>事后复盘exam也不难，不容易想到的东西都已经告诉你了。个人的启示是exam往往很简单。所以首先想想最简单的语句。</p>

@@ -138,7 +138,18 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;extra&#34;&gt;extra
 &lt;/h2&gt;&lt;p&gt;基本上都是书写异常处理函数，可能要调整epc,或者调整指令本身。&lt;/p&gt;
-&lt;p&gt;不再多说，送你一段重要代码。&lt;/p&gt;
+&lt;h3 id=&#34;题面&#34;&gt;题面
+&lt;/h3&gt;&lt;p&gt;见：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/lab3_extra.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;重要代码&#34;&gt;重要代码
+&lt;/h3&gt;&lt;p&gt;不再多说，送你一段重要代码。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这里以I型指令为例。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -170,27 +181,17 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;imm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;instr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xffff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;题面&#34;&gt;题面
-&lt;/h3&gt;&lt;p&gt;见：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/lab3_extra.pdf
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;后记&#34;&gt;后记
 &lt;/h2&gt;&lt;p&gt;exam做了110min才过，真的是心惊胆战呢。&lt;/p&gt;
-&lt;p&gt;刚开始是没有min-&amp;gt;env_runtime_left&amp;ndash;;导致任务一直做不完死循环，但是这个问题读了题面很快就解决了。&lt;/p&gt;
+&lt;p&gt;刚开始是没有&lt;code&gt;min-&amp;gt;env_runtime_left--;&lt;/code&gt;导致任务一直做不完死循环，但是这个问题读了题面很快就解决了。&lt;/p&gt;
 &lt;p&gt;不再死循环后，我交上第一发，居然只有30分。根据测试点的正确情况，矛头指向了不同调度算法的抢占。&lt;/p&gt;
-&lt;p&gt;我本来写的是struct Env *e = (lastenv == NULL) ? TAILQ_FIRST(&amp;amp;env_sched_list) : lastenv;&lt;/p&gt;
+&lt;p&gt;我本来写的是&lt;code&gt;struct Env *e = (lastenv == NULL) ? TAILQ_FIRST(&amp;amp;env_sched_list) : lastenv;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;事实上完全不应该对NULL特判。反而是你自作主张地先定为TAILQ_FIRST(&amp;amp;env_sched_list)，会被视作这个进程已经被执行过了一次的。更何况此时count == 0，第一个进程直接就被吞了。&lt;/p&gt;
 &lt;p&gt;这个bug我第一次修复失败了，我修复的方法是：	
-if (e != lastenv || e == NULL || count == 0 || e-&amp;gt;env_status != ENV_RUNNABLE || yield)&lt;/p&gt;
+&lt;code&gt;if (e != lastenv || e == NULL || count == 0 || e-&amp;gt;env_status != ENV_RUNNABLE || yield)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;这更是荒唐可笑的，但是e == lastenv就更不对了。&lt;/p&gt;
 &lt;p&gt;没想到最终正解却是最简单的：	
-struct Env *e = lastenv;&lt;/p&gt;
+&lt;code&gt;struct Env *e = lastenv; &lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;在考场上啼笑皆非。&lt;/p&gt;
 &lt;p&gt;毕竟这次extra并不难，但已经没时间了。&lt;/p&gt;
 &lt;p&gt;事后复盘exam也不难，不容易想到的东西都已经告诉你了。个人的启示是exam往往很简单。所以首先想想最简单的语句。&lt;/p&gt;
