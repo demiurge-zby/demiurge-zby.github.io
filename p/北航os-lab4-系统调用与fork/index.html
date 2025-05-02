@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验报告">
+<title>北航OS Lab4 系统调用与FORK</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab4 系统调用与FORK">
+<meta property='og:description' content="实验报告">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-29T20:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-04-29T20:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123.png' />
+<meta name="twitter:title" content="北航OS Lab4 系统调用与FORK">
+<meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#思考题">思考题</a>
+      <ol>
+        <li><a href="#thinking-41">Thinking 4.1</a>
+          <ol>
+            <li><a href="#用户主动调用-用户sys_">用户主动调用 用户sys_*</a></li>
+            <li><a href="#执行msyscall">执行msyscall</a></li>
+            <li><a href="#pc跳转进入异常入口">PC跳转进入异常入口</a></li>
+            <li><a href="#得到异常类型">得到异常类型</a></li>
+            <li><a href="#调用异常处理函数">调用异常处理函数</a></li>
+            <li><a href="#传参与调用内核sys_">传参与调用内核sys_*</a></li>
+          </ol>
+        </li>
+        <li><a href="#thinking-42">Thinking 4.2</a></li>
+        <li><a href="#thinking-43">Thinking 4.3</a></li>
+        <li><a href="#thinking-44">Thinking 4.4</a></li>
+        <li><a href="#thinking-45">Thinking 4.5</a></li>
+        <li><a href="#thinking-46">Thinking 4.6</a></li>
+        <li><a href="#thinking-47">Thinking 4.7</a></li>
+        <li><a href="#thinking-48">Thinking 4.8</a></li>
+        <li><a href="#thinking-49">Thinking 4.9</a></li>
+      </ol>
+    </li>
+    <li><a href="#难点分析">难点分析</a>
+      <ol>
+        <li><a href="#fork">fork</a></li>
+        <li><a href="#trapframe">TrapFrame</a></li>
+      </ol>
+    </li>
+    <li><a href="#实验体会">实验体会</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123_hu688971722608415106.png"
+                        srcset="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123_hu688971722608415106.png 800w, /p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123_hu8835837325211763538.png 1600w"
+                        width="800" 
+                        height="422" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab4 系统调用与FORK" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/os/" style="background-color: #2a9d8f; color: #fff;">
+                OS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/">北航OS Lab4 系统调用与FORK</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            实验报告
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-29</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="实验报告">实验报告
+</h1><h2 id="思考题">思考题
+</h2><h3 id="thinking-41">Thinking 4.1
+</h3><p>要想回答这个问题，我们先重新梳理一下系统调用的流程。</p>
+<h4 id="用户主动调用-用户sys_">用户主动调用 用户sys_*
+</h4><p>在user/lib/syscall_lib.c中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">syscall_putchar</span><span class="p">(</span><span class="kt">int</span> <span class="n">ch</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">msyscall</span><span class="p">(</span><span class="n">SYS_putchar</span><span class="p">,</span> <span class="n">ch</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">syscall_print_cons</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">str</span><span class="p">,</span> <span class="n">u_int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">msyscall</span><span class="p">(</span><span class="n">SYS_print_cons</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在调用函数时，参数已经被压入了栈帧中对应的位置。</p>
+<h4 id="执行msyscall">执行msyscall
+</h4><p>在user/lib/syscall_wrap.S中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-S" data-lang="S"><span class="line"><span class="cl"><span class="nf">LEAF</span><span class="p">(</span><span class="n">msyscall</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">syscall</span>
+</span></span><span class="line"><span class="cl">	<span class="n">jr</span>	<span class="n">ra</span>
+</span></span><span class="line"><span class="cl"><span class="nf">END</span><span class="p">(</span><span class="n">msyscall</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="pc跳转进入异常入口">PC跳转进入异常入口
+</h4><p>CPU执行syscall，直接跳转pc到异常入口</p>
+<p>并执行entry.S中的:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-S" data-lang="S"><span class="line"><span class="cl"><span class="n">exc_gen_entry</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">SAVE_ALL</span>
+</span></span><span class="line"><span class="cl">	<span class="n">mfc0</span>    <span class="n">t0</span><span class="p">,</span> <span class="n">CP0_STATUS</span>
+</span></span><span class="line"><span class="cl">	<span class="n">and</span>     <span class="n">t0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="o">~</span><span class="p">(</span><span class="n">STATUS_UM</span> <span class="o">|</span> <span class="n">STATUS_EXL</span> <span class="o">|</span> <span class="n">STATUS_IE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">mtc0</span>    <span class="n">t0</span><span class="p">,</span> <span class="n">CP0_STATUS</span>
+</span></span><span class="line"><span class="cl">	<span class="n">mfc0</span>    <span class="n">t0</span><span class="p">,</span> <span class="n">CP0_CAUSE</span>
+</span></span><span class="line"><span class="cl">	<span class="n">andi</span>    <span class="n">t0</span><span class="p">,</span> <span class="mh">0x7c</span>
+</span></span><span class="line"><span class="cl">	<span class="n">lw</span>      <span class="n">t0</span><span class="p">,</span> <span class="nf">exception_handlers</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">jr</span>      <span class="n">t0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个过程就回答了前两个问题。			
+<code>SAVE_ALL</code>保护了所有通用寄存器。</p>
+<p>并且<code>$a0</code>-<code>$a3</code>没有被重新赋值。因此陷入内核调用后仍可以直接从当时的<code>$a0</code>-<code>$a3</code>参数寄存器中得到用户调用msyscall留下的信息。</p>
+<h4 id="得到异常类型">得到异常类型
+</h4><p>由traps.c中的<code>exception_handlers</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">exception_handlers</span><span class="p">[</span><span class="mi">32</span><span class="p">])(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">0</span> <span class="p">...</span> <span class="mi">31</span><span class="p">]</span> <span class="o">=</span> <span class="n">handle_reserved</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">handle_int</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">2</span> <span class="p">...</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">handle_tlb</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#if !defined(LAB) || LAB &gt;= 4
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">handle_mod</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">handle_sys</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="调用异常处理函数">调用异常处理函数
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-S" data-lang="S"><span class="line"><span class="cl"><span class="n">.macro</span> <span class="n">BUILD_HANDLER</span> <span class="n">exception</span> <span class="n">handler</span>
+</span></span><span class="line"><span class="cl"><span class="nf">NESTED</span><span class="p">(</span><span class="n">handle_\exception</span><span class="p">,</span> <span class="n">TF_SIZE</span> <span class="o">+</span> <span class="m">8</span><span class="p">,</span> <span class="n">zero</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">move</span>    <span class="n">a0</span><span class="p">,</span> <span class="n">sp</span>
+</span></span><span class="line"><span class="cl">	<span class="n">addiu</span>   <span class="n">sp</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="m">-8</span>
+</span></span><span class="line"><span class="cl">	<span class="n">jal</span>     <span class="n">\handler</span>
+</span></span><span class="line"><span class="cl">	<span class="n">addiu</span>   <span class="n">sp</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="m">8</span>
+</span></span><span class="line"><span class="cl">	<span class="n">j</span>       <span class="n">ret_from_exception</span>
+</span></span><span class="line"><span class="cl"><span class="nf">END</span><span class="p">(</span><span class="n">handle_\exception</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">.endm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">BUILD_HANDLER</span> <span class="n">sys</span> <span class="n">do_syscall</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="传参与调用内核sys_">传参与调用内核sys_*
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">do_syscall</span><span class="p">(</span><span class="k">struct</span> <span class="n">Trapframe</span> <span class="o">*</span><span class="n">tf</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="n">u_int</span><span class="p">,</span> <span class="n">u_int</span><span class="p">,</span> <span class="n">u_int</span><span class="p">,</span> <span class="n">u_int</span><span class="p">,</span> <span class="n">u_int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">sysno</span> <span class="o">=</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">sysno</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">sysno</span> <span class="o">&gt;=</span> <span class="n">MAX_SYSNO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">E_NO_SYS</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">tf</span><span class="o">-&gt;</span><span class="n">cp0_epc</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">	<span class="n">func</span> <span class="o">=</span> <span class="n">syscall_table</span><span class="p">[</span><span class="n">sysno</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">arg1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">arg2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">arg3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">arg4</span><span class="p">,</span> <span class="n">arg5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">arg4</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="n">u_int</span> <span class="o">*</span><span class="p">)</span><span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">arg5</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="n">u_int</span> <span class="o">*</span><span class="p">)</span><span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nf">func</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">,</span> <span class="n">arg4</span><span class="p">,</span> <span class="n">arg5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里可以回答后两个问题：</p>
+<p>用户sys中的6个参数，第一个用来对应内核sys，其他参数按照原来的顺序依次用于传参，因此数值是完全对应的。</p>
+<p>对于syscall后的改动：</p>
+<ol>
+<li>系统调用的（正常/异常）返回值会赋值给<code>$2</code>即<code>$v0</code></li>
+<li>tf-&gt;cp0_epc += 4;</li>
+</ol>
+<h3 id="thinking-42">Thinking 4.2
+</h3><p>结合以下两段代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">u_int</span> <span class="nf">mkenvid</span><span class="p">(</span><span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">static</span> <span class="n">u_int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="p">((</span><span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">LOG2NENV</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">envs</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define LOG2NENV 10
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define NENV (1 &lt;&lt; LOG2NENV)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define ENVX(envid) ((envid) &amp; (NENV - 1))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以知道ENVX只取了envid的后10位，也就是取了e-envs的值</p>
+<p>这个值反映的就是e在envs中的相对位置，所以可以用来找到这个进程。</p>
+<p>但是它并不构成双射。</p>
+<p>例如0xF01,0x801,0x401等等envid都可以对应到envs[1],但是这些envid大多是不合法的。因此必须再进行反向确认。</p>
+<h3 id="thinking-43">Thinking 4.3
+</h3><p>这个问题不难解释。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">envid2env</span><span class="p">(</span><span class="n">u_int</span> <span class="n">envid</span><span class="p">,</span> <span class="k">struct</span> <span class="n">Env</span> <span class="o">**</span><span class="n">penv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">checkperm</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">e</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">envid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="o">*</span><span class="n">penv</span> <span class="o">=</span> <span class="n">curenv</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">e</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">envs</span><span class="p">[</span><span class="nf">ENVX</span><span class="p">(</span><span class="n">envid</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl">	<span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们知道envid取0时，其含义即为curenv。</p>
+<p>因此mkenvid避免了返回0，没有进程的envid为0，从而防止在envid2env(0, &amp;env, 0)时，只能取到curenv而不能取envid确实为0的进程的情况。</p>
+<p>而envid2env(envid, &amp;env, 0)在IPC的sys_ipc_try_send中被调用，若存在envid为0的进程，将影响进程间通信的正常实现。</p>
+<h3 id="thinking-44">Thinking 4.4
+</h3><p>答案为C。</p>
+<p>参见任务指导书：</p>
+<blockquote>
+<p>• fork 之前只有父进程存在。</p>
+<p>• fork 之后，父子进程同时开始执行fork之后的代码段</p>
+</blockquote>
+<p>以及此图：	
+<img src="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image.png"
+	width="1123"
+	height="616"
+	srcset="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image_hu14913401456138704058.png 480w, /p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image_hu7464946203331899128.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="437px"
+	
+></p>
+<p>可以确定fork代码本身是父进程执行的。</p>
+<p>fork在父、子进程的返回值分别是子进程pid与0。</p>
+<h3 id="thinking-45">Thinking 4.5
+</h3><p>一般认为，用户空间从0到USTACKTOP需要被映射。</p>
+<p>在env_init中:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">base_pgdir</span> <span class="o">=</span> <span class="p">(</span><span class="n">Pde</span> <span class="o">*</span><span class="p">)</span><span class="nf">page2kva</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">map_segment</span><span class="p">(</span><span class="n">base_pgdir</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nf">PADDR</span><span class="p">(</span><span class="n">pages</span><span class="p">),</span> <span class="n">UPAGES</span><span class="p">,</span> <span class="nf">ROUND</span><span class="p">(</span><span class="n">npage</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Page</span><span class="p">),</span> <span class="n">PAGE_SIZE</span><span class="p">),</span> <span class="n">PTE_G</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">map_segment</span><span class="p">(</span><span class="n">base_pgdir</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nf">PADDR</span><span class="p">(</span><span class="n">envs</span><span class="p">),</span> <span class="n">UENVS</span><span class="p">,</span> <span class="nf">ROUND</span><span class="p">(</span><span class="n">NENV</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Env</span><span class="p">),</span> <span class="n">PAGE_SIZE</span><span class="p">),</span> <span class="n">PTE_G</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>进程的UPAGES与UENVS已经映射到pages与envs了，因此不需要再在duppage中进行继承。</p>
+<p>而一些进程临时占用的区域往往在fork时是无效的，因此也不会被复制。</p>
+<h3 id="thinking-46">Thinking 4.6
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define vpt ((const volatile Pte *)UVPT)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define vpd ((const volatile Pde *)(UVPT + (PDX(UVPT) &lt;&lt; PGSHIFT)))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>vpt就是用户页表起始位置UVPT，指针为Pte*类型，即<code>vpt+1</code>即指向下一页表项。</p>
+<p>vpd则是利用了自映射，PDX号即为页目录在二级页表中的位置。</p>
+<blockquote>
+<p>也可写作 #define vpd ((const volatile Pde *)UVPT + (PDX(UVPT) ))</p>
+</blockquote>
+<p>已知：
+vpn: va的前20位	
+PTX：va的中间10位	
+PDX：va的前10位</p>
+<p>则有：	
+va对应的页目录项：  vpd[PDX(va)]	
+va对应的页表项：   vpt[vpn]</p>
+<p>这便是用户态访问页表项的基本方法。</p>
+<p>进程无权修改页表项。为什么？
+在env_init中我们只额外赋予了PTE_G，	
+即<code>map_segment(base_pgdir, 0, PADDR(pages), UPAGES, ROUND(npage * sizeof(struct Page), PAGE_SIZE), PTE_G);</code>	
+详见map_segment中的page_insert中的	
+<code>*pte = page2pa(pp) | perm | PTE_C_CACHEABLE | PTE_V;</code>。</p>
+<p>所以其属性只有PTE_G | PTE_C_CACHEABLE | PTE_V。</p>
+<h3 id="thinking-47">Thinking 4.7
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">do_tlb_mod</span><span class="p">(</span><span class="k">struct</span> <span class="n">Trapframe</span> <span class="o">*</span><span class="n">tf</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Trapframe</span> <span class="n">tmp_tf</span> <span class="o">=</span> <span class="o">*</span><span class="n">tf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">USTACKTOP</span> <span class="o">||</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">UXSTACKTOP</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">=</span> <span class="n">UXSTACKTOP</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 切换为异常栈
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">-=</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">Trapframe</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">*</span><span class="p">(</span><span class="k">struct</span> <span class="n">Trapframe</span> <span class="o">*</span><span class="p">)</span><span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_tf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 将异常现场tmp_tf压入栈
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Pte</span> <span class="o">*</span><span class="n">pte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">page_lookup</span><span class="p">(</span><span class="n">cur_pgdir</span><span class="p">,</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">cp0_badvaddr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pte</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">curenv</span><span class="o">-&gt;</span><span class="n">env_user_tlb_mod_entry</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">];</span> 
+</span></span><span class="line"><span class="cl">		<span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">-=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">tf</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 设置栈指针为参数$a0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">tf</span><span class="o">-&gt;</span><span class="n">cp0_epc</span> <span class="o">=</span> <span class="n">curenv</span><span class="o">-&gt;</span><span class="n">env_user_tlb_mod_entry</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 进入异常处理函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// 返回epc是异常处理entry，参数tf和本函数的tf一致
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">panic</span><span class="p">(</span><span class="s">&#34;TLB Mod but no user handler registered&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们可以看到<code>异常栈的使用</code>与<code>tf的嵌套保存</code>实现了类似于异常重入的处理。	
+当COW处理函数自身某个环节触发异常时就会触发异常重入。</p>
+<p>这时候，新的异常环境被压入异常栈，并被处理，返回到原异常环境，重新处理原异常。</p>
+<p>内核需要将异常的现场Trapframe复制到用户空间，由用户态实现现场的恢复。</p>
+<h3 id="thinking-48">Thinking 4.8
+</h3><p>在用户态处理页写入异常，相比于在内核态：</p>
+<ol>
+<li>主观能动性更强，用户可以相对自由地控制异常的产生与处理</li>
+<li>减少状态的切换，提高运转效率</li>
+<li>与内核独立开来，保证内核的安全</li>
+</ol>
+<h3 id="thinking-49">Thinking 4.9
+</h3><p>如果<code>syscall_set_tlb_mod_entry</code>的调用放置在<code>syscall_exofork</code>之后，甚至放置在写时复制保护机制完成之后，	
+syscall_exofork中可能产生的tlb_mod异常将没有处理函数，即<code>panic(&quot;TLB Mod but no user handler registered&quot;);</code></p>
+<h2 id="难点分析">难点分析
+</h2><p>我认为lab4的难度主要在于理解FORK和TrapFrame。</p>
+<p>关于系统调用，Thinking 4.1的流程解释已经相对清晰了。</p>
+<p>关于IPC，核心内容就是进程状态的变化，进程的切换，data的传递或页的共享。</p>
+<h3 id="fork">fork
+</h3><p>借助于系统调用，用户态下的函数可以实现许多安全的内核操作。这避免了内核态与用户态的频繁切换，不需多余的SAVE与RESTORE。</p>
+<p>fork函数就是用户态下的，能够由用户主动产生新进程的函数。</p>
+<p>此外，fork函数通过复用异常机制，实现了COW操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">fork</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">child</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">env_user_tlb_mod_entry</span> <span class="o">!=</span> <span class="p">(</span><span class="n">u_int</span><span class="p">)</span><span class="n">cow_entry</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">try</span><span class="p">(</span><span class="nf">syscall_set_tlb_mod_entry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cow_entry</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="c1">// 填入COW异常处理函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">child</span> <span class="o">=</span> <span class="nf">syscall_exofork</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">// env_alloc + 赋值tf,pri,status
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 最后额外更改 $v0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">child</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">env</span> <span class="o">=</span> <span class="n">envs</span> <span class="o">+</span> <span class="nf">ENVX</span><span class="p">(</span><span class="nf">syscall_getenvid</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// envid中ENVX的含义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// child的fork结束
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nf">PDX</span><span class="p">(</span><span class="n">UXSTACKTOP</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">vpd</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">PTE_V</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">for</span> <span class="p">(</span><span class="n">u_int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">PAGE_SIZE</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Pte</span><span class="p">);</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">u_long</span> <span class="n">va</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Pte</span><span class="p">))</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">PGSHIFT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">if</span> <span class="p">(</span><span class="n">va</span> <span class="o">&gt;=</span> <span class="n">USTACKTOP</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span> <span class="k">if</span> <span class="p">(</span><span class="n">vpt</span><span class="p">[</span><span class="nf">VPN</span><span class="p">(</span><span class="n">va</span><span class="p">)]</span> <span class="o">&amp;</span> <span class="n">PTE_V</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="nf">duppage</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="nf">VPN</span><span class="p">(</span><span class="n">va</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">					<span class="c1">// 全部标记 COW
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="nf">syscall_set_tlb_mod_entry</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">cow_entry</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">	<span class="nf">syscall_set_env_status</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">ENV_RUNNABLE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 先设置好COW异常处理函数，再RUNNABLE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="n">child</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这便是fork的全流程。整体看起来还比较清晰？</p>
+<h3 id="trapframe">TrapFrame
+</h3><p>这是一块很大的内容，存储着进入内核态前的信息。</p>
+<p>陷阱帧也是栈结构，支持重入。</p>
+<p>tf-&gt;regs是我们访问基础寄存器的途径，	
+常用的有：	
+tf-&gt;regs[2]代表返回值	
+tf-&gt;regs[4..7] 代表传入参数		
+tf-&gt;reg[29]代表sp</p>
+<p>注意：可以通过*(struct Trapframe *)tf-&gt;regs[29]来得到上一次保存环境时的栈帧。</p>
+<p>此外，tf-&gt;cp0_epc 代表eret要返回到的PC。将其设置为某个函数的指针，便可以实现函数的跳转（并非调用）	
+tf-&gt;cp0_badvaddr代表出现异常的虚拟地址，往往在处理与内存相关的异常时有帮助。</p>
+<h2 id="实验体会">实验体会
+</h2><p>理解Trapframe的过程很痛苦，哪怕是现在我页仍然有很多地方不明所以。</p>
+<p>在写思考题的过程中，我总是想要诉之以理，结果却连自己都无法信服。</p>
+<p>用户态陷入异常后，进程是否切换？此时的tf存着什么？在异常处理过程中处于内核态吗？那又如何理解“调用”用户态的函数？&hellip;</p>
+<p>诸多谜题解决起来确实困难，但回到实验指导书重新阅读可能会有曾未发现的收获。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.0979bae152efeb9b5b7dcbea76f8504d_hu8186758832790077266.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab3 上机"
+                        
+                        data-hash="md5-CXm64VLv65tbfcvqdvhQTQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab3 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/123.15e859614b1e9f2cc942ee92a2b48326_hu8521962019310717448.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab3 进程与异常"
+                        
+                        data-hash="md5-FehZYUsenyzJQu6SorSDJg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab3 进程与异常</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab2-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab2-%E4%B8%8A%E6%9C%BA/123.d3faa86046e8d2fdcc02e2c2bd6ae3d2_hu3170001001555398598.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab2 上机"
+                        
+                        data-hash="md5-0/qoYEbo0v3MAuLCvWrj0g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab2 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg.ba415ea421076ba104b21fd1d22b6e4f_hu4869269640775965078.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab2 内存管理"
+                        
+                        data-hash="md5-ukFepCEHa6EEsh/R0ituTw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab2 内存管理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/123.24891379d815b03279c0a701f662ba52_hu12182975097152057230.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab1 上机"
+                        
+                        data-hash="md5-JIkTedgVsDJ5wKcB9mK6Ug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab1 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>
