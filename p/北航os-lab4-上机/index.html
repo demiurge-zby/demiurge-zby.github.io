@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="exam通过不能？？">
-<title>北航OS Lab3 上机</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="生日快乐！">
+<title>北航OS Lab4 上机</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab3 上机">
-<meta property='og:description' content="exam通过不能？？">
-<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/'>
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab4 上机">
+<meta property='og:description' content="生日快乐！">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-27T11:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-04-27T11:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.png' />
-<meta name="twitter:title" content="北航OS Lab3 上机">
-<meta name="twitter:description" content="exam通过不能？？"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-09T11:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-05-09T11:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/123.png' />
+<meta name="twitter:title" content="北航OS Lab4 上机">
+<meta name="twitter:description" content="生日快乐！"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/123.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -270,15 +270,14 @@
   <ol>
     <li><a href="#exam">exam</a>
       <ol>
-        <li><a href="#预备任务">预备任务</a></li>
-        <li><a href="#核心任务">核心任务</a></li>
-        <li><a href="#23级题面摘要">23级题面摘要</a></li>
+        <li><a href="#sys_get_ppid">sys_get_ppid</a></li>
+        <li><a href="#pte_protect">PTE_PROTECT</a></li>
       </ol>
     </li>
     <li><a href="#extra">extra</a>
       <ol>
         <li><a href="#题面">题面</a></li>
-        <li><a href="#重要代码">重要代码</a></li>
+        <li><a href="#代码">代码</a></li>
       </ol>
     </li>
     <li><a href="#后记">后记</a></li>
@@ -296,13 +295,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/">
-                <img src="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123_hu9343945849398157827.png"
-                        srcset="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123_hu9343945849398157827.png 800w, /p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123_hu7015480425910336899.png 1600w"
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/123_hu11188851369968087054.png"
+                        srcset="/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/123_hu11188851369968087054.png 800w, /p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/123_hu15601736049901439038.png 1600w"
                         width="800" 
                         height="422" 
                         loading="lazy"
-                        alt="Featured image of post 北航OS Lab3 上机" />
+                        alt="Featured image of post 北航OS Lab4 上机" />
                 
             </a>
         </div>
@@ -321,12 +320,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/">北航OS Lab3 上机</a>
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/">北航OS Lab4 上机</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            exam通过不能？？
+            生日快乐！
         </h3>
         
     </div>
@@ -347,7 +346,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-04-27</time>
+                <time class="article-time--published">2025-05-09</time>
             </div>
         
 
@@ -362,7 +361,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -378,23 +377,71 @@
     
     
     <h2 id="exam">exam
-</h2><p>往年题资源约等于无。只能对着学长git仓库的源码疯狂地想象题目&hellip;</p>
-<p>个人认为lab3的exam相对来说随机性比较大，很有extra的风格。</p>
-<p>题面大概率是实现一种新的调度算法。</p>
-<h3 id="预备任务">预备任务
-</h3><p>在实现这个任务之前，会有许多复制粘贴的操作。</p>
-<p>如Env结构体中新属性的增添，新的宏，新的全局变量，新的初始化等等。</p>
-<p>这些内容虽然都需要自己手动去改，但是代码基本都已经在题面中明确给出了。</p>
-<h3 id="核心任务">核心任务
-</h3><p>新的调度算法的原理在题面上会十分详尽地讲解，容易出现bug的点与解决方法也都有加粗标志。</p>
-<p>题面复杂时甚至会直接给出部分实现框架。但是不能过于依赖，可能有重要的句子是没有在框架里体现出来的。</p>
-<h3 id="23级题面摘要">23级题面摘要
-</h3><p>实现RR算法与原来的时间片流转算法的混合使用。</p>
-<p>每个进程在建立时已经确定它采用哪种调度算法。</p>
-<p>RR算法可抢占时间片流转算法。时间片流转被抢占结束后会默认回到被抢占的进程。</p>
-<p>大家可以看一下sched.c的核心代码。</p>
-<p>除了我添加注释的几行，其他内容都是题面上已经把代码内容全部用文字描述了。</p>
+</h2><p>往年的lab4上机分为4-1和4-2两个部分。</p>
+<p>其中lab4-1侧重于考察系统调用本身的实现，而lab4-2仍以系统调用为载体，但更多地强调像fork一样，借助系统调用去实现某些功能。</p>
+<p>对于本次上机：</p>
+<p>在上机伊始，助教便提醒：</p>
+<pre><code>  本次上机exam难度较易，请多用心挑战extra题目。   
+</code></pre>
+<p>我认为主要原因是lab4的拆分，从而导致某些必考考点在简单的exam里得不到充分的测试。</p>
+<p>本次exam共两项内容。</p>
+<h3 id="sys_get_ppid">sys_get_ppid
+</h3><p>得到当前进程的父进程的env_id，若没有父进程则返回0.</p>
+<p>他甚至连try(envid2env(id, &amp;e, 0))都不让你写，只需返回curenv的env_parent_id</p>
+<p>至于<code>没有父进程则返回0</code>这一点不必担心，此时env_parent_id也就是0.</p>
+<p>因此最耗时的地方反而是更改这些：       <br>
+include/syscall.h 扩充enum    <br>
+include/error.h 扩充新的error</p>
+<p>kern/syscall_all.c 扩充syscall_table</p>
+<p>user/include/lib.h 函数声明      <br>
+user/lib/syscall_lib.c 用户sys调用msys (这个有的时候有些门道，不仅仅是return msys那么简单)</p>
+<h3 id="pte_protect">PTE_PROTECT
+</h3><p>在fork的duppage中额外考虑PTE_PROTECT</p>
+<p>题意也很明白：若权限位含PTE_PROTECT（注意是<code>不为0</code>），直接终止duppage函数。</p>
+<p>也即在duppage函数中：</p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="cm">/* Hint: The page should be first mapped to the child before remapped in the parent. (Why?)
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
+</span></span><span class="line"><span class="cl">	<span class="cm">/* Exercise 4.10: Your code here. (2/2) */</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">((</span><span class="n">perm</span> <span class="o">&amp;</span> <span class="n">PTE_PROTECT</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(((</span><span class="n">perm</span> <span class="o">&amp;</span> <span class="n">PTE_D</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">perm</span> <span class="o">&amp;</span> <span class="n">PTE_LIBRARY</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">perm</span> <span class="o">&amp;</span> <span class="n">PTE_COW</span><span class="p">))</span> <span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>至于PTE_PROTECT怎么来的，都不关我们的事。</p>
+<p>大家这一题做的都很快，因为根本没有卡人的地方。</p>
+<h2 id="extra">extra
+</h2><p>extra其实也是一道比较简单的题。但正因为题面简单，导致题干的提示少了一点，容易让自己瞎想。</p>
+<p>在大多数人都轻松做对extra的时候，笔者又一次拿了0分。</p>
+<p>比较搞笑的是，犯这样错误的人还不少。</p>
+<p>原因是一个struct Shm shm_pool[];</p>
+<p>大家总是要写shm_pool[key].npage等这样的信息，有些烦躁，就直接
+struct Shm shm = shm_pool[key];</p>
+<p>被面向对象宠坏了的同学们，完全没有想到这里已经不再是对象了。而是<code>一个新的被赋了初值的变量</code>。</p>
+<p>这里应当采用 struct Shm* shmptr = &amp;shm_pool[key];</p>
+<h3 id="题面">题面
+</h3><p>见：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/lab4_extra.pdf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="代码">代码
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -446,119 +493,134 @@
 </span><span class="lnt">48
 </span><span class="lnt">49
 </span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">struct</span> <span class="n">Env</span><span class="o">*</span> <span class="n">lastenv</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="c1">//这句话有简单引导
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">schedule</span><span class="p">(</span><span class="kt">int</span> <span class="n">yield</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">static</span> <span class="kt">int</span> <span class="n">clock</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="n">clock</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">env</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl">	<span class="nf">LIST_FOREACH</span> <span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">env_edf_sched_list</span><span class="p">,</span> <span class="n">env_edf_sched_link</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">clock</span> <span class="o">==</span> <span class="n">env</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="n">env</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span> <span class="o">+=</span> <span class="n">env</span><span class="o">-&gt;</span><span class="n">env_edf_period</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">			<span class="n">env</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span> <span class="o">=</span> <span class="n">env</span><span class="o">-&gt;</span><span class="n">env_edf_runtime</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>	
-</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">en</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">min</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">LIST_EMPTY</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_edf_sched_list</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">min</span> <span class="o">=</span> <span class="nf">LIST_FIRST</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_edf_sched_list</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="nf">LIST_FOREACH</span> <span class="p">(</span><span class="n">en</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">env_edf_sched_list</span><span class="p">,</span> <span class="n">env_edf_sched_link</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">en</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="p">((</span><span class="n">min</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">en</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span> <span class="o">&lt;</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span><span class="p">)</span> <span class="o">||</span> <span class="p">((</span><span class="n">en</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span> <span class="o">==</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">env_period_deadline</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">en</span><span class="o">-&gt;</span><span class="n">env_id</span> <span class="o">&lt;</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">env_id</span><span class="p">)))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">				<span class="n">min</span> <span class="o">=</span> <span class="n">en</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">			<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">min</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">//printk(&#34;%x\n&#34;, min-&gt;env_id);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">min</span><span class="o">-&gt;</span><span class="n">env_runtime_left</span><span class="o">--</span><span class="p">;</span>  <span class="c1">// 这句话是没有提示的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nf">env_run</span><span class="p">(</span><span class="n">min</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">Shm</span> <span class="n">shm_pool</span><span class="p">[</span><span class="n">N_SHM</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="k">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">Env</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="n">lastenv</span><span class="p">;</span>  <span class="c1">//这句话是有简单引导的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//printk(&#34;%x\n&#34;, e-&gt;env_id);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">env_status</span> <span class="o">!=</span> <span class="n">ENV_RUNNABLE</span> <span class="o">||</span> <span class="n">yield</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">env_status</span> <span class="o">==</span> <span class="n">ENV_RUNNABLE</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nf">TAILQ_REMOVE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_sched_list</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">env_sched_link</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">			<span class="nf">TAILQ_INSERT_TAIL</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_sched_list</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">env_sched_link</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="n">e</span> <span class="o">=</span> <span class="nf">TAILQ_FIRST</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env_sched_list</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">lastenv</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span> <span class="c1">//没有引导，但也不需要引导
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">//printk(&#34;%x\n&#34;, e-&gt;env_id);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nf">panic</span><span class="p">(</span><span class="s">&#34;schedule: no runnable envs</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span> 
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="n">count</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">env_pri</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">sys_shm_new</span><span class="p">(</span><span class="n">u_int</span> <span class="n">npage</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">npage</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">npage</span> <span class="o">&gt;</span> <span class="n">N_SHM_PAGE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">E_SHM_INVALID</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="n">count</span><span class="o">--</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="nf">env_run</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Lab4-Extra: Your code here. (5/8)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">id</span> <span class="o">&lt;</span> <span class="n">N_SHM</span><span class="p">;</span> <span class="n">id</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">shm_pool</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">open</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">shm_pool</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">npage</span> <span class="o">=</span> <span class="n">npage</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* 太蠢了太蠢了太蠢了!!!*/</span><span class="n">shm_pool</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">open</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="c1">// 笔者的核心错因是忘记写这句话！！！！！！！
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">npage</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="kt">int</span> <span class="n">r</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">struct</span> <span class="n">Page</span><span class="o">*</span> <span class="n">pp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">r</span> <span class="o">=</span> <span class="nf">page_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="n">shm_pool</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">npage</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">               <span class="n">shm_pool</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">open</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">						<span class="nf">page_decref</span><span class="p">(</span><span class="n">shm_pool</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">pages</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">						<span class="n">shm_pool</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">pages</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="p">}</span> <span class="k">return</span> <span class="o">-</span><span class="n">E_NO_MEM</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="n">shm_pool</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">pages</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">pp</span><span class="o">-&gt;</span><span class="n">pp_ref</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span> <span class="k">return</span> <span class="n">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">-</span><span class="n">E_SHM_INVALID</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">sys_shm_bind</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="n">u_int</span> <span class="n">va</span><span class="p">,</span> <span class="n">u_int</span> <span class="n">perm</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">key</span> <span class="o">&gt;=</span> <span class="n">N_SHM</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">E_SHM_INVALID</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Lab4-Extra: Your code here. (6/8)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">open</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">E_SHM_NOT_OPEN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">va</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">npage</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">page_insert</span><span class="p">(</span><span class="n">curenv</span><span class="o">-&gt;</span><span class="n">env_pgdir</span><span class="p">,</span> <span class="n">curenv</span><span class="o">-&gt;</span><span class="n">env_asid</span><span class="p">,</span> <span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">pages</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">addr</span><span class="p">,</span> <span class="n">perm</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">addr</span> <span class="o">+=</span> <span class="n">PAGE_SIZE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">sys_shm_unbind</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="n">u_int</span> <span class="n">va</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">key</span> <span class="o">&gt;=</span> <span class="n">N_SHM</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">E_SHM_INVALID</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Lab4-Extra: Your code here. (7/8)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">open</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">E_SHM_NOT_OPEN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">va</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">npage</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">pages</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">page_remove</span><span class="p">(</span><span class="n">curenv</span><span class="o">-&gt;</span><span class="n">env_pgdir</span><span class="p">,</span> <span class="n">curenv</span><span class="o">-&gt;</span><span class="n">env_asid</span><span class="p">,</span> <span class="n">addr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">addr</span> <span class="o">+=</span> <span class="n">PAGE_SIZE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">sys_shm_free</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">key</span> <span class="o">&gt;=</span> <span class="n">N_SHM</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">E_SHM_INVALID</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Lab4-Extra: Your code here. (8/8)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">open</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">E_SHM_NOT_OPEN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">open</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">npage</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">page_decref</span><span class="p">(</span><span class="n">shm_pool</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">pages</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="extra">extra
-</h2><p>基本上都是书写异常处理函数，可能要调整epc,或者调整指令本身。</p>
-<h3 id="题面">题面
-</h3><p>见：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/lab3_extra.pdf
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="重要代码">重要代码
-</h3><p>不再多说，送你一段重要代码。</p>
-<blockquote>
-<p>这里以I型指令为例。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="n">u_long</span> <span class="n">va</span> <span class="o">=</span> <span class="n">tf</span><span class="o">-&gt;</span><span class="n">cp0_epc</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="n">Pte</span> <span class="o">*</span><span class="n">pte</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="nf">page_lookup</span><span class="p">(</span><span class="n">curenv</span><span class="o">-&gt;</span><span class="n">env_pgdir</span><span class="p">,</span> <span class="n">va</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pte</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="n">u_long</span> <span class="n">va</span> <span class="o">=</span> <span class="nf">PTE_ADDR</span><span class="p">(</span><span class="o">*</span><span class="n">pte</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">va</span> <span class="o">&amp;</span> <span class="mh">0xfff</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="n">u_long</span> <span class="n">kva</span> <span class="o">=</span> <span class="nf">KADDR</span><span class="p">(</span><span class="n">pa</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="o">*</span><span class="n">instr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">kva</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">opcode</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">26</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">_base</span> <span class="o">=</span> <span class="p">((</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">21</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x1f</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">_rt</span> <span class="o">=</span> <span class="p">((</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x1f</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">imm</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">instr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xffff</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
-</div>
 </div><h2 id="后记">后记
-</h2><p>exam做了110min才过，真的是心惊胆战呢。</p>
-<p>刚开始是没有<code>min-&gt;env_runtime_left--;</code>导致任务一直做不完死循环，但是这个问题读了题面很快就解决了。</p>
-<p>不再死循环后，我交上第一发，居然只有30分。根据测试点的正确情况，矛头指向了不同调度算法的抢占。</p>
-<p>我本来写的是<code>struct Env *e = (lastenv == NULL) ? TAILQ_FIRST(&amp;env_sched_list) : lastenv;</code></p>
-<p>事实上完全不应该对NULL特判。反而是你自作主张地先定为TAILQ_FIRST(&amp;env_sched_list)，会被视作这个进程已经被执行过了一次的。更何况此时count == 0，第一个进程直接就被吞了。</p>
-<p>这个bug我第一次修复失败了，我修复的方法是：	
-<code>if (e != lastenv || e == NULL || count == 0 || e-&gt;env_status != ENV_RUNNABLE || yield)</code></p>
-<p>这更是荒唐可笑的，但是e == lastenv就更不对了。</p>
-<p>没想到最终正解却是最简单的：	
-<code>struct Env *e = lastenv; </code></p>
-<p>在考场上啼笑皆非。</p>
-<p>毕竟这次extra并不难，但已经没时间了。</p>
-<p>事后复盘exam也不难，不容易想到的东西都已经告诉你了。个人的启示是exam往往很简单。所以首先想想最简单的语句。</p>
+</h2><p>这次上机exam大多数同学在20min以内都能完成。</p>
+<p>但是如此简单的extra，是如何让大家虚空debug 100min 的呢？</p>
+<p>我的vim出现了一次很可怕的问题。在粘贴之后，一些奇怪的位置也被粘贴了那段代码。整个syscall.c都被毁了，于是从OS gitlab里重新复制代码粘了上去。</p>
+<p>这可能浪费了一点时间？</p>
+<p>此外，lab3-exam告诉我们不要太高估exam，lab4-extra则告诉我们不要太高估extra!</p>
+<blockquote>
+<p>这句话有点太狂妄了()  但是希望大家做题的时候千万不要想太多！ 必须实现的奇思妙想一定会在HINT里指出!!!</p>
+</blockquote>
+<p>由于题目里告诉我们可以用page_remove来实现shm_unbind，却没有明确指出用page_insert来实现shm_bind。   <br>
+我便一口认定要自己重新手搓shm_page_insert函数。后面的一切努力当然都是徒劳。</p>
+<p>怎么能忘记把open置1啊？！！</p>
+<blockquote>
+<p>宛如曾经P6上机循环没有变量初始化、忘记写[31:0]一般的无力感</p>
+</blockquote>
+<p>哦对！今天是我的生日！生日快乐！祝大家都要快乐！！！</p>
 
 </section>
 
@@ -583,30 +645,6 @@
             
                 
 <article class="has-image">
-    <a href="/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/">
-        
-        
-            <div class="article-image">
-                <img src="/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/123.e7fe13a9c852f8d15643aa873805e3e7_hu14461487000464471443.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 北航OS Lab4 上机"
-                        
-                        data-hash="md5-5/4TqchS&#43;NFWQ6qHOAXj5w==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">北航OS Lab4 上机</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/">
         
         
@@ -624,6 +662,30 @@
 
         <div class="article-details">
             <h2 class="article-title">北航OS Lab4 系统调用与FORK</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.0979bae152efeb9b5b7dcbea76f8504d_hu8186758832790077266.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab3 上机"
+                        
+                        data-hash="md5-CXm64VLv65tbfcvqdvhQTQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab3 上机</h2>
         </div>
     </a>
 </article>
