@@ -7,7 +7,189 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Fri, 09 May 2025 11:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 16 May 2025 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>北航OO U3 JML与社交网络</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</link>
+        <pubDate>Fri, 16 May 2025 12:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png" alt="Featured image of post 北航OO U3 JML与社交网络" /&gt;&lt;h2 id=&#34;关于架构&#34;&gt;关于架构
+&lt;/h2&gt;&lt;p&gt;本单元的核心任务是根据接口提供的需求，写出其具体实现。&lt;/p&gt;
+&lt;p&gt;三次迭代的递进关系并不很强，更像是不同模块的各自实现。&lt;/p&gt;
+&lt;p&gt;第一次迭代明确了Network作为中枢，并引入了核心对象person与tag&lt;/p&gt;
+&lt;p&gt;第二次迭代引入account模块与article系统&lt;/p&gt;
+&lt;p&gt;第三次迭代则引入了综合性很强的message系统，其中涉及到了tag与article的相关内容&lt;/p&gt;
+&lt;p&gt;由于接口的需求很明确，整个图模型的架构相对确定，我们的核心内容主要只是完成方法与辅助方法。&lt;/p&gt;
+&lt;h2 id=&#34;关于测试&#34;&gt;关于测试
+&lt;/h2&gt;&lt;p&gt;本单元对测试的要求较高，中测的核心问题主要出现在Junit测试中。&lt;/p&gt;
+&lt;p&gt;但为了通过中测所进行的测试，往往是最简单的单元测试。  &lt;br&gt;
+因此哪怕已经经历了一整个单元，我对许多其他测试的具体内容仍然是完全陌生的。&lt;/p&gt;
+&lt;h3 id=&#34;单元测试&#34;&gt;单元测试
+&lt;/h3&gt;&lt;p&gt;针对软件中的&lt;strong&gt;最小可测试单元&lt;/strong&gt;进行的测试，确保每个单元能正常工作。&lt;/p&gt;
+&lt;p&gt;特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;粒度&lt;/strong&gt;最小：聚焦单个单元，测试范围独立。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;白盒测试&lt;/strong&gt;为主：需了解代码内部结构，设计测试用例覆盖不同分支、边界条件等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;功能测试&#34;&gt;功能测试
+&lt;/h3&gt;&lt;p&gt;基于软件需求规格说明书，验证功能是否符合用户预期，&lt;strong&gt;不关注内部实现细节&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;黑盒测试&lt;/strong&gt;为主：从用户视角出发，仅关注输入与输出。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;粒度&lt;/strong&gt;较大：对整体进行测试，系统性强，只能鉴定问题的存在性，而很难做好定位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;集成测试&#34;&gt;集成测试
+&lt;/h3&gt;&lt;p&gt;将&lt;strong&gt;多个单元或模块&lt;/strong&gt;组合起来，测试它们之间的&lt;strong&gt;接口和交互&lt;/strong&gt;是否正常。&lt;/p&gt;
+&lt;p&gt;特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;关注接口与协作：测试重点往往是模块间的依赖关系和数据流动。&lt;/li&gt;
+&lt;li&gt;渐增式测试：一般采用自顶向下、自底向上或混合方式逐步集成模块，便于定位模块间交互出现异常的位置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;压力测试&#34;&gt;压力测试
+&lt;/h3&gt;&lt;p&gt;通过模拟高负载、高并发场景，测试系统在&lt;strong&gt;极限条件&lt;/strong&gt;下的性能、稳定性和容错能力。&lt;/p&gt;
+&lt;p&gt;特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;破坏性测试：常常故意施加超过正常范围的压力。&lt;/li&gt;
+&lt;li&gt;关注性能指标：如CPU time，Running time，内存等指标。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;回归测试&#34;&gt;回归测试
+&lt;/h3&gt;&lt;p&gt;在发生如代码修改、功能新增等变化后，&lt;strong&gt;重新测试已验证过的功能&lt;/strong&gt;，确保变更未引入新缺陷或破坏原有功能。&lt;/p&gt;
+&lt;p&gt;特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;重复性测试：可重复执行历史测试用例来检验是否破坏原有功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;关于大模型&#34;&gt;关于大模型
+&lt;/h2&gt;&lt;p&gt;本次作业我使用大模型的地方并不是很多，但第六次上机实验给了我很大的启发。&lt;/p&gt;
+&lt;p&gt;上机实验中的三个阶段分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;直接生成&lt;/li&gt;
+&lt;li&gt;给出相关知识与解释&lt;/li&gt;
+&lt;li&gt;给出具体的示例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在根据这三个步骤实现之后，大模型的表现确实有很大进步。首先给出任务目标，然后再明确期望格式和核心目的，采用的是采用&lt;code&gt;目标层&lt;/code&gt;→&lt;code&gt;约束层&lt;/code&gt;→&lt;code&gt;示例层&lt;/code&gt;的三层结构，减少模型理解偏差。&lt;/p&gt;
+&lt;p&gt;在实际使用过程中，我还有一些其他的使用体验，例如&lt;strong&gt;动态反馈&lt;/strong&gt;。其实这个是我使用大模型时的常态，究其根本原因，可能便是&lt;strong&gt;对自己要解决什么问题都不清楚&lt;/strong&gt;。于是在大模型的输出中进一步寻找问题，寻求解释，从而一层一层地解决问题。虽然最后一般也有不错的结果，但是还是相对耗时。   &lt;br&gt;
+可能由自己直面问题，将核心目的拆解出来再借助大模型，会有更好的效果。&lt;/p&gt;
+&lt;h2 id=&#34;关于性能&#34;&gt;关于性能
+&lt;/h2&gt;&lt;p&gt;规格与实现分离。规格是&lt;strong&gt;题干&lt;/strong&gt;，实现是&lt;strong&gt;题解&lt;/strong&gt;。&lt;strong&gt;题干限定了你的结果，但是做题的过程由你的实现所决定&lt;/strong&gt;。一道选择题可能大家都能写出正确答案，但是不同人的思考模式与做题技巧是不同的。如果你的实现能够满足规格的所有要求，那么这个实现便是正确的，但未必是优秀的。&lt;/p&gt;
+&lt;p&gt;在本次作业中，优秀的评断主要体现在TIME。因此我们一般要考虑构建一些数据结构，试图以空间换时间。&lt;/p&gt;
+&lt;h3 id=&#34;并查集&#34;&gt;并查集
+&lt;/h3&gt;&lt;p&gt;在query_circle中，我采用了并查集的方法，结合了&lt;strong&gt;路径压缩与按秩合并&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;并查集的核心思想就是为一个&lt;strong&gt;连通分支&lt;/strong&gt;选出一个&lt;strong&gt;代表结点&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;路径压缩：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)));&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 压缩&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;按秩合并：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;union&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 按秩合并&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rank&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rank&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rank&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rank&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rank&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rank&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;但是并查集&lt;strong&gt;便于增添，不便于删改&lt;/strong&gt;。当某段关系被解除，路径压缩后的并查集不能再判断出这个人是否会脱离该连通分支。因此此时须考虑重新构建并查集。&lt;/p&gt;
+&lt;h3 id=&#34;增量化设计&#34;&gt;增量化设计
+&lt;/h3&gt;&lt;p&gt;这一优化对我的影响相对较深，至少让我首次意识到size的维护居然能避免一次大遍历。&lt;/p&gt;
+&lt;p&gt;增量化设计的核心思想就是&lt;strong&gt;在变化时对数值做维护&lt;/strong&gt;，在查询时直接得到当前结果。或者说这是一种&lt;strong&gt;在线算法&lt;/strong&gt;，求值不从头开始，而是由上一状态+变化过程而得来。&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;query_tag_value_sum&lt;/code&gt;，&lt;code&gt;query_triple_sum&lt;/code&gt;和&lt;code&gt;query_tag_age_var&lt;/code&gt;中，我主要使用了这一思想。具体实现上的易错点就不必在这里赘述了。&lt;/p&gt;
+&lt;h3 id=&#34;缓存与脏位&#34;&gt;缓存与脏位
+&lt;/h3&gt;&lt;p&gt;缓存类似于增量化设计，但&lt;strong&gt;缓存的内容不一定是正确的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;某些值虽然我知道在某个过程中发生了改变，但是&lt;strong&gt;维护起来相对复杂&lt;/strong&gt;，甚至效率堪比重新计算。倘若在每次改变的时候都进行维护，虽然精准，但会造成效率的损失。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例如&lt;em&gt;均值是方便增量化维护的，而方差就不方便&lt;/em&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此可以选择设置&lt;code&gt;dirty&lt;/code&gt;位，仅在需要查询时再进行缓存数据的更新。&lt;/p&gt;
+&lt;p&gt;我在&lt;code&gt;query_best_acquaintance&lt;/code&gt;，&lt;code&gt;query_best_contributor&lt;/code&gt;，&lt;code&gt;query_tag_age_var&lt;/code&gt;以及&lt;code&gt;并查集的重建&lt;/code&gt;中主要使用了这一思想。&lt;/p&gt;
+&lt;h3 id=&#34;mycontainer&#34;&gt;MyContainer
+&lt;/h3&gt;&lt;p&gt;主要解决在有序列表中按值删除对象中的遍历问题。&lt;/p&gt;
+&lt;p&gt;Linkedlist固然好，但是它只是能很快的删除某个&lt;strong&gt;结点&lt;/strong&gt;，&lt;strong&gt;内部不存在值与结点的映射&lt;/strong&gt;。因此只需仿照Linkedlist构建一个类，但增加一个属性HashMap用来由值索引到结点。（因为一个值可能对应多个节点，所以可以考虑&lt;code&gt;HashMap&amp;lt;Integer,HashSet&amp;lt;...&amp;gt;&amp;gt;&lt;/code&gt;）&lt;/p&gt;
+&lt;p&gt;在hw10强测中因未采用这一数据结构而发生了CTLE。&lt;/p&gt;
+&lt;h2 id=&#34;关于junit&#34;&gt;关于Junit
+&lt;/h2&gt;&lt;p&gt;我在本单元的研讨课上较多地讲述了如何由规格构建测试的方法论。在此将主要内容进行重述。&lt;/p&gt;
+&lt;h3 id=&#34;自动化测试基本方法&#34;&gt;自动化测试基本方法
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;@RunWith(Parameterized.class)&lt;/strong&gt;   &lt;br&gt;
+切换到 Parameterized 运行器，让测试类依据多组参数生成多个Test对象，多次执行同一个测试方法，避免了手动编写大量重复的测试代码。       &lt;br&gt;
+&lt;strong&gt;@Parameterized.Parameters&lt;/strong&gt;&lt;br&gt;
+定义一个返回测试数据集合的静态方法，返回的集合包含testNum个小集合，每个小集合包含生成Test对象的参数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;多次@Test&lt;/strong&gt;  &lt;br&gt;
+手动构建测试样例，覆盖能够触发 JML 规格中所有可能行为的输入数据和对象状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;基于规格的数据生成&#34;&gt;基于规格的数据生成
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;数据限制
+&lt;ul&gt;
+&lt;li&gt;requires明确了方法的&lt;strong&gt;某种输入约束&lt;/strong&gt;（如参数范围、对象状态）。&lt;/li&gt;
+&lt;li&gt;invariant是类级别的约束，&lt;strong&gt;必须确保&lt;/strong&gt;测试数据满足这些基本约束。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;多场景构造
+&lt;ul&gt;
+&lt;li&gt;正常场景：构造满足前置条件的&lt;strong&gt;典型输入&lt;/strong&gt;，触发 JML &lt;strong&gt;ensures&lt;/strong&gt; 条款中的正常行为。&lt;/li&gt;
+&lt;li&gt;边界场景：构造边缘输入，如&lt;strong&gt;空集合&lt;/strong&gt;、&lt;strong&gt;边界值&lt;/strong&gt;、&lt;strong&gt;单一元素&lt;/strong&gt;等。&lt;/li&gt;
+&lt;li&gt;异常场景：构造违反前置条件的输入，触发 JML &lt;strong&gt;signals&lt;/strong&gt; 条款中的异常。&lt;/li&gt;
+&lt;li&gt;复杂场景：构造具有&lt;strong&gt;复杂关系或大规模数据&lt;/strong&gt;的场景，测试方法在高负载下的正确性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;基于规格的断言生成&#34;&gt;基于规格的断言生成
+&lt;/h3&gt;&lt;p&gt;invariant  -&amp;gt; 基本数据要求，可断言&lt;strong&gt;执行方法后是否满足&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;constraint -&amp;gt; 数据变化要求，可&lt;strong&gt;保存old信息&lt;/strong&gt;进行断言&lt;/p&gt;
+&lt;p&gt;assignable -&amp;gt; 对没被assign的变量做&lt;strong&gt;pure断言&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;signal -&amp;gt; &lt;strong&gt;异常捕捉&lt;/strong&gt;方法或&lt;strong&gt;assertThrow&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ensures -&amp;gt; 方法核心效果的断言&lt;/p&gt;
+&lt;p&gt;pure -&amp;gt; &lt;strong&gt;保存old信息&lt;/strong&gt;（或备份信息）进行断言&lt;/p&gt;
+&lt;h2 id=&#34;关于心得&#34;&gt;关于心得
+&lt;/h2&gt;&lt;p&gt;本单元整体给我的感觉是比较舒适的。除了hw10的实验预习题中那颗树的JML让我感到深刻畏惧，其他的JML读起来都让人很明白自己需要做什么。哪怕是看起来最复杂的sendMessage，很多行JML也只是对应一个小方法的调用。而有些言简意赅的JML，背后却需要十分复杂的实现。&lt;/p&gt;
+&lt;p&gt;有了颜色标注之后，阅读JML的枯燥与混乱已经基本消失殆尽。&lt;/p&gt;
+&lt;p&gt;但是JML的书写对我来说仍然是极为困难的课题，哪怕强如助教也会在官方包出现小的失误。但JML作为根本要旨，要保证绝对的严格与严谨，书写JML需要有对方法极高的概括力，还有对细节的全面把握。不过学完了这个单元，我们终于可以说自己走出了了解JML的第一步。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>北航OS Lab4 上机</title>
         <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Fri, 09 May 2025 11:15:30 +0800</pubDate>
