@@ -285,7 +285,7 @@
         <li><a href="#磁盘上的文件系统架构">磁盘上的文件系统架构</a></li>
         <li><a href="#用户发起文件系统操作">用户发起文件系统操作</a></li>
         <li><a href="#serv实现文件系统操作">serv实现文件系统操作</a></li>
-        <li><a href="#博课阅读随笔">博课阅读随笔</a></li>
+        <li><a href="#博客阅读随笔">博客阅读随笔</a></li>
       </ol>
     </li>
     <li><a href="#实验体会">实验体会</a></li>
@@ -772,8 +772,9 @@
 </h3><p>fd与ffd的作用，file.c调用fsipc.c</p>
 <h3 id="serv实现文件系统操作">serv实现文件系统操作
 </h3><p>serv.c实现具体的文件操作</p>
-<h3 id="博课阅读随笔">博课阅读随笔
-</h3><p>参考博客：https://blog.csdn.net/weixin_45448662/article/details/136016556</p>
+<h3 id="博客阅读随笔">博客阅读随笔
+</h3><p>参考博客：<a class="link" href="https://blog.csdn.net/weixin_45448662/article/details/136016556"  target="_blank" rel="noopener"
+    >点击跳转阅读</a></p>
 <hr>
 <p>磁盘块号为bno, 则block为 <code>disk[bno]</code></p>
 <p>(disk是一个struct block数组)</p>
@@ -782,10 +783,10 @@
 <p>目录文件与普通文件都在BLOCK_FILE的16个FILE中</p>
 <p>目录文件的direct与indirect指向的block都是BLOCK_FILE</p>
 <p>普通文件的direct与indirect指向的block都是BLOCK_DATA</p>
-<hr>
 <p>目录项是FILE文件，也就是该目录中的文件的意思。</p>
 <hr>
-<p>文件管理系统就是第二个进程(envs[1])。</p>
+<p>文件管理系统必须是第二个进程(envs[1])。</p>
+<p>super块必须是第二个磁盘块(disk[1])。</p>
 <hr>
 <p><code>fsipc.c</code>:  ipc_send(envs[1].env_id, type, fsreq, PTE_D);</p>
 <p>fsreq存处理参数：(struct Fsreq_xxx *)并页面共享</p>

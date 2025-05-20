@@ -401,8 +401,9 @@
 &lt;/h3&gt;&lt;p&gt;fd与ffd的作用，file.c调用fsipc.c&lt;/p&gt;
 &lt;h3 id=&#34;serv实现文件系统操作&#34;&gt;serv实现文件系统操作
 &lt;/h3&gt;&lt;p&gt;serv.c实现具体的文件操作&lt;/p&gt;
-&lt;h3 id=&#34;博课阅读随笔&#34;&gt;博课阅读随笔
-&lt;/h3&gt;&lt;p&gt;参考博客：https://blog.csdn.net/weixin_45448662/article/details/136016556&lt;/p&gt;
+&lt;h3 id=&#34;博客阅读随笔&#34;&gt;博客阅读随笔
+&lt;/h3&gt;&lt;p&gt;参考博客：&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/weixin_45448662/article/details/136016556&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;点击跳转阅读&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;磁盘块号为bno, 则block为 &lt;code&gt;disk[bno]&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;(disk是一个struct block数组)&lt;/p&gt;
@@ -411,10 +412,10 @@
 &lt;p&gt;目录文件与普通文件都在BLOCK_FILE的16个FILE中&lt;/p&gt;
 &lt;p&gt;目录文件的direct与indirect指向的block都是BLOCK_FILE&lt;/p&gt;
 &lt;p&gt;普通文件的direct与indirect指向的block都是BLOCK_DATA&lt;/p&gt;
-&lt;hr&gt;
 &lt;p&gt;目录项是FILE文件，也就是该目录中的文件的意思。&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;文件管理系统就是第二个进程(envs[1])。&lt;/p&gt;
+&lt;p&gt;文件管理系统必须是第二个进程(envs[1])。&lt;/p&gt;
+&lt;p&gt;super块必须是第二个磁盘块(disk[1])。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;code&gt;fsipc.c&lt;/code&gt;:  ipc_send(envs[1].env_id, type, fsreq, PTE_D);&lt;/p&gt;
 &lt;p&gt;fsreq存处理参数：(struct Fsreq_xxx *)并页面共享&lt;/p&gt;
