@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head>
-	<meta name="generator" content="Hugo 0.139.2"><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="演示说明">
-<title>Pager 5 - Demiurge</title>
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验报告">
+<title>北航OS Lab6 管道与SHELL</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="Demiurge">
-<meta property='og:description' content="演示说明">
-<meta property='og:url' content='https://demiurge-zby.github.io/'>
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OS Lab6 管道与SHELL">
+<meta property='og:description' content="实验报告">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-05-18T20:15:30&#43;08:00 '/>
-<meta name="twitter:title" content="Demiurge">
-<meta name="twitter:description" content="演示说明"><link rel="alternate" type="application/rss&#43;xml" href="https://demiurge-zby.github.io/index.xml">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-22T20:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-05-22T20:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.png' />
+<meta name="twitter:title" content="北航OS Lab6 管道与SHELL">
+<meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
-    <body class="">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -119,7 +121,7 @@
         
         
         
-        <li  class='current' >
+        <li >
             <a href='/' >
                 
                 
@@ -247,69 +249,10 @@
     <aside class="sidebar right-sidebar sticky">
         
             
-                <form action="/search/" class="search-form widget" >
-        <p>
-            <label>搜索</label>
-            <input name="keyword" required placeholder="输入关键词..." />
-        
-            <button title="搜索">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-            
-        
-            
-                <section class="widget archives">
+                
+    <section class="widget archives">
         <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">归档</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2025">
-                        
-                            <span class="year">2025</span>
-                            <span class="count">16</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2024">
-                        
-                            <span class="year">2024</span>
-                            <span class="count">9</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -319,165 +262,41 @@
 
 
 
-    </div>
-    <h2 class="widget-title section-title">分类</h2>
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#思考题">思考题</a>
+      <ol>
+        <li><a href="#thinking-61">Thinking 6.1</a></li>
+        <li><a href="#thinking-62">Thinking 6.2</a></li>
+      </ol>
+    </li>
+    <li><a href="#难点分析">难点分析</a></li>
+    <li><a href="#实验体会">实验体会</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
 
-    <div class="tagCloud-tags">
-        
-            <a href="/categories/os/" class="font_size_11">
-                OS
-            </a>
-        
-            <a href="/categories/co/" class="font_size_6">
-                CO
-            </a>
-        
-            <a href="/categories/oo/" class="font_size_4">
-                OO
-            </a>
-        
-            <a href="/categories/oopre/" class="font_size_2">
-                OOpre
-            </a>
-        
-            <a href="/categories/%E9%97%B2%E8%81%8A/" class="font_size_2">
-                闲聊
-            </a>
-        
-    </div>
-</section>
-
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
-</svg>
-
-
-
-    </div>
-    <h2 class="widget-title section-title">标签云</h2>
-
-    <div class="tagCloud-tags">
-        
-    </div>
-</section>
             
         
     </aside>
 
 
             <main class="main full-width">
-    
-    
-    
-    
-
-    <section class="article-list">
-        
-            
-<article class="has-image">
+    <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E4%B8%8A%E6%9C%BA/">
-                <img src="/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249_hu9436852440996676878.png"
-                        srcset="/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249_hu9436852440996676878.png 800w, /p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249_hu9488472931120824361.png 1600w"
-                        width="800" 
-                        height="393" 
-                        loading="lazy"
-                        alt="Featured image of post 上机" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/co/" style="background-color: #2a9d8f; color: #fff;">
-                CO
-            </a>
-        
-            <a href="/categories/%E9%97%B2%E8%81%8A/" style="background-color: #2a9d8f; color: #fff;">
-                闲聊
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/%E4%B8%8A%E6%9C%BA/">上机</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            纯粹的杂谈
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">2024-12-10</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    阅读时长: 10 分钟
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/">
-                <img src="/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321_hu14391989270393014365.jpg"
-                        srcset="/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321_hu14391989270393014365.jpg 800w, /p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321_hu14604757612382175991.jpg 1600w"
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123_hu7572715893051844871.png"
+                        srcset="/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123_hu7572715893051844871.png 800w, /p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123_hu6760077911785955187.png 1600w"
                         width="800" 
                         height="422" 
                         loading="lazy"
-                        alt="Featured image of post 北航CO P7 MIPS微系统搭建" />
+                        alt="Featured image of post 北航OS Lab6 管道与SHELL" />
                 
             </a>
         </div>
@@ -487,8 +306,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/co/" style="background-color: #2a9d8f; color: #fff;">
-                CO
+            <a href="/categories/os/" style="background-color: #2a9d8f; color: #fff;">
+                OS
             </a>
         
     </header>
@@ -496,12 +315,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/">北航CO P7 MIPS微系统搭建</a>
+            <a href="/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/">北航OS Lab6 管道与SHELL</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            P7课下搭建任务
+            实验报告
         </h3>
         
     </div>
@@ -522,7 +341,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2024-11-26</time>
+                <time class="article-time--published">2025-05-22</time>
             </div>
         
 
@@ -537,7 +356,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 18 分钟
+                    阅读时长: 1 分钟
                 </time>
             </div>
         
@@ -548,214 +367,251 @@
 </div>
 
 </header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="实验报告">实验报告
+</h1><h2 id="思考题">思考题
+</h2><h3 id="thinking-61">Thinking 6.1
+</h3><p>只需对父子进程的读写端口与管道行为等进行<code>对调</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">switch</span><span class="p">(</span><span class="nf">fork</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">-</span><span class="mi">1</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="cm">/*子进程-作为管道的写者*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">close</span><span class="p">(</span><span class="n">fildes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="cm">/*关闭不用的读端*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">write</span><span class="p">(</span><span class="n">fildes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s">&#34;Helloworld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">12</span><span class="p">);</span> <span class="cm">/*向管道中写数据*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">close</span><span class="p">(</span><span class="n">fildes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="cm">/*写入结束，关闭写端*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">exit</span><span class="p">(</span><span class="n">EXIT_SUCCESS</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">default</span><span class="o">:</span> <span class="cm">/*父进程-作为管道的读者*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">close</span><span class="p">(</span><span class="n">fildes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="cm">/*关闭不用的写端*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">read</span><span class="p">(</span><span class="n">fildes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">buf</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="cm">/*从管道中读数据*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">printf</span><span class="p">(</span><span class="s">&#34;father-processread:%s&#34;</span><span class="p">,</span><span class="n">buf</span><span class="p">);</span> <span class="cm">/*打印读到的数据*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">close</span><span class="p">(</span><span class="n">fildes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="cm">/*读取结束，关闭读端*/</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">exit</span><span class="p">(</span><span class="n">EXIT_SUCCESS</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="thinking-62">Thinking 6.2
+</h3><h2 id="难点分析">难点分析
+</h2><h2 id="实验体会">实验体会
+</h2>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
 </article>
-        
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
             
+                
 <article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/">
-                <img src="/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter_hu4111387905681263231.jpg"
-                        srcset="/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter_hu4111387905681263231.jpg 800w, /p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter_hu18071985191061576723.jpg 1600w"
-                        width="800" 
-                        height="422" 
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/123.f91714c4ea878afc95fdee604e380825_hu16560301168419005684.png" 
+                        width="250" 
+                        height="150" 
                         loading="lazy"
-                        alt="Featured image of post 北航CO P6 流水线CPU搭建（2）" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/co/" style="background-color: #2a9d8f; color: #fff;">
-                CO
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/">北航CO P6 流水线CPU搭建（2）</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            P6课下搭建任务
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">2024-11-14</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    阅读时长: 15 分钟
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">
-                <img src="/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893_hu11236363039927310486.jpg"
-                        srcset="/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893_hu11236363039927310486.jpg 800w, /p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893_hu6766584257545836972.jpg 1600w"
-                        width="800" 
-                        height="422" 
-                        loading="lazy"
-                        alt="Featured image of post 北航CO P5 流水线CPU搭建（1）" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/co/" style="background-color: #2a9d8f; color: #fff;">
-                CO
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">北航CO P5 流水线CPU搭建（1）</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            P5课下搭建任务    压力最大的一集
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">2024-11-10</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    阅读时长: 13 分钟
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-</article>
-        
-    </section>
-    <nav class='pagination'>
-        
-        
-
-        
-            
-                    <a class='page-link' href='/'>1</a>
-                
-            
-            
-                    
+                        alt="Featured image of post 北航OS Lab5 文件系统"
                         
-                        <span class='page-link dots'>&hellip;</span>
-                    
+                        data-hash="md5-&#43;RcUxOqHivyV/e5gTjgIJQ==">
                 
-            
-            
-                    
-                
-            
-            
-                    <a class='page-link' href='/page/4/'>4</a>
-                
-            
-            
-                <span class='page-link current'>5</span>
-                
-            
-            
-                    <a class='page-link' href='/page/6/'>6</a>
-                
-            
-            
-                    <a class='page-link' href='/page/7/'>7</a>
-                
-            
-    </nav>
+            </div>
+        
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab5 文件系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/123.e7fe13a9c852f8d15643aa873805e3e7_hu14461487000464471443.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab4 上机"
+                        
+                        data-hash="md5-5/4TqchS&#43;NFWQ6qHOAXj5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab4 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123.87a389e28f0f38c3143893074441e5f4_hu15853555195397452672.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab4 系统调用与FORK"
+                        
+                        data-hash="md5-h6OJ4o8POMMUOJMHREHl9A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab4 系统调用与FORK</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.0979bae152efeb9b5b7dcbea76f8504d_hu8186758832790077266.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab3 上机"
+                        
+                        data-hash="md5-CXm64VLv65tbfcvqdvhQTQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab3 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%8C%97%E8%88%AAos-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%8C%97%E8%88%AAos-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/123.15e859614b1e9f2cc942ee92a2b48326_hu8521962019310717448.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 北航OS Lab3 进程与异常"
+                        
+                        data-hash="md5-FehZYUsenyzJQu6SorSDJg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">北航OS Lab3 进程与异常</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script><footer class="site-footer">
     <section class="copyright">
         &copy; 
@@ -780,6 +636,85 @@
     本站访客数<span id="busuanzi_value_site_uv"></span>人次
   </span>
 </div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
             </main>
         </div>
         <script 
