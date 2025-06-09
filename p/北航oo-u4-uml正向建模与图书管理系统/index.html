@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="你来出题 我来解题">
-<title>北航OO U3 JML与社交网络</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="大模型辅助正向建模">
+<title>北航OO U4 UML正向建模与图书管理系统</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OO U3 JML与社交网络">
-<meta property='og:description' content="你来出题 我来解题">
-<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/'>
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="北航OO U4 UML正向建模与图书管理系统">
+<meta property='og:description' content="大模型辅助正向建模">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-16T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-05-16T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png' />
-<meta name="twitter:title" content="北航OO U3 JML与社交网络">
-<meta name="twitter:description" content="你来出题 我来解题"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-09T21:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-06-09T21:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.png' />
+<meta name="twitter:title" content="北航OO U4 UML正向建模与图书管理系统">
+<meta name="twitter:description" content="大模型辅助正向建模"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -268,33 +268,21 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#关于正向建模">关于正向建模</a>
+      <ol>
+        <li><a href="#需求分析">需求分析</a></li>
+        <li><a href="#图的设计">图的设计</a></li>
+      </ol>
+    </li>
     <li><a href="#关于架构">关于架构</a></li>
-    <li><a href="#关于测试">关于测试</a>
-      <ol>
-        <li><a href="#单元测试">单元测试</a></li>
-        <li><a href="#功能测试">功能测试</a></li>
-        <li><a href="#集成测试">集成测试</a></li>
-        <li><a href="#压力测试">压力测试</a></li>
-        <li><a href="#回归测试">回归测试</a></li>
-      </ol>
-    </li>
     <li><a href="#关于大模型">关于大模型</a></li>
-    <li><a href="#关于性能">关于性能</a>
+    <li><a href="#学期总结">学期总结</a>
       <ol>
-        <li><a href="#并查集">并查集</a></li>
-        <li><a href="#增量化设计">增量化设计</a></li>
-        <li><a href="#缓存与脏位">缓存与脏位</a></li>
-        <li><a href="#mycontainer">MyContainer</a></li>
+        <li><a href="#架构设计">架构设计</a></li>
+        <li><a href="#测试思维">测试思维</a></li>
+        <li><a href="#其他收获">其他收获</a></li>
       </ol>
     </li>
-    <li><a href="#关于junit">关于Junit</a>
-      <ol>
-        <li><a href="#自动化测试基本方法">自动化测试基本方法</a></li>
-        <li><a href="#基于规格的数据生成">基于规格的数据生成</a></li>
-        <li><a href="#基于规格的断言生成">基于规格的断言生成</a></li>
-      </ol>
-    </li>
-    <li><a href="#关于心得">关于心得</a></li>
   </ol>
 </nav>
         </div>
@@ -309,13 +297,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/">
-                <img src="/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123_hu4023127436256813879.png"
-                        srcset="/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123_hu4023127436256813879.png 800w, /p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123_hu11971456458722584830.png 1600w"
+            <a href="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                <img src="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123_hu13615693182195502190.png"
+                        srcset="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123_hu13615693182195502190.png 800w, /p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123_hu12766764604774612615.png 1600w"
                         width="800" 
-                        height="449" 
+                        height="422" 
                         loading="lazy"
-                        alt="Featured image of post 北航OO U3 JML与社交网络" />
+                        alt="Featured image of post 北航OO U4 UML正向建模与图书管理系统" />
                 
             </a>
         </div>
@@ -334,12 +322,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/">北航OO U3 JML与社交网络</a>
+            <a href="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">北航OO U4 UML正向建模与图书管理系统</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            你来出题 我来解题
+            大模型辅助正向建模
         </h3>
         
     </div>
@@ -360,7 +348,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-05-16</time>
+                <time class="article-time--published">2025-06-09</time>
             </div>
         
 
@@ -390,180 +378,84 @@
     <section class="article-content">
     
     
-    <h2 id="关于架构">关于架构
-</h2><p>本单元的核心任务是根据接口提供的需求，写出其具体实现。</p>
-<p>三次迭代的递进关系并不很强，更像是不同模块的各自实现。</p>
-<p>第一次迭代明确了Network作为中枢，并引入了核心对象person与tag</p>
-<p>第二次迭代引入account模块与article系统</p>
-<p>第三次迭代则引入了综合性很强的message系统，其中涉及到了tag与article的相关内容</p>
-<p>由于接口的需求很明确，整个图模型的架构相对确定，我们的核心内容主要只是完成方法与辅助方法。</p>
-<h2 id="关于测试">关于测试
-</h2><p>本单元对测试的要求较高，中测的核心问题主要出现在Junit测试中。</p>
-<p>但为了通过中测所进行的测试，往往是最简单的单元测试。  <br>
-因此哪怕已经经历了一整个单元，我对许多其他测试的具体内容仍然是完全陌生的。</p>
-<h3 id="单元测试">单元测试
-</h3><p>针对软件中的<strong>最小可测试单元</strong>进行的测试，确保每个单元能正常工作。</p>
-<p>特点：</p>
-<ul>
-<li><strong>粒度</strong>最小：聚焦单个单元，测试范围独立。</li>
-<li><strong>白盒测试</strong>为主：需了解代码内部结构，设计测试用例覆盖不同分支、边界条件等。</li>
-</ul>
-<h3 id="功能测试">功能测试
-</h3><p>基于软件需求规格说明书，验证功能是否符合用户预期，<strong>不关注内部实现细节</strong>。</p>
-<p>特点：</p>
-<ul>
-<li><strong>黑盒测试</strong>为主：从用户视角出发，仅关注输入与输出。</li>
-<li><strong>粒度</strong>较大：对整体进行测试，系统性强，只能鉴定问题的存在性，而很难做好定位</li>
-</ul>
-<h3 id="集成测试">集成测试
-</h3><p>将<strong>多个单元或模块</strong>组合起来，测试它们之间的<strong>接口和交互</strong>是否正常。</p>
-<p>特点：</p>
-<ul>
-<li>关注接口与协作：测试重点往往是模块间的依赖关系和数据流动。</li>
-<li>渐增式测试：一般采用自顶向下、自底向上或混合方式逐步集成模块，便于定位模块间交互出现异常的位置。</li>
-</ul>
-<h3 id="压力测试">压力测试
-</h3><p>通过模拟高负载、高并发场景，测试系统在<strong>极限条件</strong>下的性能、稳定性和容错能力。</p>
-<p>特点：</p>
-<ul>
-<li>破坏性测试：常常故意施加超过正常范围的压力。</li>
-<li>关注性能指标：如CPU time，Running time，内存等指标。</li>
-</ul>
-<h3 id="回归测试">回归测试
-</h3><p>在发生如代码修改、功能新增等变化后，<strong>重新测试已验证过的功能</strong>，确保变更未引入新缺陷或破坏原有功能。</p>
-<p>特点：</p>
-<ul>
-<li>重复性测试：可重复执行历史测试用例来检验是否破坏原有功能。</li>
-</ul>
-<h2 id="关于大模型">关于大模型
-</h2><p>本次作业我使用大模型的地方并不是很多，但第六次上机实验给了我很大的启发。</p>
-<p>上机实验中的三个阶段分别是：</p>
-<ul>
-<li>直接生成</li>
-<li>给出相关知识与解释</li>
-<li>给出具体的示例</li>
-</ul>
-<p>在根据这三个步骤实现之后，大模型的表现确实有很大进步。首先给出任务目标，然后再明确期望格式和核心目的，采用的是采用<code>目标层</code>→<code>约束层</code>→<code>示例层</code>的三层结构，减少模型理解偏差。</p>
-<p>在实际使用过程中，我还有一些其他的使用体验，例如<strong>动态反馈</strong>。其实这个是我使用大模型时的常态，究其根本原因，可能便是<strong>对自己要解决什么问题都不清楚</strong>。于是在大模型的输出中进一步寻找问题，寻求解释，从而一层一层地解决问题。虽然最后一般也有不错的结果，但是还是相对耗时。   <br>
-可能由自己直面问题，将核心目的拆解出来再借助大模型，会有更好的效果。</p>
-<h2 id="关于性能">关于性能
-</h2><p>规格与实现分离。规格是<strong>题干</strong>，实现是<strong>题解</strong>。<strong>题干限定了你的结果，但是做题的过程由你的实现所决定</strong>。一道选择题可能大家都能写出正确答案，但是不同人的思考模式与做题技巧是不同的。如果你的实现能够满足规格的所有要求，那么这个实现便是正确的，但未必是优秀的。</p>
-<p>在本次作业中，优秀的评断主要体现在TIME。因此我们一般要考虑构建一些数据结构，试图以空间换时间。</p>
-<h3 id="并查集">并查集
-</h3><p>在query_circle中，我采用了并查集的方法，结合了<strong>路径压缩与按秩合并</strong>。</p>
-<p>并查集的核心思想就是为一个<strong>连通分支</strong>选出一个<strong>代表结点</strong>。</p>
-<p>路径压缩：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">parent</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">id</span><span class="p">)));</span><span class="w"> </span><span class="c1">// 压缩</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">parent</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>按秩合并：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">union</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">root1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">id1</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">root2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">id2</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root1</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">root2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 按秩合并</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">parent</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">root1</span><span class="p">,</span><span class="w"> </span><span class="n">root2</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root1</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">parent</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">root2</span><span class="p">,</span><span class="w"> </span><span class="n">root1</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">parent</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">root2</span><span class="p">,</span><span class="w"> </span><span class="n">root1</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">rank</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">root1</span><span class="p">,</span><span class="w"> </span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>但是并查集<strong>便于增添，不便于删改</strong>。当某段关系被解除，路径压缩后的并查集不能再判断出这个人是否会脱离该连通分支。因此此时须考虑重新构建并查集。</p>
-<h3 id="增量化设计">增量化设计
-</h3><p>这一优化对我的影响相对较深，至少让我首次意识到size的维护居然能避免一次大遍历。</p>
-<p>增量化设计的核心思想就是<strong>在变化时对数值做维护</strong>，在查询时直接得到当前结果。或者说这是一种<strong>在线算法</strong>，求值不从头开始，而是由上一状态+变化过程而得来。</p>
-<p>在<code>query_tag_value_sum</code>，<code>query_triple_sum</code>和<code>query_tag_age_var</code>中，我主要使用了这一思想。具体实现上的易错点就不必在这里赘述了。</p>
-<h3 id="缓存与脏位">缓存与脏位
-</h3><p>缓存类似于增量化设计，但<strong>缓存的内容不一定是正确的</strong>。</p>
-<p>某些值虽然我知道在某个过程中发生了改变，但是<strong>维护起来相对复杂</strong>，甚至效率堪比重新计算。倘若在每次改变的时候都进行维护，虽然精准，但会造成效率的损失。</p>
-<blockquote>
-<p>例如<em>均值是方便增量化维护的，而方差就不方便</em>。</p>
+    <h2 id="关于正向建模">关于正向建模
+</h2><p>正向建模是基于需求分析，创建一系列模型来表达系统的静态结构、动态行为和交互逻辑的过程。这些模型以可视化方式帮助我们理解系统设计，并为后续开发与实现提供指导。其核心是借助模型逐步细化的过程，从高层概念推进到低层实现，确保设计与需求一致。</p>
+<p>因此正向建模的核心并不在于画图，而<strong>需求分析</strong>才是正向建模的重要基础。</p>
+<h3 id="需求分析">需求分析
+</h3><blockquote>
+<p>需求分析是将用户的需求转化为清晰、可验证的系统要求的活动。它涉及收集、分析、记录和验证需求，旨在理解系统的目标、功能、约束和性能要求。</p>
 </blockquote>
-<p>因此可以选择设置<code>dirty</code>位，仅在需要查询时再进行缓存数据的更新。</p>
-<p>我在<code>query_best_acquaintance</code>，<code>query_best_contributor</code>，<code>query_tag_age_var</code>以及<code>并查集的重建</code>中主要使用了这一思想。</p>
-<h3 id="mycontainer">MyContainer
-</h3><p>主要解决在有序列表中按值删除对象中的遍历问题。</p>
-<p>Linkedlist固然好，但是它只是能很快的删除某个<strong>结点</strong>，<strong>内部不存在值与结点的映射</strong>。因此只需仿照Linkedlist构建一个类，但增加一个属性HashMap用来由值索引到结点。（因为一个值可能对应多个节点，所以可以考虑<code>HashMap&lt;Integer,HashSet&lt;...&gt;&gt;</code>）</p>
-<p>在hw10强测中因未采用这一数据结构而发生了CTLE。</p>
-<h2 id="关于junit">关于Junit
-</h2><p>我在本单元的研讨课上较多地讲述了如何由规格构建测试的方法论。在此将主要内容进行重述。</p>
-<h3 id="自动化测试基本方法">自动化测试基本方法
-</h3><ol>
-<li>
-<p><strong>@RunWith(Parameterized.class)</strong>   <br>
-切换到 Parameterized 运行器，让测试类依据多组参数生成多个Test对象，多次执行同一个测试方法，避免了手动编写大量重复的测试代码。       <br>
-<strong>@Parameterized.Parameters</strong><br>
-定义一个返回测试数据集合的静态方法，返回的集合包含testNum个小集合，每个小集合包含生成Test对象的参数。</p>
-</li>
-<li>
-<p><strong>多次@Test</strong>  <br>
-手动构建测试样例，覆盖能够触发 JML 规格中所有可能行为的输入数据和对象状态。</p>
-</li>
-</ol>
-<h3 id="基于规格的数据生成">基于规格的数据生成
-</h3><ol>
-<li>数据限制
+<p>简单点来说，需求分析要从任务里读出：</p>
 <ul>
-<li>requires明确了方法的<strong>某种输入约束</strong>（如参数范围、对象状态）。</li>
-<li>invariant是类级别的约束，<strong>必须确保</strong>测试数据满足这些基本约束。</li>
+<li>有哪些种类的对象？</li>
+<li>对象需要管理什么属性？</li>
+<li>需要实现什么功能？</li>
+<li>功能需要哪些对象进行协作？</li>
+<li>&hellip;&hellip;</li>
 </ul>
-</li>
-<li>多场景构造
-<ul>
-<li>正常场景：构造满足前置条件的<strong>典型输入</strong>，触发 JML <strong>ensures</strong> 条款中的正常行为。</li>
-<li>边界场景：构造边缘输入，如<strong>空集合</strong>、<strong>边界值</strong>、<strong>单一元素</strong>等。</li>
-<li>异常场景：构造违反前置条件的输入，触发 JML <strong>signals</strong> 条款中的异常。</li>
-<li>复杂场景：构造具有<strong>复杂关系或大规模数据</strong>的场景，测试方法在高负载下的正确性。</li>
-</ul>
-</li>
-</ol>
-<h3 id="基于规格的断言生成">基于规格的断言生成
-</h3><p>invariant  -&gt; 基本数据要求，可断言<strong>执行方法后是否满足</strong></p>
-<p>constraint -&gt; 数据变化要求，可<strong>保存old信息</strong>进行断言</p>
-<p>assignable -&gt; 对没被assign的变量做<strong>pure断言</strong></p>
-<p>signal -&gt; <strong>异常捕捉</strong>方法或<strong>assertThrow</strong></p>
-<p>ensures -&gt; 方法核心效果的断言</p>
-<p>pure -&gt; <strong>保存old信息</strong>（或备份信息）进行断言</p>
-<h2 id="关于心得">关于心得
-</h2><p>本单元整体给我的感觉是比较舒适的。除了hw10的实验预习题中那颗树的JML让我感到深刻畏惧，其他的JML读起来都让人很明白自己需要做什么。哪怕是看起来最复杂的sendMessage，很多行JML也只是对应一个小方法的调用。而有些言简意赅的JML，背后却需要十分复杂的实现。</p>
-<p>有了颜色标注之后，阅读JML的枯燥与混乱已经基本消失殆尽。</p>
-<p>但是JML的书写对我来说仍然是极为困难的课题，哪怕强如助教也会在官方包出现小的失误。但JML作为根本要旨，要保证绝对的严格与严谨，书写JML需要有对方法极高的概括力，还有对细节的全面把握。不过学完了这个单元，我们终于可以说自己走出了了解JML的第一步。</p>
+<p>本次作业中，原则上只有书，人和图书馆。但是图书馆的功能太过复杂，我们根据<strong>单一职责原则</strong>，将图书馆拆成了一个管理类（Library）和四个功能类（主要负责取书的bs，主要负责预约的ao，主要负责归还的bro和主要负责阅读的rr）。</p>
+<h3 id="图的设计">图的设计
+</h3><p>不同种类的图是回应需求分析结果的不同手段。</p>
+<p><em>类图：定义系统静态结构</em></p>
+<p>类图定义了<strong>最基础的原材料</strong>。它的核心功能就是将需求中的实体抽象为类，并通过关联、聚合、组合、继承等关系，描述实体之间的联系。通过这样的实现，系统的静态结构便一目了然。</p>
+<p><em>状态图：描述对象动态行为</em></p>
+<p>如果说类图是原料是基础，那<strong>状态图就应该是效果的呈现</strong>。无论属性如何影响方法，方法又如何影响属性，最终我们要实现的是功能。通过状态图描述系统中某个对象在不同状态之间的转换以及触发转换的事件，我们可以得知对象的动态行为具体可以产生什么影响。</p>
+<p><em>顺序图：描述对象交互时序</em></p>
+<p>顺序图在正向建模中帮助团队<strong>明确系统如何实现功能</strong>，它通过消息传递来描述类与类之间的协作，并解释了如何通过不同对象的协作来实现功能。</p>
+<h2 id="关于架构">关于架构
+</h2><p>本次作业的架构设计其实花了我很大的功夫。在hw13的时候，我浏览学长的代码，但又不愿深入阅读过度模仿；我阅读学长的博客，也总觉得不能心领神会。最后无奈先写了一份需求分析出来，将散落在各处的要求集中起来，选定合适的数据结构与方法，才得到了类图的雏形。</p>
+<p>很遗憾没能早点接触状态图与顺序图，类图是类的构造蓝图，那这两张图可以说是具体方法实现的蓝图。</p>
+<p>具体架构的内容见下图。</p>
+<p><img src="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image.png"
+	width="1519"
+	height="826"
+	srcset="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu11203860776147148248.png 480w, /p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu15849978408561524164.png 1024w"
+	loading="lazy"
+	
+		alt="类图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="441px"
+	
+></p>
+<p><img src="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1.png"
+	width="1412"
+	height="738"
+	srcset="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu3052618928839767250.png 480w, /p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu6738793309917177957.png 1024w"
+	loading="lazy"
+	
+		alt="状态图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="459px"
+	
+></p>
+<h2 id="关于大模型">关于大模型
+</h2><p>我本来是抵触使用大模型的。倒也不是因为追求所谓的“独立自主”，只是觉得让一个尚不靠谱的大模型帮我完成作业，心里面觉着没底，出了问题还要自己琢磨，去重新理解它可能并不合理的架构。但倘若是自己写的代码，无论如何，你理解每个属性每个方法的功用，你很熟悉你的静态设计。</p>
+<p>那么大模型辅助正向建模这件事，便深刻地影响了我。我只需要把指导书发给大模型，大模型就能直接给出它的实现思路。这个思路不同于代码，它易读易懂，我也可以随时进行指正或者改善，最后形成我对这个任务的处理方法设计。不仅如此，我借此将架构与实现相分离，实现了将程序分为数据结构与算法的过程。</p>
+<p>不过在如何使用大模型上，“直接把指导书扔给大模型”属于缺乏技术力的懒人行为。实验课上传授的ROSES与COT能够不错地规范自己的输入要求与大模型的思维方式。目前我也习惯开局来一句：<em>假如你是xxx专家</em>，让大模型定位好它要解决的问题领域。Steps与Example在具体使用中常常无暇书写，但如果真的需要大模型给出相对符合预期的答案，我们也可以借助这种描述方式来辅助实现。</p>
+<h2 id="学期总结">学期总结
+</h2><p>当一个学期有了OO，它便已经被无情地切割为了16份。任务不断推进，我们终于走进hw16，这个学期也已然走向了尾声。本学期的面向对象课程通过风格迥异的四个单元，深刻阐述了如何认识类，如何设计类，如何书写类。</p>
+<h3 id="架构设计">架构设计
+</h3><p>四个单元以来，我从只会写一个个简单的方法，逐渐有能力从任务中提取信息，从零开始建类，并实现最终的作业要求。犹记得OOhw1的时候，刚刚迈入新学期，迎接我的便是深不可测的汪洋。我当时尚且没有什么面向对象的思想，对类也没有认知，喊着“递归下降”就冲过去了，结果发现什么也写不出来。最终通过层次化的架构设计，借助lexer将读到的内容转化为token对象，并通过parser实现Expr到Term再到Factor的递归下降，将表达式拆成最小单位的组合。拆解后的表达式也同样借助递归下降计算化简结果。</p>
+<p>U2的架构设计则以生产者消费者模型为核心，大多数类都只是为了多线程的信息读取而实现。实际上具体的难点反而在于电梯类本身的策略，架构设计基本上与实验课的代码无异。U3可以说没有进行架构设计。U4作为引领同学们实现正向建模的一章，本身的架构设计却也意外的清晰。Library类管理书和人，图书馆的地点又分为四个类bs,ao,bro,rr。</p>
+<p>另外，不得不提到的是，<strong>实验课</strong>在代码架构方面对我的启发是极大的。当我面对一个新的问题和一个空的仓库，我能做的往往只是一个MainClass<del>和一段空想</del>。但是通过在实验课上阅读代码架构，填写空缺，我能够更快地理解作业的难点和重点究竟在哪里，然后花很长时间复刻架构，并叹息之前浪费的时间之多。我个人认为，写不出来任何东西的原因就是<strong>经验过于匮乏</strong>！对于解决一个问题没有基本的架构设计认知，每学会一个就只知道<strong>这样做“行”</strong>，但没有想过为什么这么做，<strong>如何想到</strong>这么做。因此OOU4的正向建模从<strong>需求分析</strong>出发，并以一个简单的例子入手，引领我从零开始，实现了完全自主的代码架构设计。</p>
+<h3 id="测试思维">测试思维
+</h3><p>本学期另外一个大的个人突破，便是第一次尝试搭建了评测机。评测机是一个黑盒测试，根据狂轰滥炸式的输入来看代码能不能始终输出正确的结果。</p>
+<p>在OOU3前，我仍然认为数据量越大，次数越多就越容易找到问题。在学完之后，我虽然不能直白地否认这个说法，但我不得不佩服白箱测试的精准与强悍。JUnit与JML规格强强联合，为代码写出覆盖所有情况的寥寥几个测试，便能直接实现方法的完整评测。此外，以更小的单位进行测试也更容易定位问题所在。</p>
+<p>但影响我对测试认知的，不仅仅是OOU3。</p>
+<p>OOU1中，我的评测机借助sympy库，实现了表达式值的测试。然而难点在于格式错误问题————这个地方到底可不可以只有一层括号？这样的错误该如何检查？我发现测试的内容需要是足够全面的。       <br>
+OOU2中，“抽奖修复bug”大法广为流传。线程间锁的抢夺已然使结果变化多端，随机分配策略更是让bug复现的概率锐减。测试要足够多，压力要足够大，测试才可能变得更有效。   <br>
+OOU3中，我成为了测试的书写者。我发现我想不到，是什么样的代码能够做到，执行一次方法是正确的，连续执行两遍就会出错？是没有满足pure方法？还是说他的结果其实是随机数出来的，只是第一遍运气好？我意识到，测试要贯彻无情的态度。不思考对方怎么实现，我只关注后置条件与副作用范围。  <br>
+OOU4中，我首次见识到交互式测试。我只会<code>data.exe &gt; stdin.txt</code>，<code>java -jar xxx.jar &lt; stdin.txt &gt; out.txt</code>，<code>python check.py</code>，想不到如何实时根据out的内容去改变stdin。可惜第四单元事务繁多，又没有互测要求，尚没有了解评测机的具体实现方法。</p>
+<h3 id="其他收获">其他收获
+</h3><p>要说还有什么其他收获，那不得不提到大模型了！我从未想过，会有这样一门课，支持我用大模型去完成本该由我完成的任务，还详尽地教导我如何更好地使用大模型。将大模型变为一个趁手高效的工具，而不是一个自说自话胡言乱语的对话框，这是大学期间需要培养的重要技能。</p>
+<p>OO带来的独特生活体验也是不得不品的一环。倒也没有天天熬夜debug，但是每个星期都在围着OO转还真是一点不假。</p>
+<p>最后感谢课程组的辛苦付出！祝愿OO课程不断进步！</p>
 
 </section>
 
@@ -588,23 +480,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+    <a href="/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/">
         
         
             <div class="article-image">
-                <img src="/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.af5537eaa7f7cd8eba23dfa55b1f600d_hu11361999506600342615.png" 
+                <img src="/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.8c9ce4a1c6ab44b7d9503dd39d1215f1_hu16505079589854765534.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 北航OO U4 UML正向建模与图书管理系统"
+                        alt="Featured image of post 北航OO U3 JML与社交网络"
                         
-                        data-hash="md5-r1U36qf3zY66I9&#43;lWx9gDQ==">
+                        data-hash="md5-jJzkocarRLfZUD3TnRIV8Q==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">北航OO U4 UML正向建模与图书管理系统</h2>
+            <h2 class="article-title">北航OO U3 JML与社交网络</h2>
         </div>
     </a>
 </article>

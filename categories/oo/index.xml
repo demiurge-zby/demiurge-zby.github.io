@@ -7,7 +7,93 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Fri, 16 May 2025 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/oo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 09 Jun 2025 21:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/oo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>北航OO U4 UML正向建模与图书管理系统</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+        <pubDate>Mon, 09 Jun 2025 21:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.png" alt="Featured image of post 北航OO U4 UML正向建模与图书管理系统" /&gt;&lt;h2 id=&#34;关于正向建模&#34;&gt;关于正向建模
+&lt;/h2&gt;&lt;p&gt;正向建模是基于需求分析，创建一系列模型来表达系统的静态结构、动态行为和交互逻辑的过程。这些模型以可视化方式帮助我们理解系统设计，并为后续开发与实现提供指导。其核心是借助模型逐步细化的过程，从高层概念推进到低层实现，确保设计与需求一致。&lt;/p&gt;
+&lt;p&gt;因此正向建模的核心并不在于画图，而&lt;strong&gt;需求分析&lt;/strong&gt;才是正向建模的重要基础。&lt;/p&gt;
+&lt;h3 id=&#34;需求分析&#34;&gt;需求分析
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;需求分析是将用户的需求转化为清晰、可验证的系统要求的活动。它涉及收集、分析、记录和验证需求，旨在理解系统的目标、功能、约束和性能要求。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;简单点来说，需求分析要从任务里读出：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有哪些种类的对象？&lt;/li&gt;
+&lt;li&gt;对象需要管理什么属性？&lt;/li&gt;
+&lt;li&gt;需要实现什么功能？&lt;/li&gt;
+&lt;li&gt;功能需要哪些对象进行协作？&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本次作业中，原则上只有书，人和图书馆。但是图书馆的功能太过复杂，我们根据&lt;strong&gt;单一职责原则&lt;/strong&gt;，将图书馆拆成了一个管理类（Library）和四个功能类（主要负责取书的bs，主要负责预约的ao，主要负责归还的bro和主要负责阅读的rr）。&lt;/p&gt;
+&lt;h3 id=&#34;图的设计&#34;&gt;图的设计
+&lt;/h3&gt;&lt;p&gt;不同种类的图是回应需求分析结果的不同手段。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;类图：定义系统静态结构&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;类图定义了&lt;strong&gt;最基础的原材料&lt;/strong&gt;。它的核心功能就是将需求中的实体抽象为类，并通过关联、聚合、组合、继承等关系，描述实体之间的联系。通过这样的实现，系统的静态结构便一目了然。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;状态图：描述对象动态行为&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果说类图是原料是基础，那&lt;strong&gt;状态图就应该是效果的呈现&lt;/strong&gt;。无论属性如何影响方法，方法又如何影响属性，最终我们要实现的是功能。通过状态图描述系统中某个对象在不同状态之间的转换以及触发转换的事件，我们可以得知对象的动态行为具体可以产生什么影响。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;顺序图：描述对象交互时序&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;顺序图在正向建模中帮助团队&lt;strong&gt;明确系统如何实现功能&lt;/strong&gt;，它通过消息传递来描述类与类之间的协作，并解释了如何通过不同对象的协作来实现功能。&lt;/p&gt;
+&lt;h2 id=&#34;关于架构&#34;&gt;关于架构
+&lt;/h2&gt;&lt;p&gt;本次作业的架构设计其实花了我很大的功夫。在hw13的时候，我浏览学长的代码，但又不愿深入阅读过度模仿；我阅读学长的博客，也总觉得不能心领神会。最后无奈先写了一份需求分析出来，将散落在各处的要求集中起来，选定合适的数据结构与方法，才得到了类图的雏形。&lt;/p&gt;
+&lt;p&gt;很遗憾没能早点接触状态图与顺序图，类图是类的构造蓝图，那这两张图可以说是具体方法实现的蓝图。&lt;/p&gt;
+&lt;p&gt;具体架构的内容见下图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image.png&#34;
+	width=&#34;1519&#34;
+	height=&#34;826&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu11203860776147148248.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu15849978408561524164.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;类图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1.png&#34;
+	width=&#34;1412&#34;
+	height=&#34;738&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu3052618928839767250.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu6738793309917177957.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;状态图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;459px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关于大模型&#34;&gt;关于大模型
+&lt;/h2&gt;&lt;p&gt;我本来是抵触使用大模型的。倒也不是因为追求所谓的“独立自主”，只是觉得让一个尚不靠谱的大模型帮我完成作业，心里面觉着没底，出了问题还要自己琢磨，去重新理解它可能并不合理的架构。但倘若是自己写的代码，无论如何，你理解每个属性每个方法的功用，你很熟悉你的静态设计。&lt;/p&gt;
+&lt;p&gt;那么大模型辅助正向建模这件事，便深刻地影响了我。我只需要把指导书发给大模型，大模型就能直接给出它的实现思路。这个思路不同于代码，它易读易懂，我也可以随时进行指正或者改善，最后形成我对这个任务的处理方法设计。不仅如此，我借此将架构与实现相分离，实现了将程序分为数据结构与算法的过程。&lt;/p&gt;
+&lt;p&gt;不过在如何使用大模型上，“直接把指导书扔给大模型”属于缺乏技术力的懒人行为。实验课上传授的ROSES与COT能够不错地规范自己的输入要求与大模型的思维方式。目前我也习惯开局来一句：&lt;em&gt;假如你是xxx专家&lt;/em&gt;，让大模型定位好它要解决的问题领域。Steps与Example在具体使用中常常无暇书写，但如果真的需要大模型给出相对符合预期的答案，我们也可以借助这种描述方式来辅助实现。&lt;/p&gt;
+&lt;h2 id=&#34;学期总结&#34;&gt;学期总结
+&lt;/h2&gt;&lt;p&gt;当一个学期有了OO，它便已经被无情地切割为了16份。任务不断推进，我们终于走进hw16，这个学期也已然走向了尾声。本学期的面向对象课程通过风格迥异的四个单元，深刻阐述了如何认识类，如何设计类，如何书写类。&lt;/p&gt;
+&lt;h3 id=&#34;架构设计&#34;&gt;架构设计
+&lt;/h3&gt;&lt;p&gt;四个单元以来，我从只会写一个个简单的方法，逐渐有能力从任务中提取信息，从零开始建类，并实现最终的作业要求。犹记得OOhw1的时候，刚刚迈入新学期，迎接我的便是深不可测的汪洋。我当时尚且没有什么面向对象的思想，对类也没有认知，喊着“递归下降”就冲过去了，结果发现什么也写不出来。最终通过层次化的架构设计，借助lexer将读到的内容转化为token对象，并通过parser实现Expr到Term再到Factor的递归下降，将表达式拆成最小单位的组合。拆解后的表达式也同样借助递归下降计算化简结果。&lt;/p&gt;
+&lt;p&gt;U2的架构设计则以生产者消费者模型为核心，大多数类都只是为了多线程的信息读取而实现。实际上具体的难点反而在于电梯类本身的策略，架构设计基本上与实验课的代码无异。U3可以说没有进行架构设计。U4作为引领同学们实现正向建模的一章，本身的架构设计却也意外的清晰。Library类管理书和人，图书馆的地点又分为四个类bs,ao,bro,rr。&lt;/p&gt;
+&lt;p&gt;另外，不得不提到的是，&lt;strong&gt;实验课&lt;/strong&gt;在代码架构方面对我的启发是极大的。当我面对一个新的问题和一个空的仓库，我能做的往往只是一个MainClass&lt;del&gt;和一段空想&lt;/del&gt;。但是通过在实验课上阅读代码架构，填写空缺，我能够更快地理解作业的难点和重点究竟在哪里，然后花很长时间复刻架构，并叹息之前浪费的时间之多。我个人认为，写不出来任何东西的原因就是&lt;strong&gt;经验过于匮乏&lt;/strong&gt;！对于解决一个问题没有基本的架构设计认知，每学会一个就只知道&lt;strong&gt;这样做“行”&lt;/strong&gt;，但没有想过为什么这么做，&lt;strong&gt;如何想到&lt;/strong&gt;这么做。因此OOU4的正向建模从&lt;strong&gt;需求分析&lt;/strong&gt;出发，并以一个简单的例子入手，引领我从零开始，实现了完全自主的代码架构设计。&lt;/p&gt;
+&lt;h3 id=&#34;测试思维&#34;&gt;测试思维
+&lt;/h3&gt;&lt;p&gt;本学期另外一个大的个人突破，便是第一次尝试搭建了评测机。评测机是一个黑盒测试，根据狂轰滥炸式的输入来看代码能不能始终输出正确的结果。&lt;/p&gt;
+&lt;p&gt;在OOU3前，我仍然认为数据量越大，次数越多就越容易找到问题。在学完之后，我虽然不能直白地否认这个说法，但我不得不佩服白箱测试的精准与强悍。JUnit与JML规格强强联合，为代码写出覆盖所有情况的寥寥几个测试，便能直接实现方法的完整评测。此外，以更小的单位进行测试也更容易定位问题所在。&lt;/p&gt;
+&lt;p&gt;但影响我对测试认知的，不仅仅是OOU3。&lt;/p&gt;
+&lt;p&gt;OOU1中，我的评测机借助sympy库，实现了表达式值的测试。然而难点在于格式错误问题————这个地方到底可不可以只有一层括号？这样的错误该如何检查？我发现测试的内容需要是足够全面的。       &lt;br&gt;
+OOU2中，“抽奖修复bug”大法广为流传。线程间锁的抢夺已然使结果变化多端，随机分配策略更是让bug复现的概率锐减。测试要足够多，压力要足够大，测试才可能变得更有效。   &lt;br&gt;
+OOU3中，我成为了测试的书写者。我发现我想不到，是什么样的代码能够做到，执行一次方法是正确的，连续执行两遍就会出错？是没有满足pure方法？还是说他的结果其实是随机数出来的，只是第一遍运气好？我意识到，测试要贯彻无情的态度。不思考对方怎么实现，我只关注后置条件与副作用范围。  &lt;br&gt;
+OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp;gt; stdin.txt&lt;/code&gt;，&lt;code&gt;java -jar xxx.jar &amp;lt; stdin.txt &amp;gt; out.txt&lt;/code&gt;，&lt;code&gt;python check.py&lt;/code&gt;，想不到如何实时根据out的内容去改变stdin。可惜第四单元事务繁多，又没有互测要求，尚没有了解评测机的具体实现方法。&lt;/p&gt;
+&lt;h3 id=&#34;其他收获&#34;&gt;其他收获
+&lt;/h3&gt;&lt;p&gt;要说还有什么其他收获，那不得不提到大模型了！我从未想过，会有这样一门课，支持我用大模型去完成本该由我完成的任务，还详尽地教导我如何更好地使用大模型。将大模型变为一个趁手高效的工具，而不是一个自说自话胡言乱语的对话框，这是大学期间需要培养的重要技能。&lt;/p&gt;
+&lt;p&gt;OO带来的独特生活体验也是不得不品的一环。倒也没有天天熬夜debug，但是每个星期都在围着OO转还真是一点不假。&lt;/p&gt;
+&lt;p&gt;最后感谢课程组的辛苦付出！祝愿OO课程不断进步！&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>北航OO U3 JML与社交网络</title>
         <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</link>
         <pubDate>Fri, 16 May 2025 12:15:30 +0800</pubDate>

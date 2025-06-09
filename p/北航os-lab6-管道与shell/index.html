@@ -10,7 +10,7 @@
 <meta property='og:description' content="实验报告">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-22T20:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-05-22T20:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-04T20:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-06-04T20:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.png' />
 <meta name="twitter:title" content="北航OS Lab6 管道与SHELL">
 <meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.png' />
@@ -272,6 +272,9 @@
       <ol>
         <li><a href="#thinking-61">Thinking 6.1</a></li>
         <li><a href="#thinking-62">Thinking 6.2</a></li>
+        <li><a href="#thinking-63">Thinking 6.3</a></li>
+        <li><a href="#thinking-64">Thinking 6.4</a></li>
+        <li><a href="#thinking-65">Thinking 6.5</a></li>
       </ol>
     </li>
     <li><a href="#难点分析">难点分析</a></li>
@@ -341,7 +344,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-05-22</time>
+                <time class="article-time--published">2025-06-04</time>
             </div>
         
 
@@ -356,7 +359,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -416,6 +419,85 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="thinking-62">Thinking 6.2
+</h3><p>下面是原来的dup函数的映射部分。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">((</span><span class="n">r</span> <span class="o">=</span> <span class="nf">syscall_mem_map</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">oldfd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">newfd</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">			<span class="n">vpt</span><span class="p">[</span><span class="nf">VPN</span><span class="p">(</span><span class="n">oldfd</span><span class="p">)]</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">PTE_D</span> <span class="o">|</span> <span class="n">PTE_LIBRARY</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">goto</span> <span class="n">err</span><span class="p">;</span> <span class="c1">// 文件描述符的映射
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">vpd</span><span class="p">[</span><span class="nf">PDX</span><span class="p">(</span><span class="n">ova</span><span class="p">)])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">PDMAP</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="n">PTMAP</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">pte</span> <span class="o">=</span> <span class="n">vpt</span><span class="p">[</span><span class="nf">VPN</span><span class="p">(</span><span class="n">ova</span> <span class="o">+</span> <span class="n">i</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">pte</span> <span class="o">&amp;</span> <span class="n">PTE_V</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// should be no error here -- pd is already allocated
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">if</span> <span class="p">((</span><span class="n">r</span> <span class="o">=</span> <span class="nf">syscall_mem_map</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)(</span><span class="n">ova</span> <span class="o">+</span> <span class="n">i</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)(</span><span class="n">nva</span> <span class="o">+</span> <span class="n">i</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">						 <span class="n">pte</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">PTE_D</span> <span class="o">|</span> <span class="n">PTE_LIBRARY</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">goto</span> <span class="n">err</span><span class="p">;</span> <span class="c1">// 文件内容的映射
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到dup先对文件描述符进行映射，后对文件内容进行映射。</p>
+<p>如果在这两个系统调用中发生进程的中断，根据文件描述符的pp_ref将判断映射已经完成，而实际上文件内容并未被映射。</p>
+<h3 id="thinking-63">Thinking 6.3
+</h3><p>我们的MOS是单核的，一般来说只有一个内核线程。</p>
+<p>那么引发系统调用被中断，只有可能是外部中断。</p>
+<p>而我们的MOS保证进入核心态后，会屏蔽外部中断。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nl">exc_gen_entry:</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">SAVE_ALL</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">mfc0</span>    <span class="no">t0</span><span class="p">,</span> <span class="no">CP0_STATUS</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">and</span>     <span class="no">t0</span><span class="p">,</span> <span class="no">t0</span><span class="p">,</span> <span class="err">~</span><span class="p">(</span><span class="no">STATUS_UM</span> <span class="err">|</span> <span class="no">STATUS_EXL</span> <span class="err">|</span> <span class="no">STATUS_IE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">mtc0</span>    <span class="no">t0</span><span class="p">,</span> <span class="no">CP0_STATUS</span>  <span class="c1">// unset IE to globally disable interrupts
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">mfc0</span>    <span class="no">t0</span><span class="p">,</span> <span class="no">CP0_CAUSE</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">andi</span>    <span class="no">t0</span><span class="p">,</span> <span class="mi">0x7c</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">lw</span>      <span class="no">t0</span><span class="p">,</span> <span class="no">exception_handlers</span><span class="p">(</span><span class="no">t0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">jr</span>      <span class="no">t0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="thinking-64">Thinking 6.4
+</h3><p>其实指导书说的也很明白了：</p>
+<p>一般情况下pageref(pipe)肯定大于读或写其中一个fd的pp_ref。通过调整顺序，先降低fd的pp_ref，保证了pageref(pipe) &gt; pageref(fd)在彻底close前恒成立，从而解决了中途pageref(pipe)先降低导致出现pageref(pipe) == pageref(fd)的问题。</p>
+<p>对于未修改的dup函数，同样地也会出现这个问题。正如Thinking 6.2中所说，若先增加fd的pp_ref，后增加文件内容（也就是pipe）的pp_ref，就不能保证始终有pageref(pipe) &gt; pageref(fd)。在两个map的间隙，就会存在pageref(pipe) == pageref(fd)的时刻，导致误判。</p>
+<p>倘若修改map的顺序，先对pipe进行map，就可以解决这一问题。</p>
+<h3 id="thinking-65">Thinking 6.5
 </h3><h2 id="难点分析">难点分析
 </h2><h2 id="实验体会">实验体会
 </h2>
