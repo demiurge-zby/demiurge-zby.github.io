@@ -274,7 +274,16 @@
         <li><a href="#thinking-62">Thinking 6.2</a></li>
         <li><a href="#thinking-63">Thinking 6.3</a></li>
         <li><a href="#thinking-64">Thinking 6.4</a></li>
-        <li><a href="#thinking-65">Thinking 6.5</a></li>
+        <li><a href="#thinking-65">Thinking 6.5</a>
+          <ol>
+            <li><a href="#打开文件的过程">打开文件的过程</a></li>
+            <li><a href="#如何读取并加载elf文件">如何读取并加载ELF文件</a></li>
+            <li><a href="#bss段如何占据空间并初始化为0">bss段如何占据空间并初始化为0</a></li>
+          </ol>
+        </li>
+        <li><a href="#thinking-66">Thinking 6.6</a></li>
+        <li><a href="#thinking-67">Thinking 6.7</a></li>
+        <li><a href="#thinking-68">Thinking 6.8</a></li>
       </ol>
     </li>
     <li><a href="#难点分析">难点分析</a></li>
@@ -359,7 +368,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -498,9 +507,391 @@
 <p>对于未修改的dup函数，同样地也会出现这个问题。正如Thinking 6.2中所说，若先增加fd的pp_ref，后增加文件内容（也就是pipe）的pp_ref，就不能保证始终有pageref(pipe) &gt; pageref(fd)。在两个map的间隙，就会存在pageref(pipe) == pageref(fd)的时刻，导致误判。</p>
 <p>倘若修改map的顺序，先对pipe进行map，就可以解决这一问题。</p>
 <h3 id="thinking-65">Thinking 6.5
-</h3><h2 id="难点分析">难点分析
-</h2><h2 id="实验体会">实验体会
-</h2>
+</h3><h4 id="打开文件的过程">打开文件的过程
+</h4><p>用户调用<code>open</code>函数，提供路径和打开方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">((</span><span class="n">fd</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="n">prog</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>open</code>函数在file.c中，负责<code>申请fd</code>，并<code>利用fsipc</code>完成文件的open与map，返回fd的编号</p>
+<p>以<code>fsipc_open</code>为例，他将路径与打开方式打包为<code>struct Fsreq_open</code>放进<code>fsipcbuf（即req）</code>，并return <code>fsipc(FSREQ_OPEN, req, fd, &amp;perm);</code></p>
+<p>其中<code>fsipc</code>函数借助ipc通信，把value与页面传递给1号进程，也就是文件服务进程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">int</span> <span class="nf">fsipc</span><span class="p">(</span><span class="n">u_int</span> <span class="n">type</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">fsreq</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">dstva</span><span class="p">,</span> <span class="n">u_int</span> <span class="o">*</span><span class="n">perm</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">whom</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Our file system server must be the 2nd env.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">ipc_send</span><span class="p">(</span><span class="n">envs</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">env_id</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">fsreq</span><span class="p">,</span> <span class="n">PTE_D</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">ipc_recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">whom</span><span class="p">,</span> <span class="n">dstva</span><span class="p">,</span> <span class="n">perm</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// 给文件管理进程通信，传的值是type，共享的页面是一个结构体(一段内存)fsreq
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>发出的信息在fs/serv.c中的死循环函数serve中被接收</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">req</span> <span class="o">=</span> <span class="nf">ipc_recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">whom</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">REQVA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">perm</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>并将其转化为serve_open函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="n">func</span> <span class="o">=</span> <span class="n">serve_table</span><span class="p">[</span><span class="n">req</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">func</span><span class="p">(</span><span class="n">whom</span><span class="p">,</span> <span class="n">REQVA</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>serve_open函数则进行真正的打开文件操作。	
+其实也就是为它申请好了一个struct Open。</p>
+<h4 id="如何读取并加载elf文件">如何读取并加载ELF文件
+</h4><p>我们在spawn中已经打开了二进制文件，接下来便使用readn进行读取。</p>
+<p>readn在fd.c中，实现了少量多次read的过程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">readn</span><span class="p">(</span><span class="kt">int</span> <span class="n">fdnum</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="n">u_int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="n">tot</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tot</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">tot</span> <span class="o">+=</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">m</span> <span class="o">=</span> <span class="nf">read</span><span class="p">(</span><span class="n">fdnum</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">buf</span> <span class="o">+</span> <span class="n">tot</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">tot</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">return</span> <span class="n">tot</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>读取完毕后使用elf_from进行检查，并得到ehdr。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">const</span> <span class="n">Elf32_Ehdr</span> <span class="o">*</span><span class="nf">elf_from</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">binary</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">const</span> <span class="n">Elf32_Ehdr</span> <span class="o">*</span><span class="n">ehdr</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">Elf32_Ehdr</span> <span class="o">*</span><span class="p">)</span><span class="n">binary</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Elf32_Ehdr</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">ehdr</span><span class="o">-&gt;</span><span class="n">e_ident</span><span class="p">[</span><span class="n">EI_MAG0</span><span class="p">]</span> <span class="o">==</span> <span class="n">ELFMAG0</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">	    <span class="n">ehdr</span><span class="o">-&gt;</span><span class="n">e_ident</span><span class="p">[</span><span class="n">EI_MAG1</span><span class="p">]</span> <span class="o">==</span> <span class="n">ELFMAG1</span> <span class="o">&amp;&amp;</span> <span class="n">ehdr</span><span class="o">-&gt;</span><span class="n">e_ident</span><span class="p">[</span><span class="n">EI_MAG2</span><span class="p">]</span> <span class="o">==</span> <span class="n">ELFMAG2</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">	    <span class="n">ehdr</span><span class="o">-&gt;</span><span class="n">e_ident</span><span class="p">[</span><span class="n">EI_MAG3</span><span class="p">]</span> <span class="o">==</span> <span class="n">ELFMAG3</span> <span class="o">&amp;&amp;</span> <span class="n">ehdr</span><span class="o">-&gt;</span><span class="n">e_type</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">ehdr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>整体流程就是下面所示，得到了elf的入口entrypoint。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">((</span><span class="n">r</span> <span class="o">=</span> <span class="nf">readn</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">elfbuf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Elf32_Ehdr</span><span class="p">)))</span> <span class="o">!=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Elf32_Ehdr</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">goto</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="n">Elf32_Ehdr</span> <span class="o">*</span><span class="n">ehdr</span> <span class="o">=</span> <span class="nf">elf_from</span><span class="p">(</span><span class="n">elfbuf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Elf32_Ehdr</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ehdr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">r</span> <span class="o">=</span> <span class="o">-</span><span class="n">E_NOT_EXEC</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">goto</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">u_long</span> <span class="n">entrypoint</span> <span class="o">=</span> <span class="n">ehdr</span><span class="o">-&gt;</span><span class="n">e_entry</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来就是加载ELF文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">ELF_FOREACH_PHDR_OFF</span> <span class="p">(</span><span class="n">ph_off</span><span class="p">,</span> <span class="n">ehdr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">((</span><span class="n">r</span> <span class="o">=</span> <span class="nf">seek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">ph_off</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">goto</span> <span class="n">err1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">((</span><span class="n">r</span> <span class="o">=</span> <span class="nf">readn</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">elfbuf</span><span class="p">,</span> <span class="n">ehdr</span><span class="o">-&gt;</span><span class="n">e_phentsize</span><span class="p">))</span> <span class="o">!=</span> <span class="n">ehdr</span><span class="o">-&gt;</span><span class="n">e_phentsize</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">goto</span> <span class="n">err1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Elf32_Phdr</span> <span class="o">*</span><span class="n">ph</span> <span class="o">=</span> <span class="p">(</span><span class="n">Elf32_Phdr</span> <span class="o">*</span><span class="p">)</span><span class="n">elfbuf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">ph</span><span class="o">-&gt;</span><span class="n">p_type</span> <span class="o">==</span> <span class="n">PT_LOAD</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="kt">void</span> <span class="o">*</span><span class="n">bin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="n">r</span> <span class="o">=</span> <span class="nf">read_map</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">ph</span><span class="o">-&gt;</span><span class="n">p_offset</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">bin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">goto</span> <span class="n">err1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="n">r</span> <span class="o">=</span> <span class="nf">elf_load_seg</span><span class="p">(</span><span class="n">ph</span><span class="p">,</span> <span class="n">bin</span><span class="p">,</span> <span class="n">spawn_mapper</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">child</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">goto</span> <span class="n">err1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="bss段如何占据空间并初始化为0">bss段如何占据空间并初始化为0
+</h4><p>这个就涉及到具体的加载过程。	
+详见Lab3博客 Thinking 3.3</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">elf_load_seg</span><span class="p">(</span><span class="n">Elf32_Phdr</span> <span class="o">*</span><span class="n">ph</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">bin</span><span class="p">,</span> <span class="kt">elf_mapper_t</span> <span class="n">map_page</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="p">...</span>
+</span></span><span class="line"><span class="cl">	<span class="p">...</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">sgsize</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 文件大小&lt;内存，将剩余的内存都写入NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="p">((</span><span class="n">r</span> <span class="o">=</span> <span class="nf">map_page</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">va</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nf">MIN</span><span class="p">(</span><span class="n">sgsize</span> <span class="o">-</span> <span class="n">i</span><span class="p">,</span> <span class="n">PAGE_SIZE</span><span class="p">)))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">i</span> <span class="o">+=</span> <span class="n">PAGE_SIZE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>文件大小小于内存大小时，仍继续映射，用NULL写入剩余内存</p>
+<p>而回调函数spawn_mapper的逻辑保证不对NULL的部分作处理，就可以保证空间仍然为最开始的0。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">int</span> <span class="nf">spawn_mapper</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">u_long</span> <span class="n">va</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">offset</span><span class="p">,</span> <span class="n">u_int</span> <span class="n">perm</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u_int</span> <span class="n">child_id</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">u_int</span> <span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">try</span><span class="p">(</span><span class="nf">syscall_mem_alloc</span><span class="p">(</span><span class="n">child_id</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">va</span><span class="p">,</span> <span class="n">perm</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">src</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="p">...</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="thinking-66">Thinking 6.6
+</h3><p>如指导书所说，0和1是在init.b执行之后所规范的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="c1">// stdin should be 0, because no file descriptors are open yet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">((</span><span class="n">r</span> <span class="o">=</span> <span class="nf">opencons</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">user_panic</span><span class="p">(</span><span class="s">&#34;opencons: %d&#34;</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>opencons() 函数打开控制台设备，并返回一个文件描述符。	
+由于进程初始时没有打开任何文件描述符，第一个打开的文件描述符默认是 0（最小可用值）。		
+如果返回值不是 0，程序会触发 panic，确保标准输入必须绑定到文件描述符 0。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="c1">// stdout
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">((</span><span class="n">r</span> <span class="o">=</span> <span class="nf">dup</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">user_panic</span><span class="p">(</span><span class="s">&#34;dup: %d&#34;</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>dup(0, 1) 函数将文件描述符 0（已绑定到控制台输入）复制到文件描述符 1。
+这使得文件描述符 1 也指向控制台设备，从而实现标准输出的功能。
+如果复制失败，程序同样会触发 panic。</p>
+<h3 id="thinking-67">Thinking 6.7
+</h3><p>外部命令。在我们的spawn中，每次运行都要使用child = syscall_exofork();</p>
+<p>cd 命令的作用是改变当前进程的工作目录。</p>
+<p>如果像普通外部命令一样，运行时创建新进程，那么它对文件系统的操作就不会影响父进程的环境，当前目录不会改变，这显然不符合用户预期。</p>
+<h3 id="thinking-68">Thinking 6.8
+</h3><p>下面是运行结果：	
+（我在spawn函数的开头加了一句debugf）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">$  ls.b | cat.b &gt; motd
+</span></span><span class="line"><span class="cl">[00003003] pipecreate 
+</span></span><span class="line"><span class="cl">spawn!
+</span></span><span class="line"><span class="cl">spawn!
+</span></span><span class="line"><span class="cl">[00004005] destroying 00004005
+</span></span><span class="line"><span class="cl">[00004005] free env 00004005
+</span></span><span class="line"><span class="cl">i am killed ... 
+</span></span><span class="line"><span class="cl">[00004806] destroying 00004806
+</span></span><span class="line"><span class="cl">[00004806] free env 00004806
+</span></span><span class="line"><span class="cl">i am killed ... 
+</span></span><span class="line"><span class="cl">[00003804] destroying 00003804
+</span></span><span class="line"><span class="cl">[00003804] free env 00003804
+</span></span><span class="line"><span class="cl">i am killed ... 
+</span></span><span class="line"><span class="cl">[00003003] destroying 00003003
+</span></span><span class="line"><span class="cl">[00003003] free env 00003003
+</span></span><span class="line"><span class="cl">i am killed ... 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以观察到2次spawn，分别对应ls.b与cat.b的启动</p>
+<p>可以观察到4次进程销毁，分别对应ls.b，cat.b以及他们用于管道的两个子进程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">debugf</span><span class="p">(</span><span class="s">&#34;pipe: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">exit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">r</span> <span class="o">=</span> <span class="nf">fork</span><span class="p">();</span>   <span class="c1">// 为了管道进行一次fork
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">debugf</span><span class="p">(</span><span class="s">&#34;fork: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">exit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="o">*</span><span class="n">rightpipe</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">dup</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nf">parsecmd</span><span class="p">(</span><span class="n">argv</span><span class="p">,</span> <span class="n">rightpipe</span><span class="p">);</span>  <span class="c1">// 管道右端再运行一次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">dup</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">argc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="难点分析">难点分析
+</h2><p>本次作业建立在前面所有lab的基础上，尤其是lab5，需要我们对文件系统足够了解才能顺利搭建管道和SHELL。</p>
+<p>管道的核心难点在于pageref的管理，这也是MOS首次出现关于调整先后执行顺序的问题。问题的核心原因在于判断读端或写端是否关闭时，使用了pageref的方法，而这个条件在某些中间状态下并不充分。</p>
+<p>SHELL需要我们熟悉流程，关键是parsecmd和spawn两个函数。从SHELL中读取token并解析命令，然后调用spawn对ELF文件进行打开加载运行等等操作。</p>
+<p>整体来说，lab6实现的主要是上层建筑，将MOS的功能以可交互的形式展现了出来，不再只能运行既定程序，而是支持了命令行的各项操作。</p>
+<h2 id="实验体会">实验体会
+</h2><p>随着lab6的结束，这个学期也要走向了尾声。不过这个博客并不是OS系列的终点，我们还有看起来非常有挑战性的挑战性任务！</p>
+<p>OS课程走到现在，虽然做的只是一些补全代码的工作，但是也极大地锻炼了我们阅读代码的能力，尤其是在不能直接<code>Ctrl+Click</code>用跳转到环境下，我们只能使用<code>grep -nr xxx ./</code>去寻找，或者对MOS的架构烂熟于心。</p>
+<p>最后感谢课程组的辛苦付出！希望OS课程越办越好！</p>
+
 </section>
 
 
