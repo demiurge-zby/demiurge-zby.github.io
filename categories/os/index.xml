@@ -7,7 +7,303 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Wed, 04 Jun 2025 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/os/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 24 Jun 2025 10:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/os/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>北航OS Challenge Shell</title>
+        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/</link>
+        <pubDate>Tue, 24 Jun 2025 10:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/123.png" alt="Featured image of post 北航OS Challenge Shell" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+&lt;/h1&gt;&lt;h2 id=&#34;题面&#34;&gt;题面
+&lt;/h2&gt;&lt;p&gt;见：	
+&lt;a class=&#34;link&#34; href=&#34;challenge_shell.pdf&#34; &gt;text&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;本次shell挑战性任务整体来说难度还是很大的，需要实现的内容太多了。不过在今年的几个挑战性任务中可能还算是最容易拿到满分的，因为数据点评测比较简单，难度不高于样例。（虽然样例也称不上简单）&lt;/p&gt;
+&lt;p&gt;由于本次作业我选择在17周（也就是考试周）完成，所以做的时候时间比较赶，总共用了周一周二两天时间很极限地完成了。具体时间安排可以看下图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image.png&#34;
+	width=&#34;848&#34;
+	height=&#34;703&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image_hu13885675260012649073.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image_hu2647896632077159351.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;git log&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;120&#34;
+		data-flex-basis=&#34;289px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我完成的顺序是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;touch,mkdir,rm指令&lt;/li&gt;
+&lt;li&gt;完成O_APPEND（没必要这么早）&lt;/li&gt;
+&lt;li&gt;重写sh.c，完成AST架构构建（顺便就实现了注释，&lt;code&gt;;&lt;/code&gt;和&lt;code&gt;.b省略&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;实现工作路径以及cd，pwd&lt;/li&gt;
+&lt;li&gt;实现相对路径操作&lt;/li&gt;
+&lt;li&gt;实现环境变量的declare与unset&lt;/li&gt;
+&lt;li&gt;实现环境变量的值替换&lt;/li&gt;
+&lt;li&gt;完成各种按键的效果&lt;/li&gt;
+&lt;li&gt;完成history&lt;/li&gt;
+&lt;li&gt;完成反引号&lt;/li&gt;
+&lt;li&gt;完成条件执行所需的返回值传递&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因为内容太多，我这里将一些比较为难我的地方，以及我比较个性化的地方作为重点来讲。&lt;/p&gt;
+&lt;h2 id=&#34;内建指令与外部指令&#34;&gt;内建指令与外部指令
+&lt;/h2&gt;&lt;p&gt;首先要理解这两种指令的实现方式，以及区别。&lt;/p&gt;
+&lt;h3 id=&#34;外部指令&#34;&gt;外部指令
+&lt;/h3&gt;&lt;p&gt;外部指令通过先fork子进程，子进程再spawn孙进程来实现。&lt;/p&gt;
+&lt;p&gt;spawn本身的功能是开一个新进程来执行二进制文件，因此外部指令的执行方式就是单独在/user目录下建立新的.c文件，并经过make形成.b文件，通过spawn执行ELF文件，结束。&lt;/p&gt;
+&lt;p&gt;外部指令不应对shell的环境产生任何影响。&lt;/p&gt;
+&lt;h3 id=&#34;内建指令&#34;&gt;内建指令
+&lt;/h3&gt;&lt;p&gt;内建指令则涉及到改变shell的环境，因此必须在原shell下执行。&lt;/p&gt;
+&lt;p&gt;那么他就不能fork新进程，因为新进程中的信息改动可能带不回父进程。（这个要看具体实现，但如果我的shell信息与进程强绑定就不可以fork）&lt;/p&gt;
+&lt;p&gt;执行的过程就必须在sh.c内部完成了，对于某个command就直接进行strcmp判断，如果是某条内部指令就直接执行然后结束。&lt;/p&gt;
+&lt;h3 id=&#34;区别&#34;&gt;区别
+&lt;/h3&gt;&lt;p&gt;那么区别主要就在于fork。我们的原版sh.c是无脑先fork再runcmd的，我们的实现就只能runcmd，进去之后再看是否fork。&lt;/p&gt;
+&lt;h2 id=&#34;ast架构实现&#34;&gt;AST架构实现
+&lt;/h2&gt;&lt;p&gt;这个可能是最阻挡人的一环，这一关过了，后面就会有内驱力促使你做下去。&lt;/p&gt;
+&lt;p&gt;因为这个实在有点庞大，本来对sh.c就一知半解，现在更是要全部推翻重来，哪些要改哪些不改要改成啥都不是很明确。&lt;/p&gt;
+&lt;h3 id=&#34;基本流程&#34;&gt;基本流程
+&lt;/h3&gt;&lt;p&gt;个人建议是先用大模型直接根据sh.c生成一版AST版本的，然后再进行一定量的修改。大模型在枚举类构建，结构体构建以及函数调用层次架构上都是比较清楚和直观的。&lt;/p&gt;
+&lt;p&gt;一般的流程是，readline读取buf,然后&lt;code&gt;runcmd(buf)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;runcmd里面是parse_list和execute_list两个函数，这两个函数都是递归下降的方法执行的。&lt;/p&gt;
+&lt;p&gt;具体parse的过程和OOU1很像，根据时机使用get_next_token(也就是consume),访问的时候可以直接通过全局变量cur_token。&lt;/p&gt;
+&lt;h3 id=&#34;大模型的问题&#34;&gt;大模型的问题
+&lt;/h3&gt;&lt;p&gt;不过大模型基本上刚开始都会犯一个问题：使用malloc等动态空间请求和一些安全的字符串函数（比如strdup），以及一些我们不支持的字符串函数。因此我们需要告诉它我们实现的是微内核，对安全要求没那么高，内存空间用静态数组分配，支持的字符串函数只有strlen,strcpy,strcmp和strchr。&lt;/p&gt;
+&lt;p&gt;此外大模型也经常在consume的时候出现问题，你可以对于lexer和parser进行简单的内容重写，并积极添加debugf调试，实时查看token的读取，parser的内容是否有问题。&lt;/p&gt;
+&lt;h3 id=&#34;检查与调试&#34;&gt;检查与调试
+&lt;/h3&gt;&lt;p&gt;上面所说的debugf大法当然很有帮助。不过注意避免不同位置输出相同格式的话，这可能会引发误解。&lt;/p&gt;
+&lt;p&gt;这个工作你可以通过写好的mkdir等指令去调试。不过请注意你还没有实现相对路径，因此根据ls.c，当你执行&lt;code&gt;ls&lt;/code&gt;命令时（无其他参数），就会默认执行&lt;code&gt;ls /&lt;/code&gt;，而不是&lt;code&gt;ls ./&lt;/code&gt;。不要因此误以为自己的实现有问题。&lt;/p&gt;
+&lt;h2 id=&#34;工作路径&#34;&gt;工作路径
+&lt;/h2&gt;&lt;p&gt;我设置了两个系统调用进行工作路径的set与get。&lt;/p&gt;
+&lt;p&gt;这里注意，在fork的时候需要让子shell继承工作路径，因此需要在sys_exofork前get，然后子函数中set。&lt;/p&gt;
+&lt;p&gt;当然也要注意子函数退出时要恢复工作路径为原shell。&lt;/p&gt;
+&lt;h2 id=&#34;相对路径转绝对路径&#34;&gt;相对路径转绝对路径
+&lt;/h2&gt;&lt;p&gt;这个就相对复杂，关键在于处理无数的&lt;code&gt;.&lt;/code&gt;与&lt;code&gt;..&lt;/code&gt;，其中&lt;code&gt;..&lt;/code&gt;的处理还不是很简单。&lt;/p&gt;
+&lt;p&gt;但是字符串相关的繁杂内容，就大胆交给大模型就好了！最终的结果也确实都是一次过。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-1.png&#34;
+	width=&#34;849&#34;
+	height=&#34;143&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-1_hu2293779120528219642.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-1_hu5158884193381430158.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;..的处理&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;593&#34;
+		data-flex-basis=&#34;1424px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-2.png&#34;
+	width=&#34;852&#34;
+	height=&#34;407&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-2_hu13415212192329328809.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-2_hu9166049634142845285.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;相对路径处理&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;502px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;相对路径支持&#34;&gt;相对路径支持
+&lt;/h2&gt;&lt;p&gt;只需要进行类似于以下内容的修改。&lt;/p&gt;
+&lt;p&gt;因为你各种路径信息的最终使用者还是这些函数。类似的函数还有fsipc_remove等等。&lt;/p&gt;
+&lt;p&gt;比如：把&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fsipc_open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;改为&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;middle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nf&#34;&gt;strcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;middle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;curpath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nf&#34;&gt;syscall_get_cur_path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;curpath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nf&#34;&gt;change_to_abs_path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;curpath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;middle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nf&#34;&gt;strcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fsipc_open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;环境变量设置&#34;&gt;环境变量设置
+&lt;/h2&gt;&lt;p&gt;本来打算用链表存的，但是宏写起来还是没那么方便。&lt;/p&gt;
+&lt;p&gt;因此开了几个全局静态数组，存储这些信息。并且强制按顺序进行环境变量的放置，被删除了也不再使用这个位置。&lt;/p&gt;
+&lt;p&gt;为了解决环境变量这一关，我写了七个系统调用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	SYS_get_env_var,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	SYS_set_env_var,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	SYS_unset_env_var,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	SYS_print_env_var,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	SYS_clear_my_env_var,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	SYS_get_shell_id,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	SYS_set_shell_id,
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;get主要在下一步环境变量值替换里使用。&lt;/p&gt;
+&lt;p&gt;这里主要讲讲shell_id和clear两个设计。&lt;/p&gt;
+&lt;p&gt;环境变量最难的点就在于
+&lt;code&gt;子Shell对环境变量的修改不会影响父Shell&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;但环境变量的值需要传递给子进程，还可能被修改，又要返现，如何处理？&lt;/p&gt;
+&lt;h3 id=&#34;shell_id&#34;&gt;shell_id
+&lt;/h3&gt;&lt;p&gt;首先是shell_id的设置。shell_id和子进程是两个概念，我在这个shell里面完成外部指令是需要开子进程的，但是这个子进程就完全可以使用我这个shell的非global环境变量。&lt;/p&gt;
+&lt;p&gt;因此必须设置shell_id。&lt;/p&gt;
+&lt;p&gt;get就不说了，set方法是对shell_id进行加一或减一。在shell启动界面加一，执行exit指令时就减一。这两个是个人认为非常合适的时机。&lt;/p&gt;
+&lt;h3 id=&#34;子shell如何不影响原shell&#34;&gt;子shell如何不影响原shell
+&lt;/h3&gt;&lt;p&gt;关于clear，主要就是在exit指令的时候进行一次clear，直接把这个shell_id对应的环境变量全删了。&lt;/p&gt;
+&lt;p&gt;那有人要问了，你对父shell的环境变量的改变怎么复原？我采用的是个性化的set与unset。&lt;/p&gt;
+&lt;p&gt;当我只是使用而不改变值就无事发生。如果要改变值，就新开一个条件变量。在get匹配的时候优先shell_id也对应的即可。如果要unset，就也新开一个条件变量，但是把global属性设置为异常值2，get的时候优先匹配同shell_id，检测到是2就直接返回没有找到。那如果unset之后又set呢？我们在set的时候也优先查找同shell_id的，然后在赋值的时候自然就实现了global属性的正常化，还能保证不影响原shell的环境变量。&lt;/p&gt;
+&lt;h3 id=&#34;大模型的使用&#34;&gt;大模型的使用
+&lt;/h3&gt;&lt;p&gt;在解析的时候要处理 &lt;code&gt;xxx=xxx&lt;/code&gt; 的结构，这种字符串任务还是交给大模型。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-3.png&#34;
+	width=&#34;777&#34;
+	height=&#34;179&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-3_hu7839265164522916875.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-3_hu16703025853582787345.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;区分key与value&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;434&#34;
+		data-flex-basis=&#34;1041px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;环境变量值替换&#34;&gt;环境变量值替换
+&lt;/h2&gt;&lt;p&gt;这个的实现我放在了get_token之中。如果我读到$，就也把他当做WORD型token，但token的value就要经过get_env_var的解析。&lt;/p&gt;
+&lt;p&gt;可是难点在于$key与其他字母是可以直接拼接的，&lt;/p&gt;
+&lt;p&gt;就比如&lt;code&gt;declare A=l&lt;/code&gt;的条件下，	
+&lt;code&gt;$As&lt;/code&gt;也要翻译为&lt;code&gt;ls&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这种复杂任务也是选择交给了大模型。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-4.png&#34;
+	width=&#34;736&#34;
+	height=&#34;87&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-4_hu13689095653615604272.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-4_hu10764555001600094657.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;寻找是否包含key并完成替换&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;845&#34;
+		data-flex-basis=&#34;2030px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里的实现是错误的，必须$紧跟的那一串有var_key才行。&lt;/p&gt;
+&lt;p&gt;比如上面的例子，理应不能处理$decAare，而我的这种设计会处理为declare。不过这个问题交给大模型也容易修复。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;快捷键&#34;&gt;快捷键
+&lt;/h2&gt;&lt;p&gt;这一块的内容我没有什么特别的地方要说，主要就是回显的抵消以及字符串相关函数，改动的内容是sh.c里的readline函数。&lt;/p&gt;
+&lt;p&gt;之前确实也不知道printf一些字符居然可以实现光标的移动与显示的变化。&lt;/p&gt;
+&lt;p&gt;快捷键怎么解析和操作，可以参考往年的博客。&lt;/p&gt;
+&lt;p&gt;这里特别强调一些内容，在qemu中&lt;code&gt;Ctrl+A&lt;/code&gt;会进入某种等待触发qemu快捷键(如 &lt;code&gt;Ctrl+A&lt;/code&gt;+&lt;code&gt;X&lt;/code&gt;)的特殊状态，这可能导致本地出现一些问题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-5.png&#34;
+	width=&#34;1142&#34;
+	height=&#34;292&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-5_hu485600327599034010.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-5_hu11161888165502401150.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;提问&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;391&#34;
+		data-flex-basis=&#34;938px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-6.png&#34;
+	width=&#34;844&#34;
+	height=&#34;226&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-6_hu16942002340672074920.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-6_hu13667345667747321388.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;回复&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;373&#34;
+		data-flex-basis=&#34;896px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;此外，在VSCode中，Ctrl+E可能会触发VSCode的快捷键；在跳板机中，Ctrl+W可能触发网页的快捷键。解决方式是把代码中case的内容改为其他不常用的快捷键进行调试。调试成功再改回去即可。&lt;/p&gt;
+&lt;h2 id=&#34;history&#34;&gt;history
+&lt;/h2&gt;&lt;p&gt;历史信息处理难度不小。&lt;/p&gt;
+&lt;p&gt;基本流程是开启shell时加载&lt;code&gt;/.mos_history&lt;/code&gt;，加载到本地数组。	
+然后每readline完毕执行一条非空指令就写入.mos_history的末尾。&lt;/p&gt;
+&lt;p&gt;难点在于切换指令。也就是本地数组与屏幕显示的处理。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在你按上下键切换指令的时候，你需要将当前的内容存进你本地数组的对应位置。&lt;/li&gt;
+&lt;li&gt;你要存一整个字符串，不能因为空格而影响存储&lt;/li&gt;
+&lt;li&gt;切换后显示内容清空再加载，光标自动放在末尾&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;反引号&#34;&gt;反引号
+&lt;/h2&gt;&lt;h3 id=&#34;基本实现方式&#34;&gt;基本实现方式
+&lt;/h3&gt;&lt;p&gt;实现方式是开启一个子shell，在子shell中完成指令并用输出的内容替换反引号及引住的内容。&lt;/p&gt;
+&lt;p&gt;这个我也是在get_token中实现的，不过这个的优先级很高，只要读到反引号我就一直读一直等，直到等到反引号结束其属性为WORD，否则异常退出。&lt;/p&gt;
+&lt;p&gt;那么读完反引号之后，我们要把内容取出来，开一个新shell，然后把内容传进shell让他去readline和runcmd，输出的内容还要传出来作为token的value。&lt;/p&gt;
+&lt;p&gt;传递的方式是管道。&lt;/p&gt;
+&lt;h3 id=&#34;debugf与printf&#34;&gt;debugf与printf
+&lt;/h3&gt;&lt;p&gt;其实当时很担心，怎么把输出的内容提取出来？每次控制台上的输出除了我们想要的之外，还有一堆env_kill的相关句子，难道要手动排除吗？&lt;/p&gt;
+&lt;p&gt;实践发现只有printf的句子会被提取。&lt;/p&gt;
+&lt;p&gt;那么就警示我们两点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;标准的输出必须要使用printf而不能用debugf&lt;/li&gt;
+&lt;li&gt;shell启动页面是printf！需要被特殊处理！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其中关于第二点，我的方式是为shell启动提供-s参数，并设置如果有这个参数就不执行哪些启动页面的输出。&lt;/p&gt;
+&lt;h2 id=&#34;条件执行&#34;&gt;条件执行
+&lt;/h2&gt;&lt;p&gt;这个是我花费时间最长的一个点，最终也是耗到凌晨三点半才搞定。其实条件执行功能本身并不难，在AST里已经实现了，难点在于如何得到返回值。&lt;/p&gt;
+&lt;p&gt;内建指令的返回值直接就返回，很直白。难点在于外部指令。&lt;/p&gt;
+&lt;p&gt;外部指令先是套了一层fork，fork里面spawn又是一层fork，更何况spawn是通过执行ELF文件，我怎么获取ELF文件本身的返回值？&lt;/p&gt;
+&lt;p&gt;经过研究发现，那些.b文件的返回值只能通过user/lib/libos.c中的main的返回值来体现。&lt;/p&gt;
+&lt;p&gt;那么这么一个奇怪的位置的值又怎么传回那么遥远的原shell呢？&lt;/p&gt;
+&lt;p&gt;我的答案还是管道。此外，我还强制了文件描述符2,3，便于解决困难的传参问题。其中libos.c只能写管道，并且强制通过fdnum=3的fd来实现。&lt;/p&gt;
+&lt;p&gt;进程必须要趁它在kill之前发出信息，否则就再也找不到了。&lt;/p&gt;
+&lt;p&gt;当然还有一种解法是修改libos.c的exit函数，让父进程掌管子进程的destroy，从而在子进程消失前拿到它的exit_value.这种一般要为进程添加属性exit_value，并添加set与get的系统调用。&lt;/p&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;实验报告很粗浅地写完了，OS的路程也终于画上了句号。在内核态打下的基础终于在用户态体现出如此强大的功能，个人还是很有成就感的。shell本身的可交互性与易懂性是吸引很多人选择它这个挑战的重要原因，实际上它也确实相较于swap更便于调试。但是难点就是内容实在是太多了，又不简单，两整天30个小时才侥幸拿下。我当前的实现也有一些我已知的错误，但是温柔的测试点并没有测出来。&lt;/p&gt;
+&lt;p&gt;赞美OS。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>北航OS Lab6 管道与SHELL</title>
         <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/</link>
         <pubDate>Wed, 04 Jun 2025 20:15:30 +0800</pubDate>
