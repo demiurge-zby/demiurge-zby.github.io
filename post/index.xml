@@ -7,17 +7,24 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Tue, 24 Jun 2025 10:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 25 Jun 2025 00:45:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>北航OS Challenge Shell</title>
         <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/</link>
-        <pubDate>Tue, 24 Jun 2025 10:15:30 +0800</pubDate>
+        <pubDate>Wed, 25 Jun 2025 00:45:30 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/</guid>
         <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/123.png" alt="Featured image of post 北航OS Challenge Shell" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;题面&#34;&gt;题面
-&lt;/h2&gt;&lt;p&gt;见：	
-&lt;a class=&#34;link&#34; href=&#34;challenge_shell.pdf&#34; &gt;text&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;感兴趣的同学可以看看：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/challenge_shell.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;本次shell挑战性任务整体来说难度还是很大的，需要实现的内容太多了。不过在今年的几个挑战性任务中可能还算是最容易拿到满分的，因为数据点评测比较简单，难度不高于样例。（虽然样例也称不上简单）&lt;/p&gt;
 &lt;p&gt;由于本次作业我选择在17周（也就是考试周）完成，所以做的时候时间比较赶，总共用了周一周二两天时间很极限地完成了。具体时间安排可以看下图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image.png&#34;
@@ -54,6 +61,7 @@
 &lt;h3 id=&#34;外部指令&#34;&gt;外部指令
 &lt;/h3&gt;&lt;p&gt;外部指令通过先fork子进程，子进程再spawn孙进程来实现。&lt;/p&gt;
 &lt;p&gt;spawn本身的功能是开一个新进程来执行二进制文件，因此外部指令的执行方式就是单独在/user目录下建立新的.c文件，并经过make形成.b文件，通过spawn执行ELF文件，结束。&lt;/p&gt;
+&lt;p&gt;（一定注意修改的是user/new.mk，修改内容是USERAPPS += mkdir.b \touch.b \ rm.b）&lt;/p&gt;
 &lt;p&gt;外部指令不应对shell的环境产生任何影响。&lt;/p&gt;
 &lt;h3 id=&#34;内建指令&#34;&gt;内建指令
 &lt;/h3&gt;&lt;p&gt;内建指令则涉及到改变shell的环境，因此必须在原shell下执行。&lt;/p&gt;
@@ -297,10 +305,11 @@
 &lt;p&gt;那么这么一个奇怪的位置的值又怎么传回那么遥远的原shell呢？&lt;/p&gt;
 &lt;p&gt;我的答案还是管道。此外，我还强制了文件描述符2,3，便于解决困难的传参问题。其中libos.c只能写管道，并且强制通过fdnum=3的fd来实现。&lt;/p&gt;
 &lt;p&gt;进程必须要趁它在kill之前发出信息，否则就再也找不到了。&lt;/p&gt;
-&lt;p&gt;当然还有一种解法是修改libos.c的exit函数，让父进程掌管子进程的destroy，从而在子进程消失前拿到它的exit_value.这种一般要为进程添加属性exit_value，并添加set与get的系统调用。&lt;/p&gt;
+&lt;p&gt;当然还有一种解法是修改libos.c的exit函数，让父进程掌管子进程的destroy，从而在子进程消失前拿到它的exit_value。这种一般要为进程添加属性exit_value，并添加set与get的系统调用。&lt;/p&gt;
 &lt;h2 id=&#34;后记&#34;&gt;后记
 &lt;/h2&gt;&lt;p&gt;实验报告很粗浅地写完了，OS的路程也终于画上了句号。在内核态打下的基础终于在用户态体现出如此强大的功能，个人还是很有成就感的。shell本身的可交互性与易懂性是吸引很多人选择它这个挑战的重要原因，实际上它也确实相较于swap更便于调试。但是难点就是内容实在是太多了，又不简单，两整天30个小时才侥幸拿下。我当前的实现也有一些我已知的错误，但是温柔的测试点并没有测出来。&lt;/p&gt;
 &lt;p&gt;赞美OS。&lt;/p&gt;
+&lt;p&gt;另外，祝今天高考查分的学弟学妹们取得优异成绩！&lt;/p&gt;
 </description>
         </item>
         <item>

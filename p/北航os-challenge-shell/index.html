@@ -10,7 +10,7 @@
 <meta property='og:description' content="实验报告">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-24T10:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-06-24T10:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/123.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-25T00:45:30&#43;08:00'/><meta property='article:modified_time' content='2025-06-25T00:45:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/123.png' />
 <meta name="twitter:title" content="北航OS Challenge Shell">
 <meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/123.png' />
@@ -370,7 +370,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-06-24</time>
+                <time class="article-time--published">2025-06-25</time>
             </div>
         
 
@@ -385,7 +385,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 9 分钟
+                    阅读时长: 10 分钟
                 </time>
             </div>
         
@@ -402,9 +402,16 @@
     
     <h1 id="实验报告">实验报告
 </h1><h2 id="题面">题面
-</h2><p>见：	
-<a class="link" href="challenge_shell.pdf" >text</a></p>
-<h2 id="说在前面">说在前面
+</h2><p>感兴趣的同学可以看看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/challenge_shell.pdf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="说在前面">说在前面
 </h2><p>本次shell挑战性任务整体来说难度还是很大的，需要实现的内容太多了。不过在今年的几个挑战性任务中可能还算是最容易拿到满分的，因为数据点评测比较简单，难度不高于样例。（虽然样例也称不上简单）</p>
 <p>由于本次作业我选择在17周（也就是考试周）完成，所以做的时候时间比较赶，总共用了周一周二两天时间很极限地完成了。具体时间安排可以看下图。</p>
 <p><img src="/p/%E5%8C%97%E8%88%AAos-challenge-shell/image.png"
@@ -441,6 +448,7 @@
 <h3 id="外部指令">外部指令
 </h3><p>外部指令通过先fork子进程，子进程再spawn孙进程来实现。</p>
 <p>spawn本身的功能是开一个新进程来执行二进制文件，因此外部指令的执行方式就是单独在/user目录下建立新的.c文件，并经过make形成.b文件，通过spawn执行ELF文件，结束。</p>
+<p>（一定注意修改的是user/new.mk，修改内容是USERAPPS += mkdir.b \touch.b \ rm.b）</p>
 <p>外部指令不应对shell的环境产生任何影响。</p>
 <h3 id="内建指令">内建指令
 </h3><p>内建指令则涉及到改变shell的环境，因此必须在原shell下执行。</p>
@@ -684,10 +692,11 @@
 <p>那么这么一个奇怪的位置的值又怎么传回那么遥远的原shell呢？</p>
 <p>我的答案还是管道。此外，我还强制了文件描述符2,3，便于解决困难的传参问题。其中libos.c只能写管道，并且强制通过fdnum=3的fd来实现。</p>
 <p>进程必须要趁它在kill之前发出信息，否则就再也找不到了。</p>
-<p>当然还有一种解法是修改libos.c的exit函数，让父进程掌管子进程的destroy，从而在子进程消失前拿到它的exit_value.这种一般要为进程添加属性exit_value，并添加set与get的系统调用。</p>
+<p>当然还有一种解法是修改libos.c的exit函数，让父进程掌管子进程的destroy，从而在子进程消失前拿到它的exit_value。这种一般要为进程添加属性exit_value，并添加set与get的系统调用。</p>
 <h2 id="后记">后记
 </h2><p>实验报告很粗浅地写完了，OS的路程也终于画上了句号。在内核态打下的基础终于在用户态体现出如此强大的功能，个人还是很有成就感的。shell本身的可交互性与易懂性是吸引很多人选择它这个挑战的重要原因，实际上它也确实相较于swap更便于调试。但是难点就是内容实在是太多了，又不简单，两整天30个小时才侥幸拿下。我当前的实现也有一些我已知的错误，但是温柔的测试点并没有测出来。</p>
 <p>赞美OS。</p>
+<p>另外，祝今天高考查分的学弟学妹们取得优异成绩！</p>
 
 </section>
 
