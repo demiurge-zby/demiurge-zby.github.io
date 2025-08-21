@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="是不是很失败呢">
+<title>BUAA OO U2 多线程与电梯</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA OO U2 多线程与电梯">
+<meta property='og:description' content="是不是很失败呢">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-17T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-04-17T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.png' />
+<meta name="twitter:title" content="BUAA OO U2 多线程与电梯">
+<meta name="twitter:description" content="是不是很失败呢"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#迭代过程综述">迭代过程综述</a>
+      <ol>
+        <li><a href="#请求的迭代">请求的迭代</a></li>
+        <li><a href="#分配的迭代">分配的迭代</a></li>
+        <li><a href="#运行的迭代">运行的迭代</a></li>
+        <li><a href="#输出的迭代">输出的迭代</a></li>
+      </ol>
+    </li>
+    <li><a href="#迭代分析">迭代分析</a>
+      <ol>
+        <li><a href="#作业核心内容">作业核心内容</a></li>
+        <li><a href="#uml类图">UML类图</a></li>
+        <li><a href="#sequence">sequence</a></li>
+        <li><a href="#稳定与易变">稳定与易变</a></li>
+      </ol>
+    </li>
+    <li><a href="#同步块的设置和锁的选择">同步块的设置和锁的选择</a></li>
+    <li><a href="#调度器设计">调度器设计</a>
+      <ol>
+        <li><a href="#被scheupdate时不能receive">被SCHE/UPDATE时不能RECEIVE</a></li>
+        <li><a href="#不能receive我接不到的人">不能RECEIVE我接不到的人</a></li>
+      </ol>
+    </li>
+    <li><a href="#同步与防撞设计">同步与防撞设计</a>
+      <ol>
+        <li><a href="#同步启动update">同步启动UPDATE</a></li>
+        <li><a href="#电梯防撞">电梯防撞</a></li>
+      </ol>
+    </li>
+    <li><a href="#bug与debug">BUG与DEBUG</a></li>
+    <li><a href="#心得体会">心得体会</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/">
+                <img src="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123_hu12990098003769111437.png"
+                        srcset="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123_hu12990098003769111437.png 800w, /p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123_hu2040165509884859680.png 1600w"
+                        width="800" 
+                        height="420" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U2 多线程与电梯" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/oo/" style="background-color: #2a9d8f; color: #fff;">
+                OO
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/">BUAA OO U2 多线程与电梯</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            是不是很失败呢
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-17</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="迭代过程综述">迭代过程综述
+</h2><h3 id="请求的迭代">请求的迭代
+</h3><p>第一次作业：PersonRequest            <br>
+第二次作业：ScheRequest           <br>
+第三次作业：UpdateRequest</p>
+<h3 id="分配的迭代">分配的迭代
+</h3><p>第一次作业：指定分配 <br>
+第二次作业：手动分配、SCHE静默       <br>
+第三次作业：Update静默、高低楼层分配</p>
+<h3 id="运行的迭代">运行的迭代
+</h3><p>第一次作业：LOOK   <br>
+第二次作业：专属SCHE运行      <br>
+第三次作业：专属UPDATE运行、重写MOVE方法</p>
+<h3 id="输出的迭代">输出的迭代
+</h3><p>第一次作业：ARRIVE/OPEN/OUT/IN/CLOSE       <br>
+第二次作业：SCHE、RECEIVE以及OUT-F/S   <br>
+第三次作业：UPDATE</p>
+<h2 id="迭代分析">迭代分析
+</h2><h3 id="作业核心内容">作业核心内容
+</h3><p>hw5核心实现：</p>
+<ol>
+<li>生产者消费者模型</li>
+<li>LOOK算法</li>
+</ol>
+<p>hw6核心实现：</p>
+<ol>
+<li>调度器</li>
+<li>SCHE策略</li>
+</ol>
+<p>hw7核心实现：</p>
+<ol>
+<li>UPDATE策略</li>
+<li>强制中转</li>
+<li>双轿厢的同步与互斥</li>
+</ol>
+<h3 id="uml类图">UML类图
+</h3><p><img src="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1.png"
+	width="1241"
+	height="800"
+	srcset="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu2800710375844316694.png 480w, /p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu16159373750419713481.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="372px"
+	
+></p>
+<p>红色为hw5，绿色为hw6，蓝色为hw7</p>
+<p>其中对于<code>RequestCoordinator</code>，每个电梯都有一把这样的锁，当电梯没有request时，就会调用这个里的条件变量的wait,也即封装好的<code>waitForRequest()</code>函数。被唤醒则通过分发线程分给各个Queue后触发唤醒。</p>
+<h3 id="sequence">sequence
+</h3><p>电梯线程的run方法：  <br>
+<img src="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run.png"
+	width="679"
+	height="981"
+	srcset="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu7559287381418978283.png 480w, /p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu4541188798760296372.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="69"
+		data-flex-basis="166px"
+	
+></p>
+<p>主线程(?)的main方法：   <br>
+<img src="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main.png"
+	width="769"
+	height="415"
+	srcset="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu12254519656876251287.png 480w, /p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu5792283028725187188.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="444px"
+	
+></p>
+<h3 id="稳定与易变">稳定与易变
+</h3><p>稳定：   <br>
+生产者消费者模型的整体框架与类的构建     <br>
+strategy中的LOOK算法     <br>
+poll、open、setEnd等基本函数的实现</p>
+<p>易变：   <br>
+具体的运行方法，如doubleGo()、sche()、update()   <br>
+电梯的属性要不断增添以适应需求</p>
+<p>整体感受下来，   <br>
+hw5是初识多线程、生产者消费者模型与LOOK算法，主要是接受<strong>多线程的并发感</strong>，掌握一对一的通信方法（End的实现）</p>
+<p>hw6开始出现<strong>单锁双开</strong>：不再是一对一的通信，scheRequest与personRequest都能让正在wait的电梯苏醒。</p>
+<p>hw7则出现了更加复杂的线程通信。主要体现在<strong>同类对象同一方法</strong>过程中的互相通信。如果不做好同步就擅自拿锁，很容易触发死锁。</p>
+<h2 id="同步块的设置和锁的选择">同步块的设置和锁的选择
+</h2><p>在第一次作业中，我基本掌握了<strong>synchronize块</strong>的用法，配套使用wait与notify。到了第二次作业，我突然决定尝试使用<strong>读写锁</strong>。在自学了条件变量及其await和signal后，我由于不熟悉、不确定而深受其扰，也常常感到后悔为何要自作主张，但逐渐地，也终于感受到了读写锁的清晰与直白。</p>
+<p>在两者的关系上：     <br>
+同步块其实是<strong>隐式使用</strong>了对象的内置锁   <br>
+而显式锁可以<strong>跨方法</strong>使用，可以设置公平性，还更加清晰易读。</p>
+<p><strong>条件变量</strong>的引入与传递也极大便利了线程之间的通信。</p>
+<h2 id="调度器设计">调度器设计
+</h2><p>虽然我采用了随机分配的策略，但是在正确性上要考虑的问题依旧存在。</p>
+<h3 id="被scheupdate时不能receive">被SCHE/UPDATE时不能RECEIVE
+</h3><p>在调度器中当然需要拿到电梯的相关信息，六部电梯Elevators是调度器的属性之一。</p>
+<p>但是在判断到isSche()后，我并不采用重新选电梯的方法，而是用wait方法等待这个电梯SCHE结束，再把那个任务分配给电梯。</p>
+<p>这样写自然是有缺陷的，你的调度器线程居然为了一个随机分配的结果而<strong>等待</strong>？   <br>
+但是正相对地，他保证了分配结果一定是完全随机的。（hw6 mid5的教训）   <br>
+此外，随机性也导致等待这一现象的发生也是随机的，并不容易导致调度器被恶意阻塞。</p>
+<h3 id="不能receive我接不到的人">不能RECEIVE我接不到的人
+</h3><p>一旦你被升级，且RECEIVE了你接管范围外的人：  <br>
+在接到这个人之前，你将没有机会把RECEIVE转让。    <br>
+而你也并不能接到这个人。</p>
+<p>在这里，我则强制让它的伙伴来接。</p>
+<p>何为范围外：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">cannotArrive</span><span class="p">(</span><span class="n">Elevator</span><span class="w"> </span><span class="n">elevator</span><span class="p">,</span><span class="w"> </span><span class="n">PersonRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">upperCannot</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">(</span><span class="n">getFloorNumber</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getFromFloor</span><span class="p">())</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">elevator</span><span class="p">.</span><span class="na">getTransferFloorNumber</span><span class="p">())</span><span class="w"> </span><span class="o">||</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">(</span><span class="n">getFloorNumber</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getFromFloor</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">elevator</span><span class="p">.</span><span class="na">getTransferFloorNumber</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">getFloorNumber</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getToFloor</span><span class="p">())</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">getFloorNumber</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getFromFloor</span><span class="p">()));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">lowerCannot</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">(</span><span class="n">getFloorNumber</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getFromFloor</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">elevator</span><span class="p">.</span><span class="na">getTransferFloorNumber</span><span class="p">())</span><span class="w"> </span><span class="o">||</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">(</span><span class="n">getFloorNumber</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getFromFloor</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">elevator</span><span class="p">.</span><span class="na">getTransferFloorNumber</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">getFloorNumber</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getToFloor</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">getFloorNumber</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getFromFloor</span><span class="p">()));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="n">elevator</span><span class="p">.</span><span class="na">isUpper</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">upperCannot</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">elevator</span><span class="p">.</span><span class="na">isUpper</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lowerCannot</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="同步与防撞设计">同步与防撞设计
+</h2><p>在这两处上我都是用了信号+while+sleep的方法。  <br>
+他看起来很像轮询，但他可慢太多了，循环的次数不会超过15次。</p>
+<h3 id="同步启动update">同步启动UPDATE
+</h3><p>当电梯满足UPDATE条件时，我会设置该电梯的canUpdate属性为true。    <br>
+当upper电梯已经setCanUpdate(true)，试图发送UPDATE-BEGIN之前，      <br>
+在大家准备sleep(1000)之前，     <br>
+便会经历</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">canStartUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">other</span><span class="p">.</span><span class="na">getCanStartUpdate</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//System.out.println(othId + &#34; is closing&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">50</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="电梯防撞">电梯防撞
+</h3><p>我将transferFloor楼层的运转高度规范化。</p>
+<p>对于advice为GO时，会根据当前电梯是否为双轿厢而执行go()或doubleGo()</p>
+<p>doubleGo()存在一个判断，就是你是不是正在前往transferFloor。</p>
+<p>如果不是就正常go，如果是的话，会触发：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">curFloor</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">transferFloor</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">halt</span><span class="p">(</span><span class="n">100</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>和一个tryToGo()操作。</p>
+<p>tryToGo()会直接先把电梯的楼层设置为transferFloor，避免撞车。接着进行睡200与输出ARRIVE，接着进行开门放人与进人，接着关门和离开这一楼层，最后再更新电梯楼层。</p>
+<p>核心目标就是transferFloor的操作要尽可能的规范与固定，这样虽然死板，但是可控性很强。</p>
+<h2 id="bug与debug">BUG与DEBUG
+</h2><p>不忍提及。本次作业的滑铁卢是我始料未及的，也许从我放弃搭评测机的那一刻就决定了&hellip;</p>
+<p>没有评测机的话，我只能识别出最基本的RTLE与CTLE。</p>
+<p>hw5没有什么好说的。  <br>
+hw6已经初现端倪：强测1bug，互测1bug      <br>
+hw7的bug已经数不胜数了。</p>
+<p>这其中最最重要的原因，就是DispatchThread的终结控制。         <br>
+实际上，这可能是我这一整次迭代作业最大的败笔。</p>
+<p>一般来说，应当设置一个计数器，记录request的完成情况。没有完成就不要让分发线程终结。对于需要重新分发的请求，只需要扔回分发线程即可。</p>
+<p>可我并非如此。</p>
+<p>我所有的OUT-F、SCHE、UPDATE导致的无效化，全部都是手动分配电梯，手动输出RECEIVE。</p>
+<p>这么做的漏洞：  RECEIVE重复！</p>
+<p>可能你一个任务被dispatch分发给了电梯A，而电梯A自身的RECEIVE逻辑与dispatch并没有沟通交流，使得电梯A极有可能把dispatch给他的新请求当作无效请求分配出去。除此之外，其他电梯给电梯A分配的新请求在某种时机下也会被重新分配。</p>
+<p>但是只要交给dispatch，RECEIVE一定能在这个电梯离开无效状态后才会分配给他。</p>
+<p>其实本质上就是，自己由于对死锁的畏惧，并没有增添电梯对分发线程的信息获取。</p>
+<p>直到bug修复阶段，经过评测机的重重评测，我在重构了receive和发现隐藏bug后，终于实现了稳定通过bug修复。</p>
+<p>评测机是必要的！OOU2不能没有评测机！</p>
+<h2 id="心得体会">心得体会
+</h2><p>今天回顾了OOU1的单元总结。哈，还真是高高在上呢。</p>
+<p>直到现实重击才清醒过来吗？优美的层次化结构并不是轻易就能实现的。</p>
+<p>在bug修复的重重测试之下，终于交出一份满意答卷后，方才意识到自己的问题，竟在于没有做好elevator到requestQueue的回撤，导致自己自行添加了混乱的数据线，毁坏了原有的逻辑链条。在大家都在de撞车、de静默状态RECEIVE的同步问题时，我却在为自己特有的无意义实现而缝缝补补。</p>
+<p>层次化结构很重要，也很值得考量。要在局部书写的时候尽力保有全局观。</p>
+<p>至于线程安全，我认为线程之间的通信接口主要就是getter与setter，只是取当前时间的情况进行策略决断，可以避免长时间占用锁。</p>
+<p>此外避免死锁可以通过规避相互调用。尤其是在两个同类线程在相互上锁的时候，死锁率极高。因此一般考虑用对地位不等、也就是不会相互调用的两个对象上锁，例如在做receive回撤的时候，就直接返回到allrequest中，对它上锁当然是不会死锁的。</p>
+<p><strong>在电梯反复运行中感受时间的流逝，从线程的独立与交融中培养多核大脑。</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.af5537eaa7f7cd8eba23dfa55b1f600d_hu11361999506600342615.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U4 UML正向建模与图书管理系统"
+                        
+                        data-hash="md5-r1U36qf3zY66I9&#43;lWx9gDQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U4 UML正向建模与图书管理系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.8c9ce4a1c6ab44b7d9503dd39d1215f1_hu16505079589854765534.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U3 JML与社交网络"
+                        
+                        data-hash="md5-jJzkocarRLfZUD3TnRIV8Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U3 JML与社交网络</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.0965eb13aa31486d992c3dcb4e924020_hu17511212002196188424.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U1 递归下降与表达式解析"
+                        
+                        data-hash="md5-CWXrE6oxSG2ZLD3LTpJAIA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U1 递归下降与表达式解析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.2c3ae67d1543d8bf8f7f7fe3e1dd785e_hu6681761682986551058.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U1 HW1 表达式解析"
+                        
+                        data-hash="md5-LDrmfRVD2L&#43;Pf3/j4d14Xg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U1 HW1 表达式解析</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

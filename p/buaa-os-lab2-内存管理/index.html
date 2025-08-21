@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验报告">
+<title>BUAA OS Lab2 内存管理</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA OS Lab2 内存管理">
+<meta property='og:description' content="实验报告">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-05T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-04-05T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg.png' />
+<meta name="twitter:title" content="BUAA OS Lab2 内存管理">
+<meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#思考题">思考题</a>
+      <ol>
+        <li><a href="#thinking-21">Thinking 2.1</a></li>
+        <li><a href="#thinking-22">Thinking 2.2</a>
+          <ol>
+            <li><a href="#用宏实现链表的好处">用宏实现链表的好处</a></li>
+            <li><a href="#比较单向双向循环链表">比较单向、双向、循环链表</a></li>
+          </ol>
+        </li>
+        <li><a href="#thinking-23">Thinking 2.3</a>
+          <ol>
+            <li><a href="#page_list_entry_t">Page_LIST_entry_t</a></li>
+            <li><a href="#page">Page</a></li>
+            <li><a href="#page_list">Page_list</a></li>
+            <li><a href="#answer">Answer</a></li>
+          </ol>
+        </li>
+        <li><a href="#thinking-24">Thinking 2.4</a></li>
+        <li><a href="#thinking-25">Thinking 2.5</a></li>
+        <li><a href="#thinking-a1">Thinking A.1</a></li>
+        <li><a href="#thinking-26">Thinking 2.6</a></li>
+        <li><a href="#thinking-27">Thinking 2.7</a></li>
+      </ol>
+    </li>
+    <li><a href="#难点分析">难点分析</a>
+      <ol>
+        <li><a href="#pmapc">pmap.c</a></li>
+        <li><a href="#tlb">TLB</a></li>
+      </ol>
+    </li>
+    <li><a href="#实验体会">实验体会</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+                <img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg_hu1639712642856441908.png"
+                        srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg_hu1639712642856441908.png 800w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg_hu5110285028852438277.png 1600w"
+                        width="800" 
+                        height="422" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab2 内存管理" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/os/" style="background-color: #2a9d8f; color: #fff;">
+                OS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">BUAA OS Lab2 内存管理</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            实验报告
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-05</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="实验报告">实验报告
+</h1><h2 id="思考题">思考题
+</h2><h3 id="thinking-21">Thinking 2.1
+</h3><p>在编写的 C 程序中，指针变量中存储的地址被视为<code>虚拟地址</code>。     <br>
+MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为<code>虚拟地址</code>。</p>
+<p>参见实验指导书：</p>
+<blockquote>
+<p>在计算机组成原理等硬件实验中，CPU 通常直接发送物理地址，这是为了简化内存操作，让大家关注 CPU 内部的计算与控制逻辑。而在实际程序中，访存、跳转等指令以及用于取指的 PC 寄存器中的访存目标地址都是<code>虚拟地址</code>。我们编写的 C 程序中也经常通过对指针解引用来进行访存，其中指针的值也会被视为<code>虚拟地址</code>，经过编译后生成相应的访存指令。</p>
+</blockquote>
+<h3 id="thinking-22">Thinking 2.2
+</h3><h4 id="用宏实现链表的好处">用宏实现链表的好处
+</h4><p>首先，在可重用性上自然是能够被多次反复使用，便于代码书写与阅读。     <br>
+其次，宏相较于函数，其自由度大大增加。它可以支持不同数据类型的链表，因为其本质上只是字符串替换，可操作性更强。    <br>
+第三，宏不是函数调用，不需额外占用函数栈空间。</p>
+<h4 id="比较单向双向循环链表">比较单向、双向、循环链表
+</h4><p>由于 <code>/usr/include/sys/queue.h</code> 里面的双向链表和我们自己实现的差别不大，因此都使用了<code>/usr/include/sys/queue.h</code>的进行对比分析。</p>
+<p>单向链表：  <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1.png"
+	width="888"
+	height="405"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1_hu15072774150551891593.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1_hu7660962741785960241.png 1024w"
+	loading="lazy"
+	
+		alt="单向链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="219"
+		data-flex-basis="526px"
+	
+></p>
+<p>双向链表：  <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2.png"
+	width="850"
+	height="424"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2_hu5945114192631768838.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2_hu13934510025857460306.png 1024w"
+	loading="lazy"
+	
+		alt="双向链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="481px"
+	
+></p>
+<p>循环链表：     <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image.png"
+	width="868"
+	height="458"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image_hu2012991216943849946.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image_hu11233287312304373731.png 1024w"
+	loading="lazy"
+	
+		alt="循环链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="454px"
+	
+></p>
+<p>可以看出，在结构体定义上，单向链表与双向链表都只需要头指针，而循环链表需要头尾两个指针；    <br>
+在link定义上，单向链表只有next，而双向链表与循环链表都有next与prev。</p>
+<blockquote>
+<p>需要注意的是：循环链表的next与prev都是数据的指针，而双向链表的prev是前一数据的next指针的指针！</p>
+</blockquote>
+<p>在功能性上的差异在此不再赘述了，实现的功能越多，效率上可能就会有折损。</p>
+<ul>
+<li>插入      <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3.png"
+	width="711"
+	height="255"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3_hu5453767599776232582.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3_hu3893599034676677987.png 1024w"
+	loading="lazy"
+	
+		alt="单向链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="278"
+		data-flex-basis="669px"
+	
+>    <br>
+单向链表只能实现插入到某个节点之后，但相应的语句也只有两条。     <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4.png"
+	width="877"
+	height="563"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4_hu5411641350732979300.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4_hu5491134792678881312.png 1024w"
+	loading="lazy"
+	
+		alt="双向链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="373px"
+	
+>   <br>
+双向链表能够实现插入到前、后两种位置，但是每个方法都需要四条语句。      <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5.png"
+	width="844"
+	height="505"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5_hu8236949126515540414.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5_hu16317842035363967724.png 1024w"
+	loading="lazy"
+	
+		alt="循环链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="167"
+		data-flex-basis="401px"
+	
+>   <br>
+循环链表能实现插入到前、后两种位置，需要的语句更加复杂。 <br>
+此外，循环链表出了插入到HEAD之外，还有独有的插入到TAIL</li>
+<li>删除
+三种链表在删除上的区别更加显著：  <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6.png"
+	width="852"
+	height="318"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6_hu12676226490457632374.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6_hu17222394798821486483.png 1024w"
+	loading="lazy"
+	
+		alt="单向链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="267"
+		data-flex-basis="643px"
+	
+> <br>
+单向链表要想删除某个结点，必须通过遍历来定位好他的位置，才能让它前面的结点链接上它后面的结点。   <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7.png"
+	width="823"
+	height="175"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7_hu1775133871085579657.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7_hu13794736907260181710.png 1024w"
+	loading="lazy"
+	
+		alt="双向链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="470"
+		data-flex-basis="1128px"
+	
+>   <br>
+而双向链表可以直接知晓其前一结点的next指针，因此只需要O(1)的操作  <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8.png"
+	width="869"
+	height="315"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8_hu9547383370689560170.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8_hu12873222633953228363.png 1024w"
+	loading="lazy"
+	
+		alt="循环链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="275"
+		data-flex-basis="662px"
+	
+>   <br>
+循环链表也是O(1)的，但是对于head指针要特殊处理。</li>
+</ul>
+<p>整体来看，双向链表是权衡了时间复杂度与空间复杂度的不错设计，性能优良。</p>
+<h3 id="thinking-23">Thinking 2.3
+</h3><p>选择C项。</p>
+<p>接下来分析一下Page_list的结构。</p>
+<h4 id="page_list_entry_t">Page_LIST_entry_t
+</h4><p>结合     <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9.png"
+	width="826"
+	height="156"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9_hu3801529794239292768.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9_hu4045160301837978091.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="529"
+		data-flex-basis="1270px"
+	
+>    <br>
+与    <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10.png"
+	width="536"
+	height="42"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10_hu8612394660481041232.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10_hu9835370867112699285.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1276"
+		data-flex-basis="3062px"
+	
+>   <br>
+得知</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">Page</span> <span class="o">*</span><span class="n">le_next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">Page</span> <span class="o">**</span><span class="n">le_prev</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>构成了结构体<code>Page_LIST_entry_t</code>。</p>
+<h4 id="page">Page
+</h4><p>接着根据    <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11.png"
+	width="844"
+	height="295"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11_hu16149775748210277383.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11_hu16760772668446011204.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="286"
+		data-flex-basis="686px"
+	
+>   <br>
+得知</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">Page_LIST_entry_t</span> <span class="n">pp_link</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">u_short</span> <span class="n">pp_ref</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>构成了结构体<code>struct Page</code>。</p>
+<h4 id="page_list">Page_list
+</h4><p>根据        <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12.png"
+	width="327"
+	height="30"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12_hu11742448621651462290.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12_hu13741518102078949684.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1090"
+		data-flex-basis="2616px"
+	
+>   <br>
+与    <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13.png"
+	width="637"
+	height="121"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13_hu5010262874759753169.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13_hu8021967337604878703.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="526"
+		data-flex-basis="1263px"
+	
+>   <br>
+得知</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">Page</span> <span class="o">*</span><span class="n">lh_first</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>构成了结构体<code>struct Page_list</code>。</p>
+<h4 id="answer">Answer
+</h4><p>经过整理总结，也即：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">Page_list</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="k">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">         <span class="k">struct</span> <span class="n">Page</span> <span class="o">*</span><span class="n">le_next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">         <span class="k">struct</span> <span class="n">Page</span> <span class="o">**</span><span class="n">le_prev</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="n">pp_link</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">u_short</span> <span class="n">pp_ref</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span><span class="o">*</span> <span class="n">lh_first</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="thinking-24">Thinking 2.4
+</h3><p>根据任务指导书：</p>
+<blockquote>
+<p>ASID：Address Space IDentifier   <br>
+用于区分不同的地址空间。   <br>
+查找 TLB 表项时，除了需要提供 VPN，还需要提供ASID
+同一虚拟地址在不同的地址空间中通常映射到不同的物理地址</p>
+</blockquote>
+<p>在多进程操作系统中，每个进程都有自己独立的虚拟地址空间。ASID 作为唯一的标识符，要用于区分不同进程的地址空间。</p>
+<p><img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14.png"
+	width="811"
+	height="66"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14_hu18408539902230633037.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14_hu8212261378777013766.png 1024w"
+	loading="lazy"
+	
+		alt="ASID"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1228"
+		data-flex-basis="2949px"
+	
+></p>
+<p>ASID通常为8位，即有256种ASID，就可以支持256个不同的地址空间。</p>
+<h3 id="thinking-25">Thinking 2.5
+</h3><p>调用关系显然： <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15.png"
+	width="795"
+	height="93"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15_hu12396460553871558354.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15_hu4106646982107807543.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="854"
+		data-flex-basis="2051px"
+	
+></p>
+<p>tlb_invalidate函数通过调用tlb_out函数，把va对应的页表项清空。  <br>
+其中(va &amp; ~GENMASK(PGSHIFT, 0)) | (asid &amp; (NASID - 1)) 是传入的参数，也就是$a0。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">LEAF</span><span class="p">(</span><span class="no">tlb_out</span><span class="p">)</span> <span class="c1"># 定义为叶函数，这决定了它的栈帧结构
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="na">.set</span> <span class="no">noreorder</span> <span class="c1"># 确保指令按照代码中的顺序依次执行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1"># 保存和修改 CP0_ENTRYHI 寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">mfc0</span>    <span class="no">t0</span><span class="p">,</span> <span class="no">CP0_ENTRYHI</span> <span class="c1"># 保存 CP0_ENTRYHI 寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">mtc0</span>    <span class="no">a0</span><span class="p">,</span> <span class="no">CP0_ENTRYHI</span> <span class="c1"># 修改 CP0_ENTRYHI 寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">nop</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">tlbp</span>  <span class="c1"># 查找与 ENTRYHI 寄存器中值匹配的条目，存入CP0_INDEX
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">nop</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">mfc0</span>    <span class="no">t1</span><span class="p">,</span> <span class="no">CP0_INDEX</span> <span class="c1"># 取出index
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="na">.set</span> <span class="no">reorder</span> <span class="c1"># 即将有分支跳转，允许汇编器对指令进行重新排序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">bltz</span>    <span class="no">t1</span><span class="p">,</span> <span class="no">NO_SUCH_ENTRY</span> <span class="c1"># index == -1 即不存在对应的tlb
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="na">.set</span> <span class="no">noreorder</span> <span class="c1"># tlb表项存在，继续顺序执行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">mtc0</span>    <span class="no">zero</span><span class="p">,</span> <span class="no">CP0_ENTRYHI</span> <span class="c1"># 清空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">mtc0</span>    <span class="no">zero</span><span class="p">,</span> <span class="no">CP0_ENTRYLO0</span> <span class="c1"># 清空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">mtc0</span>    <span class="no">zero</span><span class="p">,</span> <span class="no">CP0_ENTRYLO1</span> <span class="c1"># 清空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">nop</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">tlbwi</span> <span class="c1"># 把这些值写入tlb，也就是清空该tlb表项
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="na">.set</span> <span class="no">reorder</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 不管 tlbp 指令是否找到匹配的 TLB 条目
+</span></span></span><span class="line"><span class="cl"><span class="c1"># 执行完 tlbwi 之后
+</span></span></span><span class="line"><span class="cl"><span class="c1"># 程序最终都会恢复 ENTRYHI 寄存器的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"># 并且返回到调用者处
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nl">NO_SUCH_ENTRY:</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">mtc0</span>    <span class="no">t0</span><span class="p">,</span> <span class="no">CP0_ENTRYHI</span> <span class="c1"># 恢复CP0_ENTRYHI
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">j</span>       <span class="no">ra</span> <span class="c1"># 返回到tlb_invalidate函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">END</span><span class="p">(</span><span class="no">tlb_out</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>参考：   <br>
+<img src="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16.png"
+	width="388"
+	height="211"
+	srcset="/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16_hu8795999730384798224.png 480w, /p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16_hu3072628788898734460.png 1024w"
+	loading="lazy"
+	
+		alt="LEAF"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="441px"
+	
+></p>
+<h3 id="thinking-a1">Thinking A.1
+</h3><p>页面大小4KB，页内偏移为12位。</p>
+<p>一级页表指向512个二级页表，每个二级页表指向512个三级页表。</p>
+<p>若三级页表的基地址为PTbase，  <br>
+则三级页表页目录的基地址应当是PTbase + PTbase&raquo;9</p>
+<p>映射到页目录自身的页目录项地址为PTbase + PTbase&raquo;9 + PTbase&raquo;18</p>
+<h3 id="thinking-26">Thinking 2.6
+</h3><ul>
+<li>函数调用需要开启进程，env_init就需要pgdir_alloc为其分配页。</li>
+<li>load_icode在加载进程指令代码时，需要page_alloc和page_insert为加载二进制代码到内存而分配物理页并建立映射。</li>
+<li>当进程结束或内存区域不再使用时使用env_free，需要page_remove从页表移除相关映射，page_decref减少物理页引用计数。</li>
+</ul>
+<h3 id="thinking-27">Thinking 2.7
+</h3><p>X86 存在逻辑地址、线性地址和物理地址三种地址。     <br>
+逻辑地址由段基址和偏移量构成，是程序直接使用的地址。  <br>
+通过分段机制，逻辑地址转换为线性地址；    <br>
+再利用分页机制，线性地址转换为物理地址用于实际访存。</p>
+<p>比较来说，X86有分段和分页两层地址转换，先分段后分页；  <br>
+MIPS主要是分页机制，内存管理粒度更统一。</p>
+<h2 id="难点分析">难点分析
+</h2><p>本次实验整体来说看还是蛮大的，从物理内存到虚拟内存再到TLB，形成了综合的一体化架构。</p>
+<h3 id="pmapc">pmap.c
+</h3><p><code>pmap.c</code>是本次实验最核心的文件之一。主要函数如下：</p>
+<p><code>mips_detect_memory</code>: 得知可用物理页数</p>
+<p><code>alloc</code>：增大freemem，返回申请的物理空间</p>
+<p><code>mips_vm_init</code>：为两级页表alloc物理空间</p>
+<p><code>page_init</code>：把物理空间划分为物理页，根据freemem区分已用页与未用页，并将未用页都放进page_free_list</p>
+<p><code>page_alloc</code>：从page_free_list申请物理页</p>
+<p><code>page_free</code>：将物理页放回page_free_list</p>
+<p><code>pgdir_walk</code>：得到va对应的二级页表中的对应项的索引</p>
+<p><code>page_insert</code>：建立pgdir_walk找到的项与物理页的映射</p>
+<p><code>page_lookup</code>：找到va对应的物理页</p>
+<p><code>page_decref</code>：降低物理页引用次数，降低到0时自动执行page_free</p>
+<p><code>page_remove</code>：降低va对应物理页的引用次数，并清空va对应的TLB表项</p>
+<p>其中关于Pde、Pte指针的阅读理解难度比较大，并且涉及到大量的头文件，需要反复阅读<code>pmap.h</code>与<code>queue.h</code>才能解决问题。</p>
+<h3 id="tlb">TLB
+</h3><p>关于TLB表项的清空与重填，我们主要进行阅读与理解的工作。</p>
+<ul>
+<li>由于TLB miss，do_tlb_refill被触发。</li>
+<li>do_tlb_refill为_do_tlb_refill传参</li>
+<li>_do_tlb_refill调用tlb_invalidate进行TLB清空</li>
+<li>_do_tlb_refill寻找page并进行页表重填</li>
+<li>_do_tlb_refill返回值用于do_tlb_refill重填TLB</li>
+</ul>
+<h2 id="实验体会">实验体会
+</h2><p>第一次接触这些内容的时候，会感受到一片茫然。不过实验指导书从内到外的引导还是很到位的，跟着指导书读完源代码后，基本上知道内存管理干了什么事，是如何实现的。</p>
+<p>在具体实现代码内容的时候，基本上是被HINT牵着走，没有HINT的话，我也确实不能直接明白该怎么去实现具体的功能。</p>
+<p>Lab2只顺着过一遍大抵是会忘光的。如果能够为所有的函数都写上自己的注释，可能理解会更加深入一点。</p>
+<p>近期事务很多很乱，如果能像解决Lab2的诸多函数一样，逐个攻克，希望会有好的结果。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-challenge-shell/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-challenge-shell/123.360f1f15f3beb3bd6b54bdf33ff56b97_hu672298263870228250.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Challenge Shell"
+                        
+                        data-hash="md5-Ng8fFfO&#43;s71rVL3zP/Vrlw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Challenge Shell</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.59a725bb7470179496b59ef870f141ed_hu7982124795751662449.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab6 管道与SHELL"
+                        
+                        data-hash="md5-Waclu3RwF5SWtZ74cPFB7Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab6 管道与SHELL</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/123.f449929313b9bc588b18092d04f81d2f_hu3882242188266819812.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab5 上机"
+                        
+                        data-hash="md5-9EmSkxO5vFiLGAktBPgdLw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab5 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/123.f91714c4ea878afc95fdee604e380825_hu16560301168419005684.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab5 文件系统"
+                        
+                        data-hash="md5-&#43;RcUxOqHivyV/e5gTjgIJQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab5 文件系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/123.e7fe13a9c852f8d15643aa873805e3e7_hu14461487000464471443.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab4 上机"
+                        
+                        data-hash="md5-5/4TqchS&#43;NFWQ6qHOAXj5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab4 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

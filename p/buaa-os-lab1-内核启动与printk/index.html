@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验报告">
+<title>BUAA OS Lab1 内核、启动与printk</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA OS Lab1 内核、启动与printk">
+<meta property='og:description' content="实验报告">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-19T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/jpg.png' />
+<meta name="twitter:title" content="BUAA OS Lab1 内核、启动与printk">
+<meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/jpg.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#思考题">思考题</a>
+      <ol>
+        <li><a href="#thinking-11">Thinking 1.1</a>
+          <ol>
+            <li><a href="#gcc-与-readelf">gcc 与 readelf</a></li>
+            <li><a href="#objdump">objdump</a></li>
+            <li><a href="#objdump的参数含义">objdump的参数含义</a></li>
+          </ol>
+        </li>
+        <li><a href="#thinking-12">Thinking 1.2</a>
+          <ol>
+            <li><a href="#用readelf解析mos">用readelf解析mos</a></li>
+            <li><a href="#用readelf解析文件本身">用readelf解析文件本身</a></li>
+          </ol>
+        </li>
+        <li><a href="#thinking-13">Thinking 1.3</a></li>
+      </ol>
+    </li>
+    <li><a href="#难点分析">难点分析</a>
+      <ol>
+        <li><a href="#认识elf文件">认识elf文件</a>
+          <ol>
+            <li><a href="#什么是elf文件">什么是elf文件</a></li>
+            <li><a href="#如何实现readelf">如何实现readelf</a></li>
+            <li><a href="#如何链接elf文件">如何链接elf文件</a></li>
+          </ol>
+        </li>
+        <li><a href="#_start">_start!</a>
+          <ol>
+            <li><a href="#asmh">asm.h</a></li>
+            <li><a href="#cp0regdefh">cp0regdef.h</a></li>
+            <li><a href="#regdefh">regdef.h</a></li>
+          </ol>
+        </li>
+        <li><a href="#printk">printk</a>
+          <ol>
+            <li><a href="#了解vprintfmt">了解vprintfmt</a></li>
+            <li><a href="#实现vprintfmt">实现vprintfmt</a></li>
+            <li><a href="#更基本的函数">更基本的函数</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#实验体会">实验体会</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/">
+                <img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/jpg_hu16363497693965762329.png"
+                        srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/jpg_hu16363497693965762329.png 800w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/jpg_hu7084591353539858296.png 1600w"
+                        width="800" 
+                        height="422" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab1 内核、启动与printk" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/os/" style="background-color: #2a9d8f; color: #fff;">
+                OS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/">BUAA OS Lab1 内核、启动与printk</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            实验报告
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-03-19</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 8 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="实验报告">实验报告
+</h1><h2 id="思考题">思考题
+</h2><h3 id="thinking-11">Thinking 1.1
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="gcc-与-readelf">gcc 与 readelf
+</h4><p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image.png"
+	width="688"
+	height="628"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image_hu12053842349263696774.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image_hu486358330880950885.png 1024w"
+	loading="lazy"
+	
+		alt="原生x86"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="109"
+		data-flex-basis="262px"
+	
+></p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1.png"
+	width="701"
+	height="567"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1_hu12397099904052042229.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1_hu8583381829098535524.png 1024w"
+	loading="lazy"
+	
+		alt="MIPS交叉编译工具链"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="123"
+		data-flex-basis="296px"
+	
+></p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2.png"
+	width="646"
+	height="570"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2_hu9388562781921208383.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2_hu15798214626686268975.png 1024w"
+	loading="lazy"
+	
+		alt="MIPS交叉编译工具链"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="113"
+		data-flex-basis="272px"
+	
+></p>
+<p>可以发现readelf在不使用mips交叉编译工具链的时候也可以正确阅读由mips交叉编译工具链编译得到的内容。</p>
+<h4 id="objdump">objdump
+</h4><p>用原生x86的objdump反编译gccmain.o结果如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span><span class="lnt">96
+</span><span class="lnt">97
+</span><span class="lnt">98
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">gccmain.o</span><span class="err">：</span>     <span class="err">文件格式</span> <span class="no">elf64-x86-64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">Disassembly</span> <span class="no">of</span> <span class="no">section</span> <span class="no">.text</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">0000000000000000</span> <span class="err">&lt;</span><span class="nf">main</span><span class="err">&gt;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="err">0:</span>   <span class="nf">f3</span> <span class="mi">0</span><span class="no">f</span> <span class="mi">1</span><span class="no">e</span> <span class="no">fa</span>             <span class="no">endbr64</span>
+</span></span><span class="line"><span class="cl">   <span class="err">4:</span>   <span class="err">55</span>                      <span class="nf">push</span>   <span class="nv">%rbp</span>
+</span></span><span class="line"><span class="cl">   <span class="err">5:</span>   <span class="err">48</span> <span class="err">89</span> <span class="nf">e5</span>                <span class="no">mov</span>    <span class="nv">%rsp</span><span class="p">,</span><span class="nv">%rbp</span>
+</span></span><span class="line"><span class="cl">   <span class="err">8:</span>   <span class="err">48</span> <span class="err">83</span> <span class="nf">ec</span> <span class="mi">10</span>             <span class="no">sub</span>    <span class="no">$0x10</span><span class="p">,</span><span class="nv">%rsp</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">c:</span>   <span class="nf">c7</span> <span class="mi">45</span> <span class="no">f4</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="no">movl</span>   <span class="no">$0x1</span><span class="p">,-</span><span class="mi">0xc</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">13:</span>   <span class="nf">c7</span> <span class="mi">45</span> <span class="no">f8</span> <span class="mi">02</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="no">movl</span>   <span class="no">$0x2</span><span class="p">,-</span><span class="mi">0x8</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">a:</span>   <span class="err">8</span><span class="nf">b</span> <span class="mi">55</span> <span class="no">f4</span>                <span class="no">mov</span>    <span class="p">-</span><span class="mi">0xc</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">),</span><span class="nv">%edx</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">d:</span>   <span class="err">8</span><span class="nf">b</span> <span class="mi">45</span> <span class="no">f8</span>                <span class="no">mov</span>    <span class="p">-</span><span class="mi">0x8</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">),</span><span class="nv">%eax</span>
+</span></span><span class="line"><span class="cl">  <span class="err">20:</span>   <span class="err">01</span> <span class="nf">d0</span>                   <span class="no">add</span>    <span class="nv">%edx</span><span class="p">,</span><span class="nv">%eax</span>
+</span></span><span class="line"><span class="cl">  <span class="err">22:</span>   <span class="err">89</span> <span class="err">45</span> <span class="nf">fc</span>                <span class="no">mov</span>    <span class="nv">%eax</span><span class="p">,-</span><span class="mi">0x4</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">25:</span>   <span class="err">8</span><span class="nf">b</span> <span class="mi">45</span> <span class="no">fc</span>                <span class="no">mov</span>    <span class="p">-</span><span class="mi">0x4</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">),</span><span class="nv">%eax</span>
+</span></span><span class="line"><span class="cl">  <span class="err">28:</span>   <span class="err">89</span> <span class="nf">c6</span>                   <span class="no">mov</span>    <span class="nv">%eax</span><span class="p">,</span><span class="nv">%esi</span>
+</span></span><span class="line"><span class="cl">  <span class="err">2</span><span class="nl">a:</span>   <span class="err">48</span> <span class="err">8</span><span class="nf">d</span> <span class="mi">05</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="no">lea</span>    <span class="mi">0x0</span><span class="p">(</span><span class="nv">%rip</span><span class="p">),</span><span class="nv">%rax</span>        <span class="c1"># 31 &lt;main+0x31&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="err">31:</span>   <span class="err">48</span> <span class="err">89</span> <span class="nf">c7</span>                <span class="no">mov</span>    <span class="nv">%rax</span><span class="p">,</span><span class="nv">%rdi</span>
+</span></span><span class="line"><span class="cl">  <span class="err">34:</span>   <span class="nf">b8</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>          <span class="no">mov</span>    <span class="no">$0x0</span><span class="p">,</span><span class="nv">%eax</span>
+</span></span><span class="line"><span class="cl">  <span class="err">39:</span>   <span class="nf">e8</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>          <span class="no">call</span>   <span class="mh">3e</span> <span class="p">&lt;</span><span class="no">main</span><span class="p">+</span><span class="mi">0x3e</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="err">3</span><span class="nl">e:</span>   <span class="nf">b8</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>          <span class="no">mov</span>    <span class="no">$0x0</span><span class="p">,</span><span class="nv">%eax</span>
+</span></span><span class="line"><span class="cl">  <span class="err">43:</span>   <span class="nf">c9</span>                      <span class="no">leave</span>
+</span></span><span class="line"><span class="cl">  <span class="err">44:</span>   <span class="nf">c3</span>                      <span class="no">ret</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">Disassembly</span> <span class="no">of</span> <span class="no">section</span> <span class="no">.rodata</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">0000000000000000</span> <span class="err">&lt;</span><span class="na">.rodata</span><span class="err">&gt;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="err">0:</span>   <span class="err">25</span>                      <span class="na">.byte</span> <span class="mi">0x25</span>
+</span></span><span class="line"><span class="cl">   <span class="err">1:</span>   <span class="err">64</span> <span class="err">0</span><span class="nf">a</span> <span class="mi">00</span>                <span class="no">or</span>     <span class="nv">%fs</span><span class="p">:(</span><span class="nv">%rax</span><span class="p">),</span><span class="nv">%al</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">Disassembly</span> <span class="no">of</span> <span class="no">section</span> <span class="no">.comment</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">0000000000000000</span> <span class="err">&lt;</span><span class="na">.comment</span><span class="err">&gt;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="err">0:</span>   <span class="err">00</span> <span class="err">47</span> <span class="err">43</span>                <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,</span><span class="mi">0x43</span><span class="p">(</span><span class="nv">%rdi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="err">3:</span>   <span class="err">43</span> <span class="err">3</span><span class="nf">a</span> <span class="mi">20</span>                <span class="no">rex.XB</span> <span class="no">cmp</span> <span class="p">(</span><span class="nv">%r8</span><span class="p">),</span><span class="nv">%spl</span>
+</span></span><span class="line"><span class="cl">   <span class="err">6:</span>   <span class="err">28</span> <span class="err">55</span> <span class="err">62</span>                <span class="nf">sub</span>    <span class="nv">%dl</span><span class="p">,</span><span class="mi">0x62</span><span class="p">(</span><span class="nv">%rbp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="err">9:</span>   <span class="err">75</span> <span class="err">6</span><span class="nf">e</span>                   <span class="no">jne</span>    <span class="mh">79</span> <span class="p">&lt;</span><span class="no">main</span><span class="p">+</span><span class="mi">0x79</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">b:</span>   <span class="err">74</span> <span class="err">75</span>                   <span class="nf">je</span>     <span class="mh">82</span> <span class="p">&lt;</span><span class="no">main</span><span class="p">+</span><span class="mi">0x82</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">d:</span>   <span class="err">20</span> <span class="err">31</span>                   <span class="nf">and</span>    <span class="nv">%dh</span><span class="p">,(</span><span class="nv">%rcx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">f:</span>   <span class="err">33</span> <span class="err">2</span><span class="nf">e</span>                   <span class="no">xor</span>    <span class="p">(</span><span class="nv">%rsi</span><span class="p">),</span><span class="nv">%ebp</span>
+</span></span><span class="line"><span class="cl">  <span class="err">11:</span>   <span class="err">33</span> <span class="err">2</span><span class="nf">e</span>                   <span class="no">xor</span>    <span class="p">(</span><span class="nv">%rsi</span><span class="p">),</span><span class="nv">%ebp</span>
+</span></span><span class="line"><span class="cl">  <span class="err">13:</span>   <span class="err">30</span> <span class="err">2</span><span class="nf">d</span> <span class="mi">36</span> <span class="mi">75</span> <span class="mi">62</span> <span class="mi">75</span>       <span class="no">xor</span>    <span class="nv">%ch</span><span class="p">,</span><span class="mi">0x75627536</span><span class="p">(</span><span class="nv">%rip</span><span class="p">)</span>        <span class="c1"># 7562754f &lt;main+0x7562754f&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="err">19:</span>   <span class="err">6</span><span class="nf">e</span>                      <span class="no">outsb</span>  <span class="nv">%ds</span><span class="p">:(</span><span class="nv">%rsi</span><span class="p">),(</span><span class="nv">%dx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">a:</span>   <span class="err">74</span> <span class="err">75</span>                   <span class="nf">je</span>     <span class="mh">91</span> <span class="p">&lt;</span><span class="no">main</span><span class="p">+</span><span class="mi">0x91</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">c:</span>   <span class="err">32</span> <span class="err">7</span><span class="nf">e</span> <span class="mi">32</span>                <span class="no">xor</span>    <span class="mi">0x32</span><span class="p">(</span><span class="nv">%rsi</span><span class="p">),</span><span class="nv">%bh</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">f:</span>   <span class="err">34</span> <span class="err">2</span><span class="nf">e</span>                   <span class="no">xor</span>    <span class="no">$0x2e</span><span class="p">,</span><span class="nv">%al</span>
+</span></span><span class="line"><span class="cl">  <span class="err">21:</span>   <span class="err">30</span> <span class="err">34</span> <span class="err">29</span>                <span class="nf">xor</span>    <span class="nv">%dh</span><span class="p">,(</span><span class="nv">%rcx</span><span class="p">,</span><span class="nv">%rbp</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">24:</span>   <span class="err">20</span> <span class="err">31</span>                   <span class="nf">and</span>    <span class="nv">%dh</span><span class="p">,(</span><span class="nv">%rcx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">26:</span>   <span class="err">33</span> <span class="err">2</span><span class="nf">e</span>                   <span class="no">xor</span>    <span class="p">(</span><span class="nv">%rsi</span><span class="p">),</span><span class="nv">%ebp</span>
+</span></span><span class="line"><span class="cl">  <span class="err">28:</span>   <span class="err">33</span> <span class="err">2</span><span class="nf">e</span>                   <span class="no">xor</span>    <span class="p">(</span><span class="nv">%rsi</span><span class="p">),</span><span class="nv">%ebp</span>
+</span></span><span class="line"><span class="cl">  <span class="err">2</span><span class="nl">a:</span>   <span class="err">30</span> <span class="err">00</span>                   <span class="nf">xor</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">Disassembly</span> <span class="no">of</span> <span class="no">section</span> <span class="no">.note.gnu.property</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">0000000000000000</span> <span class="err">&lt;</span><span class="na">.note.gnu.property</span><span class="err">&gt;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="err">0:</span>   <span class="err">04</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="no">$0x0</span><span class="p">,</span><span class="nv">%al</span>
+</span></span><span class="line"><span class="cl">   <span class="err">2:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="err">4:</span>   <span class="err">10</span> <span class="err">00</span>                   <span class="nf">adc</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="err">6:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="err">8:</span>   <span class="err">05</span> <span class="err">00</span> <span class="err">00</span> <span class="err">00</span> <span class="err">47</span>          <span class="nf">add</span>    <span class="no">$0x47000000</span><span class="p">,</span><span class="nv">%eax</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">d:</span>   <span class="err">4</span><span class="nf">e</span> <span class="mi">55</span>                   <span class="no">rex.WRX</span> <span class="no">push</span> <span class="nv">%rbp</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">f:</span>   <span class="err">00</span> <span class="err">02</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rdx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">11:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">13:</span>   <span class="nf">c0</span> <span class="mi">04</span> <span class="mi">00</span> <span class="mi">00</span>             <span class="no">rolb</span>   <span class="no">$0x0</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">,</span><span class="nv">%rax</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">17:</span>   <span class="err">00</span> <span class="err">03</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rbx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">19:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">b:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">d:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="na">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">Disassembly</span> <span class="no">of</span> <span class="no">section</span> <span class="no">.eh_frame</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">0000000000000000</span> <span class="err">&lt;</span><span class="na">.eh_frame</span><span class="err">&gt;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="err">0:</span>   <span class="err">14</span> <span class="err">00</span>                   <span class="nf">adc</span>    <span class="no">$0x0</span><span class="p">,</span><span class="nv">%al</span>
+</span></span><span class="line"><span class="cl">   <span class="err">2:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="err">4:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="err">6:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="err">8:</span>   <span class="err">01</span> <span class="err">7</span><span class="nf">a</span> <span class="mi">52</span>                <span class="no">add</span>    <span class="nv">%edi</span><span class="p">,</span><span class="mi">0x52</span><span class="p">(</span><span class="nv">%rdx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">b:</span>   <span class="err">00</span> <span class="err">01</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rcx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">d:</span>   <span class="err">78</span> <span class="err">10</span>                   <span class="nf">js</span>     <span class="mh">1f</span> <span class="p">&lt;</span><span class="no">.eh_frame</span><span class="p">+</span><span class="mi">0x1f</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="nl">f:</span>   <span class="err">01</span> <span class="err">1</span><span class="nf">b</span>                   <span class="no">add</span>    <span class="nv">%ebx</span><span class="p">,(</span><span class="nv">%rbx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">11:</span>   <span class="err">0</span><span class="nf">c</span> <span class="mi">07</span>                   <span class="no">or</span>     <span class="no">$0x7</span><span class="p">,</span><span class="nv">%al</span>
+</span></span><span class="line"><span class="cl">  <span class="err">13:</span>   <span class="err">08</span> <span class="err">90</span> <span class="err">01</span> <span class="err">00</span> <span class="err">00</span> <span class="err">1</span><span class="nf">c</span>       <span class="no">or</span>     <span class="nv">%dl</span><span class="p">,</span><span class="mi">0x1c000001</span><span class="p">(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">19:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">b:</span>   <span class="err">00</span> <span class="err">1</span><span class="nf">c</span> <span class="mi">00</span>                <span class="no">add</span>    <span class="nv">%bl</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">,</span><span class="nv">%rax</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">1</span><span class="nl">e:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">20:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">22:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">24:</span>   <span class="err">45</span> <span class="err">00</span> <span class="err">00</span>                <span class="nf">add</span>    <span class="nv">%r8b</span><span class="p">,(</span><span class="nv">%r8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">27:</span>   <span class="err">00</span> <span class="err">00</span>                   <span class="nf">add</span>    <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">29:</span>   <span class="err">45</span> <span class="err">0</span><span class="nf">e</span>                   <span class="no">rex.RB</span> <span class="p">(</span><span class="no">bad</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">2</span><span class="nl">b:</span>   <span class="err">10</span> <span class="err">86</span> <span class="err">02</span> <span class="err">43</span> <span class="err">0</span><span class="nf">d</span> <span class="mi">06</span>       <span class="no">adc</span>    <span class="nv">%al</span><span class="p">,</span><span class="mi">0x60d4302</span><span class="p">(</span><span class="nv">%rsi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">31:</span>   <span class="err">7</span><span class="nf">c</span> <span class="mi">0</span><span class="no">c</span>                   <span class="no">jl</span>     <span class="mh">3f</span> <span class="p">&lt;</span><span class="no">main</span><span class="p">+</span><span class="mi">0x3f</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="err">33:</span>   <span class="err">07</span>                      <span class="err">(</span><span class="nf">bad</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">34:</span>   <span class="err">08</span> <span class="err">00</span>                   <span class="nf">or</span>     <span class="nv">%al</span><span class="p">,(</span><span class="nv">%rax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="na">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用MIPS交叉编译工具链的objdump反编译mipsgccmain.o结果如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mipsgccmain.o：     文件格式 elf32-tradbigmips
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of section .text:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000 &lt;main&gt;:
+</span></span><span class="line"><span class="cl">   0:   27bdffd0        addiu   sp,sp,-48
+</span></span><span class="line"><span class="cl">   4:   afbf002c        sw      ra,44(sp)
+</span></span><span class="line"><span class="cl">   8:   afbe0028        sw      s8,40(sp)
+</span></span><span class="line"><span class="cl">   c:   03a0f025        move    s8,sp
+</span></span><span class="line"><span class="cl">  10:   3c1c0000        lui     gp,0x0
+</span></span><span class="line"><span class="cl">  14:   279c0000        addiu   gp,gp,0
+</span></span><span class="line"><span class="cl">  18:   afbc0010        sw      gp,16(sp)
+</span></span><span class="line"><span class="cl">  1c:   24020001        li      v0,1
+</span></span><span class="line"><span class="cl">  20:   afc2001c        sw      v0,28(s8)
+</span></span><span class="line"><span class="cl">  24:   24020002        li      v0,2
+</span></span><span class="line"><span class="cl">  28:   afc20020        sw      v0,32(s8)
+</span></span><span class="line"><span class="cl">  2c:   8fc3001c        lw      v1,28(s8)
+</span></span><span class="line"><span class="cl">  30:   8fc20020        lw      v0,32(s8)
+</span></span><span class="line"><span class="cl">  34:   00621021        addu    v0,v1,v0
+</span></span><span class="line"><span class="cl">  38:   afc20024        sw      v0,36(s8)
+</span></span><span class="line"><span class="cl">  3c:   8fc50024        lw      a1,36(s8)
+</span></span><span class="line"><span class="cl">  40:   3c020000        lui     v0,0x0
+</span></span><span class="line"><span class="cl">  44:   24440000        addiu   a0,v0,0
+</span></span><span class="line"><span class="cl">  48:   8f820000        lw      v0,0(gp)
+</span></span><span class="line"><span class="cl">  4c:   0040c825        move    t9,v0
+</span></span><span class="line"><span class="cl">  50:   0320f809        jalr    t9
+</span></span><span class="line"><span class="cl">  54:   00000000        nop
+</span></span><span class="line"><span class="cl">  58:   8fdc0010        lw      gp,16(s8)
+</span></span><span class="line"><span class="cl">  5c:   00001025        move    v0,zero
+</span></span><span class="line"><span class="cl">  60:   03c0e825        move    sp,s8
+</span></span><span class="line"><span class="cl">  64:   8fbf002c        lw      ra,44(sp)
+</span></span><span class="line"><span class="cl">  68:   8fbe0028        lw      s8,40(sp)
+</span></span><span class="line"><span class="cl">  6c:   27bd0030        addiu   sp,sp,48
+</span></span><span class="line"><span class="cl">  70:   03e00008        jr      ra
+</span></span><span class="line"><span class="cl">  74:   00000000        nop
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of section .reginfo:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000 &lt;.reginfo&gt;:
+</span></span><span class="line"><span class="cl">   0:   f200003c        .word   0xf200003c
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of section .MIPS.abiflags:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000 &lt;.MIPS.abiflags&gt;:
+</span></span><span class="line"><span class="cl">   0:   00002002        srl     a0,zero,0x0
+</span></span><span class="line"><span class="cl">   4:   01010005        lsa     zero,t0,at,0x1
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of section .pdr:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000 &lt;.pdr&gt;:
+</span></span><span class="line"><span class="cl">   0:   00000000        nop
+</span></span><span class="line"><span class="cl">   4:   c0000000        ll      zero,0(zero)
+</span></span><span class="line"><span class="cl">   8:   fffffffc        .word   0xfffffffc
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">  14:   00000030        tge     zero,zero
+</span></span><span class="line"><span class="cl">  18:   0000001e        .word   0x1e
+</span></span><span class="line"><span class="cl">  1c:   0000001f        .word   0x1f
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of section .rodata:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000 &lt;.rodata&gt;:
+</span></span><span class="line"><span class="cl">   0:   25640a00        addiu   a0,t3,2560
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of section .comment:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000 &lt;.comment&gt;:
+</span></span><span class="line"><span class="cl">   0:   00474343        .word   0x474343
+</span></span><span class="line"><span class="cl">   4:   3a202855        xori    zero,s1,0x2855
+</span></span><span class="line"><span class="cl">   8:   62756e74        .word   0x62756e74
+</span></span><span class="line"><span class="cl">   c:   75203132        jalx    480c4c8 &lt;main+0x480c4c8&gt;
+</span></span><span class="line"><span class="cl">  10:   2e332e30        sltiu   s3,s1,11824
+</span></span><span class="line"><span class="cl">  14:   2d313775        sltiu   s1,t1,14197
+</span></span><span class="line"><span class="cl">  18:   62756e74        .word   0x62756e74
+</span></span><span class="line"><span class="cl">  1c:   75312920        jalx    4c4a480 &lt;main+0x4c4a480&gt;
+</span></span><span class="line"><span class="cl">  20:   31322e33        andi    s2,t1,0x2e33
+</span></span><span class="line"><span class="cl">  24:   Address 0x24 is out of bounds.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disassembly of section .gnu.attributes:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">00000000 &lt;.gnu.attributes&gt;:
+</span></span><span class="line"><span class="cl">   0:   41000000        mftc0   zero,c0_index
+</span></span><span class="line"><span class="cl">   4:   0f676e75        jal     d9db9d4 &lt;main+0xd9db9d4&gt;
+</span></span><span class="line"><span class="cl">   8:   00010000        sll     zero,at,0x0
+</span></span><span class="line"><span class="cl">   c:   00070405        .word   0x70405
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于CO课掌握的MIPS代码基础，本人阅读mips交叉编译工具链的反编译代码时更为流畅。</p>
+<h4 id="objdump的参数含义">objdump的参数含义
+</h4><p>通过阅读<code>man objdump</code>给出的内容，我们可以得知一些参数信息</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3.png"
+	width="536"
+	height="655"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3_hu16508736030021732211.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3_hu13723171814175260489.png 1024w"
+	loading="lazy"
+	
+		alt="man objdump"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="81"
+		data-flex-basis="196px"
+	
+></p>
+<p>下面举出几例简单的：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">参数</th>
+          <th style="text-align: center">作用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">-e或-g</td>
+          <td style="text-align: center">显示调试信息</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">-D</td>
+          <td style="text-align: center">反汇编所有section</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">-r</td>
+          <td style="text-align: center">显示文件的重定位入口</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">-S</td>
+          <td style="text-align: center">尽可能反汇编出源代码</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">-z</td>
+          <td style="text-align: center">将0也进行反汇编</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>我传入的参数-DS便是反编译所有section，并且同时显示反编译代码与源代码</p>
+<h3 id="thinking-12">Thinking 1.2
+</h3><h4 id="用readelf解析mos">用readelf解析mos
+</h4><p>下图是用自己的readelf阅读mos的结果</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4.png"
+	width="598"
+	height="458"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4_hu6548488736651382738.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4_hu764922015633990720.png 1024w"
+	loading="lazy"
+	
+		alt="readelf mos"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="313px"
+	
+></p>
+<h4 id="用readelf解析文件本身">用readelf解析文件本身
+</h4><p>我们发现运行没有任何输出结果。</p>
+<p>根据hint，我们使用readelf -h来研究文件头。</p>
+<p>下图是可被<code>自己的readelf</code>分析的mos与hello的信息。 <br>
+<img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5.png"
+	width="704"
+	height="652"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5_hu6636530323049523809.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5_hu6439553271731897671.png 1024w"
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="107"
+		data-flex-basis="259px"
+	
+></p>
+<p>下图是不可被<code>自己的readelf</code>分析的readelf.o的信息。
+<img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6.png"
+	width="576"
+	height="444"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6_hu13823982274587832481.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6_hu14868966202983207786.png 1024w"
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="311px"
+	
+></p>
+<p>可以发现他们的类别分别是ELF32与ELF64。</p>
+<p>那么问题就迎刃而解了，我们清晰地记得，在完成readelf.c的书写时，我们采用的都是ELF32类型的数据结构。</p>
+<p>因此我们的readelf不能用来解析身为ELF64的readelf.o文件。</p>
+<h3 id="thinking-13">Thinking 1.3
+</h3><p>指导书上的启动过程：</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7.png"
+	width="648"
+	height="706"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7_hu6111299472254063790.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7_hu10673880894995628209.png 1024w"
+	loading="lazy"
+	
+		alt="启动"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="91"
+		data-flex-basis="220px"
+	
+></p>
+<p>为什么操作系统的内核入口并没有放在上电启动地址，还能保证内核入口被正确跳转到？</p>
+<p>因为内核入口和上电启动地址本来就是没有关系的。</p>
+<p>上电启动位置是用于启动bootloader，实现硬件初始化等内容。  <br>
+而bootloader所加载的内容才决定了内核的入口，也就是说我们在<code>start.S</code>中所写的_start函数即EXPORT(_start)才是mips_init的入口。</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8.png"
+	width="595"
+	height="628"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8_hu10385545151877275850.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8_hu11083405040821451462.png 1024w"
+	loading="lazy"
+	
+		alt="_start函数"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="94"
+		data-flex-basis="227px"
+	
+></p>
+<h2 id="难点分析">难点分析
+</h2><p>本次实验的核心内容：</p>
+<ul>
+<li>认识elf文件</li>
+<li>_start函数</li>
+<li>printk函数与vprintfmt函数</li>
+</ul>
+<h3 id="认识elf文件">认识elf文件
+</h3><h4 id="什么是elf文件">什么是elf文件
+</h4><p><code>.elf</code>包含<code>.exe</code>，<code>.o</code>和<code>.so</code> <br>
+（不过linux对扩展名要求并不严格，扩展名不能用来判断文件类型！）   <br>
+准确来说应该是：  <br>
+<code>可执行文件</code>，<code>可重定位文件</code>和<code>共享对象文件</code>。</p>
+<p>也就是说我们可以用readelf来解析我们在tools/readelf里的hello,readelf,readelf.o, main.o等等多种文件。</p>
+<p>在elf.h中，我们对于ELF32的种种内容做出了定义。  <br>
+具体来说便是<code>Elf32_Ehdr</code> <code>Elf32_Shdr</code> <code>Elf32_Phdr</code>这三个结构体类型</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9.png"
+	width="694"
+	height="468"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9_hu14405333584336851269.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9_hu8209871364502043920.png 1024w"
+	loading="lazy"
+	
+		alt="ELF文件结构"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="355px"
+	
+></p>
+<p>Elf32_Ehdr描述ELF头，Elf32_Shdr描述节(Section)头表，Elf32_Phdr描述段(Segment)头表，又名程序(Program)头表。</p>
+<h4 id="如何实现readelf">如何实现readelf
+</h4><p>我们自己实现的readelf，是只能解析ELF32的section地址的可执行程序。    <br>
+功能很简单，只需要从elf文件本身拿到我们想要的信息并输出。</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10.png"
+	width="780"
+	height="655"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10_hu13447772168118466699.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10_hu15924098999921703376.png 1024w"
+	loading="lazy"
+	
+		alt="exercise"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="285px"
+	
+></p>
+<p>根据代码逻辑，你需要知道sh_entry_count，并通过shdr这一指针去定位到各个section，从而输出其地址。</p>
+<p>现根据ELF头得到节头表的位置、节头数量等信息，然后让sh_table指针去指向节头表第一项的地址:<code>binary + ehdr-&gt;e_shoff</code>。</p>
+<p>接下来循环输出即可，其中得到节头表下项的方法，只需要将sh_table这一指针变为(Elf32_Shdr *)类型，然后加1即可。也可以用上sh_entry_size，直接加上这个数值实现地址空间的移动。</p>
+<h4 id="如何链接elf文件">如何链接elf文件
+</h4><p>只需要将所有的section放在一起，尤其是</p>
+<ul>
+<li>.text 代码段</li>
+<li>.data 需要被初始化的全局变量与静态变量</li>
+<li>.bss 未被初始化的全局变量与静态变量</li>
+</ul>
+<p>放在一起的方法：  <br>
+<code>.</code> = 一个地址 <br>
+<code>.text:{*(.text)}</code>   <br>
+把所有<code>.text</code>依次放在<code>.</code>的位置，其他section同理</p>
+<p>若不再修改<code>.</code>则继续顺延放置。 <br>
+若修改，就以新的地址继续顺延放置。</p>
+<h3 id="_start">_start!
+</h3><p>读这道题时会发现有很多宏定义的内容。</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11.png"
+	width="619"
+	height="613"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11_hu9426856787874927876.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11_hu11603003421263531490.png 1024w"
+	loading="lazy"
+	
+		alt="exercise"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="242px"
+	
+></p>
+<h4 id="asmh">asm.h
+</h4><p>通过阅读<code>asm/asm.h</code>，其定义了EXPORT()</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12.png"
+	width="237"
+	height="125"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12_hu2851920244730174662.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12_hu7987310785599855633.png 1024w"
+	loading="lazy"
+	
+		alt="EXPORT"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="455px"
+	
+></p>
+<p>发现它真的只是一个标签而已；</p>
+<p>其中又include了<code>asm/cp0regdef.h</code>与<code>asm/regdef.h</code></p>
+<h4 id="cp0regdefh">cp0regdef.h
+</h4><p>CP0寄存器的一些define</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13.png"
+	width="272"
+	height="614"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13_hu6075081052451593245.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13_hu9621040824342214446.png 1024w"
+	loading="lazy"
+	
+		alt="cp0"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="44"
+		data-flex-basis="106px"
+	
+></p>
+<h4 id="regdefh">regdef.h
+</h4><p>寄存器堆的一些define</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14.png"
+	width="349"
+	height="690"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14_hu7585601930992698186.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14_hu4706047783244615502.png 1024w"
+	loading="lazy"
+	
+		alt="reg"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="50"
+		data-flex-basis="121px"
+	
+></p>
+<p>这就解释了很多看似是无厘头的简写，实则都有依据的内容</p>
+<p>当然还有<code>mmu.h</code>为我们的<code>KSTACKTOP</code>提供了define</p>
+<p>而mips_init可以直接使用，则是因为程序经过预处理编译等等后，函数名也会变为标签，并和start.S的.text段组合在一起，那自然就可以访问到了。</p>
+<h3 id="printk">printk
+</h3><p>本次实验代码量最大的一环，核心内容就是书写vprintfmt函数。</p>
+<p>简单了解va变长数组的基本方法后，我们便可以开始了解这一函数。</p>
+<h4 id="了解vprintfmt">了解vprintfmt
+</h4><p>首先，vprintfmt的参数是out函数指针，data指针，fmt字符串，ap数组。</p>
+<p>out函数指针能实现在同一函数(vprintfmt)中调用不同形式的out函数</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15.png"
+	width="340"
+	height="53"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15_hu3811253317957944125.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15_hu11987015303591991026.png 1024w"
+	loading="lazy"
+	
+		alt="out函数"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="641"
+		data-flex-basis="1539px"
+	
+></p>
+<p>out函数可以实现输出以buf为起点，长度为len的字符串。</p>
+<p>data指针指向out紧挨的内存空间，用于存储additional output sink-specific data（尚不知道有何用）</p>
+<p>fmt是格式字符串，ap则是<code>%</code>对应的参数列表，通过va_arg(ap, type)来获取内容</p>
+<h4 id="实现vprintfmt">实现vprintfmt
+</h4><p>核心处理当然在于fmt的解析     <br>
+在<code>printf(&quot;%d + %d = %d\n&quot;, a, b, c);</code>中我们知道，fmt字符串中的<code>非占位符</code>直接输出，<code>%xxx</code>则要被变量所替换。那么分析的核心就是找到%并解析%后面的内容。</p>
+<p>整体逻辑是一个大循环</p>
+<p>然后需要一个小循环内寻找%，找不到就length++，   <br>
+找到了就把之前length长的内容全部out出来。</p>
+<p><img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16.png"
+	width="392"
+	height="295"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16_hu1268851260329813266.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16_hu2054710900639901350.png 1024w"
+	loading="lazy"
+	
+		alt="寻找%"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="132"
+		data-flex-basis="318px"
+	
+></p>
+<p>s的作用是更新起始点到进入当前小循环时的fmt。</p>
+<p>为了避免一直就没有%无法输出，走出小循环后要再执行一次out函数。如果有%的话也不必担心，因为length就已经更新到0了。</p>
+<p>接下来就该结束大循环了。如果到达了\0，就break。</p>
+<p>如果survive了这次break，说明你找到了%, 那接下来就是通过对%后内容的解析来改变参数。</p>
+<p>后续的内容难度就不大了。</p>
+<blockquote>
+<p>需要注意，10进制有符号数输出时会改动neg_flag  <br>
+因为   <br>
+<img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17.png"
+	width="821"
+	height="51"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17_hu3578559983418472224.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17_hu367619222577233514.png 1024w"
+	loading="lazy"
+	
+		alt="print_num"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1609"
+		data-flex-basis="3863px"
+	
+>  <br>
+它用的是unsigned long！</p>
+</blockquote>
+<h4 id="更基本的函数">更基本的函数
+</h4><p>也就是<code>print_char</code> <code>print_str</code> 和 <code>print_num</code>，他们是直接由out函数实现的，用于为vprintfmt提供方法，因此也需要简单了解。</p>
+<h2 id="实验体会">实验体会
+</h2><p>整个实验给我的感觉就是浩大，一时间突然接手了这么多文件，会不知道该看什么，谁是重点（因为每个文件都是必要的）</p>
+<p>那么我们容易做到的，就是跟着实验指导书一点点去探索，从表面的应用层逐渐向内挖掘到实现层，从而了解各个文件的内容。</p>
+<p>倘若研究完lab1，可以搞清楚整个目录下的主要文件的功能与服务关系，我想这对于操作系统体系结构的理解应该是有好处的。</p>
+<blockquote>
+<p>笑传：笔者打完这行字之后自动输入了Esc :wq 丝滑小连招 <img src="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4.png"
+	width="26"
+	height="27"
+	srcset="/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4_hu162557286759937766.png 480w, /p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4_hu16635500359115293568.png 1024w"
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="96"
+		data-flex-basis="231px"
+	
+></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-challenge-shell/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-challenge-shell/123.360f1f15f3beb3bd6b54bdf33ff56b97_hu672298263870228250.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Challenge Shell"
+                        
+                        data-hash="md5-Ng8fFfO&#43;s71rVL3zP/Vrlw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Challenge Shell</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.59a725bb7470179496b59ef870f141ed_hu7982124795751662449.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab6 管道与SHELL"
+                        
+                        data-hash="md5-Waclu3RwF5SWtZ74cPFB7Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab6 管道与SHELL</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/123.f449929313b9bc588b18092d04f81d2f_hu3882242188266819812.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab5 上机"
+                        
+                        data-hash="md5-9EmSkxO5vFiLGAktBPgdLw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab5 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/123.f91714c4ea878afc95fdee604e380825_hu16560301168419005684.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab5 文件系统"
+                        
+                        data-hash="md5-&#43;RcUxOqHivyV/e5gTjgIJQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab5 文件系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/123.e7fe13a9c852f8d15643aa873805e3e7_hu14461487000464471443.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab4 上机"
+                        
+                        data-hash="md5-5/4TqchS&#43;NFWQ6qHOAXj5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab4 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验报告">
+<title>BUAA OS Lab0 预备知识</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA OS Lab0 预备知识">
+<meta property='og:description' content="实验报告">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-27T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-02-27T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png' />
+<meta name="twitter:title" content="BUAA OS Lab0 预备知识">
+<meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#思考题">思考题</a>
+      <ol>
+        <li><a href="#thinking-01">Thinking 0.1</a></li>
+        <li><a href="#thinking-02">Thinking 0.2</a></li>
+        <li><a href="#thinking-03">Thinking 0.3</a></li>
+        <li><a href="#thinking-04">Thinking 0.4</a></li>
+        <li><a href="#thinking-05">Thinking 0.5</a></li>
+        <li><a href="#thinking-06">Thinking 0.6</a></li>
+      </ol>
+    </li>
+    <li><a href="#难点分析">难点分析</a></li>
+    <li><a href="#实验体会">实验体会</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
+                <img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu12315729080435056966.png"
+                        srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu12315729080435056966.png 800w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark_hu9458574184818487192.png 1600w"
+                        width="800" 
+                        height="422" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab0 预备知识" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/os/" style="background-color: #2a9d8f; color: #fff;">
+                OS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">BUAA OS Lab0 预备知识</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            实验报告
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-02-27</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="实验报告">实验报告
+</h1><h2 id="思考题">思考题
+</h2><h3 id="thinking-01">Thinking 0.1
+</h3><p>文本内容如下图：</p>
+<p><img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image.png"
+	width="466"
+	height="565"
+	srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu15829322080962621648.png 480w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu11849206786200839682.png 1024w"
+	loading="lazy"
+	
+		alt="git status"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="82"
+		data-flex-basis="197px"
+	
+></p>
+<ul>
+<li>
+<p>刚刚创建文件后，文件处于未跟踪状态，即<code>Untracked</code>。</p>
+</li>
+<li>
+<p>文件被<code>git add</code>之后，被建立跟踪并且进入<code>Staged</code>状态。</p>
+</li>
+<li>
+<p>当文件被<code>git commit</code>后，进入未修改状态<code>Unmodified</code>，若增加修改，则变为<code>Modified</code>状态。</p>
+</li>
+</ul>
+<p>因此结果并不一样。因为第一次add之前，文件尚未被跟踪，文件作出修改也仍会处于<code>Untracked</code>状态。</p>
+<p>而在add与commit之后，文件被跟踪，提交过后的修改会被记录为<code>Modified</code>。</p>
+<h3 id="thinking-02">Thinking 0.2
+</h3><p><code>add the file</code>对应<code>git add</code> （第一次add文件）        <br>
+<code>stage the file</code>对应<code>git add</code> （已跟踪的文件经过修改后进行的add，添加到暂存区）       <br>
+<code>commit</code>对应<code>git commit</code> (把暂存区里的内容commit)</p>
+<h3 id="thinking-03">Thinking 0.3
+</h3><blockquote>
+<p>代码文件print.c被错误删除时，应当使用什么命令将其恢复？</p>
+</blockquote>
+<p>应当使用<code>git restore print.c</code></p>
+<p>print.c仍然在暂存区，只是在工作区被删除，只需将工作区恢复到暂存区状态即可。</p>
+<blockquote>
+<p>代码文件print.c被错误删除后，执行了<code>git rm print.c</code>命令，此时应当
+使用什么命令将其恢复？</p>
+</blockquote>
+<p>应当先后使用<code>git reset HEAD print.c</code>与<code>git restore print.c</code></p>
+<p>因为执行了<code>git rm print.c</code>，暂存区已被改动，所以需要先恢复暂存区的内容。</p>
+<blockquote>
+<p>无关文件hello.txt已经被添加到暂存区时，如何在不删除此文件的前提下
+将其移出暂存区？</p>
+</blockquote>
+<p>应当使用<code>git rm -cached hello.txt</code></p>
+<h3 id="thinking-04">Thinking 0.4
+</h3><p><code>git log</code>结果如下图：</p>
+<p><img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1.png"
+	width="530"
+	height="631"
+	srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu3297354720116851202.png 480w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu6840445999607377668.png 1024w"
+	loading="lazy"
+	
+		alt="git log"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="83"
+		data-flex-basis="201px"
+	
+></p>
+<p>版本回退后<code>git log</code>结果如下图：</p>
+<p><img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2.png"
+	width="528"
+	height="547"
+	srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu2569888871527426734.png 480w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu4451645708424704670.png 1024w"
+	loading="lazy"
+	
+		alt="git log"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="96"
+		data-flex-basis="231px"
+	
+></p>
+<p>版本切换的结果：</p>
+<p><img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3.png"
+	width="684"
+	height="440"
+	srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu2447533878860350817.png 480w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu12117117513593335777.png 1024w"
+	loading="lazy"
+	
+		alt="git log"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="373px"
+	
+></p>
+<p><img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4.png"
+	width="744"
+	height="670"
+	srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu14216853382266145143.png 480w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu9645650563847857658.png 1024w"
+	loading="lazy"
+	
+		alt="git log"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="111"
+		data-flex-basis="266px"
+	
+></p>
+<p>可以看出<code>git reset --hard HEAD^</code>执行后，<code>git log</code>结果并不是1-2-3-2，而是直接变为1-2</p>
+<p><code>git reset --hard &lt;hash&gt;</code>对于版本的控制也并不改变目录树，而是在原有的目录树上切换结点。</p>
+<h3 id="thinking-05">Thinking 0.5
+</h3><p>运行结果如下：</p>
+<p><img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5.png"
+	width="501"
+	height="248"
+	srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu18119050952445327974.png 480w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu17127191734205273665.png 1024w"
+	loading="lazy"
+	
+		alt="&gt; and "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="202"
+		data-flex-basis="484px"
+	
+></p>
+<p><code>&gt;</code> 的重定向是覆盖，而<code>&gt;&gt;</code>的重定向是追加。</p>
+<h3 id="thinking-06">Thinking 0.6
+</h3><p>command内容为：</p>
+<p><img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6.png"
+	width="425"
+	height="416"
+	srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu6965343964014852431.png 480w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu7513391156839822228.png 1024w"
+	loading="lazy"
+	
+		alt="Command"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="102"
+		data-flex-basis="245px"
+	
+></p>
+<p>result内容为：</p>
+<p><img src="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8.png"
+	width="319"
+	height="288"
+	srcset="/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu13913448634350666254.png 480w, /p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu16136104289695794963.png 1024w"
+	loading="lazy"
+	
+		alt="Result"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="110"
+		data-flex-basis="265px"
+	
+></p>
+<p>解释说明：</p>
+<p>为了原样输出test，command每一行的内容为：    <br>
+echo &rsquo; <code>Content</code> &rsquo; &raquo; test (第一行是&gt;)</p>
+<p>其中单引号的目的是保证原样输出，不触发文本中的任何$符号与&gt;符号</p>
+<p>result的内容有两部分，   <br>
+一是test运行的输出结果会重定向到result，     <br>
+二是test文件本身也有重定向到result的代码</p>
+<p>思考问题：</p>
+<p>若把<code>echo echo Shell Start</code>的<code>echo Shell Start</code>用反引号引起来         <br>
+则会将反引号内指令的运算结果变为一个字符串<code>&quot;Shell Start&quot;</code>    <br>
+最终整条指令结果为Shell Start</p>
+<p>而<code>echo echo Shell Start</code>的结果是echo Shell Start</p>
+<p><code>echo echo $c&gt;file1</code>则同理，加上反引号后指令会输出3  <br>
+而不加反引号应输出echo $c&gt;file1，结果不同。</p>
+<h2 id="难点分析">难点分析
+</h2><p>Lab0作为大家走向OS的过渡课程，其思维难度不高，重难点在于对各种指令的运用。</p>
+<p>如sed awk grep等方法的运用，单引号、双引号与反引号的灵活使用等等</p>
+<h2 id="实验体会">实验体会
+</h2><p>目前尚未进行上机的限时测试，而日常实验的训练，很像我第一次搭建OO评测机时，一点点探索与学习的过程。</p>
+<p>感性的话不必多说，但是to be honest,  <br>
+OS的lab0相较于CO的P0-P2以及OO的U1，已然是非常温和了。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-challenge-shell/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-challenge-shell/123.360f1f15f3beb3bd6b54bdf33ff56b97_hu672298263870228250.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Challenge Shell"
+                        
+                        data-hash="md5-Ng8fFfO&#43;s71rVL3zP/Vrlw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Challenge Shell</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.59a725bb7470179496b59ef870f141ed_hu7982124795751662449.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab6 管道与SHELL"
+                        
+                        data-hash="md5-Waclu3RwF5SWtZ74cPFB7Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab6 管道与SHELL</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/123.f449929313b9bc588b18092d04f81d2f_hu3882242188266819812.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab5 上机"
+                        
+                        data-hash="md5-9EmSkxO5vFiLGAktBPgdLw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab5 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/123.f91714c4ea878afc95fdee604e380825_hu16560301168419005684.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab5 文件系统"
+                        
+                        data-hash="md5-&#43;RcUxOqHivyV/e5gTjgIJQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab5 文件系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/123.e7fe13a9c852f8d15643aa873805e3e7_hu14461487000464471443.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab4 上机"
+                        
+                        data-hash="md5-5/4TqchS&#43;NFWQ6qHOAXj5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab4 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

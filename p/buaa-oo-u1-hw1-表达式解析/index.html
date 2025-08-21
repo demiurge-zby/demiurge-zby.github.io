@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="第一次就这么难？！">
+<title>BUAA OO U1 HW1 表达式解析</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA OO U1 HW1 表达式解析">
+<meta property='og:description' content="第一次就这么难？！">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-03T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-03-03T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png' />
+<meta name="twitter:title" content="BUAA OO U1 HW1 表达式解析">
+<meta name="twitter:description" content="第一次就这么难？！"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#作业实现">作业实现</a>
+      <ol>
+        <li><a href="#预处理">预处理</a></li>
+        <li><a href="#表达式解析递归下降">表达式解析（递归下降）</a>
+          <ol>
+            <li><a href="#lexer的作用">Lexer的作用</a></li>
+            <li><a href="#parseexpr">parseExpr</a></li>
+            <li><a href="#parseterm">parseTerm</a></li>
+            <li><a href="#parsefactor">parseFactor</a></li>
+            <li><a href="#关于正负传参">关于正负：传参</a></li>
+          </ol>
+        </li>
+        <li><a href="#表达式求值">表达式求值</a>
+          <ol>
+            <li><a href="#poly类">Poly类</a></li>
+            <li><a href="#mono的topoly">Mono的toPoly()</a></li>
+            <li><a href="#power的topoly">Power的toPoly()</a></li>
+            <li><a href="#exprtermfactor的topoly">Expr,Term,Factor的toPoly()</a></li>
+            <li><a href="#poly的加乘幂">Poly的加，乘，幂</a></li>
+          </ol>
+        </li>
+        <li><a href="#结果的输出">结果的输出</a></li>
+      </ol>
+    </li>
+    <li><a href="#评测机实现">评测机实现</a>
+      <ol>
+        <li><a href="#datamaker">DataMaker</a></li>
+        <li><a href="#check">Check</a></li>
+        <li><a href="#运行脚本">运行脚本</a></li>
+        <li><a href="#如何制作jar包">如何制作jar包</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/">
+                <img src="/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123_hu16594908338412729027.png"
+                        srcset="/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123_hu16594908338412729027.png 800w, /p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123_hu12504818103205009904.png 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U1 HW1 表达式解析" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/oo/" style="background-color: #2a9d8f; color: #fff;">
+                OO
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/">BUAA OO U1 HW1 表达式解析</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            第一次就这么难？！
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-03-03</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="作业实现">作业实现
+</h2><h3 id="预处理">预处理
+</h3><p>replaceAll()函数 <br>
+解决空白符与连续正负号</p>
+<h3 id="表达式解析递归下降">表达式解析（递归下降）
+</h3><p>递归下降的特点是下降和递归。 <br>
+下降实现了功能的独立性。 <br>
+而递归是由要解析的表达式的结构决定的。</p>
+<h4 id="lexer的作用">Lexer的作用
+</h4><p>核心作用是处理数字，将连续的数字字符变为一个token单位<br>
+其他保持不变</p>
+<p>提供方法：</p>
+<ul>
+<li>当前token是什么   <code>peek()</code></li>
+<li>去下一个token  <code>next()</code></li>
+</ul>
+<p>其实就相当于C语言字符串中的</p>
+<ul>
+<li>str[i]</li>
+<li>i++</li>
+</ul>
+<p>只是我们需要的信息没那么多，就不采用先把式子变成token的ArrayList再去解析的方法   <br>
+而是在解析的时候利用lexer作为移动和识别的工具</p>
+<h4 id="parseexpr">parseExpr
+</h4><p>Expr是Term的和<br>
+通过加减符号实现Term的分割</p>
+<p>判加减  (用<code>peek()</code>判内容  用<code>next()</code>进入下一token)  <br>
+parseTerm() addTerm()     <br>
+循环：   <br>
+判加减  (用<code>peek()</code>判内容  用<code>next()</code>进入下一token)  <br>
+parseTerm() addTerm()</p>
+<h4 id="parseterm">parseTerm
+</h4><p>Term是Factor的积
+通过乘号实现Factor的分割（其中第一个Factor可有额外正负号）</p>
+<p>判加减  (用<code>peek()</code>判内容  用<code>next()</code>进入下一token)  <br>
+parseFactor() addFactor()<br>
+循环：   <br>
+判乘号  (用<code>peek()</code>判内容  用<code>next()</code>进入下一token)  <br>
+parseFactor() addFactor()</p>
+<h4 id="parsefactor">parseFactor
+</h4><p>Factor约等于解析最底层</p>
+<p>分为三类，需要建立接口</p>
+<p>常数因子与幂函数因子可以用 <code>A*x^b</code>统一   <br>
+表达式因子分为<code>(Expr)</code>与<code>(Expr)^n</code></p>
+<p>所以Expr类，Mono类<code>A*x^b</code>和Power类<code>(Expr)^n</code>都需要Factor接口，以在解析完成时返回Factor类型的结果</p>
+<p>其中Expr还能下降为<code>A*x^b</code>，<code>(Expr)</code>与<code>(Expr)^n</code>    <br>
+因此最小单位就是Mono类<code>A*x^b</code>和Power类<code>(Expr)^n</code></p>
+<p>解析方法：</p>
+<p>先判一下加减  (用<code>peek()</code>判内容  用<code>next()</code>进入下一token)</p>
+<ul>
+<li>判到左括号  (用<code>peek()</code>判内容  用<code>next()</code>进入下一token)</li>
+<li>
+<ul>
+<li>parseExpr();</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>把右括号跳过 <code>next()</code></li>
+</ul>
+</li>
+<li>
+<ul>
+<li>判^  (用<code>peek()</code>判内容  用<code>next()</code>进入下一token)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>有^ : （若有正号先next()掉）peek()读取指数 再<code>next()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>指数是0 ： return Mono类 1*x^0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>否则： return Power类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>无^ ：直接return Expr类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>判到数字 (用<code>peek()</code>判内容  用<code>next()</code>进入下一token)</li>
+<li>
+<ul>
+<li>Mono类 数字*x^0</li>
+</ul>
+</li>
+<li>判到x</li>
+<li>
+<ul>
+<li>Mono类 1*x^n 无^时n=1特殊处理</li>
+</ul>
+</li>
+</ul>
+<h4 id="关于正负传参">关于正负：传参
+</h4><p>我在解析过程中将正负号落实到了Mono类与Power类    <br>
+这样，Factor之间只是乘，Term之间只是加，相对简单</p>
+<p>落实的方法: 传参 isNeg
+初始参数值，即MainClass调用时是parseExpr(false)  <br>
+改变的规则：</p>
+<ul>
+<li>根据传入参数，在解析方法定义内部变量isNegative，用于传递给下级</li>
+<li>遇到负号，isNegative = !isNegative</li>
+<li>对于Expr到Term符号的继承，每一项isNegative的初始值都是isNeg</li>
+<li>对于Term到Factor符号的继承，只有第一项isNegative的初始值是isNeg，其余初始值为False</li>
+<li>特别的，对于Power类型，其Expr由于先被解析，所以正负号已经落实到内部，这时候Power的正负性就应该做出调整：</li>
+<li>
+<ul>
+<li>若符号为正，则无影响</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>若符号为负，且指数为奇数，则Power类型应当必须为正数，因为负属性已经在Expr中展现了</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>若符号为负，且指数为偶数，则Expr的负属性不能展现，Power类型需要为负</li>
+</ul>
+</li>
+</ul>
+<p>最终正负就落实到Mono与Power上，这两个类有isNeg属性</p>
+<h3 id="表达式求值">表达式求值
+</h3><p>最终结果为多项式，而Mono和Power也可变为多项式。  <br>
+只需先转化为多项式，再实现多项式的加与乘即可。</p>
+<h4 id="poly类">Poly类
+</h4><p>只是有一个TreeMap，里面放着键值对<code>&lt;指数，系数&gt;</code>  <br>
+TreeMap的优势在于merge()方法和有序   <br>
+merge方法在加入一个键值对可以实现合并同类项的作用</p>
+<h4 id="mono的topoly">Mono的toPoly()
+</h4><p>先处理Negate(),直接系数取负
+然后直接new一个Poly，让其TreeMap去put(指数，系数)</p>
+<h4 id="power的topoly">Power的toPoly()
+</h4><p>需要有Expr的toPoly(),再使用Poly的幂运算，再实施Negate()</p>
+<h4 id="exprtermfactor的topoly">Expr,Term,Factor的toPoly()
+</h4><p>Expr就是Term的toPoly()的和   <br>
+Term就是Factor的toPoly()的积     <br>
+Factor的toPoly()借助接口就是Mono,Expr与Power的toPoly()</p>
+<h4 id="poly的加乘幂">Poly的加，乘，幂
+</h4><p>加法直接merge进去    <br>
+乘法双重循环一项项merge进去（需注意只有一个因子时，另一个因子应变为&lt;0,1&gt;）   <br>
+幂可用快速幂，也可直接循环乘。同样注意上述问题。</p>
+<p>当然三种运算最后都应去除系数为0的单项式</p>
+<h3 id="结果的输出">结果的输出
+</h3><p>由于结果是多项式，输出相对简单。</p>
+<p>需要注意：</p>
+<ul>
+<li>空Tree要输出0</li>
+<li>若存在单项式系数为正，应将其提前并省略正号</li>
+<li>指数为0的项只输出数字，指数为1的项只输出x，指数为-1的项只输出-x</li>
+<li>中间的正项需额外输出+</li>
+</ul>
+<h2 id="评测机实现">评测机实现
+</h2><h3 id="datamaker">DataMaker
+</h3><p>使用c程序，同样使用递归下降的方法去生成表达式<br>
+printExpr() -&gt; printTerm() -&gt; printFactor() -&gt; &hellip;   <br>
+用rand()随机项数，因子数，正负号，以及因子的种类等等</p>
+<h3 id="check">Check
+</h3><p>由于Python库的强大，这里使用了Python的sympy库  <br>
+检测两个表达式化简结果是否相等，实现了对拍</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sympy</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./outA.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileA</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e1</span> <span class="o">=</span> <span class="n">fileA</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">expr1</span> <span class="o">=</span> <span class="n">e1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;^&#34;</span><span class="p">,</span><span class="s2">&#34;**&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./outB.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileB</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e2</span> <span class="o">=</span> <span class="n">fileB</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">expr2</span> <span class="o">=</span> <span class="n">e2</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;^&#34;</span><span class="p">,</span><span class="s2">&#34;**&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">expr1</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">expr2</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">expr2</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">expr1</span> <span class="o">-</span> <span class="n">expr2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="s2">&#34;True</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span> <span class="p">:</span> 
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="s2">&#34;False&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="s2">&#34;data:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./in.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filein</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">filein</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="s2">&#34;right:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="n">e1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="s2">&#34;yours:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="n">e2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="运行脚本">运行脚本
+</h3><p>Windows系统的bat脚本和OS学习的Linux脚本异曲同工</p>
+<p>主要使用了这些操作</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">指令</th>
+          <th style="text-align: center">作用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">REM</td>
+          <td style="text-align: center">注释</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">java -jar 名称.jar</td>
+          <td style="text-align: center">运行jar包</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">名称.exe</td>
+          <td style="text-align: center">运行.exe文件</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">python 名称.py</td>
+          <td style="text-align: center">运行python程序</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">&lt; ，&gt;</td>
+          <td style="text-align: center">实现重定向</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="p">@</span><span class="k">echo</span> off
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="k">/l</span> <span class="se">%%</span>i <span class="k">in</span> <span class="p">(</span><span class="mi">1</span>,<span class="mi">1</span>,<span class="mi">100</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">normaldata.exe <span class="p">&gt;</span> in.txt
+</span></span><span class="line"><span class="cl">java -jar oo_homework_2025_xxxxxxxx_hw_1.jar <span class="p">&lt;</span> in.txt <span class="p">&gt;</span> outA.txt
+</span></span><span class="line"><span class="cl">java -jar 1.jar <span class="p">&lt;</span> in.txt <span class="p">&gt;</span> outB.txt
+</span></span><span class="line"><span class="cl">python check.py
+</span></span><span class="line"><span class="cl">java -jar 2.jar <span class="p">&lt;</span> in.txt <span class="p">&gt;</span> outB.txt
+</span></span><span class="line"><span class="cl">python check.py
+</span></span><span class="line"><span class="cl">java -jar 3.jar <span class="p">&lt;</span> in.txt <span class="p">&gt;</span> outB.txt
+</span></span><span class="line"><span class="cl">python check.py
+</span></span><span class="line"><span class="cl">java -jar 4.jar <span class="p">&lt;</span> in.txt <span class="p">&gt;</span> outB.txt
+</span></span><span class="line"><span class="cl">python check.py
+</span></span><span class="line"><span class="cl">java -jar 5.jar <span class="p">&lt;</span> in.txt <span class="p">&gt;</span> outB.txt
+</span></span><span class="line"><span class="cl">python check.py
+</span></span><span class="line"><span class="cl">java -jar 6.jar <span class="p">&lt;</span> in.txt <span class="p">&gt;</span> outB.txt
+</span></span><span class="line"><span class="cl">python check.py
+</span></span><span class="line"><span class="cl">java -jar 7.jar <span class="p">&lt;</span> in.txt <span class="p">&gt;</span> outB.txt
+</span></span><span class="line"><span class="cl">python check.py
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> -------------------------------------------------------
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">cmd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="如何制作jar包">如何制作jar包
+</h3><p>具体流程可自行搜索。</p>
+<p>文件-&gt;项目结构-&gt;工件-&gt; + -&gt; JAR -&gt; &hellip;</p>
+<p>构建-&gt;构建工件</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.af5537eaa7f7cd8eba23dfa55b1f600d_hu11361999506600342615.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U4 UML正向建模与图书管理系统"
+                        
+                        data-hash="md5-r1U36qf3zY66I9&#43;lWx9gDQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U4 UML正向建模与图书管理系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.8c9ce4a1c6ab44b7d9503dd39d1215f1_hu16505079589854765534.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U3 JML与社交网络"
+                        
+                        data-hash="md5-jJzkocarRLfZUD3TnRIV8Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U3 JML与社交网络</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.39b7882d7b4f94730fa17e9b4abade4a_hu17238219808986198369.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U2 多线程与电梯"
+                        
+                        data-hash="md5-ObeILXtPlHMPoX6bSrreSg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U2 多线程与电梯</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.0965eb13aa31486d992c3dcb4e924020_hu17511212002196188424.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U1 递归下降与表达式解析"
+                        
+                        data-hash="md5-CWXrE6oxSG2ZLD3LTpJAIA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U1 递归下降与表达式解析</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

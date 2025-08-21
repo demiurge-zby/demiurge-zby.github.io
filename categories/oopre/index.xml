@@ -8,19 +8,19 @@
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
         <lastBuildDate>Fri, 01 Nov 2024 13:30:00 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/oopre/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>oopre结课总结</title>
-        <link>https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</link>
+        <title>BUAA OOpre 结课总结</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</link>
         <pubDate>Fri, 01 Nov 2024 13:30:00 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/d477300c36f0221527b9816c97bed3b.jpg" alt="Featured image of post oopre结课总结" /&gt;&lt;h2 id=&#34;作业最终的架构设计&#34;&gt;作业最终的架构设计
+        <guid>https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/d477300c36f0221527b9816c97bed3b.jpg" alt="Featured image of post BUAA OOpre 结课总结" /&gt;&lt;h2 id=&#34;作业最终的架构设计&#34;&gt;作业最终的架构设计
 &lt;/h2&gt;&lt;p&gt;经过轮轮迭代，面向对象先导课程也终于走向了尾声。&lt;/p&gt;
 &lt;h3 id=&#34;关于类&#34;&gt;关于类
 &lt;/h3&gt;&lt;p&gt;本次迭代任务中，共有24个类被创建：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1.png&#34;
 	width=&#34;802&#34;
 	height=&#34;631&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu3289743259887793063.png 480w, https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu15433014605120603975.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu3289743259887793063.png 480w, https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu15433014605120603975.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Class一览&#34;

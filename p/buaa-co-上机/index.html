@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="纯粹的杂谈">
+<title>BUAA CO 上机</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-co-%E4%B8%8A%E6%9C%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA CO 上机">
+<meta property='og:description' content="纯粹的杂谈">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-co-%E4%B8%8A%E6%9C%BA/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-10T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2024-12-10T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-co-%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png' />
+<meta name="twitter:title" content="BUAA CO 上机">
+<meta name="twitter:description" content="纯粹的杂谈"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-co-%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#说在前面">说在前面</a></li>
+    <li><a href="#pre上机">Pre上机</a></li>
+    <li><a href="#p0上机">P0上机</a></li>
+    <li><a href="#p1上机">P1上机</a></li>
+    <li><a href="#p2上机">P2上机</a></li>
+    <li><a href="#p3上机">P3上机</a></li>
+    <li><a href="#p4上机">P4上机</a></li>
+    <li><a href="#p5上机">P5上机</a></li>
+    <li><a href="#p6上机--1">P6上机 —— 1</a></li>
+    <li><a href="#p6上机--2">P6上机 —— 2</a></li>
+    <li><a href="#p7上机--1">P7上机 —— 1</a></li>
+    <li><a href="#p7上机--2">P7上机 —— 2</a></li>
+    <li><a href="#说在最后">说在最后</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-co-%E4%B8%8A%E6%9C%BA/">
+                <img src="/p/buaa-co-%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249_hu9436852440996676878.png"
+                        srcset="/p/buaa-co-%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249_hu9436852440996676878.png 800w, /p/buaa-co-%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249_hu9488472931120824361.png 1600w"
+                        width="800" 
+                        height="393" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO 上机" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/co/" style="background-color: #2a9d8f; color: #fff;">
+                CO
+            </a>
+        
+            <a href="/categories/%E9%97%B2%E8%81%8A/" style="background-color: #2a9d8f; color: #fff;">
+                闲聊
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-co-%E4%B8%8A%E6%9C%BA/">BUAA CO 上机</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            纯粹的杂谈
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-12-10</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 10 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <hr>
+<h2 id="说在前面">说在前面
+</h2><ul>
+<li>本系列从P6上机结束开始制作，因此靠前的一些P可能记不清楚</li>
+<li>本系列主观色彩较强，不过尚有一定准确信息</li>
+<li>作者在P6献出首挂，并玉玉了一周（？）</li>
+</ul>
+<p>接下来，就以我的吐槽为主了</p>
+<h2 id="pre上机">Pre上机
+</h2><p>考三道题，分别为logisim,verilog,MIPS</p>
+<p>原120min延时到180min</p>
+<p>logisim考查：</p>
+<ul>
+<li>
+<p><code>同步复位</code>：不能使用clk和reset的与（clk在上升沿与clk == 1是两个概念！）</p>
+<p>正确的方法：1. 用reset，MUX控制输入数据，再把修正后的数据传给寄存器        <br>
+2. 不使用MUX，而是将reset取反（再位拓展）后与Data<code>与</code>起来(reset==1时，结果为0&amp;Data=0)，这样来控制输入数据       <br>
+实质上两种方法都是保证给要写入寄存器的值做一个实时修正        <br>
+保证只有上升沿那一瞬间，才能决定是否进行复位</p>
+</li>
+<li>
+<p><code>状态机</code>： 已经很久远了，个人认为把斐波那契这种高阶的弄会就好</p>
+<p>加入An传进寄存器1，再传进寄存器2，再传进寄存器3,       <br>
+那么当寄存器3为An时，寄存器2即为A(n+1)，寄存器1为A(n+2)    <br>
+这就是logisim里暂时保留数据若干个时钟周期的途径</p>
+</li>
+</ul>
+<p>verilog和MIPS考得都很水</p>
+<p>建议一定要学好verilog的组合逻辑循环怎么写    <br>
+或者你能够熟练地打表     <br>
+让你求32位的和，你就用C写出来一个a[0]+a[1]+&hellip;倒也未尝不可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">always</span><span class="o">@</span><span class="err">（</span><span class="o">*</span><span class="err">）</span><span class="nv">使用说明</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0</span><span class="p">.</span><span class="nv">全使用</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="p">.</span><span class="nv">初始化</span><span class="err">（</span><span class="nv">所有变量</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="p">.</span><span class="nv">全是reg型和integer型</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="p">.</span><span class="nv">有用的东西最后再assign到某个wire变量上去</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="p0上机">P0上机
+</h2><p>三道题，logisim练习</p>
+<p>原120min延时到180min</p>
+<p>是谁国庆前一晚还在上机啊</p>
+<p>但是贴心的助教们出了一次极水极水的题！</p>
+<p>考察内容：善于封装子模块、Mealy(米利)机和Moore(摩尔)机的判别</p>
+<p>大家都是一路AC</p>
+<p>我WA了一次，<code>比较器</code>要设置成Unsigned！！！</p>
+<h2 id="p1上机">P1上机
+</h2><p>三道题，verilog练习</p>
+<p>原120min延时到180min</p>
+<p>一般是一个简单的组合逻辑加两个状态机</p>
+<p>本来以为没有延时，差点以为要挂了，所以第二题做出来就开始摆了</p>
+<p>错因没有什么价值，纯粹打错符号了</p>
+<p>第三题是一个很复杂的状态机   <br>
+难度堪比cpu_checker(笑)</p>
+<p>最后搭出来WA了几个点，也没弄明白WA在哪</p>
+<h2 id="p2上机">P2上机
+</h2><p>三道题，MIPS练习</p>
+<p>原120min延时到180min</p>
+<p>T1 未给出C代码       <br>
+题面如下：</p>
+<pre><code>已知b,m,n，在[m,n]中找出一个整数a，使得a%b最小，输出a%b
+</code></pre>
+<p>看起来还唬唬人，但是真从m循环到n不动一点脑子肯定是会TLE的</p>
+<p>这东西他让你输出的是余数，那可就太简单了     <br>
+要么是0，要么是m%b   <br>
+如果是0，说明m到n存在b的倍数，那么n/b就不等于m/b     <br>
+所以其实就是考察div,mfhi,mflo的使用      <br>
+伪代码如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">/</span> <span class="n">b</span> <span class="o">!=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;0&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="n">m</span> <span class="o">%</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有没有\n我忘了（）</p>
+<p>T2考循环T3考递归
+都有C语言代码，静静翻译就好，一般不会有bug       <br>
+如果有，着重检查你的bgt,blt,beq,bne等等是否写反</p>
+<p>递归就着重两个字“保护”       <br>
+保护的时间是jal前和jal后（物理意义，不是代码执行顺序）       <br>
+jal前表示进入递归之前做好现场保护        <br>
+jal后则是退出上一层递归回到jal的PC+4的位置,恢复当时现场</p>
+<h2 id="p3上机">P3上机
+</h2><p>终于来到我们的CPU阶段！      <br>
+以及闯关制的开始。</p>
+<p>最后一次使用logisim</p>
+<p>自此开始，课上是否通过基本等价于课下搭的CPU是否有误</p>
+<p>三道题，新指令添加</p>
+<p>原120min延时到150min（这个不同届不一样）</p>
+<p>本次没有明显感受，难度不太高     <br>
+课下的记忆点更充实些</p>
+<h2 id="p4上机">P4上机
+</h2><p>三道题，新指令添加</p>
+<p>120min 无延时。</p>
+<p>题目也不难，和T3难度相当</p>
+<p>作者没能AK。</p>
+<p>因为有课下bug!!!!!</p>
+<p>但是这个bug太小了。      <br>
+jr <code>$rs</code>而非jr<code>$31</code></p>
+<p>玉玉随笔：</p>
+<pre><code>    历经了轮轮评测，
+    也从未想过要在课上debug。
+    但我看到了完全与题意无关的报错信息，
+    我意识到了课下着实存在着的bug，
+    我惊惶，但又或是接受，接受我真的会在P4倒下，会在这条闯关路上走得一坨烂泥。
+
+    在课上最终de出了bug，确是万幸。
+
+    只是那瞬间，无休止的荒诞涌进一触即破的思绪，
+    畏惧后怕质疑庆幸猛地迸发开来，
+    只留呆滞的躯体挪动着不太灵光的鼠标，            
+    看着界面的圆圈转着转着，拉着我去和P4说再见了。
+</code></pre>
+<h2 id="p5上机">P5上机
+</h2><p>120min 无延时。</p>
+<p>课上过一题 = 课下没问题 = P5必通过！</p>
+<p>前两题顺风顺水   <br>
+第三题做的悠哉悠哉不知不觉只剩10min</p>
+<p>交了一发 10个点过9个 挂了个TLE</p>
+<p>意识到这题卡时间    <br>
+阻塞条件再细化 但是始终没有落实到寄存器冲突上    <br>
+再交还是TLE      <br>
+只剩下2min了     <br>
+那 就交卷吧</p>
+<p>越是静下来，越是容易意识到问题关键   <br>
+为什么当时不把那17个寄存器都排除呢？     <br>
+阻塞条件一定要细化！！   <br>
+只是担心于它的不确定性，怎么不去研究他的变化范围。</p>
+<p>2min很漫长。等了很久，等考试结束，   <br>
+等未通过的同学都离开考场，   <br>
+等问答环节来临，     <br>
+我问助教究竟要优化到什么等级：   <br>
+答案显然。   <br>
+对于一定不被写的15个寄存器，不会有转发当然不必阻塞。</p>
+<h2 id="p6上机--1">P6上机 —— 1
+</h2><p>史上最惊为天人的一集</p>
+<p>真的有人课下没bug课上还能全挂？！！</p>
+<p>T1时序逻辑掺组合逻辑             <br>
+在乘除模块里求最高位1最低位0结果一直输出xxxx         <br>
+结果是因为没初始化             <br>
+一de就是80min</p>
+<p>T2更是荒谬       <br>
+32位累加没有设置位宽             <br>
+这么简单的问题在当时混乱的大脑下藏了40min</p>
+<p>后续又做了一堆无用功，漫无目的地构造测试数据，感动自己地打表等等。。</p>
+<p>最终以0题通过幸终。</p>
+<h2 id="p6上机--2">P6上机 —— 2
+</h2><p>时隔一个月的90min AK</p>
+<p>怀揣着极度的不安与不满，</p>
+<p>因为我真的不能保证我的课下确无问题。</p>
+<p>就这样   <br>
+踏入了大家都在P7gap的空旷的考场</p>
+<p>T1已经退化成add类指令了。。      <br>
+只是写入的值换成add结果的<code>最高位1</code></p>
+<p><code>最高位1</code>？这我可太熟了（苦笑    <br>
+这不上周给我绊死的那位嘛         <br>
+这周周中好好地跟他清算了一波         <br>
+没想到还能见面，那就再也不见了</p>
+<p>T2一看条件存储，我先跳了</p>
+<p>T3经典跳转类     <br>
+完成基础功能<code>TLE</code>最后一个点              <br>
+<code>乘除模块偷跑</code>却又<code>超速</code>一个点       <br>
+意识到<code>不能暗改乘除</code>         <br>
+但是我也不知道怎么做</p>
+<p>此时我智慧的大脑居然认为测试点出错了       <br>
+肯定有死循环             <br>
+不然我有的点过快了这个点还能过慢？</p>
+<p>然后去做P2了         <br>
+大致扫一眼：什么条件跳转。。原来是标题欺诈。       <br>
+再定睛一看：啊？又是<code>最高位1</code>？      <br>
+只是把DM写的<code>地址</code>加上了一个与<code>最高位1</code>有关的数</p>
+<p>最麻烦的事大抵也就是DMWr的位扩展         <br>
+但是还好我提前改成三位了</p>
+<p>T2过关，我开始回去看T3</p>
+<p>诶诶         <br>
+这个T3一个点TLE      <br>
+这不就是我的P5吗？？</p>
+<p>我P5的反思居然还派上用场了       <br>
+我开始去思考我的阻塞&hellip;&hellip;       <br>
+用不到，不需转发就不阻塞！！         <br>
+又写了四行优化阻塞逻辑       <br>
+交了一发终于AC。</p>
+<p>最后，还是喷一下上周。       <br>
+课下无bug课上全挂真是神人了。</p>
+<p>另外，如果感觉自己课下没bug还课上全挂的别担心            <br>
+你的课下可能确无bug              <br>
+考场上的蠢度永远是自己无法想象的。</p>
+<h2 id="p7上机--1">P7上机 —— 1
+</h2><p>紧接上文，考场外的蠢度你也无法想象。</p>
+<p>四道强测：
+<code>功能强测</code> <code>异常强测</code> <code>中断强测</code> <code>冒险强测</code></p>
+<p>一道附加指令：Withdraw</p>
+<p>120min</p>
+<p>刚开始交前四题，全挂。</p>
+<p>我有点崩溃，但是看到大家也是一片红，我深深感觉到强测之强。</p>
+<p>（其实很多人都一遍过，只是我没看见）</p>
+<p>直到&hellip;&hellip;zzy 60min交卷 zjy 70min交卷</p>
+<p>我开始怀疑自己是不是真的写的太烂了。</p>
+<p>一直到我看到ALE里面没引入Instr，我终于意识到：     <br>
+我最新版没提交！！！</p>
+<p>一瞬间，像是通过了一束电流，整个人呆住了。</p>
+<p>急忙地改回代码，中间还改错了一次，漏写了一个接口，让我期待落空了几分钟。。</p>
+<p>不过当我把新版本改好，漫长的排队等待&hellip;&hellip;</p>
+<p>绿了，绿了，红了？绿了？ 还差一个中断异常，有2个点挂了。</p>
+<p>中断区别于异常，我觉得比较易错的是空泡的处理，琢磨了一段时间，我好像意识到自己应当采用两种不同的流水方式。</p>
+<p>但是这时已经8:55了。如果我提交并通过，我将没有机会再去不通过。</p>
+<p>我迟迟没有提交。</p>
+<p>我只顾着懊悔为什么没提交最新版，却没想到其实我可以先把前面一道题弄错，从而能够判断这题能不能过的同时顺利不通过。</p>
+<p>希望能给大家一点启发吧。</p>
+<blockquote>
+<p>Update 12.3</p>
+</blockquote>
+<p>没想到中测就能测出来这个问题。</p>
+<p>我特意交了一版没修改nop流水方式的，居然挂掉了一个点，和当时中断强测的点略有类似。</p>
+<p>而且修改之后便通过了。</p>
+<p>那可能，就是这样了？</p>
+<p>我好像安定下来了，但又诚惶诚恐。</p>
+<p>跟P6好像啊，一场考试下来还不知道自己课下还有没有问题。</p>
+<p>据说加指令的题也不简单。2h能拿下吗？</p>
+<p>紧张，紧张。</p>
+<h2 id="p7上机--2">P7上机 —— 2
+</h2><p>在开考前进行了龙芯杯的宣讲。     <br>
+考试时间7:40-9:40，注意时间把控。</p>
+<p>其实对自己的MIPS还是略带自信的，因为我确实不相信他会加强测试点。</p>
+<p>建议下载压缩包后直接速提交，不要再做解压，或是装进ISE等事项。你要提交的就是源代码。</p>
+<p>否则就会喜提20min的gap，心神不宁地排300余人的队</p>
+<p>强测过了之后，完全不可懈怠！一定要严谨严肃。</p>
+<p>本次题目为：     <br>
+添加异常<code>WATCH</code>      <br>
+触发方式有二：<code>IMWATCH</code>与<code>DMWATCH</code></p>
+<p>PC0添加18号寄存器与19号寄存器（支持正常读写）</p>
+<p>19号寄存器为异常判断使能     <br>
+18号寄存器高16位是IM敏感值，低16位是DM敏感值</p>
+<p>异常逻辑就是  <br>
+当前pc与IM敏感值<code>相同</code>时且19号寄存器使能满足要求时触发IMWATCH      <br>
+DM敏感值在sl指令读写地址<code>范围内</code>时且19号寄存器使能满足要求时触发DMWATCH</p>
+<p>几个注意点：</p>
+<ul>
+<li>异常优先级。以往的异常是不会同时出现的，而如今IMWATCH随时可触发，DMWATCH可以与ADEL,ADES同时触发</li>
+<li>
+<ul>
+<li>IMWATCH优先级低于取指异常，高于其他异常。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>DMWATCH优先级低于ADES,ADEL（对于同时出现的异常）</li>
+</ul>
+</li>
+<li>范围内。对于DMWATCH注意要匹配的是在范围内，如sw，DM敏感值是四个值中的一个即可。</li>
+</ul>
+<blockquote>
+<p>这里我们可以大胆用ADDR&lt;= watchaddr &lt;=ADDR+3, 他一定字对齐，否则会出现优先级更高的ADES异常。</p>
+</blockquote>
+<ul>
+<li>乘除槽。IMWATCH可以在任何指令上触发，因此乘除法也可能是异常指令，不能等到他走到M级在检测出来，此时为时已晚，乘除槽停不下来。   <br>
+因此需要提前判断好IMWATCH异常，将其加入MDALU模块。</li>
+<li>阻塞。mtc0 18和19都是危险的，会直接影响WATCH的判断，因此必须阻塞。</li>
+</ul>
+<blockquote>
+<p>这决定了IMWATCH不能在F级判断，因为这样会使D级为mfc0 18,19也需要阻塞，而这会导致死循环，因为我们的阻塞逻辑就是在D级实现的，那么mtc0就被卡在D级不得动弹。</p>
+</blockquote>
+<blockquote>
+<p>在D级判断IMWATCH是较为正确的选择。</p>
+</blockquote>
+<p>作者其实没有一交即过。   <br>
+让我以为这个测试很强。</p>
+<p>其实是因为写成了CP018号寄存器<a class="link" href="%e4%b9%9f%e5%b0%b1%e6%98%afDM%e6%95%8f%e6%84%9f%e5%80%bc" >31:16</a> == pc[31:16]&hellip;</p>
+<p>应该是CP018号寄存器<a class="link" href="%e4%b9%9f%e5%b0%b1%e6%98%afDM%e6%95%8f%e6%84%9f%e5%80%bc" >31:16</a> == pc[15:0]，     <br>
+或者{16&rsquo;b0,CP018号寄存器<a class="link" href="%e4%b9%9f%e5%b0%b1%e6%98%afDM%e6%95%8f%e6%84%9f%e5%80%bc" >31:16</a>} == pc.</p>
+<p>改完没想到就直接过了。
+一瞬间，惊喜而释然。</p>
+<h2 id="说在最后">说在最后
+</h2><p>计组上机就这样圆满结束了。</p>
+<p>在提问环节，助教问我：   <br>
+你觉得你在计组闯关的收获是什么？</p>
+<p>回首，一路走来实在坎坷。</p>
+<p>Pre的茫然    <br>
+P1的无力     <br>
+P4的惊愕         <br>
+P5的懊悔     <br>
+P6的愚钝     <br>
+P7的畏惧</p>
+<p>平稳，或是激荡地     <br>
+每一个Project都有着课上课下的呐喊</p>
+<p>从第一个单周期CPU    <br>
+到封装流水线CPU可支持中断支持外设支持异常处理支持30余条指令的MIPS微系统      <br>
+诞辰不久的博客也日渐丰满</p>
+<p>这像是一种高压下的凝聚   <br>
+引领着我们去稳健处理庞大的项目</p>
+<p>从形象框架到代码实现     <br>
+从独立执行到高效流水     <br>
+从单一指令到复杂延时     <br>
+从固定运行到异常中断</p>
+<p>不同的Project把步骤分离  <br>
+并予以较强的正确性检查   <br>
+使得P5不必担心P4部件的实现   <br>
+P6不必担心P5转发阻塞的实现   <br>
+P7不必担心P6CPU本身的实现&hellip;</p>
+<p>未来的项目倘若没有这些具象的规划     <br>
+根本不敢想有多困难。</p>
+<p>当然，感谢每一位同行者的帮助与支持。非常感谢。</p>
+<p>CO上机结束，我也终于可以好好躺下，大脑放得很空很空，吸入又呼出些跳动的空气，悄悄捕捉又一颗充满爱与自由的心。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321.862babfd3d031a2391163bb42862b527_hu11971392536427170347.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P7 MIPS微系统搭建"
+                        
+                        data-hash="md5-hiur/T0DGiORFju0KGK1Jw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P7 MIPS微系统搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.c966a98f5dc20403c6bdde606af63780_hu5151893074734151230.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P6 流水线CPU搭建（2）"
+                        
+                        data-hash="md5-yWapj13CBAPGvd5gavY3gA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P6 流水线CPU搭建（2）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.6c83e8290b67f2c9655e6633dd9d5f9d_hu10155608615976178982.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P5 流水线CPU搭建（1）"
+                        
+                        data-hash="md5-bIPoKQtn8sllXmYz3Z1fnQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P5 流水线CPU搭建（1）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.caa15c4140a1ea3defd93b1a3142538f_hu12725383462063843859.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P4 单周期CPU的verilog搭建"
+                        
+                        data-hash="md5-yqFcQUCh6j3v2TsaMUJTjw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P4 单周期CPU的verilog搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.9a5154ce3599ee12edf7f4d6207e7271_hu8913948281270116246.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P3 单周期CPU的logisim搭建"
+                        
+                        data-hash="md5-mlFUzjWZ7hLt9/TWIH5ycQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P3 单周期CPU的logisim搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

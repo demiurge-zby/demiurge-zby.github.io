@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验报告">
+<title>BUAA OS Challenge Shell</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-os-challenge-shell/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA OS Challenge Shell">
+<meta property='og:description' content="实验报告">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-os-challenge-shell/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-25T00:45:30&#43;08:00'/><meta property='article:modified_time' content='2025-06-25T00:45:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-os-challenge-shell/123.png' />
+<meta name="twitter:title" content="BUAA OS Challenge Shell">
+<meta name="twitter:description" content="实验报告"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-os-challenge-shell/123.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#题面">题面</a></li>
+    <li><a href="#说在前面">说在前面</a></li>
+    <li><a href="#内建指令与外部指令">内建指令与外部指令</a>
+      <ol>
+        <li><a href="#外部指令">外部指令</a></li>
+        <li><a href="#内建指令">内建指令</a></li>
+        <li><a href="#区别">区别</a></li>
+      </ol>
+    </li>
+    <li><a href="#ast架构实现">AST架构实现</a>
+      <ol>
+        <li><a href="#基本流程">基本流程</a></li>
+        <li><a href="#大模型的问题">大模型的问题</a></li>
+        <li><a href="#检查与调试">检查与调试</a></li>
+      </ol>
+    </li>
+    <li><a href="#工作路径">工作路径</a></li>
+    <li><a href="#相对路径转绝对路径">相对路径转绝对路径</a></li>
+    <li><a href="#相对路径支持">相对路径支持</a></li>
+    <li><a href="#环境变量设置">环境变量设置</a>
+      <ol>
+        <li><a href="#shell_id">shell_id</a></li>
+        <li><a href="#子shell如何不影响原shell">子shell如何不影响原shell</a></li>
+        <li><a href="#大模型的使用">大模型的使用</a></li>
+      </ol>
+    </li>
+    <li><a href="#环境变量值替换">环境变量值替换</a></li>
+    <li><a href="#快捷键">快捷键</a></li>
+    <li><a href="#history">history</a></li>
+    <li><a href="#反引号">反引号</a>
+      <ol>
+        <li><a href="#基本实现方式">基本实现方式</a></li>
+        <li><a href="#debugf与printf">debugf与printf</a></li>
+      </ol>
+    </li>
+    <li><a href="#条件执行">条件执行</a></li>
+    <li><a href="#后记">后记</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-os-challenge-shell/">
+                <img src="/p/buaa-os-challenge-shell/123_hu12756256378177809277.png"
+                        srcset="/p/buaa-os-challenge-shell/123_hu12756256378177809277.png 800w, /p/buaa-os-challenge-shell/123_hu3478663415663059948.png 1600w"
+                        width="800" 
+                        height="408" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Challenge Shell" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/os/" style="background-color: #2a9d8f; color: #fff;">
+                OS
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-os-challenge-shell/">BUAA OS Challenge Shell</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            实验报告
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-25</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 10 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="实验报告">实验报告
+</h1><h2 id="题面">题面
+</h2><p>感兴趣的同学可以看看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/challenge_shell.pdf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="说在前面">说在前面
+</h2><p>本次shell挑战性任务整体来说难度还是很大的，需要实现的内容太多了。不过在今年的几个挑战性任务中可能还算是最容易拿到满分的，因为数据点评测比较简单，难度不高于样例。（虽然样例也称不上简单）</p>
+<p>由于本次作业我选择在17周（也就是考试周）完成，所以做的时候时间比较赶，总共用了周一周二两天时间很极限地完成了。具体时间安排可以看下图。</p>
+<p><img src="/p/buaa-os-challenge-shell/image.png"
+	width="848"
+	height="703"
+	srcset="/p/buaa-os-challenge-shell/image_hu13885675260012649073.png 480w, /p/buaa-os-challenge-shell/image_hu2647896632077159351.png 1024w"
+	loading="lazy"
+	
+		alt="git log"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="120"
+		data-flex-basis="289px"
+	
+></p>
+<p>我完成的顺序是：</p>
+<ul>
+<li>touch,mkdir,rm指令</li>
+<li>完成O_APPEND（没必要这么早）</li>
+<li>重写sh.c，完成AST架构构建（顺便就实现了注释，<code>;</code>和<code>.b省略</code>）</li>
+<li>实现工作路径以及cd，pwd</li>
+<li>实现相对路径操作</li>
+<li>实现环境变量的declare与unset</li>
+<li>实现环境变量的值替换</li>
+<li>完成各种按键的效果</li>
+<li>完成history</li>
+<li>完成反引号</li>
+<li>完成条件执行所需的返回值传递</li>
+</ul>
+<p>因为内容太多，我这里将一些比较为难我的地方，以及我比较个性化的地方作为重点来讲。</p>
+<h2 id="内建指令与外部指令">内建指令与外部指令
+</h2><p>首先要理解这两种指令的实现方式，以及区别。</p>
+<h3 id="外部指令">外部指令
+</h3><p>外部指令通过先fork子进程，子进程再spawn孙进程来实现。</p>
+<p>spawn本身的功能是开一个新进程来执行二进制文件，因此外部指令的执行方式就是单独在/user目录下建立新的.c文件，并经过make形成.b文件，通过spawn执行ELF文件，结束。</p>
+<p>（一定注意修改的是user/new.mk，修改内容是USERAPPS += mkdir.b \touch.b \ rm.b）</p>
+<p>外部指令不应对shell的环境产生任何影响。</p>
+<h3 id="内建指令">内建指令
+</h3><p>内建指令则涉及到改变shell的环境，因此必须在原shell下执行。</p>
+<p>那么他就不能fork新进程，因为新进程中的信息改动可能带不回父进程。（这个要看具体实现，但如果我的shell信息与进程强绑定就不可以fork）</p>
+<p>执行的过程就必须在sh.c内部完成了，对于某个command就直接进行strcmp判断，如果是某条内部指令就直接执行然后结束。</p>
+<h3 id="区别">区别
+</h3><p>那么区别主要就在于fork。我们的原版sh.c是无脑先fork再runcmd的，我们的实现就只能runcmd，进去之后再看是否fork。</p>
+<h2 id="ast架构实现">AST架构实现
+</h2><p>这个可能是最阻挡人的一环，这一关过了，后面就会有内驱力促使你做下去。</p>
+<p>因为这个实在有点庞大，本来对sh.c就一知半解，现在更是要全部推翻重来，哪些要改哪些不改要改成啥都不是很明确。</p>
+<h3 id="基本流程">基本流程
+</h3><p>个人建议是先用大模型直接根据sh.c生成一版AST版本的，然后再进行一定量的修改。大模型在枚举类构建，结构体构建以及函数调用层次架构上都是比较清楚和直观的。</p>
+<p>一般的流程是，readline读取buf,然后<code>runcmd(buf)</code>。</p>
+<p>runcmd里面是parse_list和execute_list两个函数，这两个函数都是递归下降的方法执行的。</p>
+<p>具体parse的过程和OOU1很像，根据时机使用get_next_token(也就是consume),访问的时候可以直接通过全局变量cur_token。</p>
+<h3 id="大模型的问题">大模型的问题
+</h3><p>不过大模型基本上刚开始都会犯一个问题：使用malloc等动态空间请求和一些安全的字符串函数（比如strdup），以及一些我们不支持的字符串函数。因此我们需要告诉它我们实现的是微内核，对安全要求没那么高，内存空间用静态数组分配，支持的字符串函数只有strlen,strcpy,strcmp和strchr。</p>
+<p>此外大模型也经常在consume的时候出现问题，你可以对于lexer和parser进行简单的内容重写，并积极添加debugf调试，实时查看token的读取，parser的内容是否有问题。</p>
+<h3 id="检查与调试">检查与调试
+</h3><p>上面所说的debugf大法当然很有帮助。不过注意避免不同位置输出相同格式的话，这可能会引发误解。</p>
+<p>这个工作你可以通过写好的mkdir等指令去调试。不过请注意你还没有实现相对路径，因此根据ls.c，当你执行<code>ls</code>命令时（无其他参数），就会默认执行<code>ls /</code>，而不是<code>ls ./</code>。不要因此误以为自己的实现有问题。</p>
+<h2 id="工作路径">工作路径
+</h2><p>我设置了两个系统调用进行工作路径的set与get。</p>
+<p>这里注意，在fork的时候需要让子shell继承工作路径，因此需要在sys_exofork前get，然后子函数中set。</p>
+<p>当然也要注意子函数退出时要恢复工作路径为原shell。</p>
+<h2 id="相对路径转绝对路径">相对路径转绝对路径
+</h2><p>这个就相对复杂，关键在于处理无数的<code>.</code>与<code>..</code>，其中<code>..</code>的处理还不是很简单。</p>
+<p>但是字符串相关的繁杂内容，就大胆交给大模型就好了！最终的结果也确实都是一次过。</p>
+<p><img src="/p/buaa-os-challenge-shell/image-1.png"
+	width="849"
+	height="143"
+	srcset="/p/buaa-os-challenge-shell/image-1_hu2293779120528219642.png 480w, /p/buaa-os-challenge-shell/image-1_hu5158884193381430158.png 1024w"
+	loading="lazy"
+	
+		alt="..的处理"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="593"
+		data-flex-basis="1424px"
+	
+></p>
+<p><img src="/p/buaa-os-challenge-shell/image-2.png"
+	width="852"
+	height="407"
+	srcset="/p/buaa-os-challenge-shell/image-2_hu13415212192329328809.png 480w, /p/buaa-os-challenge-shell/image-2_hu9166049634142845285.png 1024w"
+	loading="lazy"
+	
+		alt="相对路径处理"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="209"
+		data-flex-basis="502px"
+	
+></p>
+<h2 id="相对路径支持">相对路径支持
+</h2><p>只需要进行类似于以下内容的修改。</p>
+<p>因为你各种路径信息的最终使用者还是这些函数。类似的函数还有fsipc_remove等等。</p>
+<p>比如：把</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="nf">fsipc_open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>改为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="kt">char</span> <span class="n">result</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span> <span class="n">middle</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">strcpy</span><span class="p">(</span><span class="n">middle</span><span class="p">,</span> <span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">char</span> <span class="n">curpath</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">syscall_get_cur_path</span><span class="p">(</span><span class="n">curpath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">change_to_abs_path</span><span class="p">(</span><span class="n">curpath</span><span class="p">,</span> <span class="n">middle</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">strcpy</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">r</span> <span class="o">=</span> <span class="nf">fsipc_open</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="环境变量设置">环境变量设置
+</h2><p>本来打算用链表存的，但是宏写起来还是没那么方便。</p>
+<p>因此开了几个全局静态数组，存储这些信息。并且强制按顺序进行环境变量的放置，被删除了也不再使用这个位置。</p>
+<p>为了解决环境变量这一关，我写了七个系统调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">	SYS_get_env_var,
+</span></span><span class="line"><span class="cl">	SYS_set_env_var,
+</span></span><span class="line"><span class="cl">	SYS_unset_env_var,
+</span></span><span class="line"><span class="cl">	SYS_print_env_var,
+</span></span><span class="line"><span class="cl">	SYS_clear_my_env_var,
+</span></span><span class="line"><span class="cl">	SYS_get_shell_id,
+</span></span><span class="line"><span class="cl">	SYS_set_shell_id,
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>get主要在下一步环境变量值替换里使用。</p>
+<p>这里主要讲讲shell_id和clear两个设计。</p>
+<p>环境变量最难的点就在于
+<code>子Shell对环境变量的修改不会影响父Shell</code></p>
+<p>但环境变量的值需要传递给子进程，还可能被修改，又要返现，如何处理？</p>
+<h3 id="shell_id">shell_id
+</h3><p>首先是shell_id的设置。shell_id和子进程是两个概念，我在这个shell里面完成外部指令是需要开子进程的，但是这个子进程就完全可以使用我这个shell的非global环境变量。</p>
+<p>因此必须设置shell_id。</p>
+<p>get就不说了，set方法是对shell_id进行加一或减一。在shell启动界面加一，执行exit指令时就减一。这两个是个人认为非常合适的时机。</p>
+<h3 id="子shell如何不影响原shell">子shell如何不影响原shell
+</h3><p>关于clear，主要就是在exit指令的时候进行一次clear，直接把这个shell_id对应的环境变量全删了。</p>
+<p>那有人要问了，你对父shell的环境变量的改变怎么复原？我采用的是个性化的set与unset。</p>
+<p>当我只是使用而不改变值就无事发生。如果要改变值，就新开一个条件变量。在get匹配的时候优先shell_id也对应的即可。如果要unset，就也新开一个条件变量，但是把global属性设置为异常值2，get的时候优先匹配同shell_id，检测到是2就直接返回没有找到。那如果unset之后又set呢？我们在set的时候也优先查找同shell_id的，然后在赋值的时候自然就实现了global属性的正常化，还能保证不影响原shell的环境变量。</p>
+<h3 id="大模型的使用">大模型的使用
+</h3><p>在解析的时候要处理 <code>xxx=xxx</code> 的结构，这种字符串任务还是交给大模型。</p>
+<p><img src="/p/buaa-os-challenge-shell/image-3.png"
+	width="777"
+	height="179"
+	srcset="/p/buaa-os-challenge-shell/image-3_hu7839265164522916875.png 480w, /p/buaa-os-challenge-shell/image-3_hu16703025853582787345.png 1024w"
+	loading="lazy"
+	
+		alt="区分key与value"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="434"
+		data-flex-basis="1041px"
+	
+></p>
+<h2 id="环境变量值替换">环境变量值替换
+</h2><p>这个的实现我放在了get_token之中。如果我读到$，就也把他当做WORD型token，但token的value就要经过get_env_var的解析。</p>
+<p>可是难点在于$key与其他字母是可以直接拼接的，</p>
+<p>就比如<code>declare A=l</code>的条件下，	
+<code>$As</code>也要翻译为<code>ls</code></p>
+<p>这种复杂任务也是选择交给了大模型。</p>
+<p><img src="/p/buaa-os-challenge-shell/image-4.png"
+	width="736"
+	height="87"
+	srcset="/p/buaa-os-challenge-shell/image-4_hu13689095653615604272.png 480w, /p/buaa-os-challenge-shell/image-4_hu10764555001600094657.png 1024w"
+	loading="lazy"
+	
+		alt="寻找是否包含key并完成替换"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="845"
+		data-flex-basis="2030px"
+	
+></p>
+<blockquote>
+<p>这里的实现是错误的，必须$紧跟的那一串有var_key才行。</p>
+<p>比如上面的例子，理应不能处理$decAare，而我的这种设计会处理为declare。不过这个问题交给大模型也容易修复。</p>
+</blockquote>
+<h2 id="快捷键">快捷键
+</h2><p>这一块的内容我没有什么特别的地方要说，主要就是回显的抵消以及字符串相关函数，改动的内容是sh.c里的readline函数。</p>
+<p>之前确实也不知道printf一些字符居然可以实现光标的移动与显示的变化。</p>
+<p>快捷键怎么解析和操作，可以参考往年的博客。</p>
+<p>这里特别强调一些内容，在qemu中<code>Ctrl+A</code>会进入某种等待触发qemu快捷键(如 <code>Ctrl+A</code>+<code>X</code>)的特殊状态，这可能导致本地出现一些问题。</p>
+<p><img src="/p/buaa-os-challenge-shell/image-5.png"
+	width="1142"
+	height="292"
+	srcset="/p/buaa-os-challenge-shell/image-5_hu485600327599034010.png 480w, /p/buaa-os-challenge-shell/image-5_hu11161888165502401150.png 1024w"
+	loading="lazy"
+	
+		alt="提问"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="391"
+		data-flex-basis="938px"
+	
+></p>
+<p><img src="/p/buaa-os-challenge-shell/image-6.png"
+	width="844"
+	height="226"
+	srcset="/p/buaa-os-challenge-shell/image-6_hu16942002340672074920.png 480w, /p/buaa-os-challenge-shell/image-6_hu13667345667747321388.png 1024w"
+	loading="lazy"
+	
+		alt="回复"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="373"
+		data-flex-basis="896px"
+	
+></p>
+<p>此外，在VSCode中，Ctrl+E可能会触发VSCode的快捷键；在跳板机中，Ctrl+W可能触发网页的快捷键。解决方式是把代码中case的内容改为其他不常用的快捷键进行调试。调试成功再改回去即可。</p>
+<h2 id="history">history
+</h2><p>历史信息处理难度不小。</p>
+<p>基本流程是开启shell时加载<code>/.mos_history</code>，加载到本地数组。	
+然后每readline完毕执行一条非空指令就写入.mos_history的末尾。</p>
+<p>难点在于切换指令。也就是本地数组与屏幕显示的处理。</p>
+<ol>
+<li>在你按上下键切换指令的时候，你需要将当前的内容存进你本地数组的对应位置。</li>
+<li>你要存一整个字符串，不能因为空格而影响存储</li>
+<li>切换后显示内容清空再加载，光标自动放在末尾</li>
+</ol>
+<h2 id="反引号">反引号
+</h2><h3 id="基本实现方式">基本实现方式
+</h3><p>实现方式是开启一个子shell，在子shell中完成指令并用输出的内容替换反引号及引住的内容。</p>
+<p>这个我也是在get_token中实现的，不过这个的优先级很高，只要读到反引号我就一直读一直等，直到等到反引号结束其属性为WORD，否则异常退出。</p>
+<p>那么读完反引号之后，我们要把内容取出来，开一个新shell，然后把内容传进shell让他去readline和runcmd，输出的内容还要传出来作为token的value。</p>
+<p>传递的方式是管道。</p>
+<h3 id="debugf与printf">debugf与printf
+</h3><p>其实当时很担心，怎么把输出的内容提取出来？每次控制台上的输出除了我们想要的之外，还有一堆env_kill的相关句子，难道要手动排除吗？</p>
+<p>实践发现只有printf的句子会被提取。</p>
+<p>那么就警示我们两点：</p>
+<ol>
+<li>标准的输出必须要使用printf而不能用debugf</li>
+<li>shell启动页面是printf！需要被特殊处理！</li>
+</ol>
+<p>其中关于第二点，我的方式是为shell启动提供-s参数，并设置如果有这个参数就不执行哪些启动页面的输出。</p>
+<h2 id="条件执行">条件执行
+</h2><p>这个是我花费时间最长的一个点，最终也是耗到凌晨三点半才搞定。其实条件执行功能本身并不难，在AST里已经实现了，难点在于如何得到返回值。</p>
+<p>内建指令的返回值直接就返回，很直白。难点在于外部指令。</p>
+<p>外部指令先是套了一层fork，fork里面spawn又是一层fork，更何况spawn是通过执行ELF文件，我怎么获取ELF文件本身的返回值？</p>
+<p>经过研究发现，那些.b文件的返回值只能通过user/lib/libos.c中的main的返回值来体现。</p>
+<p>那么这么一个奇怪的位置的值又怎么传回那么遥远的原shell呢？</p>
+<p>我的答案还是管道。此外，我还强制了文件描述符2,3，便于解决困难的传参问题。其中libos.c只能写管道，并且强制通过fdnum=3的fd来实现。</p>
+<p>进程必须要趁它在kill之前发出信息，否则就再也找不到了。</p>
+<p>当然还有一种解法是修改libos.c的exit函数，让父进程掌管子进程的destroy，从而在子进程消失前拿到它的exit_value。这种一般要为进程添加属性exit_value，并添加set与get的系统调用。</p>
+<h2 id="后记">后记
+</h2><p>实验报告很粗浅地写完了，OS的路程也终于画上了句号。在内核态打下的基础终于在用户态体现出如此强大的功能，个人还是很有成就感的。shell本身的可交互性与易懂性是吸引很多人选择它这个挑战的重要原因，实际上它也确实相较于swap更便于调试。但是难点就是内容实在是太多了，又不简单，两整天30个小时才侥幸拿下。我当前的实现也有一些我已知的错误，但是温柔的测试点并没有测出来。</p>
+<p>赞美OS。</p>
+<p>另外，祝今天高考查分的学弟学妹们取得优异成绩！</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.59a725bb7470179496b59ef870f141ed_hu7982124795751662449.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab6 管道与SHELL"
+                        
+                        data-hash="md5-Waclu3RwF5SWtZ74cPFB7Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab6 管道与SHELL</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/123.f449929313b9bc588b18092d04f81d2f_hu3882242188266819812.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab5 上机"
+                        
+                        data-hash="md5-9EmSkxO5vFiLGAktBPgdLw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab5 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/123.f91714c4ea878afc95fdee604e380825_hu16560301168419005684.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab5 文件系统"
+                        
+                        data-hash="md5-&#43;RcUxOqHivyV/e5gTjgIJQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab5 文件系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/123.e7fe13a9c852f8d15643aa873805e3e7_hu14461487000464471443.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab4 上机"
+                        
+                        data-hash="md5-5/4TqchS&#43;NFWQ6qHOAXj5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab4 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-os-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-os-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123.87a389e28f0f38c3143893074441e5f4_hu15853555195397452672.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OS Lab4 系统调用与FORK"
+                        
+                        data-hash="md5-h6OJ4o8POMMUOJMHREHl9A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OS Lab4 系统调用与FORK</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

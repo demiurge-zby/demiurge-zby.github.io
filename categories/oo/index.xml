@@ -8,12 +8,12 @@
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
         <lastBuildDate>Mon, 09 Jun 2025 21:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/oo/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>北航OO U4 UML正向建模与图书管理系统</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+        <title>BUAA OO U4 UML正向建模与图书管理系统</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
         <pubDate>Mon, 09 Jun 2025 21:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.png" alt="Featured image of post 北航OO U4 UML正向建模与图书管理系统" /&gt;&lt;h2 id=&#34;关于正向建模&#34;&gt;关于正向建模
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.png" alt="Featured image of post BUAA OO U4 UML正向建模与图书管理系统" /&gt;&lt;h2 id=&#34;关于正向建模&#34;&gt;关于正向建模
 &lt;/h2&gt;&lt;p&gt;正向建模是基于需求分析，创建一系列模型来表达系统的静态结构、动态行为和交互逻辑的过程。这些模型以可视化方式帮助我们理解系统设计，并为后续开发与实现提供指导。其核心是借助模型逐步细化的过程，从高层概念推进到低层实现，确保设计与需求一致。&lt;/p&gt;
 &lt;p&gt;因此正向建模的核心并不在于画图，而&lt;strong&gt;需求分析&lt;/strong&gt;才是正向建模的重要基础。&lt;/p&gt;
 &lt;h3 id=&#34;需求分析&#34;&gt;需求分析
@@ -41,10 +41,10 @@
 &lt;/h2&gt;&lt;p&gt;本次作业的架构设计其实花了我很大的功夫。在hw13的时候，我浏览学长的代码，但又不愿深入阅读过度模仿；我阅读学长的博客，也总觉得不能心领神会。最后无奈先写了一份需求分析出来，将散落在各处的要求集中起来，选定合适的数据结构与方法，才得到了类图的雏形。&lt;/p&gt;
 &lt;p&gt;很遗憾没能早点接触状态图与顺序图，类图是类的构造蓝图，那这两张图可以说是具体方法实现的蓝图。&lt;/p&gt;
 &lt;p&gt;具体架构的内容见下图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image.png&#34;
 	width=&#34;1519&#34;
 	height=&#34;826&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu11203860776147148248.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu15849978408561524164.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu11203860776147148248.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu15849978408561524164.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;类图&#34;
@@ -55,10 +55,10 @@
 		data-flex-basis=&#34;441px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1.png&#34;
 	width=&#34;1412&#34;
 	height=&#34;738&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu3052618928839767250.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu6738793309917177957.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu3052618928839767250.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu6738793309917177957.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;状态图&#34;
@@ -94,12 +94,12 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 </description>
         </item>
         <item>
-        <title>北航OO U3 JML与社交网络</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</link>
+        <title>BUAA OO U3 JML与社交网络</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</link>
         <pubDate>Fri, 16 May 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png" alt="Featured image of post 北航OO U3 JML与社交网络" /&gt;&lt;h2 id=&#34;关于架构&#34;&gt;关于架构
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png" alt="Featured image of post BUAA OO U3 JML与社交网络" /&gt;&lt;h2 id=&#34;关于架构&#34;&gt;关于架构
 &lt;/h2&gt;&lt;p&gt;本单元的核心任务是根据接口提供的需求，写出其具体实现。&lt;/p&gt;
 &lt;p&gt;三次迭代的递进关系并不很强，更像是不同模块的各自实现。&lt;/p&gt;
 &lt;p&gt;第一次迭代明确了Network作为中枢，并引入了核心对象person与tag&lt;/p&gt;
@@ -276,12 +276,12 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 </description>
         </item>
         <item>
-        <title>北航OO U2 多线程与电梯</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</link>
+        <title>BUAA OO U2 多线程与电梯</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</link>
         <pubDate>Thu, 17 Apr 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.png" alt="Featured image of post 北航OO U2 多线程与电梯" /&gt;&lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.png" alt="Featured image of post BUAA OO U2 多线程与电梯" /&gt;&lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
 &lt;/h2&gt;&lt;h3 id=&#34;请求的迭代&#34;&gt;请求的迭代
 &lt;/h3&gt;&lt;p&gt;第一次作业：PersonRequest            &lt;br&gt;
 第二次作业：ScheRequest           &lt;br&gt;
@@ -317,10 +317,10 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 &lt;li&gt;双轿厢的同步与互斥&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;uml类图&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1.png&#34;
 	width=&#34;1241&#34;
 	height=&#34;800&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu2800710375844316694.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu16159373750419713481.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu2800710375844316694.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu16159373750419713481.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -335,10 +335,10 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 &lt;p&gt;其中对于&lt;code&gt;RequestCoordinator&lt;/code&gt;，每个电梯都有一把这样的锁，当电梯没有request时，就会调用这个里的条件变量的wait,也即封装好的&lt;code&gt;waitForRequest()&lt;/code&gt;函数。被唤醒则通过分发线程分给各个Queue后触发唤醒。&lt;/p&gt;
 &lt;h3 id=&#34;sequence&#34;&gt;sequence
 &lt;/h3&gt;&lt;p&gt;电梯线程的run方法：  &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run.png&#34;
 	width=&#34;679&#34;
 	height=&#34;981&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu7559287381418978283.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu4541188798760296372.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu7559287381418978283.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu4541188798760296372.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -350,10 +350,10 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;主线程(?)的main方法：   &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main.png&#34;
 	width=&#34;769&#34;
 	height=&#34;415&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu12254519656876251287.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu5792283028725187188.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu12254519656876251287.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu5792283028725187188.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -504,12 +504,12 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OO U1 递归下降与表达式解析</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
+        <title>BUAA OO U1 递归下降与表达式解析</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
         <pubDate>Tue, 18 Mar 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post 北航OO U1 递归下降与表达式解析" /&gt;&lt;p&gt;本次作业以解析表达式并简化后输出为核心任务。&lt;/p&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post BUAA OO U1 递归下降与表达式解析" /&gt;&lt;p&gt;本次作业以解析表达式并简化后输出为核心任务。&lt;/p&gt;
 &lt;p&gt;主要的实现过程为：   &lt;br&gt;
 &lt;code&gt;预处理&lt;/code&gt;-&amp;gt;&lt;code&gt;解析&lt;/code&gt;-&amp;gt;&lt;code&gt;化简&lt;/code&gt;-&amp;gt;&lt;code&gt;输出&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
@@ -537,10 +537,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 &lt;p&gt;而我们做的事情，就是根据读取expression，&lt;strong&gt;自行出构建一个新的、有结构的Expr。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;接下来的toPoly便也是递归下降的一种体现。&lt;strong&gt;我已经知道最小单元Mono与Power有它具体的toPoly()方法&lt;/strong&gt;，那么我就可以采用递归下降，对每一个类只着眼于它自身的运算过程。&lt;/p&gt;
 &lt;h3 id=&#34;代码量&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines.png&#34;
 	width=&#34;1744&#34;
 	height=&#34;357&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu1348462638036344911.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu679612040571503907.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu1348462638036344911.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu679612040571503907.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_lines&#34;
@@ -553,10 +553,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;可以看出核心代码在于解析Parser与化简Poly这两个类中。&lt;/p&gt;
 &lt;h3 id=&#34;uml类图&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph.png&#34;
 	width=&#34;2452&#34;
 	height=&#34;1604&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu9410046640435313302.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu6616560314303406624.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu9410046640435313302.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu6616560314303406624.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_graph&#34;
@@ -569,10 +569,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;方法数则是Poly类遥遥领先，不过都是加、乘、幂、去零、取反、输出等基本方法&lt;/p&gt;
 &lt;h3 id=&#34;复杂度&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class.png&#34;
 	width=&#34;664&#34;
 	height=&#34;445&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14704900314256740387.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14458279921066147853.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14704900314256740387.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14458279921066147853.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_class&#34;
@@ -597,10 +597,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 &lt;p&gt;对于乘法，我们需要先实现最小单元之间幂函数幂次与三角因子幂次的累积   &lt;br&gt;
 再进行所有乘积项的求和&lt;/p&gt;
 &lt;h3 id=&#34;代码量-1&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines.png&#34;
 	width=&#34;1759&#34;
 	height=&#34;426&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu2733324857433404355.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu12539274716514737244.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu2733324857433404355.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu12539274716514737244.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_lines&#34;
@@ -614,10 +614,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 &lt;p&gt;较上次作业新增了近800行，其中parser变化不大，而Mono与Poly代码量激增  &lt;br&gt;
 此外还有新增的类: 递归函数RecursiveFunc&lt;/p&gt;
 &lt;h3 id=&#34;uml类图-1&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph.png&#34;
 	width=&#34;2362&#34;
 	height=&#34;2781&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu4824547250586139424.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu2263586557949589371.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu4824547250586139424.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu2263586557949589371.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_graph&#34;
@@ -631,10 +631,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 &lt;p&gt;我调整了类的相对位置使之更加清晰。&lt;/p&gt;
 &lt;p&gt;图片从上到下分别是函数预处理，表达式解析，表达式化简运算与输出&lt;/p&gt;
 &lt;h3 id=&#34;复杂度-1&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class.png&#34;
 	width=&#34;664&#34;
 	height=&#34;489&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu1209901690595859210.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu15904561665040355737.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu1209901690595859210.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu15904561665040355737.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_class&#34;
@@ -659,10 +659,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 站在HW3面前的你，    &lt;br&gt;
 应当充满了决心！&lt;/p&gt;
 &lt;h3 id=&#34;代码量-2&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines.png&#34;
 	width=&#34;1749&#34;
 	height=&#34;517&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu14879122926649187208.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu3319448293189894400.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu14879122926649187208.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu3319448293189894400.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_lines&#34;
@@ -676,10 +676,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 &lt;p&gt;代码行数增加的并不多&lt;/p&gt;
 &lt;p&gt;主要内容是新类的添加，更多的函数代入操作以及求导计算&lt;/p&gt;
 &lt;h3 id=&#34;uml类图-2&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph.png&#34;
 	width=&#34;2882&#34;
 	height=&#34;3286&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu856977851820666993.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu16451727185006472704.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu856977851820666993.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu16451727185006472704.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_graph&#34;
@@ -692,10 +692,10 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;相较于hw2，在Factor上新增了求导因子，在预处理上新增了NormalFunc以及一个数据功能类Func。&lt;/p&gt;
 &lt;h3 id=&#34;复杂度-2&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class.png&#34;
 	width=&#34;654&#34;
 	height=&#34;603&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu5027182664871553546.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu11158960634192581642.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu5027182664871553546.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu11158960634192581642.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_class&#34;
@@ -780,12 +780,12 @@ python .py
 </description>
         </item>
         <item>
-        <title>北航OO U1 HW1 表达式解析</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
+        <title>BUAA OO U1 HW1 表达式解析</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
         <pubDate>Mon, 03 Mar 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post 北航OO U1 HW1 表达式解析" /&gt;&lt;h2 id=&#34;作业实现&#34;&gt;作业实现
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post BUAA OO U1 HW1 表达式解析" /&gt;&lt;h2 id=&#34;作业实现&#34;&gt;作业实现
 &lt;/h2&gt;&lt;h3 id=&#34;预处理&#34;&gt;预处理
 &lt;/h3&gt;&lt;p&gt;replaceAll()函数 &lt;br&gt;
 解决空白符与连续正负号&lt;/p&gt;

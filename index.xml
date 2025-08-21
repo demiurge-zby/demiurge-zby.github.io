@@ -8,12 +8,12 @@
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
         <lastBuildDate>Wed, 25 Jun 2025 00:45:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>北航OS Challenge Shell</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/</link>
+        <title>BUAA OS Challenge Shell</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-challenge-shell/</link>
         <pubDate>Wed, 25 Jun 2025 00:45:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/123.png" alt="Featured image of post 北航OS Challenge Shell" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+        <guid>https://demiurge-zby.github.io/p/buaa-os-challenge-shell/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-challenge-shell/123.png" alt="Featured image of post BUAA OS Challenge Shell" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;题面&#34;&gt;题面
 &lt;/h2&gt;&lt;p&gt;感兴趣的同学可以看看：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -27,10 +27,10 @@
 &lt;/div&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;本次shell挑战性任务整体来说难度还是很大的，需要实现的内容太多了。不过在今年的几个挑战性任务中可能还算是最容易拿到满分的，因为数据点评测比较简单，难度不高于样例。（虽然样例也称不上简单）&lt;/p&gt;
 &lt;p&gt;由于本次作业我选择在17周（也就是考试周）完成，所以做的时候时间比较赶，总共用了周一周二两天时间很极限地完成了。具体时间安排可以看下图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image.png&#34;
 	width=&#34;848&#34;
 	height=&#34;703&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image_hu13885675260012649073.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image_hu2647896632077159351.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image_hu13885675260012649073.png 480w, https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image_hu2647896632077159351.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;git log&#34;
@@ -90,10 +90,10 @@
 &lt;h2 id=&#34;相对路径转绝对路径&#34;&gt;相对路径转绝对路径
 &lt;/h2&gt;&lt;p&gt;这个就相对复杂，关键在于处理无数的&lt;code&gt;.&lt;/code&gt;与&lt;code&gt;..&lt;/code&gt;，其中&lt;code&gt;..&lt;/code&gt;的处理还不是很简单。&lt;/p&gt;
 &lt;p&gt;但是字符串相关的繁杂内容，就大胆交给大模型就好了！最终的结果也确实都是一次过。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-1.png&#34;
 	width=&#34;849&#34;
 	height=&#34;143&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-1_hu2293779120528219642.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-1_hu5158884193381430158.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-1_hu2293779120528219642.png 480w, https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-1_hu5158884193381430158.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;..的处理&#34;
@@ -104,10 +104,10 @@
 		data-flex-basis=&#34;1424px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-2.png&#34;
 	width=&#34;852&#34;
 	height=&#34;407&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-2_hu13415212192329328809.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-2_hu9166049634142845285.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-2_hu13415212192329328809.png 480w, https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-2_hu9166049634142845285.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;相对路径处理&#34;
@@ -200,10 +200,10 @@
 &lt;p&gt;当我只是使用而不改变值就无事发生。如果要改变值，就新开一个条件变量。在get匹配的时候优先shell_id也对应的即可。如果要unset，就也新开一个条件变量，但是把global属性设置为异常值2，get的时候优先匹配同shell_id，检测到是2就直接返回没有找到。那如果unset之后又set呢？我们在set的时候也优先查找同shell_id的，然后在赋值的时候自然就实现了global属性的正常化，还能保证不影响原shell的环境变量。&lt;/p&gt;
 &lt;h3 id=&#34;大模型的使用&#34;&gt;大模型的使用
 &lt;/h3&gt;&lt;p&gt;在解析的时候要处理 &lt;code&gt;xxx=xxx&lt;/code&gt; 的结构，这种字符串任务还是交给大模型。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-3.png&#34;
 	width=&#34;777&#34;
 	height=&#34;179&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-3_hu7839265164522916875.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-3_hu16703025853582787345.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-3_hu7839265164522916875.png 480w, https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-3_hu16703025853582787345.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;区分key与value&#34;
@@ -220,10 +220,10 @@
 &lt;p&gt;就比如&lt;code&gt;declare A=l&lt;/code&gt;的条件下，	
 &lt;code&gt;$As&lt;/code&gt;也要翻译为&lt;code&gt;ls&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;这种复杂任务也是选择交给了大模型。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-4.png&#34;
 	width=&#34;736&#34;
 	height=&#34;87&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-4_hu13689095653615604272.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-4_hu10764555001600094657.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-4_hu13689095653615604272.png 480w, https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-4_hu10764555001600094657.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;寻找是否包含key并完成替换&#34;
@@ -243,10 +243,10 @@
 &lt;p&gt;之前确实也不知道printf一些字符居然可以实现光标的移动与显示的变化。&lt;/p&gt;
 &lt;p&gt;快捷键怎么解析和操作，可以参考往年的博客。&lt;/p&gt;
 &lt;p&gt;这里特别强调一些内容，在qemu中&lt;code&gt;Ctrl+A&lt;/code&gt;会进入某种等待触发qemu快捷键(如 &lt;code&gt;Ctrl+A&lt;/code&gt;+&lt;code&gt;X&lt;/code&gt;)的特殊状态，这可能导致本地出现一些问题。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-5.png&#34;
 	width=&#34;1142&#34;
 	height=&#34;292&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-5_hu485600327599034010.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-5_hu11161888165502401150.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-5_hu485600327599034010.png 480w, https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-5_hu11161888165502401150.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;提问&#34;
@@ -257,10 +257,10 @@
 		data-flex-basis=&#34;938px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-6.png&#34;
 	width=&#34;844&#34;
 	height=&#34;226&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-6_hu16942002340672074920.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-challenge-shell/image-6_hu13667345667747321388.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-6_hu16942002340672074920.png 480w, https://demiurge-zby.github.io/p/buaa-os-challenge-shell/image-6_hu13667345667747321388.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;回复&#34;
@@ -313,12 +313,12 @@
 </description>
         </item>
         <item>
-        <title>北航OO U4 UML正向建模与图书管理系统</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+        <title>BUAA OO U4 UML正向建模与图书管理系统</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
         <pubDate>Mon, 09 Jun 2025 21:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.png" alt="Featured image of post 北航OO U4 UML正向建模与图书管理系统" /&gt;&lt;h2 id=&#34;关于正向建模&#34;&gt;关于正向建模
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.png" alt="Featured image of post BUAA OO U4 UML正向建模与图书管理系统" /&gt;&lt;h2 id=&#34;关于正向建模&#34;&gt;关于正向建模
 &lt;/h2&gt;&lt;p&gt;正向建模是基于需求分析，创建一系列模型来表达系统的静态结构、动态行为和交互逻辑的过程。这些模型以可视化方式帮助我们理解系统设计，并为后续开发与实现提供指导。其核心是借助模型逐步细化的过程，从高层概念推进到低层实现，确保设计与需求一致。&lt;/p&gt;
 &lt;p&gt;因此正向建模的核心并不在于画图，而&lt;strong&gt;需求分析&lt;/strong&gt;才是正向建模的重要基础。&lt;/p&gt;
 &lt;h3 id=&#34;需求分析&#34;&gt;需求分析
@@ -346,10 +346,10 @@
 &lt;/h2&gt;&lt;p&gt;本次作业的架构设计其实花了我很大的功夫。在hw13的时候，我浏览学长的代码，但又不愿深入阅读过度模仿；我阅读学长的博客，也总觉得不能心领神会。最后无奈先写了一份需求分析出来，将散落在各处的要求集中起来，选定合适的数据结构与方法，才得到了类图的雏形。&lt;/p&gt;
 &lt;p&gt;很遗憾没能早点接触状态图与顺序图，类图是类的构造蓝图，那这两张图可以说是具体方法实现的蓝图。&lt;/p&gt;
 &lt;p&gt;具体架构的内容见下图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image.png&#34;
 	width=&#34;1519&#34;
 	height=&#34;826&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu11203860776147148248.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu15849978408561524164.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu11203860776147148248.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image_hu15849978408561524164.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;类图&#34;
@@ -360,10 +360,10 @@
 		data-flex-basis=&#34;441px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1.png&#34;
 	width=&#34;1412&#34;
 	height=&#34;738&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu3052618928839767250.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu6738793309917177957.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu3052618928839767250.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-1_hu6738793309917177957.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;状态图&#34;
@@ -399,12 +399,12 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 </description>
         </item>
         <item>
-        <title>北航OS Lab6 管道与SHELL</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/</link>
+        <title>BUAA OS Lab6 管道与SHELL</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/</link>
         <pubDate>Wed, 04 Jun 2025 20:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.png" alt="Featured image of post 北航OS Lab6 管道与SHELL" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab6-%E7%AE%A1%E9%81%93%E4%B8%8Eshell/123.png" alt="Featured image of post BUAA OS Lab6 管道与SHELL" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
 &lt;/h2&gt;&lt;h3 id=&#34;thinking-61&#34;&gt;Thinking 6.1
 &lt;/h3&gt;&lt;p&gt;只需对父子进程的读写端口与管道行为等进行&lt;code&gt;对调&lt;/code&gt;。&lt;/p&gt;
@@ -915,12 +915,12 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 </description>
         </item>
         <item>
-        <title>北航OS Lab5 上机</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E4%B8%8A%E6%9C%BA/</link>
+        <title>BUAA OS Lab5 上机</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Sat, 31 May 2025 11:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E4%B8%8A%E6%9C%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post 北航OS Lab5 上机" /&gt;&lt;p&gt;终于还是来到了最后一次上机。&lt;/p&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab5-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post BUAA OS Lab5 上机" /&gt;&lt;p&gt;终于还是来到了最后一次上机。&lt;/p&gt;
 &lt;p&gt;可能是作为第一届拥有OS官方课下答案的试验品，同学们对OS整体架构的把握情况貌似远不如前。毕竟花的时间可能确确实实地少了。	
 我自己则更是深刻感受到与学长们的差距。直到上机，也还在疯狂地寻找结构体成员的名字是什么，找结构体在哪里宏定义，找各种各样的lookup，walk与get究竟要怎么用。&lt;/p&gt;
 &lt;p&gt;在上机前，我还在抱有幻想。我自以为对各种方法的基本功能不太陌生。给我一个方法名，我知道大概记得它能得到什么，它会改变什么。		
@@ -1174,12 +1174,12 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 </description>
         </item>
         <item>
-        <title>北航OS Lab5 文件系统</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
+        <title>BUAA OS Lab5 文件系统</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
         <pubDate>Sun, 18 May 2025 20:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/123.png" alt="Featured image of post 北航OS Lab5 文件系统" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/123.png" alt="Featured image of post BUAA OS Lab5 文件系统" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
 &lt;/h2&gt;&lt;h3 id=&#34;thinking-51&#34;&gt;Thinking 5.1
 &lt;/h3&gt;&lt;p&gt;可能产生的问题： 
@@ -1538,10 +1538,10 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;thinking-57&#34;&gt;Thinking 5.7
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image.png&#34;
 	width=&#34;506&#34;
 	height=&#34;538&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image_hu9729113861172923889.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image_hu4922117046905876127.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image_hu9729113861172923889.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image_hu4922117046905876127.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;文件系统服务时序图&#34;
@@ -1598,12 +1598,12 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 </description>
         </item>
         <item>
-        <title>北航OO U3 JML与社交网络</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</link>
+        <title>BUAA OO U3 JML与社交网络</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</link>
         <pubDate>Fri, 16 May 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png" alt="Featured image of post 北航OO U3 JML与社交网络" /&gt;&lt;h2 id=&#34;关于架构&#34;&gt;关于架构
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png" alt="Featured image of post BUAA OO U3 JML与社交网络" /&gt;&lt;h2 id=&#34;关于架构&#34;&gt;关于架构
 &lt;/h2&gt;&lt;p&gt;本单元的核心任务是根据接口提供的需求，写出其具体实现。&lt;/p&gt;
 &lt;p&gt;三次迭代的递进关系并不很强，更像是不同模块的各自实现。&lt;/p&gt;
 &lt;p&gt;第一次迭代明确了Network作为中枢，并引入了核心对象person与tag&lt;/p&gt;
@@ -1780,12 +1780,12 @@ OOU4中，我首次见识到交互式测试。我只会&lt;code&gt;data.exe &amp
 </description>
         </item>
         <item>
-        <title>北航OS Lab4 上机</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/</link>
+        <title>BUAA OS Lab4 上机</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Fri, 09 May 2025 11:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post 北航OS Lab4 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab4-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post BUAA OS Lab4 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
 &lt;/h2&gt;&lt;p&gt;往年的lab4上机分为4-1和4-2两个部分。&lt;/p&gt;
 &lt;p&gt;其中lab4-1侧重于考察系统调用本身的实现，而lab4-2仍以系统调用为载体，但更多地强调像fork一样，借助系统调用去实现某些功能。&lt;/p&gt;
 &lt;p&gt;对于本次上机：&lt;/p&gt;
@@ -2033,12 +2033,12 @@ struct Shm shm = shm_pool[key];&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OS Lab4 系统调用与FORK</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/</link>
+        <title>BUAA OS Lab4 系统调用与FORK</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/</link>
         <pubDate>Tue, 29 Apr 2025 20:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123.png" alt="Featured image of post 北航OS Lab4 系统调用与FORK" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/123.png" alt="Featured image of post BUAA OS Lab4 系统调用与FORK" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
 &lt;/h2&gt;&lt;h3 id=&#34;thinking-41&#34;&gt;Thinking 4.1
 &lt;/h3&gt;&lt;p&gt;要想回答这个问题，我们先重新梳理一下系统调用的流程。&lt;/p&gt;
@@ -2285,10 +2285,10 @@ struct Shm shm = shm_pool[key];&lt;/p&gt;
 &lt;p&gt;• fork 之后，父子进程同时开始执行fork之后的代码段&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;以及此图：	
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image.png&#34;
 	width=&#34;1123&#34;
 	height=&#34;616&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image_hu14913401456138704058.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image_hu7464946203331899128.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image_hu14913401456138704058.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8Efork/image_hu7464946203331899128.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -2511,12 +2511,12 @@ tf-&amp;gt;cp0_badvaddr代表出现异常的虚拟地址，往往在处理与内
 </description>
         </item>
         <item>
-        <title>北航OS Lab3 上机</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/</link>
+        <title>BUAA OS Lab3 上机</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab3-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Sun, 27 Apr 2025 11:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post 北航OS Lab3 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab3-%E4%B8%8A%E6%9C%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab3-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post BUAA OS Lab3 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
 &lt;/h2&gt;&lt;p&gt;往年题资源约等于无。只能对着学长git仓库的源码疯狂地想象题目&amp;hellip;&lt;/p&gt;
 &lt;p&gt;个人认为lab3的exam相对来说随机性比较大，很有extra的风格。&lt;/p&gt;
 &lt;p&gt;题面大概率是实现一种新的调度算法。&lt;/p&gt;
@@ -2701,12 +2701,12 @@ tf-&amp;gt;cp0_badvaddr代表出现异常的虚拟地址，往往在处理与内
 </description>
         </item>
         <item>
-        <title>北航OS Lab3 进程与异常</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/</link>
+        <title>BUAA OS Lab3 进程与异常</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/</link>
         <pubDate>Fri, 18 Apr 2025 20:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/123.png" alt="Featured image of post 北航OS Lab3 进程与异常" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%BC%82%E5%B8%B8/123.png" alt="Featured image of post BUAA OS Lab3 进程与异常" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
 &lt;/h2&gt;&lt;h3 id=&#34;thinking-31&#34;&gt;Thinking 3.1
 &lt;/h3&gt;&lt;p&gt;实现自映射，也就是需要页目录作为二级页表时对应的区域是整个页表，页目录的每一页表项对应的是每一个二级页表。&lt;/p&gt;
@@ -3315,12 +3315,12 @@ env_sched_list：使用 TAILQ_INIT 初始化调度进程队列。&lt;/li&gt;
 </description>
         </item>
         <item>
-        <title>北航OO U2 多线程与电梯</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</link>
+        <title>BUAA OO U2 多线程与电梯</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</link>
         <pubDate>Thu, 17 Apr 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.png" alt="Featured image of post 北航OO U2 多线程与电梯" /&gt;&lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.png" alt="Featured image of post BUAA OO U2 多线程与电梯" /&gt;&lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
 &lt;/h2&gt;&lt;h3 id=&#34;请求的迭代&#34;&gt;请求的迭代
 &lt;/h3&gt;&lt;p&gt;第一次作业：PersonRequest            &lt;br&gt;
 第二次作业：ScheRequest           &lt;br&gt;
@@ -3356,10 +3356,10 @@ env_sched_list：使用 TAILQ_INIT 初始化调度进程队列。&lt;/li&gt;
 &lt;li&gt;双轿厢的同步与互斥&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;uml类图&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1.png&#34;
 	width=&#34;1241&#34;
 	height=&#34;800&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu2800710375844316694.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu16159373750419713481.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu2800710375844316694.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/image-1_hu16159373750419713481.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -3374,10 +3374,10 @@ env_sched_list：使用 TAILQ_INIT 初始化调度进程队列。&lt;/li&gt;
 &lt;p&gt;其中对于&lt;code&gt;RequestCoordinator&lt;/code&gt;，每个电梯都有一把这样的锁，当电梯没有request时，就会调用这个里的条件变量的wait,也即封装好的&lt;code&gt;waitForRequest()&lt;/code&gt;函数。被唤醒则通过分发线程分给各个Queue后触发唤醒。&lt;/p&gt;
 &lt;h3 id=&#34;sequence&#34;&gt;sequence
 &lt;/h3&gt;&lt;p&gt;电梯线程的run方法：  &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run.png&#34;
 	width=&#34;679&#34;
 	height=&#34;981&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu7559287381418978283.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu4541188798760296372.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu7559287381418978283.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/ElevatorThread_run_hu4541188798760296372.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -3389,10 +3389,10 @@ env_sched_list：使用 TAILQ_INIT 初始化调度进程队列。&lt;/li&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;主线程(?)的main方法：   &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main.png&#34;
 	width=&#34;769&#34;
 	height=&#34;415&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu12254519656876251287.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu5792283028725187188.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu12254519656876251287.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/MainClass_main_hu5792283028725187188.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -3543,12 +3543,12 @@ hw7的bug已经数不胜数了。&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OS Lab2 上机</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E4%B8%8A%E6%9C%BA/</link>
+        <title>BUAA OS Lab2 上机</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab2-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Sun, 13 Apr 2025 11:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E4%B8%8A%E6%9C%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post 北航OS Lab2 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab2-%E4%B8%8A%E6%9C%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab2-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post BUAA OS Lab2 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
 &lt;/h2&gt;&lt;p&gt;参考往年题总是有帮助的。&lt;/p&gt;
 &lt;h3 id=&#34;21级&#34;&gt;21级
 &lt;/h3&gt;&lt;p&gt;参考博客 &lt;a class=&#34;link&#34; href=&#34;https://toby-shi-cloud.github.io/posts/oslab2.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3880,12 +3880,12 @@ cur_page = page_lookup(pgdir, addr, &amp;amp;pte_entryp); 这时候为什么不�
 </description>
         </item>
         <item>
-        <title>北航OS Lab2 内存管理</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+        <title>BUAA OS Lab2 内存管理</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
         <pubDate>Sat, 05 Apr 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg.png" alt="Featured image of post 北航OS Lab2 内存管理" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/jpg.png" alt="Featured image of post BUAA OS Lab2 内存管理" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
 &lt;/h2&gt;&lt;h3 id=&#34;thinking-21&#34;&gt;Thinking 2.1
 &lt;/h3&gt;&lt;p&gt;在编写的 C 程序中，指针变量中存储的地址被视为&lt;code&gt;虚拟地址&lt;/code&gt;。     &lt;br&gt;
@@ -3902,10 +3902,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 &lt;h4 id=&#34;比较单向双向循环链表&#34;&gt;比较单向、双向、循环链表
 &lt;/h4&gt;&lt;p&gt;由于 &lt;code&gt;/usr/include/sys/queue.h&lt;/code&gt; 里面的双向链表和我们自己实现的差别不大，因此都使用了&lt;code&gt;/usr/include/sys/queue.h&lt;/code&gt;的进行对比分析。&lt;/p&gt;
 &lt;p&gt;单向链表：  &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1.png&#34;
 	width=&#34;888&#34;
 	height=&#34;405&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1_hu15072774150551891593.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1_hu7660962741785960241.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1_hu15072774150551891593.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-1_hu7660962741785960241.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;单向链表&#34;
@@ -3917,10 +3917,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;双向链表：  &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2.png&#34;
 	width=&#34;850&#34;
 	height=&#34;424&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2_hu5945114192631768838.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2_hu13934510025857460306.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2_hu5945114192631768838.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-2_hu13934510025857460306.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;双向链表&#34;
@@ -3932,10 +3932,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;循环链表：     &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image.png&#34;
 	width=&#34;868&#34;
 	height=&#34;458&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image_hu2012991216943849946.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image_hu11233287312304373731.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image_hu2012991216943849946.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image_hu11233287312304373731.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;循环链表&#34;
@@ -3954,10 +3954,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 &lt;p&gt;在功能性上的差异在此不再赘述了，实现的功能越多，效率上可能就会有折损。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;插入      &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3.png&#34;
 	width=&#34;711&#34;
 	height=&#34;255&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3_hu5453767599776232582.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3_hu3893599034676677987.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3_hu5453767599776232582.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-3_hu3893599034676677987.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;单向链表&#34;
@@ -3969,10 +3969,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 	
 &gt;    &lt;br&gt;
 单向链表只能实现插入到某个节点之后，但相应的语句也只有两条。     &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4.png&#34;
 	width=&#34;877&#34;
 	height=&#34;563&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4_hu5411641350732979300.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4_hu5491134792678881312.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4_hu5411641350732979300.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-4_hu5491134792678881312.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;双向链表&#34;
@@ -3984,10 +3984,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 	
 &gt;   &lt;br&gt;
 双向链表能够实现插入到前、后两种位置，但是每个方法都需要四条语句。      &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5.png&#34;
 	width=&#34;844&#34;
 	height=&#34;505&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5_hu8236949126515540414.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5_hu16317842035363967724.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5_hu8236949126515540414.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-5_hu16317842035363967724.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;循环链表&#34;
@@ -4002,10 +4002,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 此外，循环链表出了插入到HEAD之外，还有独有的插入到TAIL&lt;/li&gt;
 &lt;li&gt;删除
 三种链表在删除上的区别更加显著：  &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6.png&#34;
 	width=&#34;852&#34;
 	height=&#34;318&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6_hu12676226490457632374.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6_hu17222394798821486483.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6_hu12676226490457632374.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-6_hu17222394798821486483.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;单向链表&#34;
@@ -4017,10 +4017,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 	
 &gt; &lt;br&gt;
 单向链表要想删除某个结点，必须通过遍历来定位好他的位置，才能让它前面的结点链接上它后面的结点。   &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7.png&#34;
 	width=&#34;823&#34;
 	height=&#34;175&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7_hu1775133871085579657.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7_hu13794736907260181710.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7_hu1775133871085579657.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-7_hu13794736907260181710.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;双向链表&#34;
@@ -4032,10 +4032,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 	
 &gt;   &lt;br&gt;
 而双向链表可以直接知晓其前一结点的next指针，因此只需要O(1)的操作  &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8.png&#34;
 	width=&#34;869&#34;
 	height=&#34;315&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8_hu9547383370689560170.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8_hu12873222633953228363.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8_hu9547383370689560170.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-8_hu12873222633953228363.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;循环链表&#34;
@@ -4054,10 +4054,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 &lt;p&gt;接下来分析一下Page_list的结构。&lt;/p&gt;
 &lt;h4 id=&#34;page_list_entry_t&#34;&gt;Page_LIST_entry_t
 &lt;/h4&gt;&lt;p&gt;结合     &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9.png&#34;
 	width=&#34;826&#34;
 	height=&#34;156&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9_hu3801529794239292768.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9_hu4045160301837978091.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9_hu3801529794239292768.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-9_hu4045160301837978091.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -4069,10 +4069,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 	
 &gt;    &lt;br&gt;
 与    &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10.png&#34;
 	width=&#34;536&#34;
 	height=&#34;42&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10_hu8612394660481041232.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10_hu9835370867112699285.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10_hu8612394660481041232.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-10_hu9835370867112699285.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -4097,10 +4097,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 &lt;/div&gt;&lt;p&gt;构成了结构体&lt;code&gt;Page_LIST_entry_t&lt;/code&gt;。&lt;/p&gt;
 &lt;h4 id=&#34;page&#34;&gt;Page
 &lt;/h4&gt;&lt;p&gt;接着根据    &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11.png&#34;
 	width=&#34;844&#34;
 	height=&#34;295&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11_hu16149775748210277383.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11_hu16760772668446011204.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11_hu16149775748210277383.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-11_hu16760772668446011204.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -4125,10 +4125,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 &lt;/div&gt;&lt;p&gt;构成了结构体&lt;code&gt;struct Page&lt;/code&gt;。&lt;/p&gt;
 &lt;h4 id=&#34;page_list&#34;&gt;Page_list
 &lt;/h4&gt;&lt;p&gt;根据        &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12.png&#34;
 	width=&#34;327&#34;
 	height=&#34;30&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12_hu11742448621651462290.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12_hu13741518102078949684.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12_hu11742448621651462290.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-12_hu13741518102078949684.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -4140,10 +4140,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 	
 &gt;   &lt;br&gt;
 与    &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13.png&#34;
 	width=&#34;637&#34;
 	height=&#34;121&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13_hu5010262874759753169.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13_hu8021967337604878703.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13_hu5010262874759753169.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-13_hu8021967337604878703.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -4199,10 +4199,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 同一虚拟地址在不同的地址空间中通常映射到不同的物理地址&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在多进程操作系统中，每个进程都有自己独立的虚拟地址空间。ASID 作为唯一的标识符，要用于区分不同进程的地址空间。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14.png&#34;
 	width=&#34;811&#34;
 	height=&#34;66&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14_hu18408539902230633037.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14_hu8212261378777013766.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14_hu18408539902230633037.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-14_hu8212261378777013766.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ASID&#34;
@@ -4216,10 +4216,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 &lt;p&gt;ASID通常为8位，即有256种ASID，就可以支持256个不同的地址空间。&lt;/p&gt;
 &lt;h3 id=&#34;thinking-25&#34;&gt;Thinking 2.5
 &lt;/h3&gt;&lt;p&gt;调用关系显然： &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15.png&#34;
 	width=&#34;795&#34;
 	height=&#34;93&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15_hu12396460553871558354.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15_hu4106646982107807543.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15_hu12396460553871558354.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-15_hu4106646982107807543.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4293,10 +4293,10 @@ MIPS 汇编程序中 lw 和 sw 指令使用的地址被视为&lt;code&gt;虚拟�
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;参考：   &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16.png&#34;
 	width=&#34;388&#34;
 	height=&#34;211&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16_hu8795999730384798224.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16_hu3072628788898734460.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16_hu8795999730384798224.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/image-16_hu3072628788898734460.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;LEAF&#34;
@@ -4359,12 +4359,12 @@ MIPS主要是分页机制，内存管理粒度更统一。&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OS Lab1 上机</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/</link>
+        <title>BUAA OS Lab1 上机</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Fri, 28 Mar 2025 11:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post 北航OS Lab1 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post BUAA OS Lab1 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
 &lt;/h2&gt;&lt;p&gt;exam难度相较上次已大幅降低，如果lab1本身实现没有问题，再看过一点点学长博客或代码，基本就约等于点击即送了。&lt;/p&gt;
 &lt;p&gt;在此统计一下近三年的exam。再往前lab1就主要学习readelf，考核点不在于vprintfmt了。&lt;/p&gt;
 &lt;p&gt;近三年的exam均采用了新增%&amp;hellip;[字母]的形式，也不必担心新的字母有什么新的实现，一般就是%d,%s,%c等等的组合罢了。&lt;/p&gt;
@@ -4465,10 +4465,10 @@ MIPS主要是分页机制，内存管理粒度更统一。&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;nyy&lt;/code&gt;可以复制自光标起的n行&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;p&lt;/code&gt;可以实现粘贴&lt;/li&gt;
 &lt;li&gt;在实验报告中也提到过的，print_char,print_num,print_str之类的函数也可以提前了解一下		
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image.png&#34;
 	width=&#34;930&#34;
 	height=&#34;165&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image_hu5098189660382361303.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image_hu10744170451247688252.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image_hu5098189660382361303.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image_hu10744170451247688252.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;HINT&#34;
@@ -4493,10 +4493,10 @@ MIPS主要是分页机制，内存管理粒度更统一。&lt;/p&gt;
 &lt;li&gt;23级的&lt;code&gt;fmemprintf&lt;/code&gt;写入到内存信息流&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;本质上都是仿照着&lt;code&gt;kern/printk.c&lt;/code&gt;来书写&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-1.png&#34;
 	width=&#34;541&#34;
 	height=&#34;419&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-1_hu3223776084633213653.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-1_hu10942874812690793761.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-1_hu3223776084633213653.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-1_hu10942874812690793761.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;printk&#34;
@@ -4521,10 +4521,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;可以理解为FILE*掌管着一段字符串以及一个用于操作的指针&lt;/p&gt;
 &lt;p&gt;下面是实现的五个函数，其中四个函数是明确要求的必需函数，还有一个是实现过程中需要自主实现并调用的。&lt;/p&gt;
 &lt;h3 id=&#34;fmemopen&#34;&gt;fmemopen
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-3.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-3.png&#34;
 	width=&#34;674&#34;
 	height=&#34;501&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-3_hu11318191534096634854.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-3_hu7506707342549681504.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-3_hu11318191534096634854.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-3_hu7506707342549681504.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fmemopen&#34;
@@ -4542,10 +4542,10 @@ char *end; 末地址&lt;/p&gt;
 如果错的不那么错误（例如我这样），也许会返回一个无厘头的错误结果，但事实上这个结果反而误导了我的debug过程&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;fmemoutput此函数为自主命名实现&#34;&gt;fmemoutput(此函数为自主命名实现)
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-2.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-2.png&#34;
 	width=&#34;656&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-2_hu6057164202547327138.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-2_hu15851709451076136935.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-2_hu6057164202547327138.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-2_hu15851709451076136935.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fmemoutput&#34;
@@ -4557,10 +4557,10 @@ char *end; 末地址&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;fmemprintf&#34;&gt;fmemprintf
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-4.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-4.png&#34;
 	width=&#34;619&#34;
 	height=&#34;224&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-4_hu17310796173340444160.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-4_hu16551857561496039213.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-4_hu17310796173340444160.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-4_hu16551857561496039213.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fmemprintf&#34;
@@ -4572,10 +4572,10 @@ char *end; 末地址&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;fseek&#34;&gt;fseek
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-5.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-5.png&#34;
 	width=&#34;880&#34;
 	height=&#34;759&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-5_hu15700125719621771634.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-5_hu6023779320294445988.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-5_hu15700125719621771634.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-5_hu6023779320294445988.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fseek&#34;
@@ -4587,10 +4587,10 @@ char *end; 末地址&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;fclose&#34;&gt;fclose
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-6.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-6.png&#34;
 	width=&#34;344&#34;
 	height=&#34;112&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-6_hu9550176449336341182.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E4%B8%8A%E6%9C%BA/image-6_hu16928510939773274666.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-6_hu9550176449336341182.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E4%B8%8A%E6%9C%BA/image-6_hu16928510939773274666.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fclose&#34;
@@ -4611,12 +4611,12 @@ char *end; 末地址&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OS Lab1 内核、启动与printk</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/</link>
+        <title>BUAA OS Lab1 内核、启动与printk</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/</link>
         <pubDate>Wed, 19 Mar 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/jpg.png" alt="Featured image of post 北航OS Lab1 内核、启动与printk" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/jpg.png" alt="Featured image of post BUAA OS Lab1 内核、启动与printk" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
 &lt;/h2&gt;&lt;h3 id=&#34;thinking-11&#34;&gt;Thinking 1.1
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -4642,10 +4642,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h4 id=&#34;gcc-与-readelf&#34;&gt;gcc 与 readelf
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image.png&#34;
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image.png&#34;
 	width=&#34;688&#34;
 	height=&#34;628&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image_hu12053842349263696774.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image_hu486358330880950885.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image_hu12053842349263696774.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image_hu486358330880950885.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;原生x86&#34;
@@ -4656,10 +4656,10 @@ char *end; 末地址&lt;/p&gt;
 		data-flex-basis=&#34;262px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1.png&#34;
 	width=&#34;701&#34;
 	height=&#34;567&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1_hu12397099904052042229.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1_hu8583381829098535524.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1_hu12397099904052042229.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-1_hu8583381829098535524.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;MIPS交叉编译工具链&#34;
@@ -4670,10 +4670,10 @@ char *end; 末地址&lt;/p&gt;
 		data-flex-basis=&#34;296px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2.png&#34;
 	width=&#34;646&#34;
 	height=&#34;570&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2_hu9388562781921208383.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2_hu15798214626686268975.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2_hu9388562781921208383.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-2_hu15798214626686268975.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;MIPS交叉编译工具链&#34;
@@ -5081,10 +5081,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;由于CO课掌握的MIPS代码基础，本人阅读mips交叉编译工具链的反编译代码时更为流畅。&lt;/p&gt;
 &lt;h4 id=&#34;objdump的参数含义&#34;&gt;objdump的参数含义
 &lt;/h4&gt;&lt;p&gt;通过阅读&lt;code&gt;man objdump&lt;/code&gt;给出的内容，我们可以得知一些参数信息&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3.png&#34;
 	width=&#34;536&#34;
 	height=&#34;655&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3_hu16508736030021732211.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3_hu13723171814175260489.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3_hu16508736030021732211.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-3_hu13723171814175260489.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;man objdump&#34;
@@ -5130,10 +5130,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;h3 id=&#34;thinking-12&#34;&gt;Thinking 1.2
 &lt;/h3&gt;&lt;h4 id=&#34;用readelf解析mos&#34;&gt;用readelf解析mos
 &lt;/h4&gt;&lt;p&gt;下图是用自己的readelf阅读mos的结果&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4.png&#34;
 	width=&#34;598&#34;
 	height=&#34;458&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4_hu6548488736651382738.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4_hu764922015633990720.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4_hu6548488736651382738.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-4_hu764922015633990720.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;readelf mos&#34;
@@ -5148,10 +5148,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;/h4&gt;&lt;p&gt;我们发现运行没有任何输出结果。&lt;/p&gt;
 &lt;p&gt;根据hint，我们使用readelf -h来研究文件头。&lt;/p&gt;
 &lt;p&gt;下图是可被&lt;code&gt;自己的readelf&lt;/code&gt;分析的mos与hello的信息。 &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5.png&#34;
 	width=&#34;704&#34;
 	height=&#34;652&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5_hu6636530323049523809.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5_hu6439553271731897671.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5_hu6636530323049523809.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-5_hu6439553271731897671.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -5163,10 +5163,10 @@ char *end; 末地址&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;下图是不可被&lt;code&gt;自己的readelf&lt;/code&gt;分析的readelf.o的信息。
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6.png&#34;
 	width=&#34;576&#34;
 	height=&#34;444&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6_hu13823982274587832481.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6_hu14868966202983207786.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6_hu13823982274587832481.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-6_hu14868966202983207786.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -5182,10 +5182,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;因此我们的readelf不能用来解析身为ELF64的readelf.o文件。&lt;/p&gt;
 &lt;h3 id=&#34;thinking-13&#34;&gt;Thinking 1.3
 &lt;/h3&gt;&lt;p&gt;指导书上的启动过程：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7.png&#34;
 	width=&#34;648&#34;
 	height=&#34;706&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7_hu6111299472254063790.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7_hu10673880894995628209.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7_hu6111299472254063790.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-7_hu10673880894995628209.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;启动&#34;
@@ -5200,10 +5200,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;因为内核入口和上电启动地址本来就是没有关系的。&lt;/p&gt;
 &lt;p&gt;上电启动位置是用于启动bootloader，实现硬件初始化等内容。  &lt;br&gt;
 而bootloader所加载的内容才决定了内核的入口，也就是说我们在&lt;code&gt;start.S&lt;/code&gt;中所写的_start函数即EXPORT(_start)才是mips_init的入口。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8.png&#34;
 	width=&#34;595&#34;
 	height=&#34;628&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8_hu10385545151877275850.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8_hu11083405040821451462.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8_hu10385545151877275850.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-8_hu11083405040821451462.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;_start函数&#34;
@@ -5230,10 +5230,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;也就是说我们可以用readelf来解析我们在tools/readelf里的hello,readelf,readelf.o, main.o等等多种文件。&lt;/p&gt;
 &lt;p&gt;在elf.h中，我们对于ELF32的种种内容做出了定义。  &lt;br&gt;
 具体来说便是&lt;code&gt;Elf32_Ehdr&lt;/code&gt; &lt;code&gt;Elf32_Shdr&lt;/code&gt; &lt;code&gt;Elf32_Phdr&lt;/code&gt;这三个结构体类型&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9.png&#34;
 	width=&#34;694&#34;
 	height=&#34;468&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9_hu14405333584336851269.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9_hu8209871364502043920.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9_hu14405333584336851269.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-9_hu8209871364502043920.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ELF文件结构&#34;
@@ -5248,10 +5248,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;h4 id=&#34;如何实现readelf&#34;&gt;如何实现readelf
 &lt;/h4&gt;&lt;p&gt;我们自己实现的readelf，是只能解析ELF32的section地址的可执行程序。    &lt;br&gt;
 功能很简单，只需要从elf文件本身拿到我们想要的信息并输出。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10.png&#34;
 	width=&#34;780&#34;
 	height=&#34;655&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10_hu13447772168118466699.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10_hu15924098999921703376.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10_hu13447772168118466699.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-10_hu15924098999921703376.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;exercise&#34;
@@ -5280,10 +5280,10 @@ char *end; 末地址&lt;/p&gt;
 若修改，就以新的地址继续顺延放置。&lt;/p&gt;
 &lt;h3 id=&#34;_start&#34;&gt;_start!
 &lt;/h3&gt;&lt;p&gt;读这道题时会发现有很多宏定义的内容。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11.png&#34;
 	width=&#34;619&#34;
 	height=&#34;613&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11_hu9426856787874927876.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11_hu11603003421263531490.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11_hu9426856787874927876.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-11_hu11603003421263531490.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;exercise&#34;
@@ -5296,10 +5296,10 @@ char *end; 末地址&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;asmh&#34;&gt;asm.h
 &lt;/h4&gt;&lt;p&gt;通过阅读&lt;code&gt;asm/asm.h&lt;/code&gt;，其定义了EXPORT()&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12.png&#34;
 	width=&#34;237&#34;
 	height=&#34;125&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12_hu2851920244730174662.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12_hu7987310785599855633.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12_hu2851920244730174662.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-12_hu7987310785599855633.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;EXPORT&#34;
@@ -5314,10 +5314,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;其中又include了&lt;code&gt;asm/cp0regdef.h&lt;/code&gt;与&lt;code&gt;asm/regdef.h&lt;/code&gt;&lt;/p&gt;
 &lt;h4 id=&#34;cp0regdefh&#34;&gt;cp0regdef.h
 &lt;/h4&gt;&lt;p&gt;CP0寄存器的一些define&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13.png&#34;
 	width=&#34;272&#34;
 	height=&#34;614&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13_hu6075081052451593245.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13_hu9621040824342214446.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13_hu6075081052451593245.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-13_hu9621040824342214446.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;cp0&#34;
@@ -5330,10 +5330,10 @@ char *end; 末地址&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;regdefh&#34;&gt;regdef.h
 &lt;/h4&gt;&lt;p&gt;寄存器堆的一些define&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14.png&#34;
 	width=&#34;349&#34;
 	height=&#34;690&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14_hu7585601930992698186.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14_hu4706047783244615502.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14_hu7585601930992698186.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-14_hu4706047783244615502.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;reg&#34;
@@ -5353,10 +5353,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;h4 id=&#34;了解vprintfmt&#34;&gt;了解vprintfmt
 &lt;/h4&gt;&lt;p&gt;首先，vprintfmt的参数是out函数指针，data指针，fmt字符串，ap数组。&lt;/p&gt;
 &lt;p&gt;out函数指针能实现在同一函数(vprintfmt)中调用不同形式的out函数&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15.png&#34;
 	width=&#34;340&#34;
 	height=&#34;53&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15_hu3811253317957944125.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15_hu11987015303591991026.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15_hu3811253317957944125.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-15_hu11987015303591991026.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;out函数&#34;
@@ -5376,10 +5376,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;整体逻辑是一个大循环&lt;/p&gt;
 &lt;p&gt;然后需要一个小循环内寻找%，找不到就length++，   &lt;br&gt;
 找到了就把之前length长的内容全部out出来。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16.png&#34;
 	width=&#34;392&#34;
 	height=&#34;295&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16_hu1268851260329813266.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16_hu2054710900639901350.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16_hu1268851260329813266.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-16_hu2054710900639901350.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;寻找%&#34;
@@ -5398,10 +5398,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;需要注意，10进制有符号数输出时会改动neg_flag  &lt;br&gt;
 因为   &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17.png&#34;
 	width=&#34;821&#34;
 	height=&#34;51&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17_hu3578559983418472224.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17_hu367619222577233514.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17_hu3578559983418472224.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/image-17_hu367619222577233514.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;print_num&#34;
@@ -5421,10 +5421,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;那么我们容易做到的，就是跟着实验指导书一点点去探索，从表面的应用层逐渐向内挖掘到实现层，从而了解各个文件的内容。&lt;/p&gt;
 &lt;p&gt;倘若研究完lab1，可以搞清楚整个目录下的主要文件的功能与服务关系，我想这对于操作系统体系结构的理解应该是有好处的。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;笑传：笔者打完这行字之后自动输入了Esc :wq 丝滑小连招 &lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4.png&#34;
+&lt;p&gt;笑传：笔者打完这行字之后自动输入了Esc :wq 丝滑小连招 &lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4.png&#34;
 	width=&#34;26&#34;
 	height=&#34;27&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4_hu162557286759937766.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4_hu16635500359115293568.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4_hu162557286759937766.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab1-%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E4%B8%8Eprintk/AF9CF8AB6AC99B35118C7441E27B77B4_hu16635500359115293568.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -5439,12 +5439,12 @@ char *end; 末地址&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OO U1 递归下降与表达式解析</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
+        <title>BUAA OO U1 递归下降与表达式解析</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
         <pubDate>Tue, 18 Mar 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post 北航OO U1 递归下降与表达式解析" /&gt;&lt;p&gt;本次作业以解析表达式并简化后输出为核心任务。&lt;/p&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post BUAA OO U1 递归下降与表达式解析" /&gt;&lt;p&gt;本次作业以解析表达式并简化后输出为核心任务。&lt;/p&gt;
 &lt;p&gt;主要的实现过程为：   &lt;br&gt;
 &lt;code&gt;预处理&lt;/code&gt;-&amp;gt;&lt;code&gt;解析&lt;/code&gt;-&amp;gt;&lt;code&gt;化简&lt;/code&gt;-&amp;gt;&lt;code&gt;输出&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;迭代过程综述&#34;&gt;迭代过程综述
@@ -5472,10 +5472,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;而我们做的事情，就是根据读取expression，&lt;strong&gt;自行出构建一个新的、有结构的Expr。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;接下来的toPoly便也是递归下降的一种体现。&lt;strong&gt;我已经知道最小单元Mono与Power有它具体的toPoly()方法&lt;/strong&gt;，那么我就可以采用递归下降，对每一个类只着眼于它自身的运算过程。&lt;/p&gt;
 &lt;h3 id=&#34;代码量&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines.png&#34;
 	width=&#34;1744&#34;
 	height=&#34;357&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu1348462638036344911.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu679612040571503907.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu1348462638036344911.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_lines_hu679612040571503907.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_lines&#34;
@@ -5488,10 +5488,10 @@ char *end; 末地址&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;可以看出核心代码在于解析Parser与化简Poly这两个类中。&lt;/p&gt;
 &lt;h3 id=&#34;uml类图&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph.png&#34;
 	width=&#34;2452&#34;
 	height=&#34;1604&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu9410046640435313302.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu6616560314303406624.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu9410046640435313302.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_graph_hu6616560314303406624.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_graph&#34;
@@ -5504,10 +5504,10 @@ char *end; 末地址&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;方法数则是Poly类遥遥领先，不过都是加、乘、幂、去零、取反、输出等基本方法&lt;/p&gt;
 &lt;h3 id=&#34;复杂度&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class.png&#34;
 	width=&#34;664&#34;
 	height=&#34;445&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14704900314256740387.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14458279921066147853.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14704900314256740387.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw1_class_hu14458279921066147853.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw1_class&#34;
@@ -5532,10 +5532,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;对于乘法，我们需要先实现最小单元之间幂函数幂次与三角因子幂次的累积   &lt;br&gt;
 再进行所有乘积项的求和&lt;/p&gt;
 &lt;h3 id=&#34;代码量-1&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines.png&#34;
 	width=&#34;1759&#34;
 	height=&#34;426&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu2733324857433404355.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu12539274716514737244.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu2733324857433404355.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_lines_hu12539274716514737244.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_lines&#34;
@@ -5549,10 +5549,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;较上次作业新增了近800行，其中parser变化不大，而Mono与Poly代码量激增  &lt;br&gt;
 此外还有新增的类: 递归函数RecursiveFunc&lt;/p&gt;
 &lt;h3 id=&#34;uml类图-1&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph.png&#34;
 	width=&#34;2362&#34;
 	height=&#34;2781&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu4824547250586139424.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu2263586557949589371.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu4824547250586139424.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_graph_hu2263586557949589371.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_graph&#34;
@@ -5566,10 +5566,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;我调整了类的相对位置使之更加清晰。&lt;/p&gt;
 &lt;p&gt;图片从上到下分别是函数预处理，表达式解析，表达式化简运算与输出&lt;/p&gt;
 &lt;h3 id=&#34;复杂度-1&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class.png&#34;
 	width=&#34;664&#34;
 	height=&#34;489&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu1209901690595859210.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu15904561665040355737.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu1209901690595859210.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw2_class_hu15904561665040355737.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw2_class&#34;
@@ -5594,10 +5594,10 @@ char *end; 末地址&lt;/p&gt;
 站在HW3面前的你，    &lt;br&gt;
 应当充满了决心！&lt;/p&gt;
 &lt;h3 id=&#34;代码量-2&#34;&gt;代码量
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines.png&#34;
 	width=&#34;1749&#34;
 	height=&#34;517&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu14879122926649187208.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu3319448293189894400.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu14879122926649187208.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_lines_hu3319448293189894400.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_lines&#34;
@@ -5611,10 +5611,10 @@ char *end; 末地址&lt;/p&gt;
 &lt;p&gt;代码行数增加的并不多&lt;/p&gt;
 &lt;p&gt;主要内容是新类的添加，更多的函数代入操作以及求导计算&lt;/p&gt;
 &lt;h3 id=&#34;uml类图-2&#34;&gt;UML类图
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph.png&#34;
 	width=&#34;2882&#34;
 	height=&#34;3286&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu856977851820666993.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu16451727185006472704.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu856977851820666993.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_graph_hu16451727185006472704.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_graph&#34;
@@ -5627,10 +5627,10 @@ char *end; 末地址&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;相较于hw2，在Factor上新增了求导因子，在预处理上新增了NormalFunc以及一个数据功能类Func。&lt;/p&gt;
 &lt;h3 id=&#34;复杂度-2&#34;&gt;复杂度
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class.png&#34;
 	width=&#34;654&#34;
 	height=&#34;603&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu5027182664871553546.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu11158960634192581642.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu5027182664871553546.png 480w, https://demiurge-zby.github.io/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/hw3_class_hu11158960634192581642.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hw3_class&#34;
@@ -5715,12 +5715,12 @@ python .py
 </description>
         </item>
         <item>
-        <title>北航OS Lab0 上机</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/</link>
+        <title>BUAA OS Lab0 上机</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab0-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Fri, 14 Mar 2025 11:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post 北航OS Lab0 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab0-%E4%B8%8A%E6%9C%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab0-%E4%B8%8A%E6%9C%BA/123.png" alt="Featured image of post BUAA OS Lab0 上机" /&gt;&lt;h2 id=&#34;exam&#34;&gt;exam
 &lt;/h2&gt;&lt;p&gt;不错的exam。考核内容完全来自于指导书与作业，并且足够全面。        &lt;br&gt;
 这在lab上机中是很好的设计，掌握不那么牢固的可以通过花费一点时间阅读指导书拿到exam这一主要分数，提升掌握水平      &lt;br&gt;
 而相对熟练的同学则可以更快地解决exam去攻克extra了。&lt;/p&gt;
@@ -5865,10 +5865,10 @@ awk -F.并取$1来获得.sy前面的内容&lt;/p&gt;
 &lt;/h3&gt;&lt;p&gt;很遗憾，在我做完二三问，并发现有测试点依赖后，就全力研究第一问了。没能获得第四、五问的题目。同学们可以参考其它博客。&lt;/p&gt;
 &lt;h2 id=&#34;后记&#34;&gt;后记
 &lt;/h2&gt;&lt;p&gt;不同于往年，今年的题目难度确实是大。大多数人都extra都喜提0分（或者未提交）  &lt;br&gt;
-&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image.png&#34;
+&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E4%B8%8A%E6%9C%BA/image.png&#34;
 	width=&#34;223&#34;
 	height=&#34;226&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image_hu1178097306729725857.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E4%B8%8A%E6%9C%BA/image_hu1454011011673143592.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E4%B8%8A%E6%9C%BA/image_hu1178097306729725857.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E4%B8%8A%E6%9C%BA/image_hu1454011011673143592.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;0&#34;
@@ -5886,12 +5886,12 @@ awk -F.并取$1来获得.sy前面的内容&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航OO U1 HW1 表达式解析</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
+        <title>BUAA OO U1 HW1 表达式解析</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</link>
         <pubDate>Mon, 03 Mar 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAoo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post 北航OO U1 HW1 表达式解析" /&gt;&lt;h2 id=&#34;作业实现&#34;&gt;作业实现
+        <guid>https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.png" alt="Featured image of post BUAA OO U1 HW1 表达式解析" /&gt;&lt;h2 id=&#34;作业实现&#34;&gt;作业实现
 &lt;/h2&gt;&lt;h3 id=&#34;预处理&#34;&gt;预处理
 &lt;/h3&gt;&lt;p&gt;replaceAll()函数 &lt;br&gt;
 解决空白符与连续正负号&lt;/p&gt;
@@ -6231,19 +6231,19 @@ printExpr() -&amp;gt; printTerm() -&amp;gt; printFactor() -&amp;gt; &amp;hellip;
 </description>
         </item>
         <item>
-        <title>北航OS Lab0 预备知识</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/</link>
+        <title>BUAA OS Lab0 预备知识</title>
+        <link>https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/</link>
         <pubDate>Thu, 27 Feb 2025 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png" alt="Featured image of post 北航OS Lab0 预备知识" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
+        <guid>https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/Ark.png" alt="Featured image of post BUAA OS Lab0 预备知识" /&gt;&lt;h1 id=&#34;实验报告&#34;&gt;实验报告
 &lt;/h1&gt;&lt;h2 id=&#34;思考题&#34;&gt;思考题
 &lt;/h2&gt;&lt;h3 id=&#34;thinking-01&#34;&gt;Thinking 0.1
 &lt;/h3&gt;&lt;p&gt;文本内容如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image.png&#34;
 	width=&#34;466&#34;
 	height=&#34;565&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu15829322080962621648.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu11849206786200839682.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu15829322080962621648.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image_hu11849206786200839682.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;git status&#34;
@@ -6290,10 +6290,10 @@ printExpr() -&amp;gt; printTerm() -&amp;gt; printFactor() -&amp;gt; &amp;hellip;
 &lt;p&gt;应当使用&lt;code&gt;git rm -cached hello.txt&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;thinking-04&#34;&gt;Thinking 0.4
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;git log&lt;/code&gt;结果如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1.png&#34;
 	width=&#34;530&#34;
 	height=&#34;631&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu3297354720116851202.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu6840445999607377668.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu3297354720116851202.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-1_hu6840445999607377668.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;git log&#34;
@@ -6305,10 +6305,10 @@ printExpr() -&amp;gt; printTerm() -&amp;gt; printFactor() -&amp;gt; &amp;hellip;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;版本回退后&lt;code&gt;git log&lt;/code&gt;结果如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2.png&#34;
 	width=&#34;528&#34;
 	height=&#34;547&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu2569888871527426734.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu4451645708424704670.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu2569888871527426734.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-2_hu4451645708424704670.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;git log&#34;
@@ -6320,10 +6320,10 @@ printExpr() -&amp;gt; printTerm() -&amp;gt; printFactor() -&amp;gt; &amp;hellip;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;版本切换的结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3.png&#34;
 	width=&#34;684&#34;
 	height=&#34;440&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu2447533878860350817.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu12117117513593335777.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu2447533878860350817.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-3_hu12117117513593335777.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;git log&#34;
@@ -6334,10 +6334,10 @@ printExpr() -&amp;gt; printTerm() -&amp;gt; printFactor() -&amp;gt; &amp;hellip;
 		data-flex-basis=&#34;373px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4.png&#34;
 	width=&#34;744&#34;
 	height=&#34;670&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu14216853382266145143.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu9645650563847857658.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu14216853382266145143.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-4_hu9645650563847857658.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;git log&#34;
@@ -6352,10 +6352,10 @@ printExpr() -&amp;gt; printTerm() -&amp;gt; printFactor() -&amp;gt; &amp;hellip;
 &lt;p&gt;&lt;code&gt;git reset --hard &amp;lt;hash&amp;gt;&lt;/code&gt;对于版本的控制也并不改变目录树，而是在原有的目录树上切换结点。&lt;/p&gt;
 &lt;h3 id=&#34;thinking-05&#34;&gt;Thinking 0.5
 &lt;/h3&gt;&lt;p&gt;运行结果如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5.png&#34;
 	width=&#34;501&#34;
 	height=&#34;248&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu18119050952445327974.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu17127191734205273665.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu18119050952445327974.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-5_hu17127191734205273665.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;&amp;gt; and &#34;
@@ -6369,10 +6369,10 @@ printExpr() -&amp;gt; printTerm() -&amp;gt; printFactor() -&amp;gt; &amp;hellip;
 &lt;p&gt;&lt;code&gt;&amp;gt;&lt;/code&gt; 的重定向是覆盖，而&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;的重定向是追加。&lt;/p&gt;
 &lt;h3 id=&#34;thinking-06&#34;&gt;Thinking 0.6
 &lt;/h3&gt;&lt;p&gt;command内容为：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6.png&#34;
 	width=&#34;425&#34;
 	height=&#34;416&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu6965343964014852431.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu7513391156839822228.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu6965343964014852431.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-6_hu7513391156839822228.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Command&#34;
@@ -6384,10 +6384,10 @@ printExpr() -&amp;gt; printTerm() -&amp;gt; printFactor() -&amp;gt; &amp;hellip;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;result内容为：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8.png&#34;
 	width=&#34;319&#34;
 	height=&#34;288&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu13913448634350666254.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAos-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu16136104289695794963.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu13913448634350666254.png 480w, https://demiurge-zby.github.io/p/buaa-os-lab0-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/image-8_hu16136104289695794963.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Result&#34;
@@ -6791,12 +6791,12 @@ OS的lab0相较于CO的P0-P2以及OO的U1，已然是非常温和了。&lt;/p&gt
 </description>
         </item>
         <item>
-        <title>上机</title>
-        <link>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</link>
+        <title>BUAA CO 上机</title>
+        <link>https://demiurge-zby.github.io/p/buaa-co-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Tue, 10 Dec 2024 12:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png" alt="Featured image of post 上机" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-co-%E4%B8%8A%E6%9C%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-co-%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.png" alt="Featured image of post BUAA CO 上机" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;本系列从P6上机结束开始制作，因此靠前的一些P可能记不清楚&lt;/li&gt;
@@ -7123,12 +7123,12 @@ P7不必担心P6CPU本身的实现&amp;hellip;&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>北航CO P7 MIPS微系统搭建</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</link>
+        <title>BUAA CO P7 MIPS微系统搭建</title>
+        <link>https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Tue, 26 Nov 2024 20:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321.jpg" alt="Featured image of post 北航CO P7 MIPS微系统搭建" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321.jpg" alt="Featured image of post BUAA CO P7 MIPS微系统搭建" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;还得是设计文档。     &lt;br&gt;
 每次一旦盯着理论看，又想看全又想做细，就会陷入P5当时的茫然       &lt;br&gt;
@@ -8076,10 +8076,10 @@ add原来是数据信号啊不是控制信号！！！    &lt;br&gt;
 &lt;p&gt;在这里我还是打算直接写好。因为这确实是一块很小的，而且与下一部分关系不大的内容。&lt;/p&gt;
 &lt;p&gt;核心就是添加mtc0,mfc0指令，放进流水线等等。&lt;/p&gt;
 &lt;p&gt;这个和mfhi,mthi的逻辑几乎完全相同。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image.png&#34;
 	width=&#34;835&#34;
 	height=&#34;338&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image_hu11000718608144521958.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image_hu9929124245675891110.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image_hu11000718608144521958.png 480w, https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image_hu9929124245675891110.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;mtc0&#34;
@@ -8094,10 +8094,10 @@ add原来是数据信号啊不是控制信号！！！    &lt;br&gt;
 写的地址是rd_M
 写的内容是MemData_M&lt;/p&gt;
 &lt;p&gt;注意控制信号Tuse_rt = 2&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1.png&#34;
 	width=&#34;821&#34;
 	height=&#34;325&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1_hu9237263761397138164.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1_hu10598161685923433414.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1_hu9237263761397138164.png 480w, https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-1_hu10598161685923433414.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;mfc0&#34;
@@ -8606,10 +8606,10 @@ req置1时，pc需变为0x00004180&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并针对每一种模式绘制状态移图。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2.png&#34;
 	width=&#34;2836&#34;
 	height=&#34;1984&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2_hu10909008339873604075.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2_hu820388774512019784.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2_hu10909008339873604075.png 480w, https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/image-2_hu820388774512019784.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;计时模式&#34;
@@ -8657,12 +8657,12 @@ if(`ctrl[2:1] == 2&amp;rsquo;b00)，那么就一直中断，进入IDLE继续循�
 </description>
         </item>
         <item>
-        <title>北航CO P6 流水线CPU搭建（2）</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</link>
+        <title>BUAA CO P6 流水线CPU搭建（2）</title>
+        <link>https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</link>
         <pubDate>Thu, 14 Nov 2024 14:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.jpg" alt="Featured image of post 北航CO P6 流水线CPU搭建（2）" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.jpg" alt="Featured image of post BUAA CO P6 流水线CPU搭建（2）" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;能通过P5实在是很好的一件事。 &lt;br&gt;
 在我第一道题直接AC确定课下无bug，在我很快做出前两道题确定自己能通过后，我真的如释重负。     &lt;br&gt;
@@ -9342,10 +9342,10 @@ sw,sh,sb都能用同样的按字节赋值的逻辑来执行。     &lt;br&gt;
 &lt;p&gt;我采用了手动构造法。   &lt;br&gt;
 通过建立策略矩阵，按照T的关系来进行构造        &lt;br&gt;
 具体分类方式如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image.png&#34;
 	width=&#34;495&#34;
 	height=&#34;168&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu8936851701592632260.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu17286652912400143360.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu8936851701592632260.png 480w, https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image_hu17286652912400143360.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;RS&#34;
@@ -9356,10 +9356,10 @@ sw,sh,sb都能用同样的按字节赋值的逻辑来执行。     &lt;br&gt;
 		data-flex-basis=&#34;707px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1.png&#34;
 	width=&#34;488&#34;
 	height=&#34;194&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu10810789901981881303.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu8469799539572825714.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu10810789901981881303.png 480w, https://demiurge-zby.github.io/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/image-1_hu8469799539572825714.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;RT&#34;
@@ -9374,12 +9374,12 @@ sw,sh,sb都能用同样的按字节赋值的逻辑来执行。     &lt;br&gt;
 </description>
         </item>
         <item>
-        <title>北航CO P5 流水线CPU搭建（1）</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</link>
+        <title>BUAA CO P5 流水线CPU搭建（1）</title>
+        <link>https://demiurge-zby.github.io/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</link>
         <pubDate>Sun, 10 Nov 2024 22:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post 北航CO P5 流水线CPU搭建（1）" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post BUAA CO P5 流水线CPU搭建（1）" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;这周真的太忙了。 &lt;br&gt;
 不说流水线和数竞这两块大骨头，硬控两小时的党课，硬控两小时的挑战杯志愿者，硬控一小时的组会，硬控五小时的毛概PPT&amp;hellip;&lt;/p&gt;
@@ -9969,19 +9969,19 @@ W级为MemReadData,ALUData,Pc+8经过选择变为RegData的转发&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>oopre结课总结</title>
-        <link>https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</link>
+        <title>BUAA OOpre 结课总结</title>
+        <link>https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</link>
         <pubDate>Fri, 01 Nov 2024 13:30:00 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/d477300c36f0221527b9816c97bed3b.jpg" alt="Featured image of post oopre结课总结" /&gt;&lt;h2 id=&#34;作业最终的架构设计&#34;&gt;作业最终的架构设计
+        <guid>https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/d477300c36f0221527b9816c97bed3b.jpg" alt="Featured image of post BUAA OOpre 结课总结" /&gt;&lt;h2 id=&#34;作业最终的架构设计&#34;&gt;作业最终的架构设计
 &lt;/h2&gt;&lt;p&gt;经过轮轮迭代，面向对象先导课程也终于走向了尾声。&lt;/p&gt;
 &lt;h3 id=&#34;关于类&#34;&gt;关于类
 &lt;/h3&gt;&lt;p&gt;本次迭代任务中，共有24个类被创建：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1.png&#34;
 	width=&#34;802&#34;
 	height=&#34;631&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu3289743259887793063.png 480w, https://demiurge-zby.github.io/p/oopre%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu15433014605120603975.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu3289743259887793063.png 480w, https://demiurge-zby.github.io/p/buaa-oopre-%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93/class-1_hu15433014605120603975.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Class一览&#34;
@@ -10069,12 +10069,12 @@ OMG，it&amp;rsquo;s LLM!
 </description>
         </item>
         <item>
-        <title>北航CO P4 单周期CPU的verilog搭建</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</link>
+        <title>BUAA CO P4 单周期CPU的verilog搭建</title>
+        <link>https://demiurge-zby.github.io/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Thu, 31 Oct 2024 14:15:30 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post 北航CO P4 单周期CPU的verilog搭建" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg" alt="Featured image of post BUAA CO P4 单周期CPU的verilog搭建" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;设计文档&#34;&gt;设计文档
 &lt;/h2&gt;&lt;h3 id=&#34;前情提要&#34;&gt;前情提要
 &lt;/h3&gt;&lt;p&gt;本次搭建需要实现的指令有&lt;/p&gt;
@@ -12052,20 +12052,20 @@ u的本意即为不考虑输出
 </description>
         </item>
         <item>
-        <title>北航CO P3 单周期CPU的logisim搭建</title>
-        <link>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</link>
+        <title>BUAA CO P3 单周期CPU的logisim搭建</title>
+        <link>https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</link>
         <pubDate>Wed, 23 Oct 2024 12:30:15 +0800</pubDate>
         
-        <guid>https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.jpg" alt="Featured image of post 北航CO P3 单周期CPU的logisim搭建" /&gt;&lt;hr&gt;
+        <guid>https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.jpg" alt="Featured image of post BUAA CO P3 单周期CPU的logisim搭建" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;设计文档&#34;&gt;设计文档
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Key Point: 数据通路，控制器及其连接&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;要实现的核心指令介绍&#34;&gt;&lt;em&gt;要实现的核心指令介绍&lt;/em&gt;
 &lt;/h3&gt;&lt;p&gt;&lt;em&gt;add,sub,lui,ori,lw,sw,beq,nop&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712.png&#34;
 	width=&#34;933&#34;
 	height=&#34;478&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu4521862066652988474.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu6527373637613627573.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu4521862066652988474.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/cbc0b519824bd2711d20a33257ff712_hu6527373637613627573.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;add&#34;
@@ -12076,10 +12076,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;468px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c.png&#34;
 	width=&#34;681&#34;
 	height=&#34;615&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15950696484665334809.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15030801855970980233.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15950696484665334809.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/d13879e01c4a5cbfcf5a1588a57fb6c_hu15030801855970980233.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;sub&#34;
@@ -12090,10 +12090,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;265px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555.png&#34;
 	width=&#34;979&#34;
 	height=&#34;382&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu1283075729208184123.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu549884947335130086.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu1283075729208184123.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/c162001d3a061cf418e45db0ea99555_hu549884947335130086.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;lui&#34;
@@ -12104,10 +12104,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;615px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0.png&#34;
 	width=&#34;859&#34;
 	height=&#34;364&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu6089035281481330811.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu15143189203310304875.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu6089035281481330811.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/0df6e2669cc0da243544fdfe8d797d0_hu15143189203310304875.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ori&#34;
@@ -12118,10 +12118,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;566px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd.png&#34;
 	width=&#34;1024&#34;
 	height=&#34;696&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu5787444218570001442.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu14363138147111407464.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu5787444218570001442.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/715287625056fe8d93907b5e0a584bd_hu14363138147111407464.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;lw&#34;
@@ -12132,10 +12132,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;353px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb.png&#34;
 	width=&#34;1102&#34;
 	height=&#34;462&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu14048915399541119807.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu15226301040041250481.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu14048915399541119807.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/19bd0ec74d66ab004a5fc4ea5feb7cb_hu15226301040041250481.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;sw&#34;
@@ -12146,10 +12146,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;572px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e.png&#34;
 	width=&#34;919&#34;
 	height=&#34;423&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu10173568185453299968.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu11248677253474280199.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu10173568185453299968.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/b72bd734f2e494bdf74c22a67d45d1e_hu11248677253474280199.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;beq&#34;
@@ -12219,10 +12219,10 @@ u的本意即为不考虑输出
 &lt;p&gt;在&lt;code&gt;下一周期上升沿&lt;/code&gt;才可输出下一PC&lt;/p&gt;
 &lt;p&gt;在输出PC以后，其他数据通路都基本呈现组合逻辑的形态，即时性进行输出内容的改变，即&lt;code&gt;Mealy机&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;（ROM和GRF的写入操作还是要等下一上升沿的，但是关于其写入的各项信息都是即时性得到的）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image.png&#34;
 	width=&#34;182&#34;
 	height=&#34;295&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu18402894227707405285.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu2088114210525228881.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu18402894227707405285.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_hu2088114210525228881.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;PC&#34;
@@ -12236,10 +12236,10 @@ u的本意即为不考虑输出
 &lt;blockquote&gt;
 &lt;p&gt;当然，最后输出PC值的时候要再加上 3000&lt;/p&gt;
 &lt;p&gt;若用PC初始化3000的方法，在复位后PC还是会输出 0&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21.png&#34;
 	width=&#34;377&#34;
 	height=&#34;144&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu14716474832504273100.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu12720420553382832580.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu14716474832504273100.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-21_hu12720420553382832580.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;PC最终输出&#34;
@@ -12263,10 +12263,10 @@ u的本意即为不考虑输出
 &lt;/blockquote&gt;
 &lt;p&gt;输出引脚：下一条指令PC值&lt;/p&gt;
 &lt;p&gt;！！经后续分析，对于XXXAndLink指令，PC+4是被需要的，那就直接从NPC输出&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1.png&#34;
 	width=&#34;1417&#34;
 	height=&#34;781&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu12523512501036799621.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu4579953089620044417.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu12523512501036799621.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-1_hu4579953089620044417.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;NPC内部&#34;
@@ -12278,10 +12278,10 @@ u的本意即为不考虑输出
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;NPC外部的连接也比较直白&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3.png&#34;
 	width=&#34;669&#34;
 	height=&#34;277&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu6911733393574829166.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu17525786565924149063.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu6911733393574829166.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-3_hu17525786565924149063.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;NPC外部&#34;
@@ -12309,10 +12309,10 @@ u的本意即为不考虑输出
 &lt;p&gt;右移之后还需bit_extender到12位&lt;/p&gt;
 &lt;p&gt;（一定要先右移再extend，因为实质上就是取PC[13:2]）&lt;/p&gt;
 &lt;p&gt;其余的没什么内容了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6.png&#34;
 	width=&#34;573&#34;
 	height=&#34;355&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu6045991245181311816.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu16423451455378359301.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu6045991245181311816.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-6_hu16423451455378359301.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;IM&#34;
@@ -12325,10 +12325,10 @@ u的本意即为不考虑输出
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;splitter&#34;&gt;&lt;strong&gt;Splitter&lt;/strong&gt;
 &lt;/h4&gt;&lt;p&gt;把这个东西单独拿出来写只是图个方便（）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5.png&#34;
 	width=&#34;351&#34;
 	height=&#34;417&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu5375450194594662751.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu585130256717954054.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu5375450194594662751.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-5_hu585130256717954054.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Splitter外部&#34;
@@ -12340,10 +12340,10 @@ u的本意即为不考虑输出
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Splitter内部的构造就只是一些小splitter&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_7.png&#34;
 	width=&#34;1237&#34;
 	height=&#34;725&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_7_hu10698330764997620348.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_7_hu14708617506834100974.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_7_hu10698330764997620348.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image_7_hu14708617506834100974.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Splitter内部&#34;
@@ -12378,10 +12378,10 @@ u的本意即为不考虑输出
 &lt;/table&gt;
 &lt;p&gt;EXTOp具体怎么得到就是Ctrl要考虑的了&lt;/p&gt;
 &lt;p&gt;外部构造：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8.png&#34;
 	width=&#34;437&#34;
 	height=&#34;213&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu18409066551289080979.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu1629901207757935634.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu18409066551289080979.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-8_hu1629901207757935634.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;EXT外部&#34;
@@ -12393,10 +12393,10 @@ u的本意即为不考虑输出
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;内部结构：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9.png&#34;
 	width=&#34;1061&#34;
 	height=&#34;347&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu18307721998624566803.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu2551114675183221771.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu18307721998624566803.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-9_hu2551114675183221771.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;EXT内部&#34;
@@ -12410,10 +12410,10 @@ u的本意即为不考虑输出
 &lt;blockquote&gt;
 &lt;p&gt;好的我刚刚意识到bit_extender本来就可以输入EXTOp&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10.png&#34;
 	width=&#34;174&#34;
 	height=&#34;134&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu154531143146296665.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu17866711522868177896.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu154531143146296665.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-10_hu17866711522868177896.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;含input的bit extender&#34;
@@ -12431,10 +12431,10 @@ u的本意即为不考虑输出
 &lt;/h4&gt;&lt;p&gt;GRF相对来说就复杂多了&lt;/p&gt;
 &lt;p&gt;内部结构在P0课下已经搭好了，但其正确性仍需后续测试&lt;/p&gt;
 &lt;p&gt;在此仅略加展示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11.png&#34;
 	width=&#34;1108&#34;
 	height=&#34;759&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu4210210374249256110.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu8953490536122227811.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu4210210374249256110.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-11_hu8953490536122227811.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;GRF内部结构&#34;
@@ -12544,10 +12544,10 @@ u的本意即为不考虑输出
 &lt;/table&gt;
 &lt;p&gt;当然，除此之外还有最重要的&lt;code&gt;写使能信号&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;整体外部结构如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13.png&#34;
 	width=&#34;351&#34;
 	height=&#34;261&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu12886119237173023558.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu3228394010328776642.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu12886119237173023558.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-13_hu3228394010328776642.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;GRF外部结构&#34;
@@ -12558,10 +12558,10 @@ u的本意即为不考虑输出
 		data-flex-basis=&#34;322px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14.png&#34;
 	width=&#34;865&#34;
 	height=&#34;206&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu17698948292768786383.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu12492319156644773203.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu17698948292768786383.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-14_hu12492319156644773203.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;GRF外部结构之选择器&#34;
@@ -12607,10 +12607,10 @@ u的本意即为不考虑输出
 &lt;p&gt;加法和减法可使用同一加法器！！&lt;/p&gt;
 &lt;p&gt;a - b = a + ~b + 1&lt;/p&gt;
 &lt;p&gt;而两个数相加再加1正是加法器已经提供的功能！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15.png&#34;
 	width=&#34;127&#34;
 	height=&#34;112&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu7670816331985582121.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu2555603277317820934.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu7670816331985582121.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-15_hu2555603277317820934.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;加法器&#34;
@@ -12681,10 +12681,10 @@ u的本意即为不考虑输出
 &lt;p&gt;只需把上面两个表合起来，让ALUOp直接对应控制信号&lt;/p&gt;
 &lt;p&gt;用Combinational Analysis给我们写出来就行了&lt;/p&gt;
 &lt;p&gt;最终内部结构如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18.png&#34;
 	width=&#34;919&#34;
 	height=&#34;738&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu15443408531244071137.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu18285911102885118521.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu15443408531244071137.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-18_hu18285911102885118521.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ALU内部&#34;
@@ -12819,10 +12819,10 @@ u的本意即为不考虑输出
 &lt;p&gt;EXTOp对于beq指令没有意义&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;外部连接如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19.png&#34;
 	width=&#34;348&#34;
 	height=&#34;310&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu15036609705169223080.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu13205994924990698473.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu15036609705169223080.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-19_hu13205994924990698473.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ALU外部&#34;
@@ -12850,10 +12850,10 @@ u的本意即为不考虑输出
 &lt;p&gt;DM的A接口是地址，由ALU算出&lt;/p&gt;
 &lt;p&gt;要存入的信息则是GRF从rt读出来的RD2&lt;/p&gt;
 &lt;p&gt;连接比较简单&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2.png&#34;
 	width=&#34;1020&#34;
 	height=&#34;409&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu12922959104644849771.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu15321000782428197562.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu12922959104644849771.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-2_hu15321000782428197562.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;DM&#34;
@@ -12872,10 +12872,10 @@ u的本意即为不考虑输出
 &lt;p&gt;再由指令得出控制信号&lt;/p&gt;
 &lt;h4 id=&#34;由外部信号到指令&#34;&gt;由外部信号到指令
 &lt;/h4&gt;&lt;p&gt;得到指令的过程我使用了比较器，因此构建过程非常简单&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22.png&#34;
 	width=&#34;961&#34;
 	height=&#34;457&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu9875341364575394058.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu10601284135689048738.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu9875341364575394058.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-22_hu10601284135689048738.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CTRL之指令&#34;
@@ -12893,10 +12893,10 @@ u的本意即为不考虑输出
 &lt;p&gt;哪条指令需要这个信号，我们就给它&lt;code&gt;或&lt;/code&gt;到这个控制信号上&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这种拉线式的写法还是很方便的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23.png&#34;
 	width=&#34;1396&#34;
 	height=&#34;556&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12779756694418732884.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12424795517378101717.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12779756694418732884.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-23_hu12424795517378101717.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CTRL之控制信号&#34;
@@ -12910,10 +12910,10 @@ u的本意即为不考虑输出
 &lt;p&gt;ALUOp就只能拜托我们亲爱的Combinational Analysis啦&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;CTRL在整个main电路中的书写还是比较简单的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24.png&#34;
 	width=&#34;430&#34;
 	height=&#34;404&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu10412559772791498343.png 480w, https://demiurge-zby.github.io/p/%E5%8C%97%E8%88%AAco-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu8922208367055689427.png 1024w&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu10412559772791498343.png 480w, https://demiurge-zby.github.io/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/image-24_hu8922208367055689427.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CTRL外部&#34;

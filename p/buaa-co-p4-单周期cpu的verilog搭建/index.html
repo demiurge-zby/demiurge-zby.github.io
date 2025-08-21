@@ -1,0 +1,2707 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="P4课下搭建任务">
+<title>BUAA CO P4 单周期CPU的verilog搭建</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA CO P4 单周期CPU的verilog搭建">
+<meta property='og:description' content="P4课下搭建任务">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-10-31T14:15:30&#43;08:00'/><meta property='article:modified_time' content='2024-10-31T14:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg' />
+<meta name="twitter:title" content="BUAA CO P4 单周期CPU的verilog搭建">
+<meta name="twitter:description" content="P4课下搭建任务"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#设计文档">设计文档</a>
+      <ol>
+        <li><a href="#前情提要">前情提要</a></li>
+        <li><a href="#数据通路的构建">数据通路的构建</a>
+          <ol>
+            <li><a href="#pc">PC</a></li>
+            <li><a href="#npc">NPC</a></li>
+            <li><a href="#im">IM</a></li>
+            <li><a href="#ext">EXT</a></li>
+            <li><a href="#grf">GRF</a></li>
+            <li><a href="#alu">ALU</a></li>
+            <li><a href="#dm">DM</a></li>
+          </ol>
+        </li>
+        <li><a href="#控制器的编写">控制器的编写</a></li>
+        <li><a href="#mipsv">mips.v</a>
+          <ol>
+            <li><a href="#接线逻辑">接线逻辑</a></li>
+            <li><a href="#基础信号">基础信号</a></li>
+            <li><a href="#ctrl">CTRL</a></li>
+            <li><a href="#pc-1">PC</a></li>
+            <li><a href="#im-1">IM</a></li>
+            <li><a href="#ext-1">EXT</a></li>
+            <li><a href="#npc-1">NPC</a></li>
+            <li><a href="#grf-1">GRF</a></li>
+            <li><a href="#alu-1">ALU</a></li>
+            <li><a href="#dm-1">DM</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#测试文档">测试文档</a></li>
+    <li><a href="#思考题">思考题</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">
+                <img src="/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu18428968794692717903.jpg"
+                        srcset="/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu18428968794692717903.jpg 800w, /p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/292fa3e8c7e86664cbaefef9ddc7893_hu10752049279489191914.jpg 1600w"
+                        width="800" 
+                        height="1067" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P4 单周期CPU的verilog搭建" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/co/" style="background-color: #2a9d8f; color: #fff;">
+                CO
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-co-p4-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84verilog%E6%90%AD%E5%BB%BA/">BUAA CO P4 单周期CPU的verilog搭建</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            P4课下搭建任务
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-10-31</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 11 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <hr>
+<h2 id="设计文档">设计文档
+</h2><h3 id="前情提要">前情提要
+</h3><p>本次搭建需要实现的指令有</p>
+<ul>
+<li>add,sum,ori,lui</li>
+<li>sw,lw</li>
+<li>beq</li>
+<li>jal,jr</li>
+<li>nop</li>
+</ul>
+<p>在此基础之上，本人额外添加了lh,lb,sh,sb,j指令。</p>
+<p>verilog的基本构建思路源始于logisim，Tunnel化的logisim电路为verilog代码的编写提供了很大的便利和可扩展性。</p>
+<p>verilog的编写仍然从数据通路基础部件和控制器两方面来书写，不过额外的是，在mips.v中应当实现所有的基础接线操作。</p>
+<p>或者说，mips.v是最独特的一环。</p>
+<blockquote>
+<p>一切源代码仅供参考，千万不要抄袭！！</p>
+</blockquote>
+<h3 id="数据通路的构建">数据通路的构建
+</h3><h4 id="pc">PC
+</h4><p>PC作为CPU中的时序电路核心器件，其功能实现也较为简单，只有同步复位操作和npc赋值操作。</p>
+<p>直接由logisim文件分析PC模块的接口</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">npc</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">clk</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">reset</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">pc</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">PC</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">npc</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">reset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">pc</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">reg</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">PCreg</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">always</span> <span class="err">@</span><span class="p">(</span><span class="no">posedge</span> <span class="no">clk</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">if</span> <span class="p">(</span><span class="no">reset</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">PCreg</span> <span class="err">&lt;=</span> <span class="mi">32</span><span class="err">&#39;</span><span class="no">h00003000</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">else</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">PCreg</span> <span class="err">&lt;=</span> <span class="no">npc</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl"><span class="nf">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">pc</span> <span class="err">=</span> <span class="no">PCreg</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="npc">NPC
+</h4><p>NPC与P3不同，加入了jal，jr指令，使得其增加了两种全新跳转方式：</p>
+<ul>
+<li>26位立即数经位拼接得到直接地址</li>
+<li>32为GRF数据得到直接地址</li>
+</ul>
+<p>再加上原来的pc+4与pc+4+sign_ext(imm)</p>
+<p>共有四种跳转逻辑，需要较多的控制信号</p>
+<p>br 和 zero 控制 相对寻址跳转 <br>
+j 控制imm_26绝对寻址跳转<br>
+jr 控制$ra绝对寻址跳转</p>
+<p>接口信息如下：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">pc</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">imm_16</td>
+          <td style="text-align: center">16</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">imm_26</td>
+          <td style="text-align: center">26</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">reg_ra</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">br</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">zero</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">j</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">jr</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">pc_4</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">npc</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">NPC</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">br</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">zero</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">imm_16</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">25</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">imm_26</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">pc</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">reg_ra</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">j</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">jr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">pc_4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">npc</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">j_pc</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">br_pc</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">pc_4</span> <span class="err">=</span> <span class="no">pc</span> <span class="err">+</span> <span class="mi">32</span><span class="err">&#39;</span><span class="no">d4</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">j_pc</span> <span class="err">=</span> <span class="err">{</span><span class="no">pc</span><span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">28</span><span class="p">],</span><span class="no">imm_26</span><span class="p">,</span><span class="err">{</span><span class="mi">2</span><span class="err">{</span><span class="mi">1</span><span class="err">&#39;</span><span class="no">b0</span><span class="err">}}}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">br_pc</span> <span class="err">=</span> <span class="no">pc_4</span> <span class="err">+</span> <span class="err">{{</span><span class="mi">15</span><span class="err">{</span><span class="no">imm_16</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="err">}}</span><span class="p">,</span><span class="no">imm_16</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">0</span><span class="p">],</span><span class="err">{</span><span class="mi">2</span><span class="err">{</span><span class="mi">1</span><span class="err">&#39;</span><span class="no">b0</span><span class="err">}}}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">npc</span> <span class="err">=</span> <span class="p">(</span><span class="no">jr</span><span class="p">)</span> <span class="err">?</span> <span class="no">reg_ra</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">j</span><span class="p">)</span>  <span class="err">?</span> <span class="no">j_pc</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">br</span> <span class="err">&amp;&amp;</span> <span class="no">zero</span><span class="p">)</span> <span class="err">?</span> <span class="no">br_pc</span> <span class="p">:</span> <span class="no">pc_4</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="im">IM
+</h4><p>IM作为需要读取指令的单位，需要调用readmemh<br>
+为了保证读取的正确顺序，定义寄存器堆时使用[0:4095]</p>
+<blockquote>
+<p>也可以添加参数控制readmemh读取到的起始位置与终止位置</p>
+</blockquote>
+<p>由于该指令寄存器堆应当存储4096*32bit<br>
+然而起始位置却是0x00003000
+因此可以先对pc减去0x00003000<br>
+再取[13:2]作为指令寄存器堆的读取地址</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">pc</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">reset</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">clk</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Instruction</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">IM</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">pc</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">reset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">Instruction</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">address</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">reg</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">InstrMemory</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4095</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">always</span> <span class="err">@</span><span class="p">(</span><span class="no">posedge</span> <span class="no">clk</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">if</span><span class="p">(</span><span class="no">reset</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">$readmemh</span><span class="p">(</span><span class="err">&#34;</span><span class="no">code.txt</span><span class="err">&#34;</span><span class="p">,</span> <span class="no">InstrMemory</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl"><span class="nf">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">address</span> <span class="err">=</span> <span class="no">pc</span> <span class="p">-</span> <span class="mi">32</span><span class="err">&#39;</span><span class="no">h00003000</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">Instruction</span> <span class="err">=</span> <span class="no">InstrMemory</span><span class="p">[</span><span class="no">address</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">2</span><span class="p">]]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="ext">EXT
+</h4><p>注意位拼接操作的写法！！不能少打大括号</p>
+<p>位拼接“0”时，一定要控制有多少个0</p>
+<blockquote>
+<p>例如16个“0”,应使用{16{1&rsquo;b0}}或{16&rsquo;b0}</p>
+</blockquote>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">EXTOp</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">imm_16</td>
+          <td style="text-align: center">16</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">IMM_32</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">EXT</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">EXTOp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">imm_16</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">IMM_32</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">signed_IMM</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">unsigned_IMM</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">signed_IMM</span> <span class="err">=</span> <span class="err">{{</span><span class="mi">16</span><span class="err">{</span><span class="no">imm_16</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="err">}}</span><span class="p">,</span><span class="no">imm_16</span><span class="err">}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">unsigned_IMM</span> <span class="err">=</span> <span class="err">{{</span><span class="mi">16</span><span class="err">{</span><span class="mi">1</span><span class="err">&#39;</span><span class="no">b0</span><span class="err">}}</span><span class="p">,</span><span class="no">imm_16</span><span class="err">}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">IMM_32</span> <span class="err">=</span> <span class="no">EXTOp</span> <span class="err">?</span> <span class="no">signed_IMM</span> <span class="p">:</span> <span class="no">unsigned_IMM</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="grf">GRF
+</h4><p>GRF的最特殊性在于其<code>0号寄存器</code></p>
+<ul>
+<li>值不能被改变</li>
+<li>始终值为0</li>
+</ul>
+<blockquote>
+<p>在此有两种处理方案</p>
+<ol>
+<li>初始时为所有寄存器赋0<br>
+之后不对<code>0号寄存器</code>进行写入</li>
+<li>读<code>0号寄存器</code>时始终输出0</li>
+</ol>
+</blockquote>
+<p>由于个人偏好，希望各个寄存器中的值保持正确，本人采用了第一种写法</p>
+<p>根据题目要求，需要输出寄存器被写时的各项参数，需要将pc传入其中</p>
+<p>接口如下所示：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">pc</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">reset</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">clk</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">WE</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">A1</td>
+          <td style="text-align: center">5</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">A2</td>
+          <td style="text-align: center">5</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">A3</td>
+          <td style="text-align: center">5</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">WD</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">RD1</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">RD2</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">GRF</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">pc</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">A1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">A2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">A3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">WD</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">reset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">WE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">RD1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">RD2</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">reg</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">grf</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">integer</span> <span class="no">i</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">always</span> <span class="err">@</span><span class="p">(</span><span class="no">posedge</span> <span class="no">clk</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">if</span> <span class="p">(</span><span class="no">reset</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">for</span> <span class="p">(</span><span class="no">i</span> <span class="err">=</span> <span class="mi">0</span><span class="c1">; i &lt; 32;i = i + 1) begin
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nf">grf</span><span class="p">[</span><span class="no">i</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="mi">32</span><span class="err">&#39;</span><span class="no">b0</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">else</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">if</span><span class="p">(</span><span class="no">WE</span> <span class="err">&amp;&amp;</span> <span class="no">A3</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">grf</span><span class="p">[</span><span class="no">A3</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="no">WD</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nf">$display</span><span class="p">(</span><span class="err">&#34;@</span><span class="nv">%h</span><span class="p">:</span> <span class="no">$</span><span class="nv">%d</span> <span class="err">&lt;=</span> <span class="nv">%h</span><span class="err">&#34;</span><span class="p">,</span> <span class="no">pc</span><span class="p">,</span> <span class="no">A3</span><span class="p">,</span> <span class="no">WD</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl"><span class="nf">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">RD1</span> <span class="err">=</span> <span class="no">grf</span><span class="p">[</span><span class="no">A1</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">RD2</span> <span class="err">=</span> <span class="no">grf</span><span class="p">[</span><span class="no">A2</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="alu">ALU
+</h4><p>实现基本与logisim同理，但是操作更为简单<br>
+注意使用`define以增强代码可读性</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">ALUOp</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">num_1</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">num_2</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">zero</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">out</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">ADD</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b00</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">SUB</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b01</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">ORI</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b10</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">LUI</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b11</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">ALU</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">ALUOp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">num_1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">num_2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">zero</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">out</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">add</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">sub</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">ori</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">lui</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">add</span> <span class="err">=</span> <span class="no">num_1</span> <span class="err">+</span> <span class="no">num_2</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">sub</span> <span class="err">=</span> <span class="no">num_1</span> <span class="p">-</span> <span class="no">num_2</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">ori</span> <span class="err">=</span> <span class="no">num_1</span> <span class="err">|</span> <span class="no">num_2</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">lui</span> <span class="err">=</span> <span class="err">{</span><span class="no">num_2</span><span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">],</span><span class="err">{</span><span class="mi">16</span><span class="err">{</span><span class="mi">1</span><span class="err">&#39;</span><span class="no">b0</span><span class="err">}}}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">zero</span> <span class="err">=</span> <span class="p">(</span><span class="no">num_1</span> <span class="err">==</span> <span class="no">num_2</span><span class="p">)</span> <span class="err">?</span> <span class="mi">1</span><span class="err">&#39;</span><span class="no">b1</span> <span class="p">:</span> <span class="mi">1</span><span class="err">&#39;</span><span class="no">b0</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">out</span> <span class="err">=</span> <span class="p">(</span><span class="no">ALUOp</span> <span class="err">==</span> <span class="err">`</span><span class="no">ADD</span><span class="p">)</span> <span class="err">?</span> <span class="no">add</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">ALUOp</span> <span class="err">==</span> <span class="err">`</span><span class="no">SUB</span><span class="p">)</span> <span class="err">?</span> <span class="no">sub</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">ALUOp</span> <span class="err">==</span> <span class="err">`</span><span class="no">ORI</span><span class="p">)</span> <span class="err">?</span> <span class="no">ori</span> <span class="p">:</span> <span class="no">lui</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="dm">DM
+</h4><p>仅对于lw和sw而言，DM本应是极为简单的。<br>
+但是正因为sh,sb的特殊性，我尝试了对其功能的描述</p>
+<blockquote>
+<p>sh,sb指令的核心问题，在于我们不能直接做到针对一个字部分内容的修改<br>
+因为我们的寄存器都是以32bit为单位的 <br>
+因此我们要先把它所在寄存器的值取出来，进行位拼接操作得到该寄存器应存入的新数，再存入DM之中</p>
+</blockquote>
+<p>由于添加了指令，我的WE与RE信号都进行了调整</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">控制信号取值</th>
+          <th style="text-align: center">含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">00</td>
+          <td style="text-align: center">以w为单位</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">01</td>
+          <td style="text-align: center">以h为单位</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: center">以b为单位</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: center">不予使能</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>同样地，为了输出中间参数，pc需要被引入。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">pc</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">data</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">addr</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">WE</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">RE</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">clk</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">reset</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">out</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>我还添加了word,half,by_te等中间变量，便于我后续的描述</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">pc</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">data</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">addr</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">WE</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">RE</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">clk</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">reset</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">out</td>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">SW</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b00</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">SH</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b01</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">SB</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">LW</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b00</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">LH</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b01</span>
+</span></span><span class="line"><span class="cl"><span class="err">`</span><span class="nf">define</span> <span class="no">LB</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">DM</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">pc</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">addr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">WE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">RE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">reset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">out</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">reg</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">DataMemory</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3071</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">integer</span> <span class="no">i</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">word</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">half</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">by_te</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">word</span> <span class="err">=</span> <span class="no">addr</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">by_te</span> <span class="err">=</span> <span class="no">addr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">half</span> <span class="err">=</span> <span class="no">addr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">always</span> <span class="err">@</span><span class="p">(</span><span class="no">posedge</span> <span class="no">clk</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">if</span> <span class="p">(</span><span class="no">reset</span><span class="p">)</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">for</span> <span class="p">(</span><span class="no">i</span> <span class="err">=</span> <span class="mi">0</span><span class="c1">; i &lt; 3072; i = i + 1) begin
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nf">DataMemory</span><span class="p">[</span><span class="no">i</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="mi">32</span><span class="err">&#39;</span><span class="no">b0</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">else</span> <span class="no">begin</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">case</span> <span class="p">(</span><span class="no">WE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="err">`</span><span class="nl">SW:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="no">data</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nf">$display</span><span class="p">(</span><span class="err">&#34;@</span><span class="nv">%h</span><span class="p">:</span> <span class="p">*</span><span class="nv">%h</span> <span class="err">&lt;=</span> <span class="nv">%h</span><span class="err">&#34;</span><span class="p">,</span> <span class="no">pc</span><span class="p">,</span> <span class="no">addr</span><span class="p">,</span> <span class="no">data</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">            <span class="err">`</span><span class="nl">SH:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">case</span> <span class="p">(</span><span class="no">half</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="err">1&#39;</span><span class="nl">b1:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="err">{</span><span class="no">data</span><span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">],</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">                    <span class="err">1&#39;</span><span class="nl">b0:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">16</span><span class="p">],</span> <span class="no">data</span><span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">default:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                        
+</span></span><span class="line"><span class="cl">                    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">endcase</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">            <span class="err">`</span><span class="nl">SB:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">case</span> <span class="p">(</span><span class="no">by_te</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="err">2&#39;</span><span class="nl">b11:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="err">{</span><span class="no">data</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">],</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">23</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">                    <span class="err">2&#39;</span><span class="nl">b10:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">24</span><span class="p">],</span> <span class="no">data</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">],</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">                    <span class="err">2&#39;</span><span class="nl">b01:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">16</span><span class="p">],</span> <span class="no">data</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">],</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">                    <span class="err">2&#39;</span><span class="nl">b00:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">]</span> <span class="err">&lt;=</span> <span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">8</span><span class="p">],</span> <span class="no">data</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">}</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">default:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                        
+</span></span><span class="line"><span class="cl">                    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">endcase</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">default:</span> <span class="nf">begin</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">            <span class="nf">end</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">endcase</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">end</span>
+</span></span><span class="line"><span class="cl"><span class="nf">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">out</span> <span class="err">=</span> <span class="p">(</span><span class="no">RE</span> <span class="err">==</span> <span class="err">`</span><span class="no">LW</span><span class="p">)</span> <span class="err">?</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">]</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">RE</span> <span class="err">==</span> <span class="err">`</span><span class="no">LH</span> <span class="err">&amp;&amp;</span> <span class="no">half</span> <span class="err">==</span> <span class="mi">1</span><span class="err">&#39;</span><span class="no">b1</span><span class="p">)</span> <span class="err">?</span> <span class="err">{{</span><span class="mi">16</span><span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">31</span><span class="p">]</span><span class="err">}}</span><span class="p">,</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span><span class="err">}</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">RE</span> <span class="err">==</span> <span class="err">`</span><span class="no">LH</span> <span class="err">&amp;&amp;</span> <span class="no">half</span> <span class="err">==</span> <span class="mi">1</span><span class="err">&#39;</span><span class="no">b0</span><span class="p">)</span> <span class="err">?</span> <span class="err">{{</span><span class="mi">16</span><span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">15</span><span class="p">]</span><span class="err">}}</span><span class="p">,</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">}</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">RE</span> <span class="err">==</span> <span class="err">`</span><span class="no">LB</span> <span class="err">&amp;&amp;</span> <span class="no">by_te</span> <span class="err">==</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b11</span><span class="p">)</span> <span class="err">?</span> <span class="err">{{</span><span class="mi">24</span><span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">31</span><span class="p">]</span><span class="err">}}</span><span class="p">,</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">31</span><span class="p">:</span><span class="mi">24</span><span class="p">]</span><span class="err">}</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">RE</span> <span class="err">==</span> <span class="err">`</span><span class="no">LB</span> <span class="err">&amp;&amp;</span> <span class="no">by_te</span> <span class="err">==</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b10</span><span class="p">)</span> <span class="err">?</span> <span class="err">{{</span><span class="mi">24</span><span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">23</span><span class="p">]</span><span class="err">}}</span><span class="p">,</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">23</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span><span class="err">}</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">RE</span> <span class="err">==</span> <span class="err">`</span><span class="no">LB</span> <span class="err">&amp;&amp;</span> <span class="no">by_te</span> <span class="err">==</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b01</span><span class="p">)</span> <span class="err">?</span> <span class="err">{{</span><span class="mi">24</span><span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">15</span><span class="p">]</span><span class="err">}}</span><span class="p">,</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">15</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="err">}</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="err">(</span><span class="nf">RE</span> <span class="err">==</span> <span class="err">`</span><span class="no">LB</span> <span class="err">&amp;&amp;</span> <span class="no">by_te</span> <span class="err">==</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b00</span><span class="p">)</span> <span class="err">?</span> <span class="err">{{</span><span class="mi">24</span><span class="err">{</span><span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">7</span><span class="p">]</span><span class="err">}}</span><span class="p">,</span> <span class="no">DataMemory</span><span class="p">[</span><span class="no">word</span><span class="p">][</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">}</span> <span class="p">:</span> <span class="mi">32</span><span class="err">&#39;</span><span class="no">b0</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="控制器的编写">控制器的编写
+</h3><p>在搭建数据通路的过程中，控制信号的要求也已经浮出水面。<br>
+关键还是由IM到指令，由指令到控制信号的过程</p>
+<p>不过加入了其他操作，使得DMWr,DMRd发生了一定的改变
+以及额外添加的Link,J,Jr等控制信号</p>
+<blockquote>
+<p>相较于P3的BSel,此处本人将其更名为ImmSel,强调其解决的是立即数与寄存器谁参与ALU运算的问题</p>
+</blockquote>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">opcode</td>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">funct</td>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Br</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">EXTOp</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">RFWr</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">DMWr</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">DMRd</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ALUOp</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">WrSel</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">WdSel</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ImmSel</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Link</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">J</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Jr</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">O</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">CTRL</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">opcode</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">funct</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">Br</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">EXTOp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">RFWr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">DMWr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">DMRd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">ALUOp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">WrSel</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">WdSel</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">ImmSel</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">Link</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">J</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">output</span> <span class="no">wire</span> <span class="no">Jr</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">wire</span> <span class="no">add</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">sub</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">ori</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">lui</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">sw</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">sh</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">sb</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">lw</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">lh</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">lb</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">beq</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">j</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">jal</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">jr</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">R</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">R</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b000000</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">add</span> <span class="err">=</span> <span class="no">R</span> <span class="err">&amp;&amp;</span> <span class="p">(</span><span class="no">funct</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b100000</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">sub</span> <span class="err">=</span> <span class="no">R</span> <span class="err">&amp;&amp;</span> <span class="p">(</span><span class="no">funct</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b100010</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">jr</span> <span class="err">=</span> <span class="no">R</span> <span class="err">&amp;&amp;</span> <span class="p">(</span><span class="no">funct</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b001000</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">j</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b000010</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">jal</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b000011</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">ori</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b001101</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">lui</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b001111</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">sw</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b101011</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">sh</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b101001</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">sb</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b101000</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">lw</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b100011</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">lh</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b100001</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">lb</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b100000</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">beq</span> <span class="err">=</span> <span class="p">(</span><span class="no">opcode</span> <span class="err">==</span> <span class="mi">6</span><span class="err">&#39;</span><span class="no">b000100</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">Br</span> <span class="err">=</span> <span class="no">beq</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">Jr</span> <span class="err">=</span> <span class="no">jr</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">Link</span> <span class="err">=</span> <span class="no">jal</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">J</span> <span class="err">=</span> <span class="no">jal</span> <span class="err">||</span> <span class="no">j</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">WdSel</span> <span class="err">=</span> <span class="no">lw</span> <span class="err">||</span> <span class="no">lh</span> <span class="err">||</span> <span class="no">lb</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">WrSel</span> <span class="err">=</span> <span class="no">add</span> <span class="err">||</span> <span class="no">sub</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">ImmSel</span> <span class="err">=</span> <span class="no">ori</span> <span class="err">||</span> <span class="no">lui</span> <span class="err">||</span> <span class="no">sw</span> <span class="err">||</span> <span class="no">sh</span> <span class="err">||</span> <span class="no">sb</span> <span class="err">||</span> <span class="no">lw</span> <span class="err">||</span> <span class="no">lh</span> <span class="err">||</span> <span class="no">lb</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">EXTOp</span> <span class="err">=</span> <span class="no">sw</span> <span class="err">||</span> <span class="no">sh</span> <span class="err">||</span> <span class="no">sb</span> <span class="err">||</span> <span class="no">lw</span> <span class="err">||</span> <span class="no">lh</span> <span class="err">||</span> <span class="no">lb</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">ALUOp</span> <span class="err">=</span> <span class="no">sub</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b01</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">               <span class="nf">ori</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b10</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">               <span class="nf">lui</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b11</span> <span class="p">:</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b00</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">RFWr</span> <span class="err">=</span> <span class="no">add</span> <span class="err">||</span> <span class="no">sub</span> <span class="err">||</span> <span class="no">ori</span> <span class="err">||</span> <span class="no">lui</span> <span class="err">||</span> <span class="no">lw</span> <span class="err">||</span> <span class="no">lb</span> <span class="err">||</span> <span class="no">lh</span> <span class="err">||</span> <span class="no">jal</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">DMRd</span> <span class="err">=</span> <span class="no">lw</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b00</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">              <span class="nf">lh</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b01</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">              <span class="nf">lb</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b10</span> <span class="p">:</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b11</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">DMWr</span> <span class="err">=</span> <span class="no">sw</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b00</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">              <span class="nf">sh</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b01</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">              <span class="nf">sb</span> <span class="err">?</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b10</span> <span class="p">:</span> <span class="mi">2</span><span class="err">&#39;</span><span class="no">b11</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="mipsv">mips.v
+</h3><p>前面说了那么多，其实都是相对独立的结构   <br>
+那么接下来，才是verilog描述的独特之处    <br>
+才能更深刻地展示verilog的抽象功能</p>
+<p>接口十分简单，毕竟真正来自外部的信号只有clk和reset</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">位宽</th>
+          <th style="text-align: center">方向</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">clk</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">reset</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">I</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">`</span><span class="nf">default_nettype</span> <span class="no">none</span>
+</span></span><span class="line"><span class="cl"><span class="nf">module</span> <span class="no">mips</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">clk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">input</span> <span class="no">wire</span> <span class="no">reset</span>
+</span></span><span class="line"><span class="cl">    <span class="err">)</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="接线逻辑">接线逻辑
+</h4><p>在我书写这一板块的过程中，我曾选用了将所有的wire先定义好，再全部统一赋值，再逐个接接口的方法</p>
+<p>结果这样导致的问题（或者说我曾经出现的bug）  <br>
+就是你不能确定你需要的信号都得到了定义与赋值</p>
+<p>因此，我秉承了P3的基本思路，对各个部件的外部接线进行分析。</p>
+<p>分析方法：</p>
+<ol>
+<li>先定义所有需要的输出信号</li>
+<li>输入信号分为
+<ul>
+<li>直接与其他某部件的输出信号直接相连</li>
+<li>由其他部件的输出信号相互作用（计算or选择）得到</li>
+</ul>
+</li>
+<li>为这些相互作用进行assign处理</li>
+</ol>
+<h4 id="基础信号">基础信号
+</h4><p>名义上如此，其实这是在模拟我没有模块化的Splitter</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">// 基础信号定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">opcode</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">rs</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">rt</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">rd</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">shamt</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">funct</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">opcode</span> <span class="err">=</span> <span class="no">Instr</span><span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">26</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">rs</span> <span class="err">=</span> <span class="no">Instr</span><span class="p">[</span><span class="mi">25</span><span class="p">:</span><span class="mi">21</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">rt</span> <span class="err">=</span> <span class="no">Instr</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">rd</span> <span class="err">=</span> <span class="no">Instr</span><span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">shamt</span> <span class="err">=</span> <span class="no">Instr</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">funct</span> <span class="err">=</span> <span class="no">Instr</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">wire</span> <span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">imm_16</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">25</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">imm_26</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">assign</span> <span class="no">imm_16</span> <span class="err">=</span> <span class="no">Instr</span><span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">imm_26</span> <span class="err">=</span> <span class="no">Instr</span><span class="p">[</span><span class="mi">25</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="ctrl">CTRL
+</h4><p>定义大量控制信号</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">//控制信号定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">Br</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">EXTOp</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">RegWrite</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">DMWr</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">DMRd</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">ALUOp</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">WrSel</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">WdSel</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">ImmSel</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">Link</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">J</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">Jr</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">CTRL</span> <span class="no">Ctrl</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.opcode</span><span class="p">(</span><span class="no">opcode</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.funct</span><span class="p">(</span><span class="no">funct</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.Br</span><span class="p">(</span><span class="no">Br</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.EXTOp</span><span class="p">(</span><span class="no">EXTOp</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.RFWr</span><span class="p">(</span><span class="no">RegWrite</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.DMWr</span><span class="p">(</span><span class="no">DMWr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.DMRd</span><span class="p">(</span><span class="no">DMRd</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.ALUOp</span><span class="p">(</span><span class="no">ALUOp</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.WrSel</span><span class="p">(</span><span class="no">WrSel</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.WdSel</span><span class="p">(</span><span class="no">WdSel</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.ImmSel</span><span class="p">(</span><span class="no">ImmSel</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.Link</span><span class="p">(</span><span class="no">Link</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.J</span><span class="p">(</span><span class="no">J</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.Jr</span><span class="p">(</span><span class="no">Jr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">)</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="pc-1">PC
+</h4><p>定义输出信号pc</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">// PC 输出信号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">pc</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">PC</span> <span class="no">Pc</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.npc</span><span class="p">(</span><span class="no">npc</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.clk</span><span class="p">(</span><span class="no">clk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.reset</span><span class="p">(</span><span class="no">reset</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.pc</span><span class="p">(</span><span class="no">pc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">)</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="im-1">IM
+</h4><p>定义输出信号Instr</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">// IM输出信号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">Instr</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">IM</span> <span class="no">Im</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.pc</span><span class="p">(</span><span class="no">pc</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.Instruction</span><span class="p">(</span><span class="no">Instr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.clk</span><span class="p">(</span><span class="no">clk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.reset</span><span class="p">(</span><span class="no">reset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">)</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="ext-1">EXT
+</h4><p>定义输出信号IMM_32</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">// EXT输出信号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">IMM_32</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">EXT</span> <span class="no">Ext</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.EXTOp</span><span class="p">(</span><span class="no">EXTOp</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.imm_16</span><span class="p">(</span><span class="no">imm_16</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.IMM_32</span><span class="p">(</span><span class="no">IMM_32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">)</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="npc-1">NPC
+</h4><p>定义输出信号npc和pc_4</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">// NPC输出信号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">npc</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">pc_4</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">NPC</span> <span class="no">Npc</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.br</span><span class="p">(</span><span class="no">Br</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.zero</span><span class="p">(</span><span class="no">zero</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.imm_16</span><span class="p">(</span><span class="no">imm_16</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.imm_26</span><span class="p">(</span><span class="no">imm_26</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.pc</span><span class="p">(</span><span class="no">pc</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.reg_ra</span><span class="p">(</span><span class="no">RD1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.j</span><span class="p">(</span><span class="no">J</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.jr</span><span class="p">(</span><span class="no">Jr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.pc_4</span><span class="p">(</span><span class="no">pc_4</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.npc</span><span class="p">(</span><span class="no">npc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">)</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="grf-1">GRF
+</h4><p>定义输出信号RD1,RD2     <br>
+定义输入信号，并给出其assign语句实现赋值     <br>
+要知道，输入信号一定要从其他部件的输出信号或者外部的clk 与reset中得到 <br>
+如果盲目定义输入信号，却不予有意义的赋值，就会产生xxxzzz等问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">// GRF 输入信号·中间变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">LinkPC</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">A1</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">A2</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">RegAddr</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">RegData</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// GRF 中间变量的赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">LinkPC</span> <span class="err">=</span> <span class="no">pc_4</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">A1</span> <span class="err">=</span> <span class="no">rs</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">A2</span> <span class="err">=</span> <span class="no">rt</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">RegAddr</span> <span class="err">=</span> <span class="no">Link</span> <span class="err">?</span> <span class="mi">5</span><span class="err">&#39;</span><span class="no">b11111</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">                 <span class="nf">WrSel</span> <span class="err">?</span> <span class="no">rd</span> <span class="p">:</span> <span class="no">rt</span><span class="c1">;    
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">RegData</span> <span class="err">=</span> <span class="no">Link</span> <span class="err">?</span> <span class="no">LinkPC</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">                 <span class="nf">WdSel</span> <span class="err">?</span> <span class="no">MemReadData</span> <span class="p">:</span> <span class="no">ALUData</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// GRF 输出信号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">RD1</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">RD2</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">GRF</span> <span class="no">Grf</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.clk</span><span class="p">(</span><span class="no">clk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.reset</span><span class="p">(</span><span class="no">reset</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.WE</span><span class="p">(</span><span class="no">RegWrite</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.pc</span><span class="p">(</span><span class="no">pc</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.A1</span><span class="p">(</span><span class="no">A1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.A2</span><span class="p">(</span><span class="no">A2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.A3</span><span class="p">(</span><span class="no">RegAddr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.WD</span><span class="p">(</span><span class="no">RegData</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.RD1</span><span class="p">(</span><span class="no">RD1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.RD2</span><span class="p">(</span><span class="no">RD2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">)</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="alu-1">ALU
+</h4><p>输出信号zero和ALUData<br>
+定义输入信号num_1，num_2并给出assign</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">// ALU 输入信号·中间变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">num_1</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">num_2</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ALU 中间变量的赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">num_1</span> <span class="err">=</span> <span class="no">RD1</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">num_2</span> <span class="err">=</span> <span class="no">ImmSel</span> <span class="err">?</span> <span class="no">IMM_32</span> <span class="p">:</span> <span class="no">RD2</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ALU 输出信号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="no">zero</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">ALUData</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">ALU</span> <span class="no">Alu</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.ALUOp</span><span class="p">(</span><span class="no">ALUOp</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.num_1</span><span class="p">(</span><span class="no">num_1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.num_2</span><span class="p">(</span><span class="no">num_2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.zero</span><span class="p">(</span><span class="no">zero</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.out</span><span class="p">(</span><span class="no">ALUData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">)</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="dm-1">DM
+</h4><p>这两个输入变量的赋值是否没有意义？<br>
+MemAddr一定是ALUData?<br>
+MemData一定是RD2?<br>
+可能确实如此。   <br>
+但是这样的命名使得整体逻辑更为清晰，也增强了可扩展性。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">// DM 输入信号·中间变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">MemAddr</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">MemData</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// DM 中间变量的赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">MemAddr</span> <span class="err">=</span> <span class="no">ALUData</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">assign</span> <span class="no">MemData</span> <span class="err">=</span> <span class="no">RD2</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1">// DM 输出信号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wire</span> <span class="p">[</span><span class="mi">31</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="no">MemReadData</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">DM</span> <span class="no">Dm</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.pc</span><span class="p">(</span><span class="no">pc</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.data</span><span class="p">(</span><span class="no">MemData</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.addr</span><span class="p">(</span><span class="no">MemAddr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.WE</span><span class="p">(</span><span class="no">DMWr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.RE</span><span class="p">(</span><span class="no">DMRd</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.clk</span><span class="p">(</span><span class="no">clk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.reset</span><span class="p">(</span><span class="no">reset</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="na">.out</span><span class="p">(</span><span class="no">MemReadData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">endmodule</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="测试文档">测试文档
+</h2><p>我仍然采用了对拍的方法，并自行构造了一定数据。</p>
+<p>对于新增指令，我着重加强了对jr,jal的测试</p>
+<p>以下是一组测试数据，重点观察$ra取值的改变是否正常</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0c000c06 // jal label
+</span></span><span class="line"><span class="cl">341f0000 //ori $ra, $0, 0
+</span></span><span class="line"><span class="cl">0c000c06 //jal label
+</span></span><span class="line"><span class="cl">341f0000 //ori $ra, $0, 0
+</span></span><span class="line"><span class="cl">0c000c06 //jal label
+</span></span><span class="line"><span class="cl">341f301c //ori $ra, $0, 0x0000301c
+</span></span><span class="line"><span class="cl">//label:
+</span></span><span class="line"><span class="cl">03e00008 //jr $ra
+</span></span><span class="line"><span class="cl">03fff820 //add $ra, $ra, $ra
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可知$ra会在pc+4和0不断跳转<br>
+直到变为0x0000301c后跳转到add语句变为0x00006038</p>
+<p>下面是我的输出结果，与MIPS结果一致</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">@00003000: $31 &lt;= 00003004
+</span></span><span class="line"><span class="cl">@00003004: $31 &lt;= 00000000
+</span></span><span class="line"><span class="cl">@00003008: $31 &lt;= 0000300c
+</span></span><span class="line"><span class="cl">@0000300c: $31 &lt;= 00000000
+</span></span><span class="line"><span class="cl">@00003010: $31 &lt;= 00003014
+</span></span><span class="line"><span class="cl">@00003014: $31 &lt;= 0000301c
+</span></span><span class="line"><span class="cl">@0000301c: $31 &lt;= 00006038
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="思考题">思考题
+</h2><ol>
+<li></li>
+</ol>
+<blockquote>
+<p>阅读下面给出的 DM 的输入示例中（示例 DM 容量为 4KB，即 32bit × 1024字），根据你的理解回答，这个 addr 信号又是从哪里来的？地址信号 addr 位数为什么是 [11:2] 而不是 [9:0] ?</p>
+</blockquote>
+<p>addr信号来自于ALU的计算，即GRF[base]+sign_ext(offset) <br>
+其中addr[11:2]意为取ALU计算结果从第2位开始的12位数字作为address。 <br>
+其原因在于对于lw指令，第0位和第1位均为0，自第2位起开始计数才是以32bit为单位，才能与DM寄存器堆的寄存器编号相对应。</p>
+<ol start="2">
+<li></li>
+</ol>
+<blockquote>
+<p>思考两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。</p>
+</blockquote>
+<p>控制信号每种取值所对应的指令：
+举例：</p>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Br</span> <span class="o">=</span> <span class="nv">beq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Jr</span> <span class="o">=</span> <span class="nv">jr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">Link</span> <span class="o">=</span> <span class="nv">jal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">J</span> <span class="o">=</span> <span class="nv">jal</span> <span class="o">||</span> <span class="nv">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">WdSel</span> <span class="o">=</span> <span class="nv">lw</span> <span class="o">||</span> <span class="nv">lh</span> <span class="o">||</span> <span class="nv">lb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">WrSel</span> <span class="o">=</span> <span class="nv">add</span> <span class="o">||</span> <span class="nv">sub</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">assign</span> <span class="nc">EXTOp</span> <span class="o">=</span> <span class="nv">sw</span> <span class="o">||</span> <span class="nv">sh</span> <span class="o">||</span> <span class="nv">sb</span> <span class="o">||</span> <span class="nv">lw</span> <span class="o">||</span> <span class="nv">lh</span> <span class="o">||</span> <span class="nv">lb</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>每条指令对应的控制信号取值：</p>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">always</span><span class="o">@</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="nv">begin</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">case</span> <span class="p">(</span><span class="nc">Operation</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="sc">`ADD : begin
+</span></span></span><span class="line"><span class="cl"><span class="sc">            Br = 1&#39;b0;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            Jr = 1&#39;b0;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            Link = 1&#39;b0;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            J = 1&#39;b0;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            WrSel = 1&#39;b1;
+</span></span></span><span class="line"><span class="cl"><span class="sc">            ...
+</span></span></span><span class="line"><span class="cl"><span class="sc">         end
+</span></span></span><span class="line"><span class="cl"><span class="sc">        ...
+</span></span></span><span class="line"><span class="cl"><span class="sc">        default : begin
+</span></span></span><span class="line"><span class="cl"><span class="sc">        end
+</span></span></span><span class="line"><span class="cl"><span class="sc">end
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>分析优劣：
+由指令确定其控制信号：
+优点：考虑全面，不会有漏掉的指令，对每个指令也不会有漏掉的控制信号   <br>
+上机新增指令时直接对其分析，一个也不会漏
+缺点：代码重复冗长   <br>
+产生新的控制信号时还需要对每个指令都加句话</p>
+<p>对控制信号归纳其生效指令：
+优点：本质上是上一种方法的总结归纳，代码量少     <br>
+缺点：自行归纳时某些控制信号可能会忘记考虑一些指令</p>
+<p>PS：解决方法：对新指令在演草纸上进行所有控制信号枚举，之后再进行归纳，用于代码书写</p>
+<ol start="3">
+<li></li>
+</ol>
+<blockquote>
+<p>在相应的部件中，复位信号的设计都是同步复位，这与 P3 中的设计要求不同。请对比同步复位与异步复位这两种方式的 reset 信号与 clk 信号优先级的关系。</p>
+</blockquote>
+<p>同步复位：clk优先（还必须得是上升沿）
+异步复位：reset优先</p>
+<ol start="4">
+<li></li>
+</ol>
+<blockquote>
+<p>C 语言是一种弱类型程序设计语言。C 语言中不对计算结果溢出进行处理，这意味着 C 语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持 C 语言，MIPS 指令的所有计算指令均可以忽略溢出。 请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的。提示：阅读《MIPS32® Architecture For Programmers Volume II: The MIPS32® Instruction Set》中相关指令的 Operation 部分。</p>
+</blockquote>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">if</span> <span class="no">temp32</span> <span class="err">≠</span> <span class="no">temp31</span> <span class="no">then</span>
+</span></span><span class="line"><span class="cl"><span class="nf">SignalException</span><span class="p">(</span><span class="no">IntegerOverflow</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>这是add和addu、addi和addiu的唯一区别     <br>
+u的本意即为不考虑输出
+那在忽略输出的前提下自然就等价了。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-%E4%B8%8A%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-%E4%B8%8A%E6%9C%BA/3c7fe802fe677d02b6b3708d9f40249.be319fc2da70988c7aa9929edd81aeb6_hu8173882909115871573.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO 上机"
+                        
+                        data-hash="md5-vjGfwtpwmIx6qZKe3YGutg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO 上机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/destruction321.862babfd3d031a2391163bb42862b527_hu11971392536427170347.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P7 MIPS微系统搭建"
+                        
+                        data-hash="md5-hiur/T0DGiORFju0KGK1Jw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P7 MIPS微系统搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p6-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA2/Der_Richter.c966a98f5dc20403c6bdde606af63780_hu5151893074734151230.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P6 流水线CPU搭建（2）"
+                        
+                        data-hash="md5-yWapj13CBAPGvd5gavY3gA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P6 流水线CPU搭建（2）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/292fa3e8c7e86664cbaefef9ddc7893.6c83e8290b67f2c9655e6633dd9d5f9d_hu10155608615976178982.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P5 流水线CPU搭建（1）"
+                        
+                        data-hash="md5-bIPoKQtn8sllXmYz3Z1fnQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P5 流水线CPU搭建（1）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-co-p3-%E5%8D%95%E5%91%A8%E6%9C%9Fcpu%E7%9A%84logisim%E6%90%AD%E5%BB%BA/88e20704208d17e1fd4372ecfb993c3.9a5154ce3599ee12edf7f4d6207e7271_hu8913948281270116246.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CO P3 单周期CPU的logisim搭建"
+                        
+                        data-hash="md5-mlFUzjWZ7hLt9/TWIH5ycQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CO P3 单周期CPU的logisim搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>

@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="你来出题 我来解题">
+<title>BUAA OO U3 JML与社交网络</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA OO U3 JML与社交网络">
+<meta property='og:description' content="你来出题 我来解题">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-16T12:15:30&#43;08:00'/><meta property='article:modified_time' content='2025-05-16T12:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png' />
+<meta name="twitter:title" content="BUAA OO U3 JML与社交网络">
+<meta name="twitter:description" content="你来出题 我来解题"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#关于架构">关于架构</a></li>
+    <li><a href="#关于测试">关于测试</a>
+      <ol>
+        <li><a href="#单元测试">单元测试</a></li>
+        <li><a href="#功能测试">功能测试</a></li>
+        <li><a href="#集成测试">集成测试</a></li>
+        <li><a href="#压力测试">压力测试</a></li>
+        <li><a href="#回归测试">回归测试</a></li>
+      </ol>
+    </li>
+    <li><a href="#关于大模型">关于大模型</a></li>
+    <li><a href="#关于性能">关于性能</a>
+      <ol>
+        <li><a href="#并查集">并查集</a></li>
+        <li><a href="#增量化设计">增量化设计</a></li>
+        <li><a href="#缓存与脏位">缓存与脏位</a></li>
+        <li><a href="#mycontainer">MyContainer</a></li>
+      </ol>
+    </li>
+    <li><a href="#关于junit">关于Junit</a>
+      <ol>
+        <li><a href="#自动化测试基本方法">自动化测试基本方法</a></li>
+        <li><a href="#基于规格的数据生成">基于规格的数据生成</a></li>
+        <li><a href="#基于规格的断言生成">基于规格的断言生成</a></li>
+      </ol>
+    </li>
+    <li><a href="#关于心得">关于心得</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/">
+                <img src="/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123_hu4023127436256813879.png"
+                        srcset="/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123_hu4023127436256813879.png 800w, /p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/123_hu11971456458722584830.png 1600w"
+                        width="800" 
+                        height="449" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U3 JML与社交网络" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/oo/" style="background-color: #2a9d8f; color: #fff;">
+                OO
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-oo-u3-jml%E4%B8%8E%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C/">BUAA OO U3 JML与社交网络</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            你来出题 我来解题
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-05-16</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="关于架构">关于架构
+</h2><p>本单元的核心任务是根据接口提供的需求，写出其具体实现。</p>
+<p>三次迭代的递进关系并不很强，更像是不同模块的各自实现。</p>
+<p>第一次迭代明确了Network作为中枢，并引入了核心对象person与tag</p>
+<p>第二次迭代引入account模块与article系统</p>
+<p>第三次迭代则引入了综合性很强的message系统，其中涉及到了tag与article的相关内容</p>
+<p>由于接口的需求很明确，整个图模型的架构相对确定，我们的核心内容主要只是完成方法与辅助方法。</p>
+<h2 id="关于测试">关于测试
+</h2><p>本单元对测试的要求较高，中测的核心问题主要出现在Junit测试中。</p>
+<p>但为了通过中测所进行的测试，往往是最简单的单元测试。  <br>
+因此哪怕已经经历了一整个单元，我对许多其他测试的具体内容仍然是完全陌生的。</p>
+<h3 id="单元测试">单元测试
+</h3><p>针对软件中的<strong>最小可测试单元</strong>进行的测试，确保每个单元能正常工作。</p>
+<p>特点：</p>
+<ul>
+<li><strong>粒度</strong>最小：聚焦单个单元，测试范围独立。</li>
+<li><strong>白盒测试</strong>为主：需了解代码内部结构，设计测试用例覆盖不同分支、边界条件等。</li>
+</ul>
+<h3 id="功能测试">功能测试
+</h3><p>基于软件需求规格说明书，验证功能是否符合用户预期，<strong>不关注内部实现细节</strong>。</p>
+<p>特点：</p>
+<ul>
+<li><strong>黑盒测试</strong>为主：从用户视角出发，仅关注输入与输出。</li>
+<li><strong>粒度</strong>较大：对整体进行测试，系统性强，只能鉴定问题的存在性，而很难做好定位</li>
+</ul>
+<h3 id="集成测试">集成测试
+</h3><p>将<strong>多个单元或模块</strong>组合起来，测试它们之间的<strong>接口和交互</strong>是否正常。</p>
+<p>特点：</p>
+<ul>
+<li>关注接口与协作：测试重点往往是模块间的依赖关系和数据流动。</li>
+<li>渐增式测试：一般采用自顶向下、自底向上或混合方式逐步集成模块，便于定位模块间交互出现异常的位置。</li>
+</ul>
+<h3 id="压力测试">压力测试
+</h3><p>通过模拟高负载、高并发场景，测试系统在<strong>极限条件</strong>下的性能、稳定性和容错能力。</p>
+<p>特点：</p>
+<ul>
+<li>破坏性测试：常常故意施加超过正常范围的压力。</li>
+<li>关注性能指标：如CPU time，Running time，内存等指标。</li>
+</ul>
+<h3 id="回归测试">回归测试
+</h3><p>在发生如代码修改、功能新增等变化后，<strong>重新测试已验证过的功能</strong>，确保变更未引入新缺陷或破坏原有功能。</p>
+<p>特点：</p>
+<ul>
+<li>重复性测试：可重复执行历史测试用例来检验是否破坏原有功能。</li>
+</ul>
+<h2 id="关于大模型">关于大模型
+</h2><p>本次作业我使用大模型的地方并不是很多，但第六次上机实验给了我很大的启发。</p>
+<p>上机实验中的三个阶段分别是：</p>
+<ul>
+<li>直接生成</li>
+<li>给出相关知识与解释</li>
+<li>给出具体的示例</li>
+</ul>
+<p>在根据这三个步骤实现之后，大模型的表现确实有很大进步。首先给出任务目标，然后再明确期望格式和核心目的，采用的是采用<code>目标层</code>→<code>约束层</code>→<code>示例层</code>的三层结构，减少模型理解偏差。</p>
+<p>在实际使用过程中，我还有一些其他的使用体验，例如<strong>动态反馈</strong>。其实这个是我使用大模型时的常态，究其根本原因，可能便是<strong>对自己要解决什么问题都不清楚</strong>。于是在大模型的输出中进一步寻找问题，寻求解释，从而一层一层地解决问题。虽然最后一般也有不错的结果，但是还是相对耗时。   <br>
+可能由自己直面问题，将核心目的拆解出来再借助大模型，会有更好的效果。</p>
+<h2 id="关于性能">关于性能
+</h2><p>规格与实现分离。规格是<strong>题干</strong>，实现是<strong>题解</strong>。<strong>题干限定了你的结果，但是做题的过程由你的实现所决定</strong>。一道选择题可能大家都能写出正确答案，但是不同人的思考模式与做题技巧是不同的。如果你的实现能够满足规格的所有要求，那么这个实现便是正确的，但未必是优秀的。</p>
+<p>在本次作业中，优秀的评断主要体现在TIME。因此我们一般要考虑构建一些数据结构，试图以空间换时间。</p>
+<h3 id="并查集">并查集
+</h3><p>在query_circle中，我采用了并查集的方法，结合了<strong>路径压缩与按秩合并</strong>。</p>
+<p>并查集的核心思想就是为一个<strong>连通分支</strong>选出一个<strong>代表结点</strong>。</p>
+<p>路径压缩：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">parent</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">id</span><span class="p">)));</span><span class="w"> </span><span class="c1">// 压缩</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">parent</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>按秩合并：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">union</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">root1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">id1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">root2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">id2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root1</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">root2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 按秩合并</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">parent</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">root1</span><span class="p">,</span><span class="w"> </span><span class="n">root2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root1</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">parent</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">root2</span><span class="p">,</span><span class="w"> </span><span class="n">root1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">parent</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">root2</span><span class="p">,</span><span class="w"> </span><span class="n">root1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">rank</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">root1</span><span class="p">,</span><span class="w"> </span><span class="n">rank</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">root1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>但是并查集<strong>便于增添，不便于删改</strong>。当某段关系被解除，路径压缩后的并查集不能再判断出这个人是否会脱离该连通分支。因此此时须考虑重新构建并查集。</p>
+<h3 id="增量化设计">增量化设计
+</h3><p>这一优化对我的影响相对较深，至少让我首次意识到size的维护居然能避免一次大遍历。</p>
+<p>增量化设计的核心思想就是<strong>在变化时对数值做维护</strong>，在查询时直接得到当前结果。或者说这是一种<strong>在线算法</strong>，求值不从头开始，而是由上一状态+变化过程而得来。</p>
+<p>在<code>query_tag_value_sum</code>，<code>query_triple_sum</code>和<code>query_tag_age_var</code>中，我主要使用了这一思想。具体实现上的易错点就不必在这里赘述了。</p>
+<h3 id="缓存与脏位">缓存与脏位
+</h3><p>缓存类似于增量化设计，但<strong>缓存的内容不一定是正确的</strong>。</p>
+<p>某些值虽然我知道在某个过程中发生了改变，但是<strong>维护起来相对复杂</strong>，甚至效率堪比重新计算。倘若在每次改变的时候都进行维护，虽然精准，但会造成效率的损失。</p>
+<blockquote>
+<p>例如<em>均值是方便增量化维护的，而方差就不方便</em>。</p>
+</blockquote>
+<p>因此可以选择设置<code>dirty</code>位，仅在需要查询时再进行缓存数据的更新。</p>
+<p>我在<code>query_best_acquaintance</code>，<code>query_best_contributor</code>，<code>query_tag_age_var</code>以及<code>并查集的重建</code>中主要使用了这一思想。</p>
+<h3 id="mycontainer">MyContainer
+</h3><p>主要解决在有序列表中按值删除对象中的遍历问题。</p>
+<p>Linkedlist固然好，但是它只是能很快的删除某个<strong>结点</strong>，<strong>内部不存在值与结点的映射</strong>。因此只需仿照Linkedlist构建一个类，但增加一个属性HashMap用来由值索引到结点。（因为一个值可能对应多个节点，所以可以考虑<code>HashMap&lt;Integer,HashSet&lt;...&gt;&gt;</code>）</p>
+<p>在hw10强测中因未采用这一数据结构而发生了CTLE。</p>
+<h2 id="关于junit">关于Junit
+</h2><p>我在本单元的研讨课上较多地讲述了如何由规格构建测试的方法论。在此将主要内容进行重述。</p>
+<h3 id="自动化测试基本方法">自动化测试基本方法
+</h3><ol>
+<li>
+<p><strong>@RunWith(Parameterized.class)</strong>   <br>
+切换到 Parameterized 运行器，让测试类依据多组参数生成多个Test对象，多次执行同一个测试方法，避免了手动编写大量重复的测试代码。       <br>
+<strong>@Parameterized.Parameters</strong><br>
+定义一个返回测试数据集合的静态方法，返回的集合包含testNum个小集合，每个小集合包含生成Test对象的参数。</p>
+</li>
+<li>
+<p><strong>多次@Test</strong>  <br>
+手动构建测试样例，覆盖能够触发 JML 规格中所有可能行为的输入数据和对象状态。</p>
+</li>
+</ol>
+<h3 id="基于规格的数据生成">基于规格的数据生成
+</h3><ol>
+<li>数据限制
+<ul>
+<li>requires明确了方法的<strong>某种输入约束</strong>（如参数范围、对象状态）。</li>
+<li>invariant是类级别的约束，<strong>必须确保</strong>测试数据满足这些基本约束。</li>
+</ul>
+</li>
+<li>多场景构造
+<ul>
+<li>正常场景：构造满足前置条件的<strong>典型输入</strong>，触发 JML <strong>ensures</strong> 条款中的正常行为。</li>
+<li>边界场景：构造边缘输入，如<strong>空集合</strong>、<strong>边界值</strong>、<strong>单一元素</strong>等。</li>
+<li>异常场景：构造违反前置条件的输入，触发 JML <strong>signals</strong> 条款中的异常。</li>
+<li>复杂场景：构造具有<strong>复杂关系或大规模数据</strong>的场景，测试方法在高负载下的正确性。</li>
+</ul>
+</li>
+</ol>
+<h3 id="基于规格的断言生成">基于规格的断言生成
+</h3><p>invariant  -&gt; 基本数据要求，可断言<strong>执行方法后是否满足</strong></p>
+<p>constraint -&gt; 数据变化要求，可<strong>保存old信息</strong>进行断言</p>
+<p>assignable -&gt; 对没被assign的变量做<strong>pure断言</strong></p>
+<p>signal -&gt; <strong>异常捕捉</strong>方法或<strong>assertThrow</strong></p>
+<p>ensures -&gt; 方法核心效果的断言</p>
+<p>pure -&gt; <strong>保存old信息</strong>（或备份信息）进行断言</p>
+<h2 id="关于心得">关于心得
+</h2><p>本单元整体给我的感觉是比较舒适的。除了hw10的实验预习题中那颗树的JML让我感到深刻畏惧，其他的JML读起来都让人很明白自己需要做什么。哪怕是看起来最复杂的sendMessage，很多行JML也只是对应一个小方法的调用。而有些言简意赅的JML，背后却需要十分复杂的实现。</p>
+<p>有了颜色标注之后，阅读JML的枯燥与混乱已经基本消失殆尽。</p>
+<p>但是JML的书写对我来说仍然是极为困难的课题，哪怕强如助教也会在官方包出现小的失误。但JML作为根本要旨，要保证绝对的严格与严谨，书写JML需要有对方法极高的概括力，还有对细节的全面把握。不过学完了这个单元，我们终于可以说自己走出了了解JML的第一步。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u4-uml%E6%AD%A3%E5%90%91%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/123.af5537eaa7f7cd8eba23dfa55b1f600d_hu11361999506600342615.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U4 UML正向建模与图书管理系统"
+                        
+                        data-hash="md5-r1U36qf3zY66I9&#43;lWx9gDQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U4 UML正向建模与图书管理系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/123.39b7882d7b4f94730fa17e9b4abade4a_hu17238219808986198369.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U2 多线程与电梯"
+                        
+                        data-hash="md5-ObeILXtPlHMPoX6bSrreSg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U2 多线程与电梯</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u1-%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.0965eb13aa31486d992c3dcb4e924020_hu17511212002196188424.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U1 递归下降与表达式解析"
+                        
+                        data-hash="md5-CWXrE6oxSG2ZLD3LTpJAIA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U1 递归下降与表达式解析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-oo-u1-hw1-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90/123.2c3ae67d1543d8bf8f7f7fe3e1dd785e_hu6681761682986551058.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA OO U1 HW1 表达式解析"
+                        
+                        data-hash="md5-LDrmfRVD2L&#43;Pf3/j4d14Xg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA OO U1 HW1 表达式解析</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>
