@@ -777,10 +777,9 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;p&gt;注意：对于乘除法，还要加一句MFLO，取余则为MFHI&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;后端的内容说多也不多，但是一定需要谨慎思考再落笔，否则很容易出现恶劣bug。其次，我们肉眼可见有大量值得优化的内容需要完成。&lt;/p&gt;
-&lt;h2 id=&#34;代码优化&#34;&gt;代码优化
+&lt;h2 id=&#34;中间代码优化&#34;&gt;中间代码优化
 &lt;/h2&gt;&lt;p&gt;代码优化分为体系结构无关的中间代码优化与体系结构相关的目标代码优化。&lt;/p&gt;
-&lt;h3 id=&#34;中端优化&#34;&gt;中端优化
-&lt;/h3&gt;&lt;p&gt;在边遍历边生成的过程中，不可避免会有很多冗余与机械性的指令产生。中端优化不仅可以直接缩减中间代码的行数，还能让后续的某些后端优化更容易发生。&lt;/p&gt;
+&lt;p&gt;在边遍历边生成的过程中，不可避免会有很多冗余与机械性的指令产生。中端优化不仅可以直接缩减中间代码的行数，还能让后续的某些后端优化更容易发生。&lt;/p&gt;
 &lt;p&gt;关于中端优化，最核心的对象不在于某一条指令，而是宏观上的感知，要充分挖掘指令之间、Value之间、基本块之间的联系。基本块之间的联系简单来说就是&lt;strong&gt;流图&lt;/strong&gt; ，Value之间的联系则是我们一直在维护的&lt;strong&gt;Use关系&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;需要注意： 很多优化会改写控制流边（例如把 branch 改写成 jump、删除 block、插入中间块），所以流水线中会多次执行 &lt;code&gt;CfgBuilder&lt;/code&gt; 来&lt;strong&gt;重建 CFG 与支配信息，并同步修 phi 的前驱列表&lt;/strong&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -797,7 +796,6 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;li&gt;&lt;strong&gt;循环优化&lt;/strong&gt;：要判断某指令外提到循环前是否安全，需要先准确知道哪些块属于这个循环、循环入口从哪来。这些都需要来自 CFG 。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;hr&gt;
 &lt;h3 id=&#34;cfg-的构建&#34;&gt;CFG 的构建
 &lt;/h3&gt;&lt;h4 id=&#34;removeunreachablecode&#34;&gt;RemoveUnreachableCode
 &lt;/h4&gt;&lt;p&gt;为什么先说这个呢？因为这个逻辑太简单了，而且这个优化能够在一定程度上帮助CFG的构建。&lt;/p&gt;
@@ -897,7 +895,7 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;blockquote&gt;
 &lt;p&gt;并行操作转为顺序操作可能出现矛盾，比如环状赋值。这个时候就需要引入临时变量先把右值存下来，再move肯定不会错。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;后端优化&#34;&gt;后端优化
+&lt;h2 id=&#34;目标代码优化&#34;&gt;目标代码优化
 &lt;/h2&gt;&lt;p&gt;后端优化我分为两各方面：一部分发生在 IR 的 &lt;code&gt;toMips()&lt;/code&gt; 过程中，本质是&lt;strong&gt;指令翻译&lt;/strong&gt;时就直接简化，是&lt;strong&gt;指令单位本身&lt;/strong&gt;的优化，在不改变语义的前提下直接选择更省的 MIPS 序列。第二部分就是相对宏观的&lt;strong&gt;指令间&lt;/strong&gt;优化，不过实际上还是非常局部、非常确定的&lt;strong&gt;窥孔&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;翻译期优化&#34;&gt;翻译期优化
 &lt;/h3&gt;&lt;h4 id=&#34;立即数优先&#34;&gt;立即数优先
