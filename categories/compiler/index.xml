@@ -799,7 +799,7 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;cfg-的构建&#34;&gt;CFG 的构建
-&lt;/h3&gt;&lt;h4 id=&#34;不可达代码删除removeunreachablecode&#34;&gt;不可达代码删除（RemoveUnreachableCode）
+&lt;/h3&gt;&lt;h4 id=&#34;removeunreachablecode&#34;&gt;RemoveUnreachableCode
 &lt;/h4&gt;&lt;p&gt;为什么先说这个呢？因为这个逻辑太简单了，而且这个优化能够在一定程度上帮助CFG的构建。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;单个基本块内&lt;/strong&gt;：跳转指令之后的指令在语义上永远不会执行&lt;/li&gt;
@@ -815,16 +815,16 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;li&gt;基本块内遇到 &lt;code&gt;jump/branch/return&lt;/code&gt;，删除后续所有指令。&lt;/li&gt;
 &lt;li&gt;从入口块 DFS，只保留可达块，其余块从函数的 blockList 中移除。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;cfgbuildercfg-与支配信息构建&#34;&gt;CfgBuilder（CFG 与支配信息构建）
+&lt;h4 id=&#34;cfgbuilder&#34;&gt;CfgBuilder
 &lt;/h4&gt;&lt;p&gt;扫描每个基本块末尾终结指令来重建 &lt;code&gt;beforeBlocks/nextBlocks&lt;/code&gt;，再把块首 phi 的 predecessor 列表与当前 &lt;code&gt;beforeBlocks&lt;/code&gt; 对齐，最后计算支配关系、立即支配与支配边界，为 InsertPhi、GVN、LICM 等提供基础信息。&lt;/p&gt;
 &lt;h3 id=&#34;无效代码删除&#34;&gt;无效代码删除
-&lt;/h3&gt;&lt;h4 id=&#34;jumpthreading跳转穿线&#34;&gt;JumpThreading（跳转穿线）
+&lt;/h3&gt;&lt;h4 id=&#34;jumpthreading&#34;&gt;JumpThreading
 &lt;/h4&gt;&lt;p&gt;跳转穿线的出发点是因为在处理控制流时，IR 很容易生成跳板块，也就是块里只有一条无条件跳转，这类块本身不提供任何语义增量，却会把 CFG 拉长、制造额外边与额外分支，从而让后续优化更难看清结构。&lt;/p&gt;
 &lt;p&gt;我在实现时只处理了非 entry 且&lt;strong&gt;仅含无条件跳转&lt;/strong&gt;的块，把所有&lt;strong&gt;前驱&lt;/strong&gt;直接改跳到 target&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;为了避免破坏 phi 语义，如果 target 块开头存在 phi，我选择保守地不做穿线，因为那意味着需要补齐 incoming value 才能保持语义一致。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;removedeadcode死代码删除&#34;&gt;RemoveDeadCode（死代码删除）
+&lt;h4 id=&#34;removedeadcode&#34;&gt;RemoveDeadCode
 &lt;/h4&gt;&lt;p&gt;在中间代码非常容易产生算出来但没人用的值，这些值如果留到后端，会产生大量的寄存器压力与访存压力，还会阻碍后续的常量传播与去重（因为它们占据了 use/def 的一部分）。它不仅能删指令，更重要的是把依赖图变稀疏，让后续每一步优化都更容易触发。&lt;/p&gt;
 &lt;p&gt;我们先从main出发构建调用可达信息，并标记有&lt;strong&gt;副作用&lt;/strong&gt;的函数（包含 IO、store，或调用了有副作用的函数），然后以关键use指令为根（return、branch/jump、store、IO、以及调用了副作用函数的 call），&lt;strong&gt;逆着 use 关系&lt;/strong&gt;把依赖链标记为 active，删除所有非 active 指令。&lt;/p&gt;
 &lt;p&gt;我还做了一些简单的结构性清理：&lt;/p&gt;
@@ -833,17 +833,17 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;li&gt;合并满足&lt;strong&gt;前驱唯一&lt;/strong&gt;且&lt;strong&gt;前驱只有这一个后继&lt;/strong&gt;的块&lt;/li&gt;
 &lt;li&gt;把只有&lt;strong&gt;一个 incoming 的 phi&lt;/strong&gt; 直接展开为普通值。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;removedeadfunctions不可达函数删除&#34;&gt;RemoveDeadFunctions（不可达函数删除）
+&lt;h4 id=&#34;removedeadfunctions&#34;&gt;RemoveDeadFunctions
 &lt;/h4&gt;&lt;p&gt;不可达函数删除在&lt;strong&gt;没有函数指针&lt;/strong&gt;的语言里收益很直接：函数可达性完全由 call 决定，删掉 main 不可达函数既能减小输出规模，也能减少后续优化的工作量。&lt;/p&gt;
 &lt;p&gt;直接从 &lt;code&gt;main&lt;/code&gt; 出发沿 &lt;code&gt;CallInstr -&amp;gt; targetFunction&lt;/code&gt; 做 DFS 标记 reachable，然后删除不可达函数即可。&lt;/p&gt;
 &lt;h3 id=&#34;ssa&#34;&gt;SSA
-&lt;/h3&gt;&lt;h4 id=&#34;memtoreg--insertphi静态单赋值&#34;&gt;MemToReg + InsertPhi（静态单赋值）
+&lt;/h3&gt;&lt;h4 id=&#34;memtoreg--insertphi&#34;&gt;MemToReg + InsertPhi
 &lt;/h4&gt;&lt;p&gt;前端生成 IR 时局部标量往往落成 &lt;code&gt;alloca + store/load&lt;/code&gt;，各种变量都放在内存里。如果不提升至SSA，后端会机械地产生大量 lw/sw，而这些访存其实只是为了模拟变量当前值。一旦把它提升到 SSA，就把内存问题变成了值问题，常量传播、去重与窥孔会变得非常自然。&lt;/p&gt;
 &lt;p&gt;我在实现时只处理了非数组的 &lt;code&gt;alloca&lt;/code&gt;，先扫描该 alloca 的 use 收集 define（store）与 use（load），再利用&lt;strong&gt;支配边界&lt;/strong&gt;在需要的块&lt;strong&gt;开头插入 phi&lt;/strong&gt;，最后沿支配树做 rename。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;rename: 我们用栈来维护当前最新值，把 load 替换为栈顶值除，把 store 变成入栈，栈为空时用 0 作为默认初值。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;memforward内存前推&#34;&gt;MemForward（内存前推）
+&lt;h4 id=&#34;memforward&#34;&gt;MemForward
 &lt;/h4&gt;&lt;p&gt;即便做了 MemToReg，局部数组/局部指针这类不使用SSA，而是&lt;strong&gt;确定地址&lt;/strong&gt;的对象仍然可能出现 store→load、重复 store 或重复 load。&lt;/p&gt;
 &lt;p&gt;我当前实现是块内优化。在单个基本块内维护 &lt;code&gt;address -&amp;gt; MemState&lt;/code&gt;：&lt;/p&gt;
 &lt;ul&gt;
@@ -858,36 +858,36 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;deadlocalallocastore局部栈内死-store-删除&#34;&gt;DeadLocalAllocaStore（局部栈内死 store 删除）
+&lt;h4 id=&#34;deadlocalallocastore&#34;&gt;DeadLocalAllocaStore
 &lt;/h4&gt;&lt;p&gt;这个优化的动机来自一种很典型的冗余：局部数组或局部变量可能被写了很多次（尤其是初始化）但从未被读过，这些 store 对语义没有任何贡献。我们可以把&lt;strong&gt;只写不读&lt;/strong&gt;的初始化彻底抹掉。&lt;/p&gt;
 &lt;p&gt;我以 alloca 为根向下追踪由它派生的 gep 地址，收集相关 store；只要发现任意 load，我就放弃优化，否则&lt;strong&gt;就删除所有相关 store&lt;/strong&gt;，并进一步清理因为 store 消失而变成&lt;strong&gt;无用的 gep/alloca&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;表达式&#34;&gt;表达式
-&lt;/h3&gt;&lt;h4 id=&#34;gvn全局公共子表达式消除&#34;&gt;GVN（全局公共子表达式消除）
+&lt;/h3&gt;&lt;h4 id=&#34;gvn&#34;&gt;GVN
 &lt;/h4&gt;&lt;p&gt;这里参考了bzh学长的字符串哈希法，为表达式维护了一个hash标识。我们沿支配树遍历，用 &lt;code&gt;getGvnHash()&lt;/code&gt; 为表达式做哈希并维护一个&lt;strong&gt;当前支配路径上的表达式表&lt;/strong&gt;，当发现哈希已出现就用已有值替换当前指令并删除它。&lt;/p&gt;
-&lt;h4 id=&#34;lvn局部值编号&#34;&gt;LVN（局部值编号）
+&lt;h4 id=&#34;lvn&#34;&gt;LVN
 &lt;/h4&gt;&lt;p&gt;LVN 比 GVN 更适合&lt;strong&gt;边走边化简&lt;/strong&gt;：在遍历过程中顺手做常量折叠、代数恒等化简，能把很多小冗余直接掐掉，不必等到后端再清。&lt;/p&gt;
 &lt;p&gt;对 ALU/CMP/EXTEND/TRUNC 可以做常量折叠与简单代数化简，对 ALU/CMP/GEP 做基于哈希与MoveInstr的消除，也就是常量传播。其中针对MoveInstr，直接传播给user，然后删除 move。&lt;/p&gt;
-&lt;h4 id=&#34;sccp稀疏条件常量传播&#34;&gt;SCCP（稀疏条件常量传播）
+&lt;h4 id=&#34;sccp&#34;&gt;SCCP
 &lt;/h4&gt;&lt;p&gt;常量不仅来自字面量，还来自&lt;strong&gt;某些路径根本走不到&lt;/strong&gt;：简单的说，就是提前预判某些分支是否必走，从而方便我们的传播。&lt;/p&gt;
 &lt;p&gt;我对SSA值维护了三值格 UNDEFINED/&lt;strong&gt;CONSTANT&lt;/strong&gt;/OVERDEFINED，并不断传播，phi指令触发值合并从而改变状态，最终把 CONSTANT 的SSA值替换成常量。&lt;/p&gt;
-&lt;h4 id=&#34;purefunctionevaluation纯函数消除&#34;&gt;PureFunctionEvaluation（纯函数消除）
+&lt;h4 id=&#34;purefunctionevaluation&#34;&gt;PureFunctionEvaluation
 &lt;/h4&gt;&lt;p&gt;这个点是testfile7直接提醒到的。在&lt;strong&gt;无副作用、返回值只由参数决定&lt;/strong&gt;的前提下，call 可以被当成一种可优化的表达式：参数全为常量时可以直接算出结果。此外，同一支配区域内对同一参数重复调用也可以复用结果。&lt;/p&gt;
 &lt;p&gt;首先是纯函数候选：非main、非void、有函数体、不出现 load/store/alloca/gep/io、不调用非纯函数。然后在遇到纯函数就解释执行目标函数（设置了较强的限制，防止算太久），得到结果并替换 call。我还沿支配树维护 &lt;code&gt;(callee, args)&lt;/code&gt; 表，若已有支配的同 key 调用就复用结果。&lt;/p&gt;
 &lt;h3 id=&#34;循环&#34;&gt;循环
-&lt;/h3&gt;&lt;h4 id=&#34;loopcanonicalization循环规范化&#34;&gt;LoopCanonicalization（循环规范化）
+&lt;/h3&gt;&lt;h4 id=&#34;loopcanonicalization&#34;&gt;LoopCanonicalization
 &lt;/h4&gt;&lt;p&gt;循环规范化是为了便于LICM的执行的。因为 LICM 需要一个&lt;strong&gt;循环外唯一入口&lt;/strong&gt;，也就是说被外提的指令需要一个确定且唯一的放置点。&lt;/p&gt;
 &lt;p&gt;如果存在一条边 &lt;code&gt;tail -&amp;gt; header&lt;/code&gt;，并且 &lt;strong&gt;header 支配 tail&lt;/strong&gt;，那么 &lt;code&gt;tail -&amp;gt; header&lt;/code&gt; 是回边，&lt;code&gt;header&lt;/code&gt; 是循环头。然后从 &lt;code&gt;tail&lt;/code&gt; 反向沿前驱回溯，把能回溯到 &lt;code&gt;header&lt;/code&gt; 的那些块收集起来，得到循环块集合。&lt;/p&gt;
 &lt;p&gt;我们观察header的前驱，有多少来自循环外，也就是外部入口有多少。若循环头存在多个来自循环外的前驱，我就&lt;strong&gt;插入新的 preheader&lt;/strong&gt;统一外部入口，把所有外部入口重定向到 preheader，并&lt;strong&gt;修复 header 的 phi&lt;/strong&gt;：把外部 incoming 先在 preheader 合并（必要时插入新的 phi），让 header 只从 preheader 接收一个外部 incoming。&lt;/p&gt;
-&lt;h4 id=&#34;licm循环不变式外提&#34;&gt;LICM（循环不变式外提）
+&lt;h4 id=&#34;licm&#34;&gt;LICM
 &lt;/h4&gt;&lt;p&gt;LICM 的直觉是：循环里有些表达式每次迭代都一样，留在循环体内就是重复算，把它们挪到 preheader 只算一次，循环体就能更短更快。&lt;/p&gt;
 &lt;p&gt;我只外提&lt;strong&gt;无副作用、无定义新值&lt;/strong&gt;的指令（ALU/CMP/EXTEND/TRUNC/GEP），明确排除 load/store/call/IO/控制流/phi。更宽泛地，如果某指令的 operand 在循环内定义时，倘若能判定该 operand 也是 invariant的就也能外提。最终把可外提指令插入到 preheader 的终结指令之前。&lt;/p&gt;
 &lt;h3 id=&#34;后端准备&#34;&gt;后端准备
-&lt;/h3&gt;&lt;h4 id=&#34;activeanalysis活跃分析&#34;&gt;ActiveAnalysis（活跃分析）
+&lt;/h3&gt;&lt;h4 id=&#34;activeanalysis&#34;&gt;ActiveAnalysis
 &lt;/h4&gt;&lt;p&gt;活跃分析的原因是寄存器分配必须知道&lt;strong&gt;哪些值必须跨块保留&lt;/strong&gt;，否则很容易把仍在后续使用的值提前释放掉；而跨块活跃由每个块的 in/out 集合决定。我们先计算每块的 def/use，再迭代求解 in/out（out 为后继 in 的并集，in 为 use 并上 out−def），并&lt;strong&gt;额外处理 phi 的沿边使用&lt;/strong&gt;：把从当前块流向后继块那条边对应的 phi &lt;strong&gt;incoming value&lt;/strong&gt; 纳入 out 集合，保证跨边的真实需求被计入。&lt;/p&gt;
-&lt;h4 id=&#34;allocateregister寄存器分配&#34;&gt;AllocateRegister（寄存器分配）
+&lt;h4 id=&#34;allocateregister&#34;&gt;AllocateRegister
 &lt;/h4&gt;&lt;p&gt;我做寄存器分配的目标是尽可能把 SSA 值放进物理寄存器，让后端少发 lw/sw，没有实现 spill。通过沿支配树递归分配，进入子块时临时释放&lt;strong&gt;不在子块 in 集合里&lt;/strong&gt;的寄存器，处理完子块再恢复。&lt;/p&gt;
 &lt;p&gt;在块内我记录每个 useValue 的 last-use，当某值在本条指令里是最后一次使用且该值不属于 block-out，就&lt;strong&gt;立即释放&lt;/strong&gt;它占用的寄存器。&lt;/p&gt;
-&lt;h4 id=&#34;removephi消除phi指令&#34;&gt;RemovePhi（消除phi指令）
+&lt;h4 id=&#34;removephi&#34;&gt;RemovePhi
 &lt;/h4&gt;&lt;p&gt;对每个基本块开头的 phi，先按从哪个前驱跳过来就取哪个 incoming 值的含义，把它拆成写在各条前驱边上的一组&lt;strong&gt;并行拷贝&lt;/strong&gt;（同一条边上可能要同时给多个 phi 结果赋值，所以逻辑上必须并行）&lt;/p&gt;
 &lt;p&gt;如果某条边前驱有多个后继且后继有多个前驱，就无法把拷贝安全地放在前驱块末尾或后继块开头，因此要先插入一个只服务这条边的中间块，把拷贝放到中间块里；接着把并行拷贝集合线性化成若干条顺序 &lt;code&gt;MoveInstr&lt;/code&gt;。&lt;/p&gt;
 &lt;blockquote&gt;

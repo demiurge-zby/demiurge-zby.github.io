@@ -366,43 +366,43 @@
         <li><a href="#中端优化">中端优化</a></li>
         <li><a href="#cfg-的构建">CFG 的构建</a>
           <ol>
-            <li><a href="#不可达代码删除removeunreachablecode">不可达代码删除（RemoveUnreachableCode）</a></li>
-            <li><a href="#cfgbuildercfg-与支配信息构建">CfgBuilder（CFG 与支配信息构建）</a></li>
+            <li><a href="#removeunreachablecode">RemoveUnreachableCode</a></li>
+            <li><a href="#cfgbuilder">CfgBuilder</a></li>
           </ol>
         </li>
         <li><a href="#无效代码删除">无效代码删除</a>
           <ol>
-            <li><a href="#jumpthreading跳转穿线">JumpThreading（跳转穿线）</a></li>
-            <li><a href="#removedeadcode死代码删除">RemoveDeadCode（死代码删除）</a></li>
-            <li><a href="#removedeadfunctions不可达函数删除">RemoveDeadFunctions（不可达函数删除）</a></li>
+            <li><a href="#jumpthreading">JumpThreading</a></li>
+            <li><a href="#removedeadcode">RemoveDeadCode</a></li>
+            <li><a href="#removedeadfunctions">RemoveDeadFunctions</a></li>
           </ol>
         </li>
         <li><a href="#ssa">SSA</a>
           <ol>
-            <li><a href="#memtoreg--insertphi静态单赋值">MemToReg + InsertPhi（静态单赋值）</a></li>
-            <li><a href="#memforward内存前推">MemForward（内存前推）</a></li>
-            <li><a href="#deadlocalallocastore局部栈内死-store-删除">DeadLocalAllocaStore（局部栈内死 store 删除）</a></li>
+            <li><a href="#memtoreg--insertphi">MemToReg + InsertPhi</a></li>
+            <li><a href="#memforward">MemForward</a></li>
+            <li><a href="#deadlocalallocastore">DeadLocalAllocaStore</a></li>
           </ol>
         </li>
         <li><a href="#表达式">表达式</a>
           <ol>
-            <li><a href="#gvn全局公共子表达式消除">GVN（全局公共子表达式消除）</a></li>
-            <li><a href="#lvn局部值编号">LVN（局部值编号）</a></li>
-            <li><a href="#sccp稀疏条件常量传播">SCCP（稀疏条件常量传播）</a></li>
-            <li><a href="#purefunctionevaluation纯函数消除">PureFunctionEvaluation（纯函数消除）</a></li>
+            <li><a href="#gvn">GVN</a></li>
+            <li><a href="#lvn">LVN</a></li>
+            <li><a href="#sccp">SCCP</a></li>
+            <li><a href="#purefunctionevaluation">PureFunctionEvaluation</a></li>
           </ol>
         </li>
         <li><a href="#循环">循环</a>
           <ol>
-            <li><a href="#loopcanonicalization循环规范化">LoopCanonicalization（循环规范化）</a></li>
-            <li><a href="#licm循环不变式外提">LICM（循环不变式外提）</a></li>
+            <li><a href="#loopcanonicalization">LoopCanonicalization</a></li>
+            <li><a href="#licm">LICM</a></li>
           </ol>
         </li>
         <li><a href="#后端准备">后端准备</a>
           <ol>
-            <li><a href="#activeanalysis活跃分析">ActiveAnalysis（活跃分析）</a></li>
-            <li><a href="#allocateregister寄存器分配">AllocateRegister（寄存器分配）</a></li>
-            <li><a href="#removephi消除phi指令">RemovePhi（消除phi指令）</a></li>
+            <li><a href="#activeanalysis">ActiveAnalysis</a></li>
+            <li><a href="#allocateregister">AllocateRegister</a></li>
+            <li><a href="#removephi">RemovePhi</a></li>
           </ol>
         </li>
       </ol>
@@ -1315,7 +1315,7 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra</p>
 </blockquote>
 <hr>
 <h3 id="cfg-的构建">CFG 的构建
-</h3><h4 id="不可达代码删除removeunreachablecode">不可达代码删除（RemoveUnreachableCode）
+</h3><h4 id="removeunreachablecode">RemoveUnreachableCode
 </h4><p>为什么先说这个呢？因为这个逻辑太简单了，而且这个优化能够在一定程度上帮助CFG的构建。</p>
 <ol>
 <li><strong>单个基本块内</strong>：跳转指令之后的指令在语义上永远不会执行</li>
@@ -1331,16 +1331,16 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra</p>
 <li>基本块内遇到 <code>jump/branch/return</code>，删除后续所有指令。</li>
 <li>从入口块 DFS，只保留可达块，其余块从函数的 blockList 中移除。</li>
 </ul>
-<h4 id="cfgbuildercfg-与支配信息构建">CfgBuilder（CFG 与支配信息构建）
+<h4 id="cfgbuilder">CfgBuilder
 </h4><p>扫描每个基本块末尾终结指令来重建 <code>beforeBlocks/nextBlocks</code>，再把块首 phi 的 predecessor 列表与当前 <code>beforeBlocks</code> 对齐，最后计算支配关系、立即支配与支配边界，为 InsertPhi、GVN、LICM 等提供基础信息。</p>
 <h3 id="无效代码删除">无效代码删除
-</h3><h4 id="jumpthreading跳转穿线">JumpThreading（跳转穿线）
+</h3><h4 id="jumpthreading">JumpThreading
 </h4><p>跳转穿线的出发点是因为在处理控制流时，IR 很容易生成跳板块，也就是块里只有一条无条件跳转，这类块本身不提供任何语义增量，却会把 CFG 拉长、制造额外边与额外分支，从而让后续优化更难看清结构。</p>
 <p>我在实现时只处理了非 entry 且<strong>仅含无条件跳转</strong>的块，把所有<strong>前驱</strong>直接改跳到 target</p>
 <blockquote>
 <p>为了避免破坏 phi 语义，如果 target 块开头存在 phi，我选择保守地不做穿线，因为那意味着需要补齐 incoming value 才能保持语义一致。</p>
 </blockquote>
-<h4 id="removedeadcode死代码删除">RemoveDeadCode（死代码删除）
+<h4 id="removedeadcode">RemoveDeadCode
 </h4><p>在中间代码非常容易产生算出来但没人用的值，这些值如果留到后端，会产生大量的寄存器压力与访存压力，还会阻碍后续的常量传播与去重（因为它们占据了 use/def 的一部分）。它不仅能删指令，更重要的是把依赖图变稀疏，让后续每一步优化都更容易触发。</p>
 <p>我们先从main出发构建调用可达信息，并标记有<strong>副作用</strong>的函数（包含 IO、store，或调用了有副作用的函数），然后以关键use指令为根（return、branch/jump、store、IO、以及调用了副作用函数的 call），<strong>逆着 use 关系</strong>把依赖链标记为 active，删除所有非 active 指令。</p>
 <p>我还做了一些简单的结构性清理：</p>
@@ -1349,17 +1349,17 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra</p>
 <li>合并满足<strong>前驱唯一</strong>且<strong>前驱只有这一个后继</strong>的块</li>
 <li>把只有<strong>一个 incoming 的 phi</strong> 直接展开为普通值。</li>
 </ol>
-<h4 id="removedeadfunctions不可达函数删除">RemoveDeadFunctions（不可达函数删除）
+<h4 id="removedeadfunctions">RemoveDeadFunctions
 </h4><p>不可达函数删除在<strong>没有函数指针</strong>的语言里收益很直接：函数可达性完全由 call 决定，删掉 main 不可达函数既能减小输出规模，也能减少后续优化的工作量。</p>
 <p>直接从 <code>main</code> 出发沿 <code>CallInstr -&gt; targetFunction</code> 做 DFS 标记 reachable，然后删除不可达函数即可。</p>
 <h3 id="ssa">SSA
-</h3><h4 id="memtoreg--insertphi静态单赋值">MemToReg + InsertPhi（静态单赋值）
+</h3><h4 id="memtoreg--insertphi">MemToReg + InsertPhi
 </h4><p>前端生成 IR 时局部标量往往落成 <code>alloca + store/load</code>，各种变量都放在内存里。如果不提升至SSA，后端会机械地产生大量 lw/sw，而这些访存其实只是为了模拟变量当前值。一旦把它提升到 SSA，就把内存问题变成了值问题，常量传播、去重与窥孔会变得非常自然。</p>
 <p>我在实现时只处理了非数组的 <code>alloca</code>，先扫描该 alloca 的 use 收集 define（store）与 use（load），再利用<strong>支配边界</strong>在需要的块<strong>开头插入 phi</strong>，最后沿支配树做 rename。</p>
 <blockquote>
 <p>rename: 我们用栈来维护当前最新值，把 load 替换为栈顶值除，把 store 变成入栈，栈为空时用 0 作为默认初值。</p>
 </blockquote>
-<h4 id="memforward内存前推">MemForward（内存前推）
+<h4 id="memforward">MemForward
 </h4><p>即便做了 MemToReg，局部数组/局部指针这类不使用SSA，而是<strong>确定地址</strong>的对象仍然可能出现 store→load、重复 store 或重复 load。</p>
 <p>我当前实现是块内优化。在单个基本块内维护 <code>address -&gt; MemState</code>：</p>
 <ul>
@@ -1374,36 +1374,36 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra</p>
 </ul>
 </li>
 </ul>
-<h4 id="deadlocalallocastore局部栈内死-store-删除">DeadLocalAllocaStore（局部栈内死 store 删除）
+<h4 id="deadlocalallocastore">DeadLocalAllocaStore
 </h4><p>这个优化的动机来自一种很典型的冗余：局部数组或局部变量可能被写了很多次（尤其是初始化）但从未被读过，这些 store 对语义没有任何贡献。我们可以把<strong>只写不读</strong>的初始化彻底抹掉。</p>
 <p>我以 alloca 为根向下追踪由它派生的 gep 地址，收集相关 store；只要发现任意 load，我就放弃优化，否则<strong>就删除所有相关 store</strong>，并进一步清理因为 store 消失而变成<strong>无用的 gep/alloca</strong>。</p>
 <h3 id="表达式">表达式
-</h3><h4 id="gvn全局公共子表达式消除">GVN（全局公共子表达式消除）
+</h3><h4 id="gvn">GVN
 </h4><p>这里参考了bzh学长的字符串哈希法，为表达式维护了一个hash标识。我们沿支配树遍历，用 <code>getGvnHash()</code> 为表达式做哈希并维护一个<strong>当前支配路径上的表达式表</strong>，当发现哈希已出现就用已有值替换当前指令并删除它。</p>
-<h4 id="lvn局部值编号">LVN（局部值编号）
+<h4 id="lvn">LVN
 </h4><p>LVN 比 GVN 更适合<strong>边走边化简</strong>：在遍历过程中顺手做常量折叠、代数恒等化简，能把很多小冗余直接掐掉，不必等到后端再清。</p>
 <p>对 ALU/CMP/EXTEND/TRUNC 可以做常量折叠与简单代数化简，对 ALU/CMP/GEP 做基于哈希与MoveInstr的消除，也就是常量传播。其中针对MoveInstr，直接传播给user，然后删除 move。</p>
-<h4 id="sccp稀疏条件常量传播">SCCP（稀疏条件常量传播）
+<h4 id="sccp">SCCP
 </h4><p>常量不仅来自字面量，还来自<strong>某些路径根本走不到</strong>：简单的说，就是提前预判某些分支是否必走，从而方便我们的传播。</p>
 <p>我对SSA值维护了三值格 UNDEFINED/<strong>CONSTANT</strong>/OVERDEFINED，并不断传播，phi指令触发值合并从而改变状态，最终把 CONSTANT 的SSA值替换成常量。</p>
-<h4 id="purefunctionevaluation纯函数消除">PureFunctionEvaluation（纯函数消除）
+<h4 id="purefunctionevaluation">PureFunctionEvaluation
 </h4><p>这个点是testfile7直接提醒到的。在<strong>无副作用、返回值只由参数决定</strong>的前提下，call 可以被当成一种可优化的表达式：参数全为常量时可以直接算出结果。此外，同一支配区域内对同一参数重复调用也可以复用结果。</p>
 <p>首先是纯函数候选：非main、非void、有函数体、不出现 load/store/alloca/gep/io、不调用非纯函数。然后在遇到纯函数就解释执行目标函数（设置了较强的限制，防止算太久），得到结果并替换 call。我还沿支配树维护 <code>(callee, args)</code> 表，若已有支配的同 key 调用就复用结果。</p>
 <h3 id="循环">循环
-</h3><h4 id="loopcanonicalization循环规范化">LoopCanonicalization（循环规范化）
+</h3><h4 id="loopcanonicalization">LoopCanonicalization
 </h4><p>循环规范化是为了便于LICM的执行的。因为 LICM 需要一个<strong>循环外唯一入口</strong>，也就是说被外提的指令需要一个确定且唯一的放置点。</p>
 <p>如果存在一条边 <code>tail -&gt; header</code>，并且 <strong>header 支配 tail</strong>，那么 <code>tail -&gt; header</code> 是回边，<code>header</code> 是循环头。然后从 <code>tail</code> 反向沿前驱回溯，把能回溯到 <code>header</code> 的那些块收集起来，得到循环块集合。</p>
 <p>我们观察header的前驱，有多少来自循环外，也就是外部入口有多少。若循环头存在多个来自循环外的前驱，我就<strong>插入新的 preheader</strong>统一外部入口，把所有外部入口重定向到 preheader，并<strong>修复 header 的 phi</strong>：把外部 incoming 先在 preheader 合并（必要时插入新的 phi），让 header 只从 preheader 接收一个外部 incoming。</p>
-<h4 id="licm循环不变式外提">LICM（循环不变式外提）
+<h4 id="licm">LICM
 </h4><p>LICM 的直觉是：循环里有些表达式每次迭代都一样，留在循环体内就是重复算，把它们挪到 preheader 只算一次，循环体就能更短更快。</p>
 <p>我只外提<strong>无副作用、无定义新值</strong>的指令（ALU/CMP/EXTEND/TRUNC/GEP），明确排除 load/store/call/IO/控制流/phi。更宽泛地，如果某指令的 operand 在循环内定义时，倘若能判定该 operand 也是 invariant的就也能外提。最终把可外提指令插入到 preheader 的终结指令之前。</p>
 <h3 id="后端准备">后端准备
-</h3><h4 id="activeanalysis活跃分析">ActiveAnalysis（活跃分析）
+</h3><h4 id="activeanalysis">ActiveAnalysis
 </h4><p>活跃分析的原因是寄存器分配必须知道<strong>哪些值必须跨块保留</strong>，否则很容易把仍在后续使用的值提前释放掉；而跨块活跃由每个块的 in/out 集合决定。我们先计算每块的 def/use，再迭代求解 in/out（out 为后继 in 的并集，in 为 use 并上 out−def），并<strong>额外处理 phi 的沿边使用</strong>：把从当前块流向后继块那条边对应的 phi <strong>incoming value</strong> 纳入 out 集合，保证跨边的真实需求被计入。</p>
-<h4 id="allocateregister寄存器分配">AllocateRegister（寄存器分配）
+<h4 id="allocateregister">AllocateRegister
 </h4><p>我做寄存器分配的目标是尽可能把 SSA 值放进物理寄存器，让后端少发 lw/sw，没有实现 spill。通过沿支配树递归分配，进入子块时临时释放<strong>不在子块 in 集合里</strong>的寄存器，处理完子块再恢复。</p>
 <p>在块内我记录每个 useValue 的 last-use，当某值在本条指令里是最后一次使用且该值不属于 block-out，就<strong>立即释放</strong>它占用的寄存器。</p>
-<h4 id="removephi消除phi指令">RemovePhi（消除phi指令）
+<h4 id="removephi">RemovePhi
 </h4><p>对每个基本块开头的 phi，先按从哪个前驱跳过来就取哪个 incoming 值的含义，把它拆成写在各条前驱边上的一组<strong>并行拷贝</strong>（同一条边上可能要同时给多个 phi 结果赋值，所以逻辑上必须并行）</p>
 <p>如果某条边前驱有多个后继且后继有多个前驱，就无法把拷贝安全地放在前驱块末尾或后继块开头，因此要先插入一个只服务这条边的中间块，把拷贝放到中间块里；接着把并行拷贝集合线性化成若干条顺序 <code>MoveInstr</code>。</p>
 <blockquote>
