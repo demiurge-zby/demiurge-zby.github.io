@@ -862,13 +862,17 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;/h4&gt;&lt;p&gt;这个优化的动机来自一种很典型的冗余：局部数组或局部变量可能被写了很多次（尤其是初始化）但从未被读过，这些 store 对语义没有任何贡献。我们可以把&lt;strong&gt;只写不读&lt;/strong&gt;的初始化彻底抹掉。&lt;/p&gt;
 &lt;p&gt;我以 alloca 为根向下追踪由它派生的 gep 地址，收集相关 store；只要发现任意 load，我就放弃优化，否则&lt;strong&gt;就删除所有相关 store&lt;/strong&gt;，并进一步清理因为 store 消失而变成&lt;strong&gt;无用的 gep/alloca&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;表达式&#34;&gt;表达式
-&lt;/h3&gt;&lt;h4 id=&#34;gvn&#34;&gt;GVN
+&lt;/h3&gt;&lt;h4 id=&#34;inline-function&#34;&gt;Inline Function
+&lt;/h4&gt;&lt;p&gt;这个测试点对testfile6有奇效。我在此仅实现了很简单保守的函数内联，就已经为后续的优化提供了极大的便利。函数内联的意思是把一次函数调用直接改写为被调函数的函数体。这样不仅消除了 &lt;code&gt;call&lt;/code&gt; 本身的大量开销，还能把原本跨函数边界的常量传播、公共子表达式删除和死代码删除等暴露给后续优化。&lt;/p&gt;
+&lt;p&gt;本次仅对非常小且形态简单的函数进行内联：目标函数 &lt;code&gt;callee&lt;/code&gt; 满足非 main、非自递归、仅包含一个基本块、最后一条指令为 &lt;code&gt;ReturnInstr&lt;/code&gt;、指令条数不超过阈值，且函数体中不包含 call/IO/load/store/alloca/分支跳转/phi 等可能引入副作用或 CFG 复杂性的指令时才允许内联。&lt;/p&gt;
+&lt;p&gt;具体实现层面，首先建立好形参与实参的映射。然后按原顺序遍历基本块中的每条&lt;strong&gt;纯计算指令&lt;/strong&gt;（Alu/Compare/Extend/Trunc/Gep），在调用点所在的基本块中利用&lt;strong&gt;映射关系&lt;/strong&gt;创建一条新指令插入到 call 之前。当所有指令克隆完毕后，将 return 的返回值同样通过映射到调用点语境下得到 returnValue，还要将返回值的所有user替换为内联后的值，最后删除原 &lt;code&gt;call&lt;/code&gt; 指令并清理 use-def 边。&lt;/p&gt;
+&lt;h4 id=&#34;gvn&#34;&gt;GVN
 &lt;/h4&gt;&lt;p&gt;这里参考了bzh学长的字符串哈希法，为表达式维护了一个hash标识。我们沿支配树遍历，用 &lt;code&gt;getGvnHash()&lt;/code&gt; 为表达式做哈希并维护一个&lt;strong&gt;当前支配路径上的表达式表&lt;/strong&gt;，当发现哈希已出现就用已有值替换当前指令并删除它。&lt;/p&gt;
 &lt;h4 id=&#34;lvn&#34;&gt;LVN
 &lt;/h4&gt;&lt;p&gt;LVN 比 GVN 更适合&lt;strong&gt;边走边化简&lt;/strong&gt;：在遍历过程中顺手做常量折叠、代数恒等化简，能把很多小冗余直接掐掉，不必等到后端再清。&lt;/p&gt;
 &lt;p&gt;对 ALU/CMP/EXTEND/TRUNC 可以做常量折叠与简单代数化简，对 ALU/CMP/GEP 做基于哈希与MoveInstr的消除，也就是常量传播。其中针对MoveInstr，直接传播给user，然后删除 move。&lt;/p&gt;
-&lt;h4 id=&#34;sccp&#34;&gt;SCCP
-&lt;/h4&gt;&lt;p&gt;常量不仅来自字面量，还来自&lt;strong&gt;某些路径根本走不到&lt;/strong&gt;：简单的说，就是提前预判某些分支是否必走，从而方便我们的传播。&lt;/p&gt;
+&lt;h4 id=&#34;sparse-conditional-constant-propagation&#34;&gt;Sparse Conditional Constant Propagation
+&lt;/h4&gt;&lt;p&gt;稍微深入处理一点常量折叠：常量不仅来自字面量，还来自&lt;strong&gt;某些路径根本走不到&lt;/strong&gt;：简单的说，就是提前预判某些分支是否必走，从而方便我们的传播。&lt;/p&gt;
 &lt;p&gt;我对SSA值维护了三值格 UNDEFINED/&lt;strong&gt;CONSTANT&lt;/strong&gt;/OVERDEFINED，并不断传播，phi指令触发值合并从而改变状态，最终把 CONSTANT 的SSA值替换成常量。&lt;/p&gt;
 &lt;h4 id=&#34;purefunctionevaluation&#34;&gt;PureFunctionEvaluation
 &lt;/h4&gt;&lt;p&gt;这个点是testfile7直接提醒到的。在&lt;strong&gt;无副作用、返回值只由参数决定&lt;/strong&gt;的前提下，call 可以被当成一种可优化的表达式：参数全为常量时可以直接算出结果。此外，同一支配区域内对同一参数重复调用也可以复用结果。&lt;/p&gt;
