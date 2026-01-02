@@ -15,8 +15,7 @@
         <guid>https://demiurge-zby.github.io/p/buaa-compiler-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</guid>
         <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-compiler-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/cuidu.jpg" alt="Featured image of post BUAA Compiler 实验报告" /&gt;&lt;hr&gt;
 &lt;h2 id=&#34;说在前面&#34;&gt;说在前面
-&lt;/h2&gt;&lt;p&gt;本文章尚未完工。&lt;/p&gt;
-&lt;p&gt;本篇文章的内容并不能达到可以让你跟着做完整个编译器项目的程度，它只是我最终总结时的一些回忆，而非施工现场。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;本篇文章的内容并不能达到可以让你跟着做完整个编译器项目的程度，它只是我最终总结时的一些回忆，而非施工现场。&lt;/p&gt;
 &lt;p&gt;倘若能在某个时候激发起你的共鸣，给予你信心或是方向，那便已是极好的了。&lt;/p&gt;
 &lt;h2 id=&#34;整体架构&#34;&gt;整体架构
 &lt;/h2&gt;&lt;h3 id=&#34;bzh学长的架构&#34;&gt;bzh学长的架构
@@ -29,7 +28,7 @@
 &lt;/h3&gt;&lt;p&gt;在细节上的架构，我和学长代码保持了较为高度的一致，最多只是将某些类进行合并或者拆分。&lt;/p&gt;
 &lt;p&gt;但在宏观上我根据自己的主观理解，进行了较大的调整。不过意义也不是很大。&lt;/p&gt;
 &lt;p&gt;我顶层的包分为前端，中端，后端，错误与工具。&lt;/p&gt;
-&lt;p&gt;frontend在处理词法分析，语法分析之外，我没有传递语法树，而是继续在前端进行语义分析与中间代码生成。因为这一段本就是与源代码高度相关，语法树更是直接来源于源代码的文法。&lt;/p&gt;
+&lt;p&gt;frontend处理词法分析，语法分析之外，我没有传递语法树，而是继续在前端进行语义分析与中间代码生成。因为这一段本就是与源代码高度相关，语法树更是直接来源于源代码的文法。&lt;/p&gt;
 &lt;p&gt;我在思考，如果真的做到修改源代码不必修改midend的话，midend里该有的内容，可能只有llvm那个文件夹。而visit与symbol都是属于与源代码有关的内容，如果更改了文法，肯定是要有改动的。&lt;/p&gt;
 &lt;p&gt;因此我前端内部的文件夹有lexer,parse,ast,还有llvm_ir这个包，这个包包含symbol与visit，主要负责的就是产出中端所需的架构。&lt;/p&gt;
 &lt;p&gt;midend在严格意义上，包含的动作只有中间代码优化。此外他还包括llvm的架构定义。因此里面包括llvm和optimiser两个包。&lt;/p&gt;
@@ -70,6 +69,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jan.1更新：&lt;/p&gt;
+&lt;p&gt;jym同学的测试点中包含转义字符相关内容。所以顺便也实现了一下。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;从架构而言，首先要形成frontend/midend/backend/utils这样的系统结构观念；其次在frontend中需要有一个frontend类，还要有parser/ast/lexer等等。我们在lexer中主要实现的就是针对读取到的char分析出是什么单词，并加入单词列表，因此还需要实现Token类和token类型。&lt;/p&gt;
 &lt;p&gt;另外，作为最起始的框架，IO操作也是一个关键点，不过参考学长代码之后不难解决其处理模式，放在utils包中很有结构感。&lt;/p&gt;
 &lt;h2 id=&#34;语法分析&#34;&gt;语法分析
@@ -100,10 +103,8 @@
 &lt;/ol&gt;
 &lt;blockquote&gt;
 &lt;p&gt;期中考试 Update：&lt;/p&gt;
-&lt;p&gt;考了回溯，不过不能像原来那样&lt;strong&gt;直接预读Exp&lt;/strong&gt;了，
-或者说&lt;strong&gt;公共部分不是已有的非终结符&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;不过没关系，你只需要自己创建这样一个非终结符就好了，
-这个非终结符的parse也只需要复制公共部分的相关内容就好。&lt;/p&gt;
+&lt;p&gt;考了回溯，不过不能像原来那样&lt;strong&gt;直接预读Exp&lt;/strong&gt;了，或者说&lt;strong&gt;公共部分不是已有的非终结符&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;不过没关系，你只需要自己创建这样一个非终结符就好了，这个非终结符的parse也只需要复制公共部分的相关内容就好。&lt;/p&gt;
 &lt;p&gt;我们只需&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;记录位置，关闭报错&lt;/li&gt;
@@ -220,7 +221,7 @@ Block的BlockItem的最后一项。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;转 i32，若源已是 i32 就直接返回，否则生成一条 ExtendInstr。&lt;/li&gt;
 &lt;li&gt;转 i8：i32 -&amp;gt; TruncInstr，i8 保持不变，i1 -&amp;gt; ExtendInstr。&lt;/li&gt;
-&lt;li&gt;转 i1：非 i1 一律截断。&lt;/li&gt;
+&lt;li&gt;转 i1：本质上是转布尔数，此处不是截断，而是icmp，与0比较。&lt;/li&gt;
 &lt;li&gt;如果目标是数组，则递归转换其元素类型，保证数组初始化时的元素类型一致。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;IrBaseType：内置的标量类型常量（VOID, INT1, INT8, INT32），toString() 对应 LLVM 文本 void/i1/i8/i32。&lt;/p&gt;
@@ -311,7 +312,7 @@ Block的BlockItem的最后一项。&lt;/p&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td style=&#34;text-align: center&#34;&gt;GepInstr&lt;/td&gt;
-          &lt;td style=&#34;text-align: center&#34;&gt;区分数组和普通指针：数组时打印 getelementptr inbounds [N x T], ptr_type ptr, i32 0, offset_type offset，否则为 getelementptr inbounds target_type, ptr_typr ptr, offset_type offset.  原因在于gep是计算基地址+索引*类型大小，支持多级索引，而数组第一级索引是0，第二级索引才是数组内偏移&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;区分数组和普通指针：数组时打印 getelementptr inbounds [N x target_type], ptr_type ptr, i32 0, offset_type offset，否则为 getelementptr inbounds target_type, ptr_type ptr, offset_type offset.  原因在于gep是计算基地址+索引*类型大小，支持多级索引，而数组第一级索引是0，第二级索引才是数组内偏移&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td style=&#34;text-align: center&#34;&gt;JumpInstr&lt;/td&gt;
@@ -405,9 +406,11 @@ VisitorLVal.generateLValIr(lval, &lt;strong&gt;false&lt;/strong&gt;) 给左值�
 &lt;li&gt;数组情况更复杂：
 首先特别注意：若 pointerType.getTargetType() 仍是 IrPointerType，说明 symbol.getIrValue() 存的是指向指针的地址，必须先 LoadInstr 取到真正数组指针。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;拿到数组指针之后就继续找值：
-- 如果没有下标（size == null），意味着把整个数组当作指针使用，返回 new GepInstr(pointer, new IrConstantInt(0))，相当于数组首地址。
-- 如果有下标，就先算index，然后 GepInstr(pointer, index) 计算元素地址，再 LoadInstr 读取元素值。&lt;/p&gt;
+&lt;p&gt;拿到数组指针之后就继续找值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果没有下标（size == null），意味着把整个数组当作指针使用，返回 new GepInstr(pointer, new IrConstantInt(0))，相当于数组首地址。&lt;/li&gt;
+&lt;li&gt;如果有下标，就先算index，然后 GepInstr(pointer, index) 计算元素地址，再 LoadInstr 读取元素值。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -477,7 +480,7 @@ generateAssignStmtIr 先用 VisitorLVal.generateLValIr(lval, true) &lt;strong&gt
 &lt;p&gt;generateLOrExpIr 为下一个 || 子表达式&lt;strong&gt;创建一个中间块&lt;/strong&gt;，在每个块里调用 generateLAndExpIr，&lt;strong&gt;得到的值通过 BranchInstr 控制跳转&lt;/strong&gt;；若当前子表达式为真，&lt;strong&gt;立刻跳&lt;/strong&gt;trueBlock；&lt;strong&gt;否则落到&lt;/strong&gt;下一个 LAnd 块，实现短路。&lt;/p&gt;
 &lt;p&gt;generateLAndExpIr 类似，不过 &amp;amp;&amp;amp; 的短路条件是&lt;strong&gt;中途为假就跳 falseBlock&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;最后一个子表达式产生的 BranchInstr 直接指向 trueBlock/falseBlock。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;EqExp、RelExp &lt;strong&gt;链式构建&lt;/strong&gt; CompareInstr，因为 a == b == c 这种语法递归展开后需要&lt;strong&gt;把前一次比较的结果转换为 i32&lt;/strong&gt; 再与下一项比较。generateEqExpIr 最后还&lt;strong&gt;把链式结果与 0 再比较&lt;/strong&gt;一次，统一转换成 i1。&lt;/p&gt;
+&lt;p&gt;EqExp、RelExp &lt;strong&gt;链式构建&lt;/strong&gt; CompareInstr，因为 a == b == c 这种语法递归展开后需要&lt;strong&gt;把前一次比较的结果转换为 i32&lt;/strong&gt; 再与下一项比较。generateEqExpIr 保证自己是i1，因此还要&lt;strong&gt;把链式结果与 0 再比较&lt;/strong&gt;一次，统一转换成 i1。&lt;/p&gt;
 &lt;h4 id=&#34;构建的画笔tostring&#34;&gt;构建的画笔：toString()
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;
@@ -500,17 +503,462 @@ generateAssignStmtIr 先用 VisitorLVal.generateLValIr(lval, true) &lt;strong&gt
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;目标代码生成&#34;&gt;目标代码生成
-&lt;/h2&gt;&lt;p&gt;TODO&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;最后一关，把llvm转变为mips！这一段内容很考验计算机底层逻辑的一些内容，
+毕竟我们已经从高级语言迈向了汇编语言。&lt;/p&gt;
+&lt;p&gt;同样都是从某种语言转向某种语言，为什么高级语言到中间代码这么复杂，
+但是中间代码到目标代码只需要简单一步呢？&lt;/p&gt;
+&lt;p&gt;因为我们在遇到高级语言时，接受的只是字符串，我们要先把它的架构建造起来，才能完成语义翻译。
+而中间代码被生成时，其结构是先被搭建出来的，反倒代码本身才是toString的附属品。&lt;/p&gt;
+&lt;p&gt;在熟悉了LLVM的Module-Function-Block-Instr结构之后，如何转为mips并不是一件特别难的事。&lt;/p&gt;
+&lt;h3 id=&#34;mips体系构建&#34;&gt;MIPS体系构建
+&lt;/h3&gt;&lt;p&gt;像生成中间代码一样，我们首先要把MIPS的架构建造起来。&lt;/p&gt;
+&lt;p&gt;类似地，这个结构的顶端是MipsModule.&lt;/p&gt;
+&lt;p&gt;MipsModule被简单地分为两个部分，分别是.data和.text，这些我们已经很熟悉了。&lt;/p&gt;
+&lt;h4 id=&#34;data&#34;&gt;.data
+&lt;/h4&gt;&lt;p&gt;.data包含 .asciiz .space .word 分别用来定义字符串，数组空间和具体的值。&lt;/p&gt;
+&lt;p&gt;使用方法大家可能也直接就想到了：&lt;/p&gt;
+&lt;p&gt;IrConstantString 对应一条 .asciiz、
+IrConstantInt 对应一条 .word、
+IrConstantArray 初始化为0可直接对应一条 .space，
+有其他初始值则对应 .word + 一堆数。&lt;/p&gt;
+&lt;h4 id=&#34;register&#34;&gt;Register
+&lt;/h4&gt;&lt;p&gt;寄存器当然是mips最最不能缺少的概念了，也是后端优化的核心难点所在。
+不过在基础架构这一环节，我们只需要把寄存器的定义列出来就好。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Register.java&lt;/code&gt; 是一个枚举类，用于定义MIPS架构中的寄存器，在此我们需要强调哪些寄存器是不能动的。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;名称&lt;/th&gt;
+          &lt;th&gt;用途说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;零寄存器（专用）&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$zero&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;恒为0，不可修改，常用于需要常数0的场景（如清空寄存器）。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;返回值寄存器（专用）&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$v0&lt;/code&gt;, &lt;code&gt;$v1&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;用于存储函数的返回值，以及决定syscall的功能。不过v1就相对自由。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;参数寄存器（专用？）&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$a0&lt;/code&gt;-&lt;code&gt;$a3&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;用于传递函数的前4个参数，超过4个的参数通过栈传递（优化时可以考虑只传一部分哦）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;临时寄存器&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$t0&lt;/code&gt;-&lt;code&gt;$t7&lt;/code&gt;, &lt;code&gt;$t8&lt;/code&gt;-&lt;code&gt;$t9&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;临时使用的寄存器，函数调用时无需保存其值。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;保存寄存器&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$s0&lt;/code&gt;-&lt;code&gt;$s7&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;用于保存需要跨函数调用维持的值，函数调用时需保存和恢复其值。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;内核寄存器（&lt;del&gt;专用&lt;/del&gt;）&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$k0&lt;/code&gt;, &lt;code&gt;$k1&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;内核专用寄存器，用户程序一般不使用。不过我们这里因为不涉及，所以反倒十分自由地使用了他们。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;全局指针（可专用）&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$gp&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;全局指针，用于访问全局变量，也就是 la $gp, g_1  然后lw&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;栈指针（专用）&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$sp&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;指向当前栈顶。其重要性无需多言。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;帧指针（可专用）&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$fp&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;指向当前函数栈帧的底部。我在本设计中没有使用。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;返回地址 （专用）&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$ra&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;保存函数调用后的返回地址，&lt;code&gt;jal&lt;/code&gt;指令强制使用该寄存器，所以不能乱用&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;我们有方法：&lt;strong&gt;&lt;code&gt;getUsableRegisters()&lt;/code&gt;&lt;/strong&gt;，返回程序中可自由使用的寄存器列表，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;临时寄存器：&lt;code&gt;T0&lt;/code&gt;-&lt;code&gt;T9&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;保存寄存器：&lt;code&gt;S0&lt;/code&gt;-&lt;code&gt;S7&lt;/code&gt;&lt;br&gt;
+其他的，比如V1以及只有特定时候才有用的A0-A3，我们暂且不放进去。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;text&#34;&gt;.text
+&lt;/h4&gt;&lt;p&gt;接下来才是重头戏，也就是MIPS指令集。&lt;/p&gt;
+&lt;p&gt;text 文件夹中包含的 MIPS 文本段（代码段）相关类及其对应指令类型如下：&lt;/p&gt;
+&lt;p&gt;MipsAlu：&lt;code&gt;R&lt;/code&gt;: add,sub,addu,subu,and,or,nor,xor,slt,sltu
+&lt;code&gt;I&lt;/code&gt;: addi,addiu,andi,ori,xori,slti,sltiu
+&lt;code&gt;shiftv&lt;/code&gt;: sllv,srav,srlv
+&lt;code&gt;shift&lt;/code&gt;: sll,sra,srl
+MipsCompare：slt、seq、sne、sle、sgt、sge、slti
+MipsBranch：beq、bne、bgtz、blez、bgez、bltz
+MipsJump：j、jal、jr
+MipsLoad：lw、lh、lhu、lb、lbu
+MipsStore：sw、sh、sb
+MipsMD：mult、div、mfhi、mflo、mthi、mtlo
+MipsSyscall：syscall
+MipsLabel：用于定义代码中的标签
+MipsAnnotation：用于添加注释（以 # 开头的说明文本）
+MarsLi（fake）：li（伪指令，加载立即数到寄存器）
+MarsLa（fake）：la（伪指令，加载标签地址到寄存器）
+MarsMove（fake）：move（伪指令，寄存器间数据移动）&lt;/p&gt;
+&lt;p&gt;需要特别注意的是，由于我们按照大类来划分，因此add与addi的构造方法显然应该是不同的，需要支持多构造函数。&lt;/p&gt;
+&lt;p&gt;不过听起来复杂，其实也只是把指令的构造方法与toString实现了而已。指令具体的作用呢？那就是计组做的事情了。&lt;/p&gt;
+&lt;h3 id=&#34;从中间代码到mips&#34;&gt;从中间代码到MIPS
+&lt;/h3&gt;&lt;p&gt;backend就这么简单的结束了。那还缺什么呢？要怎么把LLVM转到MIPS呢？这其实就是对LLVM的语义分析了：也就是我们生成的llvm代码的含义是什么？究竟该如何用mips表达？&lt;/p&gt;
+&lt;p&gt;这个问题看起来复杂，但是LLVM与MIPS的相似度很高，结构也都比较简单，所以其实并不太难。整体的逻辑是一致的，两个工具：Builder和toString。&lt;/p&gt;
+&lt;h4 id=&#34;mipsbuilder&#34;&gt;MipsBuilder
+&lt;/h4&gt;&lt;p&gt;MipsBuilder和IrBuilder类似，都是控制整体逻辑结构的重要管理者。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;addContent&lt;/code&gt; 方法，实现将具体内容放入MipsModule的data与text段中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;寄存器分配管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;维护 &lt;code&gt;valueRegisterMap&lt;/code&gt; 映射表&lt;/strong&gt;，记录 LLVM IR 中的 &lt;code&gt;IrValue&lt;/code&gt;与 MIPS 寄存器的对应关系。&lt;/li&gt;
+&lt;li&gt;提供 &lt;code&gt;allocateReg&lt;/code&gt; 方法&lt;strong&gt;记录 &lt;code&gt;IrValue&lt;/code&gt; 分配的寄存器&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getValueToRegister&lt;/code&gt; 方法&lt;strong&gt;查询&lt;code&gt;IrValue&lt;/code&gt; 分配的寄存器&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getAllocatedRegList&lt;/code&gt; 方法&lt;strong&gt;获取已分配的寄存器集合&lt;/strong&gt;，用于寄存器资源的跟踪与管理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;栈空间分配管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过 &lt;code&gt;stackOffset&lt;/code&gt; 记录当前栈偏移量（初始为 0，分配时递减）&lt;/li&gt;
+&lt;li&gt;提供 &lt;code&gt;allocateStackForValue&lt;/code&gt; 为 &lt;code&gt;IrValue&lt;/code&gt; 分配 4 字节栈空间并记录偏移地址&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getStackValueOffset&lt;/code&gt; 查询 &lt;code&gt;irValue&lt;/code&gt; 所在的栈空间位置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意：&lt;code&gt;setCurrentFunction&lt;/code&gt;切换函数时，也要切换寄存器映射表，重置栈偏移为0，确保不同函数的寄存器和栈空间独立管理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;遍历-irmodule&#34;&gt;遍历 IrModule
+&lt;/h4&gt;&lt;p&gt;首先是最顶层的IrModule：&lt;/p&gt;
+&lt;p&gt;declares、stringConstantMap、globalValues、functions.&lt;/p&gt;
+&lt;p&gt;如何书写它的toMips?&lt;/p&gt;
+&lt;p&gt;declare是LLVM要知道的，但在MIPS中直接靠syscall实现，无需提前声明。stringConstantMap对应生成.data段的.asciiz，globalValues对应生成.data段的.word与.space。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;asciiz和word的名字怎么取？可直接用irName去掉@这个首字母。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;把这些全局的东西做完，就开始具体的函数程序流了。&lt;/p&gt;
+&lt;p&gt;首先是进入main函数：
+&lt;code&gt;jal main&lt;/code&gt; + &lt;code&gt;j end&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后是各函数的具体内容。&lt;/p&gt;
+&lt;p&gt;最后是end:
+&lt;code&gt;new MipsLabel(&amp;quot;end&amp;quot;)&lt;/code&gt;，并&lt;code&gt;syscall 10&lt;/code&gt;结束程序。&lt;/p&gt;
+&lt;h5 id=&#34;function&#34;&gt;function
+&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;new MipsLabel(&amp;quot;函数名&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MipsBuilder.setCurrentFunction(this);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;函数形参分配寄存器，根据IrParameter的信息，前四个参数要占用寄存器（具体传值是callInstr的事），并且所有参数都在栈上分配4字节空间（同样，传值不归它管）&lt;/li&gt;
+&lt;li&gt;遍历IrBasicBlock&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;basicblock&#34;&gt;basicBlock
+&lt;/h5&gt;&lt;p&gt;最简单的一集：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;new MipsLabel(&amp;quot;block名&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;遍历Instr&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;instr-1&#34;&gt;Instr
+&lt;/h5&gt;&lt;p&gt;听起来很简单。不就是把原来的指令变成现在的指令嘛，逻辑我当然懂。可是难点不止这一个，不仅是操作符的更新，更复杂的是操作数的变化。不再像以前一样，可以弄出来一大堆变量，现在只有32个寄存器和立即数（含label）可以用，你该如何保证一致性？&lt;/p&gt;
+&lt;p&gt;这里就介绍几个必要的方法，他们定义在Instr这个父类中：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;loadValue(IrValue, Register)&lt;/code&gt;&lt;/strong&gt;
+把一个 LLVM 的 IrValue 装进某个寄存器。指令在需要寄存器时，我们需要这个操作来将IrValue进行转换。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IrValue 是个常量 IrConstant，那就用li直接装进寄存器。&lt;/li&gt;
+&lt;li&gt;IrValue 是个全局变量 IrGlobalValue，那他的值就是地址，直接la就可以。（后续做了优化，统一使用gp，这样不变的时候就不用再la，变的时候再move）&lt;/li&gt;
+&lt;li&gt;IrValue 是个普通的变量：
+&lt;ul&gt;
+&lt;li&gt;他已经在某寄存器上了，那就move过来。&lt;/li&gt;
+&lt;li&gt;他还在栈上，先&lt;code&gt;MipsBuilder.getStackValueOffset(irValue)&lt;/code&gt;，然后lw。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;getRegisterOrXXForValue&lt;/code&gt;&lt;/strong&gt;
+刚才提到要把值放进寄存器，那该放进哪个寄存器呢？现在就做寄存器分配的话还是太难了，所以我腾了两个寄存器出来专门在无可奈何的时候用：就是K0和K1。（bzh学长的思路）
+如果做了寄存器分配，当然是可以知道现在它有什么寄存器的，但是没做的话，或者压根没分配，那我就要暂时占用K0了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;saveResult(IrValue, Register)&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
+有load当然就有store，不过我这里起名叫save。
+什么叫save呢？因为这个值如果没有分配寄存器的话，算出来默认占用的是K0,别人还要用呢。所以如果你有寄存器，就把这个值move到寄存器，否则就要allocateStackForValue，降低offset记录IrValue，用sw把它存栈上了。总之得记录一下到底放在哪。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;好嘞，这三个方法讲完，IrValue和寄存器的转移相信你已经了解了。相对于操作数的问题，运算符的问题其实是容易解决的，只是相对繁琐。&lt;/p&gt;
+&lt;p&gt;接下来就是每个LLVM Instr的翻译过程了。&lt;/p&gt;
+&lt;h5 id=&#34;ioinstr&#34;&gt;IOInstr
+&lt;/h5&gt;&lt;p&gt;getint -&amp;gt;   &lt;code&gt;new MarsLi(Register.V0, 5);&lt;/code&gt;
+&lt;code&gt;new MipsSyscall();&lt;/code&gt;
+&lt;code&gt;saveResult(this, Register.V0);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;printchar/int -&amp;gt;  &lt;code&gt;loadValue(printValue, Register.A0);&lt;/code&gt;
+&lt;code&gt;new MarsLi(Register.V0, 11/1);&lt;/code&gt;
+&lt;code&gt;new MipsSyscall();&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;printstr -&amp;gt; &lt;code&gt;new MarsLa(Register.A0, irConstantString.getMipsLabel());&lt;/code&gt; （也可以用loadValue）
+&lt;code&gt;new MarsLi(Register.V0, 4);&lt;/code&gt;
+&lt;code&gt;new MipsSyscall();&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&#34;allocateinstr&#34;&gt;AllocateInstr
+&lt;/h5&gt;&lt;p&gt;在初级阶段，我们的数都是存在栈上，霸占寄存器这种事还没有算好。因此这里就直接&lt;code&gt;MipsBuilder.allocateStackSpace&lt;/code&gt;。具体的大小还要看一下IrValue的类型，如果是数组还要乘上size。&lt;/p&gt;
+&lt;p&gt;有关栈的操作，我们一定要注意实时更新sp寄存器！这里就需要用ADDU，把sp减去我们分配的大小。&lt;/p&gt;
+&lt;h5 id=&#34;callinstr与returninstr&#34;&gt;CallInstr与ReturnInstr
+&lt;/h5&gt;&lt;p&gt;这算是最难的一个部分了。前面我们提到IrFunction要登记a0-a3寄存器，但是具体传值是callInstr进行的。不仅如此，callInstr的整体流程为：保护现场-&amp;gt;传参-&amp;gt;jal-&amp;gt;恢复现场-&amp;gt;处理返回值。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;saveCurrent
+&lt;ul&gt;
+&lt;li&gt;保存所有的寄存器，包括当前的ra，然后栈指针向下移动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;fillParam
+&lt;ul&gt;
+&lt;li&gt;前四个直接将值load进对应的寄存器，之后的就先随便load个寄存器，然后sw进栈。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;jal function_label&lt;/li&gt;
+&lt;li&gt;恢复现场
+&lt;ul&gt;
+&lt;li&gt;栈指针向上移动，把值lw回寄存器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;处理返回值
+&lt;ul&gt;
+&lt;li&gt;函数的IrValue直接save进V0寄存器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;关于return就相对简单，因为事情都给callInstr做了。
+return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&gt;
+&lt;h5 id=&#34;branchinstr&#34;&gt;BranchInstr
+&lt;/h5&gt;&lt;p&gt;首先把cond放进寄存器，然后直接用bne跳转真，否则无条件跳转假&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Register&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;condRegister&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getRegisterOrK0ForValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;loadValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;condRegister&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MipsBranch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MipsBranch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BranchType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BNE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;condRegister&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Register&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ZERO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getTrueBlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getMipsLabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MipsJump&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MipsJump&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;JumpType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;J&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;getFalseBlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getMipsLabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h5 id=&#34;gepinstr&#34;&gt;GepInstr
+&lt;/h5&gt;&lt;p&gt;这个指令可谓是LLVM时很特殊的指令了，现在转为MIPS其意义也很明显：目标地址 = 基地址 + 偏移量 × 4。&lt;/p&gt;
+&lt;p&gt;所以就只是load一下，先左移，再add，最后save。&lt;/p&gt;
+&lt;h5 id=&#34;loadstoreinstr&#34;&gt;Load/StoreInstr
+&lt;/h5&gt;&lt;p&gt;出于简单考虑，我们统一使用&lt;code&gt;new MipsLoad(MipsLoad.LoadType.LW, targetRegister, pointerRegister, 0);&lt;/code&gt;
+默认设置偏移为0，值和址都放入寄存器。&lt;/p&gt;
+&lt;h5 id=&#34;moveinstr&#34;&gt;MoveInstr
+&lt;/h5&gt;&lt;p&gt;此move非彼move，不过也只是操作数不同。&lt;/p&gt;
+&lt;h5 id=&#34;extendinstr&#34;&gt;ExtendInstr
+&lt;/h5&gt;&lt;p&gt;这个指令在MIPS没有意义，因为没有type的区分。所以只需要进行一个赋值，和MoveInstr一样，把原来的ir的值赋给新的ir即可。&lt;/p&gt;
+&lt;h5 id=&#34;truncinstr&#34;&gt;TruncInstr
+&lt;/h5&gt;&lt;p&gt;这个就有意义了，如果要压缩到一位，就需要和1进行&lt;code&gt;andi&lt;/code&gt;。&lt;/p&gt;
+&lt;h5 id=&#34;compareinstr&#34;&gt;CompareInstr
+&lt;/h5&gt;&lt;p&gt;load+比较+save，比较运算符更是都能一一对应。&lt;/p&gt;
+&lt;h5 id=&#34;aluinstr&#34;&gt;AluInstr
+&lt;/h5&gt;&lt;p&gt;运算符也都能对上。处于简单考虑，我们都先放进寄存器，然后用不含立即数的指令进行运算。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：对于乘除法，还要加一句MFLO，取余则为MFHI&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;后端的内容说多也不多，但是一定需要谨慎思考再落笔，否则很容易出现恶劣bug。其次，我们肉眼可见有大量值得优化的内容需要完成。&lt;/p&gt;
 &lt;h2 id=&#34;代码优化&#34;&gt;代码优化
 &lt;/h2&gt;&lt;p&gt;代码优化分为体系结构无关的中间代码优化与体系结构相关的目标代码优化。&lt;/p&gt;
-&lt;p&gt;而中间代码优化才是真正名副其实的中端。&lt;/p&gt;
-&lt;h3 id=&#34;不可达代码删除&#34;&gt;不可达代码删除
-&lt;/h3&gt;&lt;p&gt;可达这句话归因于跳转语句，因此我们先把一些没用的跳转语句删掉，以便更好地删除不可达代码。&lt;/p&gt;
-&lt;p&gt;接下来，我们删除不可达基本块。&lt;/p&gt;
-&lt;p&gt;因基本块的最后一句一定是return/branch/jump，所以直接根据这个来判断他所能到达的地方。&lt;/p&gt;
-&lt;p&gt;我们暂时默认所有function本身的entry_block是可达的，仅删除
-function内部的不可达块，这个用DFS很容易解决。&lt;/p&gt;
-&lt;p&gt;TODO&lt;/p&gt;
+&lt;h3 id=&#34;中端优化&#34;&gt;中端优化
+&lt;/h3&gt;&lt;p&gt;在边遍历边生成的过程中，不可避免会有很多冗余与机械性的指令产生。中端优化不仅可以直接缩减中间代码的行数，还能让后续的某些后端优化更容易发生。&lt;/p&gt;
+&lt;p&gt;关于中端优化，最核心的对象不在于某一条指令，而是宏观上的感知，要充分挖掘指令之间、Value之间、基本块之间的联系。基本块之间的联系简单来说就是&lt;strong&gt;流图&lt;/strong&gt; ，Value之间的联系则是我们一直在维护的&lt;strong&gt;Use关系&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;需要注意： 很多优化会改写控制流边（例如把 branch 改写成 jump、删除 block、插入中间块），所以流水线中会多次执行 &lt;code&gt;CfgBuilder&lt;/code&gt; 来&lt;strong&gt;重建 CFG 与支配信息，并同步修 phi 的前驱列表&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么我们需要CFG并实时更新CFG？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CFG 直接提供的关键信息&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;前驱/后继（Pred/Succ）&lt;/strong&gt;：CFG帮我们统计好所有的前驱与后继。这个的用处太多了，修 phi incoming、跳转改写时都得用到。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;结构信息&lt;/strong&gt;：哪里是 if/else，哪里汇和，哪里是循环回边。宏观上的结构提取离不开对CFG的分析。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;为什么优化会依赖 CFG&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;MemToReg / SSA / phi 插入&lt;/strong&gt;：phi 的语义就是来自不同前驱边的值在这里合并。phi 插入位置依赖&lt;strong&gt;支配关系/支配边界&lt;/strong&gt;，没有 CFG 的前驱列表，连phi 应该有几个 incoming都不知道。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常量传播 / 活跃分析 等数据流分析&lt;/strong&gt;：理论课知识，经典数据流方程都是依赖于流图的前驱/后继块信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;循环优化&lt;/strong&gt;：要判断某指令外提到循环前是否安全，需要先准确知道哪些块属于这个循环、循环入口从哪来。这些都需要来自 CFG 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;cfg-的构建&#34;&gt;CFG 的构建
+&lt;/h3&gt;&lt;h4 id=&#34;不可达代码删除removeunreachablecode&#34;&gt;不可达代码删除（RemoveUnreachableCode）
+&lt;/h4&gt;&lt;p&gt;为什么先说这个呢？因为这个逻辑太简单了，而且这个优化能够在一定程度上帮助CFG的构建。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;单个基本块内&lt;/strong&gt;：跳转指令之后的指令在语义上永远不会执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;因为跳转以基本块为单位，执行完跳转指令一定会到达某基本块的开头。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;整体来看，entry不能跳转到的块也都是不可达的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;实现起来也很简单，不过注意删东西的时候要把Use关系也尽量删干净。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本块内遇到 &lt;code&gt;jump/branch/return&lt;/code&gt;，删除后续所有指令。&lt;/li&gt;
+&lt;li&gt;从入口块 DFS，只保留可达块，其余块从函数的 blockList 中移除。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;cfgbuildercfg-与支配信息构建&#34;&gt;CfgBuilder（CFG 与支配信息构建）
+&lt;/h4&gt;&lt;p&gt;扫描每个基本块末尾终结指令来重建 &lt;code&gt;beforeBlocks/nextBlocks&lt;/code&gt;，再把块首 phi 的 predecessor 列表与当前 &lt;code&gt;beforeBlocks&lt;/code&gt; 对齐，最后计算支配关系、立即支配与支配边界，为 InsertPhi、GVN、LICM 等提供基础信息。&lt;/p&gt;
+&lt;h3 id=&#34;无效代码删除&#34;&gt;无效代码删除
+&lt;/h3&gt;&lt;h4 id=&#34;jumpthreading跳转穿线&#34;&gt;JumpThreading（跳转穿线）
+&lt;/h4&gt;&lt;p&gt;跳转穿线的出发点是因为在处理控制流时，IR 很容易生成跳板块，也就是块里只有一条无条件跳转，这类块本身不提供任何语义增量，却会把 CFG 拉长、制造额外边与额外分支，从而让后续优化更难看清结构。&lt;/p&gt;
+&lt;p&gt;我在实现时只处理了非 entry 且&lt;strong&gt;仅含无条件跳转&lt;/strong&gt;的块，把所有&lt;strong&gt;前驱&lt;/strong&gt;直接改跳到 target&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为了避免破坏 phi 语义，如果 target 块开头存在 phi，我选择保守地不做穿线，因为那意味着需要补齐 incoming value 才能保持语义一致。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;removedeadcode死代码删除&#34;&gt;RemoveDeadCode（死代码删除）
+&lt;/h4&gt;&lt;p&gt;在中间代码非常容易产生算出来但没人用的值，这些值如果留到后端，会产生大量的寄存器压力与访存压力，还会阻碍后续的常量传播与去重（因为它们占据了 use/def 的一部分）。它不仅能删指令，更重要的是把依赖图变稀疏，让后续每一步优化都更容易触发。&lt;/p&gt;
+&lt;p&gt;我们先从main出发构建调用可达信息，并标记有&lt;strong&gt;副作用&lt;/strong&gt;的函数（包含 IO、store，或调用了有副作用的函数），然后以关键use指令为根（return、branch/jump、store、IO、以及调用了副作用函数的 call），&lt;strong&gt;逆着 use 关系&lt;/strong&gt;把依赖链标记为 active，删除所有非 active 指令。&lt;/p&gt;
+&lt;p&gt;我还做了一些简单的结构性清理：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;删除&lt;strong&gt;无前驱&lt;/strong&gt;且非 entry 的块并在后继块里&lt;strong&gt;移除对应的 phi incoming&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;合并满足&lt;strong&gt;前驱唯一&lt;/strong&gt;且&lt;strong&gt;前驱只有这一个后继&lt;/strong&gt;的块&lt;/li&gt;
+&lt;li&gt;把只有&lt;strong&gt;一个 incoming 的 phi&lt;/strong&gt; 直接展开为普通值。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;removedeadfunctions不可达函数删除&#34;&gt;RemoveDeadFunctions（不可达函数删除）
+&lt;/h4&gt;&lt;p&gt;不可达函数删除在&lt;strong&gt;没有函数指针&lt;/strong&gt;的语言里收益很直接：函数可达性完全由 call 决定，删掉 main 不可达函数既能减小输出规模，也能减少后续优化的工作量。&lt;/p&gt;
+&lt;p&gt;直接从 &lt;code&gt;main&lt;/code&gt; 出发沿 &lt;code&gt;CallInstr -&amp;gt; targetFunction&lt;/code&gt; 做 DFS 标记 reachable，然后删除不可达函数即可。&lt;/p&gt;
+&lt;h3 id=&#34;ssa&#34;&gt;SSA
+&lt;/h3&gt;&lt;h4 id=&#34;memtoreg--insertphi静态单赋值&#34;&gt;MemToReg + InsertPhi（静态单赋值）
+&lt;/h4&gt;&lt;p&gt;前端生成 IR 时局部标量往往落成 &lt;code&gt;alloca + store/load&lt;/code&gt;，各种变量都放在内存里。如果不提升至SSA，后端会机械地产生大量 lw/sw，而这些访存其实只是为了模拟变量当前值。一旦把它提升到 SSA，就把内存问题变成了值问题，常量传播、去重与窥孔会变得非常自然。&lt;/p&gt;
+&lt;p&gt;我在实现时只处理了非数组的 &lt;code&gt;alloca&lt;/code&gt;，先扫描该 alloca 的 use 收集 define（store）与 use（load），再利用&lt;strong&gt;支配边界&lt;/strong&gt;在需要的块&lt;strong&gt;开头插入 phi&lt;/strong&gt;，最后沿支配树做 rename。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;rename: 我们用栈来维护当前最新值，把 load 替换为栈顶值除，把 store 变成入栈，栈为空时用 0 作为默认初值。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;memforward内存前推&#34;&gt;MemForward（内存前推）
+&lt;/h4&gt;&lt;p&gt;即便做了 MemToReg，局部数组/局部指针这类不使用SSA，而是&lt;strong&gt;确定地址&lt;/strong&gt;的对象仍然可能出现 store→load、重复 store 或重复 load。&lt;/p&gt;
+&lt;p&gt;我当前实现是块内优化。在单个基本块内维护 &lt;code&gt;address -&amp;gt; MemState&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;遇到 store 就记录最新地址写入值。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;遇到 load&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若该地址的值已有缓存，则替换 load 的 user 并删除该 load。&lt;/li&gt;
+&lt;li&gt;否则把该 load 的值记为已知值，用来做 load-load 的消除。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;deadlocalallocastore局部栈内死-store-删除&#34;&gt;DeadLocalAllocaStore（局部栈内死 store 删除）
+&lt;/h4&gt;&lt;p&gt;这个优化的动机来自一种很典型的冗余：局部数组或局部变量可能被写了很多次（尤其是初始化）但从未被读过，这些 store 对语义没有任何贡献。我们可以把&lt;strong&gt;只写不读&lt;/strong&gt;的初始化彻底抹掉。&lt;/p&gt;
+&lt;p&gt;我以 alloca 为根向下追踪由它派生的 gep 地址，收集相关 store；只要发现任意 load，我就放弃优化，否则&lt;strong&gt;就删除所有相关 store&lt;/strong&gt;，并进一步清理因为 store 消失而变成&lt;strong&gt;无用的 gep/alloca&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;表达式&#34;&gt;表达式
+&lt;/h3&gt;&lt;h4 id=&#34;gvn全局公共子表达式消除&#34;&gt;GVN（全局公共子表达式消除）
+&lt;/h4&gt;&lt;p&gt;这里参考了bzh学长的字符串哈希法，为表达式维护了一个hash标识。我们沿支配树遍历，用 &lt;code&gt;getGvnHash()&lt;/code&gt; 为表达式做哈希并维护一个&lt;strong&gt;当前支配路径上的表达式表&lt;/strong&gt;，当发现哈希已出现就用已有值替换当前指令并删除它。&lt;/p&gt;
+&lt;h4 id=&#34;lvn局部值编号&#34;&gt;LVN（局部值编号）
+&lt;/h4&gt;&lt;p&gt;LVN 比 GVN 更适合&lt;strong&gt;边走边化简&lt;/strong&gt;：在遍历过程中顺手做常量折叠、代数恒等化简，能把很多小冗余直接掐掉，不必等到后端再清。&lt;/p&gt;
+&lt;p&gt;对 ALU/CMP/EXTEND/TRUNC 可以做常量折叠与简单代数化简，对 ALU/CMP/GEP 做基于哈希与MoveInstr的消除，也就是常量传播。其中针对MoveInstr，直接传播给user，然后删除 move。&lt;/p&gt;
+&lt;h4 id=&#34;sccp稀疏条件常量传播&#34;&gt;SCCP（稀疏条件常量传播）
+&lt;/h4&gt;&lt;p&gt;常量不仅来自字面量，还来自&lt;strong&gt;某些路径根本走不到&lt;/strong&gt;：简单的说，就是提前预判某些分支是否必走，从而方便我们的传播。&lt;/p&gt;
+&lt;p&gt;我对SSA值维护了三值格 UNDEFINED/&lt;strong&gt;CONSTANT&lt;/strong&gt;/OVERDEFINED，并不断传播，phi指令触发值合并从而改变状态，最终把 CONSTANT 的SSA值替换成常量。&lt;/p&gt;
+&lt;h4 id=&#34;purefunctionevaluation纯函数消除&#34;&gt;PureFunctionEvaluation（纯函数消除）
+&lt;/h4&gt;&lt;p&gt;这个点是testfile7直接提醒到的。在&lt;strong&gt;无副作用、返回值只由参数决定&lt;/strong&gt;的前提下，call 可以被当成一种可优化的表达式：参数全为常量时可以直接算出结果。此外，同一支配区域内对同一参数重复调用也可以复用结果。&lt;/p&gt;
+&lt;p&gt;首先是纯函数候选：非main、非void、有函数体、不出现 load/store/alloca/gep/io、不调用非纯函数。然后在遇到纯函数就解释执行目标函数（设置了较强的限制，防止算太久），得到结果并替换 call。我还沿支配树维护 &lt;code&gt;(callee, args)&lt;/code&gt; 表，若已有支配的同 key 调用就复用结果。&lt;/p&gt;
+&lt;h3 id=&#34;循环&#34;&gt;循环
+&lt;/h3&gt;&lt;h4 id=&#34;loopcanonicalization循环规范化&#34;&gt;LoopCanonicalization（循环规范化）
+&lt;/h4&gt;&lt;p&gt;循环规范化是为了便于LICM的执行的。因为 LICM 需要一个&lt;strong&gt;循环外唯一入口&lt;/strong&gt;，也就是说被外提的指令需要一个确定且唯一的放置点。&lt;/p&gt;
+&lt;p&gt;如果存在一条边 &lt;code&gt;tail -&amp;gt; header&lt;/code&gt;，并且 &lt;strong&gt;header 支配 tail&lt;/strong&gt;，那么 &lt;code&gt;tail -&amp;gt; header&lt;/code&gt; 是回边，&lt;code&gt;header&lt;/code&gt; 是循环头。然后从 &lt;code&gt;tail&lt;/code&gt; 反向沿前驱回溯，把能回溯到 &lt;code&gt;header&lt;/code&gt; 的那些块收集起来，得到循环块集合。&lt;/p&gt;
+&lt;p&gt;我们观察header的前驱，有多少来自循环外，也就是外部入口有多少。若循环头存在多个来自循环外的前驱，我就&lt;strong&gt;插入新的 preheader&lt;/strong&gt;统一外部入口，把所有外部入口重定向到 preheader，并&lt;strong&gt;修复 header 的 phi&lt;/strong&gt;：把外部 incoming 先在 preheader 合并（必要时插入新的 phi），让 header 只从 preheader 接收一个外部 incoming。&lt;/p&gt;
+&lt;h4 id=&#34;licm循环不变式外提&#34;&gt;LICM（循环不变式外提）
+&lt;/h4&gt;&lt;p&gt;LICM 的直觉是：循环里有些表达式每次迭代都一样，留在循环体内就是重复算，把它们挪到 preheader 只算一次，循环体就能更短更快。&lt;/p&gt;
+&lt;p&gt;我只外提&lt;strong&gt;无副作用、无定义新值&lt;/strong&gt;的指令（ALU/CMP/EXTEND/TRUNC/GEP），明确排除 load/store/call/IO/控制流/phi。更宽泛地，如果某指令的 operand 在循环内定义时，倘若能判定该 operand 也是 invariant的就也能外提。最终把可外提指令插入到 preheader 的终结指令之前。&lt;/p&gt;
+&lt;h3 id=&#34;后端准备&#34;&gt;后端准备
+&lt;/h3&gt;&lt;h4 id=&#34;activeanalysis活跃分析&#34;&gt;ActiveAnalysis（活跃分析）
+&lt;/h4&gt;&lt;p&gt;活跃分析的原因是寄存器分配必须知道&lt;strong&gt;哪些值必须跨块保留&lt;/strong&gt;，否则很容易把仍在后续使用的值提前释放掉；而跨块活跃由每个块的 in/out 集合决定。我们先计算每块的 def/use，再迭代求解 in/out（out 为后继 in 的并集，in 为 use 并上 out−def），并&lt;strong&gt;额外处理 phi 的沿边使用&lt;/strong&gt;：把从当前块流向后继块那条边对应的 phi &lt;strong&gt;incoming value&lt;/strong&gt; 纳入 out 集合，保证跨边的真实需求被计入。&lt;/p&gt;
+&lt;h4 id=&#34;allocateregister寄存器分配&#34;&gt;AllocateRegister（寄存器分配）
+&lt;/h4&gt;&lt;p&gt;我做寄存器分配的目标是尽可能把 SSA 值放进物理寄存器，让后端少发 lw/sw，没有实现 spill。通过沿支配树递归分配，进入子块时临时释放&lt;strong&gt;不在子块 in 集合里&lt;/strong&gt;的寄存器，处理完子块再恢复。&lt;/p&gt;
+&lt;p&gt;在块内我记录每个 useValue 的 last-use，当某值在本条指令里是最后一次使用且该值不属于 block-out，就&lt;strong&gt;立即释放&lt;/strong&gt;它占用的寄存器。&lt;/p&gt;
+&lt;h4 id=&#34;removephi消除phi指令&#34;&gt;RemovePhi（消除phi指令）
+&lt;/h4&gt;&lt;p&gt;对每个基本块开头的 phi，先按从哪个前驱跳过来就取哪个 incoming 值的含义，把它拆成写在各条前驱边上的一组&lt;strong&gt;并行拷贝&lt;/strong&gt;（同一条边上可能要同时给多个 phi 结果赋值，所以逻辑上必须并行）&lt;/p&gt;
+&lt;p&gt;如果某条边前驱有多个后继且后继有多个前驱，就无法把拷贝安全地放在前驱块末尾或后继块开头，因此要先插入一个只服务这条边的中间块，把拷贝放到中间块里；接着把并行拷贝集合线性化成若干条顺序 &lt;code&gt;MoveInstr&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;并行操作转为顺序操作可能出现矛盾，比如环状赋值。这个时候就需要引入临时变量先把右值存下来，再move肯定不会错。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;后端优化&#34;&gt;后端优化
+&lt;/h2&gt;&lt;p&gt;后端优化我分为两各方面：一部分发生在 IR 的 &lt;code&gt;toMips()&lt;/code&gt; 过程中，本质是&lt;strong&gt;指令翻译&lt;/strong&gt;时就直接简化，是&lt;strong&gt;指令单位本身&lt;/strong&gt;的优化，在不改变语义的前提下直接选择更省的 MIPS 序列。第二部分就是相对宏观的&lt;strong&gt;指令间&lt;/strong&gt;优化，不过实际上还是非常局部、非常确定的&lt;strong&gt;窥孔&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;翻译期优化&#34;&gt;翻译期优化
+&lt;/h3&gt;&lt;h4 id=&#34;立即数优先&#34;&gt;立即数优先
+&lt;/h4&gt;&lt;p&gt;对于ADD/SUB/AND/OR ，如果有一项是常数，我会在立即数满足范围时优先选用 &lt;code&gt;addiu/andi/ori&lt;/code&gt;，可以少加载一次寄存器。如果这个常数是0/1还可以做特判。&lt;/p&gt;
+&lt;h4 id=&#34;乘除模优化&#34;&gt;乘除模优化
+&lt;/h4&gt;&lt;p&gt;乘法优化：对 0/1/-1、2^k、小常数（如 3/5/7/9/15）分别用 move/neg/shift/shift+add-sub 分解来避免 &lt;code&gt;mult&lt;/code&gt;，此外如果执行了mult还会对 HI/LO 复用缓存。&lt;/p&gt;
+&lt;p&gt;除法优化：对 1/-1 特判，对 ±2^k 走&lt;strong&gt;算术右移 + 符号修正&lt;/strong&gt;的无 DIV 路径，对其它常数走 magic-number division（&lt;code&gt;mult/mfhi&lt;/code&gt; + shift + 符号修正）尽量避免真实 &lt;code&gt;div&lt;/code&gt;，对非常数才使用 &lt;code&gt;div + mflo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;取余优化：对 ±1 直接为 0，对 ±2^k 用移位/掩码实现符合&lt;strong&gt;向 0 取整&lt;/strong&gt;的余数语义，对其它常数直接用真实 &lt;code&gt;div&lt;/code&gt; 并取 &lt;code&gt;mfhi&lt;/code&gt; 。&lt;/p&gt;
+&lt;h3 id=&#34;mipsoptimiserpeephole&#34;&gt;MipsOptimiser（peephole）
+&lt;/h3&gt;&lt;p&gt;MipsOptimiser 我也单独写成了一个类，其实做的都是窥孔。我把它写成了&lt;strong&gt;多条规则迭代到稳定&lt;/strong&gt;的形式：每一轮按固定顺序尝试所有规则，只要本轮有改动就继续下一轮，直到整个 &lt;code&gt;textSegment&lt;/code&gt; 不再变化。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;optimize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;forwardStoreLoads&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;removeDuplicateStores&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dropTrivialMoves&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;simplifyZeroAlu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;removeJumpToNextLabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;removeDuplicateLoads&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;removeLoadStoreBack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;forwardstoreloads&#34;&gt;forwardStoreLoads
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;刚 store 完马上又从同一地址 load&lt;/strong&gt;等价于直接复用被 store 的那个寄存器值。它的价值是把一次访存变成一次 move，甚至在后续再被 move 消除。我们在遇到一条 &lt;code&gt;sw/sh/sb&lt;/code&gt; 之后向后扫描，若遇到对同一地址且类型匹配的 &lt;code&gt;lw/lh/lb...&lt;/code&gt;，就把该 load 替换成 move。扫描会在危险的地方直接停止（label、jump、branch、syscall 以及大多数乘除相关指令）。如果扫描过程中&lt;strong&gt;同址再次 store&lt;/strong&gt;，要更新&lt;strong&gt;可转发的最新值寄存器&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;removeduplicatestores&#34;&gt;removeDuplicateStores
+&lt;/h4&gt;&lt;p&gt;我做连续 store 合并的原因是刚才的操作虽然消除了load，但没消除store。所以又判断了一下相邻 store 是否写同一地址，若相同就删除前一条。&lt;/p&gt;
+&lt;h4 id=&#34;removeduplicateloads&#34;&gt;removeDuplicateLoads
+&lt;/h4&gt;&lt;p&gt;相邻两次从同一地址、同一类型的 load 在中间没有可能改写该地址的情况下，第二次 load 的值与第一次完全一致。若目标寄存器也相同就删除后一条，否则把后一条替换为 &lt;code&gt;move dstB, dstA&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;removeloadstoreback&#34;&gt;removeLoadStoreBack
+&lt;/h4&gt;&lt;p&gt;针对&lt;code&gt;lw r, addr; sw r, addr&lt;/code&gt; ， store 写回的就是刚读到的值，内存内容不变，属于纯浪费。&lt;/p&gt;
+&lt;h4 id=&#34;droptrivialmoves&#34;&gt;dropTrivialMoves
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;move r, r&lt;/code&gt; 直接删除。这个其实可以在翻译时实现的。&lt;/p&gt;
+&lt;h4 id=&#34;simplifyzeroalu&#34;&gt;simplifyZeroAlu
+&lt;/h4&gt;&lt;p&gt;addi/sll/srl/sra 带 0 立即数，留着只会浪费一条指令。不过这个翻译时也有所实现。&lt;/p&gt;
+&lt;h4 id=&#34;removejumptonextlabel&#34;&gt;removeJumpToNextLabel
+&lt;/h4&gt;&lt;p&gt;这种跳转对控制流没有任何实际作用。检查 &lt;code&gt;j L&lt;/code&gt; 的下一条有效指令（忽略 annotation）是否正好是标签 &lt;code&gt;L:&lt;/code&gt;，若是就删除该跳转。&lt;/p&gt;
+&lt;h2 id=&#34;小结&#34;&gt;小结
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;请总结本学期编译技术课程学习的收获，并提出对课程改进的意见、建议。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;我的收获&#34;&gt;我的收获
+&lt;/h3&gt;&lt;p&gt;​	如果要对整门编译技术课进行总结，在理论课上的收获可能感受起来更加真实。或者说本来形式语言与自动机的理论就比较有趣，在计组课上初步接触状态机后，还能在编译课上以文法为媒介学习更多细节的知识，体验还是很不错的。此外，课堂上还涉及到了有关运行栈的计算机底层知识，使其和COOS一脉相承。第三点就是理论与实验的联动比较强，这里主要指的就是LL分析以及中间代码优化的部分，课上的知识真的能为实验提供理论支持，这种体验感上次感受还是在一年前的CO理论讲冒险的时候。&lt;/p&gt;
+&lt;p&gt;​	在实验上，虽然每项作业也有ddl，但整体的节奏感没有COOS那么紧张，这也导致了我在做编译这件事上很难做到久久为功，而往往是以多次集中突击的形式完成。编译实验是一门从0开始完成的大型项目，尽管经历了OO的磨练，我依旧难以培养起来比较清晰的模块观念，许多文件的设计都大量借鉴了学长的示例，例如IrModule，IrBuilder这样的类的设计。抛开这些不谈，经过编译实验我当然收获颇丰。从语法分析开始便一次又一次超出我的认知，类的数量太多以至于必须创建module，提取特征写父类，写抽象类，写记录类……静态类也是我之前OO课上未曾使用，但编译实验中频频使用的典例。&lt;/p&gt;
+&lt;h3 id=&#34;意见与建议&#34;&gt;意见与建议
+&lt;/h3&gt;&lt;p&gt;编译课程整体的体验感就是难。削减难度这样的事可能未必是改进，但还是希望同学们能够稍微更轻松地完成实验，比如理论课可以增设llvm的讲解，然后适当减少用属性翻译文法进行中间代码生成那一部分的课时。&lt;/p&gt;
 </description>
         </item>
         <item>

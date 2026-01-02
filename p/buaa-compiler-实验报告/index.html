@@ -327,10 +327,111 @@
         </li>
       </ol>
     </li>
-    <li><a href="#目标代码生成">目标代码生成</a></li>
+    <li><a href="#目标代码生成">目标代码生成</a>
+      <ol>
+        <li><a href="#mips体系构建">MIPS体系构建</a>
+          <ol>
+            <li><a href="#data">.data</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#text">.text</a></li>
+          </ol>
+        </li>
+        <li><a href="#从中间代码到mips">从中间代码到MIPS</a>
+          <ol>
+            <li><a href="#mipsbuilder">MipsBuilder</a></li>
+            <li><a href="#遍历-irmodule">遍历 IrModule</a>
+              <ol>
+                <li><a href="#function">function</a></li>
+                <li><a href="#basicblock">basicBlock</a></li>
+                <li><a href="#instr-1">Instr</a></li>
+                <li><a href="#ioinstr">IOInstr</a></li>
+                <li><a href="#allocateinstr">AllocateInstr</a></li>
+                <li><a href="#callinstr与returninstr">CallInstr与ReturnInstr</a></li>
+                <li><a href="#branchinstr">BranchInstr</a></li>
+                <li><a href="#gepinstr">GepInstr</a></li>
+                <li><a href="#loadstoreinstr">Load/StoreInstr</a></li>
+                <li><a href="#moveinstr">MoveInstr</a></li>
+                <li><a href="#extendinstr">ExtendInstr</a></li>
+                <li><a href="#truncinstr">TruncInstr</a></li>
+                <li><a href="#compareinstr">CompareInstr</a></li>
+                <li><a href="#aluinstr">AluInstr</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </li>
     <li><a href="#代码优化">代码优化</a>
       <ol>
-        <li><a href="#不可达代码删除">不可达代码删除</a></li>
+        <li><a href="#中端优化">中端优化</a></li>
+        <li><a href="#cfg-的构建">CFG 的构建</a>
+          <ol>
+            <li><a href="#不可达代码删除removeunreachablecode">不可达代码删除（RemoveUnreachableCode）</a></li>
+            <li><a href="#cfgbuildercfg-与支配信息构建">CfgBuilder（CFG 与支配信息构建）</a></li>
+          </ol>
+        </li>
+        <li><a href="#无效代码删除">无效代码删除</a>
+          <ol>
+            <li><a href="#jumpthreading跳转穿线">JumpThreading（跳转穿线）</a></li>
+            <li><a href="#removedeadcode死代码删除">RemoveDeadCode（死代码删除）</a></li>
+            <li><a href="#removedeadfunctions不可达函数删除">RemoveDeadFunctions（不可达函数删除）</a></li>
+          </ol>
+        </li>
+        <li><a href="#ssa">SSA</a>
+          <ol>
+            <li><a href="#memtoreg--insertphi静态单赋值">MemToReg + InsertPhi（静态单赋值）</a></li>
+            <li><a href="#memforward内存前推">MemForward（内存前推）</a></li>
+            <li><a href="#deadlocalallocastore局部栈内死-store-删除">DeadLocalAllocaStore（局部栈内死 store 删除）</a></li>
+          </ol>
+        </li>
+        <li><a href="#表达式">表达式</a>
+          <ol>
+            <li><a href="#gvn全局公共子表达式消除">GVN（全局公共子表达式消除）</a></li>
+            <li><a href="#lvn局部值编号">LVN（局部值编号）</a></li>
+            <li><a href="#sccp稀疏条件常量传播">SCCP（稀疏条件常量传播）</a></li>
+            <li><a href="#purefunctionevaluation纯函数消除">PureFunctionEvaluation（纯函数消除）</a></li>
+          </ol>
+        </li>
+        <li><a href="#循环">循环</a>
+          <ol>
+            <li><a href="#loopcanonicalization循环规范化">LoopCanonicalization（循环规范化）</a></li>
+            <li><a href="#licm循环不变式外提">LICM（循环不变式外提）</a></li>
+          </ol>
+        </li>
+        <li><a href="#后端准备">后端准备</a>
+          <ol>
+            <li><a href="#activeanalysis活跃分析">ActiveAnalysis（活跃分析）</a></li>
+            <li><a href="#allocateregister寄存器分配">AllocateRegister（寄存器分配）</a></li>
+            <li><a href="#removephi消除phi指令">RemovePhi（消除phi指令）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#后端优化">后端优化</a>
+      <ol>
+        <li><a href="#翻译期优化">翻译期优化</a>
+          <ol>
+            <li><a href="#立即数优先">立即数优先</a></li>
+            <li><a href="#乘除模优化">乘除模优化</a></li>
+          </ol>
+        </li>
+        <li><a href="#mipsoptimiserpeephole">MipsOptimiser（peephole）</a>
+          <ol>
+            <li><a href="#forwardstoreloads">forwardStoreLoads</a></li>
+            <li><a href="#removeduplicatestores">removeDuplicateStores</a></li>
+            <li><a href="#removeduplicateloads">removeDuplicateLoads</a></li>
+            <li><a href="#removeloadstoreback">removeLoadStoreBack</a></li>
+            <li><a href="#droptrivialmoves">dropTrivialMoves</a></li>
+            <li><a href="#simplifyzeroalu">simplifyZeroAlu</a></li>
+            <li><a href="#removejumptonextlabel">removeJumpToNextLabel</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#小结">小结</a>
+      <ol>
+        <li><a href="#我的收获">我的收获</a></li>
+        <li><a href="#意见与建议">意见与建议</a></li>
       </ol>
     </li>
   </ol>
@@ -413,7 +514,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 21 分钟
+                    阅读时长: 41 分钟
                 </time>
             </div>
         
@@ -430,8 +531,7 @@
     
     <hr>
 <h2 id="说在前面">说在前面
-</h2><p>本文章尚未完工。</p>
-<p>本篇文章的内容并不能达到可以让你跟着做完整个编译器项目的程度，它只是我最终总结时的一些回忆，而非施工现场。</p>
+</h2><p>本篇文章的内容并不能达到可以让你跟着做完整个编译器项目的程度，它只是我最终总结时的一些回忆，而非施工现场。</p>
 <p>倘若能在某个时候激发起你的共鸣，给予你信心或是方向，那便已是极好的了。</p>
 <h2 id="整体架构">整体架构
 </h2><h3 id="bzh学长的架构">bzh学长的架构
@@ -444,7 +544,7 @@
 </h3><p>在细节上的架构，我和学长代码保持了较为高度的一致，最多只是将某些类进行合并或者拆分。</p>
 <p>但在宏观上我根据自己的主观理解，进行了较大的调整。不过意义也不是很大。</p>
 <p>我顶层的包分为前端，中端，后端，错误与工具。</p>
-<p>frontend在处理词法分析，语法分析之外，我没有传递语法树，而是继续在前端进行语义分析与中间代码生成。因为这一段本就是与源代码高度相关，语法树更是直接来源于源代码的文法。</p>
+<p>frontend处理词法分析，语法分析之外，我没有传递语法树，而是继续在前端进行语义分析与中间代码生成。因为这一段本就是与源代码高度相关，语法树更是直接来源于源代码的文法。</p>
 <p>我在思考，如果真的做到修改源代码不必修改midend的话，midend里该有的内容，可能只有llvm那个文件夹。而visit与symbol都是属于与源代码有关的内容，如果更改了文法，肯定是要有改动的。</p>
 <p>因此我前端内部的文件夹有lexer,parse,ast,还有llvm_ir这个包，这个包包含symbol与visit，主要负责的就是产出中端所需的架构。</p>
 <p>midend在严格意义上，包含的动作只有中间代码优化。此外他还包括llvm的架构定义。因此里面包括llvm和optimiser两个包。</p>
@@ -485,6 +585,10 @@
 	
 ></p>
 </blockquote>
+<blockquote>
+<p>Jan.1更新：</p>
+<p>jym同学的测试点中包含转义字符相关内容。所以顺便也实现了一下。</p>
+</blockquote>
 <p>从架构而言，首先要形成frontend/midend/backend/utils这样的系统结构观念；其次在frontend中需要有一个frontend类，还要有parser/ast/lexer等等。我们在lexer中主要实现的就是针对读取到的char分析出是什么单词，并加入单词列表，因此还需要实现Token类和token类型。</p>
 <p>另外，作为最起始的框架，IO操作也是一个关键点，不过参考学长代码之后不难解决其处理模式，放在utils包中很有结构感。</p>
 <h2 id="语法分析">语法分析
@@ -515,10 +619,8 @@
 </ol>
 <blockquote>
 <p>期中考试 Update：</p>
-<p>考了回溯，不过不能像原来那样<strong>直接预读Exp</strong>了，
-或者说<strong>公共部分不是已有的非终结符</strong>。</p>
-<p>不过没关系，你只需要自己创建这样一个非终结符就好了，
-这个非终结符的parse也只需要复制公共部分的相关内容就好。</p>
+<p>考了回溯，不过不能像原来那样<strong>直接预读Exp</strong>了，或者说<strong>公共部分不是已有的非终结符</strong>。</p>
+<p>不过没关系，你只需要自己创建这样一个非终结符就好了，这个非终结符的parse也只需要复制公共部分的相关内容就好。</p>
 <p>我们只需</p>
 <ul>
 <li>记录位置，关闭报错</li>
@@ -635,7 +737,7 @@ Block的BlockItem的最后一项。</p>
 <ul>
 <li>转 i32，若源已是 i32 就直接返回，否则生成一条 ExtendInstr。</li>
 <li>转 i8：i32 -&gt; TruncInstr，i8 保持不变，i1 -&gt; ExtendInstr。</li>
-<li>转 i1：非 i1 一律截断。</li>
+<li>转 i1：本质上是转布尔数，此处不是截断，而是icmp，与0比较。</li>
 <li>如果目标是数组，则递归转换其元素类型，保证数组初始化时的元素类型一致。</li>
 </ul>
 <p>IrBaseType：内置的标量类型常量（VOID, INT1, INT8, INT32），toString() 对应 LLVM 文本 void/i1/i8/i32。</p>
@@ -726,7 +828,7 @@ Block的BlockItem的最后一项。</p>
       </tr>
       <tr>
           <td style="text-align: center">GepInstr</td>
-          <td style="text-align: center">区分数组和普通指针：数组时打印 getelementptr inbounds [N x T], ptr_type ptr, i32 0, offset_type offset，否则为 getelementptr inbounds target_type, ptr_typr ptr, offset_type offset.  原因在于gep是计算基地址+索引*类型大小，支持多级索引，而数组第一级索引是0，第二级索引才是数组内偏移</td>
+          <td style="text-align: center">区分数组和普通指针：数组时打印 getelementptr inbounds [N x target_type], ptr_type ptr, i32 0, offset_type offset，否则为 getelementptr inbounds target_type, ptr_type ptr, offset_type offset.  原因在于gep是计算基地址+索引*类型大小，支持多级索引，而数组第一级索引是0，第二级索引才是数组内偏移</td>
       </tr>
       <tr>
           <td style="text-align: center">JumpInstr</td>
@@ -820,9 +922,11 @@ VisitorLVal.generateLValIr(lval, <strong>false</strong>) 给左值对象的值�
 <li>数组情况更复杂：
 首先特别注意：若 pointerType.getTargetType() 仍是 IrPointerType，说明 symbol.getIrValue() 存的是指向指针的地址，必须先 LoadInstr 取到真正数组指针。</li>
 </ul>
-<p>拿到数组指针之后就继续找值：
-- 如果没有下标（size == null），意味着把整个数组当作指针使用，返回 new GepInstr(pointer, new IrConstantInt(0))，相当于数组首地址。
-- 如果有下标，就先算index，然后 GepInstr(pointer, index) 计算元素地址，再 LoadInstr 读取元素值。</p>
+<p>拿到数组指针之后就继续找值：</p>
+<ul>
+<li>如果没有下标（size == null），意味着把整个数组当作指针使用，返回 new GepInstr(pointer, new IrConstantInt(0))，相当于数组首地址。</li>
+<li>如果有下标，就先算index，然后 GepInstr(pointer, index) 计算元素地址，再 LoadInstr 读取元素值。</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -892,7 +996,7 @@ generateAssignStmtIr 先用 VisitorLVal.generateLValIr(lval, true) <strong>拿�
 <p>generateLOrExpIr 为下一个 || 子表达式<strong>创建一个中间块</strong>，在每个块里调用 generateLAndExpIr，<strong>得到的值通过 BranchInstr 控制跳转</strong>；若当前子表达式为真，<strong>立刻跳</strong>trueBlock；<strong>否则落到</strong>下一个 LAnd 块，实现短路。</p>
 <p>generateLAndExpIr 类似，不过 &amp;&amp; 的短路条件是<strong>中途为假就跳 falseBlock</strong>。</p>
 <p><strong>最后一个子表达式产生的 BranchInstr 直接指向 trueBlock/falseBlock。</strong></p>
-<p>EqExp、RelExp <strong>链式构建</strong> CompareInstr，因为 a == b == c 这种语法递归展开后需要<strong>把前一次比较的结果转换为 i32</strong> 再与下一项比较。generateEqExpIr 最后还<strong>把链式结果与 0 再比较</strong>一次，统一转换成 i1。</p>
+<p>EqExp、RelExp <strong>链式构建</strong> CompareInstr，因为 a == b == c 这种语法递归展开后需要<strong>把前一次比较的结果转换为 i32</strong> 再与下一项比较。generateEqExpIr 保证自己是i1，因此还要<strong>把链式结果与 0 再比较</strong>一次，统一转换成 i1。</p>
 <h4 id="构建的画笔tostring">构建的画笔：toString()
 </h4><ol>
 <li>
@@ -915,17 +1019,462 @@ generateAssignStmtIr 先用 VisitorLVal.generateLValIr(lval, true) <strong>拿�
 </li>
 </ol>
 <h2 id="目标代码生成">目标代码生成
-</h2><p>TODO</p>
+</h2><p>最后一关，把llvm转变为mips！这一段内容很考验计算机底层逻辑的一些内容，
+毕竟我们已经从高级语言迈向了汇编语言。</p>
+<p>同样都是从某种语言转向某种语言，为什么高级语言到中间代码这么复杂，
+但是中间代码到目标代码只需要简单一步呢？</p>
+<p>因为我们在遇到高级语言时，接受的只是字符串，我们要先把它的架构建造起来，才能完成语义翻译。
+而中间代码被生成时，其结构是先被搭建出来的，反倒代码本身才是toString的附属品。</p>
+<p>在熟悉了LLVM的Module-Function-Block-Instr结构之后，如何转为mips并不是一件特别难的事。</p>
+<h3 id="mips体系构建">MIPS体系构建
+</h3><p>像生成中间代码一样，我们首先要把MIPS的架构建造起来。</p>
+<p>类似地，这个结构的顶端是MipsModule.</p>
+<p>MipsModule被简单地分为两个部分，分别是.data和.text，这些我们已经很熟悉了。</p>
+<h4 id="data">.data
+</h4><p>.data包含 .asciiz .space .word 分别用来定义字符串，数组空间和具体的值。</p>
+<p>使用方法大家可能也直接就想到了：</p>
+<p>IrConstantString 对应一条 .asciiz、
+IrConstantInt 对应一条 .word、
+IrConstantArray 初始化为0可直接对应一条 .space，
+有其他初始值则对应 .word + 一堆数。</p>
+<h4 id="register">Register
+</h4><p>寄存器当然是mips最最不能缺少的概念了，也是后端优化的核心难点所在。
+不过在基础架构这一环节，我们只需要把寄存器的定义列出来就好。</p>
+<p><code>Register.java</code> 是一个枚举类，用于定义MIPS架构中的寄存器，在此我们需要强调哪些寄存器是不能动的。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>名称</th>
+          <th>用途说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>零寄存器（专用）</td>
+          <td><code>$zero</code></td>
+          <td>恒为0，不可修改，常用于需要常数0的场景（如清空寄存器）。</td>
+      </tr>
+      <tr>
+          <td>返回值寄存器（专用）</td>
+          <td><code>$v0</code>, <code>$v1</code></td>
+          <td>用于存储函数的返回值，以及决定syscall的功能。不过v1就相对自由。</td>
+      </tr>
+      <tr>
+          <td>参数寄存器（专用？）</td>
+          <td><code>$a0</code>-<code>$a3</code></td>
+          <td>用于传递函数的前4个参数，超过4个的参数通过栈传递（优化时可以考虑只传一部分哦）</td>
+      </tr>
+      <tr>
+          <td>临时寄存器</td>
+          <td><code>$t0</code>-<code>$t7</code>, <code>$t8</code>-<code>$t9</code></td>
+          <td>临时使用的寄存器，函数调用时无需保存其值。</td>
+      </tr>
+      <tr>
+          <td>保存寄存器</td>
+          <td><code>$s0</code>-<code>$s7</code></td>
+          <td>用于保存需要跨函数调用维持的值，函数调用时需保存和恢复其值。</td>
+      </tr>
+      <tr>
+          <td>内核寄存器（<del>专用</del>）</td>
+          <td><code>$k0</code>, <code>$k1</code></td>
+          <td>内核专用寄存器，用户程序一般不使用。不过我们这里因为不涉及，所以反倒十分自由地使用了他们。</td>
+      </tr>
+      <tr>
+          <td>全局指针（可专用）</td>
+          <td><code>$gp</code></td>
+          <td>全局指针，用于访问全局变量，也就是 la $gp, g_1  然后lw</td>
+      </tr>
+      <tr>
+          <td>栈指针（专用）</td>
+          <td><code>$sp</code></td>
+          <td>指向当前栈顶。其重要性无需多言。</td>
+      </tr>
+      <tr>
+          <td>帧指针（可专用）</td>
+          <td><code>$fp</code></td>
+          <td>指向当前函数栈帧的底部。我在本设计中没有使用。</td>
+      </tr>
+      <tr>
+          <td>返回地址 （专用）</td>
+          <td><code>$ra</code></td>
+          <td>保存函数调用后的返回地址，<code>jal</code>指令强制使用该寄存器，所以不能乱用</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>我们有方法：<strong><code>getUsableRegisters()</code></strong>，返回程序中可自由使用的寄存器列表，包括：</p>
+<ul>
+<li>临时寄存器：<code>T0</code>-<code>T9</code></li>
+<li>保存寄存器：<code>S0</code>-<code>S7</code><br>
+其他的，比如V1以及只有特定时候才有用的A0-A3，我们暂且不放进去。</li>
+</ul>
+<h4 id="text">.text
+</h4><p>接下来才是重头戏，也就是MIPS指令集。</p>
+<p>text 文件夹中包含的 MIPS 文本段（代码段）相关类及其对应指令类型如下：</p>
+<p>MipsAlu：<code>R</code>: add,sub,addu,subu,and,or,nor,xor,slt,sltu
+<code>I</code>: addi,addiu,andi,ori,xori,slti,sltiu
+<code>shiftv</code>: sllv,srav,srlv
+<code>shift</code>: sll,sra,srl
+MipsCompare：slt、seq、sne、sle、sgt、sge、slti
+MipsBranch：beq、bne、bgtz、blez、bgez、bltz
+MipsJump：j、jal、jr
+MipsLoad：lw、lh、lhu、lb、lbu
+MipsStore：sw、sh、sb
+MipsMD：mult、div、mfhi、mflo、mthi、mtlo
+MipsSyscall：syscall
+MipsLabel：用于定义代码中的标签
+MipsAnnotation：用于添加注释（以 # 开头的说明文本）
+MarsLi（fake）：li（伪指令，加载立即数到寄存器）
+MarsLa（fake）：la（伪指令，加载标签地址到寄存器）
+MarsMove（fake）：move（伪指令，寄存器间数据移动）</p>
+<p>需要特别注意的是，由于我们按照大类来划分，因此add与addi的构造方法显然应该是不同的，需要支持多构造函数。</p>
+<p>不过听起来复杂，其实也只是把指令的构造方法与toString实现了而已。指令具体的作用呢？那就是计组做的事情了。</p>
+<h3 id="从中间代码到mips">从中间代码到MIPS
+</h3><p>backend就这么简单的结束了。那还缺什么呢？要怎么把LLVM转到MIPS呢？这其实就是对LLVM的语义分析了：也就是我们生成的llvm代码的含义是什么？究竟该如何用mips表达？</p>
+<p>这个问题看起来复杂，但是LLVM与MIPS的相似度很高，结构也都比较简单，所以其实并不太难。整体的逻辑是一致的，两个工具：Builder和toString。</p>
+<h4 id="mipsbuilder">MipsBuilder
+</h4><p>MipsBuilder和IrBuilder类似，都是控制整体逻辑结构的重要管理者。</p>
+<ul>
+<li>
+<p><code>addContent</code> 方法，实现将具体内容放入MipsModule的data与text段中。</p>
+</li>
+<li>
+<p><strong>寄存器分配管理</strong></p>
+<ul>
+<li><strong>维护 <code>valueRegisterMap</code> 映射表</strong>，记录 LLVM IR 中的 <code>IrValue</code>与 MIPS 寄存器的对应关系。</li>
+<li>提供 <code>allocateReg</code> 方法<strong>记录 <code>IrValue</code> 分配的寄存器</strong></li>
+<li><code>getValueToRegister</code> 方法<strong>查询<code>IrValue</code> 分配的寄存器</strong></li>
+<li><code>getAllocatedRegList</code> 方法<strong>获取已分配的寄存器集合</strong>，用于寄存器资源的跟踪与管理。</li>
+</ul>
+</li>
+<li>
+<p><strong>栈空间分配管理</strong></p>
+<ul>
+<li>通过 <code>stackOffset</code> 记录当前栈偏移量（初始为 0，分配时递减）</li>
+<li>提供 <code>allocateStackForValue</code> 为 <code>IrValue</code> 分配 4 字节栈空间并记录偏移地址</li>
+<li><code>getStackValueOffset</code> 查询 <code>irValue</code> 所在的栈空间位置。</li>
+</ul>
+</li>
+<li>
+<p>注意：<code>setCurrentFunction</code>切换函数时，也要切换寄存器映射表，重置栈偏移为0，确保不同函数的寄存器和栈空间独立管理。</p>
+</li>
+</ul>
+<h4 id="遍历-irmodule">遍历 IrModule
+</h4><p>首先是最顶层的IrModule：</p>
+<p>declares、stringConstantMap、globalValues、functions.</p>
+<p>如何书写它的toMips?</p>
+<p>declare是LLVM要知道的，但在MIPS中直接靠syscall实现，无需提前声明。stringConstantMap对应生成.data段的.asciiz，globalValues对应生成.data段的.word与.space。</p>
+<blockquote>
+<p>asciiz和word的名字怎么取？可直接用irName去掉@这个首字母。</p>
+</blockquote>
+<p>把这些全局的东西做完，就开始具体的函数程序流了。</p>
+<p>首先是进入main函数：
+<code>jal main</code> + <code>j end</code></p>
+<p>然后是各函数的具体内容。</p>
+<p>最后是end:
+<code>new MipsLabel(&quot;end&quot;)</code>，并<code>syscall 10</code>结束程序。</p>
+<h5 id="function">function
+</h5><ol>
+<li><code>new MipsLabel(&quot;函数名&quot;)</code></li>
+<li><code>MipsBuilder.setCurrentFunction(this);</code></li>
+<li>函数形参分配寄存器，根据IrParameter的信息，前四个参数要占用寄存器（具体传值是callInstr的事），并且所有参数都在栈上分配4字节空间（同样，传值不归它管）</li>
+<li>遍历IrBasicBlock</li>
+</ol>
+<h5 id="basicblock">basicBlock
+</h5><p>最简单的一集：</p>
+<ol>
+<li><code>new MipsLabel(&quot;block名&quot;)</code></li>
+<li>遍历Instr</li>
+</ol>
+<h5 id="instr-1">Instr
+</h5><p>听起来很简单。不就是把原来的指令变成现在的指令嘛，逻辑我当然懂。可是难点不止这一个，不仅是操作符的更新，更复杂的是操作数的变化。不再像以前一样，可以弄出来一大堆变量，现在只有32个寄存器和立即数（含label）可以用，你该如何保证一致性？</p>
+<p>这里就介绍几个必要的方法，他们定义在Instr这个父类中：</p>
+<ol>
+<li>
+<p><strong><code>loadValue(IrValue, Register)</code></strong>
+把一个 LLVM 的 IrValue 装进某个寄存器。指令在需要寄存器时，我们需要这个操作来将IrValue进行转换。</p>
+<ul>
+<li>IrValue 是个常量 IrConstant，那就用li直接装进寄存器。</li>
+<li>IrValue 是个全局变量 IrGlobalValue，那他的值就是地址，直接la就可以。（后续做了优化，统一使用gp，这样不变的时候就不用再la，变的时候再move）</li>
+<li>IrValue 是个普通的变量：
+<ul>
+<li>他已经在某寄存器上了，那就move过来。</li>
+<li>他还在栈上，先<code>MipsBuilder.getStackValueOffset(irValue)</code>，然后lw。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>getRegisterOrXXForValue</code></strong>
+刚才提到要把值放进寄存器，那该放进哪个寄存器呢？现在就做寄存器分配的话还是太难了，所以我腾了两个寄存器出来专门在无可奈何的时候用：就是K0和K1。（bzh学长的思路）
+如果做了寄存器分配，当然是可以知道现在它有什么寄存器的，但是没做的话，或者压根没分配，那我就要暂时占用K0了。</p>
+</li>
+<li>
+<p><strong><code>saveResult(IrValue, Register)</code></strong><br>
+有load当然就有store，不过我这里起名叫save。
+什么叫save呢？因为这个值如果没有分配寄存器的话，算出来默认占用的是K0,别人还要用呢。所以如果你有寄存器，就把这个值move到寄存器，否则就要allocateStackForValue，降低offset记录IrValue，用sw把它存栈上了。总之得记录一下到底放在哪。</p>
+</li>
+</ol>
+<p>好嘞，这三个方法讲完，IrValue和寄存器的转移相信你已经了解了。相对于操作数的问题，运算符的问题其实是容易解决的，只是相对繁琐。</p>
+<p>接下来就是每个LLVM Instr的翻译过程了。</p>
+<h5 id="ioinstr">IOInstr
+</h5><p>getint -&gt;   <code>new MarsLi(Register.V0, 5);</code>
+<code>new MipsSyscall();</code>
+<code>saveResult(this, Register.V0);</code></p>
+<p>printchar/int -&gt;  <code>loadValue(printValue, Register.A0);</code>
+<code>new MarsLi(Register.V0, 11/1);</code>
+<code>new MipsSyscall();</code></p>
+<p>printstr -&gt; <code>new MarsLa(Register.A0, irConstantString.getMipsLabel());</code> （也可以用loadValue）
+<code>new MarsLi(Register.V0, 4);</code>
+<code>new MipsSyscall();</code></p>
+<h5 id="allocateinstr">AllocateInstr
+</h5><p>在初级阶段，我们的数都是存在栈上，霸占寄存器这种事还没有算好。因此这里就直接<code>MipsBuilder.allocateStackSpace</code>。具体的大小还要看一下IrValue的类型，如果是数组还要乘上size。</p>
+<p>有关栈的操作，我们一定要注意实时更新sp寄存器！这里就需要用ADDU，把sp减去我们分配的大小。</p>
+<h5 id="callinstr与returninstr">CallInstr与ReturnInstr
+</h5><p>这算是最难的一个部分了。前面我们提到IrFunction要登记a0-a3寄存器，但是具体传值是callInstr进行的。不仅如此，callInstr的整体流程为：保护现场-&gt;传参-&gt;jal-&gt;恢复现场-&gt;处理返回值。</p>
+<ul>
+<li>saveCurrent
+<ul>
+<li>保存所有的寄存器，包括当前的ra，然后栈指针向下移动</li>
+</ul>
+</li>
+<li>fillParam
+<ul>
+<li>前四个直接将值load进对应的寄存器，之后的就先随便load个寄存器，然后sw进栈。</li>
+</ul>
+</li>
+<li>jal function_label</li>
+<li>恢复现场
+<ul>
+<li>栈指针向上移动，把值lw回寄存器</li>
+</ul>
+</li>
+<li>处理返回值
+<ul>
+<li>函数的IrValue直接save进V0寄存器。</li>
+</ul>
+</li>
+</ul>
+<p>关于return就相对简单，因为事情都给callInstr做了。
+return要提供返回值的内容到某寄存器（load），以及jr $ra</p>
+<h5 id="branchinstr">BranchInstr
+</h5><p>首先把cond放进寄存器，然后直接用bne跳转真，否则无条件跳转假</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">Register</span> <span class="n">condRegister</span> <span class="o">=</span> <span class="n">getRegisterOrK0ForValue</span><span class="p">(</span><span class="n">cond</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">loadValue</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">condRegister</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">new</span> <span class="n">MipsBranch</span><span class="p">(</span><span class="n">MipsBranch</span><span class="o">.</span><span class="n">BranchType</span><span class="o">.</span><span class="n">BNE</span><span class="p">,</span> <span class="n">condRegister</span><span class="p">,</span> <span class="n">Register</span><span class="o">.</span><span class="n">ZERO</span><span class="p">,</span> <span class="n">getTrueBlock</span><span class="p">()</span><span class="o">.</span><span class="n">getMipsLabel</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">new</span> <span class="n">MipsJump</span><span class="p">(</span><span class="n">MipsJump</span><span class="o">.</span><span class="n">JumpType</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">getFalseBlock</span><span class="p">()</span><span class="o">.</span><span class="n">getMipsLabel</span><span class="p">());</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="gepinstr">GepInstr
+</h5><p>这个指令可谓是LLVM时很特殊的指令了，现在转为MIPS其意义也很明显：目标地址 = 基地址 + 偏移量 × 4。</p>
+<p>所以就只是load一下，先左移，再add，最后save。</p>
+<h5 id="loadstoreinstr">Load/StoreInstr
+</h5><p>出于简单考虑，我们统一使用<code>new MipsLoad(MipsLoad.LoadType.LW, targetRegister, pointerRegister, 0);</code>
+默认设置偏移为0，值和址都放入寄存器。</p>
+<h5 id="moveinstr">MoveInstr
+</h5><p>此move非彼move，不过也只是操作数不同。</p>
+<h5 id="extendinstr">ExtendInstr
+</h5><p>这个指令在MIPS没有意义，因为没有type的区分。所以只需要进行一个赋值，和MoveInstr一样，把原来的ir的值赋给新的ir即可。</p>
+<h5 id="truncinstr">TruncInstr
+</h5><p>这个就有意义了，如果要压缩到一位，就需要和1进行<code>andi</code>。</p>
+<h5 id="compareinstr">CompareInstr
+</h5><p>load+比较+save，比较运算符更是都能一一对应。</p>
+<h5 id="aluinstr">AluInstr
+</h5><p>运算符也都能对上。处于简单考虑，我们都先放进寄存器，然后用不含立即数的指令进行运算。</p>
+<blockquote>
+<p>注意：对于乘除法，还要加一句MFLO，取余则为MFHI</p>
+</blockquote>
+<p>后端的内容说多也不多，但是一定需要谨慎思考再落笔，否则很容易出现恶劣bug。其次，我们肉眼可见有大量值得优化的内容需要完成。</p>
 <h2 id="代码优化">代码优化
 </h2><p>代码优化分为体系结构无关的中间代码优化与体系结构相关的目标代码优化。</p>
-<p>而中间代码优化才是真正名副其实的中端。</p>
-<h3 id="不可达代码删除">不可达代码删除
-</h3><p>可达这句话归因于跳转语句，因此我们先把一些没用的跳转语句删掉，以便更好地删除不可达代码。</p>
-<p>接下来，我们删除不可达基本块。</p>
-<p>因基本块的最后一句一定是return/branch/jump，所以直接根据这个来判断他所能到达的地方。</p>
-<p>我们暂时默认所有function本身的entry_block是可达的，仅删除
-function内部的不可达块，这个用DFS很容易解决。</p>
-<p>TODO</p>
+<h3 id="中端优化">中端优化
+</h3><p>在边遍历边生成的过程中，不可避免会有很多冗余与机械性的指令产生。中端优化不仅可以直接缩减中间代码的行数，还能让后续的某些后端优化更容易发生。</p>
+<p>关于中端优化，最核心的对象不在于某一条指令，而是宏观上的感知，要充分挖掘指令之间、Value之间、基本块之间的联系。基本块之间的联系简单来说就是<strong>流图</strong> ，Value之间的联系则是我们一直在维护的<strong>Use关系</strong>。</p>
+<p>需要注意： 很多优化会改写控制流边（例如把 branch 改写成 jump、删除 block、插入中间块），所以流水线中会多次执行 <code>CfgBuilder</code> 来<strong>重建 CFG 与支配信息，并同步修 phi 的前驱列表</strong>。</p>
+<blockquote>
+<p>为什么我们需要CFG并实时更新CFG？</p>
+<p><strong>CFG 直接提供的关键信息</strong></p>
+<ul>
+<li><strong>前驱/后继（Pred/Succ）</strong>：CFG帮我们统计好所有的前驱与后继。这个的用处太多了，修 phi incoming、跳转改写时都得用到。</li>
+<li><strong>结构信息</strong>：哪里是 if/else，哪里汇和，哪里是循环回边。宏观上的结构提取离不开对CFG的分析。</li>
+</ul>
+<p><strong>为什么优化会依赖 CFG</strong></p>
+<ul>
+<li><strong>MemToReg / SSA / phi 插入</strong>：phi 的语义就是来自不同前驱边的值在这里合并。phi 插入位置依赖<strong>支配关系/支配边界</strong>，没有 CFG 的前驱列表，连phi 应该有几个 incoming都不知道。</li>
+<li><strong>常量传播 / 活跃分析 等数据流分析</strong>：理论课知识，经典数据流方程都是依赖于流图的前驱/后继块信息。</li>
+<li><strong>循环优化</strong>：要判断某指令外提到循环前是否安全，需要先准确知道哪些块属于这个循环、循环入口从哪来。这些都需要来自 CFG 。</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="cfg-的构建">CFG 的构建
+</h3><h4 id="不可达代码删除removeunreachablecode">不可达代码删除（RemoveUnreachableCode）
+</h4><p>为什么先说这个呢？因为这个逻辑太简单了，而且这个优化能够在一定程度上帮助CFG的构建。</p>
+<ol>
+<li><strong>单个基本块内</strong>：跳转指令之后的指令在语义上永远不会执行</li>
+</ol>
+<blockquote>
+<p>因为跳转以基本块为单位，执行完跳转指令一定会到达某基本块的开头。</p>
+</blockquote>
+<ol start="2">
+<li>整体来看，entry不能跳转到的块也都是不可达的。</li>
+</ol>
+<p>实现起来也很简单，不过注意删东西的时候要把Use关系也尽量删干净。</p>
+<ul>
+<li>基本块内遇到 <code>jump/branch/return</code>，删除后续所有指令。</li>
+<li>从入口块 DFS，只保留可达块，其余块从函数的 blockList 中移除。</li>
+</ul>
+<h4 id="cfgbuildercfg-与支配信息构建">CfgBuilder（CFG 与支配信息构建）
+</h4><p>扫描每个基本块末尾终结指令来重建 <code>beforeBlocks/nextBlocks</code>，再把块首 phi 的 predecessor 列表与当前 <code>beforeBlocks</code> 对齐，最后计算支配关系、立即支配与支配边界，为 InsertPhi、GVN、LICM 等提供基础信息。</p>
+<h3 id="无效代码删除">无效代码删除
+</h3><h4 id="jumpthreading跳转穿线">JumpThreading（跳转穿线）
+</h4><p>跳转穿线的出发点是因为在处理控制流时，IR 很容易生成跳板块，也就是块里只有一条无条件跳转，这类块本身不提供任何语义增量，却会把 CFG 拉长、制造额外边与额外分支，从而让后续优化更难看清结构。</p>
+<p>我在实现时只处理了非 entry 且<strong>仅含无条件跳转</strong>的块，把所有<strong>前驱</strong>直接改跳到 target</p>
+<blockquote>
+<p>为了避免破坏 phi 语义，如果 target 块开头存在 phi，我选择保守地不做穿线，因为那意味着需要补齐 incoming value 才能保持语义一致。</p>
+</blockquote>
+<h4 id="removedeadcode死代码删除">RemoveDeadCode（死代码删除）
+</h4><p>在中间代码非常容易产生算出来但没人用的值，这些值如果留到后端，会产生大量的寄存器压力与访存压力，还会阻碍后续的常量传播与去重（因为它们占据了 use/def 的一部分）。它不仅能删指令，更重要的是把依赖图变稀疏，让后续每一步优化都更容易触发。</p>
+<p>我们先从main出发构建调用可达信息，并标记有<strong>副作用</strong>的函数（包含 IO、store，或调用了有副作用的函数），然后以关键use指令为根（return、branch/jump、store、IO、以及调用了副作用函数的 call），<strong>逆着 use 关系</strong>把依赖链标记为 active，删除所有非 active 指令。</p>
+<p>我还做了一些简单的结构性清理：</p>
+<ol>
+<li>删除<strong>无前驱</strong>且非 entry 的块并在后继块里<strong>移除对应的 phi incoming</strong></li>
+<li>合并满足<strong>前驱唯一</strong>且<strong>前驱只有这一个后继</strong>的块</li>
+<li>把只有<strong>一个 incoming 的 phi</strong> 直接展开为普通值。</li>
+</ol>
+<h4 id="removedeadfunctions不可达函数删除">RemoveDeadFunctions（不可达函数删除）
+</h4><p>不可达函数删除在<strong>没有函数指针</strong>的语言里收益很直接：函数可达性完全由 call 决定，删掉 main 不可达函数既能减小输出规模，也能减少后续优化的工作量。</p>
+<p>直接从 <code>main</code> 出发沿 <code>CallInstr -&gt; targetFunction</code> 做 DFS 标记 reachable，然后删除不可达函数即可。</p>
+<h3 id="ssa">SSA
+</h3><h4 id="memtoreg--insertphi静态单赋值">MemToReg + InsertPhi（静态单赋值）
+</h4><p>前端生成 IR 时局部标量往往落成 <code>alloca + store/load</code>，各种变量都放在内存里。如果不提升至SSA，后端会机械地产生大量 lw/sw，而这些访存其实只是为了模拟变量当前值。一旦把它提升到 SSA，就把内存问题变成了值问题，常量传播、去重与窥孔会变得非常自然。</p>
+<p>我在实现时只处理了非数组的 <code>alloca</code>，先扫描该 alloca 的 use 收集 define（store）与 use（load），再利用<strong>支配边界</strong>在需要的块<strong>开头插入 phi</strong>，最后沿支配树做 rename。</p>
+<blockquote>
+<p>rename: 我们用栈来维护当前最新值，把 load 替换为栈顶值除，把 store 变成入栈，栈为空时用 0 作为默认初值。</p>
+</blockquote>
+<h4 id="memforward内存前推">MemForward（内存前推）
+</h4><p>即便做了 MemToReg，局部数组/局部指针这类不使用SSA，而是<strong>确定地址</strong>的对象仍然可能出现 store→load、重复 store 或重复 load。</p>
+<p>我当前实现是块内优化。在单个基本块内维护 <code>address -&gt; MemState</code>：</p>
+<ul>
+<li>
+<p>遇到 store 就记录最新地址写入值。</p>
+</li>
+<li>
+<p>遇到 load</p>
+<ul>
+<li>若该地址的值已有缓存，则替换 load 的 user 并删除该 load。</li>
+<li>否则把该 load 的值记为已知值，用来做 load-load 的消除。</li>
+</ul>
+</li>
+</ul>
+<h4 id="deadlocalallocastore局部栈内死-store-删除">DeadLocalAllocaStore（局部栈内死 store 删除）
+</h4><p>这个优化的动机来自一种很典型的冗余：局部数组或局部变量可能被写了很多次（尤其是初始化）但从未被读过，这些 store 对语义没有任何贡献。我们可以把<strong>只写不读</strong>的初始化彻底抹掉。</p>
+<p>我以 alloca 为根向下追踪由它派生的 gep 地址，收集相关 store；只要发现任意 load，我就放弃优化，否则<strong>就删除所有相关 store</strong>，并进一步清理因为 store 消失而变成<strong>无用的 gep/alloca</strong>。</p>
+<h3 id="表达式">表达式
+</h3><h4 id="gvn全局公共子表达式消除">GVN（全局公共子表达式消除）
+</h4><p>这里参考了bzh学长的字符串哈希法，为表达式维护了一个hash标识。我们沿支配树遍历，用 <code>getGvnHash()</code> 为表达式做哈希并维护一个<strong>当前支配路径上的表达式表</strong>，当发现哈希已出现就用已有值替换当前指令并删除它。</p>
+<h4 id="lvn局部值编号">LVN（局部值编号）
+</h4><p>LVN 比 GVN 更适合<strong>边走边化简</strong>：在遍历过程中顺手做常量折叠、代数恒等化简，能把很多小冗余直接掐掉，不必等到后端再清。</p>
+<p>对 ALU/CMP/EXTEND/TRUNC 可以做常量折叠与简单代数化简，对 ALU/CMP/GEP 做基于哈希与MoveInstr的消除，也就是常量传播。其中针对MoveInstr，直接传播给user，然后删除 move。</p>
+<h4 id="sccp稀疏条件常量传播">SCCP（稀疏条件常量传播）
+</h4><p>常量不仅来自字面量，还来自<strong>某些路径根本走不到</strong>：简单的说，就是提前预判某些分支是否必走，从而方便我们的传播。</p>
+<p>我对SSA值维护了三值格 UNDEFINED/<strong>CONSTANT</strong>/OVERDEFINED，并不断传播，phi指令触发值合并从而改变状态，最终把 CONSTANT 的SSA值替换成常量。</p>
+<h4 id="purefunctionevaluation纯函数消除">PureFunctionEvaluation（纯函数消除）
+</h4><p>这个点是testfile7直接提醒到的。在<strong>无副作用、返回值只由参数决定</strong>的前提下，call 可以被当成一种可优化的表达式：参数全为常量时可以直接算出结果。此外，同一支配区域内对同一参数重复调用也可以复用结果。</p>
+<p>首先是纯函数候选：非main、非void、有函数体、不出现 load/store/alloca/gep/io、不调用非纯函数。然后在遇到纯函数就解释执行目标函数（设置了较强的限制，防止算太久），得到结果并替换 call。我还沿支配树维护 <code>(callee, args)</code> 表，若已有支配的同 key 调用就复用结果。</p>
+<h3 id="循环">循环
+</h3><h4 id="loopcanonicalization循环规范化">LoopCanonicalization（循环规范化）
+</h4><p>循环规范化是为了便于LICM的执行的。因为 LICM 需要一个<strong>循环外唯一入口</strong>，也就是说被外提的指令需要一个确定且唯一的放置点。</p>
+<p>如果存在一条边 <code>tail -&gt; header</code>，并且 <strong>header 支配 tail</strong>，那么 <code>tail -&gt; header</code> 是回边，<code>header</code> 是循环头。然后从 <code>tail</code> 反向沿前驱回溯，把能回溯到 <code>header</code> 的那些块收集起来，得到循环块集合。</p>
+<p>我们观察header的前驱，有多少来自循环外，也就是外部入口有多少。若循环头存在多个来自循环外的前驱，我就<strong>插入新的 preheader</strong>统一外部入口，把所有外部入口重定向到 preheader，并<strong>修复 header 的 phi</strong>：把外部 incoming 先在 preheader 合并（必要时插入新的 phi），让 header 只从 preheader 接收一个外部 incoming。</p>
+<h4 id="licm循环不变式外提">LICM（循环不变式外提）
+</h4><p>LICM 的直觉是：循环里有些表达式每次迭代都一样，留在循环体内就是重复算，把它们挪到 preheader 只算一次，循环体就能更短更快。</p>
+<p>我只外提<strong>无副作用、无定义新值</strong>的指令（ALU/CMP/EXTEND/TRUNC/GEP），明确排除 load/store/call/IO/控制流/phi。更宽泛地，如果某指令的 operand 在循环内定义时，倘若能判定该 operand 也是 invariant的就也能外提。最终把可外提指令插入到 preheader 的终结指令之前。</p>
+<h3 id="后端准备">后端准备
+</h3><h4 id="activeanalysis活跃分析">ActiveAnalysis（活跃分析）
+</h4><p>活跃分析的原因是寄存器分配必须知道<strong>哪些值必须跨块保留</strong>，否则很容易把仍在后续使用的值提前释放掉；而跨块活跃由每个块的 in/out 集合决定。我们先计算每块的 def/use，再迭代求解 in/out（out 为后继 in 的并集，in 为 use 并上 out−def），并<strong>额外处理 phi 的沿边使用</strong>：把从当前块流向后继块那条边对应的 phi <strong>incoming value</strong> 纳入 out 集合，保证跨边的真实需求被计入。</p>
+<h4 id="allocateregister寄存器分配">AllocateRegister（寄存器分配）
+</h4><p>我做寄存器分配的目标是尽可能把 SSA 值放进物理寄存器，让后端少发 lw/sw，没有实现 spill。通过沿支配树递归分配，进入子块时临时释放<strong>不在子块 in 集合里</strong>的寄存器，处理完子块再恢复。</p>
+<p>在块内我记录每个 useValue 的 last-use，当某值在本条指令里是最后一次使用且该值不属于 block-out，就<strong>立即释放</strong>它占用的寄存器。</p>
+<h4 id="removephi消除phi指令">RemovePhi（消除phi指令）
+</h4><p>对每个基本块开头的 phi，先按从哪个前驱跳过来就取哪个 incoming 值的含义，把它拆成写在各条前驱边上的一组<strong>并行拷贝</strong>（同一条边上可能要同时给多个 phi 结果赋值，所以逻辑上必须并行）</p>
+<p>如果某条边前驱有多个后继且后继有多个前驱，就无法把拷贝安全地放在前驱块末尾或后继块开头，因此要先插入一个只服务这条边的中间块，把拷贝放到中间块里；接着把并行拷贝集合线性化成若干条顺序 <code>MoveInstr</code>。</p>
+<blockquote>
+<p>并行操作转为顺序操作可能出现矛盾，比如环状赋值。这个时候就需要引入临时变量先把右值存下来，再move肯定不会错。</p>
+</blockquote>
+<h2 id="后端优化">后端优化
+</h2><p>后端优化我分为两各方面：一部分发生在 IR 的 <code>toMips()</code> 过程中，本质是<strong>指令翻译</strong>时就直接简化，是<strong>指令单位本身</strong>的优化，在不改变语义的前提下直接选择更省的 MIPS 序列。第二部分就是相对宏观的<strong>指令间</strong>优化，不过实际上还是非常局部、非常确定的<strong>窥孔</strong>。</p>
+<h3 id="翻译期优化">翻译期优化
+</h3><h4 id="立即数优先">立即数优先
+</h4><p>对于ADD/SUB/AND/OR ，如果有一项是常数，我会在立即数满足范围时优先选用 <code>addiu/andi/ori</code>，可以少加载一次寄存器。如果这个常数是0/1还可以做特判。</p>
+<h4 id="乘除模优化">乘除模优化
+</h4><p>乘法优化：对 0/1/-1、2^k、小常数（如 3/5/7/9/15）分别用 move/neg/shift/shift+add-sub 分解来避免 <code>mult</code>，此外如果执行了mult还会对 HI/LO 复用缓存。</p>
+<p>除法优化：对 1/-1 特判，对 ±2^k 走<strong>算术右移 + 符号修正</strong>的无 DIV 路径，对其它常数走 magic-number division（<code>mult/mfhi</code> + shift + 符号修正）尽量避免真实 <code>div</code>，对非常数才使用 <code>div + mflo</code></p>
+<p>取余优化：对 ±1 直接为 0，对 ±2^k 用移位/掩码实现符合<strong>向 0 取整</strong>的余数语义，对其它常数直接用真实 <code>div</code> 并取 <code>mfhi</code> 。</p>
+<h3 id="mipsoptimiserpeephole">MipsOptimiser（peephole）
+</h3><p>MipsOptimiser 我也单独写成了一个类，其实做的都是窥孔。我把它写成了<strong>多条规则迭代到稳定</strong>的形式：每一轮按固定顺序尝试所有规则，只要本轮有改动就继续下一轮，直到整个 <code>textSegment</code> 不再变化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">optimize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">changed</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">changed</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">forwardStoreLoads</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">changed</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">removeDuplicateStores</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">changed</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">dropTrivialMoves</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">changed</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">simplifyZeroAlu</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">changed</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">removeJumpToNextLabel</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">changed</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">removeDuplicateLoads</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">changed</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">removeLoadStoreBack</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">changed</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="forwardstoreloads">forwardStoreLoads
+</h4><p><strong>刚 store 完马上又从同一地址 load</strong>等价于直接复用被 store 的那个寄存器值。它的价值是把一次访存变成一次 move，甚至在后续再被 move 消除。我们在遇到一条 <code>sw/sh/sb</code> 之后向后扫描，若遇到对同一地址且类型匹配的 <code>lw/lh/lb...</code>，就把该 load 替换成 move。扫描会在危险的地方直接停止（label、jump、branch、syscall 以及大多数乘除相关指令）。如果扫描过程中<strong>同址再次 store</strong>，要更新<strong>可转发的最新值寄存器</strong>。</p>
+<h4 id="removeduplicatestores">removeDuplicateStores
+</h4><p>我做连续 store 合并的原因是刚才的操作虽然消除了load，但没消除store。所以又判断了一下相邻 store 是否写同一地址，若相同就删除前一条。</p>
+<h4 id="removeduplicateloads">removeDuplicateLoads
+</h4><p>相邻两次从同一地址、同一类型的 load 在中间没有可能改写该地址的情况下，第二次 load 的值与第一次完全一致。若目标寄存器也相同就删除后一条，否则把后一条替换为 <code>move dstB, dstA</code>。</p>
+<h4 id="removeloadstoreback">removeLoadStoreBack
+</h4><p>针对<code>lw r, addr; sw r, addr</code> ， store 写回的就是刚读到的值，内存内容不变，属于纯浪费。</p>
+<h4 id="droptrivialmoves">dropTrivialMoves
+</h4><p><code>move r, r</code> 直接删除。这个其实可以在翻译时实现的。</p>
+<h4 id="simplifyzeroalu">simplifyZeroAlu
+</h4><p>addi/sll/srl/sra 带 0 立即数，留着只会浪费一条指令。不过这个翻译时也有所实现。</p>
+<h4 id="removejumptonextlabel">removeJumpToNextLabel
+</h4><p>这种跳转对控制流没有任何实际作用。检查 <code>j L</code> 的下一条有效指令（忽略 annotation）是否正好是标签 <code>L:</code>，若是就删除该跳转。</p>
+<h2 id="小结">小结
+</h2><blockquote>
+<p>请总结本学期编译技术课程学习的收获，并提出对课程改进的意见、建议。</p>
+</blockquote>
+<h3 id="我的收获">我的收获
+</h3><p>​	如果要对整门编译技术课进行总结，在理论课上的收获可能感受起来更加真实。或者说本来形式语言与自动机的理论就比较有趣，在计组课上初步接触状态机后，还能在编译课上以文法为媒介学习更多细节的知识，体验还是很不错的。此外，课堂上还涉及到了有关运行栈的计算机底层知识，使其和COOS一脉相承。第三点就是理论与实验的联动比较强，这里主要指的就是LL分析以及中间代码优化的部分，课上的知识真的能为实验提供理论支持，这种体验感上次感受还是在一年前的CO理论讲冒险的时候。</p>
+<p>​	在实验上，虽然每项作业也有ddl，但整体的节奏感没有COOS那么紧张，这也导致了我在做编译这件事上很难做到久久为功，而往往是以多次集中突击的形式完成。编译实验是一门从0开始完成的大型项目，尽管经历了OO的磨练，我依旧难以培养起来比较清晰的模块观念，许多文件的设计都大量借鉴了学长的示例，例如IrModule，IrBuilder这样的类的设计。抛开这些不谈，经过编译实验我当然收获颇丰。从语法分析开始便一次又一次超出我的认知，类的数量太多以至于必须创建module，提取特征写父类，写抽象类，写记录类……静态类也是我之前OO课上未曾使用，但编译实验中频频使用的典例。</p>
+<h3 id="意见与建议">意见与建议
+</h3><p>编译课程整体的体验感就是难。削减难度这样的事可能未必是改进，但还是希望同学们能够稍微更轻松地完成实验，比如理论课可以增设llvm的讲解，然后适当减少用属性翻译文法进行中间代码生成那一部分的课时。</p>
 
 </section>
 
@@ -997,7 +1546,7 @@ function内部的不可达块，这个用DFS很容易解决。</p>
         
             2024 - 
         
-        2025 Demiurge
+        2026 Demiurge
     </section>
     
     <section class="powerby">
