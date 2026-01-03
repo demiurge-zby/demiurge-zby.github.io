@@ -989,8 +989,6 @@ generateAssignStmtIr 先用 VisitorLVal.generateLValIr(lval, true) <strong>拿�
 <p>Primary（括号、数字、左值）：括号就调用 generateExpIr，数字就构造 IrConstantInt，左值调用 VisitorLVal.generateLValIr(lval, false) 获取值。</p>
 <p>Ident 函数调用：<strong>getint（直接返回 GetIntInstr）</strong>，其他函数从 SymbolRecorder 取 FuncSymbol，把实参列表递归成 IrValue，最后 new <strong>CallInstr</strong>(irFunction, paramList)。</p>
 <p>一元运算符：<code>+</code> 返回原值；<code>-</code> 构造 0 - value 的 AluInstr；<code>!</code> 则先转 i32，再生成 CompareInstr(&quot;==&quot;, 0, value)，最后 <code>ExtendInstr 把布尔结果扩展成 i32</code>。</p>
-<p>布尔/条件表达式：</p>
-<p>左值加载：PrimaryExp 中的 LVal 调用 VisitorLVal.generateLValIr(lval, false)，这会根据是否数组、是否指针返回 LoadInstr 或 GEP+Load 的组合。所以 VisitorExp 不直接关心符号表，只处理表达式结构。</p>
 <h5 id="cond">Cond
 </h5><p>generateCondIr 是 if、for 条件代码的入口。它把 Cond 降成 LOrExp，以 trueBlock 和 falseBlock 为目标生成短路控制流。</p>
 <p>generateLOrExpIr 为下一个 || 子表达式<strong>创建一个中间块</strong>，在每个块里调用 generateLAndExpIr，<strong>得到的值通过 BranchInstr 控制跳转</strong>；若当前子表达式为真，<strong>立刻跳</strong>trueBlock；<strong>否则落到</strong>下一个 LAnd 块，实现短路。</p>

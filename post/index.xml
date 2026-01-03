@@ -473,8 +473,6 @@ generateAssignStmtIr 先用 VisitorLVal.generateLValIr(lval, true) &lt;strong&gt
 &lt;p&gt;Primary（括号、数字、左值）：括号就调用 generateExpIr，数字就构造 IrConstantInt，左值调用 VisitorLVal.generateLValIr(lval, false) 获取值。&lt;/p&gt;
 &lt;p&gt;Ident 函数调用：&lt;strong&gt;getint（直接返回 GetIntInstr）&lt;/strong&gt;，其他函数从 SymbolRecorder 取 FuncSymbol，把实参列表递归成 IrValue，最后 new &lt;strong&gt;CallInstr&lt;/strong&gt;(irFunction, paramList)。&lt;/p&gt;
 &lt;p&gt;一元运算符：&lt;code&gt;+&lt;/code&gt; 返回原值；&lt;code&gt;-&lt;/code&gt; 构造 0 - value 的 AluInstr；&lt;code&gt;!&lt;/code&gt; 则先转 i32，再生成 CompareInstr(&amp;quot;==&amp;quot;, 0, value)，最后 &lt;code&gt;ExtendInstr 把布尔结果扩展成 i32&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;布尔/条件表达式：&lt;/p&gt;
-&lt;p&gt;左值加载：PrimaryExp 中的 LVal 调用 VisitorLVal.generateLValIr(lval, false)，这会根据是否数组、是否指针返回 LoadInstr 或 GEP+Load 的组合。所以 VisitorExp 不直接关心符号表，只处理表达式结构。&lt;/p&gt;
 &lt;h5 id=&#34;cond&#34;&gt;Cond
 &lt;/h5&gt;&lt;p&gt;generateCondIr 是 if、for 条件代码的入口。它把 Cond 降成 LOrExp，以 trueBlock 和 falseBlock 为目标生成短路控制流。&lt;/p&gt;
 &lt;p&gt;generateLOrExpIr 为下一个 || 子表达式&lt;strong&gt;创建一个中间块&lt;/strong&gt;，在每个块里调用 generateLAndExpIr，&lt;strong&gt;得到的值通过 BranchInstr 控制跳转&lt;/strong&gt;；若当前子表达式为真，&lt;strong&gt;立刻跳&lt;/strong&gt;trueBlock；&lt;strong&gt;否则落到&lt;/strong&gt;下一个 LAnd 块，实现短路。&lt;/p&gt;
