@@ -800,21 +800,42 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra&lt;/p&
 &lt;/h3&gt;&lt;h4 id=&#34;removeunreachablecode&#34;&gt;RemoveUnreachableCode
 &lt;/h4&gt;&lt;p&gt;为什么先说这个呢？因为这个逻辑太简单了，而且这个优化能够在一定程度上帮助CFG的构建。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;单个基本块内&lt;/strong&gt;：跳转指令之后的指令在语义上永远不会执行&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;单个基本块内&lt;/strong&gt;：跳转指令之后的指令在语义上永远不会执行。因为跳转以基本块为单位，执行完跳转指令一定会到达某基本块的开头。&lt;/p&gt;
+&lt;p&gt;基本块内遇到 &lt;code&gt;jump/branch/return&lt;/code&gt;，删除后续所有指令。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;整体来看，entry不能跳转到的块也都是不可达的。从入口块 DFS，只保留可达块，其余块从函数的 blockList 中移除。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;因为跳转以基本块为单位，执行完跳转指令一定会到达某基本块的开头。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;整体来看，entry不能跳转到的块也都是不可达的。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;实现起来也很简单，不过注意删东西的时候要把Use关系也尽量删干净。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;基本块内遇到 &lt;code&gt;jump/branch/return&lt;/code&gt;，删除后续所有指令。&lt;/li&gt;
-&lt;li&gt;从入口块 DFS，只保留可达块，其余块从函数的 blockList 中移除。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;实现起来很简单，不过注意删东西的时候要把Use关系也尽量删干净。&lt;/p&gt;
 &lt;h4 id=&#34;cfgbuilder&#34;&gt;CfgBuilder
-&lt;/h4&gt;&lt;p&gt;扫描每个基本块末尾终结指令来重建 &lt;code&gt;beforeBlocks/nextBlocks&lt;/code&gt;，再把块首 phi 的 predecessor 列表与当前 &lt;code&gt;beforeBlocks&lt;/code&gt; 对齐，最后计算支配关系、立即支配与支配边界，为 InsertPhi、GVN、LICM 等提供基础信息。&lt;/p&gt;
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;optimize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;initFunctions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buildCfg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;syncPhiIncomingBlocks&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buildDominateRelationship&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buildDirectDominator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buildDominateFrontier&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;扫描每个基本块末尾终结指令来重建 &lt;code&gt;beforeBlocks/nextBlocks&lt;/code&gt;，再把块首 phi 的 predecessor 列表与当前 &lt;code&gt;beforeBlocks&lt;/code&gt; 对齐，最后计算支配关系、立即支配与支配边界。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;initFunctions()&lt;/code&gt; 先把每个基本块里旧的 CFG 信息清空，然后 &lt;code&gt;buildCfg()&lt;/code&gt; 重新连边。这里的图并不是单独的Graph对象，而是存放在每个基本块的两个属性里：&lt;code&gt;beforeBlocks&lt;/code&gt; 表示前驱，&lt;code&gt;nextBlocks&lt;/code&gt; 表示后继。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;buildCfg()&lt;/code&gt; 的逻辑非常直观：遇到无条件跳转就把target加到nextBlocks，同时把block加到target.beforeBlocks。遇到条件分支就分别对 true/false 两个目标都做同样的加后继/加前驱。&lt;/p&gt;
+&lt;p&gt;需要注意把块开头的 phi 的 incoming block 列表对齐到最新的 &lt;code&gt;beforeBlocks&lt;/code&gt;。支配关系的判断和上课讲的方法一样，假装把一个块从图里删掉，然后从入口块做一次 DFS，走不到的块就是依赖于被删的块。&lt;/p&gt;
 &lt;h3 id=&#34;无效代码删除&#34;&gt;无效代码删除
 &lt;/h3&gt;&lt;h4 id=&#34;jumpthreading&#34;&gt;JumpThreading
 &lt;/h4&gt;&lt;p&gt;跳转穿线的出发点是因为在处理控制流时，IR 很容易生成跳板块，也就是块里只有一条无条件跳转，这类块本身不提供任何语义增量，却会把 CFG 拉长、制造额外边与额外分支，从而让后续优化更难看清结构。&lt;/p&gt;

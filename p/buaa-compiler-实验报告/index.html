@@ -1316,21 +1316,42 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra</p>
 </h3><h4 id="removeunreachablecode">RemoveUnreachableCode
 </h4><p>为什么先说这个呢？因为这个逻辑太简单了，而且这个优化能够在一定程度上帮助CFG的构建。</p>
 <ol>
-<li><strong>单个基本块内</strong>：跳转指令之后的指令在语义上永远不会执行</li>
+<li>
+<p><strong>单个基本块内</strong>：跳转指令之后的指令在语义上永远不会执行。因为跳转以基本块为单位，执行完跳转指令一定会到达某基本块的开头。</p>
+<p>基本块内遇到 <code>jump/branch/return</code>，删除后续所有指令。</p>
+</li>
+<li>
+<p>整体来看，entry不能跳转到的块也都是不可达的。从入口块 DFS，只保留可达块，其余块从函数的 blockList 中移除。</p>
+</li>
 </ol>
-<blockquote>
-<p>因为跳转以基本块为单位，执行完跳转指令一定会到达某基本块的开头。</p>
-</blockquote>
-<ol start="2">
-<li>整体来看，entry不能跳转到的块也都是不可达的。</li>
-</ol>
-<p>实现起来也很简单，不过注意删东西的时候要把Use关系也尽量删干净。</p>
-<ul>
-<li>基本块内遇到 <code>jump/branch/return</code>，删除后续所有指令。</li>
-<li>从入口块 DFS，只保留可达块，其余块从函数的 blockList 中移除。</li>
-</ul>
+<p>实现起来很简单，不过注意删东西的时候要把Use关系也尽量删干净。</p>
 <h4 id="cfgbuilder">CfgBuilder
-</h4><p>扫描每个基本块末尾终结指令来重建 <code>beforeBlocks/nextBlocks</code>，再把块首 phi 的 predecessor 列表与当前 <code>beforeBlocks</code> 对齐，最后计算支配关系、立即支配与支配边界，为 InsertPhi、GVN、LICM 等提供基础信息。</p>
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">optimize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">initFunctions</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">buildCfg</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">syncPhiIncomingBlocks</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">buildDominateRelationship</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">buildDirectDominator</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">buildDominateFrontier</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>扫描每个基本块末尾终结指令来重建 <code>beforeBlocks/nextBlocks</code>，再把块首 phi 的 predecessor 列表与当前 <code>beforeBlocks</code> 对齐，最后计算支配关系、立即支配与支配边界。</p>
+<p><code>initFunctions()</code> 先把每个基本块里旧的 CFG 信息清空，然后 <code>buildCfg()</code> 重新连边。这里的图并不是单独的Graph对象，而是存放在每个基本块的两个属性里：<code>beforeBlocks</code> 表示前驱，<code>nextBlocks</code> 表示后继。</p>
+<p><code>buildCfg()</code> 的逻辑非常直观：遇到无条件跳转就把target加到nextBlocks，同时把block加到target.beforeBlocks。遇到条件分支就分别对 true/false 两个目标都做同样的加后继/加前驱。</p>
+<p>需要注意把块开头的 phi 的 incoming block 列表对齐到最新的 <code>beforeBlocks</code>。支配关系的判断和上课讲的方法一样，假装把一个块从图里删掉，然后从入口块做一次 DFS，走不到的块就是依赖于被删的块。</p>
 <h3 id="无效代码删除">无效代码删除
 </h3><h4 id="jumpthreading">JumpThreading
 </h4><p>跳转穿线的出发点是因为在处理控制流时，IR 很容易生成跳板块，也就是块里只有一条无条件跳转，这类块本身不提供任何语义增量，却会把 CFG 拉长、制造额外边与额外分支，从而让后续优化更难看清结构。</p>
