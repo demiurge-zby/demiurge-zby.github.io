@@ -505,6 +505,7 @@
           </ol>
         </li>
         <li><a href="#查询代价的度量">查询代价的度量</a></li>
+        <li><a href="#代数优化与物理优化">代数优化与物理优化</a></li>
         <li><a href="#关系代数等价变换">关系代数等价变换</a></li>
         <li><a href="#查询优化的一般准则">查询优化的一般准则</a></li>
       </ol>
@@ -764,8 +765,8 @@
 </h3><p>数据管理的三个阶段：人工管理阶段、文件系统阶段、数据库系统阶段。</p>
 <ul>
 <li>人工管理：不存储数据、数据不共享、无独立性</li>
-<li>文件系统：数据存储为文件、有一定的共享性、有一定的独立性</li>
-<li>文件系统：数据冗余与不一致、独立性差</li>
+<li>文件系统：数据存储为文件、有一定的共享性、有一定的物理独立性、无逻辑独立性</li>
+<li>文件系统：数据冗余与不一致、数据独立性整体较差</li>
 <li>数据库系统：<strong>面向全组织的结构化</strong>，<strong>数据集成与共享</strong>、<strong>可控冗余度</strong>，<strong>数据独立性好</strong>，<strong>统一的控制机制</strong></li>
 </ul>
 <h3 id="数据库系统">数据库系统
@@ -785,7 +786,7 @@
 <h4 id="概念数据模型">概念数据模型
 </h4><p>实体（值）、属性、域、实体型、实体集</p>
 <p>能唯一标识实体的属性集：码</p>
-<p>联系的种类：1对1，1对多，多对多</p>
+<p>联系的<strong>类型</strong>：1对1，1对多，多对多</p>
 <p>E-R图</p>
 <h4 id="逻辑数据模型">逻辑数据模型
 </h4><p>层次模型：树结构，结点是数据集合，边是多个指针，不可表达多对多，对用户要求较高。</p>
@@ -797,14 +798,18 @@
 <p>型是对一类属性结构和属性的说明，值是型的具体赋值</p>
 <p>模式也有其对应的实例。</p>
 <p>数据库系统<strong>三级模式与两级映像</strong></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231160929600.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600.png"
+	width="549"
+	height="355"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600_hu16639843157920233062.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600_hu4694091118305588877.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231160929600"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="154"
+		data-flex-basis="371px"
 	
 ></p>
 <p>内模式：存储模式</p>
@@ -854,10 +859,7 @@
 </h4><p>用关系模型设置出来的一种结构就是关系模式。</p>
 <p>关系模式还能确定为<strong>关系实例</strong>，关系实例是关系模式在<strong>某一时刻</strong>的状态或内容。</p>
 <p>R（U，D，dom，F， I），R为关系名，U</p>
-<p>为组成该关系的<strong>属性名集合</strong>，D为属性集U<strong>所来自的</strong></p>
-<p><strong>域</strong>，dom为<strong>属性</strong>向<strong>域</strong>的<strong>映象集合</strong>、F为属性间的<strong>数</strong></p>
-<p><strong>据依赖关系</strong>集合，I为<strong>完整性约束</strong>集合。关系模式通</p>
-<p>常可以简记作R(A1 , A2 ,…, An ) ，只写<strong>R,U</strong>。</p>
+<p>为组成该关系的<strong>属性名集合</strong>，D为属性集U<strong>所来自的域</strong>，dom为<strong>属性</strong>向<strong>域</strong>的<strong>映象集合</strong>、F为属性间的<strong>数据依赖关系</strong>集合，I为<strong>完整性约束</strong>集合。关系模式通常可以简记作R(A1 , A2 ,…, An ) ，只写<strong>R,U</strong>。</p>
 <h4 id="关系数据库-1">关系数据库
 </h4><p>关系数据库的型是关系模式的集合。（各个表的结构）</p>
 <p>关系数据库的值是关系实例的集合。（具体的取值）</p>
@@ -893,117 +895,157 @@
 <h4 id="基本运算">基本运算
 </h4><p><strong>集合并、集合差、广义笛卡尔积、选择、投影</strong></p>
 <p>其他运算都可以由基本运算得出。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174413660.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660.png"
+	width="827"
+	height="553"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660_hu15686052086503034601.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660_hu5038847731483644247.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174413660"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="149"
+		data-flex-basis="358px"
+	
 ></p>
 <p>运算的结果都是表，也就是<strong>元组的集合</strong>。</p>
 <h4 id="并运算">并运算
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174506438.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438.png"
+	width="914"
+	height="295"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438_hu14518445711835707448.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438_hu10289486494473992544.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174506438"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="309"
+		data-flex-basis="743px"
+	
 ></p>
 <p>会去重。</p>
 <h4 id="差运算">差运算
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174539244.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244.png"
+	width="884"
+	height="283"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244_hu14061628261038309367.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244_hu12550629106264387571.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174539244"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="312"
+		data-flex-basis="749px"
+	
 ></p>
 <p>前面的去掉共有的。R-S与S-R不同。</p>
 <h4 id="交运算">交运算
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174656568.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568.png"
+	width="861"
+	height="435"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568_hu6928933061114942196.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568_hu2862390324854437686.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174656568"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="197"
+		data-flex-basis="475px"
+	
 ></p>
 <h4 id="广义笛卡尔积">广义笛卡尔积
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174739061.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061.png"
+	width="654"
+	height="72"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061_hu2902147288997056868.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061_hu5301929276531952205.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174739061"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="908"
+		data-flex-basis="2180px"
+	
 ></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174752893.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893.png"
+	width="850"
+	height="508"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893_hu18096060601992693413.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893_hu15072505581783697541.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174752893"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="167"
+		data-flex-basis="401px"
+	
 ></p>
 <p>笛卡尔积的元组个数是原来两个关系的元组个数的乘积。</p>
 <p>笛卡尔积的属性个数是原来两个关系的属性个数之和。</p>
 <h4 id="选择运算">选择运算
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174812110.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110.png"
+	width="734"
+	height="426"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110_hu13203740469404402024.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110_hu16346878322580102709.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174812110"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="413px"
+	
 ></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174832386.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386.png"
+	width="816"
+	height="520"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386_hu7966413066702056344.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386_hu2366154945645515954.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174832386"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="376px"
+	
 ></p>
 <h4 id="投影运算">投影运算
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174847450.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450.png"
+	width="745"
+	height="434"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450_hu15698715445615155934.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450_hu1509585820899813433.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174847450"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="171"
+		data-flex-basis="411px"
+	
 ></p>
 <p>要去重。</p>
 <h4 id="连接运算">连接运算
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174913634.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634.png"
+	width="840"
+	height="398"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634_hu15174385565594270981.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634_hu12552632583769898908.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231174913634"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="506px"
 	
 ></p>
 <p>笛卡尔积是强硬的拼接。经过选择即为连接。</p>
@@ -1015,14 +1057,18 @@
 <p>1.不强调是哪个属性，而是取<strong>属性名相同</strong>且<strong>取值相等</strong>拼接为新元组</p>
 <p>2.同名属性只保留一份</p>
 <p>因此自然拼接后属性的个数未必等于原关系的属性数之和。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231180427756.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756.png"
+	width="866"
+	height="348"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756_hu11029066949412479499.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756_hu8003457451287631665.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231180427756"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="597px"
 	
 ></p>
 <blockquote>
@@ -1043,14 +1089,18 @@
 <p>右外连接 = 自然连接 + 右侧表中失配的元组</p>
 <p>全外连接 = 自然连接 + 两侧表中失配的元组</p>
 </blockquote>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231181139249.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249.png"
+	width="866"
+	height="571"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249_hu1901563508339082988.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249_hu6787400136094552857.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231181139249"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="363px"
 	
 ></p>
 <h4 id="除运算">除运算
@@ -1059,26 +1109,34 @@
 <p>也即C的属性应为 A的属性<strong>去掉</strong>B的属性</p>
 <p>C应该填什么值？C中的值和B中的值一定能组合出A中的值！</p>
 <p>那么需要考虑A中<strong>与B中元组取值相同</strong>的元组。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231182040182.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182.png"
+	width="893"
+	height="495"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182_hu8821633159183598064.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182_hu10939096735168309306.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231182040182"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="432px"
+	
 ></p>
 <p>可以大胆先得到所有可能元组ab,bc,ed，然后再逐元组验证。</p>
 <p>也可以利用象集：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231181311887.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887.png"
+	width="871"
+	height="307"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887_hu8240129153761069147.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887_hu16734174690122487840.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231181311887"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="283"
+		data-flex-basis="680px"
 	
 ></p>
 <p>对于T(CD,AB),</p>
@@ -1087,36 +1145,48 @@
 <p>对所有象集做广义交（在所有象集中都出现的元组）。</p>
 <p>下面也是一种思路：</p>
 <p>先列出所有AB的组合，并做笛卡尔积，得到理想被除数，然后减去真实被除数，可以得到欠缺的组合，从中提取欠缺的AB。最后并从所有AB组合中减去欠缺的AB，就是真正的商。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231183200875.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875.png"
+	width="689"
+	height="454"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875_hu9460145076350236195.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875_hu8099778447134023449.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231183200875"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="364px"
+	
 ></p>
 <p>这也就得到了除法的这一定义：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231183549756.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756.png"
+	width="380"
+	height="51"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756_hu11491704607478254103.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756_hu9905657720518800576.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231183549756"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="745"
+		data-flex-basis="1788px"
+	
 ></p>
 <p>其中，</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231183818202.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202.png"
+	width="197"
+	height="65"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202_hu12247990403960904121.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202_hu18076380631567383979.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231183818202"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="303"
+		data-flex-basis="727px"
 	
 ></p>
 <p>就代表找到的AB组合一定能满足和除数做笛卡尔积还在R中，也就是除数包含于这个组合的象集。</p>
@@ -1124,45 +1194,61 @@
 <p>除法的特殊含义：得到的数据满足<strong>S中所有要求</strong>，也即与S中<strong>所有数据</strong>都满足关系R。</p>
 <h4 id="关系代数练习">关系代数练习
 </h4><p>简单的选择+投影</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231184954797.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797.png"
+	width="567"
+	height="92"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797_hu11694626621061819115.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797_hu15910402163219989841.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231184954797"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="616"
+		data-flex-basis="1479px"
+	
 ></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185018120.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120.png"
+	width="561"
+	height="95"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120_hu4192508129995451759.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120_hu6406547194290917838.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231185018120"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="590"
+		data-flex-basis="1417px"
+	
 ></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185041576.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576.png"
+	width="593"
+	height="161"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576_hu7262597929896338427.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576_hu1413431517549715784.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231185041576"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="368"
+		data-flex-basis="883px"
+	
 ></p>
 <p>多表连接后选择+投影</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185117756.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756.png"
+	width="615"
+	height="99"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756_hu4645682205627111963.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756_hu15151501085256417642.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231185117756"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="621"
+		data-flex-basis="1490px"
 	
 ></p>
 <p>可只选择表的一部分（关联部分+使用部分）后进行连接。</p>
@@ -1171,28 +1257,36 @@
 <p>Cpno=5也可以最后再选择，但是连接操作cost很大，预处理后再连接比较好。</p>
 <p>Course甚至也可以先投影只留下Cno和Cpno</p>
 </blockquote>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185208842.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842.png"
+	width="825"
+	height="154"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842_hu13255608370174194422.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842_hu645998869737345469.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231185208842"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="535"
+		data-flex-basis="1285px"
 	
 ></p>
 <p>除法！</p>
 <p>先求学号，之后关联就能求姓名。</p>
 <p>学号怎么求？ 满足和<strong>所有课程</strong>都有<strong>选修关系</strong>的<strong>学生学号</strong>，用<strong>除法</strong>！</p>
 <p>需要注意<strong>属性的选择</strong>。这里被除数不应包含其他属性。例如被除数包含<code>成绩</code>属性，那么就会要求<code>（学号，成绩）</code>的二元组与所有课程都有选修关系，也就是选了所有课的<strong>且成绩都相同</strong>选课记录，这是错误的。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185950025.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025.png"
+	width="781"
+	height="100"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025_hu11920404522393909297.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025_hu8568508429659368855.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231185950025"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="781"
+		data-flex-basis="1874px"
 	
 ></p>
 <h3 id="数据操作sql语言">数据操作——SQL语言
@@ -1202,14 +1296,18 @@
 <p>3.面向集合的操作方式（关系操作的特点）</p>
 <p>4.以同一种语法结构提供<strong>两种使用方式</strong>，<strong>SQL既是自含式语言，又是嵌入式语言</strong></p>
 <p>5.语言简洁，易学易用</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231191320008.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008.png"
+	width="859"
+	height="283"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008_hu4842746288407913868.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008_hu2230071705357144086.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231191320008"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="303"
+		data-flex-basis="728px"
 	
 ></p>
 <p>外模式、模式和内模式都可以用SQL管理。</p>
@@ -1242,14 +1340,18 @@
 <p>Select Count(<strong>Distinct</strong> Sno) From SC;</p>
 <h5 id="条件表达式">条件表达式
 </h5><p>where + 条件表达式</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231192443420.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420.png"
+	width="665"
+	height="529"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420_hu9308205350535706486.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420_hu16546704935710949648.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231192443420"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="125"
+		data-flex-basis="301px"
 	
 ></p>
 <p>LIKE: 支持通配符<code>%</code>(通配零到多个字符)，<code>_</code>(仅通配一个字符)</p>
@@ -1292,36 +1394,48 @@
 <p>from 表1</p>
 <p>JOIN 表2 ON .连接条件</p>
 </blockquote>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231195510833.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833.png"
+	width="545"
+	height="114"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833_hu5978178471052532425.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833_hu7506633915238102830.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231195510833"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="478"
+		data-flex-basis="1147px"
+	
 ></p>
 <p>表名后也可以加空格进行更名。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231195532219.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219.png"
+	width="718"
+	height="137"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219_hu7507716659015085120.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219_hu1911637253172666972.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231195532219"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="524"
+		data-flex-basis="1257px"
+	
 ></p>
 <p>外连接：所有学生</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231200242005.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005.png"
+	width="758"
+	height="180"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005_hu6169688774024892952.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005_hu1272905900861648693.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231200242005"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="421"
+		data-flex-basis="1010px"
 	
 ></p>
 <p>新版本表达（推荐）：</p>
@@ -1334,14 +1448,18 @@
 <blockquote>
 <p>这里是特殊情况，使用=</p>
 </blockquote>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231200744915.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915.png"
+	width="729"
+	height="333"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915_hu3198103451485367842.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915_hu6263016246086586713.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231200744915"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="218"
+		data-flex-basis="525px"
 	
 ></p>
 <p>这是一个不相关子查询。</p>
@@ -1350,39 +1468,51 @@
 <p>先求出课程名为‘信息系统’的课程号，</p>
 <p>再求选修了该课程号的学生的学号，</p>
 <p>最后求该学号对应的学号和姓名。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231200956497.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497.png"
+	width="547"
+	height="231"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497_hu16272848996507421689.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497_hu5915239928899146602.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231200956497"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="236"
+		data-flex-basis="568px"
+	
 ></p>
 <p><code>查询选择了1号课程的学生姓名。</code></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231202501986.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986.png"
+	width="490"
+	height="131"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986_hu17445605533503912344.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986_hu11090747081752977065.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231202501986"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="374"
+		data-flex-basis="897px"
 	
 ></p>
 <p>这是一个<strong>相关子查询</strong>。</p>
 <p><strong>外层Student表也参与了子查询</strong>。执行逻辑是遍历父查询的每一个元组，对每个元组计算Student.Sno，这个值参与子查询的运算，从而决定父查询是否包含该元组。</p>
 <p><code>查询选修了全部课程的学生姓名</code></p>
 <p>除法操作，表示与某属性所有值均有联系：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231203349483.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483.png"
+	width="526"
+	height="273"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483_hu12146075138560583023.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483_hu16304423033656185086.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231203349483"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="192"
+		data-flex-basis="462px"
 	
 ></p>
 <p>这是一个相关子查询。</p>
@@ -1392,37 +1522,49 @@
 <p>如果改为EXIST EXIST，则表示选修过课程。</p>
 <p>如果改为NOEXIST EXIST，则表示未选修过课程。</p>
 <h5 id="集合查询">集合查询
-</h5><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231204837359.png"
-	
-	
-	
+</h5><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359.png"
+	width="486"
+	height="170"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359_hu9579730471219606287.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359_hu7981442943043895944.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231204837359"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="285"
+		data-flex-basis="686px"
+	
 ></p>
 <p>对语句做<strong>并</strong>操作。要求查询结果字段结构一致。</p>
 <p><strong>交操作与差操作没有集合查询功能。</strong></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231204950810.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810.png"
+	width="562"
+	height="250"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810_hu10075278058709758706.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810_hu2921593696800434575.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231204950810"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="224"
+		data-flex-basis="539px"
+	
 ></p>
 <p>差集就是排除，只需要把第二个条件取反，或者用NOT。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231205020740.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740.png"
+	width="606"
+	height="148"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740_hu4914085027258375456.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740_hu7285929341057958796.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231205020740"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="409"
+		data-flex-basis="982px"
 	
 ></p>
 <h4 id="数据更新">数据更新
@@ -1430,14 +1572,18 @@
 </h5><blockquote>
 <p>不是add</p>
 </blockquote>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231205626250.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250.png"
+	width="605"
+	height="328"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250_hu11995207457288021873.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250_hu12405485366147511893.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231205626250"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="442px"
 	
 ></p>
 <p>如果只insert了一部分属性，其余属性值<strong>默认为null</strong>。</p>
@@ -1447,47 +1593,63 @@
 </blockquote>
 <p>支持原值引用。</p>
 <p>子查询的值可以用在<strong>WHERE</strong>语句与<strong>SET</strong>语句。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231205706643.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643.png"
+	width="463"
+	height="293"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643_hu16387245219625737043.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643_hu7282009934175404760.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231205706643"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="379px"
+	
 ></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231205719741.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741.png"
+	width="609"
+	height="201"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741_hu8569741830314971779.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741_hu16475998647863144052.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231205719741"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="302"
+		data-flex-basis="727px"
+	
 ></p>
 <h5 id="delete">Delete
 </h5><p>delete from 表名 会直接删掉该表所有元组。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231210055483.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483.png"
+	width="608"
+	height="161"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483_hu649226838779886245.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483_hu8667416395142145826.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231210055483"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="377"
+		data-flex-basis="906px"
+	
 ></p>
 <h4 id="数据定义">数据定义
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231210129817.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817.png"
+	width="565"
+	height="215"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817_hu8959489073866663889.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817_hu16221928763492924926.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231210129817"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="262"
+		data-flex-basis="630px"
 	
 ></p>
 <h5 id="基本表定义删除修改">基本表——定义、删除、修改
@@ -1496,65 +1658,84 @@
 <p><strong>(</strong>&lt;列名&gt;&lt;<strong>数据类型</strong>&gt;[&lt;<strong>列级</strong>完整性约束&gt;]</p>
 <p>[{, &lt;列名&gt;&lt;数据类型&gt;[&lt;<strong>列级</strong>完整性约束&gt;]}]</p>
 <p>[{, [&lt;<strong>表级</strong>完整性约束&gt;]}]<strong>)</strong></p>
-<p><strong>数据类型</strong>常用：char(n)、int、float(n)、date、time</p>
+<p><strong>数据类型</strong>常用：char(n)、int、DECIMAL(总位数, 小数位数)、date、time</p>
 <p><strong>完整性约束</strong>：NULL/NOT NULL（列级）、UNIQUE（<strong>列级</strong>、候选码，可以取空值）、PRIMARY KEY（<strong>表级</strong>、主码，不可取空值）、FOREIGN KEY（<strong>表级</strong>）、CHECK（<strong>表级</strong>）</p>
 <p>单一属性的非外码的表级完整性约束也可以只写在对应列级上。</p>
-<p>注意约束项作为一个整体，内部无逗号。项与项之间有逗号。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231210608638.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638.png"
+	width="508"
+	height="323"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638_hu834397789175118658.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638_hu2024858995677050380.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231210608638"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="377px"
+	
 ></p>
 <p>外码的书写需要标明reference 表(主码)</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231210815802.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802.png"
+	width="629"
+	height="321"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802_hu5498560619497872619.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802_hu15065666143613759365.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231210815802"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="195"
+		data-flex-basis="470px"
+	
 ></p>
 <h6 id="alter">alter
-</h6><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231211039990.png"
-	
-	
-	
+</h6><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990.png"
+	width="587"
+	height="188"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990_hu9979324304363698635.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990_hu481634302823734494.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231211039990"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="312"
+		data-flex-basis="749px"
+	
 ></p>
 <p>drop尽量不要删除属性列，其实是可以删的。</p>
 <p>modify尽量不要改列名，虽然其实也可以改。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231211201064.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064.png"
+	width="623"
+	height="271"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064_hu800179444154486914.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064_hu4154663356775395685.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231211201064"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="229"
+		data-flex-basis="551px"
+	
 ></p>
 <h6 id="drop">drop
 </h6><p>直接 drop table 表名即可删除整个基本表。分配的空间也回收了。</p>
 <h5 id="索引定义删除">索引——定义、删除
-</h5><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231212609133.png"
-	
-	
-	
+</h5><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133.png"
+	width="596"
+	height="140"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133_hu10156639624485020368.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133_hu4916954648704322895.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231212609133"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="425"
+		data-flex-basis="1021px"
 	
 ></p>
 <p>unique是<strong>唯一性约束</strong>，cluster要求索引与基本表在<strong>物理上连续存储</strong>，便于查询。</p>
@@ -1565,14 +1746,18 @@
 <p>不能说索引<strong>越多越好</strong>，也不能说索引会提高<strong>操作</strong>效率</p>
 </blockquote>
 <p>也是create和drop</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231212007391.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391.png"
+	width="456"
+	height="230"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391_hu7401616556572984735.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391_hu8259499834511081633.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231212007391"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
 	
 ></p>
 <p>index的drop<strong>不会丢失数据，不必备份</strong>。</p>
@@ -1587,14 +1772,18 @@
 </blockquote>
 <p>直接利用视图<strong>封装</strong>好复杂的select语句。</p>
 <p>我们只提供视图，就既能提供功能，还能保护数据。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231213220186.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186.png"
+	width="389"
+	height="179"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186_hu14651907302273803139.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186_hu13503188598226499196.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231213220186"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="217"
+		data-flex-basis="521px"
 	
 ></p>
 <p>手写列名可用于更名。</p>
@@ -1603,14 +1792,18 @@
 <p><strong>drop view 视图名</strong>即可直接删除，<strong>不会丢失数据，不必备份</strong>。</p>
 <h6 id="视图消解">视图消解
 </h6><p>DBMS会<strong>尝试</strong>把程序员发起的SQL指令中的视图拆为select，并进行语句合并，融合为一个select进行。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231214523805.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805.png"
+	width="723"
+	height="305"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805_hu1663470552278793962.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805_hu8758948390672413696.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231214523805"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="237"
+		data-flex-basis="568px"
 	
 ></p>
 <h6 id="视图更新">视图更新
@@ -1679,14 +1872,18 @@
 <p>存取控制可以分为</p>
 <p><strong>自主存取控制（DAC)</strong>：更自由，用户对不同数据对象有不同权限，可转授权限。</p>
 <p>用户权限分为<strong>数据对象</strong>和<strong>操作类型</strong>两个要素。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231221910126.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126.png"
+	width="559"
+	height="250"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126_hu826352341707328914.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126_hu3484082280025823865.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231221910126"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="223"
+		data-flex-basis="536px"
 	
 ></p>
 <p><strong>用户级</strong>权限：一般由<strong>数据库管理员</strong>为每个用户授权，与整个数据库相关。</p>
@@ -1698,24 +1895,32 @@
 </blockquote>
 <p><strong>用户级权限与角色</strong></p>
 <p>授权与收回权限：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231222204396.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396.png"
+	width="584"
+	height="92"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396_hu17842181981140452777.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396_hu707566643347601723.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231222204396"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="634"
+		data-flex-basis="1523px"
+	
 ></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231222504946.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946.png"
+	width="599"
+	height="73"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946_hu11462654591199880146.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946_hu2555819577653032113.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231222504946"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="820"
+		data-flex-basis="1969px"
 	
 ></p>
 <p><strong>public</strong> 指数据库中的<strong>全部用户</strong>。</p>
@@ -1723,14 +1928,18 @@
 <p><strong>多重授权</strong>：A-&gt;C B-&gt;C  若A被revoke,C仍有权限。</p>
 <p><strong>循环授权</strong>：A-&gt;B B-&gt;C 若C主动-&gt;B，会导致A被revoke,C仍有权限。现在已被禁止。</p>
 <p>Oracle的角色：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231222405279.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279.png"
+	width="639"
+	height="269"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279_hu6707887472069681813.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279_hu6157568382629340588.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231222405279"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="237"
+		data-flex-basis="570px"
 	
 ></p>
 <p><strong>没有授权CONNECT甚至没有登录权。</strong></p>
@@ -1738,14 +1947,18 @@
 <p><strong>关系级权限</strong></p>
 <p>对于具体的表格与视图的权限控制。</p>
 <p>多了<strong>ON子句针对具体的表/视图</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231222813243.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243.png"
+	width="513"
+	height="118"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243_hu5822237084203398362.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243_hu4459885042370359270.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231222813243"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="434"
+		data-flex-basis="1043px"
 	
 ></p>
 <p>可以<strong>利用视图</strong>实现<strong>安全控制</strong>。</p>
@@ -1816,14 +2029,18 @@
 <p><strong>隐含约束</strong>：数据<strong>模式</strong>隐含约束，DDL语句说明（如实体完整性约束等建表时就确定的约束）</p>
 <p><strong>显式约束</strong>：人为显示定义的语义与应用层约束</p>
 <h6 id="隐含约束">隐含约束
-</h6><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231233021430.png"
-	
-	
-	
+</h6><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430.png"
+	width="628"
+	height="299"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430_hu6082268589177755615.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430_hu15409471827189846705.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231233021430"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="210"
+		data-flex-basis="504px"
 	
 ></p>
 <ul>
@@ -1834,14 +2051,18 @@
 <li>
 <p><strong>参照完整性约束</strong>：</p>
 <p>Insert、Update、<strong>Delete</strong>时检查</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231233141515.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515.png"
+	width="675"
+	height="173"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515_hu12455139527974763775.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515_hu16826201548399398097.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20251231233141515"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="390"
+		data-flex-basis="936px"
 	
 ></p>
 </li>
@@ -1893,14 +2114,18 @@
 <h3 id="函数依赖">函数依赖
 </h3><p>数据依赖中最重要的就是<strong>函数依赖</strong>。</p>
 <p>在某关系模式中，若某属性组A的值确定后，另一属性组B的值也被唯一确定，则称A<strong>函数决定</strong>B，B<strong>函数依赖</strong>于A。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260101224113675.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675.png"
+	width="683"
+	height="220"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675_hu5078625068138061809.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675_hu4823216054321191868.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260101224113675"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="310"
+		data-flex-basis="745px"
 	
 ></p>
 <ul>
@@ -1917,27 +2142,35 @@
 <p>根据表格初步判断函数依赖时，找<strong>左端重复项</strong>，对应<strong>右端是否相同</strong>即可。</p>
 <h4 id="分类">分类
 </h4><h5 id="平凡函数依赖与非平凡函数依赖">平凡函数依赖与非平凡函数依赖
-</h5><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102172528087.png"
-	
-	
-	
+</h5><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087.png"
+	width="707"
+	height="141"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087_hu12047593620632361379.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087_hu15069837657776348481.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102172528087"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="501"
+		data-flex-basis="1203px"
+	
 ></p>
 <p>自己决定自己就是平凡的函数依赖。</p>
 <p>平凡的函数依赖是<strong>永真的</strong>，意义不大。</p>
 <h5 id="完全函数依赖与部分函数依赖">完全函数依赖与部分函数依赖
-</h5><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102172649547.png"
-	
-	
-	
+</h5><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547.png"
+	width="715"
+	height="282"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547_hu11851577772503905140.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547_hu9726601793900897387.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102172649547"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="253"
+		data-flex-basis="608px"
 	
 ></p>
 <p>完全：<strong>full</strong>   部分：<strong>part</strong></p>
@@ -1947,14 +2180,18 @@
 <p>完全函数依赖属性缺一不可，部分函数依赖则有冗余</p>
 </blockquote>
 <h5 id="传递函数依赖">传递函数依赖
-</h5><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102173245901.png"
-	
-	
-	
+</h5><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901.png"
+	width="714"
+	height="210"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu3970169055908078286.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu5233340698487108157.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102173245901"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="340"
+		data-flex-basis="816px"
 	
 ></p>
 <ol>
@@ -1964,14 +2201,18 @@
 </ol>
 <h4 id="码的规范定义">码的规范定义
 </h4><p>码有 <em>唯一性</em> 和 <strong>最小性</strong>。其实对应的就是 <strong>完全</strong> <em>函数依赖</em>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102174005434.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434.png"
+	width="684"
+	height="272"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434_hu1751332187091922592.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434_hu13046305950595674094.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102174005434"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="251"
+		data-flex-basis="603px"
 	
 ></p>
 <p>超码不一定是码，而是广义的码。只要求函数依赖，不强调<strong>完全</strong>。</p>
@@ -2000,14 +2241,18 @@
 </h4><p>关系中每一分量必须是<strong>原子的，不可再分</strong>。即不能以<strong>集合、序列</strong>等作为属性值。</p>
 <p>这是关系六大性质之一。所以<strong>只要是关系模式，都满足1NF</strong>。</p>
 <h4 id="2nf">2NF
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102175505230.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230.png"
+	width="658"
+	height="86"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230_hu3141722199783991162.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230_hu10592608540915859914.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102175505230"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="765"
+		data-flex-basis="1836px"
 	
 ></p>
 <p>也就是<strong>所有候选码</strong>都<strong>完全决定</strong> <strong>所有非主属性</strong>。</p>
@@ -2034,14 +2279,18 @@
 <p><strong>规范化为2NF的示例</strong>：</p>
 <p>将<strong>导致部分函数依赖</strong>的<strong>完全函数依赖</strong>相关的<strong>主属性与非主属性</strong>拉出去单独成表。</p>
 <p>原表若缺主码可以再填回主属性。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102180752984.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984.png"
+	width="822"
+	height="467"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984_hu7367860626296854218.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984_hu16780417690887266198.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102180752984"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="422px"
 	
 ></p>
 <h4 id="3nf">3NF
@@ -2053,25 +2302,33 @@
 <li><strong>正式定义</strong>：</li>
 </ul>
 <p>不要求2NF的前提。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102181023990.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990.png"
+	width="680"
+	height="188"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990_hu2186483516119104912.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990_hu17097779004552255367.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102181023990"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="361"
+		data-flex-basis="868px"
+	
 ></p>
 <p>对比一下传递依赖的定义：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102173245901.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901.png"
+	width="714"
+	height="210"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu3970169055908078286.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu5233340698487108157.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102173245901"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="340"
+		data-flex-basis="816px"
 	
 ></p>
 <p>3NF去除了Y不是X的子集的限制。</p>
@@ -2092,14 +2349,18 @@
 <p><strong>规范化为3NF的示例</strong>：</p>
 <p>将<strong>导致传递依赖</strong>的<strong>非主属性内部函数依赖</strong>相关的<strong>非主属性</strong>拉出去单独成表。</p>
 <p>新表的码放回原表当外码。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102181547534.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534.png"
+	width="630"
+	height="392"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534_hu16667104998419220038.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534_hu13631304496717632771.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102181547534"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="385px"
 	
 ></p>
 <h4 id="bcnf">BCNF
@@ -2114,14 +2375,18 @@
 <p>因为C的不同产生的不同元组也会存入A-&gt;B的冗余信息。</p>
 </li>
 </ul>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102184110122.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122.png"
+	width="664"
+	height="80"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122_hu12001459148137697659.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122_hu8267611274498076459.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102184110122"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="830"
+		data-flex-basis="1992px"
 	
 ></p>
 <p>所有<strong>非平凡函数决定者</strong>必须是<strong>码</strong>（也就是候选码）。</p>
@@ -2175,38 +2440,50 @@
 <h4 id="求属性集的闭包">求属性集的闭包
 </h4><p>F有闭包，属性集也有闭包！</p>
 <p>属性集X的闭包X<del>F</del>^+^是它在 F^+^ 中<strong>能函数决定</strong>的属性的集合。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102200756107.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107.png"
+	width="653"
+	height="238"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107_hu2547647634167893043.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107_hu10016437803210741688.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102200756107"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="274"
+		data-flex-basis="658px"
+	
 ></p>
 <p>引理一就是合并律与分解律。</p>
 <p>引理二显然，总之要判定一个函数依赖是否可推导、是否成立，我们需要求出决定者的闭包中有没有依赖者，总之要会算X<del>F</del>^+^。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102201249838.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838.png"
+	width="705"
+	height="360"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838_hu9503599163870260731.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838_hu6586771089921759690.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102201249838"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="195"
+		data-flex-basis="470px"
+	
 ></p>
 <p>把X放进闭包，然后从闭包里找F^+^中的左端项，把所有对应右端项放进去。迭代直到闭包结果不变或达到全集。</p>
 <p>逻辑很直观很简单。下面是一个例子。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102201646599.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599.png"
+	width="675"
+	height="354"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599_hu9632514731757908451.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599_hu11501153548175300607.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102201646599"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="457px"
 	
 ></p>
 <p>同理，(AC)<del>F</del>^+^= ABCDE。</p>
@@ -2258,25 +2535,33 @@
 <li>验证每一条函数依赖的<strong>决定者的子集</strong>是否也能推出<strong>依赖者</strong>。</li>
 </ol>
 <p>最小覆盖不是唯一的，和我们的验证（删除）顺序有关。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102204447208.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208.png"
+	width="627"
+	height="165"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208_hu4830757062724345662.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208_hu8619560316505386776.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102204447208"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="380"
+		data-flex-basis="912px"
+	
 ></p>
 <h3 id="模式分解">模式分解
-</h3><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102204804919.png"
-	
-	
-	
+</h3><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919.png"
+	width="614"
+	height="245"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919_hu16779806099870788314.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919_hu4803158182537218281.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102204804919"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="250"
+		data-flex-basis="601px"
 	
 ></p>
 <p>模式分解可以提高范式等级，但是并不是所有的模式分解都能够无损地保存原有信息。分解一损坏了SNO-&gt;DEPT与DEPT-&gt;HEAD，分解二损坏了DEPT-&gt;HEAD。</p>
@@ -2309,14 +2594,18 @@
 </ul>
 <h4 id="判别模式分解的无损连接性">判别模式分解的无损连接性
 </h4><h5 id="填表法">填表法
-</h5><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102205807448.png"
-	
-	
-	
+</h5><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448.png"
+	width="744"
+	height="478"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448_hu5707410579698841872.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448_hu10505187443029656846.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102205807448"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="373px"
 	
 ></p>
 <p>第一张表：</p>
@@ -2332,26 +2621,34 @@
 </blockquote>
 <p><strong>如果某行达成了a<del>1</del>a<del>2</del>……a<del>n</del>，说明是无损连接。</strong></p>
 <h5 id="定理法">定理法
-</h5><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102211309924.png"
-	
-	
-	
+</h5><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924.png"
+	width="533"
+	height="53"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924_hu4592511405641937052.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924_hu14350274951990929544.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102211309924"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="1005"
+		data-flex-basis="2413px"
+	
 ></p>
 <p>如果拆为了U1,U2两个属性集。如果U1与U2的交集能够<strong>函数决定</strong>U1或U2，那么就是无损连接。</p>
 <p>原理如下：U1交U2-&gt;U1，那么可以将b<del>22</del>变为a<del>2</del>，从而形成a<del>1</del>a<del>2</del>a<del>3</del>行。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102211539163.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163.png"
+	width="418"
+	height="240"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163_hu719923541228968279.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163_hu17816008209824063304.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102211539163"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="174"
+		data-flex-basis="418px"
 	
 ></p>
 <p>解释起来也不难。</p>
@@ -2485,14 +2782,18 @@
 </li>
 </ul>
 <p>职称由<strong>属性</strong>升级为<strong>实体</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102224225495.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495.png"
+	width="706"
+	height="302"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495_hu14582642392739755000.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495_hu7748031177024825940.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260102224225495"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="233"
+		data-flex-basis="561px"
 	
 ></p>
 <h5 id="全局概念模式合成">全局概念模式合成
@@ -2578,24 +2879,32 @@
 <li>独立关系模式：属性为与该联系相连的各实体的码以及联系本身的属性。<strong>每个实体的码</strong>均是该关系的候选码。</li>
 <li>合并进其中一个关系模式：该关系模式的属性中加入<strong>另一个关系模式的码</strong>和<strong>联系本身的属性</strong>。</li>
 </ul>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105154614036.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036.png"
+	width="558"
+	height="342"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036_hu11291941617450959446.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036_hu8606114513320817512.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105154614036"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="391px"
+	
 ></p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105154905987.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987.png"
+	width="361"
+	height="132"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987_hu13974383402980285917.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987_hu176612457509361374.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105154905987"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="273"
+		data-flex-basis="656px"
 	
 ></p>
 <p><strong>1：N联系</strong></p>
@@ -2603,40 +2912,52 @@
 <li>独立关系模式：属性为与该联系相连的各实体的码以及联系本身的属性。<strong>N端实体的码</strong>均是该关系的候选码。</li>
 <li>合并进<strong>N端</strong>关系模式：N端关系模式的属性中加入<strong>1端关系模式的码</strong>和<strong>联系本身的属性</strong>。</li>
 </ul>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105154955484.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484.png"
+	width="566"
+	height="337"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484_hu15606588464446820829.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484_hu5664645909265563485.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105154955484"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="167"
+		data-flex-basis="403px"
+	
 ></p>
 <p><strong>M：N联系</strong></p>
 <p>只能转换为<strong>一个独立的关系模式</strong>。</p>
 <p>与该联系相连的各实体的码以及联系本身的属性均转换为关系的属性，而<strong>关系的码为各实体码的组合</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105155119241.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241.png"
+	width="612"
+	height="244"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241_hu11382101270688844834.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241_hu14814289920667497762.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105155119241"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="250"
+		data-flex-basis="601px"
+	
 ></p>
 <p><strong>三个或三个以上实体</strong>间的一个多元联系</p>
 <p>只能转换为<strong>一个独立的关系模式</strong>。</p>
 <p>与该联系相连的各实体的码以及联系本身的属性均转换为关系的属性，而<strong>关系的码为各实体码的组合</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105155144215.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215.png"
+	width="609"
+	height="306"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215_hu3386340674819285153.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215_hu15664140199738757802.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105155144215"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="477px"
 	
 ></p>
 <h5 id="关系模式的规范化">关系模式的规范化
@@ -2745,42 +3066,49 @@
 </blockquote>
 </li>
 </ul>
-<p><strong>查询处理的基本步骤</strong></p>
-<ul>
-<li>语法分析与翻译</li>
-<li>优化</li>
-<li>执行查询语句</li>
-</ul>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105162818751.png"
-	
-	
-	
+<p><strong>查询处理的基本步骤：查询分析、查询检查、查询优化、查询执行。</strong></p>
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751.png"
+	width="751"
+	height="515"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751_hu5693398564826398035.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751_hu8603931178003176303.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105162818751"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="349px"
+	
 ></p>
 <p>查询树：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105163011343.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343.png"
+	width="798"
+	height="472"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343_hu12409527141545945.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343_hu14382538880026368553.png 1024w"
 	loading="lazy"
 	
 		alt="查询树"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="405px"
+	
 ></p>
 <p>执行计划：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105163101767.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767.png"
+	width="817"
+	height="328"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767_hu3278390973627918079.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767_hu9430846237313032331.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105163101767"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="249"
+		data-flex-basis="597px"
 	
 ></p>
 <h3 id="基本运算的实现">基本运算的实现
@@ -2834,6 +3162,9 @@
 <li>最坏，缓冲区只能容纳少量数据块，大约每个关系一块</li>
 </ul>
 <p>连续测试两次，第二次更快很有可能是缓冲区导致的！</p>
+<h3 id="代数优化与物理优化">代数优化与物理优化
+</h3><p>代数优化：<strong>关系代数表达式</strong>的优化，即按照一定的规则，改变代数表达式中操作的次序和组合
+物理优化：<strong>存取路径和底层操作</strong>算法的选择。</p>
 <h3 id="关系代数等价变换">关系代数等价变换
 </h3><p>若产生的结果关系具有相同的属性集和元组集，则称<strong>两个表达式等价</strong>。</p>
 <ol>
@@ -2871,58 +3202,78 @@
 </ul>
 <p>优化实操：</p>
 <p>初始查询树</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171622199.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199.png"
+	width="637"
+	height="379"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199_hu3218592825801451915.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199_hu18029075072054590227.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105171622199"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
 ></p>
 <p>优先选取</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171628744.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744.png"
+	width="719"
+	height="371"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744_hu12131830421260585488.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744_hu3781687083626183033.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105171628744"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="465px"
+	
 ></p>
 <p>连接替代笛卡尔积</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171633763.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763.png"
+	width="723"
+	height="349"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763_hu13840653060843639609.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763_hu14585239415864590437.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105171633763"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="207"
+		data-flex-basis="497px"
+	
 ></p>
 <p>优先执行小连接</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171637096.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096.png"
+	width="724"
+	height="373"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096_hu10561623716996627443.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096_hu1897100013871212886.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105171637096"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="194"
+		data-flex-basis="465px"
+	
 ></p>
 <p>投影去掉无关属性</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171640897.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897.png"
+	width="729"
+	height="397"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897_hu14056095314100661972.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897_hu15734819466932468070.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105171640897"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="440px"
 	
 ></p>
 <h2 id="数据库恢复">数据库恢复
@@ -2998,14 +3349,18 @@
 </li>
 </ul>
 <p>从而有：<strong>动态海量转储 静态海量转储 动态增量转储 静态增量转储</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105181723346.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346.png"
+	width="1037"
+	height="282"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346_hu1782716691939978621.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346_hu6801223741313625254.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105181723346"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="367"
+		data-flex-basis="882px"
 	
 ></p>
 <h5 id="登记日志文件操作冗余">登记日志文件——操作冗余
@@ -3086,14 +3441,18 @@
 <p>这样在进行恢复处理时，没有必要对事务T进行REDO操作。</p>
 </blockquote>
 <h4 id="恢复">恢复
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105190154979.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979.png"
+	width="960"
+	height="553"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979_hu10761896881850988656.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979_hu3458548021342284419.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260105190154979"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="173"
+		data-flex-basis="416px"
 	
 ></p>
 <ol>
@@ -3176,14 +3535,18 @@
 <p>注意封锁机制是靠<strong>锁</strong>实现的，锁只能阻拦锁！</p>
 </blockquote>
 <p>相容矩阵：（读读或者数据不同为True）</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106154533733.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733.png"
+	width="794"
+	height="414"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733_hu10831572141047558174.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733_hu1060916860209770600.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106154533733"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="460px"
 	
 ></p>
 <h4 id="封锁协议">封锁协议
@@ -3223,14 +3586,18 @@
 <p>死锁：</p>
 <p>在数据库运行期间，如果存在<strong>一个事务集合{T0，T1，…，Tn}</strong>，使得T0等待T1持有的数据项锁， …， Tn-1等待Tn持有的数据项锁，Tn等待T0持有的数据项锁，则称<strong>系统处于死锁状态</strong>， {T0，T1，…，Tn }称为<strong>死锁事务集合</strong>。</p>
 <p>最经典的死锁：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106160405452.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452.png"
+	width="540"
+	height="525"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452_hu751275287495900293.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452_hu1320371440534132714.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106160405452"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="102"
+		data-flex-basis="246px"
 	
 ></p>
 <h3 id="死锁的解决">死锁的解决
@@ -3238,27 +3605,35 @@
 </h4><h5 id="一次封锁法">一次封锁法
 </h5><p>一次封锁法要求每个事务<strong>必须一次</strong>将其所有要使用的数据<strong>全部加锁</strong>，<strong>否则就不能执行</strong>。</p>
 <p>由于需要扩大加锁的范围，因此<strong>降低了系统的并发度</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106160729807.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807.png"
+	width="590"
+	height="505"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807_hu15786124940169247901.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807_hu8752172780432475639.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106160729807"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="116"
+		data-flex-basis="280px"
+	
 ></p>
 <h5 id="顺序封锁法">顺序封锁法
 </h5><p>顺序封锁法是预先对数据对象<strong>规定一个封锁顺序</strong>，所有的事务都要按照这个顺序实行封锁。</p>
 <p>由于数据库中数据的不断变化和事务封锁要求的动态提出，<strong>难度往往很大</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106160744681.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681.png"
+	width="606"
+	height="560"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681_hu13516147403988828768.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681_hu7707612001598847214.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106160744681"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="108"
+		data-flex-basis="259px"
 	
 ></p>
 <h4 id="死锁检测与恢复">死锁检测与恢复
@@ -3268,14 +3643,18 @@
 <h6 id="等待图法">等待图法
 </h6><p>事务等待图是一个有向回路G=(T, U)。T为结点的集合，每个结点表示正在运行的事务；U为边的集合，每条边表示事务等待的情况。<strong>若T1等待T2，则T1，T2之间画一条有向边，从T1指向T2</strong>。事务等待图动态地反映了所有事务的等待情况。</p>
 <p>如果发现<strong>图中存在回路</strong>，则表示系统出现死锁。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106160949442.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442.png"
+	width="707"
+	height="450"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442_hu8755462388072515591.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442_hu4645312195681080038.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106160949442"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="377px"
 	
 ></p>
 <h5 id="死锁恢复">死锁恢复
@@ -3288,28 +3667,36 @@
 </h4><p>T1:读B;A=B+1;写回A;</p>
 <p>T2:读A;B=A+1;写回B;</p>
 <p>对其进行串行调度：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106162004092.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092.png"
+	width="808"
+	height="508"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092_hu475418095373219483.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092_hu18289033949974200009.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106162004092"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="159"
+		data-flex-basis="381px"
 	
 ></p>
 <p>串行调度<strong>一定是正确</strong>的，尽管图中两个结果不同，我们也都称之为正确的。</p>
 <p>并发执行是正确的，当且仅当<strong>其结果与按某一次序串行的执行它们时的结果相同</strong>。</p>
 <p>这种调度策略称为<strong>可串行化调度</strong>。</p>
 <p>一个给定的并发调度，当且仅当它是可串行化的，才认为是正确调度。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106162142832.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832.png"
+	width="799"
+	height="535"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832_hu4568674957934594796.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832_hu16290096705841818848.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106162142832"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="149"
+		data-flex-basis="358px"
 	
 ></p>
 <p>图中的左侧调度就不是可串行化调度，不是正确的。而右侧调度则是正确调度、可串行化调度。</p>
@@ -3333,14 +3720,18 @@
 <p>例子：R1(A) W1(A) <strong>R2(A) W2(A)</strong> <code>R1(B) W1(B)</code> R2(B) W2(B)</p>
 <p>&mdash;&mdash;&gt; R1(A) W1(A) <code>R1(B) W1(B)</code> <strong>R2(A) W2(A)</strong> R2(B) W2(B)  变为了串行调度。</p>
 <p>这个方法只是一个充分条件。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106163731193.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193.png"
+	width="762"
+	height="368"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193_hu10504163750581036537.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193_hu7788562094662940184.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106163731193"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="207"
+		data-flex-basis="496px"
 	
 ></p>
 <p>上图的例子就是一个典例。当前语境下W1(X)和W2(X)其实可交换，但是属于冲突操作。</p>
@@ -3359,14 +3750,18 @@
 </blockquote>
 <p>不过我们至少知道：一个调度如果是错误的，那他一定不满足两段锁协议。</p>
 <p>比如之前的例子，就显然没有遵循两段锁协议：</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106164703362.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362.png"
+	width="598"
+	height="807"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362_hu12965109801853988818.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362_hu13046571041216405001.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106164703362"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="74"
+		data-flex-basis="177px"
 	
 ></p>
 <p>两段锁协议<strong>不能用于预防死锁</strong>。</p>
@@ -3413,28 +3808,36 @@
 <p>IS 只和 X 不相容。</p>
 <p>IX 只和 IS IX 相容。</p>
 <p>SIX 只和 IS 相容。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106170727938.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938.png"
+	width="696"
+	height="444"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938_hu6301953055307046992.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938_hu7723261208785284319.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106170727938"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="376px"
 	
 ></p>
 <h2 id="数据库存储">数据库存储
 </h2><h3 id="存储介质">存储介质
 </h3><p>CPU寄存器&mdash;&ndash;高速缓存 L1/L2/L3&mdash;&ndash;主存储器&mdash;&ndash;闪存&mdash;&ndash;磁盘&mdash;&ndash;光盘&mdash;&ndash;磁带</p>
 <p>在此着重讲解磁盘。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106171602811.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811.png"
+	width="412"
+	height="300"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811_hu1581078815306948649.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811_hu7414595300323937713.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106171602811"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="137"
+		data-flex-basis="329px"
 	
 ></p>
 <p><strong>磁道</strong>：盘片的表面被逻辑地划分为磁道。</p>
@@ -3446,14 +3849,18 @@
 <blockquote>
 <p>数据在磁盘和主存储器之间<strong>以块为单位传输</strong>。</p>
 </blockquote>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106171934914.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914.png"
+	width="536"
+	height="414"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914_hu9090097458919401232.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914_hu11269727401281139684.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106171934914"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="310px"
 	
 ></p>
 <h4 id="raid">RAID
@@ -3461,14 +3868,18 @@
 <p>RAID即独立磁盘冗余阵列。将多个单独的物理硬盘<strong>以不同的方式组合成一个逻辑硬盘</strong>，从而提高了硬盘的读写性能和数据安全性。</p>
 <p><strong>提升容量、提升性能、提升可靠性</strong></p>
 <p>根据不同的组合方式可以分为不同的RAID级别。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106172250298.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298.png"
+	width="986"
+	height="448"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298_hu7654575916601861103.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298_hu7022420853355907914.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106172250298"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="220"
+		data-flex-basis="528px"
 	
 ></p>
 <p>RAID0：至少两个盘。提升了性能，没有任何安全性防护。</p>
@@ -3489,14 +3900,18 @@
 <p>RAID 50：先做RAID 5，后做RAID 0，能有效提高RAID 5的性能</p>
 </li>
 </ul>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106173216061.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061.png"
+	width="488"
+	height="425"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061_hu4595953751378607459.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061_hu17940104457338849021.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260106173216061"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="114"
+		data-flex-basis="275px"
 	
 ></p>
 <h3 id="缓冲区调度">缓冲区调度
@@ -3533,14 +3948,18 @@
 <li>支持变长数据类型：如varchar</li>
 <li>支持多种记录类型</li>
 <li>记录存取灵活，空间利用率高</li>
-<li><strong>Slotted Page结构</strong>：<img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107001436455.png"
-	
-	
-	
+<li><strong>Slotted Page结构</strong>：<img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455.png"
+	width="815"
+	height="529"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455_hu15403936933631554641.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455_hu13101420425338605261.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260107001436455"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="154"
+		data-flex-basis="369px"
 	
 ></li>
 <li><strong>定长表示法</strong>：使用一个或多个定长记录表示一个变长记录
@@ -3619,14 +4038,18 @@
 </li>
 </ul>
 <p>索引分为<strong>主索引</strong>与<strong>辅助索引</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107004203436.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436.png"
+	width="1057"
+	height="366"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436_hu14360953212282873898.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436_hu6413447760184371651.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260107004203436"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="288"
+		data-flex-basis="693px"
 	
 ></p>
 <h4 id="主索引">主索引
@@ -3656,27 +4079,35 @@
 <p>利用<strong>主索引做顺序扫描</strong>很高效，但利用辅助索引做顺序扫描则代价昂贵，因为按照辅助索引搜索码进行扫描，其对应的<strong>物理位置并不紧密连接</strong>，对每个记录的存取都可能导致存取一个新的磁盘块。</p>
 <h3 id="有序索引">有序索引
 </h3><h4 id="稠密索引文件">稠密索引文件
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107004725162.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162.png"
+	width="1128"
+	height="474"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162_hu7753765141687182202.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162_hu6165436385378474660.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260107004725162"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="237"
+		data-flex-basis="571px"
+	
 ></p>
 <p>文件中的<strong>每个搜索码值都有索引</strong>记录。</p>
 <p>稠密索引的数据可以不按照索引数据物理存放。</p>
 <h4 id="稀疏索引文件">稀疏索引文件
-</h4><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107004709512.png"
-	
-	
-	
+</h4><p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512.png"
+	width="1132"
+	height="502"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512_hu11139261853567413354.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512_hu16193954485268372820.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260107004709512"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="225"
+		data-flex-basis="541px"
 	
 ></p>
 <p><strong>只对某些搜索码值有索引记录</strong>。</p>
@@ -3698,25 +4129,33 @@
 <p>B+树索引结构是<strong>使用最广泛</strong>的在数据<strong>插入和删除</strong>情况下能够<strong>保持执行效率</strong>的索引结构之一。</p>
 <p><strong>优点</strong>：插入与删除时仅以<strong>较少的局部的变化</strong>来自动重组，不需要整个文件重组来维持性能。</p>
 <p><strong>缺点</strong>：额外的<strong>插入与删除开销</strong>，<strong>空间开销</strong>。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107010708108.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108.png"
+	width="869"
+	height="597"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108_hu5757095286712743520.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108_hu14158556390501047310.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260107010708108"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="349px"
+	
 ></p>
 <p>从树根到叶节点的<strong>路径长度相同</strong>，所有叶节点都在同一层，也就是访问不同数据<strong>所花费的时间是相对稳定</strong>的。</p>
-<p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107012307063.png"
-	
-	
-	
+<p><img src="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063.png"
+	width="970"
+	height="106"
+	srcset="/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063_hu5129442823153533076.png 480w, /p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063_hu18330935080560615392.png 1024w"
 	loading="lazy"
 	
 		alt="你看不到的图片-20260107012307063"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="915"
+		data-flex-basis="2196px"
 	
 ></p>
 <h3 id="hash数据索引">Hash数据索引

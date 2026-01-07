@@ -23,8 +23,8 @@
 &lt;/h3&gt;&lt;p&gt;数据管理的三个阶段：人工管理阶段、文件系统阶段、数据库系统阶段。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;人工管理：不存储数据、数据不共享、无独立性&lt;/li&gt;
-&lt;li&gt;文件系统：数据存储为文件、有一定的共享性、有一定的独立性&lt;/li&gt;
-&lt;li&gt;文件系统：数据冗余与不一致、独立性差&lt;/li&gt;
+&lt;li&gt;文件系统：数据存储为文件、有一定的共享性、有一定的物理独立性、无逻辑独立性&lt;/li&gt;
+&lt;li&gt;文件系统：数据冗余与不一致、数据独立性整体较差&lt;/li&gt;
 &lt;li&gt;数据库系统：&lt;strong&gt;面向全组织的结构化&lt;/strong&gt;，&lt;strong&gt;数据集成与共享&lt;/strong&gt;、&lt;strong&gt;可控冗余度&lt;/strong&gt;，&lt;strong&gt;数据独立性好&lt;/strong&gt;，&lt;strong&gt;统一的控制机制&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;数据库系统&#34;&gt;数据库系统
@@ -44,7 +44,7 @@
 &lt;h4 id=&#34;概念数据模型&#34;&gt;概念数据模型
 &lt;/h4&gt;&lt;p&gt;实体（值）、属性、域、实体型、实体集&lt;/p&gt;
 &lt;p&gt;能唯一标识实体的属性集：码&lt;/p&gt;
-&lt;p&gt;联系的种类：1对1，1对多，多对多&lt;/p&gt;
+&lt;p&gt;联系的&lt;strong&gt;类型&lt;/strong&gt;：1对1，1对多，多对多&lt;/p&gt;
 &lt;p&gt;E-R图&lt;/p&gt;
 &lt;h4 id=&#34;逻辑数据模型&#34;&gt;逻辑数据模型
 &lt;/h4&gt;&lt;p&gt;层次模型：树结构，结点是数据集合，边是多个指针，不可表达多对多，对用户要求较高。&lt;/p&gt;
@@ -56,14 +56,18 @@
 &lt;p&gt;型是对一类属性结构和属性的说明，值是型的具体赋值&lt;/p&gt;
 &lt;p&gt;模式也有其对应的实例。&lt;/p&gt;
 &lt;p&gt;数据库系统&lt;strong&gt;三级模式与两级映像&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231160929600.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600.png&#34;
+	width=&#34;549&#34;
+	height=&#34;355&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600_hu16639843157920233062.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600_hu4694091118305588877.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231160929600&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;371px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;内模式：存储模式&lt;/p&gt;
@@ -113,10 +117,7 @@
 &lt;/h4&gt;&lt;p&gt;用关系模型设置出来的一种结构就是关系模式。&lt;/p&gt;
 &lt;p&gt;关系模式还能确定为&lt;strong&gt;关系实例&lt;/strong&gt;，关系实例是关系模式在&lt;strong&gt;某一时刻&lt;/strong&gt;的状态或内容。&lt;/p&gt;
 &lt;p&gt;R（U，D，dom，F， I），R为关系名，U&lt;/p&gt;
-&lt;p&gt;为组成该关系的&lt;strong&gt;属性名集合&lt;/strong&gt;，D为属性集U&lt;strong&gt;所来自的&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;域&lt;/strong&gt;，dom为&lt;strong&gt;属性&lt;/strong&gt;向&lt;strong&gt;域&lt;/strong&gt;的&lt;strong&gt;映象集合&lt;/strong&gt;、F为属性间的&lt;strong&gt;数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;据依赖关系&lt;/strong&gt;集合，I为&lt;strong&gt;完整性约束&lt;/strong&gt;集合。关系模式通&lt;/p&gt;
-&lt;p&gt;常可以简记作R(A1 , A2 ,…, An ) ，只写&lt;strong&gt;R,U&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;为组成该关系的&lt;strong&gt;属性名集合&lt;/strong&gt;，D为属性集U&lt;strong&gt;所来自的域&lt;/strong&gt;，dom为&lt;strong&gt;属性&lt;/strong&gt;向&lt;strong&gt;域&lt;/strong&gt;的&lt;strong&gt;映象集合&lt;/strong&gt;、F为属性间的&lt;strong&gt;数据依赖关系&lt;/strong&gt;集合，I为&lt;strong&gt;完整性约束&lt;/strong&gt;集合。关系模式通常可以简记作R(A1 , A2 ,…, An ) ，只写&lt;strong&gt;R,U&lt;/strong&gt;。&lt;/p&gt;
 &lt;h4 id=&#34;关系数据库-1&#34;&gt;关系数据库
 &lt;/h4&gt;&lt;p&gt;关系数据库的型是关系模式的集合。（各个表的结构）&lt;/p&gt;
 &lt;p&gt;关系数据库的值是关系实例的集合。（具体的取值）&lt;/p&gt;
@@ -152,117 +153,157 @@
 &lt;h4 id=&#34;基本运算&#34;&gt;基本运算
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;集合并、集合差、广义笛卡尔积、选择、投影&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;其他运算都可以由基本运算得出。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174413660.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660.png&#34;
+	width=&#34;827&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660_hu15686052086503034601.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660_hu5038847731483644247.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174413660&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;358px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;运算的结果都是表，也就是&lt;strong&gt;元组的集合&lt;/strong&gt;。&lt;/p&gt;
 &lt;h4 id=&#34;并运算&#34;&gt;并运算
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174506438.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438.png&#34;
+	width=&#34;914&#34;
+	height=&#34;295&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438_hu14518445711835707448.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438_hu10289486494473992544.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174506438&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;309&#34;
+		data-flex-basis=&#34;743px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;会去重。&lt;/p&gt;
 &lt;h4 id=&#34;差运算&#34;&gt;差运算
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174539244.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244.png&#34;
+	width=&#34;884&#34;
+	height=&#34;283&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244_hu14061628261038309367.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244_hu12550629106264387571.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174539244&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;312&#34;
+		data-flex-basis=&#34;749px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;前面的去掉共有的。R-S与S-R不同。&lt;/p&gt;
 &lt;h4 id=&#34;交运算&#34;&gt;交运算
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174656568.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568.png&#34;
+	width=&#34;861&#34;
+	height=&#34;435&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568_hu6928933061114942196.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568_hu2862390324854437686.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174656568&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;197&#34;
+		data-flex-basis=&#34;475px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;广义笛卡尔积&#34;&gt;广义笛卡尔积
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174739061.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061.png&#34;
+	width=&#34;654&#34;
+	height=&#34;72&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061_hu2902147288997056868.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061_hu5301929276531952205.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174739061&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;908&#34;
+		data-flex-basis=&#34;2180px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174752893.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893.png&#34;
+	width=&#34;850&#34;
+	height=&#34;508&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893_hu18096060601992693413.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893_hu15072505581783697541.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174752893&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;401px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;笛卡尔积的元组个数是原来两个关系的元组个数的乘积。&lt;/p&gt;
 &lt;p&gt;笛卡尔积的属性个数是原来两个关系的属性个数之和。&lt;/p&gt;
 &lt;h4 id=&#34;选择运算&#34;&gt;选择运算
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174812110.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110.png&#34;
+	width=&#34;734&#34;
+	height=&#34;426&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110_hu13203740469404402024.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110_hu16346878322580102709.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174812110&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174832386.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386.png&#34;
+	width=&#34;816&#34;
+	height=&#34;520&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386_hu7966413066702056344.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386_hu2366154945645515954.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174832386&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;376px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;投影运算&#34;&gt;投影运算
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174847450.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450.png&#34;
+	width=&#34;745&#34;
+	height=&#34;434&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450_hu15698715445615155934.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450_hu1509585820899813433.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174847450&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;171&#34;
+		data-flex-basis=&#34;411px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;要去重。&lt;/p&gt;
 &lt;h4 id=&#34;连接运算&#34;&gt;连接运算
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231174913634.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634.png&#34;
+	width=&#34;840&#34;
+	height=&#34;398&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634_hu15174385565594270981.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634_hu12552632583769898908.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231174913634&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;211&#34;
+		data-flex-basis=&#34;506px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;笛卡尔积是强硬的拼接。经过选择即为连接。&lt;/p&gt;
@@ -274,14 +315,18 @@
 &lt;p&gt;1.不强调是哪个属性，而是取&lt;strong&gt;属性名相同&lt;/strong&gt;且&lt;strong&gt;取值相等&lt;/strong&gt;拼接为新元组&lt;/p&gt;
 &lt;p&gt;2.同名属性只保留一份&lt;/p&gt;
 &lt;p&gt;因此自然拼接后属性的个数未必等于原关系的属性数之和。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231180427756.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756.png&#34;
+	width=&#34;866&#34;
+	height=&#34;348&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756_hu11029066949412479499.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756_hu8003457451287631665.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231180427756&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;597px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -302,14 +347,18 @@
 &lt;p&gt;右外连接 = 自然连接 + 右侧表中失配的元组&lt;/p&gt;
 &lt;p&gt;全外连接 = 自然连接 + 两侧表中失配的元组&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231181139249.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249.png&#34;
+	width=&#34;866&#34;
+	height=&#34;571&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249_hu1901563508339082988.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249_hu6787400136094552857.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231181139249&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;除运算&#34;&gt;除运算
@@ -318,26 +367,34 @@
 &lt;p&gt;也即C的属性应为 A的属性&lt;strong&gt;去掉&lt;/strong&gt;B的属性&lt;/p&gt;
 &lt;p&gt;C应该填什么值？C中的值和B中的值一定能组合出A中的值！&lt;/p&gt;
 &lt;p&gt;那么需要考虑A中&lt;strong&gt;与B中元组取值相同&lt;/strong&gt;的元组。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231182040182.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182.png&#34;
+	width=&#34;893&#34;
+	height=&#34;495&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182_hu8821633159183598064.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182_hu10939096735168309306.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231182040182&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;可以大胆先得到所有可能元组ab,bc,ed，然后再逐元组验证。&lt;/p&gt;
 &lt;p&gt;也可以利用象集：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231181311887.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887.png&#34;
+	width=&#34;871&#34;
+	height=&#34;307&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887_hu8240129153761069147.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887_hu16734174690122487840.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231181311887&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;283&#34;
+		data-flex-basis=&#34;680px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;对于T(CD,AB),&lt;/p&gt;
@@ -346,36 +403,48 @@
 &lt;p&gt;对所有象集做广义交（在所有象集中都出现的元组）。&lt;/p&gt;
 &lt;p&gt;下面也是一种思路：&lt;/p&gt;
 &lt;p&gt;先列出所有AB的组合，并做笛卡尔积，得到理想被除数，然后减去真实被除数，可以得到欠缺的组合，从中提取欠缺的AB。最后并从所有AB组合中减去欠缺的AB，就是真正的商。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231183200875.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875.png&#34;
+	width=&#34;689&#34;
+	height=&#34;454&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875_hu9460145076350236195.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875_hu8099778447134023449.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231183200875&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;364px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;这也就得到了除法的这一定义：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231183549756.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756.png&#34;
+	width=&#34;380&#34;
+	height=&#34;51&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756_hu11491704607478254103.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756_hu9905657720518800576.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231183549756&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;745&#34;
+		data-flex-basis=&#34;1788px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;其中，&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231183818202.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202.png&#34;
+	width=&#34;197&#34;
+	height=&#34;65&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202_hu12247990403960904121.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202_hu18076380631567383979.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231183818202&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;303&#34;
+		data-flex-basis=&#34;727px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;就代表找到的AB组合一定能满足和除数做笛卡尔积还在R中，也就是除数包含于这个组合的象集。&lt;/p&gt;
@@ -383,45 +452,61 @@
 &lt;p&gt;除法的特殊含义：得到的数据满足&lt;strong&gt;S中所有要求&lt;/strong&gt;，也即与S中&lt;strong&gt;所有数据&lt;/strong&gt;都满足关系R。&lt;/p&gt;
 &lt;h4 id=&#34;关系代数练习&#34;&gt;关系代数练习
 &lt;/h4&gt;&lt;p&gt;简单的选择+投影&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231184954797.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797.png&#34;
+	width=&#34;567&#34;
+	height=&#34;92&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797_hu11694626621061819115.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797_hu15910402163219989841.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231184954797&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;616&#34;
+		data-flex-basis=&#34;1479px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185018120.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120.png&#34;
+	width=&#34;561&#34;
+	height=&#34;95&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120_hu4192508129995451759.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120_hu6406547194290917838.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231185018120&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;590&#34;
+		data-flex-basis=&#34;1417px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185041576.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576.png&#34;
+	width=&#34;593&#34;
+	height=&#34;161&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576_hu7262597929896338427.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576_hu1413431517549715784.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231185041576&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;368&#34;
+		data-flex-basis=&#34;883px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;多表连接后选择+投影&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185117756.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756.png&#34;
+	width=&#34;615&#34;
+	height=&#34;99&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756_hu4645682205627111963.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756_hu15151501085256417642.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231185117756&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;621&#34;
+		data-flex-basis=&#34;1490px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;可只选择表的一部分（关联部分+使用部分）后进行连接。&lt;/p&gt;
@@ -430,28 +515,36 @@
 &lt;p&gt;Cpno=5也可以最后再选择，但是连接操作cost很大，预处理后再连接比较好。&lt;/p&gt;
 &lt;p&gt;Course甚至也可以先投影只留下Cno和Cpno&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185208842.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842.png&#34;
+	width=&#34;825&#34;
+	height=&#34;154&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842_hu13255608370174194422.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842_hu645998869737345469.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231185208842&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;535&#34;
+		data-flex-basis=&#34;1285px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;除法！&lt;/p&gt;
 &lt;p&gt;先求学号，之后关联就能求姓名。&lt;/p&gt;
 &lt;p&gt;学号怎么求？ 满足和&lt;strong&gt;所有课程&lt;/strong&gt;都有&lt;strong&gt;选修关系&lt;/strong&gt;的&lt;strong&gt;学生学号&lt;/strong&gt;，用&lt;strong&gt;除法&lt;/strong&gt;！&lt;/p&gt;
 &lt;p&gt;需要注意&lt;strong&gt;属性的选择&lt;/strong&gt;。这里被除数不应包含其他属性。例如被除数包含&lt;code&gt;成绩&lt;/code&gt;属性，那么就会要求&lt;code&gt;（学号，成绩）&lt;/code&gt;的二元组与所有课程都有选修关系，也就是选了所有课的&lt;strong&gt;且成绩都相同&lt;/strong&gt;选课记录，这是错误的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231185950025.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025.png&#34;
+	width=&#34;781&#34;
+	height=&#34;100&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025_hu11920404522393909297.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025_hu8568508429659368855.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231185950025&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;781&#34;
+		data-flex-basis=&#34;1874px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;数据操作sql语言&#34;&gt;数据操作——SQL语言
@@ -461,14 +554,18 @@
 &lt;p&gt;3.面向集合的操作方式（关系操作的特点）&lt;/p&gt;
 &lt;p&gt;4.以同一种语法结构提供&lt;strong&gt;两种使用方式&lt;/strong&gt;，&lt;strong&gt;SQL既是自含式语言，又是嵌入式语言&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;5.语言简洁，易学易用&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231191320008.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008.png&#34;
+	width=&#34;859&#34;
+	height=&#34;283&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008_hu4842746288407913868.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008_hu2230071705357144086.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231191320008&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;303&#34;
+		data-flex-basis=&#34;728px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;外模式、模式和内模式都可以用SQL管理。&lt;/p&gt;
@@ -501,14 +598,18 @@
 &lt;p&gt;Select Count(&lt;strong&gt;Distinct&lt;/strong&gt; Sno) From SC;&lt;/p&gt;
 &lt;h5 id=&#34;条件表达式&#34;&gt;条件表达式
 &lt;/h5&gt;&lt;p&gt;where + 条件表达式&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231192443420.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420.png&#34;
+	width=&#34;665&#34;
+	height=&#34;529&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420_hu9308205350535706486.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420_hu16546704935710949648.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231192443420&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;301px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;LIKE: 支持通配符&lt;code&gt;%&lt;/code&gt;(通配零到多个字符)，&lt;code&gt;_&lt;/code&gt;(仅通配一个字符)&lt;/p&gt;
@@ -551,36 +652,48 @@
 &lt;p&gt;from 表1&lt;/p&gt;
 &lt;p&gt;JOIN 表2 ON .连接条件&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231195510833.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833.png&#34;
+	width=&#34;545&#34;
+	height=&#34;114&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833_hu5978178471052532425.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833_hu7506633915238102830.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231195510833&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;478&#34;
+		data-flex-basis=&#34;1147px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;表名后也可以加空格进行更名。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231195532219.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219.png&#34;
+	width=&#34;718&#34;
+	height=&#34;137&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219_hu7507716659015085120.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219_hu1911637253172666972.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231195532219&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;524&#34;
+		data-flex-basis=&#34;1257px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;外连接：所有学生&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231200242005.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005.png&#34;
+	width=&#34;758&#34;
+	height=&#34;180&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005_hu6169688774024892952.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005_hu1272905900861648693.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231200242005&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;421&#34;
+		data-flex-basis=&#34;1010px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;新版本表达（推荐）：&lt;/p&gt;
@@ -593,14 +706,18 @@
 &lt;blockquote&gt;
 &lt;p&gt;这里是特殊情况，使用=&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231200744915.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915.png&#34;
+	width=&#34;729&#34;
+	height=&#34;333&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915_hu3198103451485367842.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915_hu6263016246086586713.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231200744915&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;525px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这是一个不相关子查询。&lt;/p&gt;
@@ -609,39 +726,51 @@
 &lt;p&gt;先求出课程名为‘信息系统’的课程号，&lt;/p&gt;
 &lt;p&gt;再求选修了该课程号的学生的学号，&lt;/p&gt;
 &lt;p&gt;最后求该学号对应的学号和姓名。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231200956497.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497.png&#34;
+	width=&#34;547&#34;
+	height=&#34;231&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497_hu16272848996507421689.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497_hu5915239928899146602.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231200956497&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;236&#34;
+		data-flex-basis=&#34;568px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;查询选择了1号课程的学生姓名。&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231202501986.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986.png&#34;
+	width=&#34;490&#34;
+	height=&#34;131&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986_hu17445605533503912344.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986_hu11090747081752977065.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231202501986&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;374&#34;
+		data-flex-basis=&#34;897px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这是一个&lt;strong&gt;相关子查询&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;外层Student表也参与了子查询&lt;/strong&gt;。执行逻辑是遍历父查询的每一个元组，对每个元组计算Student.Sno，这个值参与子查询的运算，从而决定父查询是否包含该元组。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;查询选修了全部课程的学生姓名&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;除法操作，表示与某属性所有值均有联系：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231203349483.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483.png&#34;
+	width=&#34;526&#34;
+	height=&#34;273&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483_hu12146075138560583023.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483_hu16304423033656185086.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231203349483&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;462px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这是一个相关子查询。&lt;/p&gt;
@@ -651,37 +780,49 @@
 &lt;p&gt;如果改为EXIST EXIST，则表示选修过课程。&lt;/p&gt;
 &lt;p&gt;如果改为NOEXIST EXIST，则表示未选修过课程。&lt;/p&gt;
 &lt;h5 id=&#34;集合查询&#34;&gt;集合查询
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231204837359.png&#34;
-	
-	
-	
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359.png&#34;
+	width=&#34;486&#34;
+	height=&#34;170&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359_hu9579730471219606287.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359_hu7981442943043895944.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231204837359&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;285&#34;
+		data-flex-basis=&#34;686px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;对语句做&lt;strong&gt;并&lt;/strong&gt;操作。要求查询结果字段结构一致。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;交操作与差操作没有集合查询功能。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231204950810.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810.png&#34;
+	width=&#34;562&#34;
+	height=&#34;250&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810_hu10075278058709758706.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810_hu2921593696800434575.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231204950810&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;224&#34;
+		data-flex-basis=&#34;539px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;差集就是排除，只需要把第二个条件取反，或者用NOT。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231205020740.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740.png&#34;
+	width=&#34;606&#34;
+	height=&#34;148&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740_hu4914085027258375456.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740_hu7285929341057958796.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231205020740&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;409&#34;
+		data-flex-basis=&#34;982px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;数据更新&#34;&gt;数据更新
@@ -689,14 +830,18 @@
 &lt;/h5&gt;&lt;blockquote&gt;
 &lt;p&gt;不是add&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231205626250.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250.png&#34;
+	width=&#34;605&#34;
+	height=&#34;328&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250_hu11995207457288021873.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250_hu12405485366147511893.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231205626250&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;442px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;如果只insert了一部分属性，其余属性值&lt;strong&gt;默认为null&lt;/strong&gt;。&lt;/p&gt;
@@ -706,47 +851,63 @@
 &lt;/blockquote&gt;
 &lt;p&gt;支持原值引用。&lt;/p&gt;
 &lt;p&gt;子查询的值可以用在&lt;strong&gt;WHERE&lt;/strong&gt;语句与&lt;strong&gt;SET&lt;/strong&gt;语句。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231205706643.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643.png&#34;
+	width=&#34;463&#34;
+	height=&#34;293&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643_hu16387245219625737043.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643_hu7282009934175404760.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231205706643&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;379px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231205719741.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741.png&#34;
+	width=&#34;609&#34;
+	height=&#34;201&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741_hu8569741830314971779.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741_hu16475998647863144052.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231205719741&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;302&#34;
+		data-flex-basis=&#34;727px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;h5 id=&#34;delete&#34;&gt;Delete
 &lt;/h5&gt;&lt;p&gt;delete from 表名 会直接删掉该表所有元组。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231210055483.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483.png&#34;
+	width=&#34;608&#34;
+	height=&#34;161&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483_hu649226838779886245.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483_hu8667416395142145826.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231210055483&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;377&#34;
+		data-flex-basis=&#34;906px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;数据定义&#34;&gt;数据定义
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231210129817.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817.png&#34;
+	width=&#34;565&#34;
+	height=&#34;215&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817_hu8959489073866663889.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817_hu16221928763492924926.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231210129817&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;262&#34;
+		data-flex-basis=&#34;630px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h5 id=&#34;基本表定义删除修改&#34;&gt;基本表——定义、删除、修改
@@ -755,65 +916,84 @@
 &lt;p&gt;&lt;strong&gt;(&lt;/strong&gt;&amp;lt;列名&amp;gt;&amp;lt;&lt;strong&gt;数据类型&lt;/strong&gt;&amp;gt;[&amp;lt;&lt;strong&gt;列级&lt;/strong&gt;完整性约束&amp;gt;]&lt;/p&gt;
 &lt;p&gt;[{, &amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[&amp;lt;&lt;strong&gt;列级&lt;/strong&gt;完整性约束&amp;gt;]}]&lt;/p&gt;
 &lt;p&gt;[{, [&amp;lt;&lt;strong&gt;表级&lt;/strong&gt;完整性约束&amp;gt;]}]&lt;strong&gt;)&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;数据类型&lt;/strong&gt;常用：char(n)、int、float(n)、date、time&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据类型&lt;/strong&gt;常用：char(n)、int、DECIMAL(总位数, 小数位数)、date、time&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;完整性约束&lt;/strong&gt;：NULL/NOT NULL（列级）、UNIQUE（&lt;strong&gt;列级&lt;/strong&gt;、候选码，可以取空值）、PRIMARY KEY（&lt;strong&gt;表级&lt;/strong&gt;、主码，不可取空值）、FOREIGN KEY（&lt;strong&gt;表级&lt;/strong&gt;）、CHECK（&lt;strong&gt;表级&lt;/strong&gt;）&lt;/p&gt;
 &lt;p&gt;单一属性的非外码的表级完整性约束也可以只写在对应列级上。&lt;/p&gt;
-&lt;p&gt;注意约束项作为一个整体，内部无逗号。项与项之间有逗号。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231210608638.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638.png&#34;
+	width=&#34;508&#34;
+	height=&#34;323&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638_hu834397789175118658.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638_hu2024858995677050380.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231210608638&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;377px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;外码的书写需要标明reference 表(主码)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231210815802.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802.png&#34;
+	width=&#34;629&#34;
+	height=&#34;321&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802_hu5498560619497872619.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802_hu15065666143613759365.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231210815802&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;195&#34;
+		data-flex-basis=&#34;470px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;h6 id=&#34;alter&#34;&gt;alter
-&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231211039990.png&#34;
-	
-	
-	
+&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990.png&#34;
+	width=&#34;587&#34;
+	height=&#34;188&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990_hu9979324304363698635.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990_hu481634302823734494.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231211039990&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;312&#34;
+		data-flex-basis=&#34;749px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;drop尽量不要删除属性列，其实是可以删的。&lt;/p&gt;
 &lt;p&gt;modify尽量不要改列名，虽然其实也可以改。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231211201064.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064.png&#34;
+	width=&#34;623&#34;
+	height=&#34;271&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064_hu800179444154486914.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064_hu4154663356775395685.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231211201064&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;551px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;h6 id=&#34;drop&#34;&gt;drop
 &lt;/h6&gt;&lt;p&gt;直接 drop table 表名即可删除整个基本表。分配的空间也回收了。&lt;/p&gt;
 &lt;h5 id=&#34;索引定义删除&#34;&gt;索引——定义、删除
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231212609133.png&#34;
-	
-	
-	
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133.png&#34;
+	width=&#34;596&#34;
+	height=&#34;140&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133_hu10156639624485020368.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133_hu4916954648704322895.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231212609133&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;425&#34;
+		data-flex-basis=&#34;1021px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;unique是&lt;strong&gt;唯一性约束&lt;/strong&gt;，cluster要求索引与基本表在&lt;strong&gt;物理上连续存储&lt;/strong&gt;，便于查询。&lt;/p&gt;
@@ -824,14 +1004,18 @@
 &lt;p&gt;不能说索引&lt;strong&gt;越多越好&lt;/strong&gt;，也不能说索引会提高&lt;strong&gt;操作&lt;/strong&gt;效率&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;也是create和drop&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231212007391.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391.png&#34;
+	width=&#34;456&#34;
+	height=&#34;230&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391_hu7401616556572984735.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391_hu8259499834511081633.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231212007391&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;index的drop&lt;strong&gt;不会丢失数据，不必备份&lt;/strong&gt;。&lt;/p&gt;
@@ -846,14 +1030,18 @@
 &lt;/blockquote&gt;
 &lt;p&gt;直接利用视图&lt;strong&gt;封装&lt;/strong&gt;好复杂的select语句。&lt;/p&gt;
 &lt;p&gt;我们只提供视图，就既能提供功能，还能保护数据。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231213220186.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186.png&#34;
+	width=&#34;389&#34;
+	height=&#34;179&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186_hu14651907302273803139.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186_hu13503188598226499196.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231213220186&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;521px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;手写列名可用于更名。&lt;/p&gt;
@@ -862,14 +1050,18 @@
 &lt;p&gt;&lt;strong&gt;drop view 视图名&lt;/strong&gt;即可直接删除，&lt;strong&gt;不会丢失数据，不必备份&lt;/strong&gt;。&lt;/p&gt;
 &lt;h6 id=&#34;视图消解&#34;&gt;视图消解
 &lt;/h6&gt;&lt;p&gt;DBMS会&lt;strong&gt;尝试&lt;/strong&gt;把程序员发起的SQL指令中的视图拆为select，并进行语句合并，融合为一个select进行。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231214523805.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805.png&#34;
+	width=&#34;723&#34;
+	height=&#34;305&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805_hu1663470552278793962.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805_hu8758948390672413696.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231214523805&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;237&#34;
+		data-flex-basis=&#34;568px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h6 id=&#34;视图更新&#34;&gt;视图更新
@@ -938,14 +1130,18 @@
 &lt;p&gt;存取控制可以分为&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;自主存取控制（DAC)&lt;/strong&gt;：更自由，用户对不同数据对象有不同权限，可转授权限。&lt;/p&gt;
 &lt;p&gt;用户权限分为&lt;strong&gt;数据对象&lt;/strong&gt;和&lt;strong&gt;操作类型&lt;/strong&gt;两个要素。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231221910126.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126.png&#34;
+	width=&#34;559&#34;
+	height=&#34;250&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126_hu826352341707328914.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126_hu3484082280025823865.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231221910126&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;536px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;用户级&lt;/strong&gt;权限：一般由&lt;strong&gt;数据库管理员&lt;/strong&gt;为每个用户授权，与整个数据库相关。&lt;/p&gt;
@@ -957,24 +1153,32 @@
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;用户级权限与角色&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;授权与收回权限：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231222204396.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396.png&#34;
+	width=&#34;584&#34;
+	height=&#34;92&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396_hu17842181981140452777.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396_hu707566643347601723.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231222204396&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;634&#34;
+		data-flex-basis=&#34;1523px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231222504946.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946.png&#34;
+	width=&#34;599&#34;
+	height=&#34;73&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946_hu11462654591199880146.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946_hu2555819577653032113.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231222504946&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;820&#34;
+		data-flex-basis=&#34;1969px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;public&lt;/strong&gt; 指数据库中的&lt;strong&gt;全部用户&lt;/strong&gt;。&lt;/p&gt;
@@ -982,14 +1186,18 @@
 &lt;p&gt;&lt;strong&gt;多重授权&lt;/strong&gt;：A-&amp;gt;C B-&amp;gt;C  若A被revoke,C仍有权限。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;循环授权&lt;/strong&gt;：A-&amp;gt;B B-&amp;gt;C 若C主动-&amp;gt;B，会导致A被revoke,C仍有权限。现在已被禁止。&lt;/p&gt;
 &lt;p&gt;Oracle的角色：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231222405279.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279.png&#34;
+	width=&#34;639&#34;
+	height=&#34;269&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279_hu6707887472069681813.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279_hu6157568382629340588.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231222405279&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;237&#34;
+		data-flex-basis=&#34;570px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;没有授权CONNECT甚至没有登录权。&lt;/strong&gt;&lt;/p&gt;
@@ -997,14 +1205,18 @@
 &lt;p&gt;&lt;strong&gt;关系级权限&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;对于具体的表格与视图的权限控制。&lt;/p&gt;
 &lt;p&gt;多了&lt;strong&gt;ON子句针对具体的表/视图&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231222813243.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243.png&#34;
+	width=&#34;513&#34;
+	height=&#34;118&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243_hu5822237084203398362.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243_hu4459885042370359270.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231222813243&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;434&#34;
+		data-flex-basis=&#34;1043px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;可以&lt;strong&gt;利用视图&lt;/strong&gt;实现&lt;strong&gt;安全控制&lt;/strong&gt;。&lt;/p&gt;
@@ -1075,14 +1287,18 @@
 &lt;p&gt;&lt;strong&gt;隐含约束&lt;/strong&gt;：数据&lt;strong&gt;模式&lt;/strong&gt;隐含约束，DDL语句说明（如实体完整性约束等建表时就确定的约束）&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;显式约束&lt;/strong&gt;：人为显示定义的语义与应用层约束&lt;/p&gt;
 &lt;h6 id=&#34;隐含约束&#34;&gt;隐含约束
-&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231233021430.png&#34;
-	
-	
-	
+&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430.png&#34;
+	width=&#34;628&#34;
+	height=&#34;299&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430_hu6082268589177755615.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430_hu15409471827189846705.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231233021430&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;210&#34;
+		data-flex-basis=&#34;504px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1093,14 +1309,18 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;参照完整性约束&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;Insert、Update、&lt;strong&gt;Delete&lt;/strong&gt;时检查&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231233141515.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515.png&#34;
+	width=&#34;675&#34;
+	height=&#34;173&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515_hu12455139527974763775.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515_hu16826201548399398097.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20251231233141515&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;390&#34;
+		data-flex-basis=&#34;936px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -1152,14 +1372,18 @@
 &lt;h3 id=&#34;函数依赖&#34;&gt;函数依赖
 &lt;/h3&gt;&lt;p&gt;数据依赖中最重要的就是&lt;strong&gt;函数依赖&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;在某关系模式中，若某属性组A的值确定后，另一属性组B的值也被唯一确定，则称A&lt;strong&gt;函数决定&lt;/strong&gt;B，B&lt;strong&gt;函数依赖&lt;/strong&gt;于A。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260101224113675.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675.png&#34;
+	width=&#34;683&#34;
+	height=&#34;220&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675_hu5078625068138061809.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675_hu4823216054321191868.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260101224113675&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;310&#34;
+		data-flex-basis=&#34;745px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1176,27 +1400,35 @@
 &lt;p&gt;根据表格初步判断函数依赖时，找&lt;strong&gt;左端重复项&lt;/strong&gt;，对应&lt;strong&gt;右端是否相同&lt;/strong&gt;即可。&lt;/p&gt;
 &lt;h4 id=&#34;分类&#34;&gt;分类
 &lt;/h4&gt;&lt;h5 id=&#34;平凡函数依赖与非平凡函数依赖&#34;&gt;平凡函数依赖与非平凡函数依赖
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102172528087.png&#34;
-	
-	
-	
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087.png&#34;
+	width=&#34;707&#34;
+	height=&#34;141&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087_hu12047593620632361379.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087_hu15069837657776348481.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102172528087&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;501&#34;
+		data-flex-basis=&#34;1203px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;自己决定自己就是平凡的函数依赖。&lt;/p&gt;
 &lt;p&gt;平凡的函数依赖是&lt;strong&gt;永真的&lt;/strong&gt;，意义不大。&lt;/p&gt;
 &lt;h5 id=&#34;完全函数依赖与部分函数依赖&#34;&gt;完全函数依赖与部分函数依赖
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102172649547.png&#34;
-	
-	
-	
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547.png&#34;
+	width=&#34;715&#34;
+	height=&#34;282&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547_hu11851577772503905140.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547_hu9726601793900897387.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102172649547&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;253&#34;
+		data-flex-basis=&#34;608px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;完全：&lt;strong&gt;full&lt;/strong&gt;   部分：&lt;strong&gt;part&lt;/strong&gt;&lt;/p&gt;
@@ -1206,14 +1438,18 @@
 &lt;p&gt;完全函数依赖属性缺一不可，部分函数依赖则有冗余&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h5 id=&#34;传递函数依赖&#34;&gt;传递函数依赖
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102173245901.png&#34;
-	
-	
-	
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901.png&#34;
+	width=&#34;714&#34;
+	height=&#34;210&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu3970169055908078286.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu5233340698487108157.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102173245901&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;816px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -1223,14 +1459,18 @@
 &lt;/ol&gt;
 &lt;h4 id=&#34;码的规范定义&#34;&gt;码的规范定义
 &lt;/h4&gt;&lt;p&gt;码有 &lt;em&gt;唯一性&lt;/em&gt; 和 &lt;strong&gt;最小性&lt;/strong&gt;。其实对应的就是 &lt;strong&gt;完全&lt;/strong&gt; &lt;em&gt;函数依赖&lt;/em&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102174005434.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434.png&#34;
+	width=&#34;684&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434_hu1751332187091922592.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434_hu13046305950595674094.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102174005434&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;251&#34;
+		data-flex-basis=&#34;603px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;超码不一定是码，而是广义的码。只要求函数依赖，不强调&lt;strong&gt;完全&lt;/strong&gt;。&lt;/p&gt;
@@ -1259,14 +1499,18 @@
 &lt;/h4&gt;&lt;p&gt;关系中每一分量必须是&lt;strong&gt;原子的，不可再分&lt;/strong&gt;。即不能以&lt;strong&gt;集合、序列&lt;/strong&gt;等作为属性值。&lt;/p&gt;
 &lt;p&gt;这是关系六大性质之一。所以&lt;strong&gt;只要是关系模式，都满足1NF&lt;/strong&gt;。&lt;/p&gt;
 &lt;h4 id=&#34;2nf&#34;&gt;2NF
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102175505230.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230.png&#34;
+	width=&#34;658&#34;
+	height=&#34;86&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230_hu3141722199783991162.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230_hu10592608540915859914.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102175505230&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;765&#34;
+		data-flex-basis=&#34;1836px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;也就是&lt;strong&gt;所有候选码&lt;/strong&gt;都&lt;strong&gt;完全决定&lt;/strong&gt; &lt;strong&gt;所有非主属性&lt;/strong&gt;。&lt;/p&gt;
@@ -1293,14 +1537,18 @@
 &lt;p&gt;&lt;strong&gt;规范化为2NF的示例&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;将&lt;strong&gt;导致部分函数依赖&lt;/strong&gt;的&lt;strong&gt;完全函数依赖&lt;/strong&gt;相关的&lt;strong&gt;主属性与非主属性&lt;/strong&gt;拉出去单独成表。&lt;/p&gt;
 &lt;p&gt;原表若缺主码可以再填回主属性。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102180752984.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984.png&#34;
+	width=&#34;822&#34;
+	height=&#34;467&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984_hu7367860626296854218.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984_hu16780417690887266198.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102180752984&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;422px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;3nf&#34;&gt;3NF
@@ -1312,25 +1560,33 @@
 &lt;li&gt;&lt;strong&gt;正式定义&lt;/strong&gt;：&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;不要求2NF的前提。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102181023990.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990.png&#34;
+	width=&#34;680&#34;
+	height=&#34;188&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990_hu2186483516119104912.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990_hu17097779004552255367.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102181023990&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;361&#34;
+		data-flex-basis=&#34;868px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;对比一下传递依赖的定义：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102173245901.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901.png&#34;
+	width=&#34;714&#34;
+	height=&#34;210&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu3970169055908078286.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu5233340698487108157.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102173245901&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;816px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;3NF去除了Y不是X的子集的限制。&lt;/p&gt;
@@ -1351,14 +1607,18 @@
 &lt;p&gt;&lt;strong&gt;规范化为3NF的示例&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;将&lt;strong&gt;导致传递依赖&lt;/strong&gt;的&lt;strong&gt;非主属性内部函数依赖&lt;/strong&gt;相关的&lt;strong&gt;非主属性&lt;/strong&gt;拉出去单独成表。&lt;/p&gt;
 &lt;p&gt;新表的码放回原表当外码。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102181547534.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534.png&#34;
+	width=&#34;630&#34;
+	height=&#34;392&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534_hu16667104998419220038.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534_hu13631304496717632771.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102181547534&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;bcnf&#34;&gt;BCNF
@@ -1373,14 +1633,18 @@
 &lt;p&gt;因为C的不同产生的不同元组也会存入A-&amp;gt;B的冗余信息。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102184110122.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122.png&#34;
+	width=&#34;664&#34;
+	height=&#34;80&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122_hu12001459148137697659.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122_hu8267611274498076459.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102184110122&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;830&#34;
+		data-flex-basis=&#34;1992px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;所有&lt;strong&gt;非平凡函数决定者&lt;/strong&gt;必须是&lt;strong&gt;码&lt;/strong&gt;（也就是候选码）。&lt;/p&gt;
@@ -1434,38 +1698,50 @@
 &lt;h4 id=&#34;求属性集的闭包&#34;&gt;求属性集的闭包
 &lt;/h4&gt;&lt;p&gt;F有闭包，属性集也有闭包！&lt;/p&gt;
 &lt;p&gt;属性集X的闭包X&lt;del&gt;F&lt;/del&gt;^+^是它在 F^+^ 中&lt;strong&gt;能函数决定&lt;/strong&gt;的属性的集合。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102200756107.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107.png&#34;
+	width=&#34;653&#34;
+	height=&#34;238&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107_hu2547647634167893043.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107_hu10016437803210741688.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102200756107&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;274&#34;
+		data-flex-basis=&#34;658px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;引理一就是合并律与分解律。&lt;/p&gt;
 &lt;p&gt;引理二显然，总之要判定一个函数依赖是否可推导、是否成立，我们需要求出决定者的闭包中有没有依赖者，总之要会算X&lt;del&gt;F&lt;/del&gt;^+^。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102201249838.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838.png&#34;
+	width=&#34;705&#34;
+	height=&#34;360&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838_hu9503599163870260731.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838_hu6586771089921759690.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102201249838&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;195&#34;
+		data-flex-basis=&#34;470px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;把X放进闭包，然后从闭包里找F^+^中的左端项，把所有对应右端项放进去。迭代直到闭包结果不变或达到全集。&lt;/p&gt;
 &lt;p&gt;逻辑很直观很简单。下面是一个例子。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102201646599.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599.png&#34;
+	width=&#34;675&#34;
+	height=&#34;354&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599_hu9632514731757908451.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599_hu11501153548175300607.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102201646599&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;同理，(AC)&lt;del&gt;F&lt;/del&gt;^+^= ABCDE。&lt;/p&gt;
@@ -1517,25 +1793,33 @@
 &lt;li&gt;验证每一条函数依赖的&lt;strong&gt;决定者的子集&lt;/strong&gt;是否也能推出&lt;strong&gt;依赖者&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;最小覆盖不是唯一的，和我们的验证（删除）顺序有关。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102204447208.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208.png&#34;
+	width=&#34;627&#34;
+	height=&#34;165&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208_hu4830757062724345662.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208_hu8619560316505386776.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102204447208&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;380&#34;
+		data-flex-basis=&#34;912px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;模式分解&#34;&gt;模式分解
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102204804919.png&#34;
-	
-	
-	
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919.png&#34;
+	width=&#34;614&#34;
+	height=&#34;245&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919_hu16779806099870788314.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919_hu4803158182537218281.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102204804919&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;601px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;模式分解可以提高范式等级，但是并不是所有的模式分解都能够无损地保存原有信息。分解一损坏了SNO-&amp;gt;DEPT与DEPT-&amp;gt;HEAD，分解二损坏了DEPT-&amp;gt;HEAD。&lt;/p&gt;
@@ -1568,14 +1852,18 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;判别模式分解的无损连接性&#34;&gt;判别模式分解的无损连接性
 &lt;/h4&gt;&lt;h5 id=&#34;填表法&#34;&gt;填表法
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102205807448.png&#34;
-	
-	
-	
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448.png&#34;
+	width=&#34;744&#34;
+	height=&#34;478&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448_hu5707410579698841872.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448_hu10505187443029656846.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102205807448&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;第一张表：&lt;/p&gt;
@@ -1591,26 +1879,34 @@
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;如果某行达成了a&lt;del&gt;1&lt;/del&gt;a&lt;del&gt;2&lt;/del&gt;……a&lt;del&gt;n&lt;/del&gt;，说明是无损连接。&lt;/strong&gt;&lt;/p&gt;
 &lt;h5 id=&#34;定理法&#34;&gt;定理法
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102211309924.png&#34;
-	
-	
-	
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924.png&#34;
+	width=&#34;533&#34;
+	height=&#34;53&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924_hu4592511405641937052.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924_hu14350274951990929544.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102211309924&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1005&#34;
+		data-flex-basis=&#34;2413px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;如果拆为了U1,U2两个属性集。如果U1与U2的交集能够&lt;strong&gt;函数决定&lt;/strong&gt;U1或U2，那么就是无损连接。&lt;/p&gt;
 &lt;p&gt;原理如下：U1交U2-&amp;gt;U1，那么可以将b&lt;del&gt;22&lt;/del&gt;变为a&lt;del&gt;2&lt;/del&gt;，从而形成a&lt;del&gt;1&lt;/del&gt;a&lt;del&gt;2&lt;/del&gt;a&lt;del&gt;3&lt;/del&gt;行。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102211539163.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163.png&#34;
+	width=&#34;418&#34;
+	height=&#34;240&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163_hu719923541228968279.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163_hu17816008209824063304.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102211539163&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;解释起来也不难。&lt;/p&gt;
@@ -1744,14 +2040,18 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;职称由&lt;strong&gt;属性&lt;/strong&gt;升级为&lt;strong&gt;实体&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260102224225495.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495.png&#34;
+	width=&#34;706&#34;
+	height=&#34;302&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495_hu14582642392739755000.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495_hu7748031177024825940.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260102224225495&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;561px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h5 id=&#34;全局概念模式合成&#34;&gt;全局概念模式合成
@@ -1837,24 +2137,32 @@
 &lt;li&gt;独立关系模式：属性为与该联系相连的各实体的码以及联系本身的属性。&lt;strong&gt;每个实体的码&lt;/strong&gt;均是该关系的候选码。&lt;/li&gt;
 &lt;li&gt;合并进其中一个关系模式：该关系模式的属性中加入&lt;strong&gt;另一个关系模式的码&lt;/strong&gt;和&lt;strong&gt;联系本身的属性&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105154614036.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036.png&#34;
+	width=&#34;558&#34;
+	height=&#34;342&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036_hu11291941617450959446.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036_hu8606114513320817512.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105154614036&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;391px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105154905987.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987.png&#34;
+	width=&#34;361&#34;
+	height=&#34;132&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987_hu13974383402980285917.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987_hu176612457509361374.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105154905987&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;273&#34;
+		data-flex-basis=&#34;656px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1：N联系&lt;/strong&gt;&lt;/p&gt;
@@ -1862,40 +2170,52 @@
 &lt;li&gt;独立关系模式：属性为与该联系相连的各实体的码以及联系本身的属性。&lt;strong&gt;N端实体的码&lt;/strong&gt;均是该关系的候选码。&lt;/li&gt;
 &lt;li&gt;合并进&lt;strong&gt;N端&lt;/strong&gt;关系模式：N端关系模式的属性中加入&lt;strong&gt;1端关系模式的码&lt;/strong&gt;和&lt;strong&gt;联系本身的属性&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105154955484.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484.png&#34;
+	width=&#34;566&#34;
+	height=&#34;337&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484_hu15606588464446820829.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484_hu5664645909265563485.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105154955484&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;403px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;M：N联系&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;只能转换为&lt;strong&gt;一个独立的关系模式&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;与该联系相连的各实体的码以及联系本身的属性均转换为关系的属性，而&lt;strong&gt;关系的码为各实体码的组合&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105155119241.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241.png&#34;
+	width=&#34;612&#34;
+	height=&#34;244&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241_hu11382101270688844834.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241_hu14814289920667497762.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105155119241&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;601px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;三个或三个以上实体&lt;/strong&gt;间的一个多元联系&lt;/p&gt;
 &lt;p&gt;只能转换为&lt;strong&gt;一个独立的关系模式&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;与该联系相连的各实体的码以及联系本身的属性均转换为关系的属性，而&lt;strong&gt;关系的码为各实体码的组合&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105155144215.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215.png&#34;
+	width=&#34;609&#34;
+	height=&#34;306&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215_hu3386340674819285153.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215_hu15664140199738757802.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105155144215&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;477px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h5 id=&#34;关系模式的规范化&#34;&gt;关系模式的规范化
@@ -2004,42 +2324,49 @@
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;查询处理的基本步骤&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;语法分析与翻译&lt;/li&gt;
-&lt;li&gt;优化&lt;/li&gt;
-&lt;li&gt;执行查询语句&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105162818751.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;strong&gt;查询处理的基本步骤：查询分析、查询检查、查询优化、查询执行。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751.png&#34;
+	width=&#34;751&#34;
+	height=&#34;515&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751_hu5693398564826398035.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751_hu8603931178003176303.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105162818751&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;查询树：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105163011343.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343.png&#34;
+	width=&#34;798&#34;
+	height=&#34;472&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343_hu12409527141545945.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343_hu14382538880026368553.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;查询树&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;405px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;执行计划：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105163101767.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767.png&#34;
+	width=&#34;817&#34;
+	height=&#34;328&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767_hu3278390973627918079.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767_hu9430846237313032331.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105163101767&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;249&#34;
+		data-flex-basis=&#34;597px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;基本运算的实现&#34;&gt;基本运算的实现
@@ -2093,6 +2420,9 @@
 &lt;li&gt;最坏，缓冲区只能容纳少量数据块，大约每个关系一块&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;连续测试两次，第二次更快很有可能是缓冲区导致的！&lt;/p&gt;
+&lt;h3 id=&#34;代数优化与物理优化&#34;&gt;代数优化与物理优化
+&lt;/h3&gt;&lt;p&gt;代数优化：&lt;strong&gt;关系代数表达式&lt;/strong&gt;的优化，即按照一定的规则，改变代数表达式中操作的次序和组合
+物理优化：&lt;strong&gt;存取路径和底层操作&lt;/strong&gt;算法的选择。&lt;/p&gt;
 &lt;h3 id=&#34;关系代数等价变换&#34;&gt;关系代数等价变换
 &lt;/h3&gt;&lt;p&gt;若产生的结果关系具有相同的属性集和元组集，则称&lt;strong&gt;两个表达式等价&lt;/strong&gt;。&lt;/p&gt;
 &lt;ol&gt;
@@ -2130,58 +2460,78 @@
 &lt;/ul&gt;
 &lt;p&gt;优化实操：&lt;/p&gt;
 &lt;p&gt;初始查询树&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171622199.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199.png&#34;
+	width=&#34;637&#34;
+	height=&#34;379&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199_hu3218592825801451915.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199_hu18029075072054590227.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105171622199&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;优先选取&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171628744.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744.png&#34;
+	width=&#34;719&#34;
+	height=&#34;371&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744_hu12131830421260585488.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744_hu3781687083626183033.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105171628744&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;465px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;连接替代笛卡尔积&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171633763.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763.png&#34;
+	width=&#34;723&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763_hu13840653060843639609.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763_hu14585239415864590437.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105171633763&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;497px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;优先执行小连接&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171637096.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096.png&#34;
+	width=&#34;724&#34;
+	height=&#34;373&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096_hu10561623716996627443.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096_hu1897100013871212886.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105171637096&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;465px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;投影去掉无关属性&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105171640897.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897.png&#34;
+	width=&#34;729&#34;
+	height=&#34;397&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897_hu14056095314100661972.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897_hu15734819466932468070.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105171640897&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;数据库恢复&#34;&gt;数据库恢复
@@ -2257,14 +2607,18 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;从而有：&lt;strong&gt;动态海量转储 静态海量转储 动态增量转储 静态增量转储&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105181723346.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346.png&#34;
+	width=&#34;1037&#34;
+	height=&#34;282&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346_hu1782716691939978621.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346_hu6801223741313625254.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105181723346&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;367&#34;
+		data-flex-basis=&#34;882px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h5 id=&#34;登记日志文件操作冗余&#34;&gt;登记日志文件——操作冗余
@@ -2345,14 +2699,18 @@
 &lt;p&gt;这样在进行恢复处理时，没有必要对事务T进行REDO操作。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;恢复&#34;&gt;恢复
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260105190154979.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979.png&#34;
+	width=&#34;960&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979_hu10761896881850988656.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979_hu3458548021342284419.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260105190154979&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;416px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -2435,14 +2793,18 @@
 &lt;p&gt;注意封锁机制是靠&lt;strong&gt;锁&lt;/strong&gt;实现的，锁只能阻拦锁！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;相容矩阵：（读读或者数据不同为True）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106154533733.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733.png&#34;
+	width=&#34;794&#34;
+	height=&#34;414&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733_hu10831572141047558174.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733_hu1060916860209770600.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106154533733&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;460px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;封锁协议&#34;&gt;封锁协议
@@ -2482,14 +2844,18 @@
 &lt;p&gt;死锁：&lt;/p&gt;
 &lt;p&gt;在数据库运行期间，如果存在&lt;strong&gt;一个事务集合{T0，T1，…，Tn}&lt;/strong&gt;，使得T0等待T1持有的数据项锁， …， Tn-1等待Tn持有的数据项锁，Tn等待T0持有的数据项锁，则称&lt;strong&gt;系统处于死锁状态&lt;/strong&gt;， {T0，T1，…，Tn }称为&lt;strong&gt;死锁事务集合&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;最经典的死锁：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106160405452.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452.png&#34;
+	width=&#34;540&#34;
+	height=&#34;525&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452_hu751275287495900293.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452_hu1320371440534132714.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106160405452&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;102&#34;
+		data-flex-basis=&#34;246px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;死锁的解决&#34;&gt;死锁的解决
@@ -2497,27 +2863,35 @@
 &lt;/h4&gt;&lt;h5 id=&#34;一次封锁法&#34;&gt;一次封锁法
 &lt;/h5&gt;&lt;p&gt;一次封锁法要求每个事务&lt;strong&gt;必须一次&lt;/strong&gt;将其所有要使用的数据&lt;strong&gt;全部加锁&lt;/strong&gt;，&lt;strong&gt;否则就不能执行&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;由于需要扩大加锁的范围，因此&lt;strong&gt;降低了系统的并发度&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106160729807.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807.png&#34;
+	width=&#34;590&#34;
+	height=&#34;505&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807_hu15786124940169247901.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807_hu8752172780432475639.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106160729807&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;116&#34;
+		data-flex-basis=&#34;280px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;h5 id=&#34;顺序封锁法&#34;&gt;顺序封锁法
 &lt;/h5&gt;&lt;p&gt;顺序封锁法是预先对数据对象&lt;strong&gt;规定一个封锁顺序&lt;/strong&gt;，所有的事务都要按照这个顺序实行封锁。&lt;/p&gt;
 &lt;p&gt;由于数据库中数据的不断变化和事务封锁要求的动态提出，&lt;strong&gt;难度往往很大&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106160744681.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681.png&#34;
+	width=&#34;606&#34;
+	height=&#34;560&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681_hu13516147403988828768.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681_hu7707612001598847214.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106160744681&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;108&#34;
+		data-flex-basis=&#34;259px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;死锁检测与恢复&#34;&gt;死锁检测与恢复
@@ -2527,14 +2901,18 @@
 &lt;h6 id=&#34;等待图法&#34;&gt;等待图法
 &lt;/h6&gt;&lt;p&gt;事务等待图是一个有向回路G=(T, U)。T为结点的集合，每个结点表示正在运行的事务；U为边的集合，每条边表示事务等待的情况。&lt;strong&gt;若T1等待T2，则T1，T2之间画一条有向边，从T1指向T2&lt;/strong&gt;。事务等待图动态地反映了所有事务的等待情况。&lt;/p&gt;
 &lt;p&gt;如果发现&lt;strong&gt;图中存在回路&lt;/strong&gt;，则表示系统出现死锁。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106160949442.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442.png&#34;
+	width=&#34;707&#34;
+	height=&#34;450&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442_hu8755462388072515591.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442_hu4645312195681080038.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106160949442&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;377px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h5 id=&#34;死锁恢复&#34;&gt;死锁恢复
@@ -2547,28 +2925,36 @@
 &lt;/h4&gt;&lt;p&gt;T1:读B;A=B+1;写回A;&lt;/p&gt;
 &lt;p&gt;T2:读A;B=A+1;写回B;&lt;/p&gt;
 &lt;p&gt;对其进行串行调度：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106162004092.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092.png&#34;
+	width=&#34;808&#34;
+	height=&#34;508&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092_hu475418095373219483.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092_hu18289033949974200009.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106162004092&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;381px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;串行调度&lt;strong&gt;一定是正确&lt;/strong&gt;的，尽管图中两个结果不同，我们也都称之为正确的。&lt;/p&gt;
 &lt;p&gt;并发执行是正确的，当且仅当&lt;strong&gt;其结果与按某一次序串行的执行它们时的结果相同&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;这种调度策略称为&lt;strong&gt;可串行化调度&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;一个给定的并发调度，当且仅当它是可串行化的，才认为是正确调度。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106162142832.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832.png&#34;
+	width=&#34;799&#34;
+	height=&#34;535&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832_hu4568674957934594796.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832_hu16290096705841818848.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106162142832&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;358px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;图中的左侧调度就不是可串行化调度，不是正确的。而右侧调度则是正确调度、可串行化调度。&lt;/p&gt;
@@ -2592,14 +2978,18 @@
 &lt;p&gt;例子：R1(A) W1(A) &lt;strong&gt;R2(A) W2(A)&lt;/strong&gt; &lt;code&gt;R1(B) W1(B)&lt;/code&gt; R2(B) W2(B)&lt;/p&gt;
 &lt;p&gt;&amp;mdash;&amp;mdash;&amp;gt; R1(A) W1(A) &lt;code&gt;R1(B) W1(B)&lt;/code&gt; &lt;strong&gt;R2(A) W2(A)&lt;/strong&gt; R2(B) W2(B)  变为了串行调度。&lt;/p&gt;
 &lt;p&gt;这个方法只是一个充分条件。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106163731193.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193.png&#34;
+	width=&#34;762&#34;
+	height=&#34;368&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193_hu10504163750581036537.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193_hu7788562094662940184.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106163731193&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;496px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;上图的例子就是一个典例。当前语境下W1(X)和W2(X)其实可交换，但是属于冲突操作。&lt;/p&gt;
@@ -2618,14 +3008,18 @@
 &lt;/blockquote&gt;
 &lt;p&gt;不过我们至少知道：一个调度如果是错误的，那他一定不满足两段锁协议。&lt;/p&gt;
 &lt;p&gt;比如之前的例子，就显然没有遵循两段锁协议：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106164703362.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362.png&#34;
+	width=&#34;598&#34;
+	height=&#34;807&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362_hu12965109801853988818.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362_hu13046571041216405001.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106164703362&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;74&#34;
+		data-flex-basis=&#34;177px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;两段锁协议&lt;strong&gt;不能用于预防死锁&lt;/strong&gt;。&lt;/p&gt;
@@ -2672,28 +3066,36 @@
 &lt;p&gt;IS 只和 X 不相容。&lt;/p&gt;
 &lt;p&gt;IX 只和 IS IX 相容。&lt;/p&gt;
 &lt;p&gt;SIX 只和 IS 相容。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106170727938.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938.png&#34;
+	width=&#34;696&#34;
+	height=&#34;444&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938_hu6301953055307046992.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938_hu7723261208785284319.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106170727938&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;376px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;数据库存储&#34;&gt;数据库存储
 &lt;/h2&gt;&lt;h3 id=&#34;存储介质&#34;&gt;存储介质
 &lt;/h3&gt;&lt;p&gt;CPU寄存器&amp;mdash;&amp;ndash;高速缓存 L1/L2/L3&amp;mdash;&amp;ndash;主存储器&amp;mdash;&amp;ndash;闪存&amp;mdash;&amp;ndash;磁盘&amp;mdash;&amp;ndash;光盘&amp;mdash;&amp;ndash;磁带&lt;/p&gt;
 &lt;p&gt;在此着重讲解磁盘。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106171602811.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811.png&#34;
+	width=&#34;412&#34;
+	height=&#34;300&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811_hu1581078815306948649.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811_hu7414595300323937713.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106171602811&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;329px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;磁道&lt;/strong&gt;：盘片的表面被逻辑地划分为磁道。&lt;/p&gt;
@@ -2705,14 +3107,18 @@
 &lt;blockquote&gt;
 &lt;p&gt;数据在磁盘和主存储器之间&lt;strong&gt;以块为单位传输&lt;/strong&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106171934914.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914.png&#34;
+	width=&#34;536&#34;
+	height=&#34;414&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914_hu9090097458919401232.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914_hu11269727401281139684.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106171934914&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;310px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;raid&#34;&gt;RAID
@@ -2720,14 +3126,18 @@
 &lt;p&gt;RAID即独立磁盘冗余阵列。将多个单独的物理硬盘&lt;strong&gt;以不同的方式组合成一个逻辑硬盘&lt;/strong&gt;，从而提高了硬盘的读写性能和数据安全性。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;提升容量、提升性能、提升可靠性&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;根据不同的组合方式可以分为不同的RAID级别。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106172250298.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298.png&#34;
+	width=&#34;986&#34;
+	height=&#34;448&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298_hu7654575916601861103.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298_hu7022420853355907914.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106172250298&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;528px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;RAID0：至少两个盘。提升了性能，没有任何安全性防护。&lt;/p&gt;
@@ -2748,14 +3158,18 @@
 &lt;p&gt;RAID 50：先做RAID 5，后做RAID 0，能有效提高RAID 5的性能&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260106173216061.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061.png&#34;
+	width=&#34;488&#34;
+	height=&#34;425&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061_hu4595953751378607459.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061_hu17940104457338849021.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260106173216061&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;114&#34;
+		data-flex-basis=&#34;275px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;缓冲区调度&#34;&gt;缓冲区调度
@@ -2792,14 +3206,18 @@
 &lt;li&gt;支持变长数据类型：如varchar&lt;/li&gt;
 &lt;li&gt;支持多种记录类型&lt;/li&gt;
 &lt;li&gt;记录存取灵活，空间利用率高&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Slotted Page结构&lt;/strong&gt;：&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107001436455.png&#34;
-	
-	
-	
+&lt;li&gt;&lt;strong&gt;Slotted Page结构&lt;/strong&gt;：&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455.png&#34;
+	width=&#34;815&#34;
+	height=&#34;529&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455_hu15403936933631554641.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455_hu13101420425338605261.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260107001436455&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;369px&#34;
 	
 &gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;定长表示法&lt;/strong&gt;：使用一个或多个定长记录表示一个变长记录
@@ -2878,14 +3296,18 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;索引分为&lt;strong&gt;主索引&lt;/strong&gt;与&lt;strong&gt;辅助索引&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107004203436.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436.png&#34;
+	width=&#34;1057&#34;
+	height=&#34;366&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436_hu14360953212282873898.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436_hu6413447760184371651.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260107004203436&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;288&#34;
+		data-flex-basis=&#34;693px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;主索引&#34;&gt;主索引
@@ -2915,27 +3337,35 @@
 &lt;p&gt;利用&lt;strong&gt;主索引做顺序扫描&lt;/strong&gt;很高效，但利用辅助索引做顺序扫描则代价昂贵，因为按照辅助索引搜索码进行扫描，其对应的&lt;strong&gt;物理位置并不紧密连接&lt;/strong&gt;，对每个记录的存取都可能导致存取一个新的磁盘块。&lt;/p&gt;
 &lt;h3 id=&#34;有序索引&#34;&gt;有序索引
 &lt;/h3&gt;&lt;h4 id=&#34;稠密索引文件&#34;&gt;稠密索引文件
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107004725162.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162.png&#34;
+	width=&#34;1128&#34;
+	height=&#34;474&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162_hu7753765141687182202.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162_hu6165436385378474660.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260107004725162&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;237&#34;
+		data-flex-basis=&#34;571px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;文件中的&lt;strong&gt;每个搜索码值都有索引&lt;/strong&gt;记录。&lt;/p&gt;
 &lt;p&gt;稠密索引的数据可以不按照索引数据物理存放。&lt;/p&gt;
 &lt;h4 id=&#34;稀疏索引文件&#34;&gt;稀疏索引文件
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107004709512.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512.png&#34;
+	width=&#34;1132&#34;
+	height=&#34;502&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512_hu11139261853567413354.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512_hu16193954485268372820.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260107004709512&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;225&#34;
+		data-flex-basis=&#34;541px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;只对某些搜索码值有索引记录&lt;/strong&gt;。&lt;/p&gt;
@@ -2957,25 +3387,33 @@
 &lt;p&gt;B+树索引结构是&lt;strong&gt;使用最广泛&lt;/strong&gt;的在数据&lt;strong&gt;插入和删除&lt;/strong&gt;情况下能够&lt;strong&gt;保持执行效率&lt;/strong&gt;的索引结构之一。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：插入与删除时仅以&lt;strong&gt;较少的局部的变化&lt;/strong&gt;来自动重组，不需要整个文件重组来维持性能。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：额外的&lt;strong&gt;插入与删除开销&lt;/strong&gt;，&lt;strong&gt;空间开销&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107010708108.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108.png&#34;
+	width=&#34;869&#34;
+	height=&#34;597&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108_hu5757095286712743520.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108_hu14158556390501047310.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260107010708108&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;从树根到叶节点的&lt;strong&gt;路径长度相同&lt;/strong&gt;，所有叶节点都在同一层，也就是访问不同数据&lt;strong&gt;所花费的时间是相对稳定&lt;/strong&gt;的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20260107012307063.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063.png&#34;
+	width=&#34;970&#34;
+	height=&#34;106&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063_hu5129442823153533076.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063_hu18330935080560615392.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看不到的图片-20260107012307063&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;915&#34;
+		data-flex-basis=&#34;2196px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;hash数据索引&#34;&gt;Hash数据索引
