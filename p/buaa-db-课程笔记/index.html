@@ -381,19 +381,22 @@
             <li><a href="#统计数据库安全性">统计数据库安全性</a></li>
           </ol>
         </li>
-        <li><a href="#完整性">完整性</a></li>
-        <li><a href="#完整性约束条件">完整性约束条件</a>
+        <li><a href="#完整性">完整性</a>
           <ol>
-            <li><a href="#静态约束">静态约束</a>
+            <li><a href="#完整性约束条件">完整性约束条件</a>
               <ol>
-                <li><a href="#隐含约束">隐含约束</a></li>
-                <li><a href="#显示完整性约束">显示完整性约束</a></li>
+                <li><a href="#静态约束">静态约束</a>
+                  <ol>
+                    <li><a href="#隐含约束">隐含约束</a></li>
+                    <li><a href="#显示完整性约束">显示完整性约束</a></li>
+                  </ol>
+                </li>
+                <li><a href="#动态约束">动态约束</a></li>
               </ol>
             </li>
-            <li><a href="#动态约束">动态约束</a></li>
+            <li><a href="#完整性控制机制">完整性控制机制</a></li>
           </ol>
         </li>
-        <li><a href="#完整性控制机制">完整性控制机制</a></li>
       </ol>
     </li>
     <li><a href="#关系数据理论">关系数据理论</a>
@@ -1761,8 +1764,8 @@
 <p><strong>正确性</strong>：合法的类型、有效的取值范围</p>
 <p><strong>相容性</strong>：同一事实的两个数据应当自洽。</p>
 <p>完整性措施的防范对象是<strong>不合语义的数据</strong>。</p>
-<h3 id="完整性约束条件">完整性约束条件
-</h3><p>施加在数据库数据之上的<strong>语义约束条件</strong>称为数据库完整性约束条件。</p>
+<h4 id="完整性约束条件">完整性约束条件
+</h4><p>施加在数据库数据之上的<strong>语义约束条件</strong>称为数据库完整性约束条件。</p>
 <p>作用的对象可以是<strong>关系、元组、列</strong>三种。</p>
 <ul>
 <li>
@@ -1776,8 +1779,8 @@
 </li>
 </ul>
 <p>又可分为<strong>静态约束</strong>和<strong>动态约束</strong>。</p>
-<h4 id="静态约束">静态约束
-</h4><p>静态约束是指数据库<strong>每一确定状态</strong>时，数据对象所应满足的约束条件，它是反映数据库状态合理性的约束。</p>
+<h5 id="静态约束">静态约束
+</h5><p>静态约束是指数据库<strong>每一确定状态</strong>时，数据对象所应满足的约束条件，它是反映数据库状态合理性的约束。</p>
 <p><strong>静态列级</strong>约束是对一个列的<strong>取值域</strong>的说明。</p>
 <p><strong>静态元组级</strong>约束是对<strong>一个元组的各个列之间的约束关系</strong>。</p>
 <blockquote>
@@ -1791,8 +1794,8 @@
 <p><strong>固有约束</strong>：数据<strong>模型</strong>固有约束。如属性原子化</p>
 <p><strong>隐含约束</strong>：数据<strong>模式</strong>隐含约束，DDL语句说明（如实体完整性约束等建表时就确定的约束）</p>
 <p><strong>显式约束</strong>：人为显示定义的语义与应用层约束</p>
-<h5 id="隐含约束">隐含约束
-</h5><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231233021430.png"
+<h6 id="隐含约束">隐含约束
+</h6><p><img src="C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231233021430.png"
 	
 	
 	
@@ -1823,8 +1826,8 @@
 </li>
 </ul>
 <p><strong>级联删除/更新</strong>：直接把参照表的对应记录也删除/更新</p>
-<h5 id="显示完整性约束">显示完整性约束
-</h5><ul>
+<h6 id="显示完整性约束">显示完整性约束
+</h6><ul>
 <li>
 <p><strong>过程</strong>（程序员为每个约束编制一个验证过程）</p>
 </li>
@@ -1839,8 +1842,8 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="动态约束">动态约束
-</h4><p>动态约束是指数据库从一种状态转变为另一种状态时，<strong>新、旧值之间</strong>所应满足的约束条件，它是反映数据库状态变迁的约束。</p>
+<h5 id="动态约束">动态约束
+</h5><p>动态约束是指数据库从一种状态转变为另一种状态时，<strong>新、旧值之间</strong>所应满足的约束条件，它是反映数据库状态变迁的约束。</p>
 <p><strong>动态列级</strong>约束是修改<strong>列定义</strong>或<strong>列值</strong>时应满足的约束条件。</p>
 <blockquote>
 <p>某属性的值只能增加不能减少</p>
@@ -1851,8 +1854,8 @@
 <p>属性A为x的元组需要满足属性B只能增加</p>
 </blockquote>
 <p><strong>动态关系</strong>约束：多元组之间等等。</p>
-<h3 id="完整性控制机制">完整性控制机制
-</h3><p>三个功能：<strong>定义功能、检查功能、违约响应</strong>。</p>
+<h4 id="完整性控制机制">完整性控制机制
+</h4><p>三个功能：<strong>定义功能、检查功能、违约响应</strong>。</p>
 <p>检查时机：</p>
 <p><strong>立即执行约束</strong>是指在执行用户事务的过程中，在<strong>一条语句执行完</strong>后立即进行完整性约束的检查。若违背了完整性约束，系统将<strong>拒绝该操作</strong>。</p>
 <p><strong>延迟执行约束</strong>是指在<strong>整个用户事务</strong>执行完毕后，再进行完整性约束的检查。若违背了完整性约束，系统将<strong>拒绝整个</strong>事务。</p>

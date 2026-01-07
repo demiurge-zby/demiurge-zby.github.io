@@ -1028,8 +1028,8 @@
 &lt;p&gt;&lt;strong&gt;正确性&lt;/strong&gt;：合法的类型、有效的取值范围&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;相容性&lt;/strong&gt;：同一事实的两个数据应当自洽。&lt;/p&gt;
 &lt;p&gt;完整性措施的防范对象是&lt;strong&gt;不合语义的数据&lt;/strong&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;完整性约束条件&#34;&gt;完整性约束条件
-&lt;/h3&gt;&lt;p&gt;施加在数据库数据之上的&lt;strong&gt;语义约束条件&lt;/strong&gt;称为数据库完整性约束条件。&lt;/p&gt;
+&lt;h4 id=&#34;完整性约束条件&#34;&gt;完整性约束条件
+&lt;/h4&gt;&lt;p&gt;施加在数据库数据之上的&lt;strong&gt;语义约束条件&lt;/strong&gt;称为数据库完整性约束条件。&lt;/p&gt;
 &lt;p&gt;作用的对象可以是&lt;strong&gt;关系、元组、列&lt;/strong&gt;三种。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1043,8 +1043,8 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;又可分为&lt;strong&gt;静态约束&lt;/strong&gt;和&lt;strong&gt;动态约束&lt;/strong&gt;。&lt;/p&gt;
-&lt;h4 id=&#34;静态约束&#34;&gt;静态约束
-&lt;/h4&gt;&lt;p&gt;静态约束是指数据库&lt;strong&gt;每一确定状态&lt;/strong&gt;时，数据对象所应满足的约束条件，它是反映数据库状态合理性的约束。&lt;/p&gt;
+&lt;h5 id=&#34;静态约束&#34;&gt;静态约束
+&lt;/h5&gt;&lt;p&gt;静态约束是指数据库&lt;strong&gt;每一确定状态&lt;/strong&gt;时，数据对象所应满足的约束条件，它是反映数据库状态合理性的约束。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;静态列级&lt;/strong&gt;约束是对一个列的&lt;strong&gt;取值域&lt;/strong&gt;的说明。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;静态元组级&lt;/strong&gt;约束是对&lt;strong&gt;一个元组的各个列之间的约束关系&lt;/strong&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1058,8 +1058,8 @@
 &lt;p&gt;&lt;strong&gt;固有约束&lt;/strong&gt;：数据&lt;strong&gt;模型&lt;/strong&gt;固有约束。如属性原子化&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;隐含约束&lt;/strong&gt;：数据&lt;strong&gt;模式&lt;/strong&gt;隐含约束，DDL语句说明（如实体完整性约束等建表时就确定的约束）&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;显式约束&lt;/strong&gt;：人为显示定义的语义与应用层约束&lt;/p&gt;
-&lt;h5 id=&#34;隐含约束&#34;&gt;隐含约束
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231233021430.png&#34;
+&lt;h6 id=&#34;隐含约束&#34;&gt;隐含约束
+&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cT14%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20251231233021430.png&#34;
 	
 	
 	
@@ -1090,8 +1090,8 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;级联删除/更新&lt;/strong&gt;：直接把参照表的对应记录也删除/更新&lt;/p&gt;
-&lt;h5 id=&#34;显示完整性约束&#34;&gt;显示完整性约束
-&lt;/h5&gt;&lt;ul&gt;
+&lt;h6 id=&#34;显示完整性约束&#34;&gt;显示完整性约束
+&lt;/h6&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;过程&lt;/strong&gt;（程序员为每个约束编制一个验证过程）&lt;/p&gt;
 &lt;/li&gt;
@@ -1106,8 +1106,8 @@
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;动态约束&#34;&gt;动态约束
-&lt;/h4&gt;&lt;p&gt;动态约束是指数据库从一种状态转变为另一种状态时，&lt;strong&gt;新、旧值之间&lt;/strong&gt;所应满足的约束条件，它是反映数据库状态变迁的约束。&lt;/p&gt;
+&lt;h5 id=&#34;动态约束&#34;&gt;动态约束
+&lt;/h5&gt;&lt;p&gt;动态约束是指数据库从一种状态转变为另一种状态时，&lt;strong&gt;新、旧值之间&lt;/strong&gt;所应满足的约束条件，它是反映数据库状态变迁的约束。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;动态列级&lt;/strong&gt;约束是修改&lt;strong&gt;列定义&lt;/strong&gt;或&lt;strong&gt;列值&lt;/strong&gt;时应满足的约束条件。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;某属性的值只能增加不能减少&lt;/p&gt;
@@ -1118,8 +1118,8 @@
 &lt;p&gt;属性A为x的元组需要满足属性B只能增加&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;动态关系&lt;/strong&gt;约束：多元组之间等等。&lt;/p&gt;
-&lt;h3 id=&#34;完整性控制机制&#34;&gt;完整性控制机制
-&lt;/h3&gt;&lt;p&gt;三个功能：&lt;strong&gt;定义功能、检查功能、违约响应&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;完整性控制机制&#34;&gt;完整性控制机制
+&lt;/h4&gt;&lt;p&gt;三个功能：&lt;strong&gt;定义功能、检查功能、违约响应&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;检查时机：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;立即执行约束&lt;/strong&gt;是指在执行用户事务的过程中，在&lt;strong&gt;一条语句执行完&lt;/strong&gt;后立即进行完整性约束的检查。若违背了完整性约束，系统将&lt;strong&gt;拒绝该操作&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;延迟执行约束&lt;/strong&gt;是指在&lt;strong&gt;整个用户事务&lt;/strong&gt;执行完毕后，再进行完整性约束的检查。若违背了完整性约束，系统将&lt;strong&gt;拒绝整个&lt;/strong&gt;事务。&lt;/p&gt;
