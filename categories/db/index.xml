@@ -1944,22 +1944,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;如果拆为了U1,U2两个属性集。如果U1与U2的交集能够&lt;strong&gt;函数决定&lt;/strong&gt;U1或U2，那么就是无损连接。&lt;/p&gt;
-&lt;p&gt;原理如下：U1交U2-&amp;gt;U1，那么可以将b&lt;del&gt;22&lt;/del&gt;变为a&lt;del&gt;2&lt;/del&gt;，从而形成a&lt;del&gt;1&lt;/del&gt;a&lt;del&gt;2&lt;/del&gt;a&lt;del&gt;3&lt;/del&gt;行。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163.png&#34;
-	width=&#34;418&#34;
-	height=&#34;240&#34;
-	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163_hu719923541228968279.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211539163_hu17816008209824063304.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;你看不到的图片-20260102211539163&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;174&#34;
-		data-flex-basis=&#34;418px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;解释起来也不难。&lt;/p&gt;
+&lt;p&gt;原理：U1交U2-&amp;gt;U1，那么可以将b&lt;del&gt;22&lt;/del&gt;变为a&lt;del&gt;2&lt;/del&gt;，从而形成a&lt;del&gt;1&lt;/del&gt;a&lt;del&gt;2&lt;/del&gt;a&lt;del&gt;3&lt;/del&gt;行。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;用于自然连接的公共属性是分表的候选码&lt;/strong&gt;，说明是无损连接。&lt;/p&gt;
 &lt;h4 id=&#34;模式分解中函数依赖的保持&#34;&gt;模式分解中函数依赖的保持
 &lt;/h4&gt;&lt;p&gt;判定方法很简单。如果投影过去的各个依赖集&lt;strong&gt;并起来&lt;/strong&gt;能和原依赖集&lt;strong&gt;等价&lt;/strong&gt;（也就是闭包相等），就说该分解保持函数依赖。&lt;/p&gt;
