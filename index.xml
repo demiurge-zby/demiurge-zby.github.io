@@ -2282,16 +2282,16 @@
 &lt;p&gt;如果&lt;strong&gt;经常需要&lt;/strong&gt;对多个关系进行连接操作，且&lt;strong&gt;大多数操作为查询操作，更新很少&lt;/strong&gt;，则可以考虑将这些关系&lt;strong&gt;合并&lt;/strong&gt;为一个关系。&lt;/p&gt;
 &lt;h5 id=&#34;设计子模式&#34;&gt;设计子模式
 &lt;/h5&gt;&lt;p&gt;设计用户外模式。由于用户外模式与全局模式是&lt;strong&gt;相对独立&lt;/strong&gt;的，因此定义用户外模式时可以注重考虑用户的习惯和方便。&lt;/p&gt;
-&lt;h5 id=&#34;数据库物理设计&#34;&gt;数据库物理设计
-&lt;/h5&gt;&lt;p&gt;设计&lt;strong&gt;内模式&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;数据库物理设计&#34;&gt;数据库物理设计
+&lt;/h4&gt;&lt;p&gt;设计&lt;strong&gt;内模式&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;数据库在&lt;strong&gt;物理设备上的存储结构和存取方法&lt;/strong&gt;称为数据库的物理结构。&lt;/p&gt;
 &lt;p&gt;方法：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;了解应用的类型和特点&lt;/li&gt;
 &lt;li&gt;了解所用的RDBMS提供了哪些&lt;strong&gt;存取方法和存储结构&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&#34;数据库的存取方法&#34;&gt;数据库的存取方法
-&lt;/h6&gt;&lt;p&gt;&lt;strong&gt;索引存取方法&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;数据库的存取方法&#34;&gt;数据库的存取方法
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;索引存取方法&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;应为其建立索引：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;经常在&lt;strong&gt;查询条件&lt;/strong&gt;中出现的属性&lt;/li&gt;
@@ -2310,8 +2310,8 @@
 &lt;p&gt;关系的大小动态改变，但数据库管理系统提供了&lt;strong&gt;动态HASH存取&lt;/strong&gt;方法&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&#34;数据库的存储结构&#34;&gt;数据库的存储结构
-&lt;/h6&gt;&lt;ul&gt;
+&lt;h5 id=&#34;数据库的存储结构&#34;&gt;数据库的存储结构
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;确定数据的存放位置&lt;/p&gt;
 &lt;blockquote&gt;
@@ -2322,8 +2322,8 @@
 &lt;p&gt;确定系统配置&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;数据库的实施&#34;&gt;数据库的实施
-&lt;/h5&gt;&lt;ul&gt;
+&lt;h4 id=&#34;数据库的实施&#34;&gt;数据库的实施
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;数据的载入和应用程序的调试&lt;/p&gt;
 &lt;/li&gt;
@@ -2331,8 +2331,8 @@
 &lt;p&gt;数据库的试运行（功能和性能）&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;数据库的运行和维护&#34;&gt;数据库的运行和维护
-&lt;/h5&gt;&lt;ul&gt;
+&lt;h4 id=&#34;数据库的运行和维护&#34;&gt;数据库的运行和维护
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;数据库的转储和恢复&lt;/p&gt;
 &lt;/li&gt;
