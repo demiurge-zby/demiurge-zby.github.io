@@ -101,6 +101,11 @@
 &lt;h4 id=&#34;t4&#34;&gt;T4
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;第四题为简答题。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;给了一个巨长无比的测试程序。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;复习算法时看到分治的快排，猛地回忆起来。&lt;/p&gt;
+&lt;p&gt;本题的程序应该是qsort的完整实现，当然外加了一些彰显优化的小巧思。&lt;/p&gt;
+&lt;p&gt;里面大致是my_rand函数，swap函数、partition函数、以及递归调用的q_sort函数。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;首先在本地运行，然后观察你的MIPS，结合你的&lt;strong&gt;具体代码实现（可精确到文件名、方法、行数）&lt;/strong&gt;，回答下列四个问题。 下面是题目大致信息：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;XXX函数共有五个参数，前四个通过$ax寄存器传递，那么第五个参数你是如何实现传递的？参数的值又是如何被获取的？&lt;/strong&gt;&lt;/li&gt;
