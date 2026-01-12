@@ -434,10 +434,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>需要实现：</p>
-<blockquote>
 <p>CompUnit → {Decl}{**FuncDecl|**FuncDef} MainFuncDef // 大致长这样，总之要区分FuncDecl和FuncDef</p>
 <p><strong>FuncDecl</strong> → FuncType Ident &lsquo;(&rsquo; [FuncFParams] &lsquo;)&rsquo; <strong>；// i 错误</strong></p>
-</blockquote>
 <ol>
 <li>新建AST节点类型</li>
 <li>修改CompUnit的parse方法</li>
