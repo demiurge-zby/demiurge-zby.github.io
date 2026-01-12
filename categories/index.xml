@@ -7,21 +7,21 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Wed, 07 Jan 2026 12:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 11 Jan 2026 19:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Compiler</title>
+        <link>https://demiurge-zby.github.io/categories/compiler/</link>
+        <pubDate>Sun, 11 Jan 2026 19:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/categories/compiler/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/categories/compiler/cuidu.jpg" alt="Featured image of post Compiler" /&gt;</description>
+        </item>
+        <item>
         <title>DB</title>
         <link>https://demiurge-zby.github.io/categories/db/</link>
         <pubDate>Wed, 07 Jan 2026 12:15:30 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/categories/db/</guid>
         <description>&lt;img src="https://demiurge-zby.github.io/categories/db/ava.png" alt="Featured image of post DB" /&gt;</description>
-        </item>
-        <item>
-        <title>Compiler</title>
-        <link>https://demiurge-zby.github.io/categories/compiler/</link>
-        <pubDate>Sun, 07 Dec 2025 17:15:30 +0800</pubDate>
-        
-        <guid>https://demiurge-zby.github.io/categories/compiler/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/categories/compiler/cuidu.jpg" alt="Featured image of post Compiler" /&gt;</description>
         </item>
         <item>
         <title>OS</title>

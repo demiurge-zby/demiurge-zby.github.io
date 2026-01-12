@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="祝期末顺利">
+<title>BUAA Compiler 上机</title>
+
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA Compiler 上机">
+<meta property='og:description' content="祝期末顺利">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/'>
+<meta property='og:site_name' content='Demiurge'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-01-11T19:15:30&#43;08:00'/><meta property='article:modified_time' content='2026-01-11T19:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/arg.png' />
+<meta name="twitter:title" content="BUAA Compiler 上机">
+<meta name="twitter:description" content="祝期末顺利"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/arg.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2966618033499034663.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💖</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Demiurge</a></h1>
+            <h2 class="site-description">Easy Life</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#2306-上机真题">2306 上机真题</a>
+      <ol>
+        <li><a href="#期中考试">期中考试</a>
+          <ol>
+            <li><a href="#t1">T1</a></li>
+            <li><a href="#t2">T2</a></li>
+          </ol>
+        </li>
+        <li><a href="#期末考试">期末考试</a>
+          <ol>
+            <li><a href="#t1-1">T1</a></li>
+            <li><a href="#t2-1">T2</a></li>
+            <li><a href="#t3">T3</a></li>
+            <li><a href="#t4">T4</a></li>
+          </ol>
+        </li>
+        <li><a href="#备考策略">备考策略</a></li>
+      </ol>
+    </li>
+    <li><a href="#文法新增一般思路">文法新增一般思路</a>
+      <ol>
+        <li><a href="#operator型">Operator型</a>
+          <ol>
+            <li><a href="#词法分析">词法分析</a></li>
+            <li><a href="#语法分析">语法分析</a></li>
+            <li><a href="#语义分析">语义分析</a></li>
+            <li><a href="#代码生成">代码生成</a></li>
+            <li><a href="#运算型ir构建技巧">运算型IR构建技巧</a></li>
+          </ol>
+        </li>
+        <li><a href="#stmt型之新增def成分">Stmt型之新增def成分</a>
+          <ol>
+            <li><a href="#词法分析-1">词法分析</a></li>
+            <li><a href="#语法分析-1">语法分析</a></li>
+            <li><a href="#语义分析-1">语义分析</a></li>
+            <li><a href="#代码生成-1">代码生成</a></li>
+          </ol>
+        </li>
+        <li><a href="#stmt型之新的stmt">Stmt型之新的Stmt</a>
+          <ol>
+            <li><a href="#词法分析-2">词法分析</a></li>
+            <li><a href="#语法分析-2">语法分析</a></li>
+            <li><a href="#语义分析-2">语义分析</a></li>
+            <li><a href="#代码生成-2">代码生成</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/">
+                <img src="/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/arg_hu10215464027204269936.png"
+                        srcset="/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/arg_hu10215464027204269936.png 800w, /p/buaa-compiler-%E4%B8%8A%E6%9C%BA/arg_hu2642936243121543731.png 1600w"
+                        width="800" 
+                        height="800" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA Compiler 上机" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/compiler/" style="background-color: #fa8d12; color: #fff;">
+                Compiler
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/">BUAA Compiler 上机</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            祝期末顺利
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2026-01-11</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 10 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="2306-上机真题">2306 上机真题
+</h2><h3 id="期中考试">期中考试
+</h3><p>分为两道题。</p>
+<h4 id="t1">T1
+</h4><p>第一题为填空题，选择你的编译器语言类型：C、C++、Java。</p>
+<blockquote>
+<p>坑点解析：C选项才是Java，而A选项才是C。</p>
+</blockquote>
+<h4 id="t2">T2
+</h4><p>第二题为新增文法，只考查词法分析、语法分析，以及这两个阶段的错误处理。</p>
+<p>新增文法：<strong>函数声明</strong>。</p>
+<p>原文法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CompUnit → {Decl} {FuncDef} MainFuncDef
+</span></span><span class="line"><span class="cl">FuncDef → FuncType Ident &#39;(&#39; [FuncFParams] &#39;)&#39; Block
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>需要实现：</p>
+<blockquote>
+<p>CompUnit → {Decl}{**FuncDecl|**FuncDef} MainFuncDef // 大致长这样，总之要区分FuncDecl和FuncDef</p>
+<p><strong>FuncDecl</strong> → FuncType Ident &lsquo;(&rsquo; [FuncFParams] &lsquo;)&rsquo; <strong>；// i 错误</strong></p>
+</blockquote>
+<ol>
+<li>新建AST节点类型</li>
+<li>修改CompUnit的parse方法</li>
+<li>实现FuncDecl的parse方法，其中包含<strong>错误处理</strong>。</li>
+</ol>
+<p>难点显然在第二步：修改CompUnit的parse方法。</p>
+<p>因为FuncDecl和FuncDef的区分不是简简单单peek几个token就能实现的，一般考虑<strong>使用回溯</strong>。</p>
+<h3 id="期末考试">期末考试
+</h3><p>分为四道题。</p>
+<h4 id="t1-1">T1
+</h4><p><strong>第一题为新增文法。</strong></p>
+<p>新增文法分为MIPS与非MIPS，请阅读对应栏目的题面。</p>
+<p>MIPS生成赛道的题面：</p>
+<p>需要实现：</p>
+<blockquote>
+<p>乘除模表达式新增运算符：-&gt;</p>
+<p>MulExp → UnaryExp | MulExp (&rsquo;*&rsquo; | &lsquo;/&rsquo; | &lsquo;%&rsquo; <strong>| &lsquo;-&gt;&rsquo;</strong>) UnaryExp</p>
+<p>其中a-&gt;b表示 a + (a+1) + (a+2) + …… +b，保证b&gt;=a且均为整数。</p>
+<p>如 3-&gt;3 = 3, 4-&gt;6= 15。</p>
+</blockquote>
+<blockquote>
+<p>Stmt新增类型：</p>
+<p>Stmt →  &lsquo;cin&rsquo; &lsquo;&raquo;&rsquo; LVal;  <strong>// i 错误</strong></p>
+<p>其语义完全等价于LVal = getint();</p>
+</blockquote>
+<p>词法分析，新增三个token，并完成lexer。</p>
+<p>语法分析则比较简单，cin语句的判别也只靠currentToken就能解决。</p>
+<p>需要注意书写CinStmt的parse方法时要追加<strong>错误处理</strong>。</p>
+<p>语义分析，重点是-&gt;的常量预计算，显然直接使用**(a+b)(b-a+1)/2**计算。</p>
+<p>代码生成：</p>
+<ul>
+<li>-&gt;依旧使用(a+b)(b-a+1)/2即可。就这么一直new AluInstr。注意不要忘记减1和除2。</li>
+<li>cin语句和assign语句更是基本一模一样，只是store的不是ExpIr，而是**new GetIntInstr()**而已。</li>
+</ul>
+<p>整体做下来算是比较简单的一份题目了。</p>
+<blockquote>
+<p>据说原题目是 函数重载和形参缺省值。因为太难 助教本人做不出而被否决。 // 经 or 未经</p>
+</blockquote>
+<h4 id="t2-1">T2
+</h4><p><strong>第二题为竞速排序题。</strong></p>
+<p>提供一个样例点。共有三个测试点。</p>
+<p>对优化给予超级强测！许多人在这一步被迫关掉大量优化。</p>
+<p>但是不开优化时应该一般没有问题。 // 未经</p>
+<h4 id="t3">T3
+</h4><p><strong>第三题为文件上传题。</strong></p>
+<p>针对第二题上传的编译器与题面给出的样例，生成针对该样例的四个txt文件，并打包为zip上传。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">testfile_学号_姓名_优化前/后中间/目标代码
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一定注意是四个文件。</p>
+<blockquote>
+<p>如果未实现优化，可仅包含优化前中间/目标代码共2个txt文件。</p>
+</blockquote>
+<h4 id="t4">T4
+</h4><p><strong>第四题为简答题。</strong></p>
+<p>给了一个巨长无比的测试程序。</p>
+<p>首先在本地运行，然后观察你的MIPS，结合你的<strong>具体代码实现（可精确到文件名、方法、行数）</strong>，回答下列四个问题。 下面是题目大致信息：</p>
+<ul>
+<li><strong>XXX函数共有五个参数，前四个通过$ax寄存器传递，那么第五个参数你是如何实现传递的？参数的值又是如何被获取的？</strong></li>
+</ul>
+<blockquote>
+<p>基础知识。callInstr的toMips()的基本问题，利用栈进行存储，讲一讲你fillParam与loadParam的逻辑就行。</p>
+</blockquote>
+<ul>
+<li><strong>XXX函数的MIPS代码中，$tx 临时寄存器在调用YYY函数的时候你是否保存？如果不保存，YYY函数可能会覆盖该临时寄存器，你是如何处理的？</strong></li>
+</ul>
+<blockquote>
+<p>我没有区分s和t，所以用到就保存了。</p>
+</blockquote>
+<ul>
+<li><strong>XXX函数中，存在多次对a[j]的访问。其中a是数组基地址保持不变，j则不断变化。讲一讲你如何利用a和j实现对a[j]所在地址的获取？</strong></li>
+</ul>
+<blockquote>
+<p>这道题a[j]的访问是在一个循环体里。所以如果实现循环展开，再结合公共子表达式，很可能只需对地址加加减减。不过我这个版本没有实现，所以循环体里的语句就是朴素的a + j&laquo;2。</p>
+</blockquote>
+<ul>
+<li><strong>观察XXX函数和YYY函数对应生成的MIPS代码，你实现了哪些优化？还有哪些优化你可以实现？</strong></li>
+</ul>
+<blockquote>
+<p>这就得看题目本身了。里面有常数合并、常数传播、死代码删除等等。其实我没看出来太多。</p>
+</blockquote>
+<p>这道题一般比较吃时间。不过下限低，真没时间了也没关系。 // 未经</p>
+<blockquote>
+<p>特别情况：今年考试的markdown编辑页面自带保存备份，过几秒就会自动保存打断你一次，所以建议在本地写好再粘贴到希冀的编辑器。</p>
+</blockquote>
+<h3 id="备考策略">备考策略
+</h3><p>一般来说，增添新文法并不会耗费太多的时间，而且测试点中包含纯课下的点，所以不必过于紧张。</p>
+<blockquote>
+<p>真出问题了大抵也是课下的，现场估计也修不出来。</p>
+</blockquote>
+<p>提前30min到考场。调试设备，配置IDEA的JDK。</p>
+<p>可以携带纸质资料。因此作业截止后才发现自己的bug的同学可以把diff打印出来带到考场，提前奋笔疾书。</p>
+<p>可以把你新增文法的基本思路写一写，因为这和你自己的实现息息相关，是你独享的秘籍。预先想得全面一点也不至于考试的时候缺东少西，发生本地跑一下RE了再赶紧改诸如此类的事。</p>
+<p>下面内容仅供参考。</p>
+<h2 id="文法新增一般思路">文法新增一般思路
+</h2><p>有关错误处理：</p>
+<p>新增ErrorType，然后ErrorList.addError(new Error(type, line));</p>
+<h3 id="operator型">Operator型
+</h3><p>这类题目几乎必考，处理起来也相对粗暴。</p>
+<h4 id="词法分析">词法分析
+</h4><p>TokenType新增token。</p>
+<p>lexer：<code>readchar</code>是消耗当前的字符，所以预读时先看<code>currentchar</code>，再决定直接<code>return</code>还是继续<code>readchar</code></p>
+<h4 id="语法分析">语法分析
+</h4><p>如果是一元运算符UnaryOp，一定要注意修改以下部分的parser的FIRST集判定：</p>
+<ul>
+<li>UnaryExp判定函数调用，鉴定FuncRParams时 （其实这个可以无条件，因为没有分支）</li>
+<li>UnaryExp区分UnaryOp UnaryExp与PrimaryExp时</li>
+<li>Stmt在回溯前初步判别ExpStmt与AssignStmt时</li>
+</ul>
+<p>如果是其他运算符，需要修改所在层级Exp是否继续while循环的判定。</p>
+<h4 id="语义分析">语义分析
+</h4><p>主要内容是常量预计算。</p>
+<p>如果是一元运算符，</p>
+<p>在UnaryExp最下面的compute方法中新增else if。</p>
+<p>其他运算符在RecursionExp的compute方法中新增case。</p>
+<h4 id="代码生成">代码生成
+</h4><p>主要修改VisitorExp。</p>
+<p>如果是一元运算符，找到generateUnaryExpUnaryIr，新增case即可。</p>
+<p>其他运算符找对应的generate，把while循环中的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">AluInstr</span><span class="w"> </span><span class="n">aluInstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AluInstr</span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="na">getToken</span><span class="p">().</span><span class="na">getValue</span><span class="p">(),</span><span class="w"> </span><span class="n">irValue1</span><span class="p">,</span><span class="w"> </span><span class="n">irValue2</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>改成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="na">getToken</span><span class="p">().</span><span class="na">getValue</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">&#34;XXX&#34;</span><span class="p">)){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">XXXXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">AluInstr</span><span class="w"> </span><span class="n">aluInstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AluInstr</span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="na">getToken</span><span class="p">().</span><span class="na">getValue</span><span class="p">(),</span><span class="w"> </span><span class="n">irValue1</span><span class="p">,</span><span class="w"> </span><span class="n">irValue2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="运算型ir构建技巧">运算型IR构建技巧
+</h4><p>加文法很方便的一点是，很多东西你都做好了、封装好了。除了全新的功能，基本上都可以尝试复用。</p>
+<p>常量：<code>new IrConstantInt(X)</code></p>
+<p>拿到irValue（要注意VarSymbol的irValue是指针，其余的基本是值）：</p>
+<p>最底层的irValue很少，要不然是IrConstant，要不然是函数def与变量decl时分配的irValue。</p>
+<p>其余的，大多数都是Instr这种形式存在的irValue，不用依赖symbol。</p>
+<p>如果真的没有上下文提供irValue，必须自己拿：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 函数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FuncSymbol</span><span class="w"> </span><span class="n">funcSymbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">FuncSymbol</span><span class="p">)</span><span class="w"> </span><span class="n">SymbolRecorder</span><span class="p">.</span><span class="na">getSymbol</span><span class="p">(</span><span class="n">identName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">IrFunction</span><span class="w"> </span><span class="n">irFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">IrFunction</span><span class="p">)</span><span class="w"> </span><span class="n">funcSymbol</span><span class="p">.</span><span class="na">getIrValue</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 变量 LVal</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">IrValue</span><span class="w"> </span><span class="n">irValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generateLValIr</span><span class="p">(</span><span class="n">LVal</span><span class="w"> </span><span class="n">lval</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">beAssigned</span><span class="p">)</span><span class="err">；</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// true为取址（要被赋值） false为取值</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>某个irValue一定是const，我要用值：<code>((IrConstantInt) irValue).getValue()</code></p>
+<p>我要某个VarSymbol的irValue（是个地址）对应的值：new LoadInstr(XXX.getSymbol().getIrValue());</p>
+<p>A=A OP B：<code>irValue1 = new AluInstr(&quot;OP&quot;, irValue1, irValue2);</code></p>
+<blockquote>
+<p>目前支持的OP：+、-、*、/、%、&amp;同&amp;&amp;、|同||</p>
+</blockquote>
+<p>变量赋值操作： 左值、右值、store</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">generateAssignStmtIr</span><span class="p">(</span><span class="n">Stmt</span><span class="w"> </span><span class="n">stmt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">LVal</span><span class="w"> </span><span class="n">lval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stmt</span><span class="p">.</span><span class="na">getLVal</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Exp</span><span class="w"> </span><span class="n">exp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stmt</span><span class="p">.</span><span class="na">getAssignStmtExp</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">IrValue</span><span class="w"> </span><span class="n">irLVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VisitorLVal</span><span class="p">.</span><span class="na">generateLValIr</span><span class="p">(</span><span class="n">lval</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">IrValue</span><span class="w"> </span><span class="n">irExp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VisitorExp</span><span class="p">.</span><span class="na">generateExpIr</span><span class="p">(</span><span class="n">exp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">irExp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IrType</span><span class="p">.</span><span class="na">convertType</span><span class="p">(</span><span class="n">irExp</span><span class="p">,</span><span class="w"> </span><span class="p">((</span><span class="n">IrPointerType</span><span class="p">)</span><span class="w"> </span><span class="n">irLVal</span><span class="p">.</span><span class="na">getIrType</span><span class="p">()).</span><span class="na">getTargetType</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">StoreInstr</span><span class="p">(</span><span class="n">irExp</span><span class="p">,</span><span class="w"> </span><span class="n">irLVal</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>一个例子：**代表(a+b)^b。保证b为const。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="na">getToken</span><span class="p">().</span><span class="na">getValue</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">&#34;**&#34;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">IrConstantInt</span><span class="p">)</span><span class="w"> </span><span class="n">irValue2</span><span class="p">).</span><span class="na">getValue</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">irValue2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AluInstr</span><span class="p">(</span><span class="s">&#34;+&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">irValue1</span><span class="p">,</span><span class="w"> </span><span class="n">irValue2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">irValue1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AluInstr</span><span class="p">(</span><span class="s">&#34;*&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IrConstantInt</span><span class="p">(</span><span class="n">1</span><span class="p">),</span><span class="w"> </span><span class="n">irValue2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">irValue1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AluInstr</span><span class="p">(</span><span class="s">&#34;*&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">irValue1</span><span class="p">,</span><span class="w"> </span><span class="n">irValue2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>一定注意AluInstr的Op要自己写。</p>
+<p>如下面一元表达式的例子，不要把++的op直接写为op。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#34;+&#34;</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">irValue</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#34;++&#34;</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AluInstr</span><span class="p">(</span><span class="s">&#34;+&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IrConstantInt</span><span class="p">(</span><span class="n">1</span><span class="p">),</span><span class="w"> </span><span class="n">irValue</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#34;-&#34;</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AluInstr</span><span class="p">(</span><span class="n">op</span><span class="p">,</span><span class="w"> </span><span class="n">constantZero</span><span class="p">,</span><span class="w"> </span><span class="n">irValue</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="stmt型之新增def成分">Stmt型之新增def成分
+</h3><h4 id="词法分析-1">词法分析
+</h4><p>无新token产生。</p>
+<h4 id="语法分析-1">语法分析
+</h4><p>要新建或修改对应的parse方法。建议新建，大不了许多内容复制粘贴，也要尽量把类型区分开。</p>
+<p>因为涉及到新的def成分，往往是<code>BType Ident = InitVal</code>，所以我们直接用一个更包容的BType + VarDef来取代。</p>
+<blockquote>
+<p>毕竟如果不涉及语义错误，就不会出现<code>没有 = InitVal</code>被误判为<code>正确</code>的现象出现。</p>
+</blockquote>
+<p>为什么不直接用VarDecl？你看一眼就会发现它的定义里包含一个分号。</p>
+<h4 id="语义分析-1">语义分析
+</h4><p>看起来关键在VarDef上，实际上它的visit已经封装好了。</p>
+<blockquote>
+<p>这也就是我们没有单个处理<code>Ident = InitVal</code>而是直接视为VarDef的原因。</p>
+</blockquote>
+<p>实际上的关键在于Scope。在某Stmt内定义var，还想只在该Stmt内生效，就需要再套一层Scope。</p>
+<p>直接对于该Stmt，在整个visit函数套上：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">SymbolRecorder</span><span class="p">.</span><span class="na">enterScope</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// XXXXXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SymbolRecorder</span><span class="p">.</span><span class="na">exitScope</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="代码生成-1">代码生成
+</h4><p>首先要为刚才的def成分提供一个get方法。</p>
+<p>然后去VisitStmt找到对应函数，先套上：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">SymbolRecorder</span><span class="p">.</span><span class="na">goToSonSymbolTable</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// XXXXXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SymbolRecorder</span><span class="p">.</span><span class="na">exitScope</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意不是enterscope了！因为enter不仅包含goto，还包含create</p>
+</blockquote>
+<p>接下来就是XXXXX的具体内容。</p>
+<p>首先把varDef用get方法拿到，然后</p>
+<p><code>VisitorDecl.generateVarDefIr(varDef);</code></p>
+<blockquote>
+<p>注意这个方法本来是private的，这里要把它public一下</p>
+</blockquote>
+<h3 id="stmt型之新的stmt">Stmt型之新的Stmt
+</h3><p>这里以一个简单的<code>while(Cond) Stmt</code>为例。</p>
+<h4 id="词法分析-2">词法分析
+</h4><p>新增token是<code>单词</code>while，因此要在TokenType的getTokenType(String string)方法新增一个case即可。</p>
+<h4 id="语法分析-2">语法分析
+</h4><p>Stmt中新增一个StmtType，并单独设立Parse方法。</p>
+<p>利用<code>type.equals(TokenType.WHILETK)</code>直接实现判别。</p>
+<p>之后就直接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StmtType</span><span class="p">.</span><span class="na">WHILE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">addNode</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TokenNode</span><span class="p">());</span><span class="w"> </span><span class="c1">// while</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">addNode</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TokenNode</span><span class="p">());</span><span class="w"> </span><span class="c1">// (</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">addNode</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Cond</span><span class="p">());</span><span class="w"> </span><span class="c1">// Cond</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getCurrentToken</span><span class="p">().</span><span class="na">getType</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="n">TokenType</span><span class="p">.</span><span class="na">RPARENT</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 如果真的要求处理</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">addNode</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TokenNode</span><span class="p">());</span><span class="w"> </span><span class="c1">// )</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">addMissRightParenthesisError</span><span class="p">();</span><span class="w"> </span><span class="c1">// 自带错误记录与BUG_FIX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SymbolRecorder</span><span class="p">.</span><span class="na">enterFor</span><span class="p">();</span><span class="w"> </span><span class="c1">// 重要！不能忽略这也是个循环！</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">addNode</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Stmt</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SymbolRecorder</span><span class="p">.</span><span class="na">exitFor</span><span class="p">();</span><span class="w"> </span><span class="c1">// 这是为continue与break的异常判断提供信息</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>顺便提前为代码生成部分准备好getWhileStmtCond、getWhileStmtStmt。</p>
+<h4 id="语义分析-2">语义分析
+</h4><p>这个反倒没什么特别的。不定义变量，也不涉及语义错误。</p>
+<p>直接super.visit()</p>
+<h4 id="代码生成-2">代码生成
+</h4><p>我们可以完全照搬for的结构。</p>
+<p>关于循环体需要注意的<strong>IrLoop的维护</strong>与<strong>跳转的逻辑</strong>基本上都是一样的。</p>
+<blockquote>
+<p>continue是跳转到该层循环的step块</p>
+<p>break是跳转到该层循环的follow块</p>
+<p>while的特点是没有step块，并且continue会跳到cond块。</p>
+<p>所以直接认为step块就是cond块。</p>
+</blockquote>
+<p>for循环是cond-&gt;body-&gt;step-&gt;cond或cond-&gt;follow</p>
+<p>但是出于continue的含义才没有把body和step合并。</p>
+<p>在while里就简单的多了，就是cond-&gt;body-&gt;cond或者cond-&gt;follow</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">generateStmtWhileStmtIr</span><span class="p">(</span><span class="n">Stmt</span><span class="w"> </span><span class="n">stmt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 创建基本块</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">IrBasicBlock</span><span class="w"> </span><span class="n">condBlock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IrBuilder</span><span class="p">.</span><span class="na">getNewBasicBlockIr</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">IrBasicBlock</span><span class="w"> </span><span class="n">bodyBlock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IrBuilder</span><span class="p">.</span><span class="na">getNewBasicBlockIr</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">IrBasicBlock</span><span class="w"> </span><span class="n">followBlock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IrBuilder</span><span class="p">.</span><span class="na">getNewBasicBlockIr</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 将loop入栈：stepBlock项为condBlock</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">IrBuilder</span><span class="p">.</span><span class="na">LoopStackPush</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">IrLoop</span><span class="p">(</span><span class="n">condBlock</span><span class="p">,</span><span class="w"> </span><span class="n">bodyBlock</span><span class="p">,</span><span class="w"> </span><span class="n">condBlock</span><span class="p">,</span><span class="w"> </span><span class="n">followBlock</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1">// 跳转统一用这个封装方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">jumpIfNeeded</span><span class="p">(</span><span class="n">condBlock</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 解析条件cond</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">IrBuilder</span><span class="p">.</span><span class="na">setCurrentBasicBlock</span><span class="p">(</span><span class="n">condBlock</span><span class="p">);</span><span class="w"> </span><span class="c1">// 先进入cond块</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Cond</span><span class="w"> </span><span class="n">cond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stmt</span><span class="p">.</span><span class="na">getWhileStmtCond</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Cond的跳转由于短路求值已特别封装</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 注意前面是true，后面是false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">VisitorExp</span><span class="p">.</span><span class="na">generateCondIr</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span><span class="w"> </span><span class="n">bodyBlock</span><span class="p">,</span><span class="w"> </span><span class="n">followBlock</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 处理循环体body</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">IrBuilder</span><span class="p">.</span><span class="na">setCurrentBasicBlock</span><span class="p">(</span><span class="n">bodyBlock</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 解析循环函数体stmt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Stmt</span><span class="w"> </span><span class="n">bodyStmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stmt</span><span class="p">.</span><span class="na">getWhileStmtStmt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">generateStmtIr</span><span class="p">(</span><span class="n">bodyStmt</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 跳转统一用这个封装方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">jumpIfNeeded</span><span class="p">(</span><span class="n">condBlock</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// loop出栈</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">IrBuilder</span><span class="p">.</span><span class="na">LoopStackPop</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 处理后续块</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">IrBuilder</span><span class="p">.</span><span class="na">setCurrentBasicBlock</span><span class="p">(</span><span class="n">followBlock</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于非Cond型的条件跳转，大胆使用new BranchInstr(irValue, trueBlock, falseBlock);</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-compiler-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-compiler-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/cuidu.a38771ae819d5c0629e2c8a123d47e67_hu1892546832351428475.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA Compiler 实验报告"
+                        
+                        data-hash="md5-o4dxroGdXAYp4sihI9R&#43;Zw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA Compiler 实验报告</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script><footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2026 Demiurge
+    </section>
+    
+    <section class="powerby">
+        
+            Easy Life and Easy Learning <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script>
+    const home = "https://demiurge-zby.github.io/";
+    console .log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Sense of Wonder',
+            artist: 'Yu_Asahina',
+            url: home + 'music/Sense of wonder/sense of wonder.mp3',
+            cover: home + 'music/Sense of wonder/cover.jpg'
+        },
+        {
+            name: 'Demiurge',
+            artist: 'Rabpit',
+            url: home + 'music/demiurge/demiurge.mp3',
+            cover: home + 'music/demiurge/cover.jpg'
+        },
+        {
+            name: 'Designant.',
+            artist: 'Designant',
+            url: home + 'music/Designant/shejimayi.mp3',
+            cover: home + 'music/Designant/cover.jpg'
+        },
+        {
+            name: 'Xaleid◆scopiX',
+            artist: 'xi',
+            url: home + 'music/Xaleid◆scopiX/xx.mp3',
+            cover: home + 'music/Xaleid◆scopiX/cover.jpg'
+        },
+        {
+            name: 'Lament Rain',
+            artist: 'Ashrount vs. 打打だいず',
+            url: home + 'music/Lament Rain/lamian.mp3',
+            cover: home + 'music/Lament Rain/cover.jpg'
+        },
+        {
+            name: 'Breach of Faith',
+            artist: 'Supire feat.eili',
+            url: home + 'music/Breach of Faith/song.mp3',
+            cover: home + 'music/Breach of Faith/cover.jpg'
+        },
+        {
+            name: 'WORLDCALL',
+            artist: 'Blacklolita',
+            url: home + 'music/WORLDCALL/WORLDCALL.mp3',
+            cover: home + 'music/WORLDCALL/cover.jpg'
+        },
+        {
+            name: 'Meteorite Lotus',
+            artist: 'wa.',
+            url: home + 'music/Meteorite Lotus/shilian.mp3',
+            cover: home + 'music/Meteorite Lotus/cover.jpg'
+        },
+        {
+            name: 'И00.',
+            artist: 'Se-U-Ra',
+            url: home + 'music/И00/N00.mp3',
+            cover: home + 'music/И00/cover.jpg'
+        },
+        {
+            name: 'Observatory',
+            artist: 'かめりあ',
+            url: home + 'music/Observatory/observatory.mp3',
+            cover: home + 'music/Observatory/cover.jpg'
+        },
+        {
+            name: '白噪音',
+            artist: '- -',
+            url: home + 'music/白噪音/whitenoise.mp3',
+            cover: home + 'music/白噪音/cover.jpg'
+        }],
+        fixed: true
+    });
+    window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+    
+    <script src=https://demiurge-zby.github.io/js/topbar.min.js></script>
+
+<script>
+    var pjax = new Pjax({
+  selectors: [".main-container",".js-Pjax"]
+})
+pjax._handleResponse = pjax.handleResponse;
+
+pjax.handleResponse = function(responseText, request, href, options) {
+  if (request.responseText.match("<html")) {
+    
+    let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+    setTimeout(() =>{
+        pjax._handleResponse(responseText, request, href, options);
+    }, 500)
+  } else {
+    
+  }
+}
+document.addEventListener('pjax:send', () => {
+    topbar.show();
+})
+document.addEventListener('pjax:complete', () => {
+    window.Stack.init();
+    topbar.hide();
+})
+
+topbar.config({
+        barColors: {
+            '0': 'rgba(0, 210, 255,  1)' ,
+            '1.0': 'rgba(0, 255, 100, 1)',
+        }
+    })
+
+</script>
+
+<div class="js-Pjax"></div>
+    <script>
+        
+        (function() {
+            let script = document.createElement('script');
+            
+             script.setAttribute('key', 'value');
+            ...
+            
+            document.querySelector('xxx').appendchild(script)
+        })(document)
+    </script>
+<div>
+    </body>
+</html>
