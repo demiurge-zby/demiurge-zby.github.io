@@ -481,7 +481,3461 @@
         <pubDate>Wed, 07 Jan 2026 12:15:30 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ava.png" alt="Featured image of post BUAA DB 课程笔记" /&gt;&lt;p&gt;此内容暂不可见。&lt;/p&gt;
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ava.png" alt="Featured image of post BUAA DB 课程笔记" /&gt;&lt;p&gt;PDF版便于直接阅读。博客可展示结构层次，便于跳转阅读。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/PDF.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;往年题作者答案：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/10.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/11.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/12.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/20.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/22.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;数据库概论&#34;&gt;数据库概论
+&lt;/h2&gt;&lt;h3 id=&#34;信息与数据&#34;&gt;信息与数据
+&lt;/h3&gt;&lt;p&gt;数据是信息的&lt;strong&gt;载体&lt;/strong&gt;，信息是数据的&lt;strong&gt;内涵&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;数据库&#34;&gt;数据库
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;所谓数据库是长期储存在计算机内的、有组织的、可共享的数据集合。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数据库中的数据按一定的&lt;strong&gt;数据模型&lt;/strong&gt;组织、存储和描述，由&lt;strong&gt;DBMS&lt;/strong&gt;统一管理，多用户共享。&lt;/p&gt;
+&lt;h3 id=&#34;数据管理发展阶段&#34;&gt;数据管理发展阶段
+&lt;/h3&gt;&lt;p&gt;数据管理的三个阶段：人工管理阶段、文件系统阶段、数据库系统阶段。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;人工管理：不存储数据、数据不共享、无独立性&lt;/li&gt;
+&lt;li&gt;文件系统：数据存储为文件、有一定的共享性、有一定的物理独立性、无逻辑独立性&lt;/li&gt;
+&lt;li&gt;文件系统：数据冗余与不一致、数据独立性整体较差&lt;/li&gt;
+&lt;li&gt;数据库系统：&lt;strong&gt;面向全组织的结构化&lt;/strong&gt;，&lt;strong&gt;数据集成与共享&lt;/strong&gt;、&lt;strong&gt;可控冗余度&lt;/strong&gt;，&lt;strong&gt;数据独立性好&lt;/strong&gt;，&lt;strong&gt;统一的控制机制&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据库系统&#34;&gt;数据库系统
+&lt;/h3&gt;&lt;p&gt;数据库系统是指一个&lt;strong&gt;计算机存储记录&lt;/strong&gt;的系统。&lt;/p&gt;
+&lt;p&gt;它是一个计算机系统，该系统的目标是&lt;strong&gt;存储&lt;/strong&gt;信息，并支持用户&lt;strong&gt;检索&lt;/strong&gt;和&lt;strong&gt;更新&lt;/strong&gt;所需要的信息。&lt;/p&gt;
+&lt;p&gt;数据库系统的特点：&lt;strong&gt;面向全组织的结构化&lt;/strong&gt;，&lt;strong&gt;数据集成与共享&lt;/strong&gt;、易扩充性、&lt;strong&gt;可控冗余度&lt;/strong&gt;，&lt;strong&gt;数据独立性好&lt;/strong&gt;（包括逻辑独立性与物理独立性），&lt;strong&gt;统一的控制机制&lt;/strong&gt;（安全性与完整性、并发控制、数据库恢复）。&lt;/p&gt;
+&lt;p&gt;数据库系统与文件系统的本质差别：&lt;strong&gt;面向全组织的结构化&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;数据库系统的组成部分：&lt;strong&gt;数据库&lt;/strong&gt;、&lt;strong&gt;软件&lt;/strong&gt;（DBMS,支持DBMS的OS,高级语言及其Compiler,应用开发工具与应用系统）、&lt;strong&gt;硬件&lt;/strong&gt;（内存\存取设备\IO）、&lt;strong&gt;用户&lt;/strong&gt;（DBA、偶然用户、&amp;hellip;）&lt;/p&gt;
+&lt;p&gt;DBA：数据库管理员，决定和监控数据库&lt;/p&gt;
+&lt;h3 id=&#34;数据库管理系统dbms&#34;&gt;数据库管理系统——DBMS
+&lt;/h3&gt;&lt;p&gt;数据库管理系统（DBMS）是一个&lt;strong&gt;通用的软件系统&lt;/strong&gt;，由一组计算机程序构成。&lt;/p&gt;
+&lt;p&gt;DBMS：&lt;strong&gt;数据库定义&lt;/strong&gt;功能（提供DDL，数据描述语言）、&lt;strong&gt;数据存取&lt;/strong&gt;功能（提供DML，数据操作语言，分为宿主型与自含型）、&lt;strong&gt;数据库运行&lt;/strong&gt;管理、&lt;strong&gt;数据组织存储与管理&lt;/strong&gt;、数据库的&lt;strong&gt;建立和维护&lt;/strong&gt;功能&lt;/p&gt;
+&lt;h3 id=&#34;数据模型&#34;&gt;数据模型
+&lt;/h3&gt;&lt;p&gt;分类：概念数据模型、逻辑数据模型、物理数据模型&lt;/p&gt;
+&lt;p&gt;组成：数据结构、数据操作、数据的约束条件&lt;/p&gt;
+&lt;p&gt;数据结构的组成：数据本身、数据之间的联系&lt;/p&gt;
+&lt;h4 id=&#34;概念数据模型&#34;&gt;概念数据模型
+&lt;/h4&gt;&lt;p&gt;实体（值）、属性、域、实体型、实体集&lt;/p&gt;
+&lt;p&gt;能唯一标识实体的属性集：码&lt;/p&gt;
+&lt;p&gt;联系的&lt;strong&gt;类型&lt;/strong&gt;：1对1，1对多，多对多&lt;/p&gt;
+&lt;p&gt;E-R图&lt;/p&gt;
+&lt;h4 id=&#34;逻辑数据模型&#34;&gt;逻辑数据模型
+&lt;/h4&gt;&lt;p&gt;层次模型：树结构，结点是数据集合，边是多个指针，不可表达多对多，对用户要求较高。&lt;/p&gt;
+&lt;p&gt;网状模型：有向图，结点是数据集合，边是多个指针，支持多对多。表达能力强。易用性差。&lt;/p&gt;
+&lt;p&gt;关系模型：二维表。将数据本身与数据之间的联系统一形式。联系的形式：将两个实体的码（唯一标识）放在同一个表项中。建立在严格的数学概念基础上（集合论）。简单直观。数据独立性、安全保密性强。性能相对更差。&lt;/p&gt;
+&lt;p&gt;面向对象模型：增添方法，以实现对属性值的操作。&lt;/p&gt;
+&lt;h3 id=&#34;数据库系统模式&#34;&gt;数据库系统模式
+&lt;/h3&gt;&lt;p&gt;模式：数据的结构与联系的描述&lt;/p&gt;
+&lt;p&gt;型是对一类属性结构和属性的说明，值是型的具体赋值&lt;/p&gt;
+&lt;p&gt;模式也有其对应的实例。&lt;/p&gt;
+&lt;p&gt;数据库系统&lt;strong&gt;三级模式与两级映像&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600.png&#34;
+	width=&#34;549&#34;
+	height=&#34;355&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600_hu16639843157920233062.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231160929600_hu4694091118305588877.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231160929600&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;371px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;内模式：存储模式&lt;/p&gt;
+&lt;p&gt;模式：逻辑模式（所有数据的逻辑结构与属性）&lt;/p&gt;
+&lt;p&gt;外模式：模式的子集，是用户的数据视图（为用户定义外模式）&lt;/p&gt;
+&lt;p&gt;意义：某模式改变时，&lt;strong&gt;DBMS自动调整映象&lt;/strong&gt;，使得其他模式无需改变。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据独立性&lt;/strong&gt;：&lt;strong&gt;逻辑独立性&lt;/strong&gt;与&lt;strong&gt;物理独立性&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;逻辑独立性：外模式/模式映象，模式改变，外模式不变&lt;/p&gt;
+&lt;p&gt;数据独立性：模式/内模式映象，内模式改变，模式不变&lt;/p&gt;
+&lt;h2 id=&#34;关系数据库&#34;&gt;关系数据库
+&lt;/h2&gt;&lt;p&gt;关系模型的三个组成要素：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据结构&lt;/strong&gt;：关系&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实体型和联系用同样的二维表结构表示。&lt;/p&gt;
+&lt;p&gt;联系转为表时：可以单独成表，在某些条件下可以与相连的实体合并&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;数据操作&lt;/strong&gt;：关系代数、SQL、&lt;del&gt;关系演算（不学）&lt;/del&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关系操作的特点：1.面向&lt;strong&gt;集合操作&lt;/strong&gt;，操作的&lt;strong&gt;对象与结果&lt;/strong&gt;都是&lt;strong&gt;集合&lt;/strong&gt; 2.非过程化，只需给出做什么，无需给出怎么做&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;数据的约束条件&lt;/strong&gt;：实体完整性约束、参照完整性约束、用户定义完整性约束&lt;/p&gt;
+&lt;h3 id=&#34;数据结构&#34;&gt;数据结构
+&lt;/h3&gt;&lt;p&gt;域：某属性的值的集合（值域）&lt;/p&gt;
+&lt;p&gt;域之间做&lt;strong&gt;笛卡尔积&lt;/strong&gt;得到一张大表，表中的一行称为n-元组或&lt;strong&gt;元组&lt;/strong&gt;，元组的每一个值叫做一个&lt;strong&gt;分量&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;笛卡尔积的基数为&lt;strong&gt;每个域的基数的积&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;D1(1,2) ×D2 (3,4) &amp;mdash;- (1,3) (1,4) (2,3) (2,4)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;笛卡尔积的&lt;strong&gt;子集&lt;/strong&gt;叫做&lt;strong&gt;关系&lt;/strong&gt;，写作&lt;strong&gt;R(D1,D2,&amp;hellip;,Dn)&lt;/strong&gt;,为n元关系，n为关系的度/目。&lt;/p&gt;
+&lt;p&gt;由于域有可能相同，为了区分不同的域，为每一列起名，称为&lt;strong&gt;属性&lt;/strong&gt;。n元关系即有n个属性。&lt;/p&gt;
+&lt;h4 id=&#34;关系模型对关系的限定和扩充&#34;&gt;关系模型对关系的限定和扩充
+&lt;/h4&gt;&lt;p&gt;限定：关系必须是&lt;strong&gt;有限的&lt;/strong&gt;、&lt;strong&gt;有意义的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;扩充：利用属性名的唯一性，&lt;strong&gt;取消关系的有序性&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同一关系在不同的属性名顺序下可有不同的表达顺序&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;关系的性质&#34;&gt;关系的性质
+&lt;/h4&gt;&lt;p&gt;1.列是同质的：每一列的分量来自同一域，有同样类型&lt;/p&gt;
+&lt;p&gt;2.每列属性有不同的属性名，但可出自同一域&lt;/p&gt;
+&lt;p&gt;3.列的顺序与行的顺序都无关紧要 （这个算两点性质）&lt;/p&gt;
+&lt;p&gt;4.集合内任意两个元组&lt;strong&gt;不可完全相同&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;5.每一分量必须是&lt;strong&gt;不可再分的数据&lt;/strong&gt;，满足&lt;strong&gt;1NF&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;二维表无法表示&lt;code&gt;对分量进行再分&lt;/code&gt;。例如住址这一分量不能是&lt;code&gt;河南省&lt;/code&gt;、&lt;code&gt;南阳市&lt;/code&gt; 两个数据，而应该为 &lt;code&gt;河南省南阳市&lt;/code&gt;单个数据。或者直接设定为&lt;code&gt;省&lt;/code&gt;、&lt;code&gt;市&lt;/code&gt;两个分量。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;关系模式&#34;&gt;关系模式
+&lt;/h4&gt;&lt;p&gt;用关系模型设置出来的一种结构就是关系模式。&lt;/p&gt;
+&lt;p&gt;关系模式还能确定为&lt;strong&gt;关系实例&lt;/strong&gt;，关系实例是关系模式在&lt;strong&gt;某一时刻&lt;/strong&gt;的状态或内容。&lt;/p&gt;
+&lt;p&gt;R（U，D，dom，F， I），R为关系名，U&lt;/p&gt;
+&lt;p&gt;为组成该关系的&lt;strong&gt;属性名集合&lt;/strong&gt;，D为属性集U&lt;strong&gt;所来自的域&lt;/strong&gt;，dom为&lt;strong&gt;属性&lt;/strong&gt;向&lt;strong&gt;域&lt;/strong&gt;的&lt;strong&gt;映象集合&lt;/strong&gt;、F为属性间的&lt;strong&gt;数据依赖关系&lt;/strong&gt;集合，I为&lt;strong&gt;完整性约束&lt;/strong&gt;集合。关系模式通常可以简记作R(A1 , A2 ,…, An ) ，只写&lt;strong&gt;R,U&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;关系数据库-1&#34;&gt;关系数据库
+&lt;/h4&gt;&lt;p&gt;关系数据库的型是关系模式的集合。（各个表的结构）&lt;/p&gt;
+&lt;p&gt;关系数据库的值是关系实例的集合。（具体的取值）&lt;/p&gt;
+&lt;h3 id=&#34;完整性约束&#34;&gt;完整性约束
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;候选码&lt;/strong&gt;：唯一性、最小性（删一个都不行）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;候选码可能只有一个属性，也有可能包含所有属性。所有属性作为候选码时，称为&lt;strong&gt;全码&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;主码&lt;/strong&gt;：候选码中选一个。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;主属性&lt;/strong&gt;：&lt;strong&gt;所有候选码&lt;/strong&gt;的属性的并。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;非主属性&lt;/strong&gt;：不出现在任何候选码的属性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;外部码&lt;/strong&gt;：F是关系R的一个/一组属性，但&lt;strong&gt;不是R的码&lt;/strong&gt;，而&lt;strong&gt;与关系S&lt;/strong&gt;的主码&lt;strong&gt;相对应&lt;/strong&gt;（F与S的主码必须定义在一个域）。&lt;strong&gt;R为参照关系，S为被参照关系（目标关系）。&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;R和S未必是不同的关系。比如学生表，可有主码&lt;code&gt;学号&lt;/code&gt;，也可有外码&lt;code&gt;班长学号&lt;/code&gt;。&lt;code&gt;班长学号&lt;/code&gt;可以与学生表的主码&lt;code&gt;学号&lt;/code&gt;相对应。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;实体完整性&#34;&gt;实体完整性
+&lt;/h4&gt;&lt;p&gt;关系R&lt;strong&gt;主码&lt;/strong&gt;中所包含的&lt;strong&gt;任意属性&lt;/strong&gt;都不能取空值（未知或无意义）。 reason: 主码要用来区分不同实体&lt;/p&gt;
+&lt;h4 id=&#34;参照完整性&#34;&gt;参照完整性
+&lt;/h4&gt;&lt;p&gt;若关系R的外码F与关系S的主码P相对应，那么关系R中每个元组的&lt;strong&gt;F值必须为空&lt;/strong&gt;，或者&lt;strong&gt;等于&lt;/strong&gt;关系S中&lt;strong&gt;某个元组的P值&lt;/strong&gt;。 reason：可以尚未参照，若有参照，参照对象必须存在。&lt;/p&gt;
+&lt;h4 id=&#34;用户定义的完整性&#34;&gt;用户定义的完整性
+&lt;/h4&gt;&lt;p&gt;用户针对具体的应用环境定义的完整性约束条件。如数值范围等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;系统&lt;/strong&gt;自动支持&lt;strong&gt;实体完整性&lt;/strong&gt;和&lt;strong&gt;参照完整性&lt;/strong&gt;，并提供&lt;strong&gt;定义和检验&lt;/strong&gt;用户定义的完整性的机制。&lt;/p&gt;
+&lt;h3 id=&#34;数据操作关系代数&#34;&gt;数据操作——关系代数
+&lt;/h3&gt;&lt;p&gt;集合论中传统的集合操作：&lt;strong&gt;集合并、集合交、集合差、广义笛卡尔积&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不能处理条件，比如分数低于60的元组&lt;/p&gt;
+&lt;p&gt;不能选择属性，比如只看元组的学号、课程名、成绩，不显示学生名字&lt;/p&gt;
+&lt;p&gt;不能选择性拼接多个表，比如课程表里的课程名与学生表里的学生名&lt;/p&gt;
+&lt;p&gt;不能做笛卡尔积的逆运算&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;专门的关系运算：&lt;strong&gt;选择、投影、连接、商&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由于要处理条件，所以还会有比较运算符与逻辑运算符&lt;/p&gt;
+&lt;h4 id=&#34;基本运算&#34;&gt;基本运算
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;集合并、集合差、广义笛卡尔积、选择、投影&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;其他运算都可以由基本运算得出。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660.png&#34;
+	width=&#34;827&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660_hu15686052086503034601.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174413660_hu5038847731483644247.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174413660&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;358px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;运算的结果都是表，也就是&lt;strong&gt;元组的集合&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;并运算&#34;&gt;并运算
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438.png&#34;
+	width=&#34;914&#34;
+	height=&#34;295&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438_hu14518445711835707448.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174506438_hu10289486494473992544.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174506438&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;309&#34;
+		data-flex-basis=&#34;743px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;会去重。&lt;/p&gt;
+&lt;h4 id=&#34;差运算&#34;&gt;差运算
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244.png&#34;
+	width=&#34;884&#34;
+	height=&#34;283&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244_hu14061628261038309367.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174539244_hu12550629106264387571.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174539244&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;312&#34;
+		data-flex-basis=&#34;749px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;前面的去掉共有的。R-S与S-R不同。&lt;/p&gt;
+&lt;h4 id=&#34;交运算&#34;&gt;交运算
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568.png&#34;
+	width=&#34;861&#34;
+	height=&#34;435&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568_hu6928933061114942196.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174656568_hu2862390324854437686.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174656568&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;197&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;广义笛卡尔积&#34;&gt;广义笛卡尔积
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061.png&#34;
+	width=&#34;654&#34;
+	height=&#34;72&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061_hu2902147288997056868.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174739061_hu5301929276531952205.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174739061&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;908&#34;
+		data-flex-basis=&#34;2180px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893.png&#34;
+	width=&#34;850&#34;
+	height=&#34;508&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893_hu18096060601992693413.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174752893_hu15072505581783697541.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174752893&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;401px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;笛卡尔积的元组个数是原来两个关系的元组个数的乘积。&lt;/p&gt;
+&lt;p&gt;笛卡尔积的属性个数是原来两个关系的属性个数之和。&lt;/p&gt;
+&lt;h4 id=&#34;选择运算&#34;&gt;选择运算
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110.png&#34;
+	width=&#34;734&#34;
+	height=&#34;426&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110_hu13203740469404402024.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174812110_hu16346878322580102709.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174812110&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386.png&#34;
+	width=&#34;816&#34;
+	height=&#34;520&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386_hu7966413066702056344.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174832386_hu2366154945645515954.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174832386&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;376px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;投影运算&#34;&gt;投影运算
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450.png&#34;
+	width=&#34;745&#34;
+	height=&#34;434&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450_hu15698715445615155934.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174847450_hu1509585820899813433.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174847450&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;171&#34;
+		data-flex-basis=&#34;411px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;要去重。&lt;/p&gt;
+&lt;h4 id=&#34;连接运算&#34;&gt;连接运算
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634.png&#34;
+	width=&#34;840&#34;
+	height=&#34;398&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634_hu15174385565594270981.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231174913634_hu12552632583769898908.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231174913634&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;211&#34;
+		data-flex-basis=&#34;506px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;笛卡尔积是强硬的拼接。经过选择即为连接。&lt;/p&gt;
+&lt;p&gt;若&lt;strong&gt;θ为‘=’&lt;/strong&gt;，则为&lt;strong&gt;等值连接&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;拼接后属性的个数等于原关系的属性数之和。&lt;/p&gt;
+&lt;h4 id=&#34;自然连接&#34;&gt;自然连接
+&lt;/h4&gt;&lt;p&gt;若不写条件，则为自然连接。&lt;/p&gt;
+&lt;p&gt;自然连接相对于等值连接的区别：&lt;/p&gt;
+&lt;p&gt;1.不强调是哪个属性，而是取&lt;strong&gt;属性名相同&lt;/strong&gt;且&lt;strong&gt;取值相等&lt;/strong&gt;拼接为新元组&lt;/p&gt;
+&lt;p&gt;2.同名属性只保留一份&lt;/p&gt;
+&lt;p&gt;因此自然拼接后属性的个数未必等于原关系的属性数之和。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756.png&#34;
+	width=&#34;866&#34;
+	height=&#34;348&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756_hu11029066949412479499.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231180427756_hu8003457451287631665.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231180427756&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;597px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于多处属性名相同的情况，必须&lt;strong&gt;都对应相等&lt;/strong&gt;才能视为取值相等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;复合连接&#34;&gt;复合连接
+&lt;/h4&gt;&lt;p&gt;对于自然连接的结果，直接&lt;strong&gt;删去连接属性列&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;半连接&#34;&gt;半连接
+&lt;/h4&gt;&lt;p&gt;连接运算后只保留R或者S的属性列。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用于节省数据传输，仅提取数据用于条件判断，不必传整张表&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;外连接&#34;&gt;外连接
+&lt;/h4&gt;&lt;p&gt;目的：避免自然连接时因失配而发生的信息丢失。&lt;/p&gt;
+&lt;p&gt;未匹配的元组也仍存在于表中，只是多出来的属性取null。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;左外连接 = 自然连接 + 左侧表中失配的元组&lt;/p&gt;
+&lt;p&gt;右外连接 = 自然连接 + 右侧表中失配的元组&lt;/p&gt;
+&lt;p&gt;全外连接 = 自然连接 + 两侧表中失配的元组&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249.png&#34;
+	width=&#34;866&#34;
+	height=&#34;571&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249_hu1901563508339082988.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181139249_hu6787400136094552857.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231181139249&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;除运算&#34;&gt;除运算
+&lt;/h4&gt;&lt;p&gt;A÷B=C……D&lt;/p&gt;
+&lt;p&gt;则B×C+D=A&lt;/p&gt;
+&lt;p&gt;也即C的属性应为 A的属性&lt;strong&gt;去掉&lt;/strong&gt;B的属性&lt;/p&gt;
+&lt;p&gt;C应该填什么值？C中的值和B中的值一定能组合出A中的值！&lt;/p&gt;
+&lt;p&gt;那么需要考虑A中&lt;strong&gt;与B中元组取值相同&lt;/strong&gt;的元组。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182.png&#34;
+	width=&#34;893&#34;
+	height=&#34;495&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182_hu8821633159183598064.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231182040182_hu10939096735168309306.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231182040182&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以大胆先得到所有可能元组ab,bc,ed，然后再逐元组验证。&lt;/p&gt;
+&lt;p&gt;也可以利用象集：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887.png&#34;
+	width=&#34;871&#34;
+	height=&#34;307&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887_hu8240129153761069147.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231181311887_hu16734174690122487840.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231181311887&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;283&#34;
+		data-flex-basis=&#34;680px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于T(CD,AB),&lt;/p&gt;
+&lt;p&gt;CD=cd时，象集为ab,ed&lt;/p&gt;
+&lt;p&gt;CD=ef时，象集为ab,bc,ed&lt;/p&gt;
+&lt;p&gt;对所有象集做广义交（在所有象集中都出现的元组）。&lt;/p&gt;
+&lt;p&gt;下面也是一种思路：&lt;/p&gt;
+&lt;p&gt;先列出所有AB的组合，并做笛卡尔积，得到理想被除数，然后减去真实被除数，可以得到欠缺的组合，从中提取欠缺的AB。最后并从所有AB组合中减去欠缺的AB，就是真正的商。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875.png&#34;
+	width=&#34;689&#34;
+	height=&#34;454&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875_hu9460145076350236195.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183200875_hu8099778447134023449.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231183200875&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;364px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这也就得到了除法的这一定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756.png&#34;
+	width=&#34;380&#34;
+	height=&#34;51&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756_hu11491704607478254103.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183549756_hu9905657720518800576.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231183549756&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;745&#34;
+		data-flex-basis=&#34;1788px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;其中，&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202.png&#34;
+	width=&#34;197&#34;
+	height=&#34;65&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202_hu12247990403960904121.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231183818202_hu18076380631567383979.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231183818202&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;303&#34;
+		data-flex-basis=&#34;727px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;就代表找到的AB组合一定能满足和除数做笛卡尔积还在R中，也就是除数包含于这个组合的象集。&lt;/p&gt;
+&lt;p&gt;象集的特殊含义：若把X作为对象A，那么X的象集就表示与对象A有关系R的&lt;strong&gt;所有&lt;/strong&gt;对象B。&lt;/p&gt;
+&lt;p&gt;除法的特殊含义：得到的数据满足&lt;strong&gt;S中所有要求&lt;/strong&gt;，也即与S中&lt;strong&gt;所有数据&lt;/strong&gt;都满足关系R。&lt;/p&gt;
+&lt;h4 id=&#34;关系代数练习&#34;&gt;关系代数练习
+&lt;/h4&gt;&lt;p&gt;简单的选择+投影&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797.png&#34;
+	width=&#34;567&#34;
+	height=&#34;92&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797_hu11694626621061819115.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231184954797_hu15910402163219989841.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231184954797&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;616&#34;
+		data-flex-basis=&#34;1479px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120.png&#34;
+	width=&#34;561&#34;
+	height=&#34;95&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120_hu4192508129995451759.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185018120_hu6406547194290917838.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231185018120&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;590&#34;
+		data-flex-basis=&#34;1417px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576.png&#34;
+	width=&#34;593&#34;
+	height=&#34;161&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576_hu7262597929896338427.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185041576_hu1413431517549715784.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231185041576&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;368&#34;
+		data-flex-basis=&#34;883px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;多表连接后选择+投影&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756.png&#34;
+	width=&#34;615&#34;
+	height=&#34;99&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756_hu4645682205627111963.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185117756_hu15151501085256417642.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231185117756&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;621&#34;
+		data-flex-basis=&#34;1490px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可只选择表的一部分（关联部分+使用部分）后进行连接。&lt;/p&gt;
+&lt;p&gt;比如STUDENT预先只投影出关联部分Sno与使用部分Sname&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Cpno=5也可以最后再选择，但是连接操作cost很大，预处理后再连接比较好。&lt;/p&gt;
+&lt;p&gt;Course甚至也可以先投影只留下Cno和Cpno&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842.png&#34;
+	width=&#34;825&#34;
+	height=&#34;154&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842_hu13255608370174194422.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185208842_hu645998869737345469.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231185208842&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;535&#34;
+		data-flex-basis=&#34;1285px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;除法！&lt;/p&gt;
+&lt;p&gt;先求学号，之后关联就能求姓名。&lt;/p&gt;
+&lt;p&gt;学号怎么求？ 满足和&lt;strong&gt;所有课程&lt;/strong&gt;都有&lt;strong&gt;选修关系&lt;/strong&gt;的&lt;strong&gt;学生学号&lt;/strong&gt;，用&lt;strong&gt;除法&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;需要注意&lt;strong&gt;属性的选择&lt;/strong&gt;。这里被除数不应包含其他属性。例如被除数包含&lt;code&gt;成绩&lt;/code&gt;属性，那么就会要求&lt;code&gt;（学号，成绩）&lt;/code&gt;的二元组与所有课程都有选修关系，也就是选了所有课的&lt;strong&gt;且成绩都相同&lt;/strong&gt;选课记录，这是错误的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025.png&#34;
+	width=&#34;781&#34;
+	height=&#34;100&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025_hu11920404522393909297.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231185950025_hu8568508429659368855.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231185950025&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;781&#34;
+		data-flex-basis=&#34;1874px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;数据操作sql语言&#34;&gt;数据操作——SQL语言
+&lt;/h3&gt;&lt;h4 id=&#34;特点&#34;&gt;特点
+&lt;/h4&gt;&lt;p&gt;1.综合统一，集&lt;strong&gt;数据定义&lt;/strong&gt;，&lt;strong&gt;数据操纵&lt;/strong&gt;，&lt;strong&gt;数据查询&lt;/strong&gt;和&lt;strong&gt;数据控制&lt;/strong&gt;于一体&lt;/p&gt;
+&lt;p&gt;2.高度非过程化（关系操作的特点）&lt;/p&gt;
+&lt;p&gt;3.面向集合的操作方式（关系操作的特点）&lt;/p&gt;
+&lt;p&gt;4.以同一种语法结构提供&lt;strong&gt;两种使用方式&lt;/strong&gt;，&lt;strong&gt;SQL既是自含式语言，又是嵌入式语言&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;5.语言简洁，易学易用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008.png&#34;
+	width=&#34;859&#34;
+	height=&#34;283&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008_hu4842746288407913868.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231191320008_hu2230071705357144086.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231191320008&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;303&#34;
+		data-flex-basis=&#34;728px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;外模式、模式和内模式都可以用SQL管理。&lt;/p&gt;
+&lt;p&gt;模式：&lt;strong&gt;基本表&lt;/strong&gt;是本身独立存在的表，一个（或多个）基本表对应一个存储文件。&lt;/p&gt;
+&lt;p&gt;内模式：&lt;strong&gt;存储文件&lt;/strong&gt;由数据块构成的存储空间，用于存储&lt;strong&gt;基本表、索引&lt;/strong&gt;等。&lt;/p&gt;
+&lt;p&gt;外模式：&lt;strong&gt;视图&lt;/strong&gt;是从一个或几个基本表中导出的表，其本身不独立存储于数据库中。&lt;/p&gt;
+&lt;h4 id=&#34;数据查询&#34;&gt;数据查询
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Select [ALL|DISTINCT] &amp;lt;目标表达式&amp;gt;[{,&amp;lt;目标表达式&amp;gt;}]&lt;/strong&gt;
+&lt;strong&gt;From &amp;lt;表名或视图名&amp;gt;[{,&amp;lt;表名或视图名&amp;gt;}]&lt;/strong&gt;
+&lt;strong&gt;[Where &amp;lt;条件表达式&amp;gt;]&lt;/strong&gt;
+&lt;strong&gt;[Group By &amp;lt;分组列&amp;gt; [{,&amp;lt;分组列&amp;gt;}] [HAVING &amp;lt;条件表达式&amp;gt;]]&lt;/strong&gt;
+&lt;strong&gt;[Order By &amp;lt;排序列&amp;gt; &amp;lt;排序方式&amp;gt;[{,&amp;lt;排序列&amp;gt; &amp;lt;排序方式&amp;gt;}]&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;alldistinct&#34;&gt;ALL|DISTINCT
+&lt;/h5&gt;&lt;p&gt;SQL不会自动去重，如果需要去重，需要加上DISTINCT&lt;/p&gt;
+&lt;h5 id=&#34;目标表达式&#34;&gt;目标表达式
+&lt;/h5&gt;&lt;p&gt;目标表达式是&lt;strong&gt;表达式&lt;/strong&gt;，也可直接&lt;strong&gt;缺省为&lt;/strong&gt;*表示所有属性，也可以不是/不包含表中的属性&lt;/p&gt;
+&lt;p&gt;select * from Student;&lt;/p&gt;
+&lt;p&gt;select &lt;strong&gt;&amp;lsquo;北航&amp;rsquo;&lt;/strong&gt;, toLower(Sname), &lt;strong&gt;2025-Sage&lt;/strong&gt; from Student;&lt;/p&gt;
+&lt;p&gt;加空格后面可&lt;strong&gt;附上属性别名&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;select &amp;lsquo;北航&amp;rsquo;  &lt;strong&gt;school&lt;/strong&gt;, 2025-Sage &lt;strong&gt;birth_date&lt;/strong&gt; from Student;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;聚集函数&lt;/strong&gt;也是目标表达式。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Count() 求元组个数&lt;/p&gt;
+&lt;p&gt;Sum() 对数值列求总和&lt;/p&gt;
+&lt;p&gt;Avg() 求数值列的平均值&lt;/p&gt;
+&lt;p&gt;Max() 求最大值&lt;/p&gt;
+&lt;p&gt;Min() 求最小值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Select Count(*) student_count From Student;&lt;/p&gt;
+&lt;p&gt;Select Count(&lt;strong&gt;Distinct&lt;/strong&gt; Sno) From SC;&lt;/p&gt;
+&lt;h5 id=&#34;条件表达式&#34;&gt;条件表达式
+&lt;/h5&gt;&lt;p&gt;where + 条件表达式&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420.png&#34;
+	width=&#34;665&#34;
+	height=&#34;529&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420_hu9308205350535706486.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231192443420_hu16546704935710949648.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231192443420&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;301px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;LIKE: 支持通配符&lt;code&gt;%&lt;/code&gt;(通配零到多个字符)，&lt;code&gt;_&lt;/code&gt;(仅通配一个字符)&lt;/p&gt;
+&lt;p&gt;IN可以作为同类OR的简写，如A=1 OR A=2可写为A IN (1,2)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意A IN (1,2)可不是A BETWEEN 1 AND 2的意思&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;IS NULL&lt;/code&gt; 而非 &lt;code&gt;= NULL&lt;/code&gt; ，因为说 &lt;code&gt;NULL = NULL&lt;/code&gt;是不合理的&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意若NULL参与计算，要把NULL转为其他值再进行计算，避免数据污染&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;order-by&#34;&gt;Order By
+&lt;/h5&gt;&lt;p&gt;可选择&lt;strong&gt;升序ASC&lt;/strong&gt;与&lt;strong&gt;降序DESC&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;顺序代表排序优先级&lt;/p&gt;
+&lt;h5 id=&#34;group-by&#34;&gt;Group By
+&lt;/h5&gt;&lt;p&gt;聚集函数的结果总是只有一行。因为默认大家是一个大group.&lt;/p&gt;
+&lt;p&gt;我们可以先对某变量进行group，聚集函数就会根据新的group进行成批运算。&lt;/p&gt;
+&lt;p&gt;Select &lt;strong&gt;Cno, Count(Sno)&lt;/strong&gt; From SC&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Group By Cno;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这样就会算出每个Cno Group的Count(Sno)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要求：若使用group,目标表达式只能包含聚集函数与group的对象。因为只有这两类表达式能保证以group为单位，而不会出现一个group对应多值。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;查询选课至少为三门的学生的学号及其选课门数：&lt;/p&gt;
+&lt;p&gt;Select Sno, Count(Sno) From SC&lt;/p&gt;
+&lt;p&gt;Group By Sno &lt;strong&gt;Having Count(Sno)&amp;gt;=3&lt;/strong&gt;;&lt;/p&gt;
+&lt;p&gt;对聚集函数统计结果进行筛选&lt;strong&gt;只能使用HAVING&lt;/strong&gt;!&lt;/p&gt;
+&lt;p&gt;因为&lt;strong&gt;WHERE子句比GROUP BY先执行。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;查询 &lt;strong&gt;至少有三门课选课并及格&lt;/strong&gt; 的学生的学号及其&lt;strong&gt;及格选课&lt;/strong&gt;门数：&lt;/p&gt;
+&lt;p&gt;Select Sno, Count(Sno) From SC&lt;/p&gt;
+&lt;p&gt;WHERE Grade &amp;gt;= 60&lt;/p&gt;
+&lt;p&gt;Group By Sno &lt;strong&gt;Having Count(Sno)&amp;gt;=3&lt;/strong&gt;;&lt;/p&gt;
+&lt;h5 id=&#34;多表查询&#34;&gt;多表查询
+&lt;/h5&gt;&lt;p&gt;直接写from多个表即可。&lt;/p&gt;
+&lt;p&gt;若有属性名相同，需要强调 &lt;code&gt;表名.属性名&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;直接在WHERE子句应填写&lt;strong&gt;连接条件&lt;/strong&gt;，不填写则默认&lt;strong&gt;笛卡尔积&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;连接条件：[&amp;lt;表名&amp;gt; .] &amp;lt;列名&amp;gt; &amp;lt;比较运算符&amp;gt; [&amp;lt;表名&amp;gt; .] &amp;lt;列名&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;推荐新版写法：JOIN ON语句，把连接条件单列出来&lt;/p&gt;
+&lt;p&gt;from 表1&lt;/p&gt;
+&lt;p&gt;JOIN 表2 ON .连接条件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833.png&#34;
+	width=&#34;545&#34;
+	height=&#34;114&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833_hu5978178471052532425.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195510833_hu7506633915238102830.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231195510833&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;478&#34;
+		data-flex-basis=&#34;1147px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;表名后也可以加空格进行更名。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219.png&#34;
+	width=&#34;718&#34;
+	height=&#34;137&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219_hu7507716659015085120.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231195532219_hu1911637253172666972.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231195532219&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;524&#34;
+		data-flex-basis=&#34;1257px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;外连接：所有学生&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005.png&#34;
+	width=&#34;758&#34;
+	height=&#34;180&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005_hu6169688774024892952.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200242005_hu1272905900861648693.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231200242005&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;421&#34;
+		data-flex-basis=&#34;1010px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;新版本表达（推荐）：&lt;/p&gt;
+&lt;p&gt;from Student &lt;strong&gt;LEFT (OUTER)  JOIN&lt;/strong&gt; SC ON &amp;hellip;&lt;/p&gt;
+&lt;p&gt;同理还有RIGHT与FULL&lt;/p&gt;
+&lt;h5 id=&#34;嵌套查询&#34;&gt;嵌套查询
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;不相关&lt;/strong&gt;子查询：由内向外，将&lt;strong&gt;查询语句的返回值&lt;/strong&gt;作为&lt;strong&gt;查询条件的条件值&lt;/strong&gt;。因为查询语句的返回值是集合，我们往往使用&lt;strong&gt;IN&lt;/strong&gt;运算符而非等号，或者**&amp;lt; ANY()&lt;strong&gt;，&lt;/strong&gt;&amp;lt;ALL()&lt;strong&gt;这种，any为存在，all为任意，也可以是&lt;/strong&gt;EXIST()&lt;strong&gt;，若返回值为空集则为&lt;/strong&gt;FALSE**。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;相关&lt;/strong&gt;子查询：子查询进行时需要父查询提供信息。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;查询与刘晨在同一个系学习的学生&lt;/code&gt;：先找到刘晨在哪个系&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里是特殊情况，使用=&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915.png&#34;
+	width=&#34;729&#34;
+	height=&#34;333&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915_hu3198103451485367842.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200744915_hu6263016246086586713.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231200744915&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;525px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这是一个不相关子查询。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;查询选修了课程名为‘信息系统’的学生的学号和姓名。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这是一个典型的连接查询，但我们也可以用嵌套查询。&lt;/p&gt;
+&lt;p&gt;先求出课程名为‘信息系统’的课程号，&lt;/p&gt;
+&lt;p&gt;再求选修了该课程号的学生的学号，&lt;/p&gt;
+&lt;p&gt;最后求该学号对应的学号和姓名。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497.png&#34;
+	width=&#34;547&#34;
+	height=&#34;231&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497_hu16272848996507421689.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231200956497_hu5915239928899146602.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231200956497&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;236&#34;
+		data-flex-basis=&#34;568px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;查询选择了1号课程的学生姓名。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986.png&#34;
+	width=&#34;490&#34;
+	height=&#34;131&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986_hu17445605533503912344.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231202501986_hu11090747081752977065.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231202501986&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;374&#34;
+		data-flex-basis=&#34;897px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这是一个&lt;strong&gt;相关子查询&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;外层Student表也参与了子查询&lt;/strong&gt;。执行逻辑是遍历父查询的每一个元组，对每个元组计算Student.Sno，这个值参与子查询的运算，从而决定父查询是否包含该元组。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;查询选修了全部课程的学生姓名&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;除法操作，表示与某属性所有值均有联系：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483.png&#34;
+	width=&#34;526&#34;
+	height=&#34;273&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483_hu12146075138560583023.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231203349483_hu16304423033656185086.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231203349483&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;462px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这是一个相关子查询。&lt;/p&gt;
+&lt;p&gt;双重相关子查询：找的是学生，所以遍历student，再对每个student遍历course，看是否每个都存在。&lt;/p&gt;
+&lt;p&gt;不存在 &lt;code&gt;没匹配上的课程&lt;/code&gt;，就是选修了所有课程。&lt;/p&gt;
+&lt;p&gt;如果改为EXIST NOEXIST，则表示未选修全部课程。&lt;/p&gt;
+&lt;p&gt;如果改为EXIST EXIST，则表示选修过课程。&lt;/p&gt;
+&lt;p&gt;如果改为NOEXIST EXIST，则表示未选修过课程。&lt;/p&gt;
+&lt;h5 id=&#34;集合查询&#34;&gt;集合查询
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359.png&#34;
+	width=&#34;486&#34;
+	height=&#34;170&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359_hu9579730471219606287.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204837359_hu7981442943043895944.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231204837359&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;285&#34;
+		data-flex-basis=&#34;686px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对语句做&lt;strong&gt;并&lt;/strong&gt;操作。要求查询结果字段结构一致。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;交操作与差操作没有集合查询功能。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810.png&#34;
+	width=&#34;562&#34;
+	height=&#34;250&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810_hu10075278058709758706.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231204950810_hu2921593696800434575.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231204950810&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;224&#34;
+		data-flex-basis=&#34;539px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;差集就是排除，只需要把第二个条件取反，或者用NOT。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740.png&#34;
+	width=&#34;606&#34;
+	height=&#34;148&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740_hu4914085027258375456.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205020740_hu7285929341057958796.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231205020740&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;409&#34;
+		data-flex-basis=&#34;982px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;数据更新&#34;&gt;数据更新
+&lt;/h4&gt;&lt;h5 id=&#34;insert----into&#34;&gt;Insert &amp;ndash; Into
+&lt;/h5&gt;&lt;blockquote&gt;
+&lt;p&gt;不是add&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250.png&#34;
+	width=&#34;605&#34;
+	height=&#34;328&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250_hu11995207457288021873.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205626250_hu12405485366147511893.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231205626250&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;442px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果只insert了一部分属性，其余属性值&lt;strong&gt;默认为null&lt;/strong&gt;。&lt;/p&gt;
+&lt;h5 id=&#34;update----set&#34;&gt;Update &amp;ndash; Set
+&lt;/h5&gt;&lt;blockquote&gt;
+&lt;p&gt;不是modify&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;支持原值引用。&lt;/p&gt;
+&lt;p&gt;子查询的值可以用在&lt;strong&gt;WHERE&lt;/strong&gt;语句与&lt;strong&gt;SET&lt;/strong&gt;语句。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643.png&#34;
+	width=&#34;463&#34;
+	height=&#34;293&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643_hu16387245219625737043.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205706643_hu7282009934175404760.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231205706643&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;379px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741.png&#34;
+	width=&#34;609&#34;
+	height=&#34;201&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741_hu8569741830314971779.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231205719741_hu16475998647863144052.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231205719741&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;302&#34;
+		data-flex-basis=&#34;727px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;delete&#34;&gt;Delete
+&lt;/h5&gt;&lt;p&gt;delete from 表名 会直接删掉该表所有元组。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483.png&#34;
+	width=&#34;608&#34;
+	height=&#34;161&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483_hu649226838779886245.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210055483_hu8667416395142145826.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231210055483&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;377&#34;
+		data-flex-basis=&#34;906px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;数据定义&#34;&gt;数据定义
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817.png&#34;
+	width=&#34;565&#34;
+	height=&#34;215&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817_hu8959489073866663889.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210129817_hu16221928763492924926.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231210129817&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;262&#34;
+		data-flex-basis=&#34;630px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;基本表定义删除修改&#34;&gt;基本表——定义、删除、修改
+&lt;/h5&gt;&lt;h6 id=&#34;create&#34;&gt;create
+&lt;/h6&gt;&lt;p&gt;&lt;strong&gt;Create Table &amp;lt;表名&amp;gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(&lt;/strong&gt;&amp;lt;列名&amp;gt;&amp;lt;&lt;strong&gt;数据类型&lt;/strong&gt;&amp;gt;[&amp;lt;&lt;strong&gt;列级&lt;/strong&gt;完整性约束&amp;gt;]&lt;/p&gt;
+&lt;p&gt;[{, &amp;lt;列名&amp;gt;&amp;lt;数据类型&amp;gt;[&amp;lt;&lt;strong&gt;列级&lt;/strong&gt;完整性约束&amp;gt;]}]&lt;/p&gt;
+&lt;p&gt;[{, [&amp;lt;&lt;strong&gt;表级&lt;/strong&gt;完整性约束&amp;gt;]}]&lt;strong&gt;)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据类型&lt;/strong&gt;常用：char(n)、int、DECIMAL(总位数, 小数位数)、date、time&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;完整性约束&lt;/strong&gt;：NULL/NOT NULL（列级）、UNIQUE（&lt;strong&gt;列级&lt;/strong&gt;、候选码，可以取空值）、PRIMARY KEY（&lt;strong&gt;表级&lt;/strong&gt;、主码，不可取空值）、FOREIGN KEY（&lt;strong&gt;表级&lt;/strong&gt;）、CHECK（&lt;strong&gt;表级&lt;/strong&gt;）&lt;/p&gt;
+&lt;p&gt;单一属性的非外码的表级完整性约束也可以只写在对应列级上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638.png&#34;
+	width=&#34;508&#34;
+	height=&#34;323&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638_hu834397789175118658.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210608638_hu2024858995677050380.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231210608638&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;377px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;外码的书写需要标明reference 表(主码)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802.png&#34;
+	width=&#34;629&#34;
+	height=&#34;321&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802_hu5498560619497872619.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231210815802_hu15065666143613759365.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231210815802&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;195&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h6 id=&#34;alter&#34;&gt;alter
+&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990.png&#34;
+	width=&#34;587&#34;
+	height=&#34;188&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990_hu9979324304363698635.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211039990_hu481634302823734494.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231211039990&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;312&#34;
+		data-flex-basis=&#34;749px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;drop尽量不要删除属性列，其实是可以删的。&lt;/p&gt;
+&lt;p&gt;modify尽量不要改列名，虽然其实也可以改。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064.png&#34;
+	width=&#34;623&#34;
+	height=&#34;271&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064_hu800179444154486914.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231211201064_hu4154663356775395685.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231211201064&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;551px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h6 id=&#34;drop&#34;&gt;drop
+&lt;/h6&gt;&lt;p&gt;直接 drop table 表名即可删除整个基本表。分配的空间也回收了。&lt;/p&gt;
+&lt;h5 id=&#34;索引定义删除&#34;&gt;索引——定义、删除
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133.png&#34;
+	width=&#34;596&#34;
+	height=&#34;140&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133_hu10156639624485020368.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212609133_hu4916954648704322895.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231212609133&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;425&#34;
+		data-flex-basis=&#34;1021px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;unique是&lt;strong&gt;唯一性约束&lt;/strong&gt;，cluster要求索引与基本表在&lt;strong&gt;物理上连续存储&lt;/strong&gt;，便于查询。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;cluster索引只能建一个。&lt;strong&gt;因为&lt;/strong&gt;物理上&lt;/strong&gt;只能有一个连续存储。&lt;/p&gt;
+&lt;p&gt;索引可以&lt;strong&gt;提升查询速度&lt;/strong&gt;，需要&lt;strong&gt;单独创建文件&lt;/strong&gt;，占&lt;strong&gt;空间小&lt;/strong&gt;、元组&lt;strong&gt;有序&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;但是会&lt;strong&gt;降低更新速度&lt;/strong&gt;，每次更新还要更新索引表，还要重新排序。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不能说索引&lt;strong&gt;越多越好&lt;/strong&gt;，也不能说索引会提高&lt;strong&gt;操作&lt;/strong&gt;效率&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;也是create和drop&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391.png&#34;
+	width=&#34;456&#34;
+	height=&#34;230&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391_hu7401616556572984735.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231212007391_hu8259499834511081633.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231212007391&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;475px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;index的drop&lt;strong&gt;不会丢失数据，不必备份&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;索引的&lt;strong&gt;排序顺序对我们没有意义&lt;/strong&gt;，是DBMS操作的。&lt;/p&gt;
+&lt;p&gt;索引与where子句、聚合函数高度相关，索引&lt;strong&gt;便于筛选&lt;/strong&gt;，并且&lt;strong&gt;预先计算好统计数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;双关键字排序时，第二个关键字整体还是乱序。&lt;/p&gt;
+&lt;p&gt;消除碎片：把所有index删掉再重建，DBMS重新集中分配空间。&lt;/p&gt;
+&lt;h5 id=&#34;视图定义删除&#34;&gt;视图——定义、删除
+&lt;/h5&gt;&lt;p&gt;视图被称为&lt;strong&gt;虚表&lt;/strong&gt;，&lt;strong&gt;没有存储数据&lt;/strong&gt;，而是存储&lt;strong&gt;select语句&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;能够&lt;strong&gt;简化用户操作&lt;/strong&gt;, 使用户能够以&lt;strong&gt;多种角度&lt;/strong&gt;看待同一数据, 对重构数据提供了一定程度的&lt;strong&gt;逻辑独立性&lt;/strong&gt;, 能够对机密数据提供&lt;strong&gt;安全保护&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;直接利用视图&lt;strong&gt;封装&lt;/strong&gt;好复杂的select语句。&lt;/p&gt;
+&lt;p&gt;我们只提供视图，就既能提供功能，还能保护数据。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186.png&#34;
+	width=&#34;389&#34;
+	height=&#34;179&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186_hu14651907302273803139.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231213220186_hu13503188598226499196.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231213220186&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;521px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;手写列名可用于更名。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;子查询&lt;/strong&gt;可以是单表查询，多表查询，嵌套查询，集合查询……&lt;/p&gt;
+&lt;p&gt;**视图可以嵌套！**子查询语句可以是对另一视图的select。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;drop view 视图名&lt;/strong&gt;即可直接删除，&lt;strong&gt;不会丢失数据，不必备份&lt;/strong&gt;。&lt;/p&gt;
+&lt;h6 id=&#34;视图消解&#34;&gt;视图消解
+&lt;/h6&gt;&lt;p&gt;DBMS会&lt;strong&gt;尝试&lt;/strong&gt;把程序员发起的SQL指令中的视图拆为select，并进行语句合并，融合为一个select进行。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805.png&#34;
+	width=&#34;723&#34;
+	height=&#34;305&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805_hu1663470552278793962.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231214523805_hu8758948390672413696.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231214523805&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;237&#34;
+		data-flex-basis=&#34;568px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h6 id=&#34;视图更新&#34;&gt;视图更新
+&lt;/h6&gt;&lt;p&gt;视图也可以充当&lt;strong&gt;范围受限的基本表&lt;/strong&gt;使用。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;insert into 视图 values(...)&lt;/code&gt; 也能&lt;strong&gt;实现修改基本表&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;values可以包含视图中没有提供的属性，这可能触发错误。可开启&lt;strong&gt;With Check Option&lt;/strong&gt;，使其在Insert与Update的时候也会做检查。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;视图更新约束&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;要借助视图进行insert时，视图自身需满足一定要求。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;select子句中的目标列不能包含&lt;strong&gt;聚集函数&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;select子句中不能使用&lt;strong&gt;distinct关键字&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不能包括&lt;strong&gt;group by&lt;/strong&gt;子句&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不能包括经&lt;strong&gt;算术表达式&lt;/strong&gt;计算出来的列&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;必须包含基本表的&lt;strong&gt;主码&lt;/strong&gt;（否则插入的元组主码为空）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于行列子集视图可以更新（视图是从&lt;strong&gt;单个基本表使用选择&lt;/strong&gt;、&lt;strong&gt;投影操作导出&lt;/strong&gt;的，并且&lt;strong&gt;包含了基本表的主码&lt;/strong&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;数据库安全性与完整性&#34;&gt;数据库安全性与完整性
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;计算机系统的安全性&lt;/strong&gt;是指为计算机系统建立和采取的各种安全保护措施，以保护计算机系统中的硬件、软件和数据，防止其因偶然或恶意的原因使系统遭到破坏，数据遭到更改或泄漏等。&lt;/p&gt;
+&lt;p&gt;技术安全类（计算机系统及其数据受到攻击，如增添丢失泄露）、管理安全类（意外故障、管理不善、物理破坏丢失）、政策法律类&lt;/p&gt;
+&lt;h3 id=&#34;安全性&#34;&gt;安全性
+&lt;/h3&gt;&lt;h4 id=&#34;安全威胁&#34;&gt;安全威胁
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;造成对数据库内存储数据的&lt;strong&gt;非授权访问–读取&lt;/strong&gt;，或&lt;strong&gt;非授权的写入–增加、删除、修改&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;影响&lt;strong&gt;授权用户以正常方式&lt;/strong&gt;使用数据库系统的数据服务&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;具体分类：&lt;/p&gt;
+&lt;p&gt;1.&lt;strong&gt;偶然地、无意地&lt;/strong&gt;接触或修改DBMS管理下的数据&lt;/p&gt;
+&lt;p&gt;2.&lt;strong&gt;蓄意的侵犯和敌意的攻击&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;定义&#34;&gt;定义
+&lt;/h4&gt;&lt;p&gt;数据库的安全性是指&lt;strong&gt;保护数据库&lt;/strong&gt;以防止&lt;strong&gt;不合法的&lt;/strong&gt;使用所造成的&lt;strong&gt;数据泄漏、更改和破坏&lt;/strong&gt;。它包括两个方面的含义：向&lt;strong&gt;授权用户提供可靠&lt;/strong&gt;的信息服务。同时，&lt;strong&gt;拒绝非授权的&lt;/strong&gt;对数据的&lt;strong&gt;存取访问&lt;/strong&gt;请求，保证数据库管理下的数据的&lt;strong&gt;可用性、完整性和一致性&lt;/strong&gt;，进而保护数据库&lt;strong&gt;所有者和使用者&lt;/strong&gt;的&lt;strong&gt;合法权益&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;安全控制&#34;&gt;安全控制
+&lt;/h4&gt;&lt;h5 id=&#34;外部安全控制&#34;&gt;外部安全控制
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;外部安全控制&lt;/strong&gt;解决内部安全控制&lt;strong&gt;不能解决&lt;/strong&gt;的问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;偏管理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;实体安全&lt;/strong&gt;控制、&lt;strong&gt;人员、组织安全&lt;/strong&gt;控制、&lt;strong&gt;过程安全&lt;/strong&gt;控制&lt;/p&gt;
+&lt;h5 id=&#34;内部安全控制&#34;&gt;内部安全控制
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;内部安全控制&lt;/strong&gt;由计算机系统的&lt;strong&gt;软硬件&lt;/strong&gt;实现。它必须与管理系统物理存取的适当的外部安全控制相配合。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;偏技术&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;数据库本身提供的安全机制&lt;/strong&gt;：&lt;/p&gt;
+&lt;h6 id=&#34;用户标识与鉴别&#34;&gt;用户标识与鉴别
+&lt;/h6&gt;&lt;p&gt;采用用户名与口令，是&lt;strong&gt;系统提供的最外层安全保护措施&lt;/strong&gt;&lt;/p&gt;
+&lt;h6 id=&#34;存取控制&#34;&gt;存取控制
+&lt;/h6&gt;&lt;p&gt;合法用户能按照指定权限使用，非法用户、无权用户不能&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义用户权限&lt;/li&gt;
+&lt;li&gt;合法权限检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;存取控制可以分为&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;自主存取控制（DAC)&lt;/strong&gt;：更自由，用户对不同数据对象有不同权限，可转授权限。&lt;/p&gt;
+&lt;p&gt;用户权限分为&lt;strong&gt;数据对象&lt;/strong&gt;和&lt;strong&gt;操作类型&lt;/strong&gt;两个要素。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126.png&#34;
+	width=&#34;559&#34;
+	height=&#34;250&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126_hu826352341707328914.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231221910126_hu3484082280025823865.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231221910126&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;536px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用户级&lt;/strong&gt;权限：一般由&lt;strong&gt;数据库管理员&lt;/strong&gt;为每个用户授权，与整个数据库相关。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关系级&lt;/strong&gt;权限：由&lt;strong&gt;数据库管理员或数据库对象拥有者&lt;/strong&gt;授权，基本是表义级权限。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对权限与用户打包：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;角色&lt;/strong&gt;：&lt;strong&gt;权限&lt;/strong&gt;的集合，可以授予给&lt;strong&gt;用户&lt;/strong&gt;或其他&lt;strong&gt;角色&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用户组&lt;/strong&gt;：&lt;strong&gt;用户&lt;/strong&gt;的集合，可以&lt;strong&gt;以用户组为单位&lt;/strong&gt;授权与收回权限&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;用户级权限与角色&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;授权与收回权限：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396.png&#34;
+	width=&#34;584&#34;
+	height=&#34;92&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396_hu17842181981140452777.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222204396_hu707566643347601723.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231222204396&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;634&#34;
+		data-flex-basis=&#34;1523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946.png&#34;
+	width=&#34;599&#34;
+	height=&#34;73&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946_hu11462654591199880146.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222504946_hu2555819577653032113.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231222504946&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;820&#34;
+		data-flex-basis=&#34;1969px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;public&lt;/strong&gt; 指数据库中的&lt;strong&gt;全部用户&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;With Grant Option&lt;/strong&gt;则允许被授权的用户将指定的用户级权限或角色&lt;strong&gt;授予其他用户&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;多重授权&lt;/strong&gt;：A-&amp;gt;C B-&amp;gt;C  若A被revoke,C仍有权限。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;循环授权&lt;/strong&gt;：A-&amp;gt;B B-&amp;gt;C 若C主动-&amp;gt;B，会导致A被revoke,C仍有权限。现在已被禁止。&lt;/p&gt;
+&lt;p&gt;Oracle的角色：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279.png&#34;
+	width=&#34;639&#34;
+	height=&#34;269&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279_hu6707887472069681813.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222405279_hu6157568382629340588.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231222405279&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;237&#34;
+		data-flex-basis=&#34;570px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;没有授权CONNECT甚至没有登录权。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DBA拥有全部权限&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关系级权限&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于具体的表格与视图的权限控制。&lt;/p&gt;
+&lt;p&gt;多了&lt;strong&gt;ON子句针对具体的表/视图&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243.png&#34;
+	width=&#34;513&#34;
+	height=&#34;118&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243_hu5822237084203398362.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231222813243_hu4459885042370359270.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231222813243&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;434&#34;
+		data-flex-basis=&#34;1043px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以&lt;strong&gt;利用视图&lt;/strong&gt;实现&lt;strong&gt;安全控制&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;强制存取控制（MAC）&lt;/strong&gt;：中央集中控制，用户与数据对象被赋予固定的许可证级别与密级。&lt;/p&gt;
+&lt;p&gt;主体的敏感度标记称为&lt;strong&gt;许可证级别&lt;/strong&gt;，客体敏感度标记称为&lt;strong&gt;密级&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;许可证级别 &amp;gt;= 密级&lt;/strong&gt;：可以&lt;strong&gt;读&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;许可证级别 == 密级&lt;/strong&gt;：可以&lt;strong&gt;写&lt;/strong&gt;，避免滥用权力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;审计&#34;&gt;审计
+&lt;/h6&gt;&lt;p&gt;​	把用户对数据库的&lt;strong&gt;所有操作都自动记录&lt;/strong&gt;下来放入审计日志中。DBA可以利用审计跟踪的信息，&lt;strong&gt;重现&lt;/strong&gt;导致数据库现有状况的一系列事件，找出非法存取数据的人、时间和内容等。&lt;/p&gt;
+&lt;h6 id=&#34;数据加密&#34;&gt;数据加密
+&lt;/h6&gt;&lt;p&gt;​	防止数据库中数据在&lt;strong&gt;存储和传输中失密&lt;/strong&gt;的有效手段。加密的基本思想是根据一定的算法将&lt;strong&gt;原始数据（明文）变换为不可识别的格式（密文）&lt;/strong&gt;，从而使得不知道解密算法的人无法获知数据的内容。&lt;/p&gt;
+&lt;h4 id=&#34;统计数据库安全性&#34;&gt;统计数据库安全性
+&lt;/h4&gt;&lt;p&gt;​	统计数据库中的数据分为两类，一类是&lt;strong&gt;微数据&lt;/strong&gt;描述现实世界的实体、概念或事件的数据；另一类是&lt;strong&gt;统计或综合数据&lt;/strong&gt;，是对微数据进行综合处理而得到的结果数据。&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;统计数据库只为用户提供统计数据，不允许用户访问微数据&lt;/strong&gt;。但微数据有时可以通过一组统计数据推导出来。统计数据库安全性的目的就是防止用户&lt;strong&gt;访问或推导&lt;/strong&gt;出统计数据库的微数据。&lt;/p&gt;
+&lt;p&gt;解决方案：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;先用where语句访问count，count为1时的统计数据就是微数据！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;控制统计结果的大小&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;访问A+其他人，B+其他人，相减得到AB差值。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;禁止重复执行统计查询&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;统计结果加入噪声 （越查询误差越大）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;完整性&#34;&gt;完整性
+&lt;/h3&gt;&lt;p&gt;数据库的完整性是指数据的&lt;strong&gt;正确性&lt;/strong&gt;和&lt;strong&gt;相容性&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;正确性&lt;/strong&gt;：合法的类型、有效的取值范围&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;相容性&lt;/strong&gt;：同一事实的两个数据应当自洽。&lt;/p&gt;
+&lt;p&gt;完整性措施的防范对象是&lt;strong&gt;不合语义的数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;完整性约束条件&#34;&gt;完整性约束条件
+&lt;/h4&gt;&lt;p&gt;施加在数据库数据之上的&lt;strong&gt;语义约束条件&lt;/strong&gt;称为数据库完整性约束条件。&lt;/p&gt;
+&lt;p&gt;作用的对象可以是&lt;strong&gt;关系、元组、列&lt;/strong&gt;三种。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;列约束主要是列的&lt;strong&gt;类型、取值范围、精度&lt;/strong&gt;等约束条件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元组的约束是元组中&lt;strong&gt;各个字段间联系&lt;/strong&gt;的约束。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关系的约束是若干&lt;strong&gt;元组间、关系集合上以及关系之间&lt;/strong&gt;的联系的约束。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;又可分为&lt;strong&gt;静态约束&lt;/strong&gt;和&lt;strong&gt;动态约束&lt;/strong&gt;。&lt;/p&gt;
+&lt;h5 id=&#34;静态约束&#34;&gt;静态约束
+&lt;/h5&gt;&lt;p&gt;静态约束是指数据库&lt;strong&gt;每一确定状态&lt;/strong&gt;时，数据对象所应满足的约束条件，它是反映数据库状态合理性的约束。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;静态列级&lt;/strong&gt;约束是对一个列的&lt;strong&gt;取值域&lt;/strong&gt;的说明。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;静态元组级&lt;/strong&gt;约束是对&lt;strong&gt;一个元组的各个列之间的约束关系&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;属性A为x的元组需要满足属性B大于100&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;静态关系&lt;/strong&gt;约束：&lt;strong&gt;实体完整性约束、参照完整性约束、函数依赖、统计约束&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;统计约束：对于属性A为x的元组，属性B的值必须高于其平均值。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;还可分为：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;固有约束&lt;/strong&gt;：数据&lt;strong&gt;模型&lt;/strong&gt;固有约束。如属性原子化&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;隐含约束&lt;/strong&gt;：数据&lt;strong&gt;模式&lt;/strong&gt;隐含约束，DDL语句说明（如实体完整性约束等建表时就确定的约束）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;显式约束&lt;/strong&gt;：人为显示定义的语义与应用层约束&lt;/p&gt;
+&lt;h6 id=&#34;隐含约束&#34;&gt;隐含约束
+&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430.png&#34;
+	width=&#34;628&#34;
+	height=&#34;299&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430_hu6082268589177755615.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233021430_hu15409471827189846705.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231233021430&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;210&#34;
+		data-flex-basis=&#34;504px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实体完整性与其他DDL定义&lt;/strong&gt;约束：&lt;/p&gt;
+&lt;p&gt;Insert 或者Update时检查，违反则取消操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;参照完整性约束&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;Insert、Update、&lt;strong&gt;Delete&lt;/strong&gt;时检查&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515.png&#34;
+	width=&#34;675&#34;
+	height=&#34;173&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515_hu12455139527974763775.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20251231233141515_hu16826201548399398097.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20251231233141515&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;390&#34;
+		data-flex-basis=&#34;936px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;级联删除/更新&lt;/strong&gt;：直接把参照表的对应记录也删除/更新&lt;/p&gt;
+&lt;h6 id=&#34;显示完整性约束&#34;&gt;显示完整性约束
+&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;过程&lt;/strong&gt;（程序员为每个约束编制一个验证过程）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;断言&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;触发器&lt;/strong&gt;（不同DBMS写法不同   &lt;code&gt;:new.属性名&lt;/code&gt;  &lt;code&gt;:old.属性名&lt;/code&gt;）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;断言表示数据库状态&lt;strong&gt;应当满足&lt;/strong&gt;的条件，&lt;/p&gt;
+&lt;p&gt;而触发器中的条件却是&lt;strong&gt;违反约束&lt;/strong&gt;的条件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;动态约束&#34;&gt;动态约束
+&lt;/h5&gt;&lt;p&gt;动态约束是指数据库从一种状态转变为另一种状态时，&lt;strong&gt;新、旧值之间&lt;/strong&gt;所应满足的约束条件，它是反映数据库状态变迁的约束。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动态列级&lt;/strong&gt;约束是修改&lt;strong&gt;列定义&lt;/strong&gt;或&lt;strong&gt;列值&lt;/strong&gt;时应满足的约束条件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;某属性的值只能增加不能减少&lt;/p&gt;
+&lt;p&gt;不能在已包含null的列上增加not null约束&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;动态元组级&lt;/strong&gt;约束指修改元组值时元组中各个字段间需要满足的约束。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;属性A为x的元组需要满足属性B只能增加&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;动态关系&lt;/strong&gt;约束：多元组之间等等。&lt;/p&gt;
+&lt;h4 id=&#34;完整性控制机制&#34;&gt;完整性控制机制
+&lt;/h4&gt;&lt;p&gt;三个功能：&lt;strong&gt;定义功能、检查功能、违约响应&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;检查时机：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;立即执行约束&lt;/strong&gt;是指在执行用户事务的过程中，在&lt;strong&gt;一条语句执行完&lt;/strong&gt;后立即进行完整性约束的检查。若违背了完整性约束，系统将&lt;strong&gt;拒绝该操作&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;延迟执行约束&lt;/strong&gt;是指在&lt;strong&gt;整个用户事务&lt;/strong&gt;执行完毕后，再进行完整性约束的检查。若违背了完整性约束，系统将&lt;strong&gt;拒绝整个&lt;/strong&gt;事务。&lt;/p&gt;
+&lt;p&gt;一条完整性规则可以用一个**五元组（D，O，A，C，P）**来描述，其中：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;D&lt;/strong&gt;（Data）约束所作用的&lt;strong&gt;数据对象&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;O（Operation）触发完整性检查的&lt;strong&gt;数据库操作&lt;/strong&gt;，即当用户发出&lt;strong&gt;什么操作&lt;/strong&gt;请求时需要检查，是&lt;strong&gt;立即检查还是延迟检查&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;（Assertion）数据对象必须满足的断言或语义&lt;strong&gt;约束&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;C&lt;/strong&gt;（Condition）选择A作用的数据对象值的&lt;strong&gt;谓词&lt;/strong&gt;（条件）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;P&lt;/strong&gt;（Procedure）违反完整性规则时&lt;strong&gt;触发的过程&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;关系数据理论&#34;&gt;关系数据理论
+&lt;/h2&gt;&lt;p&gt;如何判断关系模式的优劣？如何优化关系模式？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关系数据理论&lt;/strong&gt;借助于&lt;strong&gt;数学工具&lt;/strong&gt;规定了一套关系数据库设计的理论和方法。&lt;/p&gt;
+&lt;p&gt;基于&lt;strong&gt;属性之间的联系&lt;/strong&gt;进行设计，这种联系叫做&lt;strong&gt;数据依赖&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;函数依赖&#34;&gt;函数依赖
+&lt;/h3&gt;&lt;p&gt;数据依赖中最重要的就是&lt;strong&gt;函数依赖&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在某关系模式中，若某属性组A的值确定后，另一属性组B的值也被唯一确定，则称A&lt;strong&gt;函数决定&lt;/strong&gt;B，B&lt;strong&gt;函数依赖&lt;/strong&gt;于A。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675.png&#34;
+	width=&#34;683&#34;
+	height=&#34;220&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675_hu5078625068138061809.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260101224113675_hu4823216054321191868.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260101224113675&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;310&#34;
+		data-flex-basis=&#34;745px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数依赖不随时间而变，永远成立。（不能仅凭当前的数据判断函数依赖）&lt;/li&gt;
+&lt;li&gt;函数依赖是&lt;strong&gt;语义&lt;/strong&gt;决定的，是一种语义完整性约束，是一切关系均需满足的约束条件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;属性之间的联系分为1对1，1对多，多对多：&lt;/p&gt;
+&lt;p&gt;其中&lt;strong&gt;X与Y&lt;/strong&gt;为&lt;strong&gt;1对1&lt;/strong&gt;或&lt;strong&gt;1对多&lt;/strong&gt;时，有&lt;strong&gt;X函数依赖于Y&lt;/strong&gt;，&lt;strong&gt;Y函数决定X&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;学号与身份证号是1对1，名字与学号是1对多（存在重名）&lt;/p&gt;
+&lt;p&gt;都有学号&lt;strong&gt;函数决定&lt;/strong&gt;身份证号和名字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;多对多时，则不存在函数依赖。&lt;/p&gt;
+&lt;p&gt;根据表格初步判断函数依赖时，找&lt;strong&gt;左端重复项&lt;/strong&gt;，对应&lt;strong&gt;右端是否相同&lt;/strong&gt;即可。&lt;/p&gt;
+&lt;h4 id=&#34;分类&#34;&gt;分类
+&lt;/h4&gt;&lt;h5 id=&#34;平凡函数依赖与非平凡函数依赖&#34;&gt;平凡函数依赖与非平凡函数依赖
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087.png&#34;
+	width=&#34;707&#34;
+	height=&#34;141&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087_hu12047593620632361379.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172528087_hu15069837657776348481.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102172528087&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;501&#34;
+		data-flex-basis=&#34;1203px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;自己决定自己就是平凡的函数依赖。&lt;/p&gt;
+&lt;p&gt;平凡的函数依赖是&lt;strong&gt;永真的&lt;/strong&gt;，意义不大。&lt;/p&gt;
+&lt;h5 id=&#34;完全函数依赖与部分函数依赖&#34;&gt;完全函数依赖与部分函数依赖
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547.png&#34;
+	width=&#34;715&#34;
+	height=&#34;282&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547_hu11851577772503905140.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102172649547_hu9726601793900897387.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102172649547&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;253&#34;
+		data-flex-basis=&#34;608px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完全：&lt;strong&gt;full&lt;/strong&gt;   部分：&lt;strong&gt;part&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;完全&lt;/strong&gt;的函数依赖有&lt;strong&gt;最小性&lt;/strong&gt;，决定者&lt;strong&gt;不包含多余属性&lt;/strong&gt;，或者说删去任一属性就无法再决定。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上图中的例子就很经典：&lt;/p&gt;
+&lt;p&gt;完全函数依赖属性缺一不可，部分函数依赖则有冗余&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;传递函数依赖&#34;&gt;传递函数依赖
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901.png&#34;
+	width=&#34;714&#34;
+	height=&#34;210&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu3970169055908078286.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu5233340698487108157.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102173245901&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;816px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;X决定Y是&lt;strong&gt;非平凡&lt;/strong&gt;的函数依赖&lt;/li&gt;
+&lt;li&gt;Y决定Z是&lt;strong&gt;非平凡&lt;/strong&gt;的函数依赖&lt;/li&gt;
+&lt;li&gt;X与Y不是&lt;strong&gt;一一对应&lt;/strong&gt;（1:1的属性联系，比如学号和身份证号）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;码的规范定义&#34;&gt;码的规范定义
+&lt;/h4&gt;&lt;p&gt;码有 &lt;em&gt;唯一性&lt;/em&gt; 和 &lt;strong&gt;最小性&lt;/strong&gt;。其实对应的就是 &lt;strong&gt;完全&lt;/strong&gt; &lt;em&gt;函数依赖&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434.png&#34;
+	width=&#34;684&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434_hu1751332187091922592.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102174005434_hu13046305950595674094.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102174005434&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;251&#34;
+		data-flex-basis=&#34;603px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;超码不一定是码，而是广义的码。只要求函数依赖，不强调&lt;strong&gt;完全&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;同样，主属性依旧是所有候选码中出现的属性的并集。&lt;/p&gt;
+&lt;p&gt;非主属性不包含在任何一个候选码。&lt;/p&gt;
+&lt;p&gt;全码是指&lt;strong&gt;码由整个属性组构成&lt;/strong&gt;，也强调最小性。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不要混淆超码和全码。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;范式&#34;&gt;范式
+&lt;/h3&gt;&lt;p&gt;范式是对关系的不同&lt;strong&gt;数据依赖程度&lt;/strong&gt;的要求。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;范式即表示条件，也表示满足条件的关系构成的集合。&lt;/p&gt;
+&lt;p&gt;我们用 属于符号 来描述关系与范式。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;1NF 2NF 3NF BCNF 4NF 5NF&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本课程仅讲述1NF到BCNF。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;一个&lt;/strong&gt;低级范式的关系模式，通过&lt;strong&gt;模式分解&lt;/strong&gt;可以转换为&lt;strong&gt;若干个&lt;/strong&gt;高级范式的关系模式的集合，这一过程称作&lt;strong&gt;规范化&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;范式等级越高越好？(X)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;表数量增多，增加了关联操作的次数，开销也会更大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;1nf&#34;&gt;1NF
+&lt;/h4&gt;&lt;p&gt;关系中每一分量必须是&lt;strong&gt;原子的，不可再分&lt;/strong&gt;。即不能以&lt;strong&gt;集合、序列&lt;/strong&gt;等作为属性值。&lt;/p&gt;
+&lt;p&gt;这是关系六大性质之一。所以&lt;strong&gt;只要是关系模式，都满足1NF&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;2nf&#34;&gt;2NF
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230.png&#34;
+	width=&#34;658&#34;
+	height=&#34;86&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230_hu3141722199783991162.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102175505230_hu10592608540915859914.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102175505230&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;765&#34;
+		data-flex-basis=&#34;1836px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;也就是&lt;strong&gt;所有候选码&lt;/strong&gt;都&lt;strong&gt;完全决定&lt;/strong&gt; &lt;strong&gt;所有非主属性&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;要成为2NF，关键是消除&lt;strong&gt;非主属性&lt;/strong&gt;对码的&lt;strong&gt;部分&lt;/strong&gt;依赖。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;关系R的全体属性都是R的主属性时，也就是没有非主属性，没有反例，所以一定属于2NF&lt;/li&gt;
+&lt;li&gt;R的所有候选码都只含一个属性时，一定是最小的，所以一定都是完全的函数依赖，一定属于2NF&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;没有2NF时存在捆绑问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;插入异常：码中存在&lt;strong&gt;多余属性&lt;/strong&gt;，在插入&lt;strong&gt;不依赖于多余属性&lt;/strong&gt;的信息时，&lt;strong&gt;多余属性没有值&lt;/strong&gt;，而主码不能为空，导致插入失败。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除异常：要想删除学生的&lt;strong&gt;多余属性信息&lt;/strong&gt;，&lt;strong&gt;整个元组&lt;/strong&gt;都需随之删除。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据冗余：在导入&lt;strong&gt;多余属性相关信息&lt;/strong&gt;时，会重复插入相同的&lt;strong&gt;不依赖于多余属性&lt;/strong&gt;的信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更新异常：3的逆过程，数据冗余会导致修改时需要多次重复来保证数据一致性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;规范化为2NF的示例&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;将&lt;strong&gt;导致部分函数依赖&lt;/strong&gt;的&lt;strong&gt;完全函数依赖&lt;/strong&gt;相关的&lt;strong&gt;主属性与非主属性&lt;/strong&gt;拉出去单独成表。&lt;/p&gt;
+&lt;p&gt;原表若缺主码可以再填回主属性。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984.png&#34;
+	width=&#34;822&#34;
+	height=&#34;467&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984_hu7367860626296854218.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102180752984_hu16780417690887266198.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102180752984&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;422px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3nf&#34;&gt;3NF
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;一种民间的定义：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;若&lt;strong&gt;R属于2NF&lt;/strong&gt;，并且不存在&lt;strong&gt;非主属性对码的传递函数依赖&lt;/strong&gt;，则R属于3NF。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;正式定义&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不要求2NF的前提。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990.png&#34;
+	width=&#34;680&#34;
+	height=&#34;188&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990_hu2186483516119104912.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181023990_hu17097779004552255367.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102181023990&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;361&#34;
+		data-flex-basis=&#34;868px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对比一下传递依赖的定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901.png&#34;
+	width=&#34;714&#34;
+	height=&#34;210&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu3970169055908078286.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102173245901_hu5233340698487108157.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102173245901&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;816px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;3NF去除了Y不是X的子集的限制。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果Y是X的子集，那么Y-&amp;gt;Z的意思就是&lt;strong&gt;码的子集&lt;/strong&gt;能函数决定非主属性，这就是&lt;strong&gt;部分函数依赖&lt;/strong&gt;的定义。因此可以排除部分函数依赖。&lt;/li&gt;
+&lt;li&gt;如果不是，那就是&lt;strong&gt;传递函数依赖&lt;/strong&gt;的定义，可以排除传递函数依赖。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要成为3NF，关键是要消除2NF的关系模式中&lt;strong&gt;非主属性对码&lt;/strong&gt;的&lt;strong&gt;传递函数依赖&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所有非主属性对码都有依赖，如果非主属性对码有了&lt;strong&gt;传递函数依赖&lt;/strong&gt;，那就说明非主属性&lt;strong&gt;内部存在函数依赖&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;关系R的只有一个非主属性时，内部必无非平凡依赖，一定属于3NF&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;没有3NF时存在捆绑问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;同样是那四条。主要原因是非主属性内部存在函数依赖，而这种关系可以提取出来单独成表。&lt;/p&gt;
+&lt;p&gt;例如S_SD(SNO, SNAME, DEPT, HEAD)，DEPT与HEAD之间的函数依赖就应当单独成表，否则由于&lt;strong&gt;SNO的主码限制&lt;/strong&gt;，不能单独插入、修改DEPT与HEAD的信息。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;规范化为3NF的示例&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;将&lt;strong&gt;导致传递依赖&lt;/strong&gt;的&lt;strong&gt;非主属性内部函数依赖&lt;/strong&gt;相关的&lt;strong&gt;非主属性&lt;/strong&gt;拉出去单独成表。&lt;/p&gt;
+&lt;p&gt;新表的码放回原表当外码。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534.png&#34;
+	width=&#34;630&#34;
+	height=&#34;392&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534_hu16667104998419220038.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102181547534_hu13631304496717632771.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102181547534&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;bcnf&#34;&gt;BCNF
+&lt;/h4&gt;&lt;p&gt;R(A,B,C)有以下函数依赖：A-&amp;gt;B   (B,C)-&amp;gt;A&lt;/p&gt;
+&lt;p&gt;候选码：(B,C) (A,C)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果没有C，就无法描述A-&amp;gt;B的关系。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;因为C的不同产生的不同元组也会存入A-&amp;gt;B的冗余信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122.png&#34;
+	width=&#34;664&#34;
+	height=&#34;80&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122_hu12001459148137697659.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102184110122_hu8267611274498076459.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102184110122&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;830&#34;
+		data-flex-basis=&#34;1992px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;所有&lt;strong&gt;非平凡函数决定者&lt;/strong&gt;必须是&lt;strong&gt;码&lt;/strong&gt;（也就是候选码）。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;也就是不允许码之外存在任何函数依赖。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;只包含&lt;strong&gt;两个属性&lt;/strong&gt;时一定是BCNF。（四种函数依赖情况都没有反例）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解决示例：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A-&amp;gt;B，但是A不是候选码。&lt;/p&gt;
+&lt;p&gt;改造为R1(A,B)与R2(B,C)。只有两个属性一定是BCNF。&lt;/p&gt;
+&lt;h3 id=&#34;数据依赖的公理系统&#34;&gt;数据依赖的公理系统
+&lt;/h3&gt;&lt;p&gt;对于满足一组函数依赖F的关系模式R&amp;lt; U, F &amp;gt;，若函数依赖X-&amp;gt;Y成立，则称F&lt;strong&gt;逻辑蕴涵&lt;/strong&gt;X-&amp;gt;Y，也即F|=X-&amp;gt;Y。&lt;/p&gt;
+&lt;h4 id=&#34;armstrong公理&#34;&gt;Armstrong公理
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;自反律。&lt;strong&gt;平凡的&lt;/strong&gt;函数依赖为F所蕴含。&lt;/li&gt;
+&lt;li&gt;增广律。X-&amp;gt;Y为F所蕴含，则(X,Z)-&amp;gt;(Y,Z)也为F所蕴含。&lt;/li&gt;
+&lt;li&gt;传递律。X-&amp;gt;Y，Y-&amp;gt;Z为F所蕴含，则X-&amp;gt;Z也为F所蕴含。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为F所蕴含的&lt;strong&gt;所有函数依赖&lt;/strong&gt;的全体称为&lt;strong&gt;F的闭包&lt;/strong&gt;，记作F^+^。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有效性：由F出发根据Armstrong公理推导出来的函数依赖一定在F的闭包中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完备性： F的闭包中的每一个函数依赖都可以由F出发根据Armstrong公理从F中导出。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;由Armstrong公理导出的推理规则&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;合并律。若X-&amp;gt;Y，X -&amp;gt; Z，则X -&amp;gt; YZ。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;增广律：XX-&amp;gt;XY, XY-&amp;gt;YZ&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分解律。若X -&amp;gt; YZ ，则X -&amp;gt; Y，X -&amp;gt; Z。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自反律：YZ-&amp;gt;Y，YZ-&amp;gt;Z&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;伪传递律。若X -&amp;gt; Y，WY -&amp;gt; Z，则XW -&amp;gt; Z。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;也就是XW-&amp;gt;WY-&amp;gt;Z&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;求属性集的闭包&#34;&gt;求属性集的闭包
+&lt;/h4&gt;&lt;p&gt;F有闭包，属性集也有闭包！&lt;/p&gt;
+&lt;p&gt;属性集X的闭包X&lt;del&gt;F&lt;/del&gt;^+^是它在 F^+^ 中&lt;strong&gt;能函数决定&lt;/strong&gt;的属性的集合。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107.png&#34;
+	width=&#34;653&#34;
+	height=&#34;238&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107_hu2547647634167893043.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102200756107_hu10016437803210741688.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102200756107&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;274&#34;
+		data-flex-basis=&#34;658px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;引理一就是合并律与分解律。&lt;/p&gt;
+&lt;p&gt;引理二显然，总之要判定一个函数依赖是否可推导、是否成立，我们需要求出决定者的闭包中有没有依赖者，总之要会算X&lt;del&gt;F&lt;/del&gt;^+^。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838.png&#34;
+	width=&#34;705&#34;
+	height=&#34;360&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838_hu9503599163870260731.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201249838_hu6586771089921759690.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102201249838&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;195&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;把X放进闭包，然后从闭包里找F^+^中的左端项，把所有对应右端项放进去。迭代直到闭包结果不变或达到全集。&lt;/p&gt;
+&lt;p&gt;逻辑很直观很简单。下面是一个例子。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599.png&#34;
+	width=&#34;675&#34;
+	height=&#34;354&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599_hu9632514731757908451.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102201646599_hu11501153548175300607.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102201646599&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;同理，(AC)&lt;del&gt;F&lt;/del&gt;^+^= ABCDE。&lt;/p&gt;
+&lt;p&gt;又因为(A)&lt;del&gt;F&lt;/del&gt;^+^=A,(B)&lt;del&gt;F&lt;/del&gt;^+^=BD, (C)&lt;del&gt;F&lt;/del&gt;^+^=BCDE，所以AB和AC还满足最小性，都是码。&lt;/p&gt;
+&lt;h4 id=&#34;更便捷地求码&#34;&gt;更便捷地求码
+&lt;/h4&gt;&lt;p&gt;求码有什么用？&lt;strong&gt;范式的判断&lt;/strong&gt;需要知道&lt;strong&gt;码、主属性、非主属性&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;我们按照求属性集闭包的方法来验证是不是码。但如果一个一个试就太麻烦了。&lt;/p&gt;
+&lt;p&gt;我们可以预先得到一些信息，来判断某属性一定是/不是码。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L、N：只出现在左侧或不出现。或者直接说：&lt;strong&gt;不出现在右侧&lt;/strong&gt;。这说明他一定不能被推导出来，所以&lt;strong&gt;必须是&lt;/strong&gt;码。&lt;/li&gt;
+&lt;li&gt;R：只出现在右侧。它不决定任何属性，&lt;strong&gt;而且能被推导出来&lt;/strong&gt;。因此&lt;strong&gt;一定不是&lt;/strong&gt;码，否则加入它会破坏最小性。&lt;/li&gt;
+&lt;li&gt;LR：无法初步直接判定是否是码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如上题中，A是L类，D是R类，BCE是LR类。&lt;/p&gt;
+&lt;p&gt;所以只需要&lt;strong&gt;依次&lt;/strong&gt;考虑：A、AB、AC、AE、ABC、ABE、ACE、ABCE。
+首先(A)&lt;del&gt;F&lt;/del&gt;^+^=A。&lt;/p&gt;
+&lt;p&gt;然后考虑(AB)&lt;del&gt;F&lt;/del&gt;^+^=ABCDE、排除ABC,ABE,ABCE。&lt;/p&gt;
+&lt;p&gt;(AC)&lt;del&gt;F&lt;/del&gt;^+^=ABCDE、排除ACE。&lt;/p&gt;
+&lt;p&gt;(AE)&lt;del&gt;F&lt;/del&gt;^+^=AE。&lt;/p&gt;
+&lt;p&gt;所有情况考虑完毕。&lt;/p&gt;
+&lt;p&gt;所以候选码就是AB和AC。&lt;/p&gt;
+&lt;h4 id=&#34;最小依赖集&#34;&gt;最小依赖集
+&lt;/h4&gt;&lt;p&gt;首先函数依赖集有&lt;strong&gt;等价性&lt;/strong&gt;，等价性的定义就是其&lt;strong&gt;闭包结果相同&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;很显然，我们要利用等价性，找到最好最方便的一个函数依赖集。&lt;/p&gt;
+&lt;p&gt;如果有这样一个规范的函数依赖集F，我们称之为&lt;strong&gt;最小依赖集（最小覆盖）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;F中所有函数依赖的&lt;strong&gt;右部只有一个属性&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;F有最小性：F中去掉任何一个函数依赖就不能与F等价。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;排除传递函数依赖。&lt;/p&gt;
+&lt;p&gt;A-&amp;gt;B,B-&amp;gt;C,A-&amp;gt;C就不满足最小性。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;F中函数依赖的左侧也要满足最小性。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;排除部分函数依赖。&lt;/p&gt;
+&lt;p&gt;如果A-&amp;gt;C，就不能有AB-&amp;gt;C。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如何求出最小覆盖？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用分解律分解为&lt;strong&gt;右侧单一属性&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;验证每一条函数依赖&lt;strong&gt;是否可以去掉&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;验证每一条函数依赖的&lt;strong&gt;决定者的子集&lt;/strong&gt;是否也能推出&lt;strong&gt;依赖者&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最小覆盖不是唯一的，和我们的验证（删除）顺序有关。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208.png&#34;
+	width=&#34;627&#34;
+	height=&#34;165&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208_hu4830757062724345662.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204447208_hu8619560316505386776.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102204447208&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;380&#34;
+		data-flex-basis=&#34;912px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;模式分解&#34;&gt;模式分解
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919.png&#34;
+	width=&#34;614&#34;
+	height=&#34;245&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919_hu16779806099870788314.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102204804919_hu4803158182537218281.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102204804919&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;601px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;模式分解可以提高范式等级，但是并不是所有的模式分解都能够无损地保存原有信息。分解一损坏了SNO-&amp;gt;DEPT与DEPT-&amp;gt;HEAD，分解二损坏了DEPT-&amp;gt;HEAD。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;分解的目标&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;无损&lt;/strong&gt;连接分解&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可以通过自然连接得到原表&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;保持&lt;strong&gt;函数依赖&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;达到&lt;strong&gt;更高级&lt;/strong&gt;范式&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分解的基本要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;表之间的&lt;strong&gt;属性集没有包含关系&lt;/strong&gt;，且&lt;strong&gt;并集为原表属性集&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;函数依赖需要&lt;strong&gt;投影&lt;/strong&gt;到各个表中。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;投影也就是左侧有点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;判别模式分解的无损连接性&#34;&gt;判别模式分解的无损连接性
+&lt;/h4&gt;&lt;h5 id=&#34;填表法&#34;&gt;填表法
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448.png&#34;
+	width=&#34;744&#34;
+	height=&#34;478&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448_hu5707410579698841872.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102205807448_hu10505187443029656846.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102205807448&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;第一张表：&lt;/p&gt;
+&lt;p&gt;​	如果&lt;strong&gt;i列&lt;/strong&gt;的属性在&lt;strong&gt;j行的属性集&lt;/strong&gt;中，填写&lt;strong&gt;a&lt;del&gt;i&lt;/del&gt;&lt;/strong&gt;，如果不在就填写&lt;strong&gt;b&lt;del&gt;ji&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;后续的表：&lt;/p&gt;
+&lt;p&gt;​	验证每一条函数依赖是否被违反。如果被违反，也即决定者相同、依赖者不同，就将依赖者统一，如果&lt;strong&gt;有a&lt;del&gt;i&lt;/del&gt;就定为a&lt;del&gt;i&lt;/del&gt;&lt;/strong&gt;，否则为&lt;strong&gt;其中行数最小&lt;/strong&gt;的值。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相等的值要永远保持相等，也就是如果A和B统一过，那么B和C统一时应该将ABC一起统一。&lt;/li&gt;
+&lt;li&gt;用过的依赖关系需要全程发挥作用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;如果某行达成了a&lt;del&gt;1&lt;/del&gt;a&lt;del&gt;2&lt;/del&gt;……a&lt;del&gt;n&lt;/del&gt;，说明是无损连接。&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;定理法&#34;&gt;定理法
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924.png&#34;
+	width=&#34;533&#34;
+	height=&#34;53&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924_hu4592511405641937052.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102211309924_hu14350274951990929544.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102211309924&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1005&#34;
+		data-flex-basis=&#34;2413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果拆为了U1,U2两个属性集。如果U1与U2的交集能够&lt;strong&gt;函数决定&lt;/strong&gt;U1或U2，那么就是无损连接。&lt;/p&gt;
+&lt;p&gt;原理：U1交U2-&amp;gt;U1，那么可以将b&lt;del&gt;22&lt;/del&gt;变为a&lt;del&gt;2&lt;/del&gt;，从而形成a&lt;del&gt;1&lt;/del&gt;a&lt;del&gt;2&lt;/del&gt;a&lt;del&gt;3&lt;/del&gt;行。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用于自然连接的公共属性是分表的候选码&lt;/strong&gt;，说明是无损连接。&lt;/p&gt;
+&lt;h4 id=&#34;模式分解中函数依赖的保持&#34;&gt;模式分解中函数依赖的保持
+&lt;/h4&gt;&lt;p&gt;判定方法很简单。如果投影过去的各个依赖集&lt;strong&gt;并起来&lt;/strong&gt;能和原依赖集&lt;strong&gt;等价&lt;/strong&gt;（也就是闭包相等），就说该分解保持函数依赖。&lt;/p&gt;
+&lt;h4 id=&#34;常用的模式分解算法&#34;&gt;常用的模式分解算法
+&lt;/h4&gt;&lt;h5 id=&#34;达到3nf且保持函数依赖的分解算法&#34;&gt;达到3NF且保持函数依赖的分解算法
+&lt;/h5&gt;&lt;p&gt;这个算法仅满足两个条件，不保证无损连接性。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;求出最小依赖集F&lt;/li&gt;
+&lt;li&gt;找到不在F中出现的属性，单独构成一个关系模式，剩余属性记为U。&lt;/li&gt;
+&lt;li&gt;若有X-&amp;gt;A且XA=U，说明我已找到&lt;strong&gt;满足3NF&lt;/strong&gt;的码X, 非主属性集A。算法终止。&lt;/li&gt;
+&lt;li&gt;否则对F根据&lt;strong&gt;相同左部&lt;/strong&gt;的原则分组：每一组函数依赖所涉及的全部属性记为U&lt;del&gt;i&lt;/del&gt;。若有包含关系，取最大的组合。最后得到的组合即为分解结果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;不在F中出现的属性（N类属性）不能进行自然连接。因此不能保证无损分解。&lt;/p&gt;
+&lt;h5 id=&#34;达到3nf且同时保持无损连接与函数依赖的分解算法&#34;&gt;达到3NF且同时保持无损连接与函数依赖的分解算法
+&lt;/h5&gt;&lt;p&gt;针对上一步求出的结果，观察是否有某个关系模式保留了&lt;strong&gt;原表的候选码&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;如果有，该结果即为无损连接。&lt;/p&gt;
+&lt;p&gt;如果没有，就&lt;strong&gt;新增一个关系模式&lt;/strong&gt;，其属性集为&lt;strong&gt;原表&lt;/strong&gt;的一个&lt;strong&gt;候选码&lt;/strong&gt;，其不含函数依赖（候选码内部肯定没有函数依赖，否则违反最小性）。大家可以依靠这个表实现无损连接。&lt;/p&gt;
+&lt;h5 id=&#34;达到bcnf且保持无损连接的分解算法&#34;&gt;达到BCNF且保持无损连接的分解算法
+&lt;/h5&gt;&lt;p&gt;该算法&lt;strong&gt;可能无法保证&lt;/strong&gt;函数依赖。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;检查每个关系模式是不是BCNF。&lt;/li&gt;
+&lt;li&gt;如果存在某表不是BCNF，则是因为存在函数依赖X-&amp;gt;A且X不是码。所以将该表U拆为XA与U-A。（这一步保证了无损连接）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;算法必能终止，因为只含两个属性的关系模式一定是BCNF。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;推荐的做法：&lt;/p&gt;
+&lt;p&gt;先用3NF的，针对3NF的结果再去做这个算法，更有可能保存函数依赖。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;数据库设计&#34;&gt;数据库设计
+&lt;/h2&gt;&lt;p&gt;数据库设计的关键是&lt;strong&gt;构造合理的数据模型&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;数据库设计的特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据库设计与&lt;strong&gt;硬件、软件&lt;/strong&gt;等紧密相关。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库设计要把&lt;strong&gt;结构&lt;/strong&gt;（数据）设计和&lt;strong&gt;行为&lt;/strong&gt;（处理）设计密切结合起来。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;设计方法：手工试凑方法、规范化设计方法。&lt;/p&gt;
+&lt;p&gt;规范化设计的特点：&lt;strong&gt;分步进行&lt;/strong&gt;、&lt;strong&gt;反复性&lt;/strong&gt;、&lt;strong&gt;试探性&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;数据库的生命周期&#34;&gt;数据库的生命周期
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;需求分析&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;概念结构设计&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;逻辑结构设计&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;物理结构设计&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据库的实施&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据库运行与维护&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;需求分析&#34;&gt;需求分析
+&lt;/h4&gt;&lt;p&gt;需求分析的任务是通过详细调查现实世界要处理的对象（组织、部门、企业等），充分了解原系统（手工系统或计算机系统）的工作情况，明确用户的各种需求，并预测系统今后可能的扩充和改变，然后在此基础上确定新系统的功能。&lt;/p&gt;
+&lt;p&gt;调查的重点是&lt;strong&gt;数据&lt;/strong&gt;和&lt;strong&gt;处理&lt;/strong&gt; ，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;信息要求&lt;/strong&gt;，指用户需要从数据库中获得的信息的内容与性质。从中可以导出数据要求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;处理要求&lt;/strong&gt;，指用户要完成什么处理功能，对处理的响应时间和处理方式的要求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全性与完整性&lt;/strong&gt;的要求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数据字典&lt;/strong&gt;是系统中各类&lt;strong&gt;数据描述&lt;/strong&gt;的集合，是进行详细的数据收集和数据分析所获得的主要成果。包括：数据项、数据结构、数据流、数据存储、处理过程。&lt;/p&gt;
+&lt;h4 id=&#34;概念结构设计&#34;&gt;概念结构设计
+&lt;/h4&gt;&lt;p&gt;将需求分析得到的&lt;strong&gt;用户需求&lt;/strong&gt;抽象成为&lt;strong&gt;信息结构&lt;/strong&gt;即&lt;strong&gt;概念模型&lt;/strong&gt;的过程就是概念结构设计。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;应用定义&lt;/strong&gt;的目的是确定最终数据库&lt;strong&gt;支持哪些应用&lt;/strong&gt;系统。应用领域的逻辑模型是应用定义的基础。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;信息定义&lt;/strong&gt;的目的是确定最终数据库&lt;strong&gt;需要存储哪些&lt;/strong&gt;信息。信息的定义也以应用领域的逻辑模型为基础。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;设计策略&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自顶向下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先定义&lt;strong&gt;全局概念&lt;/strong&gt;结构的框架，然后逐步细化。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自底向上（常用）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先定义&lt;strong&gt;各局部应用&lt;/strong&gt;的概念结构，然后将它们集成起来，得到全局概念结构。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;逐步扩张&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先定义&lt;strong&gt;最重要的核心概念&lt;/strong&gt;结构，然后向外扩充，以滚雪球的方式&lt;strong&gt;逐步生成&lt;/strong&gt;其他概念结构，直至总体概念结构。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;混合策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;将自顶向下和自底向上相结合，用&lt;strong&gt;自顶向下&lt;/strong&gt;策略设计一个全局概念结构的框架，以它为骨架集成用&lt;strong&gt;自底向上&lt;/strong&gt;策略设计的各局部概念结构。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;视图综合设计方法&lt;/strong&gt;分为两步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;设计局部概念结构&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把局部概念结构合并为一个全局概念结构。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;局部概念结构&#34;&gt;局部概念结构
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;局部视图设计步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;选择局部应用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;逐一设计分E-R图&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确定局部实体&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确定局部实体之间的联系&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;构造局部E-R图&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;局部视图设计的关键在于&lt;strong&gt;实体和属性&lt;/strong&gt;的正确划分。其主要手段为：&lt;strong&gt;分类&lt;/strong&gt;、&lt;strong&gt;聚集&lt;/strong&gt;、&lt;strong&gt;概括&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;属性不能再具有需要描述的性质。属性必须是不可分的数据项，&lt;strong&gt;不能包含其他属性&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;属性不能与其他实体&lt;/strong&gt;具有联系，即E-R图中所表示的联系都是实体之间的联系。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;职称由&lt;strong&gt;属性&lt;/strong&gt;升级为&lt;strong&gt;实体&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495.png&#34;
+	width=&#34;706&#34;
+	height=&#34;302&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495_hu14582642392739755000.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260102224225495_hu7748031177024825940.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260102224225495&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;561px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;全局概念模式合成&#34;&gt;全局概念模式合成
+&lt;/h5&gt;&lt;p&gt;E-R图之间的集成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一次集成&lt;/li&gt;
+&lt;li&gt;逐步集成（两两合并）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;集成的步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;合并：&lt;strong&gt;解决冲突&lt;/strong&gt;并合并&lt;/li&gt;
+&lt;li&gt;修改和重构：&lt;strong&gt;消除冗余&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;冲突的种类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;命名冲突&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;同名异义&lt;/li&gt;
+&lt;li&gt;异名同义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;结构冲突&lt;/strong&gt;。结构冲突是模式结构的冲突。
+&lt;ul&gt;
+&lt;li&gt;在一个局部ER图中被表示为一个&lt;strong&gt;实体&lt;/strong&gt;，而在另一个局部ER中却被表示为一个&lt;strong&gt;属性或联系&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;同一实体在不同的局部ER图中所包含的&lt;strong&gt;属性个数和属性的排列次序&lt;/strong&gt;不完全相同。可以取全集来解决。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;值域冲突&lt;/strong&gt;。属性域冲突，即属性的&lt;strong&gt;类型&lt;/strong&gt;、&lt;strong&gt;取值范围&lt;/strong&gt;或&lt;strong&gt;取值集合&lt;/strong&gt;不同。（如取值单位）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;约束冲突&lt;/strong&gt;。两个局部模式在同一个概念上&lt;strong&gt;定义了不同的约束&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;消除冗余：&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;初步ER图&lt;/strong&gt;中，可能存在一些冗余的数据和实体间冗余的联系。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;冗余的数据是指可&lt;strong&gt;由基本数据导出&lt;/strong&gt;的数据。&lt;/p&gt;
+&lt;p&gt;冗余的联系是指可&lt;strong&gt;由其他联系导出&lt;/strong&gt;的联系。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;消除了冗余后的初步ER图称为&lt;strong&gt;基本ER图&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;消除冗余主要采用&lt;strong&gt;分析&lt;/strong&gt;方法，即以&lt;strong&gt;数据字典&lt;/strong&gt;和&lt;strong&gt;数据流图&lt;/strong&gt;为依据，根据数据项之间的逻辑关系来消除冗余。&lt;/p&gt;
+&lt;h5 id=&#34;事务设计&#34;&gt;事务设计
+&lt;/h5&gt;&lt;p&gt;数据库设计的目的是&lt;strong&gt;支持各种事务的运行&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;事务可以分为三类：&lt;strong&gt;数据查询型事务，数据更新型事务，混合型事务&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;逻辑结构设计&#34;&gt;逻辑结构设计
+&lt;/h4&gt;&lt;p&gt;任务：&lt;strong&gt;E-R图转关系模式&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;把概念结构设计阶段设计好的&lt;strong&gt;基本E-R图&lt;/strong&gt;转换为与选用的DBMS所支持的数据模型相符合的&lt;strong&gt;逻辑结构&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;满足用户的&lt;strong&gt;完整性和安全性&lt;/strong&gt;要求。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;动态关系至少满足&lt;strong&gt;第三范式&lt;/strong&gt;，静态关系至少满足&lt;strong&gt;第一范式&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;动态：更新型，静态：查询型&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;能够在&lt;strong&gt;逻辑级上高效率&lt;/strong&gt;地支持各种数据库事务的运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;存储空间利用率&lt;/strong&gt;高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;设计步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;形成初始关系数据库模式&lt;/li&gt;
+&lt;li&gt;关系模式规范化（3NF、1NF）&lt;/li&gt;
+&lt;li&gt;关系模式优化&lt;/li&gt;
+&lt;li&gt;定义关系上的完整性和安全性约束&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;子模式&lt;/strong&gt;定义（为每一类用户定义外模式）&lt;/li&gt;
+&lt;li&gt;性能估计&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;形成初始关系数据库模式&#34;&gt;形成初始关系数据库模式
+&lt;/h5&gt;&lt;p&gt;直接由概念结构设计的结果生成关系数据库模式。&lt;/p&gt;
+&lt;p&gt;直接把E-R图中的实体、实体间的联系等变换为关系模式。&lt;/p&gt;
+&lt;h6 id=&#34;实体型的转换&#34;&gt;实体型的转换
+&lt;/h6&gt;&lt;p&gt;直接将一个实体型转化为一个关系模式。&lt;/p&gt;
+&lt;p&gt;实体的属性就是关系的属性，实体的码就是关系的码。&lt;/p&gt;
+&lt;h6 id=&#34;实体间联系的转换&#34;&gt;实体间联系的转换
+&lt;/h6&gt;&lt;p&gt;&lt;strong&gt;1：1联系&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;独立关系模式：属性为与该联系相连的各实体的码以及联系本身的属性。&lt;strong&gt;每个实体的码&lt;/strong&gt;均是该关系的候选码。&lt;/li&gt;
+&lt;li&gt;合并进其中一个关系模式：该关系模式的属性中加入&lt;strong&gt;另一个关系模式的码&lt;/strong&gt;和&lt;strong&gt;联系本身的属性&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036.png&#34;
+	width=&#34;558&#34;
+	height=&#34;342&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036_hu11291941617450959446.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154614036_hu8606114513320817512.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105154614036&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;391px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987.png&#34;
+	width=&#34;361&#34;
+	height=&#34;132&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987_hu13974383402980285917.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154905987_hu176612457509361374.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105154905987&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;273&#34;
+		data-flex-basis=&#34;656px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1：N联系&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;独立关系模式：属性为与该联系相连的各实体的码以及联系本身的属性。&lt;strong&gt;N端实体的码&lt;/strong&gt;均是该关系的候选码。&lt;/li&gt;
+&lt;li&gt;合并进&lt;strong&gt;N端&lt;/strong&gt;关系模式：N端关系模式的属性中加入&lt;strong&gt;1端关系模式的码&lt;/strong&gt;和&lt;strong&gt;联系本身的属性&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484.png&#34;
+	width=&#34;566&#34;
+	height=&#34;337&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484_hu15606588464446820829.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105154955484_hu5664645909265563485.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105154955484&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;M：N联系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;只能转换为&lt;strong&gt;一个独立的关系模式&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;与该联系相连的各实体的码以及联系本身的属性均转换为关系的属性，而&lt;strong&gt;关系的码为各实体码的组合&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241.png&#34;
+	width=&#34;612&#34;
+	height=&#34;244&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241_hu11382101270688844834.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155119241_hu14814289920667497762.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105155119241&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;601px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三个或三个以上实体&lt;/strong&gt;间的一个多元联系&lt;/p&gt;
+&lt;p&gt;只能转换为&lt;strong&gt;一个独立的关系模式&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;与该联系相连的各实体的码以及联系本身的属性均转换为关系的属性，而&lt;strong&gt;关系的码为各实体码的组合&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215.png&#34;
+	width=&#34;609&#34;
+	height=&#34;306&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215_hu3386340674819285153.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105155144215_hu15664140199738757802.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105155144215&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;477px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;关系模式的规范化&#34;&gt;关系模式的规范化
+&lt;/h5&gt;&lt;p&gt;确定函数依赖。消除冗余联系。进行规范化处理。&lt;/p&gt;
+&lt;p&gt;分析这些关系模式对于这样的应用环境&lt;strong&gt;是否合适&lt;/strong&gt;，是否要对某些模式进行&lt;strong&gt;合并或分解&lt;/strong&gt;。&lt;/p&gt;
+&lt;h5 id=&#34;关系模式的优化&#34;&gt;关系模式的优化
+&lt;/h5&gt;&lt;p&gt;在数据库设计中，&lt;strong&gt;并非关系的规范化程度越高越好&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;规范化需要&lt;strong&gt;模式分解&lt;/strong&gt;，查询时&lt;strong&gt;连接操作更多&lt;/strong&gt;，影响&lt;strong&gt;系统效率&lt;/strong&gt;。因此必须根据应用特点对数据库设计进行优化，对关系模式进行必要的分解，提高&lt;strong&gt;数据操作的效率&lt;/strong&gt;和&lt;strong&gt;存储空间的利用率&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;常用的两种分解方法是&lt;strong&gt;水平分解&lt;/strong&gt;和&lt;strong&gt;垂直分解&lt;/strong&gt;。&lt;/p&gt;
+&lt;h6 id=&#34;水平分解-减少行数&#34;&gt;水平分解 减少行数
+&lt;/h6&gt;&lt;p&gt;是把&lt;strong&gt;关系的元组&lt;/strong&gt;分为若干子集合，每个子集合定义为一个子关系。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;高频数据：根据&lt;strong&gt;80/20原则&lt;/strong&gt;， 可以把经常使用的那一部分&lt;strong&gt;数据&lt;/strong&gt;分解出来作为一个关系，其他数据作为另一个关系。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;事务专用数据：如果关系R上具有n个&lt;strong&gt;存取数据不相交&lt;/strong&gt;的事务，则R可以分解为少于或等于n个子关系。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;垂直分解-减少列数&#34;&gt;垂直分解 减少列数
+&lt;/h6&gt;&lt;p&gt;是把关系模式&lt;strong&gt;R的属性&lt;/strong&gt;分解为若干子集合，形成若干子关系模式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原则&lt;/strong&gt;：&lt;strong&gt;经常在一起使用的属性&lt;/strong&gt;从R中分解出来形成一个子关系模式。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如学生表信息很多，可以把学号与姓名单独分出来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;垂直分解必须确保&lt;strong&gt;无损连接性和保持函数依赖&lt;/strong&gt;。&lt;/p&gt;
+&lt;h6 id=&#34;逆规范化--合并关系&#34;&gt;逆规范化  合并关系
+&lt;/h6&gt;&lt;p&gt;&lt;strong&gt;连接操作代价很高&lt;/strong&gt;，是造成关系数据库&lt;strong&gt;低效的主要原因之一&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;如果&lt;strong&gt;经常需要&lt;/strong&gt;对多个关系进行连接操作，且&lt;strong&gt;大多数操作为查询操作，更新很少&lt;/strong&gt;，则可以考虑将这些关系&lt;strong&gt;合并&lt;/strong&gt;为一个关系。&lt;/p&gt;
+&lt;h5 id=&#34;设计子模式&#34;&gt;设计子模式
+&lt;/h5&gt;&lt;p&gt;设计用户外模式。由于用户外模式与全局模式是&lt;strong&gt;相对独立&lt;/strong&gt;的，因此定义用户外模式时可以注重考虑用户的习惯和方便。&lt;/p&gt;
+&lt;h4 id=&#34;数据库物理设计&#34;&gt;数据库物理设计
+&lt;/h4&gt;&lt;p&gt;设计&lt;strong&gt;内模式&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;数据库在&lt;strong&gt;物理设备上的存储结构和存取方法&lt;/strong&gt;称为数据库的物理结构。&lt;/p&gt;
+&lt;p&gt;方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;了解应用的类型和特点&lt;/li&gt;
+&lt;li&gt;了解所用的RDBMS提供了哪些&lt;strong&gt;存取方法和存储结构&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;数据库的存取方法&#34;&gt;数据库的存取方法
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;索引存取方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;应为其建立索引：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;经常在&lt;strong&gt;查询条件&lt;/strong&gt;中出现的属性&lt;/li&gt;
+&lt;li&gt;经常作为最大值和最小值等&lt;strong&gt;聚集函数参数&lt;/strong&gt;的属性&lt;/li&gt;
+&lt;li&gt;经常在&lt;strong&gt;连接条件&lt;/strong&gt;中出现的属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;聚簇存取方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;聚簇存取方法将&lt;strong&gt;相关的数据存放在连续的物理块&lt;/strong&gt;中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HASH存取方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果一个关系的属性主要出现在&lt;strong&gt;相等比较条件&lt;/strong&gt;中，且满足以下两个条件之一，则可以使用HASH存取方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;一个关系的&lt;strong&gt;大小可以预知&lt;/strong&gt;，而且不变。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关系的大小动态改变，但数据库管理系统提供了&lt;strong&gt;动态HASH存取&lt;/strong&gt;方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;数据库的存储结构&#34;&gt;数据库的存储结构
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;确定数据的存放位置&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;根据应用情况将数据的&lt;strong&gt;易变部分与稳定部分&lt;/strong&gt;、&lt;strong&gt;存取频率&lt;/strong&gt;高与低的部分分开存放。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确定系统配置&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数据库的实施&#34;&gt;数据库的实施
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据的载入和应用程序的调试&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库的试运行（功能和性能）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数据库的运行和维护&#34;&gt;数据库的运行和维护
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据库的转储和恢复&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库的安全性、完整性控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库的性能监督、分析和改造&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库的重组织和重构造&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查询优化&#34;&gt;查询优化
+&lt;/h2&gt;&lt;p&gt;本单元视角引向：作为&lt;strong&gt;DBMS的设计者&lt;/strong&gt;，从数据库实现而非应用的角度，我们应该关注的内容。我们要实现关系操作的“非过程化”，本单元则对该过程进行简述。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;降低对用户的要求，方便了用户的使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;能够取得更好的优化效果&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DBMS掌握的信息更丰富，经验更丰富，优化更到位&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;查询处理的基本步骤：查询分析、查询检查、查询优化、查询执行。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751.png&#34;
+	width=&#34;751&#34;
+	height=&#34;515&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751_hu5693398564826398035.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105162818751_hu8603931178003176303.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105162818751&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;查询树：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343.png&#34;
+	width=&#34;798&#34;
+	height=&#34;472&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343_hu12409527141545945.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163011343_hu14382538880026368553.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;查询树&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;405px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;执行计划：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767.png&#34;
+	width=&#34;817&#34;
+	height=&#34;328&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767_hu3278390973627918079.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105163101767_hu9430846237313032331.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105163101767&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;249&#34;
+		data-flex-basis=&#34;597px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;基本运算的实现&#34;&gt;基本运算的实现
+&lt;/h3&gt;&lt;p&gt;每一基本的代数运算都有&lt;strong&gt;多种不同的实现算法&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;适用于不同的情况，其执行代价不同。&lt;/p&gt;
+&lt;h4 id=&#34;选取&#34;&gt;选取
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;全表扫描方法&lt;/strong&gt;：依次访问表的每一个块，对于每一个元组，测试它是否满足选择条件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;效率低，但对关系的存储方式&lt;strong&gt;没有要求，不需要索引&lt;/strong&gt;。适用于任何选择条件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;折半扫描&lt;/strong&gt;: 对于按某一属性排序的文件，且选择条件是该属性上的&lt;strong&gt;等值比较&lt;/strong&gt;方法，可以使用折半的方法扫描文件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;效率高，但&lt;strong&gt;需要有序文件。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;索引扫描&lt;/strong&gt;：对于在选择条件的属性上建有索引的表，可以采用访问索引，根据索引项的指示去访问数据元组的方法。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无序索引：访问满足&lt;strong&gt;等值条件&lt;/strong&gt;的元组&lt;/li&gt;
+&lt;li&gt;有序索引：访问&lt;strong&gt;满足范围&lt;/strong&gt;查找条件的一系列元组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;效率高，&lt;strong&gt;必须建立对应索引&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;连接&#34;&gt;连接
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;嵌套循环方法&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;排序-合并方法&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;先排序再折半查找&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;索引连接方法&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;HASH join方法&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;查询代价的度量&#34;&gt;查询代价的度量
+&lt;/h3&gt;&lt;p&gt;总代价=**I/O代价+**CPU代价+通信开销&lt;/p&gt;
+&lt;p&gt;I/O代价占绝大部分。&lt;/p&gt;
+&lt;p&gt;其度量方式为：I/O块数或者I/O的次数。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不是时间：影响时间的相关因素太多了，不适合作为查询本身的代价度量。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一个重要因素：主存中&lt;strong&gt;缓冲区的大小M&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最好，所有的数据可以读入到缓冲区中&lt;/li&gt;
+&lt;li&gt;最坏，缓冲区只能容纳少量数据块，大约每个关系一块&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;连续测试两次，第二次更快很有可能是缓冲区导致的！&lt;/p&gt;
+&lt;h3 id=&#34;代数优化与物理优化&#34;&gt;代数优化与物理优化
+&lt;/h3&gt;&lt;p&gt;代数优化：&lt;strong&gt;关系代数表达式&lt;/strong&gt;的优化，即按照一定的规则，改变代数表达式中操作的次序和组合&lt;/p&gt;
+&lt;p&gt;物理优化：&lt;strong&gt;存取路径和底层操作&lt;/strong&gt;算法的选择。&lt;/p&gt;
+&lt;h3 id=&#34;关系代数等价变换&#34;&gt;关系代数等价变换
+&lt;/h3&gt;&lt;p&gt;若产生的结果关系具有相同的属性集和元组集，则称&lt;strong&gt;两个表达式等价&lt;/strong&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;连接、笛卡尔积的交换律&lt;/li&gt;
+&lt;li&gt;连接、笛卡尔积的结合律&lt;/li&gt;
+&lt;li&gt;投影的串接定律&lt;/li&gt;
+&lt;li&gt;选择的串接定律&lt;/li&gt;
+&lt;li&gt;选择与投影的交换律&lt;/li&gt;
+&lt;li&gt;选择与笛卡尔积的交换律&lt;/li&gt;
+&lt;li&gt;选择与并的分配律&lt;/li&gt;
+&lt;li&gt;选择与差的分配律&lt;/li&gt;
+&lt;li&gt;投影与笛卡尔积的分配律&lt;/li&gt;
+&lt;li&gt;投影与并的分配律&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;查询优化的一般准则&#34;&gt;查询优化的一般准则
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择运算应尽可能先做&lt;/strong&gt;。目的：减小&lt;strong&gt;中间关系&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在执行连接操作前对文件&lt;strong&gt;适当进行预处理&lt;/strong&gt;。如排序、在连接属性上建立索引。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;投影运算和选择运算&lt;/strong&gt;同时做。目的：避免&lt;strong&gt;重复扫描&lt;/strong&gt;关系。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把&lt;strong&gt;投影运算与其前面或后面的双目运算&lt;/strong&gt;结合起来。目的：减少扫描关系的遍数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选择＋笛卡尔积-&amp;gt;连接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;找出&lt;strong&gt;公共子表达式&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;优化实操：&lt;/p&gt;
+&lt;p&gt;初始查询树&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199.png&#34;
+	width=&#34;637&#34;
+	height=&#34;379&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199_hu3218592825801451915.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171622199_hu18029075072054590227.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105171622199&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;优先选取&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744.png&#34;
+	width=&#34;719&#34;
+	height=&#34;371&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744_hu12131830421260585488.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171628744_hu3781687083626183033.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105171628744&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;465px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;连接替代笛卡尔积&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763.png&#34;
+	width=&#34;723&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763_hu13840653060843639609.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171633763_hu14585239415864590437.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105171633763&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;497px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;优先执行小连接&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096.png&#34;
+	width=&#34;724&#34;
+	height=&#34;373&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096_hu10561623716996627443.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171637096_hu1897100013871212886.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105171637096&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;465px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;投影去掉无关属性&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897.png&#34;
+	width=&#34;729&#34;
+	height=&#34;397&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897_hu14056095314100661972.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105171640897_hu15734819466932468070.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105171640897&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;数据库恢复&#34;&gt;数据库恢复
+&lt;/h2&gt;&lt;h3 id=&#34;事务&#34;&gt;事务
+&lt;/h3&gt;&lt;p&gt;事务是用户定义的一个数据库&lt;strong&gt;操作序列&lt;/strong&gt;构成，这些操作&lt;strong&gt;要么全做，要么全不做&lt;/strong&gt;，是一个&lt;strong&gt;不可分割&lt;/strong&gt;的工作单位。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;事务与应用程序是两个概念，一般来说，一个应用程序可以包含多个事务，事务是更底层的概念。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;事务显式定义：事务的&lt;strong&gt;开始与结束可以由用户显式控制&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;事务隐式定义：如果用户没有显式定义，则由DBMS&lt;strong&gt;自动划分事务&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;事务的基本流程&#34;&gt;事务的基本流程
+&lt;/h4&gt;&lt;p&gt;事务以&lt;strong&gt;Begin transaction开始&lt;/strong&gt;，以 &lt;strong&gt;Commit work 或 Rollback work&lt;/strong&gt;结束。&lt;/p&gt;
+&lt;p&gt;Commit work表示提交，&lt;strong&gt;事务正常结束&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;Rollback work表示事务非正常结束，&lt;strong&gt;撤消事务已做的操作，回滚到事务开始时状态&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;事务的特性-acid&#34;&gt;事务的特性 ACID
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;原子性(Atomicity)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;事务是数据库的逻辑工作单位，事务中包括的诸操作&lt;strong&gt;要么全做，要么全不做&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一致性(Consistency)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;事务执行的结果应当使数据库从一个&lt;strong&gt;一致性状态&lt;/strong&gt;转变为另一个&lt;strong&gt;一致性状态&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;隔离性(Isolation)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一个事务的执行&lt;strong&gt;不能被其它事务干扰&lt;/strong&gt;。即一个事务内部的操作及使用的数据对其它并发事务是隔离的，&lt;strong&gt;并发执行&lt;/strong&gt;的各个事务之间不能相互干扰。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;持久性(Durability)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一个事务一旦提交之后，它对数据库的影响&lt;strong&gt;必须是永久&lt;/strong&gt;的。事务提交后，系统&lt;strong&gt;发生故障不能改变事务的持久性&lt;/strong&gt;。也就是发生故障了必须恢复。&lt;/p&gt;
+&lt;h3 id=&#34;数据库恢复子系统&#34;&gt;数据库恢复子系统
+&lt;/h3&gt;&lt;p&gt;数据库管理系统必须具有把数据库从&lt;strong&gt;错误状态&lt;/strong&gt;恢复到&lt;strong&gt;某一已知&lt;/strong&gt;正确状态的功能，这就是数据库的恢复。&lt;/p&gt;
+&lt;p&gt;数据库恢复是通过&lt;strong&gt;数据库恢复子系统&lt;/strong&gt;完成的。&lt;/p&gt;
+&lt;p&gt;核心目标：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;保护事务的原子性。&lt;/li&gt;
+&lt;li&gt;发生故障后，数据库仍能恢复到正确状态。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;数据库故障&#34;&gt;数据库故障
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;事务内部的故障&lt;/strong&gt;包括可预期的和不可预期的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可预期的是指可以通过&lt;strong&gt;事务程序本身&lt;/strong&gt;发现和处理的故障。&lt;/li&gt;
+&lt;li&gt;不可预期的错误是指那些不能由应用程序处理的&lt;strong&gt;事务故障&lt;/strong&gt;，如死锁，运算溢出，违反完整性规则等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;系统故障&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;系统故障是指造成&lt;strong&gt;系统停止运行&lt;/strong&gt;的任何事情，使得系统要重新启动。如硬件错误，操作系统故障，停电等。&lt;/p&gt;
+&lt;p&gt;这类故障影响&lt;strong&gt;正在运行的所有事务&lt;/strong&gt;，&lt;strong&gt;但不会破坏数据库&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;介质故障&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;介质故障指&lt;strong&gt;外存&lt;/strong&gt;故障，如磁盘损坏，瞬时强磁场干扰等。&lt;/p&gt;
+&lt;p&gt;这类故障将&lt;strong&gt;破坏全部或部分数据库&lt;/strong&gt;，并&lt;strong&gt;影响正在存取这部分数据的所有事务&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;计算机病毒&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;计算机病毒是一种&lt;strong&gt;人为的破坏或故障&lt;/strong&gt;，已成为数据库系统的主要威胁之一。&lt;/p&gt;
+&lt;h3 id=&#34;恢复技术&#34;&gt;恢复技术
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;数据库恢复的基本原理为冗余&lt;/strong&gt;。冗余包括&lt;strong&gt;数据&lt;/strong&gt;的冗余与&lt;strong&gt;操作&lt;/strong&gt;的冗余。&lt;/p&gt;
+&lt;p&gt;如果数据库中任何一部分数据被破坏或处于不正确的状态，则可以通过存储在系统别处的冗余数据来重建。&lt;/p&gt;
+&lt;h4 id=&#34;建立冗余&#34;&gt;建立冗余
+&lt;/h4&gt;&lt;h5 id=&#34;数据转储数据冗余&#34;&gt;数据转储——数据冗余
+&lt;/h5&gt;&lt;p&gt;DBA定期地将整个数据库&lt;strong&gt;复制到磁带或其它存储设备上&lt;/strong&gt;保存起来的过程。&lt;/p&gt;
+&lt;p&gt;这些备用的数据文本称为&lt;strong&gt;后备副本或后援副本&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;转储状态分为&lt;strong&gt;静态转储&lt;/strong&gt;和&lt;strong&gt;动态转储&lt;/strong&gt;。&lt;/p&gt;
+&lt;h6 id=&#34;静态转储冷备份&#34;&gt;静态转储——冷备份
+&lt;/h6&gt;&lt;p&gt;静态转储是在系统中&lt;strong&gt;无事务运行时进行&lt;/strong&gt;的转储操作。&lt;/p&gt;
+&lt;p&gt;新的事务必须等待转储结束才能执行，降低了数据库的可用性。&lt;/p&gt;
+&lt;h6 id=&#34;动态转储热备份&#34;&gt;动态转储——热备份
+&lt;/h6&gt;&lt;p&gt;动态转储是指&lt;strong&gt;转储期间允许&lt;/strong&gt;对数据库进行存取或修改，即转储和用户事务可以&lt;strong&gt;并发执行&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;必须把转储期间各事务&lt;strong&gt;对数据库的修改记录&lt;/strong&gt;下来，这样才能保证把数据库恢复到某一时刻的一致状态。&lt;/p&gt;
+&lt;p&gt;转储方式又分为&lt;strong&gt;海量转储&lt;/strong&gt;和&lt;strong&gt;增量转储&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;海量转储指每次转储&lt;strong&gt;全部数据库&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;慢，但是每次的数据都能直接用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;增量转储指每次只转储上一次转储后更新过的数据。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;快，但是需要严格按次序恢复，不能直接保证正确性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从而有：&lt;strong&gt;动态海量转储 静态海量转储 动态增量转储 静态增量转储&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346.png&#34;
+	width=&#34;1037&#34;
+	height=&#34;282&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346_hu1782716691939978621.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105181723346_hu6801223741313625254.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105181723346&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;367&#34;
+		data-flex-basis=&#34;882px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;登记日志文件操作冗余&#34;&gt;登记日志文件——操作冗余
+&lt;/h5&gt;&lt;p&gt;日志文件是用来记录事务对数据库的&lt;strong&gt;更新&lt;/strong&gt;操作的文件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不是记录所有操作！查询不会导致数据库变化。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;日志文件两种格式：以&lt;strong&gt;记录为单位&lt;/strong&gt;和以&lt;strong&gt;数据块为单位&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;以&lt;strong&gt;记录&lt;/strong&gt;为单位：内容包括各个事务的&lt;strong&gt;所有更新操作&lt;/strong&gt;、&lt;strong&gt;开始标记&lt;/strong&gt;、&lt;strong&gt;结束标记&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;事务标识、操作的类型、操作对象、更新前数据的旧值、更新后数据的新值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以&lt;strong&gt;数据块&lt;/strong&gt;为单位：内容包括&lt;strong&gt;事务标识&lt;/strong&gt;以及&lt;strong&gt;更新前和更新后的数据块&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么不仅记录操作还要记录值？&lt;/p&gt;
+&lt;p&gt;只依赖逆操作可能有问题：可能操作做了，日志记录了，但值还没改就故障了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;事务故障和系统故障恢复必须使用日志文件。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在动态转储方式中必须建立日志文件&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在静态转储方式中，也&lt;strong&gt;可以建立&lt;/strong&gt;日志文件。当数据库发生故障（&lt;strong&gt;介质故障&lt;/strong&gt;）时，用后援副本恢复过去版本的数据，然后利用日志文件重做已完成的事务，把数据库恢复到正确状态。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原则&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;登记的次序&lt;strong&gt;严格按并发事务执行&lt;/strong&gt;的时间顺序。&lt;/li&gt;
+&lt;li&gt;必须&lt;strong&gt;先写日志文件，后写数据库&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;恢复策略&#34;&gt;恢复策略
+&lt;/h4&gt;&lt;h5 id=&#34;事务故障&#34;&gt;事务故障
+&lt;/h5&gt;&lt;p&gt;事务故障的恢复是由&lt;strong&gt;系统自动完成&lt;/strong&gt;的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反向扫描&lt;/strong&gt;日志文件，依次将日志记录中的&lt;strong&gt;更新前的值&lt;/strong&gt;写入数据库，直到读到该事务的&lt;strong&gt;开始标志&lt;/strong&gt;。&lt;/p&gt;
+&lt;h5 id=&#34;系统故障&#34;&gt;系统故障
+&lt;/h5&gt;&lt;p&gt;未完成的事务对数据库的更新**可能（所以用值而非逆操作）**已经写入数据库。&lt;/p&gt;
+&lt;p&gt;已提交事务对数据库的更新**可能（所以用值而非操作）**还留在缓冲区还没来得及写入数据库。&lt;/p&gt;
+&lt;p&gt;要&lt;strong&gt;撤销未完成的事务，重做已完成的事务。&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;正向扫描&lt;/strong&gt;整个日志文件，故障前已完成的事务放入&lt;strong&gt;REDO&lt;/strong&gt;，故障后已完成的事务放入&lt;strong&gt;UNDO&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;反向执行UNDO，依次将日志记录中的&lt;strong&gt;更新前的值&lt;/strong&gt;写入数据库。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正向执行REDO，依次将日志记录中的&lt;strong&gt;更新后的值&lt;/strong&gt;写入数据库。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;介质故障&#34;&gt;介质故障
+&lt;/h5&gt;&lt;p&gt;介质故障将全部或部分地&lt;strong&gt;破坏数据库甚至是日志文件&lt;/strong&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;装入最新的数据库后备副本，将数据库恢复到一致状态。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于动态转储的副本，还需要装入转储开始时刻的日志文件副本。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;装入转储以后的日志文件副本，重做已经完成的事务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;具有检查点的恢复技术&#34;&gt;具有检查点的恢复技术
+&lt;/h3&gt;&lt;p&gt;事务太多了。常常REDO了大量已经写到数据库中的事务。所以已完成的事务无需管理。&lt;/p&gt;
+&lt;p&gt;在日志文件中增加一类新的记录：&lt;strong&gt;检查点记录&lt;/strong&gt;，增加一个&lt;strong&gt;重新开始文件&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;检查点记录也是日志的一条。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;检查点记录的内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建立检查点时刻所有&lt;strong&gt;正在执行的事务&lt;/strong&gt;清单。&lt;/li&gt;
+&lt;li&gt;这些事务最近一个&lt;strong&gt;日志记录&lt;/strong&gt;的地址。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这两个信息表示了恢复时建议处理的&lt;strong&gt;事务&lt;/strong&gt;和建议开始扫描的&lt;strong&gt;日志&lt;/strong&gt;地址。&lt;/p&gt;
+&lt;p&gt;重新开始文件用来记录&lt;strong&gt;各个检查点&lt;/strong&gt;记录本身在日志文件中的地址。&lt;/p&gt;
+&lt;h4 id=&#34;检查点记录操作&#34;&gt;检查点记录操作
+&lt;/h4&gt;&lt;p&gt;将当前日志缓存中的所有&lt;strong&gt;日志记录写入磁盘&lt;/strong&gt;的日志文件上。&lt;/p&gt;
+&lt;p&gt;在日志文件上&lt;strong&gt;写入一个检查点&lt;/strong&gt;记录，其内容包括多个事务与一个日志地址。&lt;/p&gt;
+&lt;p&gt;将当前数据缓存的所有&lt;strong&gt;数据记录写入磁盘&lt;/strong&gt;的数据库中。&lt;strong&gt;（保证数据已存入）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;把&lt;strong&gt;检查点记录在日志文件中地址&lt;/strong&gt;写入一个重新开始文件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当事务T在一个检查点之前提交，T对数据库所做的修改一定已经写入数据库。&lt;/p&gt;
+&lt;p&gt;这样在进行恢复处理时，没有必要对事务T进行REDO操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;恢复&#34;&gt;恢复
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979.png&#34;
+	width=&#34;960&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979_hu10761896881850988656.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260105190154979_hu3458548021342284419.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260105190154979&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;416px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在&lt;strong&gt;重新开始文件&lt;/strong&gt;中找到&lt;strong&gt;最后一个检查点记录&lt;/strong&gt;在日志文件中的地址，由该地址找到最后一个检查点记录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;由该检查点记录得到&lt;strong&gt;检查点建立时刻所有正在运行的事务&lt;/strong&gt;清单，放入UNDO-LIST&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从&lt;strong&gt;检查点开始正向扫描&lt;/strong&gt;日志文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果有新开始的事务，放入UNDO-LIST&lt;/li&gt;
+&lt;li&gt;如果有提交的事务 ，&lt;strong&gt;从UNDO-LIST队列移入到REDO-LIST队列&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;废话一堆，其实就是还是已提交的REDO，未提交的UNDO。只不过从检查点开始。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;直到文件结束，然后对UNDO-LIST中的执行UNDO，对REDO-LIST中的执行REDO。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;数据库镜像&#34;&gt;数据库镜像
+&lt;/h3&gt;&lt;p&gt;根据DBA要求，自动把整个数据库或其中的关键数据&lt;strong&gt;复制到另一个磁盘上&lt;/strong&gt;。每当主数据库更新时，DBMS&lt;strong&gt;自动把更新后的数据复制过去&lt;/strong&gt;，即DBMS自动保证镜像数据与主数据的一致性。&lt;/p&gt;
+&lt;p&gt;这样，一旦发生介质故障：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以&lt;strong&gt;继续由镜像磁盘提供服务。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;可以&lt;strong&gt;直接通过镜像磁盘进行数据库恢复&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在没有故障时，镜像磁盘还可以&lt;strong&gt;提供一定的并行性&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;并发控制&#34;&gt;并发控制
+&lt;/h2&gt;&lt;h3 id=&#34;优势&#34;&gt;优势
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;一个事务由不同的步骤组成，所涉及的&lt;strong&gt;系统资源&lt;/strong&gt;也不同。这些步骤可以并发执行，以提高系统的吞吐量，改善系统的资源的利用率。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统中存在着周期不等的各种事务，串行会导致难以预测的时延。采用并发会减少&lt;strong&gt;平均响应时间&lt;/strong&gt;，特别是改善短事务的响应时间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;问题&#34;&gt;问题
+&lt;/h3&gt;&lt;p&gt;当多个事务并发执行的时候，有可能会&lt;strong&gt;相互影响&lt;/strong&gt;，从而读取或者存储不正确的数据，破坏&lt;strong&gt;数据库的一致性&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;造成并发执行事务问题的&lt;strong&gt;原因&lt;/strong&gt;是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多个事务同时存取&lt;strong&gt;同一个数据集合&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;并且其中至少有一个事务对该数据集合&lt;strong&gt;进行了更新&lt;/strong&gt;操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;丢失修改&#34;&gt;丢失修改
+&lt;/h4&gt;&lt;p&gt;两个事务T1和T2读入同一数据并修改， T2提交的结果&lt;strong&gt;破坏了T1提交&lt;/strong&gt;的结果，导致T1的修改被丢失。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;写后写，前一次写的结果被覆盖。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;不可重复读&#34;&gt;不可重复读
+&lt;/h4&gt;&lt;p&gt;事务T1读取某一数据后，事务T2对其做了修改，当事务T1&lt;strong&gt;再次读取&lt;/strong&gt;该数据时，得到与前一次不同的值。&lt;/p&gt;
+&lt;p&gt;破坏了事务的&lt;strong&gt;隔离性&lt;/strong&gt;，一个事务进行过程中遭遇了其他事务的干扰。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;读后写，再读就不一样了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;不可重复读之幻影行&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;事务T1按照一定条件从数据库中&lt;strong&gt;读取了某些数据记录&lt;/strong&gt;后，&lt;/p&gt;
+&lt;p&gt;事务T2删除/增加了部分记录，&lt;/p&gt;
+&lt;p&gt;当T1再次按照&lt;strong&gt;相同条件&lt;/strong&gt;读取数据时，发现某些记录神秘的消失/出现了。&lt;/p&gt;
+&lt;h4 id=&#34;读脏数据&#34;&gt;读“脏”数据
+&lt;/h4&gt;&lt;p&gt;事务T1修改某一数据，并将其写回磁盘，事务T2读取同一数据后，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;T1由于某种原因被撤销&lt;/strong&gt;，这时T1已修改过的数据恢复为原值，&lt;/p&gt;
+&lt;p&gt;T2读到的数据就与数据库中的不一致，为“脏”数据。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;写后读，写撤回导致读错误。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;并发控制措施封锁&#34;&gt;并发控制措施——封锁
+&lt;/h3&gt;&lt;p&gt;事务T在对某个数据对象操作之前，先向系统&lt;strong&gt;发出请求，对其加锁&lt;/strong&gt;，从而对该数据对象有了一定的控制，在事务T释放它的锁之前，其他事务不能更新此数据对象。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不能更新的原因是其他事务加锁失败。这也就是一级封锁协议中&lt;strong&gt;读直接无锁&lt;/strong&gt;导致&lt;strong&gt;读脏数据&lt;/strong&gt;无法阻拦的原因。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;封锁的类型&#34;&gt;封锁的类型
+&lt;/h4&gt;&lt;p&gt;排它锁（&lt;strong&gt;X锁&lt;/strong&gt;，Exclusive lock）：事务T对数据对象A加上X锁，则&lt;strong&gt;只允许T读取和修改A&lt;/strong&gt;，其它事务对A的任何&lt;strong&gt;封锁请求&lt;/strong&gt;都不能成功（&lt;strong&gt;因而不能&lt;/strong&gt;读取和修改R），直至T释放A上的X锁。&lt;/p&gt;
+&lt;p&gt;共享锁（&lt;strong&gt;S锁&lt;/strong&gt;，Share lock）：事务T对数据对象A加上S锁，则&lt;strong&gt;事务T可以读取但不能修改A&lt;/strong&gt;，其它事务&lt;strong&gt;只能对A加S锁&lt;/strong&gt;（因而可以读取A），而&lt;strong&gt;不能对A的加X锁&lt;/strong&gt;（因而不能修改A），直到T释放A上的S锁。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意封锁机制是靠&lt;strong&gt;锁&lt;/strong&gt;实现的，锁只能阻拦锁！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;相容矩阵：（读读或者数据不同为True）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733.png&#34;
+	width=&#34;794&#34;
+	height=&#34;414&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733_hu10831572141047558174.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106154533733_hu1060916860209770600.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106154533733&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;460px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;封锁协议&#34;&gt;封锁协议
+&lt;/h4&gt;&lt;h5 id=&#34;一级封锁协议read-uncommitted&#34;&gt;一级封锁协议（Read Uncommitted）
+&lt;/h5&gt;&lt;p&gt;事务T在修改数据R之前&lt;strong&gt;必须对其加X锁&lt;/strong&gt;，直到&lt;strong&gt;事务结束&lt;/strong&gt;才释放。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;事务结束包括正常结束(COMMIT)和非正常结束(ROLLBACK)。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对&lt;strong&gt;更新&lt;/strong&gt;提出了很严格的要求，但对于&lt;strong&gt;读取，根本没有锁&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;可解决：丢失修改&lt;/p&gt;
+&lt;p&gt;不可解决：读脏数据、不可重复读&lt;/p&gt;
+&lt;h5 id=&#34;二级封锁协议read-committed&#34;&gt;二级封锁协议（Read Committed）
+&lt;/h5&gt;&lt;p&gt;一级封锁协议 +&lt;/p&gt;
+&lt;p&gt;事务T在&lt;strong&gt;读取&lt;/strong&gt;数据R之前必须先对其&lt;strong&gt;加S锁&lt;/strong&gt;，&lt;strong&gt;读完后即可释放&lt;/strong&gt;S锁。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;读完即可释放，而非事务结束！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可解决：丢失修改、读脏数据（读有锁了，肯定写彻底结束后才能读）&lt;/p&gt;
+&lt;p&gt;不可解决：&lt;strong&gt;不可重复读&lt;/strong&gt;（同一事务内，每次读取都单独上锁开锁，读取中间存在缝隙）&lt;/p&gt;
+&lt;h5 id=&#34;三级封锁协议repeatable-read&#34;&gt;三级封锁协议（Repeatable Read）
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;一级&lt;/strong&gt;封锁协议 +&lt;/p&gt;
+&lt;p&gt;事务T在读取R之前必须对其加S锁，直到&lt;strong&gt;事务结束才释放。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可解决：丢失修改、读脏数据、不可重复读&lt;/p&gt;
+&lt;p&gt;不可解决：不可重复读之&lt;strong&gt;幻影行&lt;/strong&gt;之insert，因为当前是针对于数据的上锁，insert的新的数据未能和读的数据产生冲突。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;四级封锁协议（Serializable 可串行化）解决了此问题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;封锁的危害&#34;&gt;封锁的危害
+&lt;/h4&gt;&lt;h5 id=&#34;封锁级别&#34;&gt;封锁级别
+&lt;/h5&gt;&lt;p&gt;封锁级别并非越高越好，极度封锁虽然安全，但会&lt;strong&gt;让并行趋于串行化&lt;/strong&gt;，违背初衷。&lt;/p&gt;
+&lt;p&gt;此外，不安全的行为，尤其&lt;strong&gt;在读操作上&lt;/strong&gt;，一定程度上是可允许的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;人口统计数据一直在更新，每次数据都是不准的，也都是可接受的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;活锁与死锁&#34;&gt;活锁与死锁
+&lt;/h5&gt;&lt;p&gt;活锁是指&lt;strong&gt;某事务&lt;/strong&gt;长时间无法申请到锁，从而长期阻塞的问题。&lt;strong&gt;解决方法&lt;/strong&gt;：与等待时间相关的&lt;strong&gt;调度&lt;/strong&gt;方案。&lt;/p&gt;
+&lt;p&gt;死锁：&lt;/p&gt;
+&lt;p&gt;在数据库运行期间，如果存在&lt;strong&gt;一个事务集合{T0，T1，…，Tn}&lt;/strong&gt;，使得T0等待T1持有的数据项锁， …， Tn-1等待Tn持有的数据项锁，Tn等待T0持有的数据项锁，则称&lt;strong&gt;系统处于死锁状态&lt;/strong&gt;， {T0，T1，…，Tn }称为&lt;strong&gt;死锁事务集合&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;最经典的死锁：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452.png&#34;
+	width=&#34;540&#34;
+	height=&#34;525&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452_hu751275287495900293.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160405452_hu1320371440534132714.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106160405452&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;102&#34;
+		data-flex-basis=&#34;246px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;死锁的解决&#34;&gt;死锁的解决
+&lt;/h3&gt;&lt;h4 id=&#34;预防死锁&#34;&gt;预防死锁
+&lt;/h4&gt;&lt;h5 id=&#34;一次封锁法&#34;&gt;一次封锁法
+&lt;/h5&gt;&lt;p&gt;一次封锁法要求每个事务&lt;strong&gt;必须一次&lt;/strong&gt;将其所有要使用的数据&lt;strong&gt;全部加锁&lt;/strong&gt;，&lt;strong&gt;否则就不能执行&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;由于需要扩大加锁的范围，因此&lt;strong&gt;降低了系统的并发度&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807.png&#34;
+	width=&#34;590&#34;
+	height=&#34;505&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807_hu15786124940169247901.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160729807_hu8752172780432475639.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106160729807&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;116&#34;
+		data-flex-basis=&#34;280px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;顺序封锁法&#34;&gt;顺序封锁法
+&lt;/h5&gt;&lt;p&gt;顺序封锁法是预先对数据对象&lt;strong&gt;规定一个封锁顺序&lt;/strong&gt;，所有的事务都要按照这个顺序实行封锁。&lt;/p&gt;
+&lt;p&gt;由于数据库中数据的不断变化和事务封锁要求的动态提出，&lt;strong&gt;难度往往很大&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681.png&#34;
+	width=&#34;606&#34;
+	height=&#34;560&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681_hu13516147403988828768.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160744681_hu7707612001598847214.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106160744681&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;108&#34;
+		data-flex-basis=&#34;259px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;死锁检测与恢复&#34;&gt;死锁检测与恢复
+&lt;/h4&gt;&lt;h5 id=&#34;死锁检测&#34;&gt;死锁检测
+&lt;/h5&gt;&lt;h6 id=&#34;超时法&#34;&gt;超时法
+&lt;/h6&gt;&lt;p&gt;如果一个事务的等待时间超过了规定的期限，就认为发生了死锁。&lt;/p&gt;
+&lt;h6 id=&#34;等待图法&#34;&gt;等待图法
+&lt;/h6&gt;&lt;p&gt;事务等待图是一个有向回路G=(T, U)。T为结点的集合，每个结点表示正在运行的事务；U为边的集合，每条边表示事务等待的情况。&lt;strong&gt;若T1等待T2，则T1，T2之间画一条有向边，从T1指向T2&lt;/strong&gt;。事务等待图动态地反映了所有事务的等待情况。&lt;/p&gt;
+&lt;p&gt;如果发现&lt;strong&gt;图中存在回路&lt;/strong&gt;，则表示系统出现死锁。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442.png&#34;
+	width=&#34;707&#34;
+	height=&#34;450&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442_hu8755462388072515591.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106160949442_hu4645312195681080038.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106160949442&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;377px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;死锁恢复&#34;&gt;死锁恢复
+&lt;/h5&gt;&lt;p&gt;选择一个&lt;strong&gt;处理死锁代价最小&lt;/strong&gt;的事务，将其&lt;strong&gt;撤销&lt;/strong&gt;，&lt;strong&gt;释放&lt;/strong&gt;此事务持有的所有锁，使其他事务得以继续运行下去。&lt;/p&gt;
+&lt;p&gt;对于所撤销的事务已作的操作必须都加以撤销。死锁结束后再REDO。&lt;/p&gt;
+&lt;h3 id=&#34;事务的调度与可串行性&#34;&gt;事务的调度与可串行性
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;串行调度&lt;/strong&gt;，属于&lt;strong&gt;同一事务的指令紧挨&lt;/strong&gt;在一起。对于有n个事务的事务组，可以有**n!**个有效调度。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;并行调度&lt;/strong&gt;，来自不同事务的指令&lt;strong&gt;可以交叉执行&lt;/strong&gt;，可以有大于**n!**个有效调度。&lt;/p&gt;
+&lt;h4 id=&#34;调度的正确性&#34;&gt;调度的正确性
+&lt;/h4&gt;&lt;p&gt;T1:读B;A=B+1;写回A;&lt;/p&gt;
+&lt;p&gt;T2:读A;B=A+1;写回B;&lt;/p&gt;
+&lt;p&gt;对其进行串行调度：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092.png&#34;
+	width=&#34;808&#34;
+	height=&#34;508&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092_hu475418095373219483.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162004092_hu18289033949974200009.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106162004092&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;381px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;串行调度&lt;strong&gt;一定是正确&lt;/strong&gt;的，尽管图中两个结果不同，我们也都称之为正确的。&lt;/p&gt;
+&lt;p&gt;并发执行是正确的，当且仅当&lt;strong&gt;其结果与按某一次序串行的执行它们时的结果相同&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;这种调度策略称为&lt;strong&gt;可串行化调度&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;一个给定的并发调度，当且仅当它是可串行化的，才认为是正确调度。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832.png&#34;
+	width=&#34;799&#34;
+	height=&#34;535&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832_hu4568674957934594796.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106162142832_hu16290096705841818848.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106162142832&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;358px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;图中的左侧调度就不是可串行化调度，不是正确的。而右侧调度则是正确调度、可串行化调度。&lt;/p&gt;
+&lt;p&gt;如何判断是否是可串行化调度？&lt;/p&gt;
+&lt;h4 id=&#34;冲突可串行化调度&#34;&gt;冲突可串行化调度
+&lt;/h4&gt;&lt;p&gt;这是一个很硬核的方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有这样一些指令(组)的&lt;strong&gt;相邻&lt;/strong&gt;交换操作，可以不影响运行的结果，并把该调度转为某个串行调度，那么该调度可串行化。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;哪些指令的交换操作不影响运行的结果？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对&lt;strong&gt;不同&lt;/strong&gt;数据对象进行的操作&lt;/li&gt;
+&lt;li&gt;对同一数据对象的&lt;strong&gt;读操作之间&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;交换操作可能影响运行的结果的操作叫做&lt;strong&gt;冲突操作&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;冲突操作包括不同事务对&lt;strong&gt;同一数据&lt;/strong&gt;的&lt;strong&gt;读写操作和写写操作&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ri（x）与  Wj（x）&lt;/li&gt;
+&lt;li&gt;Wi（x）与 Wj（x）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例子：R1(A) W1(A) &lt;strong&gt;R2(A) W2(A)&lt;/strong&gt; &lt;code&gt;R1(B) W1(B)&lt;/code&gt; R2(B) W2(B)&lt;/p&gt;
+&lt;p&gt;&amp;mdash;&amp;mdash;&amp;gt; R1(A) W1(A) &lt;code&gt;R1(B) W1(B)&lt;/code&gt; &lt;strong&gt;R2(A) W2(A)&lt;/strong&gt; R2(B) W2(B)  变为了串行调度。&lt;/p&gt;
+&lt;p&gt;这个方法只是一个充分条件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193.png&#34;
+	width=&#34;762&#34;
+	height=&#34;368&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193_hu10504163750581036537.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106163731193_hu7788562094662940184.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106163731193&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;496px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;上图的例子就是一个典例。当前语境下W1(X)和W2(X)其实可交换，但是属于冲突操作。&lt;/p&gt;
+&lt;h4 id=&#34;两段锁协议&#34;&gt;两段锁协议
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;在对任何数据进行读、写操作之前，事务首先要获得对该数据的封锁。&lt;/li&gt;
+&lt;li&gt;在释放一个封锁之后，事务不再获得任何其它封锁。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;也就是两个阶段，加锁阶段与解锁阶段，不存在解锁后再加锁。&lt;/p&gt;
+&lt;p&gt;第一阶段是获得封锁，也称&lt;strong&gt;扩展阶段&lt;/strong&gt;。事务不能释放任何锁。&lt;/p&gt;
+&lt;p&gt;第二阶段是释放阶段，也称&lt;strong&gt;收缩阶段&lt;/strong&gt;。事务不能申请任何锁。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理：若所有事务均遵从两段锁协议，则这些事务的所有并行调度都是可串行化的。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个方法也只是一个充分条件，但是他要更加直观简单。&lt;/p&gt;
+&lt;p&gt;不过我们至少知道：&lt;strong&gt;一个调度如果是错误的，那他一定不满足两段锁协议。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;比如之前的例子，就显然没有遵循两段锁协议：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;好像圈错了，应该是事务内部先解锁后上锁，才违反两段锁协议&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362.png&#34;
+	width=&#34;598&#34;
+	height=&#34;807&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362_hu12965109801853988818.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106164703362_hu13046571041216405001.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106164703362&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;74&#34;
+		data-flex-basis=&#34;177px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;两段锁协议&lt;strong&gt;不能用于预防死锁&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;因为只是在加锁阶段就可以直接死锁。&lt;/p&gt;
+&lt;h4 id=&#34;多粒度封锁&#34;&gt;多粒度封锁
+&lt;/h4&gt;&lt;p&gt;封锁对象的大小称为&lt;strong&gt;封锁粒度&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;封锁对象包括&lt;strong&gt;逻辑单元&lt;/strong&gt;（属性值、元组、关系……）和&lt;strong&gt;物理单元&lt;/strong&gt;（物理页、块）。&lt;/p&gt;
+&lt;p&gt;封锁粒度大，则&lt;strong&gt;并发度低&lt;/strong&gt;，封锁机构简单，&lt;strong&gt;开销小&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;多粒度封锁：在一个系统中同时&lt;strong&gt;支持多种封锁粒度&lt;/strong&gt;供不同的事务选择。&lt;/p&gt;
+&lt;p&gt;选择封锁粒度时应同时考虑&lt;strong&gt;封锁开销和并发度&lt;/strong&gt;两个因素，适当选择封锁粒度以达到最优效果。&lt;/p&gt;
+&lt;h5 id=&#34;多粒度树&#34;&gt;多粒度树
+&lt;/h5&gt;&lt;p&gt;多粒度树的&lt;strong&gt;根结点&lt;/strong&gt;是&lt;strong&gt;整个数据库&lt;/strong&gt;，表示最大的粒度。&lt;strong&gt;叶结点&lt;/strong&gt;表示最小的粒度。&lt;/p&gt;
+&lt;p&gt;多粒度树中的每个结点可被独立地加锁，此外：&lt;/p&gt;
+&lt;p&gt;对一个结点加锁意味着&lt;strong&gt;这个结点的所有后裔结点&lt;/strong&gt;也被加以同样类型的锁。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;显式封锁是应事务的要求直接加到数据对象上的封锁。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;隐式封锁是该数据对象没有独立加锁，是由于其上级结点加锁而使该数据对象加上了锁。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;意向锁&#34;&gt;意向锁
+&lt;/h5&gt;&lt;p&gt;一般的，对某个数据对象加锁，系统要&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;检查该数据对象上&lt;strong&gt;有无显式封锁与之冲突&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;还要检查其所有上级结点的显式封锁，也是否有&lt;strong&gt;隐式封锁&lt;/strong&gt;与之冲突&lt;/li&gt;
+&lt;li&gt;还要检查其所有&lt;strong&gt;下级结点的显式封锁&lt;/strong&gt;是否与本次加锁产生的隐式封锁冲突。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样效率&lt;strong&gt;效率很低&lt;/strong&gt;，因此引入了意向锁。&lt;/p&gt;
+&lt;p&gt;如果对一个结点加意向锁，则说明&lt;strong&gt;该结点的下层结点正在被加锁&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;因为对任一结点加锁时，必须&lt;strong&gt;先对它的上层结点加意向锁&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;意向共享&lt;/strong&gt;锁（Intent Share Lock，简称IS锁）&lt;/p&gt;
+&lt;p&gt;表示它的后裔结点拟（意向）加S锁。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;意向排它&lt;/strong&gt;锁（Intent Exclusive Lock ，简称IX锁）&lt;/p&gt;
+&lt;p&gt;表示它的后裔结点拟（意向）加X锁。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;意向共享排它&lt;/strong&gt;锁（ Share Intent Exclusive Lock ，简称SIX锁）&lt;/p&gt;
+&lt;p&gt;表示对它加S锁，再加IX锁，即SIX=S+IX。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;相容矩阵&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;S 只和 S IS 相容。&lt;/p&gt;
+&lt;p&gt;X一定不相容。&lt;/p&gt;
+&lt;p&gt;IS 只和 X 不相容。&lt;/p&gt;
+&lt;p&gt;IX 只和 IS IX 相容。&lt;/p&gt;
+&lt;p&gt;SIX 只和 IS 相容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938.png&#34;
+	width=&#34;696&#34;
+	height=&#34;444&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938_hu6301953055307046992.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106170727938_hu7723261208785284319.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106170727938&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;376px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;数据库存储&#34;&gt;数据库存储
+&lt;/h2&gt;&lt;h3 id=&#34;存储介质&#34;&gt;存储介质
+&lt;/h3&gt;&lt;p&gt;CPU寄存器&amp;mdash;&amp;ndash;高速缓存 L1/L2/L3&amp;mdash;&amp;ndash;主存储器&amp;mdash;&amp;ndash;闪存&amp;mdash;&amp;ndash;磁盘&amp;mdash;&amp;ndash;光盘&amp;mdash;&amp;ndash;磁带&lt;/p&gt;
+&lt;p&gt;在此着重讲解磁盘。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811.png&#34;
+	width=&#34;412&#34;
+	height=&#34;300&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811_hu1581078815306948649.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171602811_hu7414595300323937713.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106171602811&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;329px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;磁道&lt;/strong&gt;：盘片的表面被逻辑地划分为磁道。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;扇区&lt;/strong&gt;：磁道又被逻辑地划分为扇区；扇区是从&lt;strong&gt;磁盘读出和写入数据的最小单位&lt;/strong&gt;，通常大小为512字节。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;磁头可同时移动扫过多个跨磁道扇区构成扇面。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;物理块&lt;/strong&gt;：一个盘片的一条磁道内&lt;strong&gt;几个连续的扇区&lt;/strong&gt;构成的序列称为物理块，一般也简称块；&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据在磁盘和主存储器之间&lt;strong&gt;以块为单位传输&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914.png&#34;
+	width=&#34;536&#34;
+	height=&#34;414&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914_hu9090097458919401232.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106171934914_hu11269727401281139684.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106171934914&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;310px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;raid&#34;&gt;RAID
+&lt;/h4&gt;&lt;p&gt;磁盘可以构成&lt;strong&gt;磁盘阵列&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;RAID即独立磁盘冗余阵列。将多个单独的物理硬盘&lt;strong&gt;以不同的方式组合成一个逻辑硬盘&lt;/strong&gt;，从而提高了硬盘的读写性能和数据安全性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提升容量、提升性能、提升可靠性&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;根据不同的组合方式可以分为不同的RAID级别。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298.png&#34;
+	width=&#34;986&#34;
+	height=&#34;448&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298_hu7654575916601861103.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106172250298_hu7022420853355907914.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106172250298&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;528px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;RAID0：至少两个盘。提升了性能，没有任何安全性防护。&lt;/p&gt;
+&lt;p&gt;RAID1：至少两个盘。空间利用率低，读写性能无提升。&lt;/p&gt;
+&lt;p&gt;RAID2：第1个、第2个、第4个……第2的n次幂个硬盘都是校验盘。&lt;/p&gt;
+&lt;p&gt;RAID3：专门的校验盘。&lt;/p&gt;
+&lt;p&gt;RAID5：至少三个盘，校验信息分散在不同磁盘。&lt;/p&gt;
+&lt;p&gt;RAID6：允许两个硬盘同时失效。&lt;/p&gt;
+&lt;p&gt;常用 RAID0，RAID1，RAID5，及其组合：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;RAID 0+1：先做RAID 0，后做RAID 1，同时提供数据条带化和镜像&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RAID 10：类似于RAID 0+1，区别在于先做RAID 1，后做RAID 0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RAID 50：先做RAID 5，后做RAID 0，能有效提高RAID 5的性能&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061.png&#34;
+	width=&#34;488&#34;
+	height=&#34;425&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061_hu4595953751378607459.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260106173216061_hu17940104457338849021.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260106173216061&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;114&#34;
+		data-flex-basis=&#34;275px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;缓冲区调度&#34;&gt;缓冲区调度
+&lt;/h3&gt;&lt;p&gt;OS常用&lt;strong&gt;最近未使用&lt;/strong&gt; LRU，但是 LRU 对某些&lt;strong&gt;涉及重复扫描数据&lt;/strong&gt;的存取模式来说是&lt;strong&gt;很差&lt;/strong&gt;的策略！&lt;/p&gt;
+&lt;p&gt;对于DB，要根据不同情况选择方案。一般地，如果需要替换，则最好替换&lt;strong&gt;最近使用的块&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;支持&lt;strong&gt;钉住&lt;/strong&gt;不允许写回磁盘的内存块。如循环连接中的&lt;strong&gt;外层循环&lt;/strong&gt;中的数据块。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;支持&lt;strong&gt;立即替换&lt;/strong&gt;策略。完成某任务后直接替换所有相关块。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;支持&lt;strong&gt;最近使用&lt;/strong&gt;策略。如循环连接中的内层循环数据块，只会用到一次，用完直接替换。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;支持&lt;strong&gt;某些数据&lt;/strong&gt;优先存放到缓冲区中，如尽可能将&lt;strong&gt;数据字典块&lt;/strong&gt;保存在缓冲区中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据库文件结构&#34;&gt;数据库文件结构
+&lt;/h3&gt;&lt;p&gt;数据文件：数据库数据的物理存储。&lt;/p&gt;
+&lt;h4 id=&#34;记录文件&#34;&gt;记录文件
+&lt;/h4&gt;&lt;p&gt;定长记录文件：记录的长度是固定的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;优势：记录存取简单。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除记录困难：不应把被删除的记录的后面的记录都往上移，而是应该用链表把被删除的记录串起来。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;变长记录文件：文件中能够容纳不同长度的、不同类型的记录。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;支持变长数据类型：如varchar&lt;/li&gt;
+&lt;li&gt;支持多种记录类型&lt;/li&gt;
+&lt;li&gt;记录存取灵活，空间利用率高&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slotted Page结构&lt;/strong&gt;：&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455.png&#34;
+	width=&#34;815&#34;
+	height=&#34;529&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455_hu15403936933631554641.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107001436455_hu13101420425338605261.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260107001436455&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;定长表示法&lt;/strong&gt;：使用一个或多个定长记录表示一个变长记录
+&lt;ul&gt;
+&lt;li&gt;预留空间法：利用具有&lt;strong&gt;已知最大长度&lt;/strong&gt;的定长记录&lt;/li&gt;
+&lt;li&gt;指针法：&lt;strong&gt;若干定长&lt;/strong&gt;记录通过指针链在一起&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;记录文件的组织&#34;&gt;记录文件的组织
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;堆：记录可置于文件中的&lt;strong&gt;任何有空间&lt;/strong&gt;的地方&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;顺序：记录&lt;strong&gt;按顺序存储&lt;/strong&gt;，基于每条记录在搜索码上的值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;散列（hash）：对记录的某属性计算hash函数，计算结果决定该记录应该置于文件的哪个块中&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个关系的记录可存储在单独的文件中。&lt;/p&gt;
+&lt;p&gt;但在&lt;strong&gt;聚簇文件组织&lt;/strong&gt;下, 单个和多个关系的记录&lt;strong&gt;都可存储于同一文件&lt;/strong&gt;中。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;语义关联密切的记录存储在同一块中&lt;strong&gt;可减少磁盘 I/O&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因为物理顺序只能有一个，聚簇应该用在最需要的位置。&lt;/p&gt;
+&lt;h5 id=&#34;顺序文件组织&#34;&gt;顺序文件组织
+&lt;/h5&gt;&lt;p&gt;适用于需要顺序地高效处理&lt;strong&gt;按照某个搜索码排列&lt;/strong&gt;的整个文件的记录。&lt;/p&gt;
+&lt;p&gt;通过&lt;strong&gt;指针&lt;/strong&gt;，同时尽可能保证&lt;strong&gt;逻辑次序和物理次序&lt;/strong&gt;保持一致，减少可能的磁盘操作。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;维护记录的物理顺序&lt;/strong&gt;代价高：虽然用指针维护顺序，但还是需要时常&lt;strong&gt;重组文件&lt;/strong&gt;以恢复物理存储顺序。&lt;/p&gt;
+&lt;h4 id=&#34;关系数据库的文件选择&#34;&gt;关系数据库的文件选择
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;存储关系到一个文件&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;充分利用OS&lt;/strong&gt;所提供的功能，减少DMBS的处理代价&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DBMS不支持某些优化策略&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;存储多个关系到一个文件&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;DBMS支持某些优化策略，可以在文件中设计复杂的结构&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库的&lt;strong&gt;大小和复杂性&lt;/strong&gt;增大&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数据字典&#34;&gt;数据字典
+&lt;/h4&gt;&lt;p&gt;数据字典，也称为系统目录，保存元数据，即&lt;strong&gt;关于数据的数据&lt;/strong&gt;，也是需要存储的。&lt;/p&gt;
+&lt;p&gt;内容包括&lt;strong&gt;关系&lt;/strong&gt;的信息、&lt;strong&gt;用户及账号&lt;/strong&gt;信息与口令、&lt;strong&gt;统计与描述&lt;/strong&gt;数据、&lt;strong&gt;物理文件组织&lt;/strong&gt;信息、&lt;strong&gt;索引&lt;/strong&gt;信息。&lt;/p&gt;
+&lt;h2 id=&#34;索引&#34;&gt;索引
+&lt;/h2&gt;&lt;h3 id=&#34;基本概念&#34;&gt;基本概念
+&lt;/h3&gt;&lt;p&gt;索引机制用于&lt;strong&gt;加速对所需数据的存取&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;更新文件时，该文件上的&lt;strong&gt;每个索引都必须更新&lt;/strong&gt;，有一定开销。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;搜索码&lt;/strong&gt;：用来在文件中查找记录的&lt;strong&gt;属性或属性集合&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;索引文件一般比原始文件小的多。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;两种基本索引&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有序索引：搜索码&lt;strong&gt;按顺序&lt;/strong&gt;存储&lt;/li&gt;
+&lt;li&gt;散列索引：搜索码&lt;strong&gt;被散列函数分配&lt;/strong&gt;到若干桶中.&lt;/li&gt;
+&lt;li&gt;new：位图索引。实现高效的&lt;strong&gt;多键查询&lt;/strong&gt;。将数据转储为二进制01串，利用交并补运算实现查询。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;评价手段&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有效支持的存取类型：&lt;strong&gt;Point Query&lt;/strong&gt;（属性值为某值的记录）、&lt;strong&gt;Range Query&lt;/strong&gt;（属性值位于某范围的记录）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;存取时间、插入时间、删除时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空间开销&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;索引分为&lt;strong&gt;主索引&lt;/strong&gt;与&lt;strong&gt;辅助索引&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436.png&#34;
+	width=&#34;1057&#34;
+	height=&#34;366&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436_hu14360953212282873898.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004203436_hu6413447760184371651.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260107004203436&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;288&#34;
+		data-flex-basis=&#34;693px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;主索引&#34;&gt;主索引
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;主索引&lt;/strong&gt;：顺序文件的&lt;strong&gt;记录顺序&lt;/strong&gt;正是索引&lt;strong&gt;搜索码的顺序&lt;/strong&gt;，也称为&lt;strong&gt;聚簇索引&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个关系只能有一个主索引。&lt;/li&gt;
+&lt;li&gt;主索引的搜索码通常是主码, 但并非必要。&lt;/li&gt;
+&lt;li&gt;索引顺序文件：带有主索引的顺序文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;多级索引&#34;&gt;多级索引
+&lt;/h5&gt;&lt;p&gt;如果主索引不能一次放入内存，存取代价就会很大。&lt;/p&gt;
+&lt;p&gt;将主索引视为&lt;strong&gt;存储在磁盘上的顺序文件&lt;/strong&gt;并为它&lt;strong&gt;建立一个稀疏索引&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;外索引：主索引的稀疏索引&lt;/li&gt;
+&lt;li&gt;内索引：主索引文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果外索引仍太大而不能放入内存，还可再为它创建另一层索引。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当插入或删除文件记录时，&lt;strong&gt;各层索引&lt;/strong&gt;都必须更新。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;辅助索引&#34;&gt;辅助索引
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;辅助索引&lt;/strong&gt;：索引&lt;strong&gt;搜索码的顺序与文件的记录&lt;/strong&gt;顺序不同，也称为非聚簇索引。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对每个搜索码值都可有一辅助索引记录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;辅助索引必须是稠密的&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;利用&lt;strong&gt;主索引做顺序扫描&lt;/strong&gt;很高效，但利用辅助索引做顺序扫描则代价昂贵，因为按照辅助索引搜索码进行扫描，其对应的&lt;strong&gt;物理位置并不紧密连接&lt;/strong&gt;，对每个记录的存取都可能导致存取一个新的磁盘块。&lt;/p&gt;
+&lt;h3 id=&#34;有序索引&#34;&gt;有序索引
+&lt;/h3&gt;&lt;h4 id=&#34;稠密索引文件&#34;&gt;稠密索引文件
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162.png&#34;
+	width=&#34;1128&#34;
+	height=&#34;474&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162_hu7753765141687182202.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004725162_hu6165436385378474660.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260107004725162&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;237&#34;
+		data-flex-basis=&#34;571px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;文件中的&lt;strong&gt;每个搜索码值都有索引&lt;/strong&gt;记录。&lt;/p&gt;
+&lt;p&gt;稠密索引的数据可以不按照索引数据物理存放。&lt;/p&gt;
+&lt;h4 id=&#34;稀疏索引文件&#34;&gt;稀疏索引文件
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512.png&#34;
+	width=&#34;1132&#34;
+	height=&#34;502&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512_hu11139261853567413354.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107004709512_hu16193954485268372820.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260107004709512&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;225&#34;
+		data-flex-basis=&#34;541px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;只对某些搜索码值有索引记录&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;文件记录必须&lt;strong&gt;按搜索码排序&lt;/strong&gt;才可用，原因是：定位具有搜索码值K的记录时，需要&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;找到具有&lt;strong&gt;比K小&lt;/strong&gt;的&lt;strong&gt;最大&lt;/strong&gt;搜索码值的索引记录，从该索引记录指向的文件记录&lt;strong&gt;开始顺序搜索&lt;/strong&gt;文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;特点：好建不好用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;插入和删除需要&lt;strong&gt;较少空间与维护开销&lt;/strong&gt;.。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查找记录&lt;strong&gt;一般比稠密索引慢&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;b树索引文件&#34;&gt;B+树索引文件
+&lt;/h3&gt;&lt;p&gt;索引顺序文件如果采用指针维护，需要定期重建（删除所有索引并重新创建），开销很大。&lt;/p&gt;
+&lt;p&gt;B+树索引结构是&lt;strong&gt;使用最广泛&lt;/strong&gt;的在数据&lt;strong&gt;插入和删除&lt;/strong&gt;情况下能够&lt;strong&gt;保持执行效率&lt;/strong&gt;的索引结构之一。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：插入与删除时仅以&lt;strong&gt;较少的局部的变化&lt;/strong&gt;来自动重组，不需要整个文件重组来维持性能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：额外的&lt;strong&gt;插入与删除开销&lt;/strong&gt;，&lt;strong&gt;空间开销&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108.png&#34;
+	width=&#34;869&#34;
+	height=&#34;597&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108_hu5757095286712743520.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107010708108_hu14158556390501047310.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260107010708108&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从树根到叶节点的&lt;strong&gt;路径长度相同&lt;/strong&gt;，所有叶节点都在同一层，也就是访问不同数据&lt;strong&gt;所花费的时间是相对稳定&lt;/strong&gt;的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063.png&#34;
+	width=&#34;970&#34;
+	height=&#34;106&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063_hu5129442823153533076.png 480w, https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20260107012307063_hu18330935080560615392.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;IMAGE-ID-20260107012307063&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;915&#34;
+		data-flex-basis=&#34;2196px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;hash数据索引&#34;&gt;Hash数据索引
+&lt;/h3&gt;&lt;p&gt;一个桶是一个存储单元，包含一个或者多个记录 (桶的大小一般是磁盘块大小)&lt;/p&gt;
+&lt;p&gt;我们根据搜索码的值，利用Hash函数&lt;strong&gt;直接得到搜索码所在的桶&lt;/strong&gt;，需要&lt;strong&gt;顺序扫描&lt;/strong&gt;该桶来定位到一个记录。&lt;/p&gt;
+&lt;p&gt;Hash索引通常是&lt;strong&gt;辅助索引&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;尽管桶溢出的可能性会减少，但是绝不可能完全消除，通过溢出桶来解决.。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;溢出桶：一个桶的溢出桶集合通过链连接起来&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;静态索引技术。可能需要周期性重组。&lt;/li&gt;
+&lt;li&gt;动态Hash表，使用可扩展hash函数，通过桶的分解或合并来适应数据库大小的变化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结
+&lt;/h3&gt;&lt;p&gt;给定数值进行确定性查询：hash&lt;/p&gt;
+&lt;p&gt;range查询：有序索引&lt;/p&gt;
+&lt;p&gt;B+树索引对于给定&lt;strong&gt;数值的查询&lt;/strong&gt;和&lt;strong&gt;范围查询&lt;/strong&gt;都是比较有效的，但在数据的&lt;strong&gt;插入、删除&lt;/strong&gt;时动态调整代价高。&lt;/p&gt;
+&lt;p&gt;多属性索引中，第二关键字意义远弱于第一关键字。&lt;/p&gt;
 </description>
         </item>
         <item>
