@@ -13,7 +13,13 @@
         <pubDate>Wed, 07 Jan 2026 12:15:30 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ava.png" alt="Featured image of post BUAA DB 课程笔记" /&gt;&lt;p&gt;PDF版便于直接阅读。博客可展示结构层次，便于跳转阅读。&lt;/p&gt;
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ava.png" alt="Featured image of post BUAA DB 课程笔记" /&gt;&lt;blockquote&gt;
+&lt;p&gt;前言（考后经验贴）：&lt;/p&gt;
+&lt;p&gt;出题模式以往年题的22年为准。简答题仍为 3 * 8 分。&lt;/p&gt;
+&lt;p&gt;SQL注意不要局限于往年题，试着写/运行包含关键词 alter modify/add/drop、update set、delete、drop、decimal、order等等&lt;/p&gt;
+&lt;p&gt;学时缩减，不考察关系演算、多值依赖、多粒度封锁、分布式数据库。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;PDF版便于直接阅读。博客可展示结构层次，便于跳转阅读。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
