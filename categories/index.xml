@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Sun, 11 Jan 2026 19:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 12 Apr 2026 11:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CN</title>
+        <link>https://demiurge-zby.github.io/categories/cn/</link>
+        <pubDate>Sun, 12 Apr 2026 11:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/categories/cn/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/categories/cn/CN.jpg" alt="Featured image of post CN" /&gt;</description>
+        </item>
+        <item>
         <title>Compiler</title>
         <link>https://demiurge-zby.github.io/categories/compiler/</link>
         <pubDate>Sun, 11 Jan 2026 19:15:30 +0800</pubDate>

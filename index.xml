@@ -7,7 +7,278 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Sun, 11 Jan 2026 19:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 12 Apr 2026 11:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week1 入门&#43;D层</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/</link>
+        <pubDate>Sun, 12 Apr 2026 11:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/12345.png" alt="Featured image of post BUAA CN Week1 入门&#43;D层" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;h3 id=&#34;课程基本信息&#34;&gt;课程基本信息
+&lt;/h3&gt;&lt;p&gt;作为计网实验的Week1博客，首先要介绍一下这门课程的基本信息。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实验时间&lt;/strong&gt;：取决于老师什么时候叫停。&lt;/p&gt;
+&lt;p&gt;上午班一般时间最充裕，大概能从&lt;strong&gt;8点到12点半&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;下午班则是&lt;strong&gt;2点到6点&lt;/strong&gt;，因为老师在7点上课前还需要吃饭。&lt;/p&gt;
+&lt;p&gt;晚上的时间就&lt;strong&gt;略显紧张&lt;/strong&gt;，大概可以从&lt;strong&gt;7点到10点半&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实验报告&lt;/strong&gt;：课程组为同学们准备好了所有实验的实验报告并&lt;strong&gt;装订成册&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;实验报告的本子&lt;strong&gt;当堂收发&lt;/strong&gt;，因此只能在实验课上完成。&lt;/p&gt;
+&lt;p&gt;如果课上未能完成，需要自行设法完成实验并将实验报告写在纸上，下次实验课时夹入册中。&lt;/p&gt;
+&lt;p&gt;实验报告的形式不是编译那样的长篇大作，而是类似于CO、OS实验报告的&lt;strong&gt;思考题&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;题目的内容主要是实验&lt;strong&gt;操作&lt;/strong&gt;的考察、实验&lt;strong&gt;现象&lt;/strong&gt;的记录以及&lt;strong&gt;原因&lt;/strong&gt;分析。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实验设备&lt;/strong&gt;：两个人占用两张桌子，即&lt;strong&gt;四台电脑和桌子间的&lt;/strong&gt;路由器、交换机等设备。每张桌子上有两台主机，两张桌子间为其他中间设备。两人的座位编号一般分别为&lt;strong&gt;B和C&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实验流程&lt;/strong&gt;：老师先讲解本次的实验内容，约用时40-80min。&lt;/p&gt;
+&lt;p&gt;之后大家以组为单位自行完成实验及实验报告。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;考核方式&lt;/strong&gt;：除实验报告外，部分班级需要在完成每部分小实验后向助教/老师提供关键中间步骤展示（类似于电设）。不过2506及以后的小朋友们可能已经没有电设这门课了。。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h3&gt;&lt;p&gt;最重要的是我们的&lt;strong&gt;狼书&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/book.png&#34;
+	width=&#34;525&#34;
+	height=&#34;438&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/book_hu10659397059888303881.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/book_hu8276250984292623455.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;狼书&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;119&#34;
+		data-flex-basis=&#34;287px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;实验报告上的题目基本上都是狼书上的，因此&lt;strong&gt;跟着狼书的图组装，跟着狼书的命令敲&lt;/strong&gt;就行了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;跟上狼书的节奏！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;需要注意有的时候我们的设备和狼书并不完全对应，比如书本上用的是R1的Ethernet 0/1，虽然我们的R1提供的是Gigabit Ethernet 0/1 ，但功能是一样的，只需要把指令里的E改成GE就行。&lt;/p&gt;
+&lt;p&gt;实验配套的PPT也有一定作用，不过狼书已经足够了，狼书解决不了的问题可以试着在PPT找找。&lt;/p&gt;
+&lt;p&gt;此外还可以&lt;strong&gt;参考&lt;/strong&gt;学长流传的实验报告电子版。但是仅供参考，不要盲目相信，更不能明目张胆抄袭。&lt;/p&gt;
+&lt;h3 id=&#34;注意事项&#34;&gt;注意事项
+&lt;/h3&gt;&lt;p&gt;因为笔者也只上了一节课，所以摸索出来的东西并不是很多，但应该还算有用，希望能帮助到你们。&lt;/p&gt;
+&lt;ol start=&#34;0&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;首先是老师们都会要求的：&lt;/p&gt;
+&lt;p&gt;点击下方箭头查看详情。&lt;/p&gt;
+&lt;details&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;每次实验开始必做操作：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. 所有设备开机后，选择一台PC连接校园网；
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. PC访问ftp://10.111.1.29/download文件夹，下载“每次实验开始必做操作.TXT”
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. 打开该文本文件，依次完成下列操作：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;一、批量shutdown两台交换机的所有万兆端口
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;本学期网络实验室增加部署SDN实验环境，交换机S1和S2之间配置了万兆光接口，并联了两根光纤。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;为了避免这些并联链路及生成树协议（STP）对其它实验两台交换机相连链路产生影响，
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;请同学们在开始做实验前，批量shutdown两台交换机所有的万兆端口。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;具体操作：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1.选中下列命令脚本并点复制；
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2.打开putty软件，连接交换机console口，单击鼠标右键，将脚本中的命令灌入交换机。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;也就完成了批量shutdown万兆端口的任务。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system-view
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;interface Ten-GigabitEthernet1/0/25
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;interface Ten-GigabitEthernet1/0/26
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;interface Ten-GigabitEthernet1/0/27
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;interface Ten-GigabitEthernet1/0/28
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;二、删除所有路由器上的 interface vlan 1接口
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;路由器出厂设置中默认配置了interface vlan 1接口（ip address 192.168.0.1 ），实验前首先将这个接口删除（undo），以免这个接口地址自动参与router id 选举，影响ospf或bgp协议的正常工作。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;具体操作：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1.选中下列命令脚本并点复制；
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. 打开putty软件，连接路由器console口，单击鼠标右键，将脚本中的命令灌入交换机。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;也就完成了批量shutdown万兆端口的任务。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system-view
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;undo interface vlan 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;三、禁用网络实验室PC机相关的虚拟网卡
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网络实验室PC机的虚拟网卡可能会对实验产生不良影响，建议根据具体实验内容，开机后首先将相关虚拟网卡禁用。例如：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. 组播实验禁用所有虚拟网卡。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. TCP实验禁用virtualbox虚拟网卡。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;问AI时拍的一张图。很幸运拍了照片，可以帮大家对设备形成更直观的感受。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/111.png&#34;
+	width=&#34;1706&#34;
+	height=&#34;1279&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/111_hu11910324477144601989.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/111_hu7309369829178803912.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;所谓的桌子间的中间设备的部分预览图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;区分PC串口和网口。&lt;strong&gt;串口一般用来连接console&lt;/strong&gt;。网口用于连接交换机、路由器端口、校园网等通信业务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;只有&lt;strong&gt;连接了console&lt;/strong&gt;的PC才能在PuTTY中键入命令。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;只有&lt;strong&gt;连接了console&lt;/strong&gt;的PC才能在wireshark上捕获报文。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;putty中键入命令时注意自己&lt;strong&gt;在不在system view&lt;/strong&gt;（在系统视图中时为&lt;code&gt;方括号&lt;/code&gt;，否则为&lt;code&gt;尖括号&lt;/code&gt;）。&lt;/p&gt;
+&lt;p&gt;有的命令不能在系统视图执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;putty中键入命令时可以&lt;strong&gt;简写、善用Tab&lt;/strong&gt;，如interface写作inter。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;putty中某些指令的结果过长，不能直接完全显示，会出现MORE字样，&lt;strong&gt;点击Enter&lt;/strong&gt;即可显示下一行内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;undo&lt;/strong&gt;+原指令大概率也是合法的指令。甚至可能是原指令相反含义的唯一表达。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;狼书上的某些语句表达和实际设备的&lt;strong&gt;版本不匹配&lt;/strong&gt;。 自己搜索和尝试即可。&lt;/p&gt;
+&lt;p&gt;如undo stp enable就无法运行，需要undo stp global enable。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何使用wireshark截取报文：已连接console后，点击左上角蓝色shark类似的图案就开始记录了，点击红色终止。双击某一报文可以查看&lt;strong&gt;各层&lt;/strong&gt;详细信息。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/wireshark.png&#34;
+	width=&#34;500&#34;
+	height=&#34;212&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/wireshark_hu17440580751570202113.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/wireshark_hu15741785692897310093.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;wireshark界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;566px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;博客风格&#34;&gt;博客风格
+&lt;/h3&gt;&lt;p&gt;为了避免影响各位同学的实验体验，也节省笔者的时间，在后续的具体实验内容部分，我将不提供实验题目与答案，只分享一些做实验时的感受与经验。&lt;/p&gt;
+&lt;h2 id=&#34;实验入门&#34;&gt;实验入门
+&lt;/h2&gt;&lt;p&gt;这部分没有具体的实验内容。&lt;/p&gt;
+&lt;p&gt;puTTY的使用：一堆洋文，啥也不用管直接Open就行了。（对于本周的实验）&lt;/p&gt;
+&lt;p&gt;敲击display current-configuration，记得善用简写与Tab。&lt;/p&gt;
+&lt;h2 id=&#34;数据链路层实验&#34;&gt;数据链路层实验
+&lt;/h2&gt;&lt;p&gt;wireshark中点击一个报文，页面最下面那串十六进制就是报文内容。&lt;/p&gt;
+&lt;p&gt;ping是在PC的cmd中执行的。&lt;/p&gt;
+&lt;p&gt;ping给一个未连接的IP，可以收到由自己发送的报文，从而得到自己的IP地址。&lt;/p&gt;
+&lt;p&gt;MAC地址可以在报文详细内容里找到。&lt;/p&gt;
+&lt;p&gt;广播风暴实验做之前先检查STP是否确实关闭，触发风暴后观察到现象便可立刻停止截取报文，或直接拔掉console线，以免PC直接死机。&lt;/p&gt;
+&lt;p&gt;查看MAC表、端口聚合、VLAN、LCP、PAP、CHAP等内容跟着狼书和PPT走就没什么大问题。&lt;/p&gt;
+&lt;p&gt;比较有趣的是跨交换机VLAN实验。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/exp.png&#34;
+	width=&#34;978&#34;
+	height=&#34;335&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/exp_hu2468036183959324987.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/exp_hu1334938971059786595.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;跨交换机VLAN&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;291&#34;
+		data-flex-basis=&#34;700px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;要求PCA去pingPCC，并截获PCA-&amp;gt;S1,S1-&amp;gt;S2,S2-&amp;gt;PCC三段报文的内容。&lt;/p&gt;
+&lt;p&gt;PCA和PCC直接连console看就可以了，关键是S1-&amp;gt;S2如何观察？&lt;/p&gt;
+&lt;p&gt;我们可以发现目前实验中PCB、PCD和VLAN3其实只是摆设，所以直接选其中一台机子用来监视。&lt;/p&gt;
+&lt;p&gt;我们需要利用集线器，让S1-&amp;gt;S2也能广播到PCB去，也即S1-&amp;gt;HUB-&amp;gt;PCB与S2。&lt;/p&gt;
+&lt;p&gt;这时候把S1的console和PCB串口连，就可以让PCB截获S1-&amp;gt;S2的报文了。&lt;/p&gt;
+&lt;p&gt;有人问那你S1的console不是还要跟PCA连吗，PCA咋办？&lt;/p&gt;
+&lt;p&gt;那PCA你就先截一下呗，再ping一下PCB去截就行了。&lt;/p&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;没有什么东西想说。&lt;/p&gt;
+&lt;p&gt;自己对这些知识的了解也不算深刻，正确性更是不能保证。&lt;/p&gt;
+&lt;p&gt;写这些东西的时候也更发现自己对某些东西的理解并不到位，并且在逃避着某些问题。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA Compiler 上机</title>
         <link>https://demiurge-zby.github.io/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/</link>
         <pubDate>Sun, 11 Jan 2026 19:15:30 +0800</pubDate>
@@ -484,7 +755,7 @@
         <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ava.png" alt="Featured image of post BUAA DB 课程笔记" /&gt;&lt;blockquote&gt;
 &lt;p&gt;前言（考后经验贴）：&lt;/p&gt;
 &lt;p&gt;出题模式以往年题的22年为准。简答题仍为 3 * 8 分。&lt;/p&gt;
-&lt;p&gt;SQL注意不要局限于往年题，试着写/运行包含关键词 alter modify/add/drop、update set、delete、drop、decimal、order等等&lt;/p&gt;
+&lt;p&gt;SQL注意不要局限于往年题，试着写/运行包含关键词 alter modify/add/drop、update set、delete、drop、decimal、order等等。&lt;/p&gt;
 &lt;p&gt;学时缩减，不考察关系演算、多值依赖、多粒度封锁、分布式数据库。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;PDF版便于直接阅读。博客可展示结构层次，便于跳转阅读。&lt;/p&gt;
