@@ -24,9 +24,13 @@
 &lt;p&gt;晚上的时间就&lt;strong&gt;略显紧张&lt;/strong&gt;，大概可以从&lt;strong&gt;7点到10点半&lt;/strong&gt;。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;实验报告&lt;/strong&gt;：课程组为同学们准备好了所有实验的实验报告并&lt;strong&gt;装订成册&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实验报告&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;实验报告2026电子版如下：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8%2BD%E5%B1%82/PDF.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8%2BD%E5%B1%82/PDF.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;课程组为同学们准备好了所有实验的实验报告并&lt;strong&gt;装订成册&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;实验报告的本子&lt;strong&gt;当堂收发&lt;/strong&gt;，因此只能在实验课上完成。&lt;/p&gt;
-&lt;p&gt;如果课上未能完成，需要自行设法完成实验并将实验报告写在纸上，下次实验课时夹入册中。&lt;/p&gt;
+&lt;p&gt;如果课上未能完成，需要自行设法完成实验，将实验报告电子版打印并完成，下次实验课时夹入册中。&lt;/p&gt;
 &lt;p&gt;实验报告的形式不是编译那样的长篇大作，而是类似于CO、OS实验报告的&lt;strong&gt;思考题&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;题目的内容主要是实验&lt;strong&gt;操作&lt;/strong&gt;的考察、实验&lt;strong&gt;现象&lt;/strong&gt;的记录以及&lt;strong&gt;原因&lt;/strong&gt;分析。&lt;/p&gt;
 &lt;/li&gt;
@@ -238,7 +242,7 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;博客风格&#34;&gt;博客风格
-&lt;/h3&gt;&lt;p&gt;为了避免影响各位同学的实验体验，也节省笔者的时间，在后续的具体实验内容部分，我将不提供实验题目与答案，只分享一些做实验时的感受与经验。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;为了避免影响各位同学的实验体验，也节省笔者的时间，在后续的具体实验内容部分，我将不针对实验题目直接给出分析与答案，而是只分享一些做实验时的感受与经验。&lt;/p&gt;
 &lt;h2 id=&#34;实验入门&#34;&gt;实验入门
 &lt;/h2&gt;&lt;p&gt;这部分没有具体的实验内容。&lt;/p&gt;
 &lt;p&gt;puTTY的使用：一堆洋文，啥也不用管直接Open就行了。（对于本周的实验）&lt;/p&gt;
