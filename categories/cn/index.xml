@@ -25,9 +25,9 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;实验报告&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;实验报告2026电子版如下：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8%2BD%E5%B1%82/PDF.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8%2BD%E5%B1%82/PDF.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;PDF.pdf&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+  点击我获取获取获取一个2026年实验报告电子版
+&lt;/a&gt;
 &lt;p&gt;课程组为同学们准备好了所有实验的实验报告并&lt;strong&gt;装订成册&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;实验报告的本子&lt;strong&gt;当堂收发&lt;/strong&gt;，因此只能在实验课上完成。&lt;/p&gt;
 &lt;p&gt;如果课上未能完成，需要自行设法完成实验，将实验报告电子版打印并完成，下次实验课时夹入册中。&lt;/p&gt;

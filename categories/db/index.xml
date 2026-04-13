@@ -20,24 +20,31 @@
 &lt;p&gt;学时缩减，不考察关系演算、多值依赖、多粒度封锁、分布式数据库。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;PDF版便于直接阅读。博客可展示结构层次，便于跳转阅读。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/PDF.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/PDF.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;往年题作者答案：&lt;/p&gt;
-&lt;p&gt;10年：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/10.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/10.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;11年：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/11.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/11.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;12年：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/12.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/12.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;20年：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/20.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/20.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;22年：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/22.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/22.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;
+https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/PDF.pdf&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+点击阅读PDF版
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;往年题作者答案（请批判性学习）：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;
+https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/10.pdf&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+点此跳转2010年
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;
+https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/11.pdf&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+点此跳转2011年
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;
+https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/12.pdf&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+点此跳转2012年
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;
+https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/20.pdf&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+点此跳转2020年
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;
+https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/22.pdf&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+点此跳转2022年
+&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;数据库概论&#34;&gt;数据库概论
 &lt;/h2&gt;&lt;h3 id=&#34;信息与数据&#34;&gt;信息与数据
 &lt;/h3&gt;&lt;p&gt;数据是信息的&lt;strong&gt;载体&lt;/strong&gt;，信息是数据的&lt;strong&gt;内涵&lt;/strong&gt;。&lt;/p&gt;
