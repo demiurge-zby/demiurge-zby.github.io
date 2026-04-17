@@ -21,16 +21,16 @@
 &lt;p&gt;一些提醒：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;小程序传图片时一定要及时，晚一点就无法再上传。&lt;/p&gt;
+&lt;p&gt;小程序传图片时一定要&lt;strong&gt;及时&lt;/strong&gt;，晚一点就无法再上传。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;传的图片尽可能展示核心内容，若缺乏重点可能拿不到9.5。&lt;/p&gt;
+&lt;p&gt;传的图片尽可能展示&lt;strong&gt;核心内容&lt;/strong&gt;，若缺乏重点可能拿不到9.5。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;报文直接筛选好 arp or icmp。本次实验就只涉及这两种。&lt;/p&gt;
+&lt;p&gt;报文直接筛选好 &lt;strong&gt;arp or icmp&lt;/strong&gt;。本次实验就只涉及这两种。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;如何修改PC的IP地址？&lt;/p&gt;
+&lt;p&gt;如何&lt;strong&gt;修改PC的IP地址&lt;/strong&gt;？&lt;/p&gt;
 &lt;p&gt;控制面板-&amp;gt;网络和共享中心-&amp;gt;&lt;strong&gt;左侧栏&lt;/strong&gt;“更改适配器设置”-&amp;gt;&lt;strong&gt;右键&lt;/strong&gt;“本地连接”-&amp;gt;点击&lt;strong&gt;属性&lt;/strong&gt;-&amp;gt;双击&lt;strong&gt;IPv4&lt;/strong&gt;项即可进入修改，可修改本机IP地址、子网掩码和缺省网关。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -49,7 +49,7 @@
 &lt;/ol&gt;
 &lt;p&gt;但在实验课，你需要掌握：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;ARP有一个缓存的表。&lt;/li&gt;
+&lt;li&gt;ARP有一个&lt;strong&gt;缓存的表&lt;/strong&gt;。&lt;/li&gt;
 &lt;li&gt;PC的ARP缓存表在cmd直接&lt;strong&gt;arp -a&lt;/strong&gt;就可以看到。中间设备则需要在PuTTY上&lt;strong&gt;display arp&lt;/strong&gt;。&lt;/li&gt;
 &lt;li&gt;如果&lt;strong&gt;下一跳&lt;/strong&gt;不在ARP缓存表里，我就要发ARP去找到&lt;strong&gt;下一跳&lt;/strong&gt;的MAC地址。&lt;/li&gt;
 &lt;li&gt;对于跨网段的ping，下一跳当然是&lt;strong&gt;缺省网关&lt;/strong&gt;。&lt;/li&gt;
@@ -73,19 +73,19 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;首先这道实验题以&lt;strong&gt;分析&lt;/strong&gt;为主。因为有大量步骤，凭实验不能单步观测变化情况。&lt;/p&gt;
-&lt;p&gt;此外，要知道S1是三层交换机，有跨网段路由功能。S2是双层交换机，只是个同网段内引路的。&lt;/p&gt;
+&lt;p&gt;此外，要知道S1是&lt;strong&gt;三层交换机&lt;/strong&gt;，有跨网段路由功能。S2是双层交换机，只是个同网段内引路的。&lt;/p&gt;
 &lt;p&gt;接下来，我们就从理论角度，分析这样一个删去全部缓存的组网如何实现PCC ping PCD。&lt;/p&gt;
 &lt;h3 id=&#34;pcc想知道下一跳&#34;&gt;PCC想知道下一跳
 &lt;/h3&gt;&lt;p&gt;PCC和PCD经过计算发现属于不同网段。&lt;/p&gt;
 &lt;p&gt;PCC要把ICMP(ping request)发给缺省网关——192.168.2.1，也就是S1的VLAN2接口。&lt;/p&gt;
 &lt;p&gt;PCC的下一跳就是192.168.2.1。&lt;/p&gt;
 &lt;p&gt;PCC的ARP Cache是空的。&lt;/p&gt;
-&lt;p&gt;PCC要向192.168.2.1发送ARP request报文。&lt;/p&gt;
+&lt;p&gt;PCC要向192.168.2.1发送&lt;strong&gt;ARP request报文&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;Source: 192.168.2.11 PCC_MAC&lt;/p&gt;
 &lt;p&gt;Dest: 192.168.2.1 FFFF-FFFF-FFFF&lt;/p&gt;
 &lt;h4 id=&#34;路过交换机s2&#34;&gt;路过交换机S2
 &lt;/h4&gt;&lt;p&gt;要知道这个ARP报文的信息很明确，&lt;strong&gt;不会再改变了&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;S2只是一个路由，一个搬运工，告诉你往哪个端口走，仅此而已。&lt;/p&gt;
+&lt;p&gt;S2只是一个路由，一个&lt;strong&gt;搬运工&lt;/strong&gt;，告诉你往哪个端口走，仅此而已。&lt;/p&gt;
 &lt;p&gt;MAC表也是这样简单，谁给我发了东西，我就把&lt;strong&gt;source(mac+vlan)和它进来的端口&lt;/strong&gt;学习下来。&lt;/p&gt;
 &lt;p&gt;不过交换机还有一个功能，就是管理VLAN。毕竟VLAN是D层的事情。&lt;/p&gt;
 &lt;p&gt;交换机的端口就是划分VLAN的工具。你从这个口进来，那你就是这个VLAN。&lt;/p&gt;
@@ -106,41 +106,41 @@
 &lt;/ul&gt;
 &lt;p&gt;好嘞，铺垫这么多，一鼓作气讲清楚吧！&lt;/p&gt;
 &lt;h5 id=&#34;step-1&#34;&gt;Step 1
-&lt;/h5&gt;&lt;p&gt;首先是PCC发了ARP广播，只可惜只广播到了S2这里。&lt;/p&gt;
+&lt;/h5&gt;&lt;p&gt;首先是PCC发了&lt;strong&gt;ARP广播&lt;/strong&gt;，只可惜只广播到了S2这里。&lt;/p&gt;
 &lt;p&gt;此为Step1。&lt;/p&gt;
 &lt;h5 id=&#34;step-2&#34;&gt;Step 2
-&lt;/h5&gt;&lt;p&gt;S2首先收到报文先学习MAC表，PCC_MAC对应GE1/0/1。&lt;/p&gt;
-&lt;p&gt;然后为报文打上VLAN Tag=2（因为S2的GE1/0/1是access VLAN 2）。&lt;/p&gt;
-&lt;p&gt;然后S2要继续广播，发现支持VLAN2的只有GE1/0/1和GE1/0/13，除了自己之外，就只能给trunk口GE1/0/13了。&lt;/p&gt;
-&lt;p&gt;从trunk口出，不去除tag。&lt;/p&gt;
+&lt;/h5&gt;&lt;p&gt;S2首先收到报文&lt;strong&gt;先学习MAC表&lt;/strong&gt;，PCC_MAC对应GE1/0/1。&lt;/p&gt;
+&lt;p&gt;然后为报文&lt;strong&gt;打上VLAN Tag&lt;/strong&gt;=2（因为S2的GE1/0/1是&lt;strong&gt;access VLAN 2&lt;/strong&gt;）。&lt;/p&gt;
+&lt;p&gt;然后S2要&lt;strong&gt;继续广播&lt;/strong&gt;，发现支持VLAN2的只有GE1/0/1和GE1/0/13，除了自己之外，就只能给trunk口GE1/0/13了。&lt;/p&gt;
+&lt;p&gt;从trunk口出，&lt;strong&gt;不去除&lt;/strong&gt;tag。&lt;/p&gt;
 &lt;p&gt;因此从GE1/0/13发送了含tag VLAN id=2的报文。&lt;/p&gt;
 &lt;p&gt;此为Step2。&lt;/p&gt;
 &lt;h3 id=&#34;s1回应pcc的arp报文&#34;&gt;S1回应PCC的ARP报文
 &lt;/h3&gt;&lt;h4 id=&#34;step-3&#34;&gt;Step 3
-&lt;/h4&gt;&lt;p&gt;首先S1作为交换机，收到报文肯定也是先学习MAC表，PCC_MAC对应GE1/0/13。&lt;/p&gt;
-&lt;p&gt;但同时作为N层相关设备，随便收到一个报文也会直接学习ARP Cache，192.168.2.11对应PCC_MAC。&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;首先S1作为交换机，收到报文肯定也是先&lt;strong&gt;学习MAC表&lt;/strong&gt;，PCC_MAC对应GE1/0/13。&lt;/p&gt;
+&lt;p&gt;但同时作为N层相关设备，随便收到一个报文也会直接&lt;strong&gt;学习ARP Cache&lt;/strong&gt;，192.168.2.11对应PCC_MAC。&lt;/p&gt;
 &lt;p&gt;PCC向192.168.2.1发送的ARP request报文是：&lt;/p&gt;
 &lt;p&gt;Source: 192.168.2.11 PCC_MAC&lt;/p&gt;
 &lt;p&gt;Dest: 192.168.2.1 FFFF-FFFF-FFFF&lt;/p&gt;
 &lt;p&gt;而S1的VLAN2接口就是192.68.2.1。&lt;/p&gt;
 &lt;p&gt;所以S1应当把VLAN2接口的MAC地址传回PCC。&lt;/p&gt;
 &lt;p&gt;因为&lt;strong&gt;刚学到MAC表里PCC_MAC对应GE1/0/13&lt;/strong&gt;，所以ARP reply直接从这个trunk口发出去。&lt;/p&gt;
-&lt;p&gt;从trunk口出去要带tag，因为是从VLAN2接口发的，所以VLAN id = 2。&lt;/p&gt;
-&lt;p&gt;192.168.2.1向192.168.2.11发送的ARP request报文是：&lt;/p&gt;
+&lt;p&gt;从trunk口&lt;strong&gt;出去要带tag&lt;/strong&gt;，因为是从VLAN2接口发的，所以VLAN id = 2。&lt;/p&gt;
+&lt;p&gt;192.168.2.1向192.168.2.11发送的ARP reply报文是：&lt;/p&gt;
 &lt;p&gt;Source: 192.168.2.1 VLAN2_MAC&lt;/p&gt;
 &lt;p&gt;Dest: 192.168.2.11 PCC_MAC&lt;/p&gt;
 &lt;p&gt;此为Step3。&lt;/p&gt;
 &lt;h4 id=&#34;再次路过s2&#34;&gt;再次路过S2
 &lt;/h4&gt;&lt;h5 id=&#34;step-4&#34;&gt;Step 4
-&lt;/h5&gt;&lt;p&gt;S2首先收到报文先学习MAC表，VLAN2_MAC对应GE1/0/13。&lt;/p&gt;
-&lt;p&gt;S2要继续单播，发现PCC_MAC对应GE1/0/1。&lt;/p&gt;
-&lt;p&gt;从access口出，去除tag。&lt;/p&gt;
+&lt;/h5&gt;&lt;p&gt;S2首先收到报文&lt;strong&gt;先学习MAC表&lt;/strong&gt;，VLAN2_MAC对应GE1/0/13。&lt;/p&gt;
+&lt;p&gt;S2要继续&lt;strong&gt;单播&lt;/strong&gt;，发现PCC_MAC对应GE1/0/1。&lt;/p&gt;
+&lt;p&gt;从access口出，&lt;strong&gt;去除tag&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;此为Step4。&lt;/p&gt;
 &lt;h3 id=&#34;pcc向下一跳发出icmp-echo-request&#34;&gt;PCC向下一跳发出ICMP-ECHO-REQUEST
 &lt;/h3&gt;&lt;h4 id=&#34;step-5&#34;&gt;Step 5
-&lt;/h4&gt;&lt;p&gt;PCC收到了报文，直接学习ARP：192.168.2.1对应VLAN2_MAC。&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;PCC收到了报文，直接&lt;strong&gt;学习ARP&lt;/strong&gt;：192.168.2.1对应VLAN2_MAC。&lt;/p&gt;
 &lt;p&gt;这下终于知道了，我要去ping PCD了！&lt;/p&gt;
-&lt;p&gt;之前我知道N层的Source和Dest，但是一直不知道D层对应的下一跳应该是谁，现在终于可以封装报文了。&lt;/p&gt;
+&lt;p&gt;之前我知道N层的Source和Dest，但是一直不知道D层对应的下一跳应该是谁，现在&lt;strong&gt;终于可以封装报文&lt;/strong&gt;了。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Source IP：192.168.2.11&lt;/p&gt;

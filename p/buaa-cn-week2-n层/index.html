@@ -425,16 +425,16 @@
 <p>一些提醒：</p>
 <ol>
 <li>
-<p>小程序传图片时一定要及时，晚一点就无法再上传。</p>
+<p>小程序传图片时一定要<strong>及时</strong>，晚一点就无法再上传。</p>
 </li>
 <li>
-<p>传的图片尽可能展示核心内容，若缺乏重点可能拿不到9.5。</p>
+<p>传的图片尽可能展示<strong>核心内容</strong>，若缺乏重点可能拿不到9.5。</p>
 </li>
 <li>
-<p>报文直接筛选好 arp or icmp。本次实验就只涉及这两种。</p>
+<p>报文直接筛选好 <strong>arp or icmp</strong>。本次实验就只涉及这两种。</p>
 </li>
 <li>
-<p>如何修改PC的IP地址？</p>
+<p>如何<strong>修改PC的IP地址</strong>？</p>
 <p>控制面板-&gt;网络和共享中心-&gt;<strong>左侧栏</strong>“更改适配器设置”-&gt;<strong>右键</strong>“本地连接”-&gt;点击<strong>属性</strong>-&gt;双击<strong>IPv4</strong>项即可进入修改，可修改本机IP地址、子网掩码和缺省网关。</p>
 </li>
 <li>
@@ -453,7 +453,7 @@
 </ol>
 <p>但在实验课，你需要掌握：</p>
 <ol>
-<li>ARP有一个缓存的表。</li>
+<li>ARP有一个<strong>缓存的表</strong>。</li>
 <li>PC的ARP缓存表在cmd直接<strong>arp -a</strong>就可以看到。中间设备则需要在PuTTY上<strong>display arp</strong>。</li>
 <li>如果<strong>下一跳</strong>不在ARP缓存表里，我就要发ARP去找到<strong>下一跳</strong>的MAC地址。</li>
 <li>对于跨网段的ping，下一跳当然是<strong>缺省网关</strong>。</li>
@@ -477,19 +477,19 @@
 	
 ></p>
 <p>首先这道实验题以<strong>分析</strong>为主。因为有大量步骤，凭实验不能单步观测变化情况。</p>
-<p>此外，要知道S1是三层交换机，有跨网段路由功能。S2是双层交换机，只是个同网段内引路的。</p>
+<p>此外，要知道S1是<strong>三层交换机</strong>，有跨网段路由功能。S2是双层交换机，只是个同网段内引路的。</p>
 <p>接下来，我们就从理论角度，分析这样一个删去全部缓存的组网如何实现PCC ping PCD。</p>
 <h3 id="pcc想知道下一跳">PCC想知道下一跳
 </h3><p>PCC和PCD经过计算发现属于不同网段。</p>
 <p>PCC要把ICMP(ping request)发给缺省网关——192.168.2.1，也就是S1的VLAN2接口。</p>
 <p>PCC的下一跳就是192.168.2.1。</p>
 <p>PCC的ARP Cache是空的。</p>
-<p>PCC要向192.168.2.1发送ARP request报文。</p>
+<p>PCC要向192.168.2.1发送<strong>ARP request报文</strong>。</p>
 <p>Source: 192.168.2.11 PCC_MAC</p>
 <p>Dest: 192.168.2.1 FFFF-FFFF-FFFF</p>
 <h4 id="路过交换机s2">路过交换机S2
 </h4><p>要知道这个ARP报文的信息很明确，<strong>不会再改变了</strong>。</p>
-<p>S2只是一个路由，一个搬运工，告诉你往哪个端口走，仅此而已。</p>
+<p>S2只是一个路由，一个<strong>搬运工</strong>，告诉你往哪个端口走，仅此而已。</p>
 <p>MAC表也是这样简单，谁给我发了东西，我就把<strong>source(mac+vlan)和它进来的端口</strong>学习下来。</p>
 <p>不过交换机还有一个功能，就是管理VLAN。毕竟VLAN是D层的事情。</p>
 <p>交换机的端口就是划分VLAN的工具。你从这个口进来，那你就是这个VLAN。</p>
@@ -510,41 +510,41 @@
 </ul>
 <p>好嘞，铺垫这么多，一鼓作气讲清楚吧！</p>
 <h5 id="step-1">Step 1
-</h5><p>首先是PCC发了ARP广播，只可惜只广播到了S2这里。</p>
+</h5><p>首先是PCC发了<strong>ARP广播</strong>，只可惜只广播到了S2这里。</p>
 <p>此为Step1。</p>
 <h5 id="step-2">Step 2
-</h5><p>S2首先收到报文先学习MAC表，PCC_MAC对应GE1/0/1。</p>
-<p>然后为报文打上VLAN Tag=2（因为S2的GE1/0/1是access VLAN 2）。</p>
-<p>然后S2要继续广播，发现支持VLAN2的只有GE1/0/1和GE1/0/13，除了自己之外，就只能给trunk口GE1/0/13了。</p>
-<p>从trunk口出，不去除tag。</p>
+</h5><p>S2首先收到报文<strong>先学习MAC表</strong>，PCC_MAC对应GE1/0/1。</p>
+<p>然后为报文<strong>打上VLAN Tag</strong>=2（因为S2的GE1/0/1是<strong>access VLAN 2</strong>）。</p>
+<p>然后S2要<strong>继续广播</strong>，发现支持VLAN2的只有GE1/0/1和GE1/0/13，除了自己之外，就只能给trunk口GE1/0/13了。</p>
+<p>从trunk口出，<strong>不去除</strong>tag。</p>
 <p>因此从GE1/0/13发送了含tag VLAN id=2的报文。</p>
 <p>此为Step2。</p>
 <h3 id="s1回应pcc的arp报文">S1回应PCC的ARP报文
 </h3><h4 id="step-3">Step 3
-</h4><p>首先S1作为交换机，收到报文肯定也是先学习MAC表，PCC_MAC对应GE1/0/13。</p>
-<p>但同时作为N层相关设备，随便收到一个报文也会直接学习ARP Cache，192.168.2.11对应PCC_MAC。</p>
+</h4><p>首先S1作为交换机，收到报文肯定也是先<strong>学习MAC表</strong>，PCC_MAC对应GE1/0/13。</p>
+<p>但同时作为N层相关设备，随便收到一个报文也会直接<strong>学习ARP Cache</strong>，192.168.2.11对应PCC_MAC。</p>
 <p>PCC向192.168.2.1发送的ARP request报文是：</p>
 <p>Source: 192.168.2.11 PCC_MAC</p>
 <p>Dest: 192.168.2.1 FFFF-FFFF-FFFF</p>
 <p>而S1的VLAN2接口就是192.68.2.1。</p>
 <p>所以S1应当把VLAN2接口的MAC地址传回PCC。</p>
 <p>因为<strong>刚学到MAC表里PCC_MAC对应GE1/0/13</strong>，所以ARP reply直接从这个trunk口发出去。</p>
-<p>从trunk口出去要带tag，因为是从VLAN2接口发的，所以VLAN id = 2。</p>
-<p>192.168.2.1向192.168.2.11发送的ARP request报文是：</p>
+<p>从trunk口<strong>出去要带tag</strong>，因为是从VLAN2接口发的，所以VLAN id = 2。</p>
+<p>192.168.2.1向192.168.2.11发送的ARP reply报文是：</p>
 <p>Source: 192.168.2.1 VLAN2_MAC</p>
 <p>Dest: 192.168.2.11 PCC_MAC</p>
 <p>此为Step3。</p>
 <h4 id="再次路过s2">再次路过S2
 </h4><h5 id="step-4">Step 4
-</h5><p>S2首先收到报文先学习MAC表，VLAN2_MAC对应GE1/0/13。</p>
-<p>S2要继续单播，发现PCC_MAC对应GE1/0/1。</p>
-<p>从access口出，去除tag。</p>
+</h5><p>S2首先收到报文<strong>先学习MAC表</strong>，VLAN2_MAC对应GE1/0/13。</p>
+<p>S2要继续<strong>单播</strong>，发现PCC_MAC对应GE1/0/1。</p>
+<p>从access口出，<strong>去除tag</strong>。</p>
 <p>此为Step4。</p>
 <h3 id="pcc向下一跳发出icmp-echo-request">PCC向下一跳发出ICMP-ECHO-REQUEST
 </h3><h4 id="step-5">Step 5
-</h4><p>PCC收到了报文，直接学习ARP：192.168.2.1对应VLAN2_MAC。</p>
+</h4><p>PCC收到了报文，直接<strong>学习ARP</strong>：192.168.2.1对应VLAN2_MAC。</p>
 <p>这下终于知道了，我要去ping PCD了！</p>
-<p>之前我知道N层的Source和Dest，但是一直不知道D层对应的下一跳应该是谁，现在终于可以封装报文了。</p>
+<p>之前我知道N层的Source和Dest，但是一直不知道D层对应的下一跳应该是谁，现在<strong>终于可以封装报文</strong>了。</p>
 <ul>
 <li>
 <p>Source IP：192.168.2.11</p>
