@@ -7,7 +7,219 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Sun, 12 Apr 2026 11:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 17 Apr 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week2 N层</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week2-n%E5%B1%82/</link>
+        <pubDate>Fri, 17 Apr 2026 20:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week2-n%E5%B1%82/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week2-n%E5%B1%82/%E6%9C%AB%E4%B8%96%E8%AE%BA.png" alt="Featured image of post BUAA CN Week2 N层" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;做实验的时候我就在想，我是否有能力写好这篇博客。&lt;/p&gt;
+&lt;p&gt;本次实验做完之后，没有充沛的分享欲，而只是劫后余生的感慨。&lt;/p&gt;
+&lt;p&gt;明明是N层实验，但整体来说和D层实验的感觉十分相似，你需要熟练展现上次实验所培养你的能力与素养。&lt;/p&gt;
+&lt;p&gt;但除此之外，本次实验还要求你熟络ARP和ICMP，尤其是它们在报文中的封装。&lt;/p&gt;
+&lt;p&gt;一些提醒：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;小程序传图片时一定要及时，晚一点就无法再上传。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传的图片尽可能展示核心内容，若缺乏重点可能拿不到9.5。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;报文直接筛选好 arp or icmp。本次实验就只涉及这两种。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何修改PC的IP地址？&lt;/p&gt;
+&lt;p&gt;控制面板-&amp;gt;网络和共享中心-&amp;gt;&lt;strong&gt;左侧栏&lt;/strong&gt;“更改适配器设置”-&amp;gt;&lt;strong&gt;右键&lt;/strong&gt;“本地连接”-&amp;gt;点击&lt;strong&gt;属性&lt;/strong&gt;-&amp;gt;双击&lt;strong&gt;IPv4&lt;/strong&gt;项即可进入修改，可修改本机IP地址、子网掩码和缺省网关。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不同网段为啥还要分不同VLAN？&lt;/p&gt;
+&lt;p&gt;不同网段确实拥有&lt;strong&gt;不同的广播号&lt;/strong&gt;，但是&lt;strong&gt;不同广播号不代表不同广播域&lt;/strong&gt;！！&lt;/p&gt;
+&lt;p&gt;不加处理的话，大家都在缺省VLAN里，&lt;strong&gt;处于同一广播域&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;广播号只能决定我是否接受，但是仍然&lt;strong&gt;会被泛洪&lt;/strong&gt;到！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;N层&lt;/strong&gt;的IP管理当然管不到&lt;strong&gt;D层&lt;/strong&gt;的传输。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;arp&#34;&gt;ARP
+&lt;/h2&gt;&lt;p&gt;在理论课上，我们只是知道：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A想要B的MAC地址，发出ARP报文，上面写着A的IP地址、A的MAC地址以及B的IP地址。&lt;/li&gt;
+&lt;li&gt;ARP报文被&lt;strong&gt;广播&lt;/strong&gt;，同广播域内如果有B，B将&lt;strong&gt;单播&lt;/strong&gt;回一个ARP报文。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;但在实验课，你需要掌握：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ARP有一个缓存的表。&lt;/li&gt;
+&lt;li&gt;PC的ARP缓存表在cmd直接&lt;strong&gt;arp -a&lt;/strong&gt;就可以看到。中间设备则需要在PuTTY上&lt;strong&gt;display arp&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;如果&lt;strong&gt;下一跳&lt;/strong&gt;不在ARP缓存表里，我就要发ARP去找到&lt;strong&gt;下一跳&lt;/strong&gt;的MAC地址。&lt;/li&gt;
+&lt;li&gt;对于跨网段的ping，下一跳当然是&lt;strong&gt;缺省网关&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;ARP request &lt;strong&gt;广播&lt;/strong&gt;时，目标MAC地址是&lt;strong&gt;ffff-ffff-ffff&lt;/strong&gt;，不过在报文中目标MAC地址&lt;strong&gt;显示为全0&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ICMP的理论课讲得倒比较详细，实验涉及的也很浅，不作解释。&lt;/p&gt;
+&lt;h2 id=&#34;跨交换机vlan间路由实验&#34;&gt;跨交换机VLAN间路由实验
+&lt;/h2&gt;&lt;p&gt;下面重点讲这个实验的ARP与ICMP报文分析。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week2-n%E5%B1%82/VLAN.png&#34;
+	width=&#34;746&#34;
+	height=&#34;274&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week2-n%E5%B1%82/VLAN_hu2206616019484067559.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week2-n%E5%B1%82/VLAN_hu1471815309571818971.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;组网图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;272&#34;
+		data-flex-basis=&#34;653px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;首先这道实验题以&lt;strong&gt;分析&lt;/strong&gt;为主。因为有大量步骤，凭实验不能单步观测变化情况。&lt;/p&gt;
+&lt;p&gt;此外，要知道S1是三层交换机，有跨网段路由功能。S2是双层交换机，只是个同网段内引路的。&lt;/p&gt;
+&lt;p&gt;接下来，我们就从理论角度，分析这样一个删去全部缓存的组网如何实现PCC ping PCD。&lt;/p&gt;
+&lt;h3 id=&#34;pcc想知道下一跳&#34;&gt;PCC想知道下一跳
+&lt;/h3&gt;&lt;p&gt;PCC和PCD经过计算发现属于不同网段。&lt;/p&gt;
+&lt;p&gt;PCC要把ICMP(ping request)发给缺省网关——192.168.2.1，也就是S1的VLAN2接口。&lt;/p&gt;
+&lt;p&gt;PCC的下一跳就是192.168.2.1。&lt;/p&gt;
+&lt;p&gt;PCC的ARP Cache是空的。&lt;/p&gt;
+&lt;p&gt;PCC要向192.168.2.1发送ARP request报文。&lt;/p&gt;
+&lt;p&gt;Source: 192.168.2.11 PCC_MAC&lt;/p&gt;
+&lt;p&gt;Dest: 192.168.2.1 FFFF-FFFF-FFFF&lt;/p&gt;
+&lt;h4 id=&#34;路过交换机s2&#34;&gt;路过交换机S2
+&lt;/h4&gt;&lt;p&gt;要知道这个ARP报文的信息很明确，&lt;strong&gt;不会再改变了&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;S2只是一个路由，一个搬运工，告诉你往哪个端口走，仅此而已。&lt;/p&gt;
+&lt;p&gt;MAC表也是这样简单，谁给我发了东西，我就把&lt;strong&gt;source(mac+vlan)和它进来的端口&lt;/strong&gt;学习下来。&lt;/p&gt;
+&lt;p&gt;不过交换机还有一个功能，就是管理VLAN。毕竟VLAN是D层的事情。&lt;/p&gt;
+&lt;p&gt;交换机的端口就是划分VLAN的工具。你从这个口进来，那你就是这个VLAN。&lt;/p&gt;
+&lt;p&gt;端口分为&lt;strong&gt;access/trunk/hybrid&lt;/strong&gt;这三种。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;access是我们一般理解的那种，一个端口只对应一个vlan，广播泛洪的时候只对同VLAN的全部端口。&lt;/p&gt;
+&lt;p&gt;所以一进来我就知道你是哪个VLAN，就&lt;strong&gt;先给你打上tag&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;相应地，从access口出去**不需要打（需要去掉）**tag，同样因为从我这出去的VLAN号是可以确定的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;trunk的特点是一个端口支持多种vlan。因此从它出去&lt;strong&gt;要带上&lt;/strong&gt;vlan tag。&lt;/p&gt;
+&lt;p&gt;需要注意&lt;del&gt;其实也不需要注意&lt;/del&gt;，每对trunk端口都有一个PVID，PVID用于适配无VLAN时代的设备。所以如果VLAN号为PVID，就相当于无Tag，出去的时候也要去掉tag。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;hybrid更自由，&lt;strong&gt;可以指定&lt;/strong&gt;出去时某些vlan带tag，某些vlan不带tag。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;好嘞，铺垫这么多，一鼓作气讲清楚吧！&lt;/p&gt;
+&lt;h5 id=&#34;step-1&#34;&gt;Step 1
+&lt;/h5&gt;&lt;p&gt;首先是PCC发了ARP广播，只可惜只广播到了S2这里。&lt;/p&gt;
+&lt;p&gt;此为Step1。&lt;/p&gt;
+&lt;h5 id=&#34;step-2&#34;&gt;Step 2
+&lt;/h5&gt;&lt;p&gt;S2首先收到报文先学习MAC表，PCC_MAC对应GE1/0/1。&lt;/p&gt;
+&lt;p&gt;然后为报文打上VLAN Tag=2（因为S2的GE1/0/1是access VLAN 2）。&lt;/p&gt;
+&lt;p&gt;然后S2要继续广播，发现支持VLAN2的只有GE1/0/1和GE1/0/13，除了自己之外，就只能给trunk口GE1/0/13了。&lt;/p&gt;
+&lt;p&gt;从trunk口出，不去除tag。&lt;/p&gt;
+&lt;p&gt;因此从GE1/0/13发送了含tag VLAN id=2的报文。&lt;/p&gt;
+&lt;p&gt;此为Step2。&lt;/p&gt;
+&lt;h3 id=&#34;s1回应pcc的arp报文&#34;&gt;S1回应PCC的ARP报文
+&lt;/h3&gt;&lt;h4 id=&#34;step-3&#34;&gt;Step 3
+&lt;/h4&gt;&lt;p&gt;首先S1作为交换机，收到报文肯定也是先学习MAC表，PCC_MAC对应GE1/0/13。&lt;/p&gt;
+&lt;p&gt;但同时作为N层相关设备，随便收到一个报文也会直接学习ARP Cache，192.168.2.11对应PCC_MAC。&lt;/p&gt;
+&lt;p&gt;PCC向192.168.2.1发送的ARP request报文是：&lt;/p&gt;
+&lt;p&gt;Source: 192.168.2.11 PCC_MAC&lt;/p&gt;
+&lt;p&gt;Dest: 192.168.2.1 FFFF-FFFF-FFFF&lt;/p&gt;
+&lt;p&gt;而S1的VLAN2接口就是192.68.2.1。&lt;/p&gt;
+&lt;p&gt;所以S1应当把VLAN2接口的MAC地址传回PCC。&lt;/p&gt;
+&lt;p&gt;因为&lt;strong&gt;刚学到MAC表里PCC_MAC对应GE1/0/13&lt;/strong&gt;，所以ARP reply直接从这个trunk口发出去。&lt;/p&gt;
+&lt;p&gt;从trunk口出去要带tag，因为是从VLAN2接口发的，所以VLAN id = 2。&lt;/p&gt;
+&lt;p&gt;192.168.2.1向192.168.2.11发送的ARP request报文是：&lt;/p&gt;
+&lt;p&gt;Source: 192.168.2.1 VLAN2_MAC&lt;/p&gt;
+&lt;p&gt;Dest: 192.168.2.11 PCC_MAC&lt;/p&gt;
+&lt;p&gt;此为Step3。&lt;/p&gt;
+&lt;h4 id=&#34;再次路过s2&#34;&gt;再次路过S2
+&lt;/h4&gt;&lt;h5 id=&#34;step-4&#34;&gt;Step 4
+&lt;/h5&gt;&lt;p&gt;S2首先收到报文先学习MAC表，VLAN2_MAC对应GE1/0/13。&lt;/p&gt;
+&lt;p&gt;S2要继续单播，发现PCC_MAC对应GE1/0/1。&lt;/p&gt;
+&lt;p&gt;从access口出，去除tag。&lt;/p&gt;
+&lt;p&gt;此为Step4。&lt;/p&gt;
+&lt;h3 id=&#34;pcc向下一跳发出icmp-echo-request&#34;&gt;PCC向下一跳发出ICMP-ECHO-REQUEST
+&lt;/h3&gt;&lt;h4 id=&#34;step-5&#34;&gt;Step 5
+&lt;/h4&gt;&lt;p&gt;PCC收到了报文，直接学习ARP：192.168.2.1对应VLAN2_MAC。&lt;/p&gt;
+&lt;p&gt;这下终于知道了，我要去ping PCD了！&lt;/p&gt;
+&lt;p&gt;之前我知道N层的Source和Dest，但是一直不知道D层对应的下一跳应该是谁，现在终于可以封装报文了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Source IP：192.168.2.11&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dest IP：192.168.3.11&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Source MAC：PCC_MAC&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dest MAC：VLAN2_MAC&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此为Step5。&lt;/p&gt;
+&lt;h4 id=&#34;step-6&#34;&gt;Step 6
+&lt;/h4&gt;&lt;p&gt;依旧经过交换机S2。&lt;/p&gt;
+&lt;p&gt;S2首先学习：PCC_MAC，啊嘞，这个学过了。&lt;/p&gt;
+&lt;p&gt;然后access口进，所以带tag vlan2。&lt;/p&gt;
+&lt;p&gt;接下来&lt;strong&gt;和Step2不同&lt;/strong&gt;的是，现在是&lt;strong&gt;单播&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;所以要&lt;strong&gt;查表&lt;/strong&gt;，目标是VLAN2_MAC，这个也学过。那很好！不然就又要广播了。&lt;/p&gt;
+&lt;p&gt;直接从trunk口GE1/0/13出，不去tag。&lt;/p&gt;
+&lt;p&gt;此为step6。&lt;/p&gt;
+&lt;h3 id=&#34;icmp报文更改&#34;&gt;ICMP报文更改！
+&lt;/h3&gt;&lt;p&gt;ICMP报文发了一半，把第一段D层打通了。&lt;/p&gt;
+&lt;p&gt;接力棒传到S1的interface vlan2这里来了。&lt;/p&gt;
+&lt;p&gt;接下来经过某种判断逻辑&lt;del&gt;你可以不知道&lt;/del&gt;，但很显然S1知道。&lt;/p&gt;
+&lt;p&gt;S1知道它该把报文交付给网络层处理了。&lt;/p&gt;
+&lt;p&gt;然后ICMP报文成功地从interface vlan3出来了。&lt;/p&gt;
+&lt;p&gt;ICMP报文的N层没有改变，而外部的D层则换成了路由器选择的新路由：&lt;/p&gt;
+&lt;p&gt;VLAN3_MAC，到它的下一跳：PCD。&lt;/p&gt;
+&lt;p&gt;ICMP报文的内容正式变为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Source IP：192.168.2.11&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dest IP：192.168.3.11&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Source MAC：VLAN3_MAC&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dest MAC：PCD_MAC&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;int-vlan3想知道下一跳&#34;&gt;int VLAN3想知道下一跳
+&lt;/h3&gt;&lt;h4 id=&#34;step-7-8&#34;&gt;Step 7-8
+&lt;/h4&gt;&lt;p&gt;再次审视报文内容。&lt;/p&gt;
+&lt;p&gt;PCD_MAC是未知的。&lt;/p&gt;
+&lt;p&gt;我需要——ARP！&lt;/p&gt;
+&lt;p&gt;接下来便是和Step1-2如出一辙。&lt;/p&gt;
+&lt;p&gt;此为step7-8。&lt;/p&gt;
+&lt;h3 id=&#34;pcd回应s1的arp报文&#34;&gt;PCD回应S1的ARP报文
+&lt;/h3&gt;&lt;h4 id=&#34;step-9-10&#34;&gt;Step 9-10
+&lt;/h4&gt;&lt;p&gt;其实你知道这个和Step3-4如出一辙。&lt;/p&gt;
+&lt;p&gt;但是为了标题工整一点，就写这么几句话占个位置。&lt;/p&gt;
+&lt;p&gt;此为step9-10。&lt;/p&gt;
+&lt;h3 id=&#34;int-vlan3向下一跳发出icmp-echo-request&#34;&gt;int VLAN3向下一跳发出ICMP-ECHO-REQUEST
+&lt;/h3&gt;&lt;h4 id=&#34;step-11-12&#34;&gt;Step 11-12
+&lt;/h4&gt;&lt;p&gt;以防你不知道，在刚刚ARP的request与reply中，PCD和int VLAN3学到了ARP Cache，S2学到了MAC表。&lt;/p&gt;
+&lt;p&gt;这一段和Step5-6也只能说如出一辙了。&lt;/p&gt;
+&lt;p&gt;此为step11-12。&lt;/p&gt;
+&lt;h3 id=&#34;pcd向下一跳发出icmp-echo-reply&#34;&gt;PCD向下一跳发出ICMP-ECHO-REPLY
+&lt;/h3&gt;&lt;p&gt;诶诶你PCD怎么就能直接发reply？不用ARP？&lt;/p&gt;
+&lt;p&gt;好吧我写这个问题纯粹无聊打几个字。。&lt;/p&gt;
+&lt;p&gt;都叫reply了，PCD早就学进ARP Cache了。&lt;/p&gt;
+&lt;h4 id=&#34;step-13-16&#34;&gt;Step 13-16
+&lt;/h4&gt;&lt;p&gt;哎哟我真不想写了。&lt;/p&gt;
+&lt;p&gt;Step13-14就是Step5-6，Step15-16就是Step11-12。&lt;/p&gt;
+&lt;p&gt;此为step13-16。&lt;/p&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;一写就又写了三个小时。&lt;/p&gt;
+&lt;p&gt;不过确实是弄明白了不少当时不太清楚的问题。&lt;/p&gt;
+&lt;p&gt;我特意把StepX也写进了标题里，方便你直接去跳转~&lt;/p&gt;
+&lt;p&gt;写博客本意是对问题的再思考，但如果还能帮到你们就太好了！&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA CN Week1 入门&#43;D层</title>
         <link>https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/</link>
         <pubDate>Sun, 12 Apr 2026 11:15:30 +0800</pubDate>
@@ -66,6 +278,9 @@
 &lt;p&gt;跟上狼书的节奏！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;需要注意有的时候我们的设备和狼书并不完全对应，比如书本上用的是R1的Ethernet 0/1，虽然我们的R1提供的是Gigabit Ethernet 0/1 ，但功能是一样的，只需要把指令里的E改成GE就行。&lt;/p&gt;
+&lt;p&gt;下面这个链接也很有用！现场看会很有帮助，提前看反而不知道在说啥。&lt;/p&gt;
+&lt;a href=&#34;https://docs.qq.com/doc/DVXJTdkV1UFJFcWZz&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+网络实验常见问题解答&lt;/a&gt;
 &lt;p&gt;实验配套的PPT也有一定作用，不过狼书已经足够了，狼书解决不了的问题可以试着在PPT找找。&lt;/p&gt;
 &lt;p&gt;此外还可以&lt;strong&gt;参考&lt;/strong&gt;学长流传的实验报告电子版。但是仅供参考，不要盲目相信，更不能明目张胆抄袭。&lt;/p&gt;
 &lt;h3 id=&#34;注意事项&#34;&gt;注意事项
