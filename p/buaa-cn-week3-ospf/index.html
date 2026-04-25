@@ -383,8 +383,8 @@
 </h2><p>计网理论课就这样结束了，还是有点感慨。</p>
 <p>据说期末要进考期。其实是一门像数据库一样，适合考前系统学习的课程。</p>
 <p>不过已经学了也没关系！说不定能帮上计网实验？</p>
-<p>实则基本帮不上。至少这次实验让我痛彻心扉。</p>
-<p>理论课由于时间限制，只是草草讲了有所谓DV,LS算法，</p>
+<p>**实则基本帮不上。**至少这次实验让我痛彻心扉。</p>
+<p>理论课由于时间限制，只是草草讲了有所谓DV、LS算法，</p>
 <p>而且因为DV算法更好笔试考察，理论课对OSPF的讲解可以说是一笔带过。</p>
 <p>但无论如何，我们先复习一下：</p>
 <h3 id="什么是ospf">什么是ospf
@@ -400,7 +400,7 @@
 </li>
 <li>
 <p>OSPF有Area的概念，一个Area包含多个网段。</p>
-<p>其中Area0称为Backbone区域。其他所有区域必须与Area0相连。</p>
+<p>其中<strong>Area0称为Backbone区域</strong>。其他所有区域必须与Area0相连。</p>
 <p>Area内部独立进行最短路径计算。</p>
 </li>
 <li>
@@ -413,7 +413,7 @@
 <li>display ospf   信息很多，可以试着找找</li>
 <li>display ospf peer  邻居信息</li>
 <li>display ospf lsdb  显示<strong>LSA</strong>（LSA是什么？）</li>
-<li>network xxx xxx xxx</li>
+<li>network xxx yyy area z 代表将xxx网段都接入area z 需要注意 yyy代表的是mask的<strong>反码</strong>！！</li>
 <li>reset ospf process  重启OSPF，可用于更新DR和Router-id（这俩又是？）</li>
 </ul>
 <h3 id="什么是loopback">什么是Loopback
