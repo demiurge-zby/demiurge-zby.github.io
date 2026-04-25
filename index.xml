@@ -7,7 +7,180 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Fri, 17 Apr 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 25 Apr 2026 22:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week3 OSPF</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/</link>
+        <pubDate>Sat, 25 Apr 2026 22:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/cv.png" alt="Featured image of post BUAA CN Week3 OSPF" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;计网理论课就这样结束了，还是有点感慨。&lt;/p&gt;
+&lt;p&gt;据说期末要进考期。其实是一门像数据库一样，适合考前系统学习的课程。&lt;/p&gt;
+&lt;p&gt;不过已经学了也没关系！说不定能帮上计网实验？&lt;/p&gt;
+&lt;p&gt;实则基本帮不上。至少这次实验让我痛彻心扉。&lt;/p&gt;
+&lt;p&gt;理论课由于时间限制，只是草草讲了有所谓DV,LS算法，&lt;/p&gt;
+&lt;p&gt;而且因为DV算法更好笔试考察，理论课对OSPF的讲解可以说是一笔带过。&lt;/p&gt;
+&lt;p&gt;但无论如何，我们先复习一下：&lt;/p&gt;
+&lt;h3 id=&#34;什么是ospf&#34;&gt;什么是ospf
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Link-State的核心逻辑就是互相传递已知的链路信息，&lt;/p&gt;
+&lt;p&gt;一致收敛到每个路由器都拥有完整的带权拓扑图（也即链接状态数据库，lsdb），&lt;/p&gt;
+&lt;p&gt;然后对拓扑图执行Dijkstra算法。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OSPF采用L-S算法，使用基于带宽的metric，封装于IP报文，&lt;/p&gt;
+&lt;p&gt;协议号为89，组播地址为&lt;strong&gt;224.0.0.5与224.0.0.6&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OSPF有Area的概念，一个Area包含多个网段。&lt;/p&gt;
+&lt;p&gt;其中Area0称为Backbone区域。其他所有区域必须与Area0相连。&lt;/p&gt;
+&lt;p&gt;Area内部独立进行最短路径计算。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OSPF有5类报文：Hello、DD（DBD）、LSR、LSU、LSAck。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接下来讲解一些应对本次实验课，你应当知道的一些内容。&lt;/p&gt;
+&lt;h3 id=&#34;ospf相关指令&#34;&gt;ospf相关指令
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;display ospf   信息很多，可以试着找找&lt;/li&gt;
+&lt;li&gt;display ospf peer  邻居信息&lt;/li&gt;
+&lt;li&gt;display ospf lsdb  显示&lt;strong&gt;LSA&lt;/strong&gt;（LSA是什么？）&lt;/li&gt;
+&lt;li&gt;network xxx xxx xxx&lt;/li&gt;
+&lt;li&gt;reset ospf process  重启OSPF，可用于更新DR和Router-id（这俩又是？）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;什么是loopback&#34;&gt;什么是Loopback
+&lt;/h3&gt;&lt;p&gt;Loopback 可以是路由器的一种&lt;strong&gt;逻辑虚接口&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;它的特点是永久&lt;strong&gt;物理状态恒为 Up&lt;/strong&gt;，也就是永远连接，不受物理网线、接口插拔影响。&lt;/p&gt;
+&lt;h3 id=&#34;什么是router-id&#34;&gt;什么是router id
+&lt;/h3&gt;&lt;p&gt;这是路由器的一种&lt;strong&gt;唯一标识&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;可以通过命令&lt;strong&gt;router id XXX&lt;/strong&gt; 来直接配置。&lt;/p&gt;
+&lt;p&gt;没有主动配置时，默认是优先选取&lt;strong&gt;环回接口（Loopback）中最大的 IP 地址&lt;/strong&gt;，其次是自动选取所有物理接口中&lt;strong&gt;状态为 Up&lt;/strong&gt; 的&lt;strong&gt;最大&lt;/strong&gt; IP 地址，若所有接口均无 IP / 未启用，就无法自动生成 Router-ID。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Router ID 通常在 OSPF 进程启动时确定&lt;/strong&gt;，后续对其更改需重启 OSPF 进程后才生效。&lt;/p&gt;
+&lt;h3 id=&#34;什么是lsa&#34;&gt;什么是LSA
+&lt;/h3&gt;&lt;p&gt;LSA存储着Link-State信息的单元。有很多类，我们需要掌握5类，它们的功能分别是：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一类 LSA（router）&lt;/strong&gt;：每台路由器生成，描述&lt;strong&gt;本路由器&lt;/strong&gt;链路，区域内泛洪（注意泛洪≠广播）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;二类 LSA（network）&lt;/strong&gt;：由 DR 生成，DR汇聚了&lt;strong&gt;同一网段&lt;/strong&gt;成员清单，区域内泛洪。这个信息告诉哪些IP是同一子网。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三类 LSA（summary）&lt;/strong&gt;：由 ABR 生成，将&lt;strong&gt;某区域的路由概要&lt;/strong&gt;发布向其他区域。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;四类 LSA（asbr）&lt;/strong&gt;：由 ABR 生成，通告 &lt;strong&gt;ASBR 路由器的位置&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;五类 LSA（external）&lt;/strong&gt;：由 ASBR 生成，传递引入的&lt;strong&gt;外部路由&lt;/strong&gt;，在整个 OSPF 自治系统内泛洪。&lt;/p&gt;
+&lt;h3 id=&#34;什么是dr&#34;&gt;什么是DR
+&lt;/h3&gt;&lt;p&gt;DR是每个&lt;strong&gt;广播网段&lt;/strong&gt;选举出的一个代表，作为&lt;strong&gt;二类LSA&lt;/strong&gt;的生成者。&lt;/p&gt;
+&lt;p&gt;选举逻辑是优先级数值更大者，若相同则是router id更大者。&lt;/p&gt;
+&lt;p&gt;优先级为0则为放弃参选DR/BDR。&lt;/p&gt;
+&lt;p&gt;选出DR后，再选出次大者作为BDR。&lt;/p&gt;
+&lt;h3 id=&#34;什么是bdr&#34;&gt;什么是BDR
+&lt;/h3&gt;&lt;p&gt;在 &lt;strong&gt;DR执行&lt;/strong&gt; reset ospf process 后，&lt;strong&gt;BDR成为新的DR&lt;/strong&gt;，按原规则重新选举BDR。&lt;/p&gt;
+&lt;p&gt;在 &lt;strong&gt;BDR执行&lt;/strong&gt; reset ospf process 后，按规则重新选举BDR（原BDR也参与选举）。&lt;/p&gt;
+&lt;p&gt;其他路由器执行时，&lt;strong&gt;不影响 DR、BDR 角色&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;什么是abr&#34;&gt;什么是ABR
+&lt;/h3&gt;&lt;p&gt;ABR是同时位于Area 0 和其他普通区域的路由器。&lt;/p&gt;
+&lt;p&gt;他掌握多区域信息，还拥有跨区域沟通能力，所以可以负责在区域之间传递路由信息（&lt;strong&gt;三类 LSA&lt;/strong&gt;）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;四类 LSA&lt;/strong&gt; 可以教大家导航到ASBR。&lt;/p&gt;
+&lt;h3 id=&#34;什么是asbr&#34;&gt;什么是ASBR
+&lt;/h3&gt;&lt;p&gt;ASBR 是负责把 OSPF 域外路由引入 OSPF 的路由器。&lt;/p&gt;
+&lt;p&gt;用人话说，就是他有例如&lt;strong&gt;静态路由、RIP等其他协议&lt;/strong&gt;这种渠道得到的&lt;strong&gt;路由信息&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;他可以发布&lt;strong&gt;五类LSA&lt;/strong&gt;可以传递这些外部路由，让其他人也学习到。&lt;/p&gt;
+&lt;p&gt;这下知道为啥需要四类LSA了：&lt;/p&gt;
+&lt;p&gt;我学习外部路由时，只知道这个dest对应的下一跳是ASBR，怎么到达这个ASBR就需要ABR讲清楚。&lt;/p&gt;
+&lt;p&gt;说了这么多我觉得也差不多了。&lt;/p&gt;
+&lt;p&gt;具体LSA是什么结构，怎么实现上述的这些功能，就需要从实验中学习了。&lt;/p&gt;
+&lt;p&gt;一些提醒：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;小程序传图片时一定要&lt;strong&gt;及时&lt;/strong&gt;，晚一点就无法再上传。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传的图片尽可能展示&lt;strong&gt;核心内容&lt;/strong&gt;，若缺乏重点可能拿不到9.5。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;报文直接筛选好 &lt;strong&gt;arp or icmp&lt;/strong&gt;。本次实验就只涉及这两种。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;静态路由&#34;&gt;静态路由
+&lt;/h2&gt;&lt;p&gt;注意选择套件二的同学也要完成静态路由的学习，也就是RIP的1,2,3,6题。&lt;/p&gt;
+&lt;p&gt;这道题挺简单的，但是笔者被卡了很久，因为在做上机必做的undo interface vlan 1时，我手贱给交换机也执行了vlan 1的shutdown。&lt;/p&gt;
+&lt;p&gt;哈哈，那还说啥了。能ping通就有鬼了。&lt;/p&gt;
+&lt;p&gt;需要掌握的知识理论课都学过：&lt;/p&gt;
+&lt;p&gt;0.0.0.0/0是默认，因为他就是最大的网，互联网。&lt;/p&gt;
+&lt;h2 id=&#34;ospf报文及简单交互&#34;&gt;OSPF报文及简单交互
+&lt;/h2&gt;&lt;p&gt;前面提到OSPF有5类报文：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Hello（Type 1，Hello）&lt;/strong&gt;
+发现邻居、维持邻居、参与 DR/BDR 选举。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DD/DBD（Type 2，Database Description）&lt;/strong&gt;
+交换 LSDB 的&lt;strong&gt;目录摘要&lt;/strong&gt;，先看彼此有什么 LSA。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LSR（Type 3，Link State Request）&lt;/strong&gt;
+看到你有我没有的 LSA，就点名请求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LSU（Type 4，Link State Update）&lt;/strong&gt;
+&lt;strong&gt;真正发送&lt;/strong&gt; LSA 内容（一个 LSU 可带多个 LSA）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LSAck（Type 5，Link State Acknowledgment）&lt;/strong&gt;
+确认收到 LSA，保证泛洪可靠。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;具体来讲：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Down -&amp;gt; Init -&amp;gt; 2-Way     靠 Hello&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;收到对方 Hello，看到自己 RID 出现在对方邻居列表，进入 2-Way。&lt;/p&gt;
+&lt;p&gt;在广播网段里，非 DR/BDR 之间常停在 2-Way；与 DR/BDR 会继续到 Full。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2-Way -&amp;gt; ExStart   开始谈 DD 规则&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;双方先协商 DD 的&lt;strong&gt;主从关系&lt;/strong&gt;和初始序列号。（此SM非彼SM）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主从是为了避免Exchange阶段双方同时主导 DD。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Master&lt;/strong&gt; 控制 DD 交换节奏和序列号推进，Slave跟随并确认。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;双方先发带&lt;strong&gt;协商&lt;/strong&gt;标志的 DD。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;何为协商？ I(Init)=1,我们初次见面，这就是协商的意思。&lt;/p&gt;
+&lt;p&gt;刚见面时，都想当Master，而且后续也还有话要说(More)，&lt;/p&gt;
+&lt;p&gt;所以MS=1,M=1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后这一轮结束后&lt;strong&gt;Router ID 大&lt;/strong&gt;的一方成为 Master。Master 的seq被定为初始 DD sequence number，并在后续 DD 中主导递增。&lt;/p&gt;
+&lt;p&gt;保证会话有序的逻辑是：Master 发一个 DD（含 seq），Slave 用&lt;strong&gt;相同 seq 应答&lt;/strong&gt;其对应 DD。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意这里的seq不是你TCP的那个seq与ack！别搞混了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以接下来应该是Slave回应Master的第一句话，用Master第一句话的seq。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ExStart -&amp;gt; Exchange  大量 DD 交换&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;互相发送 DD 摘要，知道你有什么、我缺什么。&lt;/p&gt;
+&lt;p&gt;发送的过程满足I=0，M的MS=1，S的MS=0，M的seq是上次交流＋1，S的seq与M的seq相同。&lt;/p&gt;
+&lt;p&gt;直到双方摘要交换完毕，M=0，进入 Loading。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里可以为大家写一个交流示例&lt;/p&gt;
+&lt;p&gt;M-&amp;gt;S (seq = A, I =1, MS =1, M =1)&lt;/p&gt;
+&lt;p&gt;S-&amp;gt;M (seq = B, I =1, MS =1, M =1)&lt;/p&gt;
+&lt;p&gt;然后完成协商，S给出回应：&lt;/p&gt;
+&lt;p&gt;S-&amp;gt;M (seq = A, I =0, MS =0, M =1)&lt;/p&gt;
+&lt;p&gt;然后Master开始主导对话进行exchange：&lt;/p&gt;
+&lt;p&gt;M-&amp;gt;S (seq = A+1, I =0, MS =1, M =1)&lt;/p&gt;
+&lt;p&gt;S-&amp;gt;M (seq = A+1, I =0, MS =0, M =1)&lt;/p&gt;
+&lt;p&gt;然后说完了：&lt;/p&gt;
+&lt;p&gt;M-&amp;gt;S (seq = A+n, I =0, MS =1, M =0)&lt;/p&gt;
+&lt;p&gt;S-&amp;gt;M (seq = A+n, I =0, MS =0, M =0)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Exchange -&amp;gt; Loading  疯狂学习LSA中&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我缺哪些就发 LSR。&lt;/p&gt;
+&lt;p&gt;对方用 LSU 回复具体 LSA。&lt;/p&gt;
+&lt;p&gt;收到后回 LSAck。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Loading -&amp;gt; Full 数据库同步完成&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;邻接完成，后续拓扑变化直接用 LSU/LSAck 增量同步。&lt;/p&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;就先写这么多吧。笔者区域划分实验还没做完。&lt;/p&gt;
+&lt;p&gt;这一次写的比较详细，因为本人确实也吃了没预习的亏，在前面的地方卡了很久，一个小实验就差不多一个小时。&lt;/p&gt;
+&lt;p&gt;依旧给出一些经验：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;实验课前的预习非常重要。请把这个预习当成其他实验课的课下部分来看。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;善用dis cu进行调试。(display current-configuration)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;找老师答疑解惑可能会扣除少量分数。（未独立完成）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA CN Week2 N层</title>
         <link>https://demiurge-zby.github.io/p/buaa-cn-week2-n%E5%B1%82/</link>
         <pubDate>Fri, 17 Apr 2026 20:15:30 +0800</pubDate>

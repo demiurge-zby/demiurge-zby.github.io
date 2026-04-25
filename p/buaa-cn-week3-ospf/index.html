@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="困难的入门">
-<title>BUAA CN Week1 入门&#43;D层</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="层层桎梏的路由协议">
+<title>BUAA CN Week3 OSPF</title>
 
-<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/'>
+<link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA CN Week1 入门+D层">
-<meta property='og:description' content="困难的入门">
-<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/'>
+<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA CN Week3 OSPF">
+<meta property='og:description' content="层层桎梏的路由协议">
+<meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/'>
 <meta property='og:site_name' content='Demiurge'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-04-12T11:15:30&#43;08:00'/><meta property='article:modified_time' content='2026-04-12T11:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/12345.png' />
-<meta name="twitter:title" content="BUAA CN Week1 入门+D层">
-<meta name="twitter:description" content="困难的入门"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/12345.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-04-25T22:15:30&#43;08:00'/><meta property='article:modified_time' content='2026-04-25T22:15:30&#43;08:00'/><meta property='og:image' content='https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/cv.png' />
+<meta name="twitter:title" content="BUAA CN Week3 OSPF">
+<meta name="twitter:description" content="层层桎梏的路由协议"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/cv.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -270,14 +270,19 @@
   <ol>
     <li><a href="#说在前面">说在前面</a>
       <ol>
-        <li><a href="#课程基本信息">课程基本信息</a></li>
-        <li><a href="#参考资料">参考资料</a></li>
-        <li><a href="#注意事项">注意事项</a></li>
-        <li><a href="#博客风格">博客风格</a></li>
+        <li><a href="#什么是ospf">什么是ospf</a></li>
+        <li><a href="#ospf相关指令">ospf相关指令</a></li>
+        <li><a href="#什么是loopback">什么是Loopback</a></li>
+        <li><a href="#什么是router-id">什么是router id</a></li>
+        <li><a href="#什么是lsa">什么是LSA</a></li>
+        <li><a href="#什么是dr">什么是DR</a></li>
+        <li><a href="#什么是bdr">什么是BDR</a></li>
+        <li><a href="#什么是abr">什么是ABR</a></li>
+        <li><a href="#什么是asbr">什么是ASBR</a></li>
       </ol>
     </li>
-    <li><a href="#实验入门">实验入门</a></li>
-    <li><a href="#数据链路层实验">数据链路层实验</a></li>
+    <li><a href="#静态路由">静态路由</a></li>
+    <li><a href="#ospf报文及简单交互">OSPF报文及简单交互</a></li>
     <li><a href="#后记">后记</a></li>
   </ol>
 </nav>
@@ -293,13 +298,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/">
-                <img src="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/12345_hu4182172882303159259.png"
-                        srcset="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/12345_hu4182172882303159259.png 800w, /p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/12345_hu18299629735152922239.png 1600w"
+            <a href="/p/buaa-cn-week3-ospf/">
+                <img src="/p/buaa-cn-week3-ospf/cv_hu18011853601663835945.png"
+                        srcset="/p/buaa-cn-week3-ospf/cv_hu18011853601663835945.png 800w, /p/buaa-cn-week3-ospf/cv_hu16314688378499316345.png 1600w"
                         width="800" 
                         height="800" 
                         loading="lazy"
-                        alt="Featured image of post BUAA CN Week1 入门&#43;D层" />
+                        alt="Featured image of post BUAA CN Week3 OSPF" />
                 
             </a>
         </div>
@@ -318,12 +323,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/">BUAA CN Week1 入门&#43;D层</a>
+            <a href="/p/buaa-cn-week3-ospf/">BUAA CN Week3 OSPF</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            困难的入门
+            层层桎梏的路由协议
         </h3>
         
     </div>
@@ -344,7 +349,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2026-04-12</time>
+                <time class="article-time--published">2026-04-25</time>
             </div>
         
 
@@ -375,275 +380,170 @@
     
     
     <h2 id="说在前面">说在前面
-</h2><h3 id="课程基本信息">课程基本信息
-</h3><p>作为计网实验的Week1博客，首先要介绍一下这门课程的基本信息。</p>
+</h2><p>计网理论课就这样结束了，还是有点感慨。</p>
+<p>据说期末要进考期。其实是一门像数据库一样，适合考前系统学习的课程。</p>
+<p>不过已经学了也没关系！说不定能帮上计网实验？</p>
+<p>实则基本帮不上。至少这次实验让我痛彻心扉。</p>
+<p>理论课由于时间限制，只是草草讲了有所谓DV,LS算法，</p>
+<p>而且因为DV算法更好笔试考察，理论课对OSPF的讲解可以说是一笔带过。</p>
+<p>但无论如何，我们先复习一下：</p>
+<h3 id="什么是ospf">什么是ospf
+</h3><ol>
+<li>
+<p>Link-State的核心逻辑就是互相传递已知的链路信息，</p>
+<p>一致收敛到每个路由器都拥有完整的带权拓扑图（也即链接状态数据库，lsdb），</p>
+<p>然后对拓扑图执行Dijkstra算法。</p>
+</li>
+<li>
+<p>OSPF采用L-S算法，使用基于带宽的metric，封装于IP报文，</p>
+<p>协议号为89，组播地址为<strong>224.0.0.5与224.0.0.6</strong>。</p>
+</li>
+<li>
+<p>OSPF有Area的概念，一个Area包含多个网段。</p>
+<p>其中Area0称为Backbone区域。其他所有区域必须与Area0相连。</p>
+<p>Area内部独立进行最短路径计算。</p>
+</li>
+<li>
+<p>OSPF有5类报文：Hello、DD（DBD）、LSR、LSU、LSAck。</p>
+</li>
+</ol>
+<p>接下来讲解一些应对本次实验课，你应当知道的一些内容。</p>
+<h3 id="ospf相关指令">ospf相关指令
+</h3><ul>
+<li>display ospf   信息很多，可以试着找找</li>
+<li>display ospf peer  邻居信息</li>
+<li>display ospf lsdb  显示<strong>LSA</strong>（LSA是什么？）</li>
+<li>network xxx xxx xxx</li>
+<li>reset ospf process  重启OSPF，可用于更新DR和Router-id（这俩又是？）</li>
+</ul>
+<h3 id="什么是loopback">什么是Loopback
+</h3><p>Loopback 可以是路由器的一种<strong>逻辑虚接口</strong>。</p>
+<p>它的特点是永久<strong>物理状态恒为 Up</strong>，也就是永远连接，不受物理网线、接口插拔影响。</p>
+<h3 id="什么是router-id">什么是router id
+</h3><p>这是路由器的一种<strong>唯一标识</strong>。</p>
+<p>可以通过命令<strong>router id XXX</strong> 来直接配置。</p>
+<p>没有主动配置时，默认是优先选取<strong>环回接口（Loopback）中最大的 IP 地址</strong>，其次是自动选取所有物理接口中<strong>状态为 Up</strong> 的<strong>最大</strong> IP 地址，若所有接口均无 IP / 未启用，就无法自动生成 Router-ID。</p>
+<p><strong>Router ID 通常在 OSPF 进程启动时确定</strong>，后续对其更改需重启 OSPF 进程后才生效。</p>
+<h3 id="什么是lsa">什么是LSA
+</h3><p>LSA存储着Link-State信息的单元。有很多类，我们需要掌握5类，它们的功能分别是：</p>
+<p><strong>一类 LSA（router）</strong>：每台路由器生成，描述<strong>本路由器</strong>链路，区域内泛洪（注意泛洪≠广播）。</p>
+<p><strong>二类 LSA（network）</strong>：由 DR 生成，DR汇聚了<strong>同一网段</strong>成员清单，区域内泛洪。这个信息告诉哪些IP是同一子网。</p>
+<p><strong>三类 LSA（summary）</strong>：由 ABR 生成，将<strong>某区域的路由概要</strong>发布向其他区域。</p>
+<p><strong>四类 LSA（asbr）</strong>：由 ABR 生成，通告 <strong>ASBR 路由器的位置</strong>。</p>
+<p><strong>五类 LSA（external）</strong>：由 ASBR 生成，传递引入的<strong>外部路由</strong>，在整个 OSPF 自治系统内泛洪。</p>
+<h3 id="什么是dr">什么是DR
+</h3><p>DR是每个<strong>广播网段</strong>选举出的一个代表，作为<strong>二类LSA</strong>的生成者。</p>
+<p>选举逻辑是优先级数值更大者，若相同则是router id更大者。</p>
+<p>优先级为0则为放弃参选DR/BDR。</p>
+<p>选出DR后，再选出次大者作为BDR。</p>
+<h3 id="什么是bdr">什么是BDR
+</h3><p>在 <strong>DR执行</strong> reset ospf process 后，<strong>BDR成为新的DR</strong>，按原规则重新选举BDR。</p>
+<p>在 <strong>BDR执行</strong> reset ospf process 后，按规则重新选举BDR（原BDR也参与选举）。</p>
+<p>其他路由器执行时，<strong>不影响 DR、BDR 角色</strong>。</p>
+<h3 id="什么是abr">什么是ABR
+</h3><p>ABR是同时位于Area 0 和其他普通区域的路由器。</p>
+<p>他掌握多区域信息，还拥有跨区域沟通能力，所以可以负责在区域之间传递路由信息（<strong>三类 LSA</strong>）。</p>
+<p><strong>四类 LSA</strong> 可以教大家导航到ASBR。</p>
+<h3 id="什么是asbr">什么是ASBR
+</h3><p>ASBR 是负责把 OSPF 域外路由引入 OSPF 的路由器。</p>
+<p>用人话说，就是他有例如<strong>静态路由、RIP等其他协议</strong>这种渠道得到的<strong>路由信息</strong>。</p>
+<p>他可以发布<strong>五类LSA</strong>可以传递这些外部路由，让其他人也学习到。</p>
+<p>这下知道为啥需要四类LSA了：</p>
+<p>我学习外部路由时，只知道这个dest对应的下一跳是ASBR，怎么到达这个ASBR就需要ABR讲清楚。</p>
+<p>说了这么多我觉得也差不多了。</p>
+<p>具体LSA是什么结构，怎么实现上述的这些功能，就需要从实验中学习了。</p>
+<p>一些提醒：</p>
 <ol>
 <li>
-<p><strong>实验时间</strong>：取决于老师什么时候叫停。</p>
-<p>上午班一般时间最充裕，大概能从<strong>8点到12点半</strong>。</p>
-<p>下午班则是<strong>2点到6点</strong>，因为老师在7点上课前还需要吃饭。</p>
-<p>晚上的时间就<strong>略显紧张</strong>，大概可以从<strong>7点到10点半</strong>。</p>
+<p>小程序传图片时一定要<strong>及时</strong>，晚一点就无法再上传。</p>
 </li>
 <li>
-<p><strong>实验报告</strong>：</p>
-<a href="PDF.pdf" onclick="window.open(this.href,'_blank');return false;">
-  点击我获取获取获取一个2026年实验报告电子版
-</a>
-<p>课程组为同学们准备好了所有实验的实验报告并<strong>装订成册</strong>。</p>
-<p>实验报告的本子<strong>当堂收发</strong>，因此只能在实验课上完成。</p>
-<p>如果课上未能完成，需要自行设法完成实验，将实验报告电子版打印并完成，下次实验课时夹入册中。</p>
-<p>实验报告的形式不是编译那样的长篇大作，而是类似于CO、OS实验报告的<strong>思考题</strong>。</p>
-<p>题目的内容主要是实验<strong>操作</strong>的考察、实验<strong>现象</strong>的记录以及<strong>原因</strong>分析。</p>
+<p>传的图片尽可能展示<strong>核心内容</strong>，若缺乏重点可能拿不到9.5。</p>
 </li>
 <li>
-<p><strong>实验设备</strong>：两个人占用两张桌子，即<strong>四台电脑和桌子间的</strong>路由器、交换机等设备。每张桌子上有两台主机，两张桌子间为其他中间设备。两人的座位编号一般分别为<strong>B和C</strong>。</p>
-</li>
-<li>
-<p><strong>实验流程</strong>：老师先讲解本次的实验内容，约用时40-80min。</p>
-<p>之后大家以组为单位自行完成实验及实验报告。</p>
-</li>
-<li>
-<p><strong>考核方式</strong>：除实验报告外，部分班级需要在完成每部分小实验后向助教/老师提供关键中间步骤展示（类似于电设）。不过2506及以后的小朋友们可能已经没有电设这门课了。。</p>
+<p>报文直接筛选好 <strong>arp or icmp</strong>。本次实验就只涉及这两种。</p>
 </li>
 </ol>
-<h3 id="参考资料">参考资料
-</h3><p>最重要的是我们的<strong>狼书</strong>！</p>
-<p><img src="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/book.png"
-	width="525"
-	height="438"
-	srcset="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/book_hu10659397059888303881.png 480w, /p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/book_hu8276250984292623455.png 1024w"
-	loading="lazy"
-	
-		alt="狼书"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="119"
-		data-flex-basis="287px"
-	
-></p>
-<p>实验报告上的题目基本上都是狼书上的，因此<strong>跟着狼书的图组装，跟着狼书的命令敲</strong>就行了。</p>
+<h2 id="静态路由">静态路由
+</h2><p>注意选择套件二的同学也要完成静态路由的学习，也就是RIP的1,2,3,6题。</p>
+<p>这道题挺简单的，但是笔者被卡了很久，因为在做上机必做的undo interface vlan 1时，我手贱给交换机也执行了vlan 1的shutdown。</p>
+<p>哈哈，那还说啥了。能ping通就有鬼了。</p>
+<p>需要掌握的知识理论课都学过：</p>
+<p>0.0.0.0/0是默认，因为他就是最大的网，互联网。</p>
+<h2 id="ospf报文及简单交互">OSPF报文及简单交互
+</h2><p>前面提到OSPF有5类报文：</p>
+<ol>
+<li><strong>Hello（Type 1，Hello）</strong>
+发现邻居、维持邻居、参与 DR/BDR 选举。</li>
+<li><strong>DD/DBD（Type 2，Database Description）</strong>
+交换 LSDB 的<strong>目录摘要</strong>，先看彼此有什么 LSA。</li>
+<li><strong>LSR（Type 3，Link State Request）</strong>
+看到你有我没有的 LSA，就点名请求。</li>
+<li><strong>LSU（Type 4，Link State Update）</strong>
+<strong>真正发送</strong> LSA 内容（一个 LSU 可带多个 LSA）。</li>
+<li><strong>LSAck（Type 5，Link State Acknowledgment）</strong>
+确认收到 LSA，保证泛洪可靠。</li>
+</ol>
+<p>具体来讲：</p>
+<p><strong>Down -&gt; Init -&gt; 2-Way     靠 Hello</strong></p>
+<p>收到对方 Hello，看到自己 RID 出现在对方邻居列表，进入 2-Way。</p>
+<p>在广播网段里，非 DR/BDR 之间常停在 2-Way；与 DR/BDR 会继续到 Full。</p>
+<p><strong>2-Way -&gt; ExStart   开始谈 DD 规则</strong></p>
+<p>双方先协商 DD 的<strong>主从关系</strong>和初始序列号。（此SM非彼SM）</p>
 <blockquote>
-<p>跟上狼书的节奏！</p>
+<p>主从是为了避免Exchange阶段双方同时主导 DD。</p>
+<p><strong>Master</strong> 控制 DD 交换节奏和序列号推进，Slave跟随并确认。</p>
 </blockquote>
-<p>需要注意有的时候我们的设备和狼书并不完全对应，比如书本上用的是R1的Ethernet 0/1，虽然我们的R1提供的是Gigabit Ethernet 0/1 ，但功能是一样的，只需要把指令里的E改成GE就行。</p>
-<p>下面这个链接也很有用！现场看会很有帮助，提前看反而不知道在说啥。</p>
-<a href="https://docs.qq.com/doc/DVXJTdkV1UFJFcWZz" onclick="window.open(this.href,'_blank');return false;">
-网络实验常见问题解答</a>
-<p>实验配套的PPT也有一定作用，不过狼书已经足够了，狼书解决不了的问题可以试着在PPT找找。</p>
-<p>此外还可以<strong>参考</strong>学长流传的实验报告电子版。但是仅供参考，不要盲目相信，更不能明目张胆抄袭。</p>
-<h3 id="注意事项">注意事项
-</h3><p>因为笔者也只上了一节课，所以摸索出来的东西并不是很多，但应该还算有用，希望能帮助到你们。</p>
-<ol start="0">
-<li>
-<p>首先是老师们都会要求的：</p>
-<p>点击下方箭头查看详情。</p>
-<details>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">每次实验开始必做操作：
-</span></span><span class="line"><span class="cl">1. 所有设备开机后，选择一台PC连接校园网；
-</span></span><span class="line"><span class="cl">2. PC访问ftp://10.111.1.29/download文件夹，下载“每次实验开始必做操作.TXT”
-</span></span><span class="line"><span class="cl">3. 打开该文本文件，依次完成下列操作：
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">一、批量shutdown两台交换机的所有万兆端口
-</span></span><span class="line"><span class="cl">本学期网络实验室增加部署SDN实验环境，交换机S1和S2之间配置了万兆光接口，并联了两根光纤。
-</span></span><span class="line"><span class="cl">为了避免这些并联链路及生成树协议（STP）对其它实验两台交换机相连链路产生影响，
-</span></span><span class="line"><span class="cl">请同学们在开始做实验前，批量shutdown两台交换机所有的万兆端口。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">具体操作：
-</span></span><span class="line"><span class="cl">1.选中下列命令脚本并点复制；
-</span></span><span class="line"><span class="cl">2.打开putty软件，连接交换机console口，单击鼠标右键，将脚本中的命令灌入交换机。
-</span></span><span class="line"><span class="cl">也就完成了批量shutdown万兆端口的任务。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">system-view
-</span></span><span class="line"><span class="cl">#
-</span></span><span class="line"><span class="cl">interface Ten-GigabitEthernet1/0/25
-</span></span><span class="line"><span class="cl"> shutdown
-</span></span><span class="line"><span class="cl">#
-</span></span><span class="line"><span class="cl">interface Ten-GigabitEthernet1/0/26
-</span></span><span class="line"><span class="cl"> shutdown
-</span></span><span class="line"><span class="cl">#
-</span></span><span class="line"><span class="cl">interface Ten-GigabitEthernet1/0/27
-</span></span><span class="line"><span class="cl"> shutdown
-</span></span><span class="line"><span class="cl">#
-</span></span><span class="line"><span class="cl">interface Ten-GigabitEthernet1/0/28
-</span></span><span class="line"><span class="cl"> shutdown
-</span></span><span class="line"><span class="cl">#
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">二、删除所有路由器上的 interface vlan 1接口
-</span></span><span class="line"><span class="cl">路由器出厂设置中默认配置了interface vlan 1接口（ip address 192.168.0.1 ），实验前首先将这个接口删除（undo），以免这个接口地址自动参与router id 选举，影响ospf或bgp协议的正常工作。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">具体操作：
-</span></span><span class="line"><span class="cl">1.选中下列命令脚本并点复制；
-</span></span><span class="line"><span class="cl">2. 打开putty软件，连接路由器console口，单击鼠标右键，将脚本中的命令灌入交换机。
-</span></span><span class="line"><span class="cl">也就完成了批量shutdown万兆端口的任务。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">system-view
-</span></span><span class="line"><span class="cl">#
-</span></span><span class="line"><span class="cl">undo interface vlan 1
-</span></span><span class="line"><span class="cl">#
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">三、禁用网络实验室PC机相关的虚拟网卡
-</span></span><span class="line"><span class="cl">网络实验室PC机的虚拟网卡可能会对实验产生不良影响，建议根据具体实验内容，开机后首先将相关虚拟网卡禁用。例如：
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">1. 组播实验禁用所有虚拟网卡。
-</span></span><span class="line"><span class="cl">2. TCP实验禁用virtualbox虚拟网卡。
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>问AI时拍的一张图。很幸运拍了照片，可以帮大家对设备形成更直观的感受。</p>
-</li>
-</ol>
-<p><img src="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/111.png"
-	width="1706"
-	height="1279"
-	srcset="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/111_hu11910324477144601989.png 480w, /p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/111_hu7309369829178803912.png 1024w"
-	loading="lazy"
-	
-		alt="所谓的桌子间的中间设备的部分预览图"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="133"
-		data-flex-basis="320px"
-	
-></p>
-<ol start="2">
-<li>
-<p>区分PC串口和网口。<strong>串口一般用来连接console</strong>。网口用于连接交换机、路由器端口、校园网等通信业务。</p>
-</li>
-<li>
-<p>只有<strong>连接了console</strong>的PC才能在PuTTY中键入命令。</p>
-</li>
-<li>
-<p>只有<strong>连接了console</strong>的PC才能在wireshark上捕获报文。</p>
-</li>
-<li>
-<p>putty中键入命令时注意自己<strong>在不在system view</strong>（在系统视图中时为<code>方括号</code>，否则为<code>尖括号</code>）。</p>
-<p>有的命令不能在系统视图执行。</p>
-</li>
-<li>
-<p>putty中键入命令时可以<strong>简写、善用Tab</strong>，如interface写作inter。</p>
-</li>
-<li>
-<p>putty中某些指令的结果过长，不能直接完全显示，会出现MORE字样，<strong>点击Enter</strong>即可显示下一行内容。</p>
-</li>
-<li>
-<p><strong>undo</strong>+原指令大概率也是合法的指令。甚至可能是原指令相反含义的唯一表达。</p>
-</li>
-<li>
-<p>狼书上的某些语句表达和实际设备的<strong>版本不匹配</strong>。 自己搜索和尝试即可。</p>
-<p>如undo stp enable就无法运行，需要undo stp global enable。</p>
-</li>
-<li>
-<p>如何使用wireshark截取报文：已连接console后，点击左上角蓝色shark类似的图案就开始记录了，点击红色终止。双击某一报文可以查看<strong>各层</strong>详细信息。</p>
-<p><img src="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/wireshark.png"
-	width="500"
-	height="212"
-	srcset="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/wireshark_hu17440580751570202113.png 480w, /p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/wireshark_hu15741785692897310093.png 1024w"
-	loading="lazy"
-	
-		alt="wireshark界面"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="235"
-		data-flex-basis="566px"
-	
-></p>
-</li>
-</ol>
-<h3 id="博客风格">博客风格
-</h3><p>为了避免影响各位同学的实验体验，也节省笔者的时间，在后续的具体实验内容部分，我将不针对实验题目直接给出分析与答案，而是只分享一些做实验时的感受与经验。</p>
-<h2 id="实验入门">实验入门
-</h2><p>这部分没有具体的实验内容。</p>
-<p>puTTY的使用：一堆洋文，啥也不用管直接Open就行了。（对于本周的实验）</p>
-<p>敲击display current-configuration，记得善用简写与Tab。</p>
-<h2 id="数据链路层实验">数据链路层实验
-</h2><p>wireshark中点击一个报文，页面最下面那串十六进制就是报文内容。</p>
-<p>ping是在PC的cmd中执行的。</p>
-<p>ping给一个未连接的IP，可以收到由自己发送的报文，从而得到自己的IP地址。</p>
-<p>MAC地址可以在报文详细内容里找到。</p>
-<p>广播风暴实验做之前先检查STP是否确实关闭，触发风暴后观察到现象便可立刻停止截取报文，或直接拔掉console线，以免PC直接死机。</p>
-<p>查看MAC表、端口聚合、VLAN、LCP、PAP、CHAP等内容跟着狼书和PPT走就没什么大问题。</p>
-<p>比较有趣的是跨交换机VLAN实验。</p>
-<p><img src="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/exp.png"
-	width="978"
-	height="335"
-	srcset="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/exp_hu2468036183959324987.png 480w, /p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/exp_hu1334938971059786595.png 1024w"
-	loading="lazy"
-	
-		alt="跨交换机VLAN"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="291"
-		data-flex-basis="700px"
-	
-></p>
-<p>要求PCA去pingPCC，并截获PCA-&gt;S1,S1-&gt;S2,S2-&gt;PCC三段报文的内容。</p>
-<p>PCA和PCC直接连console看就可以了，关键是S1-&gt;S2如何观察？</p>
-<p>我们可以发现目前实验中PCB、PCD和VLAN3其实只是摆设，所以直接选其中一台机子用来监视。</p>
-<p>我们需要利用集线器，让S1-&gt;S2也能广播到PCB去，也即S1-&gt;HUB-&gt;PCB与S2。</p>
-<p>这时候把S1的console和PCB串口连，就可以让PCB截获S1-&gt;S2的报文了。</p>
-<p>有人问那你S1的console不是还要跟PCA连吗，PCA咋办？</p>
-<p>那PCA你就先截一下呗，再ping一下PCB去截就行了。</p>
+<p>双方先发带<strong>协商</strong>标志的 DD。</p>
+<blockquote>
+<p>何为协商？ I(Init)=1,我们初次见面，这就是协商的意思。</p>
+<p>刚见面时，都想当Master，而且后续也还有话要说(More)，</p>
+<p>所以MS=1,M=1</p>
+</blockquote>
+<p>然后这一轮结束后<strong>Router ID 大</strong>的一方成为 Master。Master 的seq被定为初始 DD sequence number，并在后续 DD 中主导递增。</p>
+<p>保证会话有序的逻辑是：Master 发一个 DD（含 seq），Slave 用<strong>相同 seq 应答</strong>其对应 DD。</p>
+<blockquote>
+<p>注意这里的seq不是你TCP的那个seq与ack！别搞混了</p>
+</blockquote>
+<p>所以接下来应该是Slave回应Master的第一句话，用Master第一句话的seq。</p>
+<p><strong>ExStart -&gt; Exchange  大量 DD 交换</strong></p>
+<p>互相发送 DD 摘要，知道你有什么、我缺什么。</p>
+<p>发送的过程满足I=0，M的MS=1，S的MS=0，M的seq是上次交流＋1，S的seq与M的seq相同。</p>
+<p>直到双方摘要交换完毕，M=0，进入 Loading。</p>
+<blockquote>
+<p>这里可以为大家写一个交流示例</p>
+<p>M-&gt;S (seq = A, I =1, MS =1, M =1)</p>
+<p>S-&gt;M (seq = B, I =1, MS =1, M =1)</p>
+<p>然后完成协商，S给出回应：</p>
+<p>S-&gt;M (seq = A, I =0, MS =0, M =1)</p>
+<p>然后Master开始主导对话进行exchange：</p>
+<p>M-&gt;S (seq = A+1, I =0, MS =1, M =1)</p>
+<p>S-&gt;M (seq = A+1, I =0, MS =0, M =1)</p>
+<p>然后说完了：</p>
+<p>M-&gt;S (seq = A+n, I =0, MS =1, M =0)</p>
+<p>S-&gt;M (seq = A+n, I =0, MS =0, M =0)</p>
+</blockquote>
+<p><strong>Exchange -&gt; Loading  疯狂学习LSA中</strong></p>
+<p>我缺哪些就发 LSR。</p>
+<p>对方用 LSU 回复具体 LSA。</p>
+<p>收到后回 LSAck。</p>
+<p><strong>Loading -&gt; Full 数据库同步完成</strong></p>
+<p>邻接完成，后续拓扑变化直接用 LSU/LSAck 增量同步。</p>
 <h2 id="后记">后记
-</h2><p>没有什么东西想说。</p>
-<p>自己对这些知识的了解也不算深刻，正确性更是不能保证。</p>
-<p>写这些东西的时候也更发现自己对某些东西的理解并不到位，并且在逃避着某些问题。</p>
+</h2><p>就先写这么多吧。笔者区域划分实验还没做完。</p>
+<p>这一次写的比较详细，因为本人确实也吃了没预习的亏，在前面的地方卡了很久，一个小实验就差不多一个小时。</p>
+<p>依旧给出一些经验：</p>
+<ol>
+<li>
+<p>实验课前的预习非常重要。请把这个预习当成其他实验课的课下部分来看。</p>
+</li>
+<li>
+<p>善用dis cu进行调试。(display current-configuration)</p>
+</li>
+<li>
+<p>找老师答疑解惑可能会扣除少量分数。（未独立完成）</p>
+</li>
+</ol>
 
 </section>
 
@@ -668,30 +568,6 @@
             
                 
 <article class="has-image">
-    <a href="/p/buaa-cn-week3-ospf/">
-        
-        
-            <div class="article-image">
-                <img src="/p/buaa-cn-week3-ospf/cv.d98e7b442c5a5bb9f9f0876dc128e41d_hu9816624653184581887.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post BUAA CN Week3 OSPF"
-                        
-                        data-hash="md5-2Y57RCxaW7n58IdtwSjkHQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">BUAA CN Week3 OSPF</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/buaa-cn-week2-n%E5%B1%82/">
         
         
@@ -709,6 +585,30 @@
 
         <div class="article-details">
             <h2 class="article-title">BUAA CN Week2 N层</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/12345.044e835c2df8e795663b84f986a662dd_hu13200712501161062895.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CN Week1 入门&#43;D层"
+                        
+                        data-hash="md5-BE6DXC3455VmO4T5hqZi3Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CN Week1 入门&#43;D层</h2>
         </div>
     </a>
 </article>
