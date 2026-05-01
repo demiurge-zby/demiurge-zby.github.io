@@ -7,7 +7,92 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Sun, 26 Apr 2026 19:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 30 Apr 2026 19:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week4 T层</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week4-t%E5%B1%82/</link>
+        <pubDate>Thu, 30 Apr 2026 19:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week4-t%E5%B1%82/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week4-t%E5%B1%82/aaaa.png" alt="Featured image of post BUAA CN Week4 T层" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;本周是五一假期周，但是实验的进度并不停滞。&lt;/p&gt;
+&lt;p&gt;学生需自行预约时间完成传输层的实验内容。&lt;/p&gt;
+&lt;p&gt;实验本身的操作难度约等于0，而理论分析的含量非常高。&lt;/p&gt;
+&lt;p&gt;TCP在理论课中已占了较大的篇幅，因此本次博客不强调理论知识，&lt;/p&gt;
+&lt;p&gt;着重讲解linux线上平台的使用。&lt;/p&gt;
+&lt;p&gt;上篇博客我们使用的是与机房环境更加相似的Winxp系统，&lt;/p&gt;
+&lt;p&gt;这次TCP实验则需要我们使用Linux系统进行操作。&lt;/p&gt;
+&lt;p&gt;还是老样子，我把需要注意的细节先放在最前面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在第一次博客中便提到这个链接：&lt;a href=&#34;https://docs.qq.com/doc/DVXJTdkV1UFJFcWZz&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
+网络实验常见问题解答&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;它应该能解决你绝大多数的问题。下面我就讲文档里没有的内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PC与中间设备的对应关系和之前是一样的。虽然这次桌面上没有快捷方式，但是在终端minicom之后对应的中间设备仍然是唯一确定的。&lt;/p&gt;
+&lt;p&gt;PCA：S1、PCB：S2、PCC：R1、PCD：R2&lt;/p&gt;
+&lt;p&gt;你问我怎么知道的？ dis cu 再结合实验验证即可确定。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PCB一般来说有Eth0和Eth1两个网络，请一定注意配置IP地址时，连接的是你组网的那个端口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;linux的窗口关闭/最大化/最小化位于左上角。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;linux好像不支持双击。打开文件夹都得右键Open。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;无意间探索到的一些快捷键：（&lt;strong&gt;超级终端&lt;/strong&gt;均可使用）&lt;/p&gt;
+&lt;p&gt;ctrl+L = dis ip r，可以快速查看路由表信息&lt;/p&gt;
+&lt;p&gt;ctrl+G = dis cu，可以快速查看当前设备的配置&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;实验部分&#34;&gt;实验部分
+&lt;/h2&gt;&lt;p&gt;正如前文所说，本次实验组网很简单，而难点在于分析。&lt;/p&gt;
+&lt;p&gt;首先提醒大家TCP的三个实验前需要记录一下&lt;strong&gt;发送方初始序号&lt;/strong&gt;，实验报告要填。&lt;/p&gt;
+&lt;p&gt;TCP实验主要考察了：连接控制、流量控制、拥塞控制。&lt;/p&gt;
+&lt;h3 id=&#34;连接控制&#34;&gt;连接控制
+&lt;/h3&gt;&lt;p&gt;其实就是三次握手和四次挥手。&lt;/p&gt;
+&lt;p&gt;这是理论课的重点，这里就简单概括几条：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;建立连接是SYN，结束连接是FIN。&lt;/li&gt;
+&lt;li&gt;建立连接时，报文的TCP Header会有Option来约定MSS以及是否SACK等内容。&lt;/li&gt;
+&lt;li&gt;建立：Client发出SYN请求，Server回应请求并发出SYN请求，Client回应请求。&lt;/li&gt;
+&lt;li&gt;结束：Client发出FIN请求，Server回应请求（此时还可以发数据），Server发出FIN请求，Client回应请求。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;滑动窗口&#34;&gt;滑动窗口
+&lt;/h3&gt;&lt;p&gt;需要注意拥塞窗口常常写成以报文数为单位，而发送窗口与接收窗口以字节数为单位，中间有1460的倍数关系。&lt;/p&gt;
+&lt;p&gt;下面解释几个名词。&lt;/p&gt;
+&lt;p&gt;rcv_wnd：接收窗口的大小，来自于ACK报文的TCP Header信息。&lt;/p&gt;
+&lt;p&gt;snd_wnd_left：发送窗口的最左侧，也即已发出且尚未确认的最早字节号。&lt;/p&gt;
+&lt;p&gt;snd_wnd_pointer：当前正在发送的字节号。&lt;/p&gt;
+&lt;p&gt;snd_wnd_point-left：已发出且尚未确认的字节数。&lt;/p&gt;
+&lt;p&gt;snd_wnd_left+cwnd：拥塞窗口限制下的发送窗口右边缘。&lt;/p&gt;
+&lt;p&gt;snd_wnd_left+rcv_wnd：接收窗口限制下的发送窗口右边缘。&lt;/p&gt;
+&lt;p&gt;发送窗口右边沿：上面两行中的最小者作为真正的发送窗口右边缘。&lt;/p&gt;
+&lt;p&gt;通告的接收窗口：ACK报文视角下的rcv_wnd。&lt;/p&gt;
+&lt;p&gt;接收窗口左边沿：当前已接收未确认的最早字节号，数值等同于对应字节的snd_wnd_left。&lt;/p&gt;
+&lt;p&gt;接收窗口指针：当前正在接受的字节号，数值等同于对应字节的snd_wnd_pointer。&lt;/p&gt;
+&lt;p&gt;接收窗口右边沿：数值等同于对应字节的snd_wnd_left+rcv_wnd。&lt;/p&gt;
+&lt;p&gt;在接收缓存中的数据量（即未确认的数据）：数值等同于对应字节的snd_wnd_point-left。&lt;/p&gt;
+&lt;p&gt;具体知识见理论。这是理论重点。&lt;/p&gt;
+&lt;p&gt;关注零窗口报文Zero-Window及其探测报文Keep-Alive。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意理论课讲的保活计时器虽然也是Keep Alive，&lt;/p&gt;
+&lt;p&gt;但目的完全不同，保活计时器是用于Server端建立连接后迟迟收不到请求的情况，&lt;/p&gt;
+&lt;p&gt;而零窗口探测报文只是用于询问对方现在是否愿意接受字节（观测对方ACK报文的rcv_wnd）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;拥塞控制&#34;&gt;拥塞控制
+&lt;/h3&gt;&lt;p&gt;这位更是理论重重点，大题必考。&lt;/p&gt;
+&lt;p&gt;没啥讲的必要，写了也0个人会看。&lt;/p&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;UDP后续再补，这篇博客目前很水，&lt;/p&gt;
+&lt;p&gt;不过水就水吧，确实没有太多需要说的。&lt;/p&gt;
+&lt;p&gt;先这样发了。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA CN Week3.5 OSPF-Online</title>
         <link>https://demiurge-zby.github.io/p/buaa-cn-week3.5-ospf-online/</link>
         <pubDate>Sun, 26 Apr 2026 19:15:30 +0800</pubDate>
@@ -128,6 +213,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;实验6中 tracert一直失败，应该是有防火墙。理论课上也讲过这个命令可以用来hack。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;设计型实验1需要注意将外部路由引入OSPF要执行： import-route static&lt;/p&gt;
 &lt;p&gt;设计型实验2的备份设计其实就是cost的设计，从而实现冗余链路的优先级设置。&lt;/p&gt;
 &lt;p&gt;高优先级链路不通时，其冗余链路自然就被OSPF重新计算出来了。&lt;/p&gt;
 &lt;h2 id=&#34;后记&#34;&gt;后记
