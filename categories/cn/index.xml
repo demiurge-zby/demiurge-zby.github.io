@@ -26,7 +26,8 @@
 &lt;li&gt;
 &lt;p&gt;在第一次博客中便提到这个链接：&lt;a href=&#34;https://docs.qq.com/doc/DVXJTdkV1UFJFcWZz&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt;
 网络实验常见问题解答&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;它应该能解决你绝大多数的问题。下面我就讲文档里没有的内容。&lt;/p&gt;
+&lt;p&gt;它应该能解决你绝大多数的问题，例如登录账号密码，如何连接中间设备，如何配置主机IP，如何修改sequence号为具体数值等等。&lt;/p&gt;
+&lt;p&gt;下面我就讲文档里没有的内容。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;PC与中间设备的对应关系和之前是一样的。虽然这次桌面上没有快捷方式，但是在终端minicom之后对应的中间设备仍然是唯一确定的。&lt;/p&gt;
