@@ -7,7 +7,45 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Thu, 30 Apr 2026 19:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/cn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 11 May 2026 19:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/cn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week5 BGP</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week5-bgp/</link>
+        <pubDate>Mon, 11 May 2026 19:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week5-bgp/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week5-bgp/love.png" alt="Featured image of post BUAA CN Week5 BGP" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;久违的线下上机是怎样的体验呢？&lt;/p&gt;
+&lt;p&gt;接触不良还在追我，，&lt;/p&gt;
+&lt;p&gt;请一定使用能卡紧的线！&lt;/p&gt;
+&lt;p&gt;除此之外呢，请你一定要提前阅读共享文档。&lt;/p&gt;
+&lt;p&gt;链接我都懒得贴了。&lt;/p&gt;
+&lt;p&gt;我们的设备比课本上更先进一点，因此指令常常有不一致的地方。&lt;/p&gt;
+&lt;p&gt;最后，请你一定记得在每次重启后，&lt;/p&gt;
+&lt;p&gt;完成上机必做任务（尤其是路由器vlan1）&lt;/p&gt;
+&lt;h2 id=&#34;理论知识&#34;&gt;理论知识
+&lt;/h2&gt;&lt;p&gt;我们简单回顾一下理论课中对BGP的认识：&lt;/p&gt;
+&lt;p&gt;和RIP、OSPF一样，BGP是在网络层章节学习到的一种路由选择协议。&lt;/p&gt;
+&lt;p&gt;其中RIP和OSPF都是IGP，在同一AS内进行。（前者为DV后者为LS）&lt;/p&gt;
+&lt;p&gt;而BGP是EGP范畴内的，主要实现的是跨AS的路由选择。（算法为：Path-Vector）&lt;/p&gt;
+&lt;p&gt;算法逻辑与DV类似，不过实际考量时会有多种依据。&lt;/p&gt;
+&lt;p&gt;常用的是 AS_PATH长度，即基于经过的AS个数来判断。&lt;/p&gt;
+&lt;p&gt;此外还有两条人为添加的属性偏好：&lt;/p&gt;
+&lt;p&gt;local preference 优先级最高，数值越高越优先去。&lt;/p&gt;
+&lt;p&gt;MED则优先级最低，数值越低越优先去。(MED可以视为对方的推荐度，只有AS_PATH一致才会考虑MED)&lt;/p&gt;
+&lt;p&gt;跨AS的路由选择需要看两个表：&lt;/p&gt;
+&lt;p&gt;BGP表(AS间)和IP Routing表(AS内)，两者合一可以视为Forwarding表。&lt;/p&gt;
+&lt;h2 id=&#34;实验部分&#34;&gt;实验部分
+&lt;/h2&gt;&lt;p&gt;本次实验操作相对简单，&lt;/p&gt;
+&lt;p&gt;主要是因为实验组网基本不变，仅仅是增加了几个LoopBack。&lt;/p&gt;
+&lt;p&gt;但是实验背后的原理依旧有大量理论课未能设计的内容。&lt;/p&gt;
+&lt;h3 id=&#34;路由聚合&#34;&gt;路由聚合
+&lt;/h3&gt;&lt;h3 id=&#34;同步机制&#34;&gt;同步机制
+&lt;/h3&gt;&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;好累好累好累。。。。&lt;/p&gt;
+&lt;p&gt;先睡了待会再写。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA CN Week4 T层</title>
         <link>https://demiurge-zby.github.io/p/buaa-cn-week4-t%E5%B1%82/</link>
         <pubDate>Thu, 30 Apr 2026 19:15:30 +0800</pubDate>
@@ -91,6 +129,23 @@
 &lt;/h2&gt;&lt;p&gt;UDP后续再补，这篇博客目前很水，&lt;/p&gt;
 &lt;p&gt;不过水就水吧，确实没有太多需要说的。&lt;/p&gt;
 &lt;p&gt;先这样发了。&lt;/p&gt;
+&lt;h2 id=&#34;后后记&#34;&gt;后后记
+&lt;/h2&gt;&lt;p&gt;UDP实验更是简单啊同学们。&lt;/p&gt;
+&lt;p&gt;简单提醒两点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;有些同学会出现连ping都ping不通的现象，&lt;/p&gt;
+&lt;p&gt;这大多数情况是因为你的虚拟机遗留有前人的环境，&lt;/p&gt;
+&lt;p&gt;reset saved-configuration Y&lt;/p&gt;
+&lt;p&gt;然后reboot N Y 即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;明明只想看UDP报文却筛选到一堆乱七八糟的？&lt;/p&gt;
+&lt;p&gt;LLMNR NBNS这些是应用层协议，他们的传输层也是UDP哦。&lt;/p&gt;
+&lt;p&gt;那怎么进行筛选？&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;udp and data&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         <item>

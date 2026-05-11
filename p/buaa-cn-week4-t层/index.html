@@ -277,6 +277,7 @@
       </ol>
     </li>
     <li><a href="#后记">后记</a></li>
+    <li><a href="#后后记">后后记</a></li>
   </ol>
 </nav>
         </div>
@@ -450,6 +451,23 @@
 </h2><p>UDP后续再补，这篇博客目前很水，</p>
 <p>不过水就水吧，确实没有太多需要说的。</p>
 <p>先这样发了。</p>
+<h2 id="后后记">后后记
+</h2><p>UDP实验更是简单啊同学们。</p>
+<p>简单提醒两点：</p>
+<ol>
+<li>
+<p>有些同学会出现连ping都ping不通的现象，</p>
+<p>这大多数情况是因为你的虚拟机遗留有前人的环境，</p>
+<p>reset saved-configuration Y</p>
+<p>然后reboot N Y 即可。</p>
+</li>
+<li>
+<p>明明只想看UDP报文却筛选到一堆乱七八糟的？</p>
+<p>LLMNR NBNS这些是应用层协议，他们的传输层也是UDP哦。</p>
+<p>那怎么进行筛选？</p>
+<p>使用 <code>udp and data</code> 即可。</p>
+</li>
+</ol>
 
 </section>
 
@@ -471,6 +489,30 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/buaa-cn-week5-bgp/">
+        
+        
+            <div class="article-image">
+                <img src="/p/buaa-cn-week5-bgp/love.5409c4c4a27af7cdc7293bbe79020f05_hu3896528001074160640.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post BUAA CN Week5 BGP"
+                        
+                        data-hash="md5-VAnExKJ6983HKTu&#43;eQIPBQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BUAA CN Week5 BGP</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
