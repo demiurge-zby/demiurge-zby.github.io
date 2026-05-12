@@ -383,9 +383,11 @@
 </h2><p>计网理论课就这样结束了，还是有点感慨。</p>
 <p>据说期末要进考期。其实是一门像数据库一样，适合考前系统学习的课程。</p>
 <p>不过已经学了也没关系！说不定能帮上计网实验？</p>
+<hr>
 <p><strong>实则基本帮不上</strong>。至少这次实验让我痛彻心扉。</p>
 <p>理论课由于时间限制，只是草草讲了有所谓DV、LS算法，</p>
 <p>而且因为DV算法更好笔试考察，理论课对OSPF的讲解可以说是一笔带过。</p>
+<hr>
 <p>但无论如何，我们先复习一下：</p>
 <h3 id="什么是ospf">什么是ospf
 </h3><ol>
@@ -450,12 +452,14 @@
 <p>他可以发布<strong>五类LSA</strong>可以传递这些外部路由，让其他人也学习到。</p>
 <p>这下知道为啥需要四类LSA了：</p>
 <p>我学习外部路由时，只知道这个dest对应的下一跳是ASBR，怎么到达这个ASBR就需要ABR讲清楚。</p>
+<hr>
 <p>说了这么多我觉得也差不多了。</p>
 <p>具体LSA是什么结构，怎么实现上述的这些功能，就需要从实验中学习了。</p>
 <h2 id="静态路由">静态路由
 </h2><p>注意选择套件二的同学也要完成静态路由的学习，也就是RIP的1,2,3,6题。</p>
 <p>这道题挺简单的，但是笔者被卡了很久，因为在做上机必做的undo interface vlan 1时，我手贱给交换机也执行了vlan 1的shutdown。</p>
 <p>哈哈，那还说啥了。能ping通就有鬼了。</p>
+<hr>
 <p>需要掌握的知识理论课都学过：</p>
 <p>0.0.0.0/0是默认，因为他就是最大的网，互联网。</p>
 <h2 id="ospf报文及简单交互">OSPF报文及简单交互
@@ -472,10 +476,13 @@
 <li><strong>LSAck（Type 5，Link State Acknowledgment）</strong>
 确认收到 LSA，保证泛洪可靠。</li>
 </ol>
+<hr>
 <p>具体来讲：</p>
+<hr>
 <p><strong>Down -&gt; Init -&gt; 2-Way     靠 Hello</strong></p>
 <p>收到对方 Hello，看到自己 RID 出现在对方邻居列表，进入 2-Way。</p>
 <p>在广播网段里，非 DR/BDR 之间常停在 2-Way；与 DR/BDR 会继续到 Full。</p>
+<hr>
 <p><strong>2-Way -&gt; ExStart   开始谈 DD 规则</strong></p>
 <p>双方先协商 DD 的<strong>主从关系</strong>和初始序列号。（此SM非彼SM）</p>
 <blockquote>
@@ -494,6 +501,7 @@
 <p>注意这里的seq不是你TCP的那个seq与ack！别搞混了</p>
 </blockquote>
 <p>所以接下来应该是Slave回应Master的第一句话，用Master第一句话的seq。</p>
+<hr>
 <p><strong>ExStart -&gt; Exchange  大量 DD 交换</strong></p>
 <p>互相发送 DD 摘要，知道你有什么、我缺什么。</p>
 <p>发送的过程满足I=0，M的MS=1，S的MS=0，M的seq是上次交流＋1，S的seq与M的seq相同。</p>
@@ -511,10 +519,12 @@
 <p>M-&gt;S (seq = A+n, I =0, MS =1, M =0)</p>
 <p>S-&gt;M (seq = A+n, I =0, MS =0, M =0)</p>
 </blockquote>
+<hr>
 <p><strong>Exchange -&gt; Loading  疯狂学习LSA中</strong></p>
 <p>我缺哪些就发 LSR。</p>
 <p>对方用 LSU 回复具体 LSA。</p>
 <p>收到后回 LSAck。</p>
+<hr>
 <p><strong>Loading -&gt; Full 数据库同步完成</strong></p>
 <p>邻接完成，后续拓扑变化直接用 LSU/LSAck 增量同步。</p>
 <h2 id="后记">后记

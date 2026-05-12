@@ -422,6 +422,7 @@
 <p>本次实验做完之后，没有充沛的分享欲，而只是劫后余生的感慨。</p>
 <p>明明是N层实验，但整体来说和D层实验的感觉十分相似，你需要熟练展现上次实验所培养你的能力与素养。</p>
 <p>但除此之外，本次实验还要求你熟络ARP和ICMP，尤其是它们在报文中的封装。</p>
+<hr>
 <p>一些提醒：</p>
 <ol>
 <li>
@@ -459,6 +460,7 @@
 <li>对于跨网段的ping，下一跳当然是<strong>缺省网关</strong>。</li>
 <li>ARP request <strong>广播</strong>时，目标MAC地址是<strong>ffff-ffff-ffff</strong>，不过在报文中目标MAC地址<strong>显示为全0</strong>。</li>
 </ol>
+<hr>
 <p>ICMP的理论课讲得倒比较详细，实验涉及的也很浅，不作解释。</p>
 <h2 id="跨交换机vlan间路由实验">跨交换机VLAN间路由实验
 </h2><p>下面重点讲这个实验的ARP与ICMP报文分析。</p>
@@ -491,6 +493,7 @@
 </h4><p>要知道这个ARP报文的信息很明确，<strong>不会再改变了</strong>。</p>
 <p>S2只是一个路由，一个<strong>搬运工</strong>，告诉你往哪个端口走，仅此而已。</p>
 <p>MAC表也是这样简单，谁给我发了东西，我就把<strong>source(mac+vlan)和它进来的端口</strong>学习下来。</p>
+<hr>
 <p>不过交换机还有一个功能，就是管理VLAN。毕竟VLAN是D层的事情。</p>
 <p>交换机的端口就是划分VLAN的工具。你从这个口进来，那你就是这个VLAN。</p>
 <p>端口分为<strong>access/trunk/hybrid</strong>这三种。</p>
@@ -523,13 +526,16 @@
 </h3><h4 id="step-3">Step 3
 </h4><p>首先S1作为交换机，收到报文肯定也是先<strong>学习MAC表</strong>，PCC_MAC对应GE1/0/13。</p>
 <p>但同时作为N层相关设备，随便收到一个报文也会直接<strong>学习ARP Cache</strong>，192.168.2.11对应PCC_MAC。</p>
+<hr>
 <p>PCC向192.168.2.1发送的ARP request报文是：</p>
 <p>Source: 192.168.2.11 PCC_MAC</p>
 <p>Dest: 192.168.2.1 FFFF-FFFF-FFFF</p>
 <p>而S1的VLAN2接口就是192.68.2.1。</p>
 <p>所以S1应当把VLAN2接口的MAC地址传回PCC。</p>
+<hr>
 <p>因为<strong>刚学到MAC表里PCC_MAC对应GE1/0/13</strong>，所以ARP reply直接从这个trunk口发出去。</p>
 <p>从trunk口<strong>出去要带tag</strong>，因为是从VLAN2接口发的，所以VLAN id = 2。</p>
+<hr>
 <p>192.168.2.1向192.168.2.11发送的ARP reply报文是：</p>
 <p>Source: 192.168.2.1 VLAN2_MAC</p>
 <p>Dest: 192.168.2.11 PCC_MAC</p>
@@ -544,6 +550,7 @@
 </h3><h4 id="step-5">Step 5
 </h4><p>PCC收到了报文，直接<strong>学习ARP</strong>：192.168.2.1对应VLAN2_MAC。</p>
 <p>这下终于知道了，我要去ping PCD了！</p>
+<hr>
 <p>之前我知道N层的Source和Dest，但是一直不知道D层对应的下一跳应该是谁，现在<strong>终于可以封装报文</strong>了。</p>
 <ul>
 <li>
@@ -571,6 +578,7 @@
 <h3 id="icmp报文更改">ICMP报文更改！
 </h3><p>ICMP报文发了一半，把第一段D层打通了。</p>
 <p>接力棒传到S1的interface vlan2这里来了。</p>
+<hr>
 <p>接下来经过某种判断逻辑<del>你可以不知道</del>，但很显然S1知道。</p>
 <p>S1知道它该把报文交付给网络层处理了。</p>
 <p>然后ICMP报文成功地从interface vlan3出来了。</p>

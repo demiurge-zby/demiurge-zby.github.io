@@ -15,32 +15,106 @@
         <guid>https://demiurge-zby.github.io/p/buaa-cn-week5-bgp/</guid>
         <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week5-bgp/love.png" alt="Featured image of post BUAA CN Week5 BGP" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;久违的线下上机是怎样的体验呢？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
 &lt;p&gt;接触不良还在追我，，&lt;/p&gt;
 &lt;p&gt;请一定使用能卡紧的线！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;除此之外呢，请你一定要提前阅读共享文档。&lt;/p&gt;
 &lt;p&gt;链接我都懒得贴了。&lt;/p&gt;
 &lt;p&gt;我们的设备比课本上更先进一点，因此指令常常有不一致的地方。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;最后，请你一定记得在每次重启后，&lt;/p&gt;
 &lt;p&gt;完成上机必做任务（尤其是路由器vlan1）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;理论知识&#34;&gt;理论知识
 &lt;/h2&gt;&lt;p&gt;我们简单回顾一下理论课中对BGP的认识：&lt;/p&gt;
 &lt;p&gt;和RIP、OSPF一样，BGP是在网络层章节学习到的一种路由选择协议。&lt;/p&gt;
-&lt;p&gt;其中RIP和OSPF都是IGP，在同一AS内进行。（前者为DV后者为LS）&lt;/p&gt;
-&lt;p&gt;而BGP是EGP范畴内的，主要实现的是跨AS的路由选择。（算法为：Path-Vector）&lt;/p&gt;
+&lt;p&gt;其中&lt;strong&gt;RIP和OSPF都是IGP，在同一AS内进行&lt;/strong&gt;。（前者为DV后者为LS）&lt;/p&gt;
+&lt;p&gt;而BGP是EGP范畴内的，主要实现的是&lt;strong&gt;跨AS的路由选择&lt;/strong&gt;。（算法为：Path-Vector）&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;算法逻辑与DV类似，不过实际考量时会有多种依据。&lt;/p&gt;
-&lt;p&gt;常用的是 AS_PATH长度，即基于经过的AS个数来判断。&lt;/p&gt;
+&lt;p&gt;常用的是 &lt;strong&gt;AS_PATH长度&lt;/strong&gt;，即基于经过的AS个数来判断。&lt;/p&gt;
 &lt;p&gt;此外还有两条人为添加的属性偏好：&lt;/p&gt;
-&lt;p&gt;local preference 优先级最高，数值越高越优先去。&lt;/p&gt;
-&lt;p&gt;MED则优先级最低，数值越低越优先去。(MED可以视为对方的推荐度，只有AS_PATH一致才会考虑MED)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;local preference 优先级最高&lt;/strong&gt;。数值越高越优先去。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MED优先级低于AS_PATH&lt;/strong&gt;。数值越低越优先去。&lt;/p&gt;
+&lt;p&gt;(MED可以视为对方的推荐度，只有AS_PATH一致才会考虑MED)&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;跨AS的路由选择需要看两个表：&lt;/p&gt;
-&lt;p&gt;BGP表(AS间)和IP Routing表(AS内)，两者合一可以视为Forwarding表。&lt;/p&gt;
+&lt;p&gt;BGP表(AS间)和Routing表(AS内)，两者合一可以视为Forwarding表。&lt;/p&gt;
 &lt;h2 id=&#34;实验部分&#34;&gt;实验部分
 &lt;/h2&gt;&lt;p&gt;本次实验操作相对简单，&lt;/p&gt;
-&lt;p&gt;主要是因为实验组网基本不变，仅仅是增加了几个LoopBack。&lt;/p&gt;
-&lt;p&gt;但是实验背后的原理依旧有大量理论课未能设计的内容。&lt;/p&gt;
+&lt;p&gt;主要是因为许多实验的组网完全不变，仅仅是增加了几个LoopBack。&lt;/p&gt;
+&lt;p&gt;但是实验背后的原理依旧有大量理论课未能涉及的内容。&lt;/p&gt;
 &lt;h3 id=&#34;路由聚合&#34;&gt;路由聚合
-&lt;/h3&gt;&lt;h3 id=&#34;同步机制&#34;&gt;同步机制
-&lt;/h3&gt;&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h3&gt;&lt;p&gt;路由聚合机制本身可能会触发&lt;strong&gt;黑洞&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;黑洞不难想象为一个&lt;/p&gt;
+&lt;p&gt;报文经过此处就会沦陷的地方。&lt;/p&gt;
+&lt;h4 id=&#34;啥黑洞&#34;&gt;啥？黑洞
+&lt;/h4&gt;&lt;p&gt;因为它将多个网段聚合为一个大网段，&lt;/p&gt;
+&lt;p&gt;如果小网段崩溃，由于聚合路由存在，&lt;/p&gt;
+&lt;p&gt;报文依然可以&lt;strong&gt;被正确路由到该网段&lt;/strong&gt;，&lt;/p&gt;
+&lt;p&gt;然后丢失。 也就是黑洞。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;聚合可以视为路由器在宣称自己拥有&lt;strong&gt;很可能比实际更大&lt;/strong&gt;的地址空间。&lt;/p&gt;
+&lt;p&gt;一旦流量想去往聚合范围内、但实际不存在的地址，就会导致数据包在传输后被丢弃。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;关bgp啥事&#34;&gt;关BGP啥事
+&lt;/h4&gt;&lt;p&gt;在AS内部，&lt;strong&gt;全域的可见性&lt;/strong&gt;通常能快速修复这种不精确带来的黑洞。&lt;/p&gt;
+&lt;p&gt;但在BGP这种跨AS背景下，黑洞问题就尤为突出。&lt;/p&gt;
+&lt;p&gt;AS间的&lt;strong&gt;信息隔离&lt;/strong&gt;使得聚合的发起者无法将内部明细网络的失效信息及时传递给外部，&lt;/p&gt;
+&lt;p&gt;只要聚合范围内&lt;strong&gt;仍有一条有效路由&lt;/strong&gt;，聚合路由便会被维持，&lt;/p&gt;
+&lt;p&gt;从而导致一个AS内部的故障变成了影响整个互联网的持续性黑洞。&lt;/p&gt;
+&lt;h3 id=&#34;同步机制&#34;&gt;同步机制
+&lt;/h3&gt;&lt;p&gt;我们直接来看课本定义：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BGP 规定：一个 BGP 路由器不把从  &lt;em&gt;内部 BGP 对等体&lt;/em&gt;  得知的路由信息通告给  &lt;em&gt;外部对等体&lt;/em&gt; ，除非该路由信息  &lt;em&gt;也能通过 IGP&lt;/em&gt;  得知，这就是 BGP 的同步机制。&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;啥是bgp对等体&#34;&gt;啥是BGP对等体
+&lt;/h4&gt;&lt;p&gt;可以理解为建立了BGP对话的两台路由器。&lt;/p&gt;
+&lt;p&gt;分为IBGP对等体与EBGP对等体。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;设想这样一个场景：&lt;/p&gt;
+&lt;p&gt;AS1 RA &amp;mdash;&amp;mdash;-  AS2  R1 &amp;mdash;- AS2 R0 &amp;mdash;&amp;ndash; AS2 R2 &amp;mdash;&amp;mdash;- AS3 RB&lt;/p&gt;
+&lt;p&gt;其中RA和R1、RB和R2是EBGP对等体。&lt;/p&gt;
+&lt;p&gt;R1和R2是IBGP对等体。&lt;/p&gt;
+&lt;p&gt;R0是纯IGP路由器，没有BGP表。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;那么就会有：&lt;/p&gt;
+&lt;p&gt;R2通过EBGP得知到RB的路由，并通过IGP传递给R1。&lt;/p&gt;
+&lt;p&gt;那R1能不能直接告诉RA怎么去RB呢？&lt;/p&gt;
+&lt;h4 id=&#34;如果告诉你&#34;&gt;如果告诉你
+&lt;/h4&gt;&lt;p&gt;那同理 RB 也知道怎么去RA了。&lt;/p&gt;
+&lt;p&gt;可以ping通了&lt;/p&gt;
+&lt;p&gt;吗？&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;同步机制，本质上是&lt;strong&gt;不懂BGP路由器&lt;/strong&gt;的需要被同步那些它不懂的BGP路由。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;IGP的链路包含R0，&lt;/p&gt;
+&lt;p&gt;R0也确实传递了BGP信息没错，&lt;/p&gt;
+&lt;p&gt;但是R0在此过程中没能学习到BGP，也不认识其他AS。&lt;/p&gt;
+&lt;p&gt;因此，如果RA ping RB，&lt;/p&gt;
+&lt;p&gt;报文在传递到R0之后，就被R0销毁了。&lt;/p&gt;
+&lt;h4 id=&#34;又是黑洞&#34;&gt;又是黑洞？
+&lt;/h4&gt;&lt;p&gt;没错，这也是&lt;strong&gt;黑洞&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;总之就是发送的时候，路由表欺骗了我能到，有路由，结果发到路上，被销毁了。&lt;/p&gt;
+&lt;p&gt;这种情况最好是不能发送，&lt;/p&gt;
+&lt;p&gt;也就是路由表团结一致，早点告诉我此路不通。&lt;/p&gt;
+&lt;h4 id=&#34;怎么样才能告诉你&#34;&gt;怎么样才能告诉你
+&lt;/h4&gt;&lt;p&gt;如果早知道这个R0啥也不懂，&lt;/p&gt;
+&lt;p&gt;R1肯定不会去告诉RA，&lt;/p&gt;
+&lt;p&gt;不会让RA以为自己能去RB。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这也就是同步机制：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一个 BGP 路由器不把从  &lt;em&gt;内部 BGP 对等体&lt;/em&gt;  得知的路由信息通告给  &lt;em&gt;外部对等体&lt;/em&gt; ，除非该路由信息  &lt;em&gt;也能通过 IGP&lt;/em&gt;  得知。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;因此，只需要给R0配好静态路由，&lt;/p&gt;
+&lt;p&gt;并通过IGP传递给R1和R2，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;让R1和R2知道R0已经学会了，&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;就满足了同步机制，&lt;/p&gt;
+&lt;p&gt;也就能&lt;strong&gt;在规避黑洞的基础上&lt;/strong&gt;让PCA ping 通 PCB了。&lt;/p&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
 &lt;/h2&gt;&lt;p&gt;好累好累好累。。。。&lt;/p&gt;
 &lt;p&gt;先睡了待会再写。&lt;/p&gt;
 </description>
@@ -54,11 +128,14 @@
         <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week4-t%E5%B1%82/aaaa.png" alt="Featured image of post BUAA CN Week4 T层" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;本周是五一假期周，但是实验的进度并不停滞。&lt;/p&gt;
 &lt;p&gt;学生需自行预约时间完成传输层的实验内容。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;实验本身的操作难度约等于0，而理论分析的含量非常高。&lt;/p&gt;
 &lt;p&gt;TCP在理论课中已占了较大的篇幅，因此本次博客不强调理论知识，&lt;/p&gt;
 &lt;p&gt;着重讲解linux线上平台的使用。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;上篇博客我们使用的是与机房环境更加相似的Winxp系统，&lt;/p&gt;
 &lt;p&gt;这次TCP实验则需要我们使用Linux系统进行操作。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;还是老样子，我把需要注意的细节先放在最前面：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -157,6 +234,7 @@
         <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week3.5-ospf-online/aaa.png" alt="Featured image of post BUAA CN Week3.5 OSPF-Online" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
 &lt;/h2&gt;&lt;p&gt;通过自行预约实验平台，我们完成了OSPF实验中上次未能完成的内容，&lt;/p&gt;
 &lt;p&gt;顺便也熟悉了一下线上平台的使用方法。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;结果又用了整整4个小时才做完。&lt;/p&gt;
 &lt;p&gt;因此我打算写下这篇文章，帮助大家更迅速地上手实验平台。&lt;/p&gt;
 &lt;h2 id=&#34;vmware-workstation-pro&#34;&gt;VMware Workstation Pro
@@ -222,8 +300,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;右键设备可以显示设备的接口，点击可选择某接口。它将于你下次右键选择的接口相连。&lt;/p&gt;
 &lt;p&gt;配置完成后一定要点击&lt;strong&gt;实验组网-&amp;gt;提交&lt;/strong&gt;。提交了才是连上了。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;接口连接时一定要谨慎，一旦连错一组，你大概率就需要点击&lt;strong&gt;一键还原&lt;/strong&gt;回到空白状态。&lt;/p&gt;
 &lt;p&gt;因为接口之间一旦连接，无法取消，只能选择断连，但不能将接口从占用状态解放。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;此外这个一键还原也非常的&lt;strong&gt;鸡肋&lt;/strong&gt;，每次清空都需要&lt;strong&gt;等很久&lt;/strong&gt;，&lt;/p&gt;
 &lt;p&gt;但它真的&lt;strong&gt;只是把组网&lt;/strong&gt;清空，各种配置还会遗留，还得你自己删。&lt;/p&gt;
 &lt;p&gt;不过也是有值得夸的地方：&lt;/p&gt;
@@ -246,6 +326,7 @@
 &lt;/h2&gt;&lt;p&gt;可以看到四台机子的桌面上分别自带S1，S2，R1，R2的超级终端入口。&lt;/p&gt;
 &lt;p&gt;这一点还算是比较方便。&lt;/p&gt;
 &lt;p&gt;但当然也会有输入卡顿，方向键容易失灵，无法跨虚拟机复制粘贴等等烦人的点。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;有一点需要注意：&lt;/p&gt;
 &lt;p&gt;如果不想总是看见下图，学会善用  &lt;code&gt;？&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week3.5-ospf-online/wrong.png&#34;
@@ -288,9 +369,11 @@
 &lt;/h2&gt;&lt;p&gt;计网理论课就这样结束了，还是有点感慨。&lt;/p&gt;
 &lt;p&gt;据说期末要进考期。其实是一门像数据库一样，适合考前系统学习的课程。&lt;/p&gt;
 &lt;p&gt;不过已经学了也没关系！说不定能帮上计网实验？&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;实则基本帮不上&lt;/strong&gt;。至少这次实验让我痛彻心扉。&lt;/p&gt;
 &lt;p&gt;理论课由于时间限制，只是草草讲了有所谓DV、LS算法，&lt;/p&gt;
 &lt;p&gt;而且因为DV算法更好笔试考察，理论课对OSPF的讲解可以说是一笔带过。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;但无论如何，我们先复习一下：&lt;/p&gt;
 &lt;h3 id=&#34;什么是ospf&#34;&gt;什么是ospf
 &lt;/h3&gt;&lt;ol&gt;
@@ -355,12 +438,14 @@
 &lt;p&gt;他可以发布&lt;strong&gt;五类LSA&lt;/strong&gt;可以传递这些外部路由，让其他人也学习到。&lt;/p&gt;
 &lt;p&gt;这下知道为啥需要四类LSA了：&lt;/p&gt;
 &lt;p&gt;我学习外部路由时，只知道这个dest对应的下一跳是ASBR，怎么到达这个ASBR就需要ABR讲清楚。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;说了这么多我觉得也差不多了。&lt;/p&gt;
 &lt;p&gt;具体LSA是什么结构，怎么实现上述的这些功能，就需要从实验中学习了。&lt;/p&gt;
 &lt;h2 id=&#34;静态路由&#34;&gt;静态路由
 &lt;/h2&gt;&lt;p&gt;注意选择套件二的同学也要完成静态路由的学习，也就是RIP的1,2,3,6题。&lt;/p&gt;
 &lt;p&gt;这道题挺简单的，但是笔者被卡了很久，因为在做上机必做的undo interface vlan 1时，我手贱给交换机也执行了vlan 1的shutdown。&lt;/p&gt;
 &lt;p&gt;哈哈，那还说啥了。能ping通就有鬼了。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;需要掌握的知识理论课都学过：&lt;/p&gt;
 &lt;p&gt;0.0.0.0/0是默认，因为他就是最大的网，互联网。&lt;/p&gt;
 &lt;h2 id=&#34;ospf报文及简单交互&#34;&gt;OSPF报文及简单交互
@@ -377,10 +462,13 @@
 &lt;li&gt;&lt;strong&gt;LSAck（Type 5，Link State Acknowledgment）&lt;/strong&gt;
 确认收到 LSA，保证泛洪可靠。&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr&gt;
 &lt;p&gt;具体来讲：&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Down -&amp;gt; Init -&amp;gt; 2-Way     靠 Hello&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;收到对方 Hello，看到自己 RID 出现在对方邻居列表，进入 2-Way。&lt;/p&gt;
 &lt;p&gt;在广播网段里，非 DR/BDR 之间常停在 2-Way；与 DR/BDR 会继续到 Full。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;2-Way -&amp;gt; ExStart   开始谈 DD 规则&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;双方先协商 DD 的&lt;strong&gt;主从关系&lt;/strong&gt;和初始序列号。（此SM非彼SM）&lt;/p&gt;
 &lt;blockquote&gt;
@@ -399,6 +487,7 @@
 &lt;p&gt;注意这里的seq不是你TCP的那个seq与ack！别搞混了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;所以接下来应该是Slave回应Master的第一句话，用Master第一句话的seq。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;ExStart -&amp;gt; Exchange  大量 DD 交换&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;互相发送 DD 摘要，知道你有什么、我缺什么。&lt;/p&gt;
 &lt;p&gt;发送的过程满足I=0，M的MS=1，S的MS=0，M的seq是上次交流＋1，S的seq与M的seq相同。&lt;/p&gt;
@@ -416,10 +505,12 @@
 &lt;p&gt;M-&amp;gt;S (seq = A+n, I =0, MS =1, M =0)&lt;/p&gt;
 &lt;p&gt;S-&amp;gt;M (seq = A+n, I =0, MS =0, M =0)&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Exchange -&amp;gt; Loading  疯狂学习LSA中&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;我缺哪些就发 LSR。&lt;/p&gt;
 &lt;p&gt;对方用 LSU 回复具体 LSA。&lt;/p&gt;
 &lt;p&gt;收到后回 LSAck。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Loading -&amp;gt; Full 数据库同步完成&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;邻接完成，后续拓扑变化直接用 LSU/LSAck 增量同步。&lt;/p&gt;
 &lt;h2 id=&#34;后记&#34;&gt;后记
@@ -450,6 +541,7 @@
 &lt;p&gt;本次实验做完之后，没有充沛的分享欲，而只是劫后余生的感慨。&lt;/p&gt;
 &lt;p&gt;明明是N层实验，但整体来说和D层实验的感觉十分相似，你需要熟练展现上次实验所培养你的能力与素养。&lt;/p&gt;
 &lt;p&gt;但除此之外，本次实验还要求你熟络ARP和ICMP，尤其是它们在报文中的封装。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;一些提醒：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -487,6 +579,7 @@
 &lt;li&gt;对于跨网段的ping，下一跳当然是&lt;strong&gt;缺省网关&lt;/strong&gt;。&lt;/li&gt;
 &lt;li&gt;ARP request &lt;strong&gt;广播&lt;/strong&gt;时，目标MAC地址是&lt;strong&gt;ffff-ffff-ffff&lt;/strong&gt;，不过在报文中目标MAC地址&lt;strong&gt;显示为全0&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr&gt;
 &lt;p&gt;ICMP的理论课讲得倒比较详细，实验涉及的也很浅，不作解释。&lt;/p&gt;
 &lt;h2 id=&#34;跨交换机vlan间路由实验&#34;&gt;跨交换机VLAN间路由实验
 &lt;/h2&gt;&lt;p&gt;下面重点讲这个实验的ARP与ICMP报文分析。&lt;/p&gt;
@@ -519,6 +612,7 @@
 &lt;/h4&gt;&lt;p&gt;要知道这个ARP报文的信息很明确，&lt;strong&gt;不会再改变了&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;S2只是一个路由，一个&lt;strong&gt;搬运工&lt;/strong&gt;，告诉你往哪个端口走，仅此而已。&lt;/p&gt;
 &lt;p&gt;MAC表也是这样简单，谁给我发了东西，我就把&lt;strong&gt;source(mac+vlan)和它进来的端口&lt;/strong&gt;学习下来。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;不过交换机还有一个功能，就是管理VLAN。毕竟VLAN是D层的事情。&lt;/p&gt;
 &lt;p&gt;交换机的端口就是划分VLAN的工具。你从这个口进来，那你就是这个VLAN。&lt;/p&gt;
 &lt;p&gt;端口分为&lt;strong&gt;access/trunk/hybrid&lt;/strong&gt;这三种。&lt;/p&gt;
@@ -551,13 +645,16 @@
 &lt;/h3&gt;&lt;h4 id=&#34;step-3&#34;&gt;Step 3
 &lt;/h4&gt;&lt;p&gt;首先S1作为交换机，收到报文肯定也是先&lt;strong&gt;学习MAC表&lt;/strong&gt;，PCC_MAC对应GE1/0/13。&lt;/p&gt;
 &lt;p&gt;但同时作为N层相关设备，随便收到一个报文也会直接&lt;strong&gt;学习ARP Cache&lt;/strong&gt;，192.168.2.11对应PCC_MAC。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;PCC向192.168.2.1发送的ARP request报文是：&lt;/p&gt;
 &lt;p&gt;Source: 192.168.2.11 PCC_MAC&lt;/p&gt;
 &lt;p&gt;Dest: 192.168.2.1 FFFF-FFFF-FFFF&lt;/p&gt;
 &lt;p&gt;而S1的VLAN2接口就是192.68.2.1。&lt;/p&gt;
 &lt;p&gt;所以S1应当把VLAN2接口的MAC地址传回PCC。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;因为&lt;strong&gt;刚学到MAC表里PCC_MAC对应GE1/0/13&lt;/strong&gt;，所以ARP reply直接从这个trunk口发出去。&lt;/p&gt;
 &lt;p&gt;从trunk口&lt;strong&gt;出去要带tag&lt;/strong&gt;，因为是从VLAN2接口发的，所以VLAN id = 2。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;192.168.2.1向192.168.2.11发送的ARP reply报文是：&lt;/p&gt;
 &lt;p&gt;Source: 192.168.2.1 VLAN2_MAC&lt;/p&gt;
 &lt;p&gt;Dest: 192.168.2.11 PCC_MAC&lt;/p&gt;
@@ -572,6 +669,7 @@
 &lt;/h3&gt;&lt;h4 id=&#34;step-5&#34;&gt;Step 5
 &lt;/h4&gt;&lt;p&gt;PCC收到了报文，直接&lt;strong&gt;学习ARP&lt;/strong&gt;：192.168.2.1对应VLAN2_MAC。&lt;/p&gt;
 &lt;p&gt;这下终于知道了，我要去ping PCD了！&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;之前我知道N层的Source和Dest，但是一直不知道D层对应的下一跳应该是谁，现在&lt;strong&gt;终于可以封装报文&lt;/strong&gt;了。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -599,6 +697,7 @@
 &lt;h3 id=&#34;icmp报文更改&#34;&gt;ICMP报文更改！
 &lt;/h3&gt;&lt;p&gt;ICMP报文发了一半，把第一段D层打通了。&lt;/p&gt;
 &lt;p&gt;接力棒传到S1的interface vlan2这里来了。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;接下来经过某种判断逻辑&lt;del&gt;你可以不知道&lt;/del&gt;，但很显然S1知道。&lt;/p&gt;
 &lt;p&gt;S1知道它该把报文交付给网络层处理了。&lt;/p&gt;
 &lt;p&gt;然后ICMP报文成功地从interface vlan3出来了。&lt;/p&gt;
@@ -901,6 +1000,7 @@
 &lt;p&gt;MAC地址可以在报文详细内容里找到。&lt;/p&gt;
 &lt;p&gt;广播风暴实验做之前先检查STP是否确实关闭，触发风暴后观察到现象便可立刻停止截取报文，或直接拔掉console线，以免PC直接死机。&lt;/p&gt;
 &lt;p&gt;查看MAC表、端口聚合、VLAN、LCP、PAP、CHAP等内容跟着狼书和PPT走就没什么大问题。&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;比较有趣的是跨交换机VLAN实验。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week1-%E5%85%A5%E9%97%A8-d%E5%B1%82/exp.png&#34;
 	width=&#34;978&#34;
