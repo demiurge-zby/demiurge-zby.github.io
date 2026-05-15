@@ -7,7 +7,32 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Mon, 11 May 2026 19:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 15 May 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week6 A层</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week6-a%E5%B1%82/</link>
+        <pubDate>Fri, 15 May 2026 20:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week6-a%E5%B1%82/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week6-a%E5%B1%82/dream.png" alt="Featured image of post BUAA CN Week6 A层" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;本次博客就相对精简一点。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;NAT属于基本技能，需要掌握。其余做好实验即可。&lt;/li&gt;
+&lt;li&gt;难点主要在于各种应用的使用，尤其是邮件。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;实验部分&#34;&gt;实验部分
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;递归查询与迭代查询是理论知识，建议补习。&lt;/li&gt;
+&lt;li&gt;DHCP报文筛选时使用bootp。因为DHCP是bootp上的扩展。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;应用层也不是很重要，会看这篇博客的人可能也只有个位数。&lt;/p&gt;
+&lt;p&gt;这个时候23级的同学大多数已经把实验做完了，24级同学预习又完全没必要做到太深的程度。&lt;/p&gt;
+&lt;p&gt;此外应用上的具体问题找老师助教解决即可，在这里讲解意义不大。&lt;/p&gt;
+&lt;p&gt;这篇博客差不多就是充数的吧。嗯对。&lt;/p&gt;
+&lt;p&gt;也没有什么要重新补习的知识点。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA CN Week5 BGP</title>
         <link>https://demiurge-zby.github.io/p/buaa-cn-week5-bgp/</link>
         <pubDate>Mon, 11 May 2026 19:15:30 +0800</pubDate>
