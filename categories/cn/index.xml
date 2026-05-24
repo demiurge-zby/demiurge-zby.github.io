@@ -7,7 +7,36 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Fri, 15 May 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/cn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 23 May 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/categories/cn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week7 SDN</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week7-sdn/</link>
+        <pubDate>Sat, 23 May 2026 20:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week7-sdn/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week7-sdn/cry.png" alt="Featured image of post BUAA CN Week7 SDN" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;本次课最重要的内容是听清楚期末考试安排。&lt;/p&gt;
+&lt;p&gt;本次实验比较特殊，需要在虚拟机上完成。&lt;/p&gt;
+&lt;p&gt;建议提前下载好ftp里share_folder里面sdn的文件夹。&lt;/p&gt;
+&lt;p&gt;该文件夹有本次实验需要的虚拟机环境以及firewall.py。&lt;/p&gt;
+&lt;p&gt;因此本次实验虽然是线下上机，但是操作完全在自己电脑上，且两人不能并行工作。&lt;/p&gt;
+&lt;h2 id=&#34;实验部分&#34;&gt;实验部分
+&lt;/h2&gt;&lt;p&gt;sdn：软件控制网络。义如其名。&lt;/p&gt;
+&lt;p&gt;实验过程非常详细，跟着指导书操作就没有问题。&lt;/p&gt;
+&lt;p&gt;可能出现的问题：&lt;/p&gt;
+&lt;p&gt;firewall.py在vim复制出现缩进错误。&lt;/p&gt;
+&lt;p&gt;解决方案：&lt;/p&gt;
+&lt;p&gt;先vim一个txt文件，就会发现复制后的缩进又正常了。&lt;/p&gt;
+&lt;p&gt;然后再cp为py文件。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;可能出现的问题：&lt;/p&gt;
+&lt;p&gt;设计型实验未能拦截ICMP&lt;/p&gt;
+&lt;p&gt;解决方案：&lt;/p&gt;
+&lt;p&gt;把流表清一下：sh ovs-ofctl -O OpenFlow13 del-flows s1&lt;/p&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;稍后会出一个期末复习帖。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA CN Week6 A层</title>
         <link>https://demiurge-zby.github.io/p/buaa-cn-week6-a%E5%B1%82/</link>
         <pubDate>Fri, 15 May 2026 20:15:30 +0800</pubDate>
