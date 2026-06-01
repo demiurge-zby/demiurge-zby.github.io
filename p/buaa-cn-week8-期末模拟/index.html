@@ -291,6 +291,13 @@
         <li><a href="#重启-1">重启</a></li>
         <li><a href="#路由聚合">路由聚合</a></li>
         <li><a href="#ping-通全网">ping 通全网</a></li>
+        <li><a href="#路由过滤">路由过滤</a>
+          <ol>
+            <li><a href="#基于acl">基于ACL</a></li>
+            <li><a href="#基于as-path">基于AS-PATH</a></li>
+            <li><a href="#基于-route-policy">基于 route policy</a></li>
+          </ol>
+        </li>
         <li><a href="#调试指令-1">调试指令</a></li>
       </ol>
     </li>
@@ -322,6 +329,7 @@
             <li><a href="#bgp-1">bgp</a></li>
           </ol>
         </li>
+        <li><a href="#路由引入">路由引入</a></li>
         <li><a href="#状态转移图">状态转移图</a>
           <ol>
             <li><a href="#lcp协商过程">LCP协商过程</a></li>
@@ -424,7 +432,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 6 分钟
+                    阅读时长: 8 分钟
                 </time>
             </div>
         
@@ -532,6 +540,9 @@
 <p>family-address ipv4 unicast</p>
 <p>peer + peer过的邻居的ip + enable</p>
 <p>peer + IBGP邻居的ip + next-hop-local</p>
+<blockquote>
+<p>这一句是额外的句子，不能用来替代peer XXXX enable</p>
+</blockquote>
 <p>network + 要传给对方AS的路由 + mask(不是反码)</p>
 <blockquote>
 <p>network可以细粒度调控</p>
@@ -547,6 +558,50 @@
 </h3><p>其实也就是同步问题，关键在于纯IGP路由器。</p>
 <p>为其配好其他AS的静态路由：</p>
 <p>ip route-static + 目标IP + mask + 下一跳IP</p>
+<h3 id="路由过滤">路由过滤
+</h3><h4 id="基于acl">基于ACL
+</h4><p>配置ACL路由策略，阻止<strong>5.0.0.0/8网段</strong>的路由<strong>传递给AS200</strong>。</p>
+<p>acl basic 2000</p>
+<p>rule 0 deny source 5.0.0.0 0.255.255.255</p>
+<p>rule 1 permit source 0.0.0.0 255.255.255.255</p>
+<hr>
+<p>进入bgp视图，address-family ipv4 unicast之后：</p>
+<p>peer  AS200的邻居IP   <strong>filter-policy</strong>  2000  <strong>export</strong>          //配置基于ACL的路由过滤</p>
+<blockquote>
+<p>这一句是额外的句子，不能用来替代peer XXXX enable</p>
+</blockquote>
+<p>若题目变为阻止<strong>5.0.0.0/8网段</strong>的路由<strong>传递</strong>，则需要对所有peer都进行这个命令。</p>
+<h4 id="基于as-path">基于AS-PATH
+</h4><p>不通告来自AS200的路由，而<strong>只通告</strong>自己所在AS内部产生的路由。</p>
+<p>ip as-path-acl 1 deny _200$</p>
+<p>ip as-path-acl 1 permit ^$</p>
+<blockquote>
+<p>_是AS号码之间的分割符。   ^$匹配本地路由</p>
+</blockquote>
+<p>进入bgp视图，address-family ipv4 unicast：</p>
+<p>对<strong>所有peer</strong>进行</p>
+<p>peer xxx <strong>as-path-acl</strong> 1 <strong>export</strong></p>
+<h4 id="基于-route-policy">基于 route policy
+</h4><p>配置路由策略，使S1<strong>不向外通告</strong>6.0.0.0/8的路由信息，并且<strong>向外通告的路由信息的cost</strong>都为888。</p>
+<p>关于路由本身的筛选直接用ACL：</p>
+<p>acl basic 2001</p>
+<p>rule 1 deny source 6.0.0.0 0.255.255.255</p>
+<p>rule 2 permit source any</p>
+<p>再配route-policy：</p>
+<blockquote>
+<p>结构如下：</p>
+<p>route-policy  &lt;名称&gt;  {permit|deny}  node &lt;节点号&gt;</p>
+<p>if-match &lt;条件&gt;          # 条件判断：如果路由符合这个条件&hellip;</p>
+<p>apply &lt;动作&gt;               #  &hellip;就执行这个动作&hellip;</p>
+</blockquote>
+<p>route-policy xxx permit node 10</p>
+<blockquote>
+<p>只有所有 if-match 均为 permit，该route-policy才返回permit</p>
+</blockquote>
+<p>if-match acl 2001  # 这里利用ACL作为条件，得到deny/permit</p>
+<p>apply cost 888  # 满足条件的 cost 888</p>
+<p>依旧bgp，address-family，</p>
+<p>peer 所有peer <strong>route-policy</strong> xxx <strong>export</strong></p>
 <h3 id="调试指令-1">调试指令
 </h3><p>display bgp peer ipv4 unicast</p>
 <p>display current-configuration configuration bgp</p>
@@ -555,10 +610,7 @@
 </h2><p>四部分操作。</p>
 <h3 id="定义-acl">定义 ACL
 </h3><p>ACL是啥？ Access Control List， 说白了就只是个规则的集合。</p>
-<blockquote>
-<p>出于安全性考虑，配置ACL这一筛选器是重要的。</p>
-</blockquote>
-<p>acl number 2000</p>
+<p>acl basic 2000</p>
 <p>rule permit source + 内网ip + <strong>内网mask反码</strong></p>
 <p>rule deny source any                        # 拒绝其他</p>
 <h3 id="定义-nat-地址池">定义 NAT 地址池
@@ -643,6 +695,32 @@
 <p>针对R1-S1-S2</p>
 <p>S1和R2属于EBGP竞争，调节med</p>
 </blockquote>
+<h3 id="路由引入">路由引入
+</h3><p>一般常见的是对ospf的其中一员配置静态路由，</p>
+<p>然后进入他的ospf，</p>
+<p>import-route static</p>
+<p>就可以把这个静态路由借助OSPF传递。</p>
+<p>例如：</p>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/ex.png"
+	width="1226"
+	height="504"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/ex_hu3400124201659223299.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/ex_hu4508971993863621332.png 1024w"
+	loading="lazy"
+	
+		alt="example"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="243"
+		data-flex-basis="583px"
+	
+></p>
+<p>本题便可以给R1配置到达192.168.5.0网段的静态路由，并引入OSPF，</p>
+<p>就可以让S1,R2直接学到192.168.5.0网段，无需专门配置静态路由。</p>
+<blockquote>
+<p>如果题干明确说了使用静态路由实现全网互通，就必须每个都专门配，不能利用路由引入。</p>
+</blockquote>
+<p>此外BGP也可以import-route，慎用，还是一点点network比较安全。</p>
 <h3 id="状态转移图">状态转移图
 </h3><p>建议将指令和转移图全部会背。</p>
 <h4 id="lcp协商过程">LCP协商过程
@@ -662,17 +740,17 @@
 </h4><blockquote>
 <p>和LCP基本一致</p>
 </blockquote>
-<p>initial&mdash;IPCP Open Event&mdash;starting</p>
-<p>starting&mdash;IPCP Lower Up Evevt&mdash;reqsent</p>
-<p>reqsent&mdash;IPCP RCR+ Event&mdash;acksent    (RCR+:  Receive Config Good Request)</p>
-<p>acksent&mdash;IPCP RCA&mdash; opened  (RCA:  Receive Config Ack Event)</p>
+<p>initial&mdash;&mdash;&mdash;-IPCP Open Event&mdash;&mdash;&mdash;starting</p>
+<p>starting&mdash;&mdash;&mdash;IPCP Lower Up Evevt&mdash;&mdash;&ndash;reqsent</p>
+<p>reqsent&mdash;&mdash;&ndash;IPCP RCR+ Event&mdash;&mdash;&ndash;acksent    (RCR+:  Receive Config Good Request)</p>
+<p>acksent&mdash;&mdash;&ndash;IPCP RCA&mdash;&mdash;&mdash;- opened  (RCA:  Receive Config Ack Event)</p>
 <hr>
 <p>操作也和LCP一样，或者说debugging ppp all的时候，</p>
-<p>LCP协商过程完成后就有IPCP的协商过程。</p>
+<p>LCP协商过程完成后，若有验证过程则需经过PAP/CHAP的验证过程，之后便进入IPCP的协商过程。</p>
 <h4 id="pap验证过程">PAP验证过程
-</h4><p>initial&mdash;PAP Server Lower Up Event&mdash;ServerListen</p>
-<p>ServerListen&mdash;PAP Receive Request Event&mdash;WaitAAA</p>
-<p>WaitAAA&mdash;PAP AAA Result Event&mdash;ServerSuccess</p>
+</h4><p>initial&mdash;&mdash;&ndash;PAP Server Lower Up Event&mdash;&mdash;&ndash;ServerListen</p>
+<p>ServerListen&mdash;&mdash;&ndash;PAP Receive Request Event&mdash;&mdash;&ndash;WaitAAA</p>
+<p>WaitAAA&mdash;&mdash;&ndash;PAP AAA Result Event&mdash;&mdash;&ndash;ServerSuccess</p>
 <hr>
 <p>R1配置：</p>
 <p>local-user RTB class network</p>
@@ -688,9 +766,9 @@
 <p>terminal debugging</p>
 <p>重启R1的相关Serial口：shutdown后undo shutdown</p>
 <h4 id="chap验证过程">CHAP验证过程
-</h4><p>initial&mdash;CHAP Server Lower Up Event&mdash;SendChallenge</p>
-<p>SendChallenge&mdash;CHAP Receive Response Event&mdash;WaitingAAA</p>
-<p>WaitingAAA&mdash;CHAP AAA Result Event&mdash;Server Success</p>
+</h4><p>initial&mdash;&mdash;&ndash;CHAP Server Lower Up Event&mdash;&mdash;&mdash;-SendChallenge</p>
+<p>SendChallenge&mdash;&mdash;&ndash;CHAP Receive Response Event&mdash;&mdash;&mdash;WaitingAAA</p>
+<p>WaitingAAA&mdash;&mdash;&mdash;CHAP AAA Result Event&mdash;&mdash;&mdash;Server Success</p>
 <hr>
 <p>R1配置：</p>
 <p>local-user RTB class network</p>
@@ -724,10 +802,10 @@
 <p>前面的实验由于是serial之间，无法拔线，所以只能shutdown了</p>
 </blockquote>
 <h4 id="bgp协议状态">BGP协议状态
-</h4><p>IDLE&mdash;ConnectRetry_Timer_Expires event&mdash;Manual start event&mdash;CONNECT</p>
-<p>CONNECT&mdash;TCP_CR_Acked event&mdash;OPENSENT</p>
-<p>OPENSENT&mdash;ReceiveOpenMessage Event&mdash;OPENCONFIRM</p>
-<p>OPENCONFIRM&mdash;ReceiveKeepAliveMsg event&mdash;ESTABLISHED</p>
+</h4><p>IDLE&mdash;&mdash;&ndash;ConnectRetry_Timer_Expires event、Manual start event&mdash;&mdash;&ndash;CONNECT</p>
+<p>CONNECT&mdash;&mdash;&mdash;TCP_CR_Acked event&mdash;&mdash;&mdash;OPENSENT</p>
+<p>OPENSENT&mdash;&mdash;&mdash;ReceiveOpenMessage Event&mdash;&mdash;&mdash;OPENCONFIRM</p>
+<p>OPENCONFIRM&mdash;&mdash;&mdash;ReceiveKeepAliveMsg event&mdash;&mdash;&mdash;-ESTABLISHED</p>
 <p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111.png"
 	width="781"
 	height="443"

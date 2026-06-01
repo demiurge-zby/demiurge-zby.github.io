@@ -106,6 +106,9 @@
 &lt;p&gt;family-address ipv4 unicast&lt;/p&gt;
 &lt;p&gt;peer + peer过的邻居的ip + enable&lt;/p&gt;
 &lt;p&gt;peer + IBGP邻居的ip + next-hop-local&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这一句是额外的句子，不能用来替代peer XXXX enable&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;network + 要传给对方AS的路由 + mask(不是反码)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;network可以细粒度调控&lt;/p&gt;
@@ -121,6 +124,50 @@
 &lt;/h3&gt;&lt;p&gt;其实也就是同步问题，关键在于纯IGP路由器。&lt;/p&gt;
 &lt;p&gt;为其配好其他AS的静态路由：&lt;/p&gt;
 &lt;p&gt;ip route-static + 目标IP + mask + 下一跳IP&lt;/p&gt;
+&lt;h3 id=&#34;路由过滤&#34;&gt;路由过滤
+&lt;/h3&gt;&lt;h4 id=&#34;基于acl&#34;&gt;基于ACL
+&lt;/h4&gt;&lt;p&gt;配置ACL路由策略，阻止&lt;strong&gt;5.0.0.0/8网段&lt;/strong&gt;的路由&lt;strong&gt;传递给AS200&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;acl basic 2000&lt;/p&gt;
+&lt;p&gt;rule 0 deny source 5.0.0.0 0.255.255.255&lt;/p&gt;
+&lt;p&gt;rule 1 permit source 0.0.0.0 255.255.255.255&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;进入bgp视图，address-family ipv4 unicast之后：&lt;/p&gt;
+&lt;p&gt;peer  AS200的邻居IP   &lt;strong&gt;filter-policy&lt;/strong&gt;  2000  &lt;strong&gt;export&lt;/strong&gt;          //配置基于ACL的路由过滤&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这一句是额外的句子，不能用来替代peer XXXX enable&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;若题目变为阻止&lt;strong&gt;5.0.0.0/8网段&lt;/strong&gt;的路由&lt;strong&gt;传递&lt;/strong&gt;，则需要对所有peer都进行这个命令。&lt;/p&gt;
+&lt;h4 id=&#34;基于as-path&#34;&gt;基于AS-PATH
+&lt;/h4&gt;&lt;p&gt;不通告来自AS200的路由，而&lt;strong&gt;只通告&lt;/strong&gt;自己所在AS内部产生的路由。&lt;/p&gt;
+&lt;p&gt;ip as-path-acl 1 deny _200$&lt;/p&gt;
+&lt;p&gt;ip as-path-acl 1 permit ^$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;_是AS号码之间的分割符。   ^$匹配本地路由&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;进入bgp视图，address-family ipv4 unicast：&lt;/p&gt;
+&lt;p&gt;对&lt;strong&gt;所有peer&lt;/strong&gt;进行&lt;/p&gt;
+&lt;p&gt;peer xxx &lt;strong&gt;as-path-acl&lt;/strong&gt; 1 &lt;strong&gt;export&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;基于-route-policy&#34;&gt;基于 route policy
+&lt;/h4&gt;&lt;p&gt;配置路由策略，使S1&lt;strong&gt;不向外通告&lt;/strong&gt;6.0.0.0/8的路由信息，并且&lt;strong&gt;向外通告的路由信息的cost&lt;/strong&gt;都为888。&lt;/p&gt;
+&lt;p&gt;关于路由本身的筛选直接用ACL：&lt;/p&gt;
+&lt;p&gt;acl basic 2001&lt;/p&gt;
+&lt;p&gt;rule 1 deny source 6.0.0.0 0.255.255.255&lt;/p&gt;
+&lt;p&gt;rule 2 permit source any&lt;/p&gt;
+&lt;p&gt;再配route-policy：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;结构如下：&lt;/p&gt;
+&lt;p&gt;route-policy  &amp;lt;名称&amp;gt;  {permit|deny}  node &amp;lt;节点号&amp;gt;&lt;/p&gt;
+&lt;p&gt;if-match &amp;lt;条件&amp;gt;          # 条件判断：如果路由符合这个条件&amp;hellip;&lt;/p&gt;
+&lt;p&gt;apply &amp;lt;动作&amp;gt;               #  &amp;hellip;就执行这个动作&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;route-policy xxx permit node 10&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只有所有 if-match 均为 permit，该route-policy才返回permit&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;if-match acl 2001  # 这里利用ACL作为条件，得到deny/permit&lt;/p&gt;
+&lt;p&gt;apply cost 888  # 满足条件的 cost 888&lt;/p&gt;
+&lt;p&gt;依旧bgp，address-family，&lt;/p&gt;
+&lt;p&gt;peer 所有peer &lt;strong&gt;route-policy&lt;/strong&gt; xxx &lt;strong&gt;export&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;调试指令-1&#34;&gt;调试指令
 &lt;/h3&gt;&lt;p&gt;display bgp peer ipv4 unicast&lt;/p&gt;
 &lt;p&gt;display current-configuration configuration bgp&lt;/p&gt;
@@ -129,10 +176,7 @@
 &lt;/h2&gt;&lt;p&gt;四部分操作。&lt;/p&gt;
 &lt;h3 id=&#34;定义-acl&#34;&gt;定义 ACL
 &lt;/h3&gt;&lt;p&gt;ACL是啥？ Access Control List， 说白了就只是个规则的集合。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;出于安全性考虑，配置ACL这一筛选器是重要的。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;acl number 2000&lt;/p&gt;
+&lt;p&gt;acl basic 2000&lt;/p&gt;
 &lt;p&gt;rule permit source + 内网ip + &lt;strong&gt;内网mask反码&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;rule deny source any                        # 拒绝其他&lt;/p&gt;
 &lt;h3 id=&#34;定义-nat-地址池&#34;&gt;定义 NAT 地址池
@@ -217,6 +261,32 @@
 &lt;p&gt;针对R1-S1-S2&lt;/p&gt;
 &lt;p&gt;S1和R2属于EBGP竞争，调节med&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;路由引入&#34;&gt;路由引入
+&lt;/h3&gt;&lt;p&gt;一般常见的是对ospf的其中一员配置静态路由，&lt;/p&gt;
+&lt;p&gt;然后进入他的ospf，&lt;/p&gt;
+&lt;p&gt;import-route static&lt;/p&gt;
+&lt;p&gt;就可以把这个静态路由借助OSPF传递。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/ex.png&#34;
+	width=&#34;1226&#34;
+	height=&#34;504&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/ex_hu3400124201659223299.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/ex_hu4508971993863621332.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;example&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;243&#34;
+		data-flex-basis=&#34;583px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;本题便可以给R1配置到达192.168.5.0网段的静态路由，并引入OSPF，&lt;/p&gt;
+&lt;p&gt;就可以让S1,R2直接学到192.168.5.0网段，无需专门配置静态路由。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果题干明确说了使用静态路由实现全网互通，就必须每个都专门配，不能利用路由引入。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;此外BGP也可以import-route，慎用，还是一点点network比较安全。&lt;/p&gt;
 &lt;h3 id=&#34;状态转移图&#34;&gt;状态转移图
 &lt;/h3&gt;&lt;p&gt;建议将指令和转移图全部会背。&lt;/p&gt;
 &lt;h4 id=&#34;lcp协商过程&#34;&gt;LCP协商过程
@@ -236,17 +306,17 @@
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;和LCP基本一致&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;initial&amp;mdash;IPCP Open Event&amp;mdash;starting&lt;/p&gt;
-&lt;p&gt;starting&amp;mdash;IPCP Lower Up Evevt&amp;mdash;reqsent&lt;/p&gt;
-&lt;p&gt;reqsent&amp;mdash;IPCP RCR+ Event&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
-&lt;p&gt;acksent&amp;mdash;IPCP RCA&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
+&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;-IPCP Open Event&amp;mdash;&amp;mdash;&amp;mdash;starting&lt;/p&gt;
+&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;IPCP Lower Up Evevt&amp;mdash;&amp;mdash;&amp;ndash;reqsent&lt;/p&gt;
+&lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;ndash;IPCP RCR+ Event&amp;mdash;&amp;mdash;&amp;ndash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
+&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;ndash;IPCP RCA&amp;mdash;&amp;mdash;&amp;mdash;- opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;操作也和LCP一样，或者说debugging ppp all的时候，&lt;/p&gt;
-&lt;p&gt;LCP协商过程完成后就有IPCP的协商过程。&lt;/p&gt;
+&lt;p&gt;LCP协商过程完成后，若有验证过程则需经过PAP/CHAP的验证过程，之后便进入IPCP的协商过程。&lt;/p&gt;
 &lt;h4 id=&#34;pap验证过程&#34;&gt;PAP验证过程
-&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;PAP Server Lower Up Event&amp;mdash;ServerListen&lt;/p&gt;
-&lt;p&gt;ServerListen&amp;mdash;PAP Receive Request Event&amp;mdash;WaitAAA&lt;/p&gt;
-&lt;p&gt;WaitAAA&amp;mdash;PAP AAA Result Event&amp;mdash;ServerSuccess&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;ndash;PAP Server Lower Up Event&amp;mdash;&amp;mdash;&amp;ndash;ServerListen&lt;/p&gt;
+&lt;p&gt;ServerListen&amp;mdash;&amp;mdash;&amp;ndash;PAP Receive Request Event&amp;mdash;&amp;mdash;&amp;ndash;WaitAAA&lt;/p&gt;
+&lt;p&gt;WaitAAA&amp;mdash;&amp;mdash;&amp;ndash;PAP AAA Result Event&amp;mdash;&amp;mdash;&amp;ndash;ServerSuccess&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;R1配置：&lt;/p&gt;
 &lt;p&gt;local-user RTB class network&lt;/p&gt;
@@ -262,9 +332,9 @@
 &lt;p&gt;terminal debugging&lt;/p&gt;
 &lt;p&gt;重启R1的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
 &lt;h4 id=&#34;chap验证过程&#34;&gt;CHAP验证过程
-&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;CHAP Server Lower Up Event&amp;mdash;SendChallenge&lt;/p&gt;
-&lt;p&gt;SendChallenge&amp;mdash;CHAP Receive Response Event&amp;mdash;WaitingAAA&lt;/p&gt;
-&lt;p&gt;WaitingAAA&amp;mdash;CHAP AAA Result Event&amp;mdash;Server Success&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;ndash;CHAP Server Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;-SendChallenge&lt;/p&gt;
+&lt;p&gt;SendChallenge&amp;mdash;&amp;mdash;&amp;ndash;CHAP Receive Response Event&amp;mdash;&amp;mdash;&amp;mdash;WaitingAAA&lt;/p&gt;
+&lt;p&gt;WaitingAAA&amp;mdash;&amp;mdash;&amp;mdash;CHAP AAA Result Event&amp;mdash;&amp;mdash;&amp;mdash;Server Success&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;R1配置：&lt;/p&gt;
 &lt;p&gt;local-user RTB class network&lt;/p&gt;
@@ -298,10 +368,10 @@
 &lt;p&gt;前面的实验由于是serial之间，无法拔线，所以只能shutdown了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;bgp协议状态&#34;&gt;BGP协议状态
-&lt;/h4&gt;&lt;p&gt;IDLE&amp;mdash;ConnectRetry_Timer_Expires event&amp;mdash;Manual start event&amp;mdash;CONNECT&lt;/p&gt;
-&lt;p&gt;CONNECT&amp;mdash;TCP_CR_Acked event&amp;mdash;OPENSENT&lt;/p&gt;
-&lt;p&gt;OPENSENT&amp;mdash;ReceiveOpenMessage Event&amp;mdash;OPENCONFIRM&lt;/p&gt;
-&lt;p&gt;OPENCONFIRM&amp;mdash;ReceiveKeepAliveMsg event&amp;mdash;ESTABLISHED&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;IDLE&amp;mdash;&amp;mdash;&amp;ndash;ConnectRetry_Timer_Expires event、Manual start event&amp;mdash;&amp;mdash;&amp;ndash;CONNECT&lt;/p&gt;
+&lt;p&gt;CONNECT&amp;mdash;&amp;mdash;&amp;mdash;TCP_CR_Acked event&amp;mdash;&amp;mdash;&amp;mdash;OPENSENT&lt;/p&gt;
+&lt;p&gt;OPENSENT&amp;mdash;&amp;mdash;&amp;mdash;ReceiveOpenMessage Event&amp;mdash;&amp;mdash;&amp;mdash;OPENCONFIRM&lt;/p&gt;
+&lt;p&gt;OPENCONFIRM&amp;mdash;&amp;mdash;&amp;mdash;ReceiveKeepAliveMsg event&amp;mdash;&amp;mdash;&amp;mdash;-ESTABLISHED&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111.png&#34;
 	width=&#34;781&#34;
 	height=&#34;443&#34;
