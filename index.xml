@@ -7,7 +7,337 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Sat, 23 May 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 28 May 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week8 期末模拟</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/</link>
+        <pubDate>Thu, 28 May 2026 20:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/q.png" alt="Featured image of post BUAA CN Week8 期末模拟" /&gt;&lt;h2 id=&#34;配置设置&#34;&gt;配置设置
+&lt;/h2&gt;&lt;p&gt;开局先连接好PC串口，连接各设备并执行重启操作。&lt;/p&gt;
+&lt;p&gt;reset saved-con   Y&lt;/p&gt;
+&lt;p&gt;reboot  N  Y&lt;/p&gt;
+&lt;p&gt;趁这个等待时间进行组网和PC配置。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;QUESTION:&lt;/p&gt;
+&lt;p&gt;S1 S2 R1 R2 R3 R4六台设备却对应四台电脑&lt;/p&gt;
+&lt;p&gt;重启进程可以后台并行吗？&lt;/p&gt;
+&lt;p&gt;ANSWER:&lt;/p&gt;
+&lt;p&gt;机房的蓝色电源按钮在关闭时都会清空配置的&lt;/p&gt;
+&lt;p&gt;一般不用特意清空&lt;/p&gt;
+&lt;p&gt;可以ctrl + G简单确认一下&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;正确组网&#34;&gt;正确组网
+&lt;/h2&gt;&lt;p&gt;对于套件二的同学，相较以往还需要多用到R3、R4两台设备，因此四台电脑的分工需要自己考虑好。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一般主控1-2台电脑（PCB\PCC）。一定要注意留一台干净电脑用来上传配置。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一定要注意用能卡紧的线，出现问题第一步一定是检查线路是否接触不良。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;考前的所有线缆都更新了，非常好用！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对于非PC端报文的捕获，可能需要用到集线器，借助无条件转发给其他PC实现中间报文的截获。&lt;/p&gt;
+&lt;h2 id=&#34;pc-ip配置&#34;&gt;PC IP配置
+&lt;/h2&gt;&lt;p&gt;首先禁用PC本地连接外的其他虚拟网卡。&lt;/p&gt;
+&lt;p&gt;然后迅速完成IP地址、掩码、网关的配置。&lt;/p&gt;
+&lt;h2 id=&#34;基本操作&#34;&gt;基本操作
+&lt;/h2&gt;&lt;h3 id=&#34;重启后必做&#34;&gt;重启后必做
+&lt;/h3&gt;&lt;p&gt;在重启S后立刻执行&lt;/p&gt;
+&lt;p&gt;interface Ten 1/0/25&lt;/p&gt;
+&lt;p&gt;shutdown&lt;/p&gt;
+&lt;p&gt;interface Ten 1/0/26&lt;/p&gt;
+&lt;p&gt;shutdown&lt;/p&gt;
+&lt;p&gt;interface Ten 1/0/27&lt;/p&gt;
+&lt;p&gt;shutdown&lt;/p&gt;
+&lt;p&gt;interface Ten 1/0/28&lt;/p&gt;
+&lt;p&gt;shutdown&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在重启R后立刻执行&lt;/p&gt;
+&lt;p&gt;undo interface vlan 1&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;首先sys 然后sysname&lt;/p&gt;
+&lt;p&gt;名字在单电脑控制多设备的时候十分关键。&lt;/p&gt;
+&lt;h3 id=&#34;交换机基操&#34;&gt;交换机基操
+&lt;/h3&gt;&lt;p&gt;vlan x&lt;/p&gt;
+&lt;p&gt;int vlan x&lt;/p&gt;
+&lt;p&gt;ip addr&lt;/p&gt;
+&lt;p&gt;int GE1/0/1&lt;/p&gt;
+&lt;p&gt;port access vlan x&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;还有一种写法：&lt;/p&gt;
+&lt;p&gt;vlan x&lt;/p&gt;
+&lt;p&gt;port GE1/0/1 [to GE 1/0/2]&lt;/p&gt;
+&lt;p&gt;int vlan x&lt;/p&gt;
+&lt;p&gt;ip addr&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;路由器基操&#34;&gt;路由器基操
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;注意R3 R4虽然上面贴着E 但实际上还是G&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;int G0/1&lt;/p&gt;
+&lt;p&gt;ip addr&lt;/p&gt;
+&lt;p&gt;int Serial0/0&lt;/p&gt;
+&lt;p&gt;ip addr&lt;/p&gt;
+&lt;p&gt;int Loopback1&lt;/p&gt;
+&lt;p&gt;ip addr&lt;/p&gt;
+&lt;h2 id=&#34;ospf&#34;&gt;OSPF
+&lt;/h2&gt;&lt;h3 id=&#34;配置&#34;&gt;配置
+&lt;/h3&gt;&lt;p&gt;ospf&lt;/p&gt;
+&lt;p&gt;area 0&lt;/p&gt;
+&lt;p&gt;network  + 该设备的引入OSPF的ip addr + &lt;strong&gt;掩码反码&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;题目往往会限制OSPF的范围，注意到底是哪些端口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;要观察到OSPF的状态变为FULL&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;重启&#34;&gt;重启
+&lt;/h3&gt;&lt;p&gt;用户态下 reset ospf process   Y&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;调试指令&#34;&gt;调试指令
+&lt;/h3&gt;&lt;p&gt;display ospf lsdb&lt;/p&gt;
+&lt;p&gt;display ospf peer&lt;/p&gt;
+&lt;h2 id=&#34;bgp&#34;&gt;BGP
+&lt;/h2&gt;&lt;h3 id=&#34;基本配置&#34;&gt;基本配置
+&lt;/h3&gt;&lt;p&gt;bgp xxx&lt;/p&gt;
+&lt;p&gt;peer + 邻居 ip addr + as-number + yyy&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意OSPF可以主动hello建立peer关系，无需手动&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;family-address ipv4 unicast&lt;/p&gt;
+&lt;p&gt;peer + peer过的邻居的ip + enable&lt;/p&gt;
+&lt;p&gt;peer + IBGP邻居的ip + next-hop-local&lt;/p&gt;
+&lt;p&gt;network + 要传给对方AS的路由 + mask(不是反码)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;network可以细粒度调控&lt;/p&gt;
+&lt;p&gt;一般考试只有PC和loopback需要被network&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;重启-1&#34;&gt;重启
+&lt;/h3&gt;&lt;p&gt;用户态 reset bpg all   Y&lt;/p&gt;
+&lt;h3 id=&#34;路由聚合&#34;&gt;路由聚合
+&lt;/h3&gt;&lt;p&gt;bgp x&lt;/p&gt;
+&lt;p&gt;aggregate 聚合IP 聚合mask [detail-suppressed]&lt;/p&gt;
+&lt;p&gt;detail-suppressed保证BGP只传递聚合路由&lt;/p&gt;
+&lt;h3 id=&#34;ping-通全网&#34;&gt;ping 通全网
+&lt;/h3&gt;&lt;p&gt;其实也就是同步问题，关键在于纯IGP路由器。&lt;/p&gt;
+&lt;p&gt;为其配好其他AS的静态路由：&lt;/p&gt;
+&lt;p&gt;ip route-static + 目标IP + mask + 下一跳IP&lt;/p&gt;
+&lt;h3 id=&#34;调试指令-1&#34;&gt;调试指令
+&lt;/h3&gt;&lt;p&gt;display bgp peer ipv4 unicast&lt;/p&gt;
+&lt;p&gt;display current-configuration configuration bgp&lt;/p&gt;
+&lt;p&gt;display bgp routing-table ipv4 unicast&lt;/p&gt;
+&lt;h2 id=&#34;nat&#34;&gt;NAT
+&lt;/h2&gt;&lt;p&gt;四部分操作。&lt;/p&gt;
+&lt;h3 id=&#34;定义-acl&#34;&gt;定义 ACL
+&lt;/h3&gt;&lt;p&gt;ACL是啥？ Access Control List， 说白了就只是个规则的集合。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;出于安全性考虑，配置ACL这一筛选器是重要的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;acl number 2000&lt;/p&gt;
+&lt;p&gt;rule permit source + 内网ip + &lt;strong&gt;内网mask反码&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;rule deny source any                        # 拒绝其他&lt;/p&gt;
+&lt;h3 id=&#34;定义-nat-地址池&#34;&gt;定义 NAT 地址池
+&lt;/h3&gt;&lt;p&gt;nat address-group 1&lt;/p&gt;
+&lt;p&gt;address 外网ip1 外网ip2    # 地址池范围，NAT会在这里面选&lt;/p&gt;
+&lt;h3 id=&#34;启用-nat并绑定-acl-和地址池&#34;&gt;启用 NAT并绑定 ACL 和地址池
+&lt;/h3&gt;&lt;p&gt;interface GE xx                                        #   interface要转变为外网IP的接口&lt;/p&gt;
+&lt;p&gt;nat &lt;strong&gt;outbound&lt;/strong&gt; 2000 &lt;strong&gt;address-group&lt;/strong&gt; 1  # 绑定 ACL 和 group&lt;/p&gt;
+&lt;h3 id=&#34;配置缺省静态路由&#34;&gt;配置缺省静态路由
+&lt;/h3&gt;&lt;p&gt;ip route-static 0.0.0.0 0.0.0.0 外网网关&lt;/p&gt;
+&lt;p&gt;这一步很关键。你是学不到外网的任何东西的。&lt;/p&gt;
+&lt;h2 id=&#34;tcp&#34;&gt;TCP
+&lt;/h2&gt;&lt;p&gt;TCP实验需要在vmware的linux虚拟机内完成实验。&lt;/p&gt;
+&lt;h3 id=&#34;基本流程&#34;&gt;基本流程
+&lt;/h3&gt;&lt;p&gt;一定需要记得禁用虚拟网卡。&lt;/p&gt;
+&lt;p&gt;首先是右上方的网络配置，断开当前网络，并选择对应的sender/receiver&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虚拟机上已有的三个网络均配置完毕，可直接使用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后启动wireshark，选择Eth0，筛选tcp&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;发送端双击桌面init.sh&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接收方双击桌面TCPTest.sh并开启监听&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;发送方双击桌面TCPTest.sh并完成数据配置，发送文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;tcptest配置&#34;&gt;TCPTest配置
+&lt;/h3&gt;&lt;h4 id=&#34;端口转发速率控制&#34;&gt;端口转发速率控制
+&lt;/h4&gt;&lt;p&gt;直接interface 接口&lt;/p&gt;
+&lt;p&gt;qos lr outbound cir xxx (单位为Kbps)&lt;/p&gt;
+&lt;h4 id=&#34;接收端配置&#34;&gt;接收端配置
+&lt;/h4&gt;&lt;p&gt;休眠时间与计数器阈值一般配置为0。&lt;/p&gt;
+&lt;p&gt;如需对零窗口通告进行分析，可配置：&lt;/p&gt;
+&lt;p&gt;休眠时间 = 5000， 计数器阈值 = 10。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;每收到 &lt;code&gt;计数器阈值&lt;/code&gt; 次数据，出发长达 &lt;code&gt;休眠时间&lt;/code&gt; 毫秒的休眠。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;文件上传&#34;&gt;文件上传
+&lt;/h3&gt;&lt;p&gt;/root/TCPLog目录下有tcpsndwnddata.txt与tcprtodata.txt，分别给出窗口大小和RTO数据，可帮助TCP流程分析。&lt;/p&gt;
+&lt;p&gt;wireshark报文也可及时截断并保存。&lt;/p&gt;
+&lt;p&gt;上述文件均可拖出虚拟机到桌面，并在windows系统上根据考试需要完成上传。&lt;/p&gt;
+&lt;h2 id=&#34;高级配置&#34;&gt;高级配置
+&lt;/h2&gt;&lt;h3 id=&#34;备选路由与优选路由&#34;&gt;备选路由与优选路由
+&lt;/h3&gt;&lt;h4 id=&#34;ospf-1&#34;&gt;ospf
+&lt;/h4&gt;&lt;p&gt;直接interface 接口&lt;/p&gt;
+&lt;p&gt;为接口设置：&lt;/p&gt;
+&lt;p&gt;ospf cost xxx&lt;/p&gt;
+&lt;p&gt;高优先级cost小，备选路由cost高即可&lt;/p&gt;
+&lt;p&gt;同一条链路两端点的cost可不同，表达不同方向&lt;/p&gt;
+&lt;h4 id=&#34;bgp-1&#34;&gt;bgp
+&lt;/h4&gt;&lt;p&gt;可以通过route policy细调&lt;/p&gt;
+&lt;p&gt;但这里也只讲直接配置的：&lt;/p&gt;
+&lt;p&gt;bgp xxx&lt;/p&gt;
+&lt;p&gt;default local-preference xxx&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;lp越大越优先选择&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;bgp xxx&lt;/p&gt;
+&lt;p&gt;default med xxx&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;med越小越优先选择&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;需要注意lp作用于IBGP，MED作用于EBGP&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其实严格意义不是这样，但是便于理解就这样说了&lt;/p&gt;
+&lt;p&gt;优先级是lp&amp;gt;as-path&amp;gt;med&lt;/p&gt;
+&lt;p&gt;但是在某些场景下会赋相同的默认值从而使其无效&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;用例在bgp设计实验3&lt;/p&gt;
+&lt;p&gt;R1-S1-S2-R2-R1这样的一张网&lt;/p&gt;
+&lt;p&gt;R1在单独的AS&lt;/p&gt;
+&lt;p&gt;需要S2-R2-R1且R1-S1-S2&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;针对S2-R2-R1&lt;/p&gt;
+&lt;p&gt;R2和S1属于IBGP竞争，调节lp&lt;/p&gt;
+&lt;p&gt;针对R1-S1-S2&lt;/p&gt;
+&lt;p&gt;S1和R2属于EBGP竞争，调节med&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;状态转移图&#34;&gt;状态转移图
+&lt;/h3&gt;&lt;p&gt;建议将指令和转移图全部会背。&lt;/p&gt;
+&lt;h4 id=&#34;lcp协商过程&#34;&gt;LCP协商过程
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;LCP Open Event&amp;mdash;starting&lt;/p&gt;
+&lt;p&gt;starting&amp;mdash;LCP Lower Up Evevt&amp;mdash;reqsent&lt;/p&gt;
+&lt;p&gt;reqsent&amp;mdash;LCP RCR+ Event&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
+&lt;p&gt;acksent&amp;mdash;LCP RCA&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;作用于两个Router之间。&lt;/p&gt;
+&lt;p&gt;为两台设备相连的Serial口配置：link-protocal ppp 并刷新配置：shutdown后undo shutdown&lt;/p&gt;
+&lt;p&gt;进入R1用户态:&lt;/p&gt;
+&lt;p&gt;debugging ppp all&lt;/p&gt;
+&lt;p&gt;terminal debugging&lt;/p&gt;
+&lt;p&gt;shutdown R2的无关Serial口&lt;/p&gt;
+&lt;p&gt;重启R2的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
+&lt;h4 id=&#34;ipcp协商过程&#34;&gt;IPCP协商过程
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;和LCP基本一致&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;initial&amp;mdash;IPCP Open Event&amp;mdash;starting&lt;/p&gt;
+&lt;p&gt;starting&amp;mdash;IPCP Lower Up Evevt&amp;mdash;reqsent&lt;/p&gt;
+&lt;p&gt;reqsent&amp;mdash;IPCP RCR+ Event&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
+&lt;p&gt;acksent&amp;mdash;IPCP RCA&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;操作也和LCP一样，或者说debugging ppp all的时候，&lt;/p&gt;
+&lt;p&gt;LCP协商过程完成后就有IPCP的协商过程。&lt;/p&gt;
+&lt;h4 id=&#34;pap验证过程&#34;&gt;PAP验证过程
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;PAP Server Lower Up Event&amp;mdash;ServerListen&lt;/p&gt;
+&lt;p&gt;ServerListen&amp;mdash;PAP Receive Request Event&amp;mdash;WaitAAA&lt;/p&gt;
+&lt;p&gt;WaitAAA&amp;mdash;PAP AAA Result Event&amp;mdash;ServerSuccess&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;R1配置：&lt;/p&gt;
+&lt;p&gt;local-user RTB class network&lt;/p&gt;
+&lt;p&gt;service-type ppp&lt;/p&gt;
+&lt;p&gt;password simple aaa&lt;/p&gt;
+&lt;p&gt;interface 对应串口&lt;/p&gt;
+&lt;p&gt;ppp authentication pap&lt;/p&gt;
+&lt;p&gt;R2配置：&lt;/p&gt;
+&lt;p&gt;interface 对应串口&lt;/p&gt;
+&lt;p&gt;ppp pap local-user RTB password simple aaa&lt;/p&gt;
+&lt;p&gt;进入R1用户态:&lt;/p&gt;
+&lt;p&gt;debugging ppp pap all&lt;/p&gt;
+&lt;p&gt;terminal debugging&lt;/p&gt;
+&lt;p&gt;重启R1的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
+&lt;h4 id=&#34;chap验证过程&#34;&gt;CHAP验证过程
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;CHAP Server Lower Up Event&amp;mdash;SendChallenge&lt;/p&gt;
+&lt;p&gt;SendChallenge&amp;mdash;CHAP Receive Response Event&amp;mdash;WaitingAAA&lt;/p&gt;
+&lt;p&gt;WaitingAAA&amp;mdash;CHAP AAA Result Event&amp;mdash;Server Success&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;R1配置：&lt;/p&gt;
+&lt;p&gt;local-user RTB class network&lt;/p&gt;
+&lt;p&gt;service-type ppp&lt;/p&gt;
+&lt;p&gt;password simple aaa&lt;/p&gt;
+&lt;p&gt;interface 对应串口&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;下面两句和PAP不同&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ppp authentication-mode chap&lt;/p&gt;
+&lt;p&gt;ppp chap user RTA&lt;/p&gt;
+&lt;p&gt;R2配置：&lt;/p&gt;
+&lt;p&gt;local-user RTA class network&lt;/p&gt;
+&lt;p&gt;service-type ppp&lt;/p&gt;
+&lt;p&gt;password simple aaa&lt;/p&gt;
+&lt;p&gt;interface 对应串口&lt;/p&gt;
+&lt;p&gt;ppp chap user RTB&lt;/p&gt;
+&lt;p&gt;重启R1的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
+&lt;p&gt;进入R1用户态:&lt;/p&gt;
+&lt;p&gt;debugging ppp chap all&lt;/p&gt;
+&lt;p&gt;terminal debugging&lt;/p&gt;
+&lt;p&gt;重启R1的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
+&lt;h4 id=&#34;ospf邻居状态&#34;&gt;OSPF邻居状态
+&lt;/h4&gt;&lt;p&gt;DOWN-&amp;gt;INIT-&amp;gt;2-WAY-&amp;gt;EXSTART-&amp;gt;EXCHANG-&amp;gt;LOADING-&amp;gt;FULL&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;进入R1用户态:&lt;/p&gt;
+&lt;p&gt;debugging ospf event&lt;/p&gt;
+&lt;p&gt;terminal debugging&lt;/p&gt;
+&lt;p&gt;断开连线再连接即可观察到。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;前面的实验由于是serial之间，无法拔线，所以只能shutdown了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;bgp协议状态&#34;&gt;BGP协议状态
+&lt;/h4&gt;&lt;p&gt;IDLE&amp;mdash;ConnectRetry_Timer_Expires event&amp;mdash;Manual start event&amp;mdash;CONNECT&lt;/p&gt;
+&lt;p&gt;CONNECT&amp;mdash;TCP_CR_Acked event&amp;mdash;OPENSENT&lt;/p&gt;
+&lt;p&gt;OPENSENT&amp;mdash;ReceiveOpenMessage Event&amp;mdash;OPENCONFIRM&lt;/p&gt;
+&lt;p&gt;OPENCONFIRM&amp;mdash;ReceiveKeepAliveMsg event&amp;mdash;ESTABLISHED&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111.png&#34;
+	width=&#34;781&#34;
+	height=&#34;443&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111_hu3298601391135473533.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111_hu5673069657177805264.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;完整状态图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;进入R1用户态:&lt;/p&gt;
+&lt;p&gt;debugging bgp event&lt;/p&gt;
+&lt;p&gt;terminal debugging&lt;/p&gt;
+&lt;p&gt;reset bgp all 即可观察到。&lt;/p&gt;
+&lt;h2 id=&#34;协议分析&#34;&gt;协议分析
+&lt;/h2&gt;&lt;h3 id=&#34;arp&#34;&gt;ARP
+&lt;/h3&gt;&lt;h3 id=&#34;icmp&#34;&gt;ICMP
+&lt;/h3&gt;&lt;h3 id=&#34;ospf-2&#34;&gt;OSPF
+&lt;/h3&gt;&lt;h3 id=&#34;bgp-2&#34;&gt;BGP
+&lt;/h3&gt;&lt;h3 id=&#34;tcp-1&#34;&gt;TCP
+&lt;/h3&gt;&lt;h2 id=&#34;配置上传&#34;&gt;配置上传
+&lt;/h2&gt;&lt;p&gt;留一台干净的电脑，比如PCD。&lt;/p&gt;
+&lt;p&gt;将其IP地址设置为自动获取。&lt;/p&gt;
+&lt;p&gt;打开PCD的PuTTY，依次将PCD串口与S1,S2,R1,R2,R3,R4的CONSOLE口相连。&lt;/p&gt;
+&lt;p&gt;每次连接后，ctrl+G或者dis cu，然后按空格进行快速加载，加载完毕后秒切下一台。&lt;/p&gt;
+&lt;p&gt;全部加载完毕后，直接点击左上角菜单项的copy all to clipboard，&lt;/p&gt;
+&lt;p&gt;在桌面新建“组号座位号-学号姓名.txt”文本文件，粘贴内容。&lt;/p&gt;
+&lt;p&gt;为PCD连接校园网，上传至FTP。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA CN Week7 SDN</title>
         <link>https://demiurge-zby.github.io/p/buaa-cn-week7-sdn/</link>
         <pubDate>Sat, 23 May 2026 20:15:30 +0800</pubDate>
