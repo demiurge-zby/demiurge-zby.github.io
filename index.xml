@@ -217,7 +217,7 @@
 &lt;p&gt;如需对零窗口通告进行分析，可配置：&lt;/p&gt;
 &lt;p&gt;休眠时间 = 5000， 计数器阈值 = 10。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;每收到 &lt;code&gt;计数器阈值&lt;/code&gt; 次数据，出发长达 &lt;code&gt;休眠时间&lt;/code&gt; 毫秒的休眠。&lt;/p&gt;
+&lt;p&gt;每收到 &lt;code&gt;计数器阈值&lt;/code&gt; 次数据，触发长达 &lt;code&gt;休眠时间&lt;/code&gt; 毫秒的休眠。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;文件上传&#34;&gt;文件上传
 &lt;/h3&gt;&lt;p&gt;/root/TCPLog目录下有tcpsndwnddata.txt与tcprtodata.txt，分别给出窗口大小和RTO数据，可帮助TCP流程分析。&lt;/p&gt;
@@ -410,9 +410,9 @@
 &lt;h3 id=&#34;ospf-2&#34;&gt;OSPF
 &lt;/h3&gt;&lt;p&gt;五类报文。Hello,DD,LSR,LSU,LSAck。&lt;/p&gt;
 &lt;p&gt;DD主从关系协商过程的意义。&lt;/p&gt;
-&lt;p&gt;详见：&lt;a href=&#34;[BUAA CN Week3 OSPF](https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa)&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;详见：&lt;a href=&#34;(https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa)&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;LSU里的LSA有五种。&lt;/p&gt;
-&lt;p&gt;详见：&lt;a href=&#34;[BUAA CN Week3 OSPF](https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa)&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;详见：&lt;a href=&#34;(https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa)&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;注意五类LSA的范围。&lt;/p&gt;
 &lt;h3 id=&#34;bgp-2&#34;&gt;BGP
 &lt;/h3&gt;&lt;p&gt;network注入的意义（把本地路由表中已经存在的某条路由注入到 BGP 表中，并对外发布）。&lt;/p&gt;
