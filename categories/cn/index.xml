@@ -410,7 +410,7 @@
 &lt;h3 id=&#34;ospf-2&#34;&gt;OSPF
 &lt;/h3&gt;&lt;p&gt;五类报文。Hello,DD,LSR,LSU,LSAck。&lt;/p&gt;
 &lt;p&gt;DD主从关系协商过程的意义。&lt;/p&gt;
-&lt;p&gt;详见：&lt;a href=&#34;https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;详见：&lt;a href=&#34;https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#ospf报文及简单交互&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;LSU里的LSA有五种。&lt;/p&gt;
 &lt;p&gt;详见：&lt;a href=&#34;https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;注意五类LSA的范围。&lt;/p&gt;
