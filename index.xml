@@ -295,10 +295,10 @@
 &lt;h3 id=&#34;状态转移图&#34;&gt;状态转移图
 &lt;/h3&gt;&lt;p&gt;建议将指令和转移图全部会背。&lt;/p&gt;
 &lt;h4 id=&#34;lcp协商过程&#34;&gt;LCP协商过程
-&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;LCP Open Event&amp;mdash;starting&lt;/p&gt;
-&lt;p&gt;starting&amp;mdash;LCP Lower Up Evevt&amp;mdash;reqsent&lt;/p&gt;
-&lt;p&gt;reqsent&amp;mdash;LCP RCR+ Event&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
-&lt;p&gt;acksent&amp;mdash;LCP RCA&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;LCP Open Event&amp;mdash;&amp;mdash;&amp;ndash;starting&lt;/p&gt;
+&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;ndash;LCP Lower Up Evevt&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
+&lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCR+ Event&amp;mdash;&amp;mdash;&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
+&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCA&amp;mdash;&amp;mdash;&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;作用于两个Router之间。&lt;/p&gt;
 &lt;p&gt;为两台设备相连的Serial口配置：link-protocal ppp 并刷新配置：shutdown后undo shutdown&lt;/p&gt;
