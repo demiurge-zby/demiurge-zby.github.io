@@ -524,7 +524,7 @@
 <blockquote>
 <p>题目往往会限制OSPF的范围，注意到底是哪些端口</p>
 </blockquote>
-<p>要观察到OSPF的状态变为FULL</p>
+<p>要观察到OSPF的状态一般应该变为FULL</p>
 <hr>
 <h3 id="重启">重启
 </h3><p>用户态下 reset ospf process   Y</p>
@@ -539,7 +539,7 @@
 <blockquote>
 <p>注意OSPF可以主动hello建立peer关系，无需手动</p>
 </blockquote>
-<p>family-address ipv4 unicast</p>
+<p>address-family ipv4 unicast</p>
 <p>peer + peer过的邻居的ip + enable</p>
 <p>peer + IBGP邻居的ip + next-hop-local</p>
 <blockquote>
@@ -551,9 +551,9 @@
 <p>一般考试只有PC和loopback需要被network</p>
 </blockquote>
 <h3 id="重启-1">重启
-</h3><p>用户态 reset bpg all   Y</p>
+</h3><p>用户态 reset bgp all   Y</p>
 <h3 id="路由聚合">路由聚合
-</h3><p>bgp x</p>
+</h3><p>bgp、address-family后</p>
 <p>aggregate 聚合IP 聚合mask [detail-suppressed]</p>
 <p>detail-suppressed保证BGP只传递聚合路由</p>
 <h3 id="ping-通全网">ping 通全网
@@ -601,7 +601,7 @@
 <p>只有所有 if-match 均为 permit，该route-policy才返回permit</p>
 </blockquote>
 <p>if-match acl 2001  # 这里利用ACL作为条件，得到deny/permit</p>
-<p>apply cost 888  # 满足条件的 cost 888</p>
+<p>apply cost 888  # 满足条件的 med 设置为 888， 这里的cost是bgp cost</p>
 <p>依旧bgp，address-family，</p>
 <p>peer 所有peer <strong>route-policy</strong> xxx <strong>export</strong></p>
 <h3 id="调试指令-1">调试指令
@@ -670,12 +670,12 @@
 <h4 id="bgp-1">bgp
 </h4><p>可以通过route policy细调</p>
 <p>但这里也只讲直接配置的：</p>
-<p>bgp xxx</p>
+<p>bgp、address-family后</p>
 <p>default local-preference xxx</p>
 <blockquote>
 <p>lp越大越优先选择</p>
 </blockquote>
-<p>bgp xxx</p>
+<p>bgp、address-family后</p>
 <p>default med xxx</p>
 <blockquote>
 <p>med越小越优先选择</p>
@@ -732,12 +732,12 @@
 </h3><p>建议将指令和转移图全部会背。</p>
 <h4 id="lcp协商过程">LCP协商过程
 </h4><p>initial&mdash;&mdash;&mdash;LCP Open Event&mdash;&mdash;&ndash;starting</p>
-<p>starting&mdash;&mdash;&ndash;LCP Lower Up Evevt&mdash;&mdash;&mdash;reqsent</p>
+<p>starting&mdash;&mdash;&ndash;LCP Lower Up Event&mdash;&mdash;&mdash;reqsent</p>
 <p>reqsent&mdash;&mdash;&mdash;LCP RCR+ Event&mdash;&mdash;&mdash;acksent    (RCR+:  Receive Config Good Request)</p>
 <p>acksent&mdash;&mdash;&mdash;LCP RCA&mdash;&mdash;&mdash; opened  (RCA:  Receive Config Ack Event)</p>
 <hr>
 <p>作用于两个Router之间。</p>
-<p>为两台设备相连的Serial口配置：link-protocal ppp 并刷新配置：shutdown后undo shutdown</p>
+<p>为两台设备相连的Serial口配置：link-protocol ppp 并刷新配置：shutdown后undo shutdown</p>
 <p>进入R1用户态:</p>
 <p>debugging ppp all</p>
 <p>terminal debugging</p>
@@ -748,7 +748,7 @@
 <p>和LCP基本一致</p>
 </blockquote>
 <p>initial&mdash;&mdash;&mdash;-IPCP Open Event&mdash;&mdash;&mdash;starting</p>
-<p>starting&mdash;&mdash;&mdash;IPCP Lower Up Evevt&mdash;&mdash;&ndash;reqsent</p>
+<p>starting&mdash;&mdash;&mdash;IPCP Lower Up Event&mdash;&mdash;&ndash;reqsent</p>
 <p>reqsent&mdash;&mdash;&ndash;IPCP RCR+ Event&mdash;&mdash;&ndash;acksent    (RCR+:  Receive Config Good Request)</p>
 <p>acksent&mdash;&mdash;&ndash;IPCP RCA&mdash;&mdash;&mdash;- opened  (RCA:  Receive Config Ack Event)</p>
 <hr>
@@ -764,7 +764,7 @@
 <p>service-type ppp</p>
 <p>password simple aaa</p>
 <p>interface 对应串口</p>
-<p>ppp authentication pap</p>
+<p>ppp authentication-mode pap</p>
 <p>R2配置：</p>
 <p>interface 对应串口</p>
 <p>ppp pap local-user RTB password simple aaa</p>
@@ -793,13 +793,14 @@
 <p>password simple aaa</p>
 <p>interface 对应串口</p>
 <p>ppp chap user RTB</p>
+<p>ppp chap password simple aaa</p>
 <p>重启R1的相关Serial口：shutdown后undo shutdown</p>
 <p>进入R1用户态:</p>
 <p>debugging ppp chap all</p>
 <p>terminal debugging</p>
 <p>重启R1的相关Serial口：shutdown后undo shutdown</p>
 <h4 id="ospf邻居状态">OSPF邻居状态
-</h4><p>DOWN-&gt;INIT-&gt;2-WAY-&gt;EXSTART-&gt;EXCHANG-&gt;LOADING-&gt;FULL</p>
+</h4><p>DOWN-&gt;INIT-&gt;2-WAY-&gt;EXSTART-&gt;EXCHANGE-&gt;LOADING-&gt;FULL</p>
 <hr>
 <p>进入R1用户态:</p>
 <p>debugging ospf event</p>
@@ -813,6 +814,7 @@
 <p>CONNECT&mdash;&mdash;&mdash;TCP_CR_Acked event&mdash;&mdash;&mdash;OPENSENT</p>
 <p>OPENSENT&mdash;&mdash;&mdash;ReceiveOpenMessage Event&mdash;&mdash;&mdash;OPENCONFIRM</p>
 <p>OPENCONFIRM&mdash;&mdash;&mdash;ReceiveKeepAliveMsg event&mdash;&mdash;&mdash;-ESTABLISHED</p>
+<p>我当时实验没有观察到ACTIVE，完整图表见下图。</p>
 <p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111.png"
 	width="781"
 	height="443"
@@ -837,7 +839,7 @@
 <h3 id="arp">ARP
 </h3><p>目的是根据下一跳的IP地址找到其MAC地址。</p>
 <p>有ARP Cache。</p>
-<p>ARP Requst是广播，对方匹配后单播Reply回来。</p>
+<p>ARP Request是广播，对方匹配后单播Reply回来。</p>
 <h3 id="icmp">ICMP
 </h3><p>主要是ping和tracert（windows）。</p>
 <p>ICMP报文种类有很多。</p>
@@ -858,7 +860,7 @@
 <p>ORIGIN属性。</p>
 <blockquote>
 <p>ORIGIN 表示这条 BGP 路由最早是怎么进入 BGP 的。</p>
-<p>i  IGG</p>
+<p>i  IGP</p>
 <p>e  EGP</p>
 <p>?  incomplete</p>
 <p>用 network 命令注入通常是 i</p>

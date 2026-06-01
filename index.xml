@@ -88,7 +88,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;题目往往会限制OSPF的范围，注意到底是哪些端口&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;要观察到OSPF的状态变为FULL&lt;/p&gt;
+&lt;p&gt;要观察到OSPF的状态一般应该变为FULL&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;重启&#34;&gt;重启
 &lt;/h3&gt;&lt;p&gt;用户态下 reset ospf process   Y&lt;/p&gt;
@@ -103,7 +103,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;注意OSPF可以主动hello建立peer关系，无需手动&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;family-address ipv4 unicast&lt;/p&gt;
+&lt;p&gt;address-family ipv4 unicast&lt;/p&gt;
 &lt;p&gt;peer + peer过的邻居的ip + enable&lt;/p&gt;
 &lt;p&gt;peer + IBGP邻居的ip + next-hop-local&lt;/p&gt;
 &lt;blockquote&gt;
@@ -115,9 +115,9 @@
 &lt;p&gt;一般考试只有PC和loopback需要被network&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;重启-1&#34;&gt;重启
-&lt;/h3&gt;&lt;p&gt;用户态 reset bpg all   Y&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;用户态 reset bgp all   Y&lt;/p&gt;
 &lt;h3 id=&#34;路由聚合&#34;&gt;路由聚合
-&lt;/h3&gt;&lt;p&gt;bgp x&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;bgp、address-family后&lt;/p&gt;
 &lt;p&gt;aggregate 聚合IP 聚合mask [detail-suppressed]&lt;/p&gt;
 &lt;p&gt;detail-suppressed保证BGP只传递聚合路由&lt;/p&gt;
 &lt;h3 id=&#34;ping-通全网&#34;&gt;ping 通全网
@@ -165,7 +165,7 @@
 &lt;p&gt;只有所有 if-match 均为 permit，该route-policy才返回permit&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;if-match acl 2001  # 这里利用ACL作为条件，得到deny/permit&lt;/p&gt;
-&lt;p&gt;apply cost 888  # 满足条件的 cost 888&lt;/p&gt;
+&lt;p&gt;apply cost 888  # 满足条件的 med 设置为 888， 这里的cost是bgp cost&lt;/p&gt;
 &lt;p&gt;依旧bgp，address-family，&lt;/p&gt;
 &lt;p&gt;peer 所有peer &lt;strong&gt;route-policy&lt;/strong&gt; xxx &lt;strong&gt;export&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;调试指令-1&#34;&gt;调试指令
@@ -234,12 +234,12 @@
 &lt;h4 id=&#34;bgp-1&#34;&gt;bgp
 &lt;/h4&gt;&lt;p&gt;可以通过route policy细调&lt;/p&gt;
 &lt;p&gt;但这里也只讲直接配置的：&lt;/p&gt;
-&lt;p&gt;bgp xxx&lt;/p&gt;
+&lt;p&gt;bgp、address-family后&lt;/p&gt;
 &lt;p&gt;default local-preference xxx&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;lp越大越优先选择&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;bgp xxx&lt;/p&gt;
+&lt;p&gt;bgp、address-family后&lt;/p&gt;
 &lt;p&gt;default med xxx&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;med越小越优先选择&lt;/p&gt;
@@ -296,12 +296,12 @@
 &lt;/h3&gt;&lt;p&gt;建议将指令和转移图全部会背。&lt;/p&gt;
 &lt;h4 id=&#34;lcp协商过程&#34;&gt;LCP协商过程
 &lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;LCP Open Event&amp;mdash;&amp;mdash;&amp;ndash;starting&lt;/p&gt;
-&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;ndash;LCP Lower Up Evevt&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
+&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;ndash;LCP Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
 &lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCR+ Event&amp;mdash;&amp;mdash;&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
 &lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCA&amp;mdash;&amp;mdash;&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;作用于两个Router之间。&lt;/p&gt;
-&lt;p&gt;为两台设备相连的Serial口配置：link-protocal ppp 并刷新配置：shutdown后undo shutdown&lt;/p&gt;
+&lt;p&gt;为两台设备相连的Serial口配置：link-protocol ppp 并刷新配置：shutdown后undo shutdown&lt;/p&gt;
 &lt;p&gt;进入R1用户态:&lt;/p&gt;
 &lt;p&gt;debugging ppp all&lt;/p&gt;
 &lt;p&gt;terminal debugging&lt;/p&gt;
@@ -312,7 +312,7 @@
 &lt;p&gt;和LCP基本一致&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;-IPCP Open Event&amp;mdash;&amp;mdash;&amp;mdash;starting&lt;/p&gt;
-&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;IPCP Lower Up Evevt&amp;mdash;&amp;mdash;&amp;ndash;reqsent&lt;/p&gt;
+&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;IPCP Lower Up Event&amp;mdash;&amp;mdash;&amp;ndash;reqsent&lt;/p&gt;
 &lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;ndash;IPCP RCR+ Event&amp;mdash;&amp;mdash;&amp;ndash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
 &lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;ndash;IPCP RCA&amp;mdash;&amp;mdash;&amp;mdash;- opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
 &lt;hr&gt;
@@ -328,7 +328,7 @@
 &lt;p&gt;service-type ppp&lt;/p&gt;
 &lt;p&gt;password simple aaa&lt;/p&gt;
 &lt;p&gt;interface 对应串口&lt;/p&gt;
-&lt;p&gt;ppp authentication pap&lt;/p&gt;
+&lt;p&gt;ppp authentication-mode pap&lt;/p&gt;
 &lt;p&gt;R2配置：&lt;/p&gt;
 &lt;p&gt;interface 对应串口&lt;/p&gt;
 &lt;p&gt;ppp pap local-user RTB password simple aaa&lt;/p&gt;
@@ -357,13 +357,14 @@
 &lt;p&gt;password simple aaa&lt;/p&gt;
 &lt;p&gt;interface 对应串口&lt;/p&gt;
 &lt;p&gt;ppp chap user RTB&lt;/p&gt;
+&lt;p&gt;ppp chap password simple aaa&lt;/p&gt;
 &lt;p&gt;重启R1的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
 &lt;p&gt;进入R1用户态:&lt;/p&gt;
 &lt;p&gt;debugging ppp chap all&lt;/p&gt;
 &lt;p&gt;terminal debugging&lt;/p&gt;
 &lt;p&gt;重启R1的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
 &lt;h4 id=&#34;ospf邻居状态&#34;&gt;OSPF邻居状态
-&lt;/h4&gt;&lt;p&gt;DOWN-&amp;gt;INIT-&amp;gt;2-WAY-&amp;gt;EXSTART-&amp;gt;EXCHANG-&amp;gt;LOADING-&amp;gt;FULL&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;DOWN-&amp;gt;INIT-&amp;gt;2-WAY-&amp;gt;EXSTART-&amp;gt;EXCHANGE-&amp;gt;LOADING-&amp;gt;FULL&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;进入R1用户态:&lt;/p&gt;
 &lt;p&gt;debugging ospf event&lt;/p&gt;
@@ -377,6 +378,7 @@
 &lt;p&gt;CONNECT&amp;mdash;&amp;mdash;&amp;mdash;TCP_CR_Acked event&amp;mdash;&amp;mdash;&amp;mdash;OPENSENT&lt;/p&gt;
 &lt;p&gt;OPENSENT&amp;mdash;&amp;mdash;&amp;mdash;ReceiveOpenMessage Event&amp;mdash;&amp;mdash;&amp;mdash;OPENCONFIRM&lt;/p&gt;
 &lt;p&gt;OPENCONFIRM&amp;mdash;&amp;mdash;&amp;mdash;ReceiveKeepAliveMsg event&amp;mdash;&amp;mdash;&amp;mdash;-ESTABLISHED&lt;/p&gt;
+&lt;p&gt;我当时实验没有观察到ACTIVE，完整图表见下图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111.png&#34;
 	width=&#34;781&#34;
 	height=&#34;443&#34;
@@ -401,7 +403,7 @@
 &lt;h3 id=&#34;arp&#34;&gt;ARP
 &lt;/h3&gt;&lt;p&gt;目的是根据下一跳的IP地址找到其MAC地址。&lt;/p&gt;
 &lt;p&gt;有ARP Cache。&lt;/p&gt;
-&lt;p&gt;ARP Requst是广播，对方匹配后单播Reply回来。&lt;/p&gt;
+&lt;p&gt;ARP Request是广播，对方匹配后单播Reply回来。&lt;/p&gt;
 &lt;h3 id=&#34;icmp&#34;&gt;ICMP
 &lt;/h3&gt;&lt;p&gt;主要是ping和tracert（windows）。&lt;/p&gt;
 &lt;p&gt;ICMP报文种类有很多。&lt;/p&gt;
@@ -422,7 +424,7 @@
 &lt;p&gt;ORIGIN属性。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;ORIGIN 表示这条 BGP 路由最早是怎么进入 BGP 的。&lt;/p&gt;
-&lt;p&gt;i  IGG&lt;/p&gt;
+&lt;p&gt;i  IGP&lt;/p&gt;
 &lt;p&gt;e  EGP&lt;/p&gt;
 &lt;p&gt;?  incomplete&lt;/p&gt;
 &lt;p&gt;用 network 命令注入通常是 i&lt;/p&gt;
