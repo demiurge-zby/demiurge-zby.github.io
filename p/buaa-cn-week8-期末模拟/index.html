@@ -327,6 +327,7 @@
           <ol>
             <li><a href="#ospf-1">ospf</a></li>
             <li><a href="#bgp-1">bgp</a></li>
+            <li><a href="#验证方法">验证方法</a></li>
           </ol>
         </li>
         <li><a href="#路由引入">路由引入</a></li>
@@ -352,6 +353,7 @@
       </ol>
     </li>
     <li><a href="#配置上传">配置上传</a></li>
+    <li><a href="#结语">结语</a></li>
   </ol>
 </nav>
         </div>
@@ -432,7 +434,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 8 分钟
+                    阅读时长: 10 分钟
                 </time>
             </div>
         
@@ -695,6 +697,11 @@
 <p>针对R1-S1-S2</p>
 <p>S1和R2属于EBGP竞争，调节med</p>
 </blockquote>
+<h4 id="验证方法">验证方法
+</h4><p>在所有机器上开启：</p>
+<p>ip unr en</p>
+<p>ip ttl en</p>
+<p>然后tracert证明优选，断开优选证明备选。</p>
 <h3 id="路由引入">路由引入
 </h3><p>一般常见的是对ospf的其中一员配置静态路由，</p>
 <p>然后进入他的ospf，</p>
@@ -826,12 +833,76 @@
 <p>terminal debugging</p>
 <p>reset bgp all 即可观察到。</p>
 <h2 id="协议分析">协议分析
-</h2><h3 id="arp">ARP
-</h3><h3 id="icmp">ICMP
-</h3><h3 id="ospf-2">OSPF
-</h3><h3 id="bgp-2">BGP
-</h3><h3 id="tcp-1">TCP
-</h3><h2 id="配置上传">配置上传
+</h2><p>理论相关知识在博客中或理论课已有讲述，在此仅做回顾。</p>
+<h3 id="arp">ARP
+</h3><p>目的是根据下一跳的IP地址找到其MAC地址。</p>
+<p>有ARP Cache。</p>
+<p>ARP Requst是广播，对方匹配后单播Reply回来。</p>
+<h3 id="icmp">ICMP
+</h3><p>主要是ping和tracert（windows）。</p>
+<p>ICMP报文种类有很多。</p>
+<p>tracert（windows）的工作机理是发ttl逐步递增的ping。</p>
+<p>使用的是 <strong>Echo Request(类型8)</strong> 和 <strong>Echo Reply(类型0)</strong>。</p>
+<h3 id="ospf-2">OSPF
+</h3><p>五类报文。Hello,DD,LSR,LSU,LSAck。</p>
+<p>DD主从关系协商过程的意义。</p>
+<p>详见：<a href="[BUAA CN Week3 OSPF](https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa)" onclick="window.open(this.href,'_blank');return false;"> Week3-OSPF</a>.</p>
+<p>LSU里的LSA有五种。</p>
+<p>详见：<a href="[BUAA CN Week3 OSPF](https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa)" onclick="window.open(this.href,'_blank');return false;"> Week3-OSPF</a>.</p>
+<p>注意五类LSA的范围。</p>
+<h3 id="bgp-2">BGP
+</h3><p>network注入的意义（把本地路由表中已经存在的某条路由注入到 BGP 表中，并对外发布）。</p>
+<p>ping -a的意义（可检测 Loopback 能不能连通对侧 Loopback）。</p>
+<p>Notification与Update报文。</p>
+<p>黑洞问题。（路由聚合）</p>
+<p>ORIGIN属性。</p>
+<blockquote>
+<p>ORIGIN 表示这条 BGP 路由最早是怎么进入 BGP 的。</p>
+<p>i  IGG</p>
+<p>e  EGP</p>
+<p>?  incomplete</p>
+<p>用 network 命令注入通常是 i</p>
+<p>import-route XXX 注入通常是 ?</p>
+</blockquote>
+<p>PATH属性。</p>
+<blockquote>
+<p>PATH 记录了经过的AS号， 越靠前越近。</p>
+<p>有两个重要作用：防环、选路。</p>
+<p>防环规则：如果一台 BGP 路由器收到的路由里，AS_PATH 包含自己的 AS 号，就丢弃。</p>
+<p>选路规则：AS_PATH越短越好。(当然选路还收到lp，med影响)</p>
+</blockquote>
+<p>next-hop属性。</p>
+<blockquote>
+<p>next-hop 表示：去往某个 BGP 路由时，下一跳应该交给谁。</p>
+<p>这是 BGP 里非常容易出问题的属性。</p>
+<p>eBGP 和 iBGP 行为不一样：</p>
+<ul>
+<li>
+<p>eBGP 传路由时，默认会把 next-hop 改成自己</p>
+</li>
+<li>
+<p>iBGP 传路由时，默认不改 next-hop，还用接收来的原路由的next-hop。</p>
+</li>
+</ul>
+<p>所以我们往往对ibgp手动配next-hop-local，把下一跳改成自己。</p>
+</blockquote>
+<h3 id="tcp-1">TCP
+</h3><p>相较于UDP的优缺点（实时性与正确性的考量）。</p>
+<p>三次握手与四次挥手（SYN,FIN）。</p>
+<p>确认号。</p>
+<p>TCP、UDP、IP头部长度。（20B、8B、20B，结合以太网MTU=1500）</p>
+<p>零窗口探测报文的意义与时间规律（翻倍）。</p>
+<p>SRTT的计算（学习率）。</p>
+<p>RTO的变化规律（翻倍）。</p>
+<p>慢启动（一个RTT翻倍）、拥塞避免（一个RTT加1）、快恢复快重传（收到三个重复ACK，ssthresh减半）。</p>
+<p>tcpsndwnddata的cwnd窗口是以segment为单位，应当乘上1460才是字节单位。</p>
+<blockquote>
+<p>注意tcpsndwnddata里是以报文数为记录单位而不是时间，应当分析出来慢启动时的指数倍增。</p>
+<p>即：每收到一个ACK报文，snd_cwnd加一。看似线性。</p>
+<p>但当前处于慢启动状态，一个RTT时间内收到的ACK呈指数增长，</p>
+<p>一个RTT时间内cwnd也是如此呈指数增长。</p>
+</blockquote>
+<h2 id="配置上传">配置上传
 </h2><p>留一台干净的电脑，比如PCD。</p>
 <p>将其IP地址设置为自动获取。</p>
 <p>打开PCD的PuTTY，依次将PCD串口与S1,S2,R1,R2,R3,R4的CONSOLE口相连。</p>
@@ -839,6 +910,8 @@
 <p>全部加载完毕后，直接点击左上角菜单项的copy all to clipboard，</p>
 <p>在桌面新建“组号座位号-学号姓名.txt”文本文件，粘贴内容。</p>
 <p>为PCD连接校园网，上传至FTP。</p>
+<h2 id="结语">结语
+</h2><p>祝顺利。</p>
 
 </section>
 
