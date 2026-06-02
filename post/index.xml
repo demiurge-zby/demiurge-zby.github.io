@@ -89,10 +89,8 @@
 &lt;p&gt;题目往往会限制OSPF的范围，注意到底是哪些端口&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;要观察到OSPF的状态一般应该变为FULL&lt;/p&gt;
-&lt;hr&gt;
 &lt;h3 id=&#34;重启&#34;&gt;重启
 &lt;/h3&gt;&lt;p&gt;用户态下 reset ospf process   Y&lt;/p&gt;
-&lt;hr&gt;
 &lt;h3 id=&#34;调试指令&#34;&gt;调试指令
 &lt;/h3&gt;&lt;p&gt;display ospf lsdb&lt;/p&gt;
 &lt;p&gt;display ospf peer&lt;/p&gt;
@@ -139,11 +137,16 @@
 &lt;p&gt;若题目变为阻止&lt;strong&gt;5.0.0.0/8网段&lt;/strong&gt;的路由&lt;strong&gt;传递&lt;/strong&gt;，则需要对所有peer都进行这个命令。&lt;/p&gt;
 &lt;h4 id=&#34;基于as-path&#34;&gt;基于AS-PATH
 &lt;/h4&gt;&lt;p&gt;不通告来自AS200的路由，而&lt;strong&gt;只通告&lt;/strong&gt;自己所在AS内部产生的路由。&lt;/p&gt;
-&lt;p&gt;ip as-path-acl 1 deny _200$&lt;/p&gt;
+&lt;p&gt;ip as-path-acl 1 deny \b200$&lt;/p&gt;
 &lt;p&gt;ip as-path-acl 1 permit ^$&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;_是AS号码之间的分割符。   ^$匹配本地路由&lt;/p&gt;
+&lt;p&gt;\b是AS号码前的分割符。&lt;/p&gt;
+&lt;p&gt;^ 表示字符串开头，^$表示 AS_PATH 为空，也即本地 AS。&lt;/p&gt;
+&lt;p&gt;若想表达通配应为 .*&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;如果只是不通告来自AS200的路由：&lt;/p&gt;
+&lt;p&gt;ip as-path-acl 1 deny \b200$&lt;/p&gt;
+&lt;p&gt;ip as-path-acl 1 permit .*&lt;/p&gt;
 &lt;p&gt;进入bgp视图，address-family ipv4 unicast：&lt;/p&gt;
 &lt;p&gt;对&lt;strong&gt;所有peer&lt;/strong&gt;进行&lt;/p&gt;
 &lt;p&gt;peer xxx &lt;strong&gt;as-path-acl&lt;/strong&gt; 1 &lt;strong&gt;export&lt;/strong&gt;&lt;/p&gt;
@@ -2743,7 +2746,7 @@
 &lt;p&gt;from Student &lt;strong&gt;LEFT (OUTER)  JOIN&lt;/strong&gt; SC ON &amp;hellip;&lt;/p&gt;
 &lt;p&gt;同理还有RIGHT与FULL&lt;/p&gt;
 &lt;h5 id=&#34;嵌套查询&#34;&gt;嵌套查询
-&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;不相关&lt;/strong&gt;子查询：由内向外，将&lt;strong&gt;查询语句的返回值&lt;/strong&gt;作为&lt;strong&gt;查询条件的条件值&lt;/strong&gt;。因为查询语句的返回值是集合，我们往往使用&lt;strong&gt;IN&lt;/strong&gt;运算符而非等号，或者**&amp;lt; ANY()&lt;strong&gt;，&lt;/strong&gt;&amp;lt;ALL()&lt;strong&gt;这种，any为存在，all为任意，也可以是&lt;/strong&gt;EXIST()&lt;strong&gt;，若返回值为空集则为&lt;/strong&gt;FALSE**。&lt;/p&gt;
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;不相关&lt;/strong&gt;子查询：由内向外，将&lt;strong&gt;查询语句的返回值&lt;/strong&gt;作为&lt;strong&gt;查询条件的条件值&lt;/strong&gt;。因为查询语句的返回值是集合，我们往往使用&lt;strong&gt;IN&lt;/strong&gt;运算符而非等号，&lt;strong&gt;或者 &amp;lt; ANY()、&amp;lt;ALL()这种&lt;/strong&gt;，any为存在，all为任意，也可以是&lt;strong&gt;EXIST()&lt;/strong&gt;，若返回值为空集则为&lt;strong&gt;FALSE&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;相关&lt;/strong&gt;子查询：子查询进行时需要父查询提供信息。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;查询与刘晨在同一个系学习的学生&lt;/code&gt;：先找到刘晨在哪个系&lt;/p&gt;
 &lt;blockquote&gt;
@@ -6049,22 +6052,33 @@ IrConstantArray 初始化为0可直接对应一条 .space，
 &lt;h4 id=&#34;text&#34;&gt;.text
 &lt;/h4&gt;&lt;p&gt;接下来才是重头戏，也就是MIPS指令集。&lt;/p&gt;
 &lt;p&gt;text 文件夹中包含的 MIPS 文本段（代码段）相关类及其对应指令类型如下：&lt;/p&gt;
-&lt;p&gt;MipsAlu：&lt;code&gt;R&lt;/code&gt;: add,sub,addu,subu,and,or,nor,xor,slt,sltu
-&lt;code&gt;I&lt;/code&gt;: addi,addiu,andi,ori,xori,slti,sltiu
-&lt;code&gt;shiftv&lt;/code&gt;: sllv,srav,srlv
-&lt;code&gt;shift&lt;/code&gt;: sll,sra,srl
-MipsCompare：slt、seq、sne、sle、sgt、sge、slti
-MipsBranch：beq、bne、bgtz、blez、bgez、bltz
-MipsJump：j、jal、jr
-MipsLoad：lw、lh、lhu、lb、lbu
-MipsStore：sw、sh、sb
-MipsMD：mult、div、mfhi、mflo、mthi、mtlo
-MipsSyscall：syscall
-MipsLabel：用于定义代码中的标签
-MipsAnnotation：用于添加注释（以 # 开头的说明文本）
-MarsLi（fake）：li（伪指令，加载立即数到寄存器）
-MarsLa（fake）：la（伪指令，加载标签地址到寄存器）
-MarsMove（fake）：move（伪指令，寄存器间数据移动）&lt;/p&gt;
+&lt;p&gt;MipsAlu：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;R&lt;/code&gt;: add,sub,addu,subu,and,or,nor,xor,slt,sltu&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;I&lt;/code&gt;: addi,addiu,andi,ori,xori,slti,sltiu&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;shiftv&lt;/code&gt;: sllv,srav,srlv&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;shift&lt;/code&gt;: sll,sra,srl&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MipsCompare：slt、seq、sne、sle、sgt、sge、slti&lt;/p&gt;
+&lt;p&gt;MipsBranch：beq、bne、bgtz、blez、bgez、bltz&lt;/p&gt;
+&lt;p&gt;MipsJump：j、jal、jr&lt;/p&gt;
+&lt;p&gt;MipsLoad：lw、lh、lhu、lb、lbu&lt;/p&gt;
+&lt;p&gt;MipsStore：sw、sh、sb&lt;/p&gt;
+&lt;p&gt;MipsMD：mult、div、mfhi、mflo、mthi、mtlo&lt;/p&gt;
+&lt;p&gt;MipsSyscall：syscall&lt;/p&gt;
+&lt;p&gt;MipsLabel：用于定义代码中的标签&lt;/p&gt;
+&lt;p&gt;MipsAnnotation：用于添加注释（以 # 开头的说明文本）&lt;/p&gt;
+&lt;p&gt;MarsLi（fake）：li（伪指令，加载立即数到寄存器）&lt;/p&gt;
+&lt;p&gt;MarsLa（fake）：la（伪指令，加载标签地址到寄存器）&lt;/p&gt;
+&lt;p&gt;MarsMove（fake）：move（伪指令，寄存器间数据移动）&lt;/p&gt;
 &lt;p&gt;需要特别注意的是，由于我们按照大类来划分，因此add与addi的构造方法显然应该是不同的，需要支持多构造函数。&lt;/p&gt;
 &lt;p&gt;不过听起来复杂，其实也只是把指令的构造方法与toString实现了而已。指令具体的作用呢？那就是计组做的事情了。&lt;/p&gt;
 &lt;h3 id=&#34;从中间代码到mips&#34;&gt;从中间代码到MIPS

@@ -89,10 +89,8 @@
 &lt;p&gt;题目往往会限制OSPF的范围，注意到底是哪些端口&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;要观察到OSPF的状态一般应该变为FULL&lt;/p&gt;
-&lt;hr&gt;
 &lt;h3 id=&#34;重启&#34;&gt;重启
 &lt;/h3&gt;&lt;p&gt;用户态下 reset ospf process   Y&lt;/p&gt;
-&lt;hr&gt;
 &lt;h3 id=&#34;调试指令&#34;&gt;调试指令
 &lt;/h3&gt;&lt;p&gt;display ospf lsdb&lt;/p&gt;
 &lt;p&gt;display ospf peer&lt;/p&gt;
@@ -139,11 +137,16 @@
 &lt;p&gt;若题目变为阻止&lt;strong&gt;5.0.0.0/8网段&lt;/strong&gt;的路由&lt;strong&gt;传递&lt;/strong&gt;，则需要对所有peer都进行这个命令。&lt;/p&gt;
 &lt;h4 id=&#34;基于as-path&#34;&gt;基于AS-PATH
 &lt;/h4&gt;&lt;p&gt;不通告来自AS200的路由，而&lt;strong&gt;只通告&lt;/strong&gt;自己所在AS内部产生的路由。&lt;/p&gt;
-&lt;p&gt;ip as-path-acl 1 deny _200$&lt;/p&gt;
+&lt;p&gt;ip as-path-acl 1 deny \b200$&lt;/p&gt;
 &lt;p&gt;ip as-path-acl 1 permit ^$&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;_是AS号码之间的分割符。   ^$匹配本地路由&lt;/p&gt;
+&lt;p&gt;\b是AS号码前的分割符。&lt;/p&gt;
+&lt;p&gt;^ 表示字符串开头，^$表示 AS_PATH 为空，也即本地 AS。&lt;/p&gt;
+&lt;p&gt;若想表达通配应为 .*&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;如果只是不通告来自AS200的路由：&lt;/p&gt;
+&lt;p&gt;ip as-path-acl 1 deny \b200$&lt;/p&gt;
+&lt;p&gt;ip as-path-acl 1 permit .*&lt;/p&gt;
 &lt;p&gt;进入bgp视图，address-family ipv4 unicast：&lt;/p&gt;
 &lt;p&gt;对&lt;strong&gt;所有peer&lt;/strong&gt;进行&lt;/p&gt;
 &lt;p&gt;peer xxx &lt;strong&gt;as-path-acl&lt;/strong&gt; 1 &lt;strong&gt;export&lt;/strong&gt;&lt;/p&gt;

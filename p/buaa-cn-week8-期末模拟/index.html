@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA CN Week8 期末模拟">
+<link rel="stylesheet" href="/scss/style.min.d7afc1e05036bf3df63920e369730525ae72eb86af62769b6302568a4a95454e.css"><meta property='og:title' content="BUAA CN Week8 期末模拟">
 <meta property='og:description' content="复习指南">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -447,8 +447,6 @@
 </header>
 
     <section class="article-content">
-    
-    
     <h2 id="配置设置">配置设置
 </h2><p>开局先连接好PC串口，连接各设备并执行重启操作。</p>
 <p>reset saved-con   Y</p>
@@ -525,10 +523,8 @@
 <p>题目往往会限制OSPF的范围，注意到底是哪些端口</p>
 </blockquote>
 <p>要观察到OSPF的状态一般应该变为FULL</p>
-<hr>
 <h3 id="重启">重启
 </h3><p>用户态下 reset ospf process   Y</p>
-<hr>
 <h3 id="调试指令">调试指令
 </h3><p>display ospf lsdb</p>
 <p>display ospf peer</p>
@@ -575,11 +571,16 @@
 <p>若题目变为阻止<strong>5.0.0.0/8网段</strong>的路由<strong>传递</strong>，则需要对所有peer都进行这个命令。</p>
 <h4 id="基于as-path">基于AS-PATH
 </h4><p>不通告来自AS200的路由，而<strong>只通告</strong>自己所在AS内部产生的路由。</p>
-<p>ip as-path-acl 1 deny _200$</p>
+<p>ip as-path-acl 1 deny \b200$</p>
 <p>ip as-path-acl 1 permit ^$</p>
 <blockquote>
-<p>_是AS号码之间的分割符。   ^$匹配本地路由</p>
+<p>\b是AS号码前的分割符。</p>
+<p>^ 表示字符串开头，^$表示 AS_PATH 为空，也即本地 AS。</p>
+<p>若想表达通配应为 .*</p>
 </blockquote>
+<p>如果只是不通告来自AS200的路由：</p>
+<p>ip as-path-acl 1 deny \b200$</p>
+<p>ip as-path-acl 1 permit .*</p>
 <p>进入bgp视图，address-family ipv4 unicast：</p>
 <p>对<strong>所有peer</strong>进行</p>
 <p>peer xxx <strong>as-path-acl</strong> 1 <strong>export</strong></p>
@@ -914,7 +915,6 @@
 <p>为PCD连接校园网，上传至FTP。</p>
 <h2 id="结语">结语
 </h2><p>祝顺利。</p>
-
 </section>
 
 

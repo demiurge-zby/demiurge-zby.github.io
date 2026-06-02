@@ -726,7 +726,7 @@
 &lt;p&gt;from Student &lt;strong&gt;LEFT (OUTER)  JOIN&lt;/strong&gt; SC ON &amp;hellip;&lt;/p&gt;
 &lt;p&gt;同理还有RIGHT与FULL&lt;/p&gt;
 &lt;h5 id=&#34;嵌套查询&#34;&gt;嵌套查询
-&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;不相关&lt;/strong&gt;子查询：由内向外，将&lt;strong&gt;查询语句的返回值&lt;/strong&gt;作为&lt;strong&gt;查询条件的条件值&lt;/strong&gt;。因为查询语句的返回值是集合，我们往往使用&lt;strong&gt;IN&lt;/strong&gt;运算符而非等号，或者**&amp;lt; ANY()&lt;strong&gt;，&lt;/strong&gt;&amp;lt;ALL()&lt;strong&gt;这种，any为存在，all为任意，也可以是&lt;/strong&gt;EXIST()&lt;strong&gt;，若返回值为空集则为&lt;/strong&gt;FALSE**。&lt;/p&gt;
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;不相关&lt;/strong&gt;子查询：由内向外，将&lt;strong&gt;查询语句的返回值&lt;/strong&gt;作为&lt;strong&gt;查询条件的条件值&lt;/strong&gt;。因为查询语句的返回值是集合，我们往往使用&lt;strong&gt;IN&lt;/strong&gt;运算符而非等号，&lt;strong&gt;或者 &amp;lt; ANY()、&amp;lt;ALL()这种&lt;/strong&gt;，any为存在，all为任意，也可以是&lt;strong&gt;EXIST()&lt;/strong&gt;，若返回值为空集则为&lt;strong&gt;FALSE&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;相关&lt;/strong&gt;子查询：子查询进行时需要父查询提供信息。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;查询与刘晨在同一个系学习的学生&lt;/code&gt;：先找到刘晨在哪个系&lt;/p&gt;
 &lt;blockquote&gt;

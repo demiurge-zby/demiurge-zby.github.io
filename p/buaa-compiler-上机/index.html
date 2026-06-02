@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA Compiler 上机">
+<link rel="stylesheet" href="/scss/style.min.d7afc1e05036bf3df63920e369730525ae72eb86af62769b6302568a4a95454e.css"><meta property='og:title' content="BUAA Compiler 上机">
 <meta property='og:description' content="祝期末顺利">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-compiler-%E4%B8%8A%E6%9C%BA/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -409,8 +409,6 @@
 </header>
 
     <section class="article-content">
-    
-    
     <h2 id="2306-上机真题">2306 上机真题
 </h2><h3 id="期中考试">期中考试
 </h3><p>分为两道题。</p>
@@ -466,11 +464,11 @@
 <p>词法分析，新增三个token，并完成lexer。</p>
 <p>语法分析则比较简单，cin语句的判别也只靠currentToken就能解决。</p>
 <p>需要注意书写CinStmt的parse方法时要追加<strong>错误处理</strong>。</p>
-<p>语义分析，重点是-&gt;的常量预计算，显然直接使用**(a+b)(b-a+1)/2**计算。</p>
+<p>语义分析，重点是-&gt;的常量预计算，显然直接使用<strong>(a+b)(b-a+1)/2</strong>计算。</p>
 <p>代码生成：</p>
 <ul>
 <li>-&gt;依旧使用(a+b)(b-a+1)/2即可。就这么一直new AluInstr。注意不要忘记减1和除2。</li>
-<li>cin语句和assign语句更是基本一模一样，只是store的不是ExpIr，而是**new GetIntInstr()**而已。</li>
+<li>cin语句和assign语句更是基本一模一样，只是store的不是ExpIr，而是<strong>new GetIntInstr()</strong>而已。</li>
 </ul>
 <p>整体做下来算是比较简单的一份题目了。</p>
 <blockquote>
@@ -871,7 +869,6 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>对于非Cond型的条件跳转，大胆使用new BranchInstr(irValue, trueBlock, falseBlock);</p>
-
 </section>
 
 

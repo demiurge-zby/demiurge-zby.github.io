@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-compiler-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA Compiler 实验报告">
+<link rel="stylesheet" href="/scss/style.min.d7afc1e05036bf3df63920e369730525ae72eb86af62769b6302568a4a95454e.css"><meta property='og:title' content="BUAA Compiler 实验报告">
 <meta property='og:description' content="将近万行的编译器">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-compiler-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -527,8 +527,6 @@
 </header>
 
     <section class="article-content">
-    
-    
     <hr>
 <h2 id="说在前面">说在前面
 </h2><p>本篇文章的内容并不能达到可以让你跟着做完整个编译器项目的程度，它只是我最终总结时的一些回忆，而非施工现场。</p>
@@ -1109,22 +1107,33 @@ IrConstantArray 初始化为0可直接对应一条 .space，
 <h4 id="text">.text
 </h4><p>接下来才是重头戏，也就是MIPS指令集。</p>
 <p>text 文件夹中包含的 MIPS 文本段（代码段）相关类及其对应指令类型如下：</p>
-<p>MipsAlu：<code>R</code>: add,sub,addu,subu,and,or,nor,xor,slt,sltu
-<code>I</code>: addi,addiu,andi,ori,xori,slti,sltiu
-<code>shiftv</code>: sllv,srav,srlv
-<code>shift</code>: sll,sra,srl
-MipsCompare：slt、seq、sne、sle、sgt、sge、slti
-MipsBranch：beq、bne、bgtz、blez、bgez、bltz
-MipsJump：j、jal、jr
-MipsLoad：lw、lh、lhu、lb、lbu
-MipsStore：sw、sh、sb
-MipsMD：mult、div、mfhi、mflo、mthi、mtlo
-MipsSyscall：syscall
-MipsLabel：用于定义代码中的标签
-MipsAnnotation：用于添加注释（以 # 开头的说明文本）
-MarsLi（fake）：li（伪指令，加载立即数到寄存器）
-MarsLa（fake）：la（伪指令，加载标签地址到寄存器）
-MarsMove（fake）：move（伪指令，寄存器间数据移动）</p>
+<p>MipsAlu：</p>
+<ul>
+<li>
+<p><code>R</code>: add,sub,addu,subu,and,or,nor,xor,slt,sltu</p>
+</li>
+<li>
+<p><code>I</code>: addi,addiu,andi,ori,xori,slti,sltiu</p>
+</li>
+<li>
+<p><code>shiftv</code>: sllv,srav,srlv</p>
+</li>
+<li>
+<p><code>shift</code>: sll,sra,srl</p>
+</li>
+</ul>
+<p>MipsCompare：slt、seq、sne、sle、sgt、sge、slti</p>
+<p>MipsBranch：beq、bne、bgtz、blez、bgez、bltz</p>
+<p>MipsJump：j、jal、jr</p>
+<p>MipsLoad：lw、lh、lhu、lb、lbu</p>
+<p>MipsStore：sw、sh、sb</p>
+<p>MipsMD：mult、div、mfhi、mflo、mthi、mtlo</p>
+<p>MipsSyscall：syscall</p>
+<p>MipsLabel：用于定义代码中的标签</p>
+<p>MipsAnnotation：用于添加注释（以 # 开头的说明文本）</p>
+<p>MarsLi（fake）：li（伪指令，加载立即数到寄存器）</p>
+<p>MarsLa（fake）：la（伪指令，加载标签地址到寄存器）</p>
+<p>MarsMove（fake）：move（伪指令，寄存器间数据移动）</p>
 <p>需要特别注意的是，由于我们按照大类来划分，因此add与addi的构造方法显然应该是不同的，需要支持多构造函数。</p>
 <p>不过听起来复杂，其实也只是把指令的构造方法与toString实现了而已。指令具体的作用呢？那就是计组做的事情了。</p>
 <h3 id="从中间代码到mips">从中间代码到MIPS
@@ -1496,7 +1505,6 @@ return要提供返回值的内容到某寄存器（load），以及jr $ra</p>
 <p>​	在实验上，虽然每项作业也有ddl，但整体的节奏感没有COOS那么紧张，这也导致了我在做编译这件事上很难做到久久为功，而往往是以多次集中突击的形式完成。编译实验是一门从0开始完成的大型项目，尽管经历了OO的磨练，我依旧难以培养起来比较清晰的模块观念，许多文件的设计都大量借鉴了学长的示例，例如IrModule，IrBuilder这样的类的设计。抛开这些不谈，经过编译实验我当然收获颇丰。从语法分析开始便一次又一次超出我的认知，类的数量太多以至于必须创建module，提取特征写父类，写抽象类，写记录类……静态类也是我之前OO课上未曾使用，但编译实验中频频使用的典例。</p>
 <h3 id="意见与建议">意见与建议
 </h3><p>编译课程整体的体验感就是难。削减难度这样的事可能未必是改进，但还是希望同学们能够稍微更轻松地完成实验，比如理论课可以增设llvm的讲解，然后适当减少用属性翻译文法进行中间代码生成那一部分的课时。</p>
-
 </section>
 
 

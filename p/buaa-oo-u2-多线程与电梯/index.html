@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA OO U2 多线程与电梯">
+<link rel="stylesheet" href="/scss/style.min.d7afc1e05036bf3df63920e369730525ae72eb86af62769b6302568a4a95454e.css"><meta property='og:title' content="BUAA OO U2 多线程与电梯">
 <meta property='og:description' content="是不是很失败呢">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-oo-u2-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%94%B5%E6%A2%AF/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -392,8 +392,6 @@
 </header>
 
     <section class="article-content">
-    
-    
     <h2 id="迭代过程综述">迭代过程综述
 </h2><h3 id="请求的迭代">请求的迭代
 </h3><p>第一次作业：PersonRequest            <br>
@@ -614,7 +612,6 @@ hw7的bug已经数不胜数了。</p>
 <p>至于线程安全，我认为线程之间的通信接口主要就是getter与setter，只是取当前时间的情况进行策略决断，可以避免长时间占用锁。</p>
 <p>此外避免死锁可以通过规避相互调用。尤其是在两个同类线程在相互上锁的时候，死锁率极高。因此一般考虑用对地位不等、也就是不会相互调用的两个对象上锁，例如在做receive回撤的时候，就直接返回到allrequest中，对它上锁当然是不会死锁的。</p>
 <p><strong>在电梯反复运行中感受时间的流逝，从线程的独立与交融中培养多核大脑。</strong></p>
-
 </section>
 
 

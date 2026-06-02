@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/'>
 
-<link rel="stylesheet" href="/scss/style.min.74099dcf6f27d3a5b29d594a0d43776277ceef5b42ab33f209f7ca94e95b2ab1.css"><meta property='og:title' content="BUAA DB 课程笔记">
+<link rel="stylesheet" href="/scss/style.min.d7afc1e05036bf3df63920e369730525ae72eb86af62769b6302568a4a95454e.css"><meta property='og:title' content="BUAA DB 课程笔记">
 <meta property='og:description' content="狂补16节回放所著">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-db-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -753,8 +753,6 @@
 </header>
 
     <section class="article-content">
-    
-    
     <blockquote>
 <p>前言（考后经验贴）：</p>
 <p>出题模式以往年题的22年为准。简答题仍为 3 * 8 分。</p>
@@ -1468,7 +1466,7 @@
 <p>from Student <strong>LEFT (OUTER)  JOIN</strong> SC ON &hellip;</p>
 <p>同理还有RIGHT与FULL</p>
 <h5 id="嵌套查询">嵌套查询
-</h5><p><strong>不相关</strong>子查询：由内向外，将<strong>查询语句的返回值</strong>作为<strong>查询条件的条件值</strong>。因为查询语句的返回值是集合，我们往往使用<strong>IN</strong>运算符而非等号，或者**&lt; ANY()<strong>，</strong>&lt;ALL()<strong>这种，any为存在，all为任意，也可以是</strong>EXIST()<strong>，若返回值为空集则为</strong>FALSE**。</p>
+</h5><p><strong>不相关</strong>子查询：由内向外，将<strong>查询语句的返回值</strong>作为<strong>查询条件的条件值</strong>。因为查询语句的返回值是集合，我们往往使用<strong>IN</strong>运算符而非等号，<strong>或者 &lt; ANY()、&lt;ALL()这种</strong>，any为存在，all为任意，也可以是<strong>EXIST()</strong>，若返回值为空集则为<strong>FALSE</strong>。</p>
 <p><strong>相关</strong>子查询：子查询进行时需要父查询提供信息。</p>
 <p><code>查询与刘晨在同一个系学习的学生</code>：先找到刘晨在哪个系</p>
 <blockquote>
@@ -1814,7 +1812,7 @@
 ></p>
 <p>手写列名可用于更名。</p>
 <p><strong>子查询</strong>可以是单表查询，多表查询，嵌套查询，集合查询……</p>
-<p>**视图可以嵌套！**子查询语句可以是对另一视图的select。</p>
+<p><strong>视图可以嵌套！</strong>子查询语句可以是对另一视图的select。</p>
 <p><strong>drop view 视图名</strong>即可直接删除，<strong>不会丢失数据，不必备份</strong>。</p>
 <h6 id="视图消解">视图消解
 </h6><p>DBMS会<strong>尝试</strong>把程序员发起的SQL指令中的视图拆为select，并进行语句合并，融合为一个select进行。</p>
@@ -2127,7 +2125,7 @@
 <p>检查时机：</p>
 <p><strong>立即执行约束</strong>是指在执行用户事务的过程中，在<strong>一条语句执行完</strong>后立即进行完整性约束的检查。若违背了完整性约束，系统将<strong>拒绝该操作</strong>。</p>
 <p><strong>延迟执行约束</strong>是指在<strong>整个用户事务</strong>执行完毕后，再进行完整性约束的检查。若违背了完整性约束，系统将<strong>拒绝整个</strong>事务。</p>
-<p>一条完整性规则可以用一个**五元组（D，O，A，C，P）**来描述，其中：</p>
+<p>一条完整性规则可以用一个<strong>五元组（D，O，A，C，P）</strong>来描述，其中：</p>
 <p><strong>D</strong>（Data）约束所作用的<strong>数据对象</strong></p>
 <p>O（Operation）触发完整性检查的<strong>数据库操作</strong>，即当用户发出<strong>什么操作</strong>请求时需要检查，是<strong>立即检查还是延迟检查</strong>。</p>
 <p><strong>A</strong>（Assertion）数据对象必须满足的断言或语义<strong>约束</strong>。</p>
@@ -3161,7 +3159,7 @@
 </li>
 </ul>
 <h3 id="查询代价的度量">查询代价的度量
-</h3><p>总代价=**I/O代价+**CPU代价+通信开销</p>
+</h3><p>总代价=<strong>I/O代价+</strong>CPU代价+通信开销</p>
 <p>I/O代价占绝大部分。</p>
 <p>其度量方式为：I/O块数或者I/O的次数。</p>
 <blockquote>
@@ -3402,8 +3400,8 @@
 </h5><p>事务故障的恢复是由<strong>系统自动完成</strong>的。</p>
 <p><strong>反向扫描</strong>日志文件，依次将日志记录中的<strong>更新前的值</strong>写入数据库，直到读到该事务的<strong>开始标志</strong>。</p>
 <h5 id="系统故障">系统故障
-</h5><p>未完成的事务对数据库的更新**可能（所以用值而非逆操作）**已经写入数据库。</p>
-<p>已提交事务对数据库的更新**可能（所以用值而非操作）**还留在缓冲区还没来得及写入数据库。</p>
+</h5><p>未完成的事务对数据库的更新<strong>可能（所以用值而非逆操作）</strong>已经写入数据库。</p>
+<p>已提交事务对数据库的更新<strong>可能（所以用值而非操作）</strong>还留在缓冲区还没来得及写入数据库。</p>
 <p>要<strong>撤销未完成的事务，重做已完成的事务。</strong></p>
 <ol>
 <li>
@@ -3672,8 +3670,8 @@
 </h5><p>选择一个<strong>处理死锁代价最小</strong>的事务，将其<strong>撤销</strong>，<strong>释放</strong>此事务持有的所有锁，使其他事务得以继续运行下去。</p>
 <p>对于所撤销的事务已作的操作必须都加以撤销。死锁结束后再REDO。</p>
 <h3 id="事务的调度与可串行性">事务的调度与可串行性
-</h3><p><strong>串行调度</strong>，属于<strong>同一事务的指令紧挨</strong>在一起。对于有n个事务的事务组，可以有**n!**个有效调度。</p>
-<p><strong>并行调度</strong>，来自不同事务的指令<strong>可以交叉执行</strong>，可以有大于**n!**个有效调度。</p>
+</h3><p><strong>串行调度</strong>，属于<strong>同一事务的指令紧挨</strong>在一起。对于有n个事务的事务组，可以有<strong>n!</strong>个有效调度。</p>
+<p><strong>并行调度</strong>，来自不同事务的指令<strong>可以交叉执行</strong>，可以有大于<strong>n!</strong>个有效调度。</p>
 <h4 id="调度的正确性">调度的正确性
 </h4><p>T1:读B;A=B+1;写回A;</p>
 <p>T2:读A;B=A+1;写回B;</p>
@@ -4186,7 +4184,6 @@
 <p>range查询：有序索引</p>
 <p>B+树索引对于给定<strong>数值的查询</strong>和<strong>范围查询</strong>都是比较有效的，但在数据的<strong>插入、删除</strong>时动态调整代价高。</p>
 <p>多属性索引中，第二关键字意义远弱于第一关键字。</p>
-
 </section>
 
 
