@@ -819,16 +819,15 @@
 
     
 
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script><footer class="site-footer">
+    <footer class="site-footer">
     <section class="copyright">
-        &copy; 
+        &copy;
         
-            2024 - 
+            2024 -
         
         2026 Demiurge
     </section>
-    
+
     <section class="powerby">
         
             Easy Life and Easy Learning <br/>
@@ -836,14 +835,214 @@
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 
-<div class="busuanzi-footer">
-  <span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  </span>
-  <span id="busuanzi_container_site_uv">
-    本站访客数<span id="busuanzi_value_site_uv"></span>人次
-  </span>
-</div></footer>
+    <div class="busuanzi-footer">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv">...</span>次
+        </span>
+        <span id="busuanzi_container_site_uv">
+            本站访客数<span id="busuanzi_value_site_uv">...</span>人次
+        </span>
+    </div>
+</footer>
+
+<script>
+(function () {
+    var endpoint = "https://busuanzi.ibruce.info/busuanzi?jsonpCallback=";
+    var storageKey = "demiurge:busuanzi:site";
+    var state = window.__demiurgeBusuanziState || (window.__demiurgeBusuanziState = {
+        loading: false,
+        loaded: false,
+        failed: false,
+        retried: false,
+        values: null,
+        listenerBound: false
+    });
+
+    function getEl(key) {
+        return document.getElementById("busuanzi_value_" + key);
+    }
+
+    function hasFooter() {
+        return !!(getEl("site_pv") || getEl("site_uv"));
+    }
+
+    function showContainers() {
+        var keys = ["site_pv", "site_uv"];
+        for (var i = 0; i < keys.length; i++) {
+            var container = document.getElementById("busuanzi_container_" + keys[i]);
+            if (container) {
+                container.style.display = "inline";
+            }
+        }
+    }
+
+    function render(values, fromCache) {
+        if (!values) {
+            return false;
+        }
+
+        var rendered = false;
+        var keys = ["site_pv", "site_uv"];
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            var el = getEl(key);
+            if (el && values[key] !== undefined && values[key] !== null && values[key] !== "") {
+                el.textContent = values[key];
+                rendered = true;
+            }
+        }
+
+        if (rendered) {
+            showContainers();
+            var footer = document.querySelector(".busuanzi-footer");
+            if (footer) {
+                footer.setAttribute("data-busuanzi-status", fromCache ? "cached" : "live");
+                if (fromCache) {
+                    footer.setAttribute("title", "网络不稳定时显示上次成功加载的数据");
+                } else {
+                    footer.removeAttribute("title");
+                }
+            }
+        }
+
+        return rendered;
+    }
+
+    function readCache() {
+        try {
+            var raw = window.localStorage && window.localStorage.getItem(storageKey);
+            if (!raw) {
+                return null;
+            }
+            var cached = JSON.parse(raw);
+            return cached && cached.values ? cached.values : null;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function writeCache(values) {
+        try {
+            if (window.localStorage) {
+                window.localStorage.setItem(storageKey, JSON.stringify({
+                    values: values,
+                    savedAt: Date.now()
+                }));
+            }
+        } catch (error) {}
+    }
+
+    function hydrate() {
+        if (state.values && render(state.values, false)) {
+            return true;
+        }
+
+        return render(readCache(), true);
+    }
+
+    function cleanup(callbackName, script, timer) {
+        window.clearTimeout(timer);
+        try {
+            delete window[callbackName];
+        } catch (error) {
+            window[callbackName] = undefined;
+        }
+        if (script && script.parentNode) {
+            script.parentNode.removeChild(script);
+        }
+    }
+
+    function fetchBusuanzi() {
+        if (!hasFooter()) {
+            return;
+        }
+
+        if (state.loaded) {
+            hydrate();
+            return;
+        }
+
+        if (state.loading) {
+            hydrate();
+            return;
+        }
+
+        if (state.failed) {
+            hydrate();
+            return;
+        }
+
+        hydrate();
+        state.loading = true;
+
+        var callbackName = "__demiurgeBusuanziCallback_" + Math.floor(Math.random() * 1000000000);
+        var script = document.createElement("script");
+        var timer = window.setTimeout(function () {
+            fail(callbackName, script, timer);
+        }, 8000);
+
+        window[callbackName] = function (data) {
+            var values = {
+                site_pv: data && data.site_pv,
+                site_uv: data && data.site_uv
+            };
+
+            state.loading = false;
+            state.loaded = true;
+            state.failed = false;
+            state.values = values;
+            cleanup(callbackName, script, timer);
+
+            if (render(values, false)) {
+                writeCache(values);
+            }
+        };
+
+        function fail(callbackName, script, timer) {
+            state.loading = false;
+            cleanup(callbackName, script, timer);
+
+            if (!state.retried) {
+                state.retried = true;
+                window.setTimeout(fetchBusuanzi, 1200);
+                return;
+            }
+
+            state.failed = true;
+            hydrate();
+        }
+
+        script.onerror = function () {
+            fail(callbackName, script, timer);
+        };
+
+        script.async = true;
+        script.referrerPolicy = "no-referrer-when-downgrade";
+        script.src = endpoint + callbackName;
+        document.head.appendChild(script);
+    }
+
+    function initBusuanziFooter() {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fetchBusuanzi, { once: true });
+        } else {
+            fetchBusuanzi();
+        }
+    }
+
+    window.refreshBusuanziFooter = initBusuanziFooter;
+
+    if (!state.listenerBound) {
+        document.addEventListener("pjax:complete", function () {
+            window.setTimeout(initBusuanziFooter, 0);
+        });
+        state.listenerBound = true;
+    }
+
+    initBusuanziFooter();
+})();
+</script>
+
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
