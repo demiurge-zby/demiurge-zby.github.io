@@ -31,10 +31,12 @@
 &lt;/h2&gt;&lt;p&gt;对于套件二的同学，相较以往还需要多用到R3、R4两台设备，因此四台电脑的分工需要自己考虑好。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;一般主控1-2台电脑（PCB\PCC）。一定要注意留一台干净电脑用来上传配置。&lt;/p&gt;
+&lt;p&gt;建议主控PCB，PCC用于配置上传。因为实验过程与配置上传都需要频繁切换串口。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;一定要注意用能卡紧的线，出现问题第一步一定是检查线路是否接触不良。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;考前的所有线缆都更新了，非常好用！&lt;/p&gt;
+&lt;p&gt;如果不好用建议在考前一周跟老师反馈进行更换。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;对于非PC端报文的捕获，可能需要用到集线器，借助无条件转发给其他PC实现中间报文的截获。&lt;/p&gt;
 &lt;h2 id=&#34;pc-ip配置&#34;&gt;PC IP配置
@@ -228,12 +230,40 @@
 &lt;p&gt;上述文件均可拖出虚拟机到桌面，并在windows系统上根据考试需要完成上传。&lt;/p&gt;
 &lt;h2 id=&#34;高级配置&#34;&gt;高级配置
 &lt;/h2&gt;&lt;h3 id=&#34;备选路由与优选路由&#34;&gt;备选路由与优选路由
-&lt;/h3&gt;&lt;h4 id=&#34;ospf-1&#34;&gt;ospf
-&lt;/h4&gt;&lt;p&gt;直接interface 接口&lt;/p&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;static&#34;&gt;static
+&lt;/h4&gt;&lt;p&gt;对于区域外的静态路由，要想控制优先级，只需：&lt;/p&gt;
+&lt;p&gt;ip route-static xxxx mask yyyy preference 100&lt;/p&gt;
+&lt;p&gt;注意preference&lt;strong&gt;越小&lt;/strong&gt;，优先级越高。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不加 preference 时，&lt;strong&gt;静态路由默认优先级是 60&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;ospf-1&#34;&gt;ospf
+&lt;/h4&gt;&lt;p&gt;直接 interface 接口&lt;/p&gt;
 &lt;p&gt;为接口设置：&lt;/p&gt;
 &lt;p&gt;ospf cost xxx&lt;/p&gt;
 &lt;p&gt;高优先级cost小，备选路由cost高即可&lt;/p&gt;
 &lt;p&gt;同一条链路两端点的cost可不同，表达不同方向&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一定要注意你的整条路由是否源自OSPF&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/attention.png&#34;
+	width=&#34;1045&#34;
+	height=&#34;605&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/attention_hu5382100910137041603.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/attention_hu1404929334152734404.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Attention!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;414px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;比如考试中要求两台PC之间采用S1-R2-R1优选路径&lt;/p&gt;
+&lt;p&gt;而PC不在OSPF里，大家去PC都是靠的静态路由，那当然不能靠ospf的cost了&lt;/p&gt;
+&lt;p&gt;S1-&amp;gt;PCB配的两条static设置优先级&lt;/p&gt;
+&lt;p&gt;R1-&amp;gt;PCA配的两条static设置优先级即可&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;bgp-1&#34;&gt;bgp
 &lt;/h4&gt;&lt;p&gt;可以通过route policy细调&lt;/p&gt;
 &lt;p&gt;但这里也只讲直接配置的：&lt;/p&gt;
@@ -254,9 +284,21 @@
 &lt;p&gt;但是在某些场景下会赋相同的默认值从而使其无效&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;p&gt;用例在bgp设计实验3&lt;/p&gt;
-&lt;p&gt;R1-S1-S2-R2-R1这样的一张网&lt;/p&gt;
-&lt;p&gt;R1在单独的AS&lt;/p&gt;
+&lt;p&gt;用例在bgp设计实验3:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/bgp.png&#34;
+	width=&#34;895&#34;
+	height=&#34;479&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/bgp_hu12490426778594655812.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/bgp_hu4445618484524059449.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;lp and med&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;448px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;p&gt;需要S2-R2-R1且R1-S1-S2&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;针对S2-R2-R1&lt;/p&gt;
@@ -298,10 +340,10 @@
 &lt;h3 id=&#34;状态转移图&#34;&gt;状态转移图
 &lt;/h3&gt;&lt;p&gt;建议将指令和转移图全部会背。&lt;/p&gt;
 &lt;h4 id=&#34;lcp协商过程&#34;&gt;LCP协商过程
-&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;LCP Open Event&amp;mdash;&amp;mdash;&amp;ndash;starting&lt;/p&gt;
-&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;ndash;LCP Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;LCP Open Event&amp;mdash;&amp;mdash;&amp;mdash;starting&lt;/p&gt;
+&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;LCP Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
 &lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCR+ Event&amp;mdash;&amp;mdash;&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
-&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCA&amp;mdash;&amp;mdash;&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
+&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCA&amp;mdash;&amp;mdash;&amp;mdash;opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;作用于两个Router之间。&lt;/p&gt;
 &lt;p&gt;为两台设备相连的Serial口配置：link-protocol ppp 并刷新配置：shutdown后undo shutdown&lt;/p&gt;
@@ -314,17 +356,17 @@
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;和LCP基本一致&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;-IPCP Open Event&amp;mdash;&amp;mdash;&amp;mdash;starting&lt;/p&gt;
-&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;IPCP Lower Up Event&amp;mdash;&amp;mdash;&amp;ndash;reqsent&lt;/p&gt;
-&lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;ndash;IPCP RCR+ Event&amp;mdash;&amp;mdash;&amp;ndash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
-&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;ndash;IPCP RCA&amp;mdash;&amp;mdash;&amp;mdash;- opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
+&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;IPCP Open Event&amp;mdash;&amp;mdash;&amp;mdash;starting&lt;/p&gt;
+&lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;IPCP Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
+&lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;mdash;IPCP RCR+ Event&amp;mdash;&amp;mdash;&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
+&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;IPCP RCA&amp;mdash;&amp;mdash;&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;操作也和LCP一样，或者说debugging ppp all的时候，&lt;/p&gt;
 &lt;p&gt;LCP协商过程完成后，若有验证过程则需经过PAP/CHAP的验证过程，之后便进入IPCP的协商过程。&lt;/p&gt;
 &lt;h4 id=&#34;pap验证过程&#34;&gt;PAP验证过程
-&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;ndash;PAP Server Lower Up Event&amp;mdash;&amp;mdash;&amp;ndash;ServerListen&lt;/p&gt;
-&lt;p&gt;ServerListen&amp;mdash;&amp;mdash;&amp;ndash;PAP Receive Request Event&amp;mdash;&amp;mdash;&amp;ndash;WaitAAA&lt;/p&gt;
-&lt;p&gt;WaitAAA&amp;mdash;&amp;mdash;&amp;ndash;PAP AAA Result Event&amp;mdash;&amp;mdash;&amp;ndash;ServerSuccess&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;PAP Server Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;ServerListen&lt;/p&gt;
+&lt;p&gt;ServerListen&amp;mdash;&amp;mdash;&amp;mdash;PAP Receive Request Event&amp;mdash;&amp;mdash;&amp;mdash;WaitAAA&lt;/p&gt;
+&lt;p&gt;WaitAAA&amp;mdash;&amp;mdash;&amp;mdash;PAP AAA Result Event&amp;mdash;&amp;mdash;&amp;mdash;ServerSuccess&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;R1配置：&lt;/p&gt;
 &lt;p&gt;local-user RTB class network&lt;/p&gt;
@@ -340,8 +382,8 @@
 &lt;p&gt;terminal debugging&lt;/p&gt;
 &lt;p&gt;重启R1的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
 &lt;h4 id=&#34;chap验证过程&#34;&gt;CHAP验证过程
-&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;ndash;CHAP Server Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;-SendChallenge&lt;/p&gt;
-&lt;p&gt;SendChallenge&amp;mdash;&amp;mdash;&amp;ndash;CHAP Receive Response Event&amp;mdash;&amp;mdash;&amp;mdash;WaitingAAA&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;CHAP Server Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;SendChallenge&lt;/p&gt;
+&lt;p&gt;SendChallenge&amp;mdash;&amp;mdash;&amp;mdash;CHAP Receive Response Event&amp;mdash;&amp;mdash;&amp;mdash;WaitingAAA&lt;/p&gt;
 &lt;p&gt;WaitingAAA&amp;mdash;&amp;mdash;&amp;mdash;CHAP AAA Result Event&amp;mdash;&amp;mdash;&amp;mdash;Server Success&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;R1配置：&lt;/p&gt;
@@ -377,10 +419,10 @@
 &lt;p&gt;前面的实验由于是serial之间，无法拔线，所以只能shutdown了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;bgp协议状态&#34;&gt;BGP协议状态
-&lt;/h4&gt;&lt;p&gt;IDLE&amp;mdash;&amp;mdash;&amp;ndash;ConnectRetry_Timer_Expires event、Manual start event&amp;mdash;&amp;mdash;&amp;ndash;CONNECT&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;IDLE&amp;mdash;&amp;mdash;&amp;mdash;ConnectRetry_Timer_Expires event、Manual start event&amp;mdash;&amp;mdash;&amp;mdash;CONNECT&lt;/p&gt;
 &lt;p&gt;CONNECT&amp;mdash;&amp;mdash;&amp;mdash;TCP_CR_Acked event&amp;mdash;&amp;mdash;&amp;mdash;OPENSENT&lt;/p&gt;
 &lt;p&gt;OPENSENT&amp;mdash;&amp;mdash;&amp;mdash;ReceiveOpenMessage Event&amp;mdash;&amp;mdash;&amp;mdash;OPENCONFIRM&lt;/p&gt;
-&lt;p&gt;OPENCONFIRM&amp;mdash;&amp;mdash;&amp;mdash;ReceiveKeepAliveMsg event&amp;mdash;&amp;mdash;&amp;mdash;-ESTABLISHED&lt;/p&gt;
+&lt;p&gt;OPENCONFIRM&amp;mdash;&amp;mdash;&amp;mdash;ReceiveKeepAliveMsg event&amp;mdash;&amp;mdash;&amp;mdash;ESTABLISHED&lt;/p&gt;
 &lt;p&gt;我当时实验没有观察到ACTIVE，完整图表见下图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111.png&#34;
 	width=&#34;781&#34;
@@ -471,14 +513,252 @@
 &lt;p&gt;但当前处于慢启动状态，一个RTT时间内收到的ACK呈指数增长，&lt;/p&gt;
 &lt;p&gt;一个RTT时间内cwnd也是如此呈指数增长。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h2 id=&#34;往年常考题目&#34;&gt;往年常考题目
+&lt;/h2&gt;&lt;p&gt;看似是常考题目，实则已经是我能扒到的全部了。。&lt;/p&gt;
+&lt;h3 id=&#34;icmp-1&#34;&gt;ICMP
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;在 PCB 上启动报文捕获，运行 &lt;code&gt;tracert 192.168.5.2&lt;/code&gt;，写出运行结果，分析截获的报文中有几种 ICMP 报文，有何作用？并写出每种报文的组成部分。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;每一跳对应一次 TTL 探测，TTL=1 到第一跳，TTL=2 到第二跳，直到目的主机 192.168.5.2 回复。&lt;/p&gt;
+&lt;p&gt;截获报文中主要有 &lt;strong&gt;3 类 ICMP 报文&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;ICMP Echo Request&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;PCB 发出的探测报文，tracert 通过逐步增大 TTL 来探测路径。&lt;/li&gt;
+&lt;li&gt;Type=8，Code=0。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ICMP Time Exceeded&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;中间路由器发现 TTL 减为 0，丢弃报文，并返回此超时报文，用来告诉源主机我就是这一跳。&lt;/li&gt;
+&lt;li&gt;Type=11，Code=0。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ICMP Echo Reply&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;目的地址 192.168.5.2 收到 Echo Request 后返回，应答成功，表示 tracert 到达终点。&lt;/li&gt;
+&lt;li&gt;Type=0，Code=0。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;截获PCA ping PCB过程中每一跳的 ICMP 报文并上传。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这题的难点主要在于熟练使用HUB实现中间设备间的报文捕获。&lt;/p&gt;
+&lt;p&gt;要做的事情是把两台中间设备的直接连接改为通过HUB间接相连，&lt;/p&gt;
+&lt;p&gt;然后选取一台PC与HUB相连，即可在此pc上通过wireshark捕获报文。&lt;/p&gt;
+&lt;p&gt;建议直接使用PCC（上传配置的机器），因为其IP地址已经设置为自动分配，不易冲突。&lt;/p&gt;
+&lt;h3 id=&#34;ospf-3&#34;&gt;OSPF
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;在 R1 上有多少个 LSDB？多少个 LSA？并写出这些 LSA 所属的种类和作用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;LSDB 数量取决于路由器所属的 OSPF 区域数，每个区域一个 LSDB。&lt;/p&gt;
+&lt;p&gt;LSA 数量指该路由器 LSDB 中保存的链路状态通告条目数，可通过dis ospf lsdb查看。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Type 1 Router-LSA&lt;/strong&gt;：由每台路由器产生，描述本路由器的接口、链路状态和开销，只在本区域内泛洪。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Type 2 Network-LSA&lt;/strong&gt;：由 DR 产生，描述一个广播网络/NBMA 网络中有哪些路由器连接在该网段，只在本区域内泛洪。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Type 3 Summary-LSA&lt;/strong&gt;：由 ABR 产生，把一个区域内的网段路由通告到其他区域。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Type 4 ASBR-Summary-LSA&lt;/strong&gt;：由 ABR 产生，告诉其他区域如何到达 ASBR。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Type 5 AS-External-LSA&lt;/strong&gt;：由 ASBR 产生，描述 OSPF 自治系统外部路由，比如静态路由、RIP/BGP 引入路由。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 R1 和 S2 之间截获完整的 OSPF 协商报文，写出 DR 和 BDR 的选举结果，并结合截获报文，简述其 DR 选举的过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;选举结果：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DR&lt;/strong&gt;：优先级最高的路由器；若优先级相同，Router ID 最大者为 DR。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BDR&lt;/strong&gt;：除 DR 外，次高者为 BDR。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;选举过程：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;重启 OSPF 后先发送 Hello 报文。&lt;/li&gt;
+&lt;li&gt;Hello Packet中携带了本端的 Router ID、Priority、当前认为的 DR/BDR、邻居列表等字段。&lt;/li&gt;
+&lt;li&gt;初始时 DR/BDR 可能为 0.0.0.0，表示尚未选出。&lt;/li&gt;
+&lt;li&gt;路由器收到对方 Hello 后，比较 OSPF Priority；Priority 为 0 的不参与选举。&lt;/li&gt;
+&lt;li&gt;根据优先级和Router ID 先选 BDR，再选 DR。&lt;/li&gt;
+&lt;li&gt;选举完成后，后续 Hello 报文中的 DR/BDR 字段会填写最终结果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 R1 和 S1 之间截获完整的 OSPF 报文，保存并上传。写出 DD 报文的结构，写出主从路由器，说明为什么要确认主从关系？并描述 DD 报文的交互过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;DD 报文主体主要字段：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Interface MTU：接口 MTU。&lt;/li&gt;
+&lt;li&gt;Options：支持的 OSPF 可选能力。&lt;/li&gt;
+&lt;li&gt;I：Init，表示第一个 DD 报文，开始协商 DD 主从关系。&lt;/li&gt;
+&lt;li&gt;M：More，表示后面还有 DD 报文。&lt;/li&gt;
+&lt;li&gt;MS：Master/Slave，表示主从身份，Master 为 1。&lt;/li&gt;
+&lt;li&gt;DD Sequence Number：DD 序列号，用于保证 DD 报文有序可靠交换。&lt;/li&gt;
+&lt;li&gt;LSA Header：LSA 摘要信息，不携带完整 LSA 内容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Router ID 大者为 Master，小者为 Slave。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;为什么确认主从关系：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了避免双方同时控制 DD 序列号导致混乱。&lt;/p&gt;
+&lt;p&gt;确认主从后，Master 负责产生和递增 DD Sequence Number，Slave 只响应 Master 的序列号。&lt;/p&gt;
+&lt;p&gt;（注意这个序列号和 TCP 有 0 个关系）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DD 交互过程：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;peer 进入 ExStart 状态，双方互发第一个 DD 报文，I=1, M=1, MS=1，都声称自己是 Master。&lt;/li&gt;
+&lt;li&gt;双方比较 Router ID，Router ID 大者成为 Master，小者成为 Slave。&lt;/li&gt;
+&lt;li&gt;Slave 用与 Master 的 DD 报文相等 的序列号发出回复。&lt;/li&gt;
+&lt;li&gt;peer 进入 ExChange状态。Master 收到 Slave 回复后，将序列号加 1，发送携带 LSA Header 的 DD 报文。&lt;/li&gt;
+&lt;li&gt;Slave 继续用与 Master 的 DD 报文相等的序列号发出回复。&lt;/li&gt;
+&lt;li&gt;双方通过 M 位判断是否还有更多 DD 报文。&lt;/li&gt;
+&lt;li&gt;当双方 DD 交换完成后，进入 Loading 状态，根据 DD 中发现的不同，发送 LSR 请求完整 LSA。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;画出以 R1 为根的 OSPF 路由计算的最短路径树。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;直接以 R1 为根，以 cost 为权值构建最小生成树即可。&lt;/p&gt;
+&lt;p&gt;难点在作图方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个大圆圈表示设备。 填上设备名称和 router id。&lt;/li&gt;
+&lt;li&gt;画出各设备结点构成的树，边使用双向箭头表示。&lt;/li&gt;
+&lt;li&gt;对每条边标记cost值，以及端点的IP地址。&lt;/li&gt;
+&lt;li&gt;容易发现每条边也代表一个网段。垂直于边画一条线，再画出TransNet(长椅状)网段。标记网段的IP。&lt;/li&gt;
+&lt;li&gt;对于在最小生成树上不连接其他设备，而是仅与根设备直连的网段（末梢网络），应作为StubNet(矩形)与根设备相连，同样记录cost值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;给大家一个组网的例子，红色线表示最小生成树。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/net.png&#34;
+	width=&#34;768&#34;
+	height=&#34;586&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/net_hu2252749840728263161.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/net_hu1700690418651362117.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;net&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;131&#34;
+		data-flex-basis=&#34;314px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/tree.png&#34;
+	width=&#34;742&#34;
+	height=&#34;597&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/tree_hu14823032323605969239.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/tree_hu13231840555322262784.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;生成树图例&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;124&#34;
+		data-flex-basis=&#34;298px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;tcp-2&#34;&gt;TCP
+&lt;/h3&gt;&lt;h4 id=&#34;中途shutdown&#34;&gt;中途shutdown
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;超时重传开始的报文序号？在发生报文超时重传时，RTT 和 RTO 值有何变化？特别是 RTO 值有何特定变化规律？为什么？继续正常报文传输时 RTT 和 RTO 值又有何变化？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;超时重传开始的报文序号是&lt;strong&gt;链路断开后第一个没有收到 ACK 的 TCP 数据段序号&lt;/strong&gt;，也就是抓包中第一个标记为 TCP Retransmission 的报文的 Seq。&lt;/p&gt;
+&lt;p&gt;超时重传时间差规律：&lt;/p&gt;
+&lt;p&gt;第一次超时后重传，之后重传间隔大致按 &lt;strong&gt;指数退避&lt;/strong&gt; 增长。&lt;/p&gt;
+&lt;p&gt;原因是链路关闭后 ACK 回不来，发送端认为网络拥塞或路径不可达，于是 &lt;strong&gt;TCP 重传定时器超时&lt;/strong&gt;，并按指数退避增大等待时间，避免继续大量发送加重网络负担。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;RTT&lt;/strong&gt;：因为重传报文的 ACK 无法判断对应原报文还是重传报文，通常不用于更新 RTT，RTT 估计可能暂停或不可靠。(Karn 算法)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RTO&lt;/strong&gt;：每次超时后按指数退避增大。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;链路恢复、继续正常传输后：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;RTT&lt;/strong&gt;：重新根据正常 ACK 样本更新，逐渐恢复到实际网络时延附近。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RTO&lt;/strong&gt;：随着 RTT/RTT 偏差重新估计，逐渐下降到较合理值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;设置休眠&#34;&gt;设置休眠
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;给出 TCP 连接建立后，数据传输对应的滑动窗口变化的过程和规律，并解释为什么。&lt;/p&gt;
+&lt;p&gt;列出零窗口探查报文的序号和报文发送的时间，解释其过程和时间规律。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;数据传输开始时，发送窗口由 min(cwnd, rwnd) 决定。初期接收缓存还充足，rwnd 较大，主要受拥塞窗口 cwnd 限制；TCP 处于慢启动，收到 ACK 后 cwnd 增大，所以发送窗口逐渐增大。&lt;/p&gt;
+&lt;p&gt;接收端休眠后，应用层不读缓存，接收缓存逐渐被占满，通告窗口 rwnd 逐渐减小，发送窗口随之缩小，最后变为 0，发送方停止正常发送数据。&lt;/p&gt;
+&lt;p&gt;出现 0 窗口后，发送方不能继续发送正常数据，但会发送零窗口探查报文，防止接收方窗口重新打开的通知丢失后双方永久等待。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;若窗口仍为 0，发送方继续探查，时间间隔通常逐渐增大，近似&lt;strong&gt;指数退避&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若接收方通告非零窗口，发送方恢复正常传输。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;报文发送的时间可以在报文详细信息的最外层看到。&lt;/p&gt;
+&lt;h4 id=&#34;丢包与快重传&#34;&gt;丢包与快重传
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;请写出前三个重复 ACK 的报文序号。在第三个重复 ACK 报文到达后，发送报文发生什么变化？为什么？&lt;/p&gt;
+&lt;p&gt;在此期间，ssthresh 和 cwnd 有何变化？RTT 和 RTO 有何变化？为什么？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接收方连续发出的、&lt;strong&gt;ACK 号相同&lt;/strong&gt;的三个 ACK，一直在说自己还在等这个字节开始的数据。&lt;/p&gt;
+&lt;p&gt;这种情况一般被作为丢包的标志。&lt;/p&gt;
+&lt;p&gt;第三个重复 ACK 到达后，发送方会&lt;strong&gt;立即重传丢失的报文段&lt;/strong&gt;，不再等待超时定时器到期。&lt;/p&gt;
+&lt;p&gt;与超时不同，发送方正常收到了ACK，因此网络只是发生了丢包，TCP 触发&lt;strong&gt;快速重传&lt;/strong&gt;，并且 ssthresh和cwnd变为原cwnd的一半，并进入拥塞避免，cwnd 线性增长。&lt;/p&gt;
+&lt;p&gt;因为没有发生超时，RTO &lt;strong&gt;不会指数退避翻倍&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;RTT也基本不变，因为无法判断 ACK 是确认原报文还是重传报文，重传报文的 RTT 不用于更新 RTT 估计。&lt;/p&gt;
+&lt;h4 id=&#34;正常传输&#34;&gt;正常传输
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;填写数据传输前N个报文的报文序号，源IP，目的IP，左边沿，指针，右边沿&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;注意DATA报文和ACK报文对窗口的影响是不同的。&lt;/p&gt;
+&lt;p&gt;DATA改变指针，ACK改变左边沿和右边沿。&lt;/p&gt;
+&lt;p&gt;具体值可以在tcpsndwnddata.txt里面找。&lt;/p&gt;
+&lt;h3 id=&#34;ftp&#34;&gt;FTP
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;开启报文捕获，访问 FTP 服务器，并下载一个文件。保存、上传和分析截获的 FTP 协议报文，其所基于的传输层协议是什么？其熟知端口号和用途是什么？所用的命令是什么？写出 FTP 协议工作的过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;FTP 基于 &lt;strong&gt;TCP&lt;/strong&gt;，因为它需要可靠、有序的文件传输。&lt;/p&gt;
+&lt;p&gt;TCP 21号端口：&lt;strong&gt;控制连接&lt;/strong&gt;，用于登录、认证、发送命令和接收响应&lt;/p&gt;
+&lt;p&gt;TCP 20号端口：&lt;strong&gt;数据连接&lt;/strong&gt;，主动模式下服务器用 20 端口建立数据连接传输文件，被动模式下数据连接不一定用 20 端口，而是服务器临时开放一个高端口给Client连接。&lt;/p&gt;
+&lt;p&gt;常用命令，考试根据报文如实填写即可：&lt;/p&gt;
+&lt;p&gt;USER 用户名      登录用户名&lt;/p&gt;
+&lt;p&gt;PASS 密码        登录密码&lt;/p&gt;
+&lt;p&gt;SYST             查询服务器系统类型&lt;/p&gt;
+&lt;p&gt;PWD              查询当前目录&lt;/p&gt;
+&lt;p&gt;TYPE I           设置二进制传输&lt;/p&gt;
+&lt;p&gt;PASV / PORT      建立数据连接方式&lt;/p&gt;
+&lt;p&gt;LIST / RETR      列目录 / 下载文件&lt;/p&gt;
+&lt;p&gt;QUIT             退出&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FTP 工作过程&lt;/strong&gt;（在此主要理解结构，考试根据实际报文情况填写）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;C -&amp;gt; S：TCP SYN，目的端口 21&lt;/li&gt;
+&lt;li&gt;S -&amp;gt; C：TCP SYN ACK，源端口 21&lt;/li&gt;
+&lt;li&gt;C -&amp;gt; S：TCP ACK，控制连接建立&lt;/li&gt;
+&lt;li&gt;S -&amp;gt; C：220，FTP 服务就绪&lt;/li&gt;
+&lt;li&gt;C-&amp;gt; S：USER 用户名&lt;/li&gt;
+&lt;li&gt;S -&amp;gt; C：331，需要密码&lt;/li&gt;
+&lt;li&gt;C -&amp;gt; S：PASS 密码&lt;/li&gt;
+&lt;li&gt;S -&amp;gt; C：230，登录成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;TCP SYN/ACK，数据连接建立（主动/被动）&lt;/p&gt;
+&lt;p&gt;C -&amp;gt; S：RETR 文件名，请求下载文件&lt;/p&gt;
+&lt;p&gt;S -&amp;gt; C：150，准备打开数据连接并传输文件&lt;/p&gt;
+&lt;p&gt;文件传完后，数据连接 TCP FIN/ACK 挥手关闭&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;S -&amp;gt; C：226 Transfer complete，文件传输完成&lt;/li&gt;
+&lt;li&gt;C -&amp;gt; S：QUIT&lt;/li&gt;
+&lt;li&gt;S -&amp;gt; C：221 Goodbye&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;状态转移&#34;&gt;状态转移
+&lt;/h3&gt;&lt;p&gt;常考的是PAP、OSPF与BGP。&lt;/p&gt;
+&lt;p&gt;其中前者已提供配置命令，需要当场完成PAP配置、debug信息截图与画状态转移图。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所以会背了也还是要会配！ 背下来只是以防万一。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;后两者考试时往往将命令书写作为题目之一填写。&lt;/p&gt;
+&lt;p&gt;倒也简单，分别是&lt;/p&gt;
+&lt;p&gt;debugging ospf event&lt;/p&gt;
+&lt;p&gt;terminal debugging&lt;/p&gt;
+&lt;p&gt;和&lt;/p&gt;
+&lt;p&gt;debugging bgp event&lt;/p&gt;
+&lt;p&gt;terminal debugging&lt;/p&gt;
 &lt;h2 id=&#34;配置上传&#34;&gt;配置上传
-&lt;/h2&gt;&lt;p&gt;留一台干净的电脑，比如PCD。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;留一台干净的电脑，比如PCC。&lt;/p&gt;
 &lt;p&gt;将其IP地址设置为自动获取。&lt;/p&gt;
-&lt;p&gt;打开PCD的PuTTY，依次将PCD串口与S1,S2,R1,R2,R3,R4的CONSOLE口相连。&lt;/p&gt;
+&lt;p&gt;打开PCC的PuTTY，依次将PCC串口与S1,S2,R1,R2,R3,R4的CONSOLE口相连。&lt;/p&gt;
 &lt;p&gt;每次连接后，ctrl+G或者dis cu，然后按空格进行快速加载，加载完毕后秒切下一台。&lt;/p&gt;
 &lt;p&gt;全部加载完毕后，直接点击左上角菜单项的copy all to clipboard，&lt;/p&gt;
 &lt;p&gt;在桌面新建“组号座位号-学号姓名.txt”文本文件，粘贴内容。&lt;/p&gt;
-&lt;p&gt;为PCD连接校园网，上传至FTP。&lt;/p&gt;
+&lt;p&gt;为PCC连接校园网，上传至FTP。&lt;/p&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语
 &lt;/h2&gt;&lt;p&gt;祝顺利。&lt;/p&gt;
 </description>

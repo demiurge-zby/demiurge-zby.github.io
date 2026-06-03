@@ -325,6 +325,7 @@
       <ol>
         <li><a href="#备选路由与优选路由">备选路由与优选路由</a>
           <ol>
+            <li><a href="#static">static</a></li>
             <li><a href="#ospf-1">ospf</a></li>
             <li><a href="#bgp-1">bgp</a></li>
             <li><a href="#验证方法">验证方法</a></li>
@@ -350,6 +351,22 @@
         <li><a href="#ospf-2">OSPF</a></li>
         <li><a href="#bgp-2">BGP</a></li>
         <li><a href="#tcp-1">TCP</a></li>
+      </ol>
+    </li>
+    <li><a href="#往年常考题目">往年常考题目</a>
+      <ol>
+        <li><a href="#icmp-1">ICMP</a></li>
+        <li><a href="#ospf-3">OSPF</a></li>
+        <li><a href="#tcp-2">TCP</a>
+          <ol>
+            <li><a href="#中途shutdown">中途shutdown</a></li>
+            <li><a href="#设置休眠">设置休眠</a></li>
+            <li><a href="#丢包与快重传">丢包与快重传</a></li>
+            <li><a href="#正常传输">正常传输</a></li>
+          </ol>
+        </li>
+        <li><a href="#ftp">FTP</a></li>
+        <li><a href="#状态转移">状态转移</a></li>
       </ol>
     </li>
     <li><a href="#配置上传">配置上传</a></li>
@@ -434,7 +451,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 10 分钟
+                    阅读时长: 18 分钟
                 </time>
             </div>
         
@@ -465,10 +482,12 @@
 </h2><p>对于套件二的同学，相较以往还需要多用到R3、R4两台设备，因此四台电脑的分工需要自己考虑好。</p>
 <blockquote>
 <p>一般主控1-2台电脑（PCB\PCC）。一定要注意留一台干净电脑用来上传配置。</p>
+<p>建议主控PCB，PCC用于配置上传。因为实验过程与配置上传都需要频繁切换串口。</p>
 </blockquote>
 <p>一定要注意用能卡紧的线，出现问题第一步一定是检查线路是否接触不良。</p>
 <blockquote>
 <p>考前的所有线缆都更新了，非常好用！</p>
+<p>如果不好用建议在考前一周跟老师反馈进行更换。</p>
 </blockquote>
 <p>对于非PC端报文的捕获，可能需要用到集线器，借助无条件转发给其他PC实现中间报文的截获。</p>
 <h2 id="pc-ip配置">PC IP配置
@@ -662,12 +681,40 @@
 <p>上述文件均可拖出虚拟机到桌面，并在windows系统上根据考试需要完成上传。</p>
 <h2 id="高级配置">高级配置
 </h2><h3 id="备选路由与优选路由">备选路由与优选路由
-</h3><h4 id="ospf-1">ospf
-</h4><p>直接interface 接口</p>
+</h3><h4 id="static">static
+</h4><p>对于区域外的静态路由，要想控制优先级，只需：</p>
+<p>ip route-static xxxx mask yyyy preference 100</p>
+<p>注意preference<strong>越小</strong>，优先级越高。</p>
+<blockquote>
+<p>不加 preference 时，<strong>静态路由默认优先级是 60</strong>。</p>
+</blockquote>
+<h4 id="ospf-1">ospf
+</h4><p>直接 interface 接口</p>
 <p>为接口设置：</p>
 <p>ospf cost xxx</p>
 <p>高优先级cost小，备选路由cost高即可</p>
 <p>同一条链路两端点的cost可不同，表达不同方向</p>
+<blockquote>
+<p>一定要注意你的整条路由是否源自OSPF</p>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/attention.png"
+	width="1045"
+	height="605"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/attention_hu5382100910137041603.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/attention_hu1404929334152734404.png 1024w"
+	loading="lazy"
+	
+		alt="Attention!"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="414px"
+	
+></p>
+<p>比如考试中要求两台PC之间采用S1-R2-R1优选路径</p>
+<p>而PC不在OSPF里，大家去PC都是靠的静态路由，那当然不能靠ospf的cost了</p>
+<p>S1-&gt;PCB配的两条static设置优先级</p>
+<p>R1-&gt;PCA配的两条static设置优先级即可</p>
+</blockquote>
 <h4 id="bgp-1">bgp
 </h4><p>可以通过route policy细调</p>
 <p>但这里也只讲直接配置的：</p>
@@ -688,9 +735,21 @@
 <p>但是在某些场景下会赋相同的默认值从而使其无效</p>
 </blockquote>
 <hr>
-<p>用例在bgp设计实验3</p>
-<p>R1-S1-S2-R2-R1这样的一张网</p>
-<p>R1在单独的AS</p>
+<p>用例在bgp设计实验3:</p>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/bgp.png"
+	width="895"
+	height="479"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/bgp_hu12490426778594655812.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/bgp_hu4445618484524059449.png 1024w"
+	loading="lazy"
+	
+		alt="lp and med"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="186"
+		data-flex-basis="448px"
+	
+></p>
 <p>需要S2-R2-R1且R1-S1-S2</p>
 <blockquote>
 <p>针对S2-R2-R1</p>
@@ -732,10 +791,10 @@
 <h3 id="状态转移图">状态转移图
 </h3><p>建议将指令和转移图全部会背。</p>
 <h4 id="lcp协商过程">LCP协商过程
-</h4><p>initial&mdash;&mdash;&mdash;LCP Open Event&mdash;&mdash;&ndash;starting</p>
-<p>starting&mdash;&mdash;&ndash;LCP Lower Up Event&mdash;&mdash;&mdash;reqsent</p>
+</h4><p>initial&mdash;&mdash;&mdash;LCP Open Event&mdash;&mdash;&mdash;starting</p>
+<p>starting&mdash;&mdash;&mdash;LCP Lower Up Event&mdash;&mdash;&mdash;reqsent</p>
 <p>reqsent&mdash;&mdash;&mdash;LCP RCR+ Event&mdash;&mdash;&mdash;acksent    (RCR+:  Receive Config Good Request)</p>
-<p>acksent&mdash;&mdash;&mdash;LCP RCA&mdash;&mdash;&mdash; opened  (RCA:  Receive Config Ack Event)</p>
+<p>acksent&mdash;&mdash;&mdash;LCP RCA&mdash;&mdash;&mdash;opened  (RCA:  Receive Config Ack Event)</p>
 <hr>
 <p>作用于两个Router之间。</p>
 <p>为两台设备相连的Serial口配置：link-protocol ppp 并刷新配置：shutdown后undo shutdown</p>
@@ -748,17 +807,17 @@
 </h4><blockquote>
 <p>和LCP基本一致</p>
 </blockquote>
-<p>initial&mdash;&mdash;&mdash;-IPCP Open Event&mdash;&mdash;&mdash;starting</p>
-<p>starting&mdash;&mdash;&mdash;IPCP Lower Up Event&mdash;&mdash;&ndash;reqsent</p>
-<p>reqsent&mdash;&mdash;&ndash;IPCP RCR+ Event&mdash;&mdash;&ndash;acksent    (RCR+:  Receive Config Good Request)</p>
-<p>acksent&mdash;&mdash;&ndash;IPCP RCA&mdash;&mdash;&mdash;- opened  (RCA:  Receive Config Ack Event)</p>
+<p>initial&mdash;&mdash;&mdash;IPCP Open Event&mdash;&mdash;&mdash;starting</p>
+<p>starting&mdash;&mdash;&mdash;IPCP Lower Up Event&mdash;&mdash;&mdash;reqsent</p>
+<p>reqsent&mdash;&mdash;&mdash;IPCP RCR+ Event&mdash;&mdash;&mdash;acksent    (RCR+:  Receive Config Good Request)</p>
+<p>acksent&mdash;&mdash;&mdash;IPCP RCA&mdash;&mdash;&mdash; opened  (RCA:  Receive Config Ack Event)</p>
 <hr>
 <p>操作也和LCP一样，或者说debugging ppp all的时候，</p>
 <p>LCP协商过程完成后，若有验证过程则需经过PAP/CHAP的验证过程，之后便进入IPCP的协商过程。</p>
 <h4 id="pap验证过程">PAP验证过程
-</h4><p>initial&mdash;&mdash;&ndash;PAP Server Lower Up Event&mdash;&mdash;&ndash;ServerListen</p>
-<p>ServerListen&mdash;&mdash;&ndash;PAP Receive Request Event&mdash;&mdash;&ndash;WaitAAA</p>
-<p>WaitAAA&mdash;&mdash;&ndash;PAP AAA Result Event&mdash;&mdash;&ndash;ServerSuccess</p>
+</h4><p>initial&mdash;&mdash;&mdash;PAP Server Lower Up Event&mdash;&mdash;&mdash;ServerListen</p>
+<p>ServerListen&mdash;&mdash;&mdash;PAP Receive Request Event&mdash;&mdash;&mdash;WaitAAA</p>
+<p>WaitAAA&mdash;&mdash;&mdash;PAP AAA Result Event&mdash;&mdash;&mdash;ServerSuccess</p>
 <hr>
 <p>R1配置：</p>
 <p>local-user RTB class network</p>
@@ -774,8 +833,8 @@
 <p>terminal debugging</p>
 <p>重启R1的相关Serial口：shutdown后undo shutdown</p>
 <h4 id="chap验证过程">CHAP验证过程
-</h4><p>initial&mdash;&mdash;&ndash;CHAP Server Lower Up Event&mdash;&mdash;&mdash;-SendChallenge</p>
-<p>SendChallenge&mdash;&mdash;&ndash;CHAP Receive Response Event&mdash;&mdash;&mdash;WaitingAAA</p>
+</h4><p>initial&mdash;&mdash;&mdash;CHAP Server Lower Up Event&mdash;&mdash;&mdash;SendChallenge</p>
+<p>SendChallenge&mdash;&mdash;&mdash;CHAP Receive Response Event&mdash;&mdash;&mdash;WaitingAAA</p>
 <p>WaitingAAA&mdash;&mdash;&mdash;CHAP AAA Result Event&mdash;&mdash;&mdash;Server Success</p>
 <hr>
 <p>R1配置：</p>
@@ -811,10 +870,10 @@
 <p>前面的实验由于是serial之间，无法拔线，所以只能shutdown了</p>
 </blockquote>
 <h4 id="bgp协议状态">BGP协议状态
-</h4><p>IDLE&mdash;&mdash;&ndash;ConnectRetry_Timer_Expires event、Manual start event&mdash;&mdash;&ndash;CONNECT</p>
+</h4><p>IDLE&mdash;&mdash;&mdash;ConnectRetry_Timer_Expires event、Manual start event&mdash;&mdash;&mdash;CONNECT</p>
 <p>CONNECT&mdash;&mdash;&mdash;TCP_CR_Acked event&mdash;&mdash;&mdash;OPENSENT</p>
 <p>OPENSENT&mdash;&mdash;&mdash;ReceiveOpenMessage Event&mdash;&mdash;&mdash;OPENCONFIRM</p>
-<p>OPENCONFIRM&mdash;&mdash;&mdash;ReceiveKeepAliveMsg event&mdash;&mdash;&mdash;-ESTABLISHED</p>
+<p>OPENCONFIRM&mdash;&mdash;&mdash;ReceiveKeepAliveMsg event&mdash;&mdash;&mdash;ESTABLISHED</p>
 <p>我当时实验没有观察到ACTIVE，完整图表见下图。</p>
 <p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/111.png"
 	width="781"
@@ -905,14 +964,252 @@
 <p>但当前处于慢启动状态，一个RTT时间内收到的ACK呈指数增长，</p>
 <p>一个RTT时间内cwnd也是如此呈指数增长。</p>
 </blockquote>
+<h2 id="往年常考题目">往年常考题目
+</h2><p>看似是常考题目，实则已经是我能扒到的全部了。。</p>
+<h3 id="icmp-1">ICMP
+</h3><blockquote>
+<p>在 PCB 上启动报文捕获，运行 <code>tracert 192.168.5.2</code>，写出运行结果，分析截获的报文中有几种 ICMP 报文，有何作用？并写出每种报文的组成部分。</p>
+</blockquote>
+<p>每一跳对应一次 TTL 探测，TTL=1 到第一跳，TTL=2 到第二跳，直到目的主机 192.168.5.2 回复。</p>
+<p>截获报文中主要有 <strong>3 类 ICMP 报文</strong>：</p>
+<ol>
+<li><strong>ICMP Echo Request</strong>
+<ul>
+<li>PCB 发出的探测报文，tracert 通过逐步增大 TTL 来探测路径。</li>
+<li>Type=8，Code=0。</li>
+</ul>
+</li>
+<li><strong>ICMP Time Exceeded</strong>
+<ul>
+<li>中间路由器发现 TTL 减为 0，丢弃报文，并返回此超时报文，用来告诉源主机我就是这一跳。</li>
+<li>Type=11，Code=0。</li>
+</ul>
+</li>
+<li><strong>ICMP Echo Reply</strong>
+<ul>
+<li>目的地址 192.168.5.2 收到 Echo Request 后返回，应答成功，表示 tracert 到达终点。</li>
+<li>Type=0，Code=0。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>截获PCA ping PCB过程中每一跳的 ICMP 报文并上传。</p>
+</blockquote>
+<p>这题的难点主要在于熟练使用HUB实现中间设备间的报文捕获。</p>
+<p>要做的事情是把两台中间设备的直接连接改为通过HUB间接相连，</p>
+<p>然后选取一台PC与HUB相连，即可在此pc上通过wireshark捕获报文。</p>
+<p>建议直接使用PCC（上传配置的机器），因为其IP地址已经设置为自动分配，不易冲突。</p>
+<h3 id="ospf-3">OSPF
+</h3><blockquote>
+<p>在 R1 上有多少个 LSDB？多少个 LSA？并写出这些 LSA 所属的种类和作用。</p>
+</blockquote>
+<p>LSDB 数量取决于路由器所属的 OSPF 区域数，每个区域一个 LSDB。</p>
+<p>LSA 数量指该路由器 LSDB 中保存的链路状态通告条目数，可通过dis ospf lsdb查看。</p>
+<ol>
+<li><strong>Type 1 Router-LSA</strong>：由每台路由器产生，描述本路由器的接口、链路状态和开销，只在本区域内泛洪。</li>
+<li><strong>Type 2 Network-LSA</strong>：由 DR 产生，描述一个广播网络/NBMA 网络中有哪些路由器连接在该网段，只在本区域内泛洪。</li>
+<li><strong>Type 3 Summary-LSA</strong>：由 ABR 产生，把一个区域内的网段路由通告到其他区域。</li>
+<li><strong>Type 4 ASBR-Summary-LSA</strong>：由 ABR 产生，告诉其他区域如何到达 ASBR。</li>
+<li><strong>Type 5 AS-External-LSA</strong>：由 ASBR 产生，描述 OSPF 自治系统外部路由，比如静态路由、RIP/BGP 引入路由。</li>
+</ol>
+<blockquote>
+<p>在 R1 和 S2 之间截获完整的 OSPF 协商报文，写出 DR 和 BDR 的选举结果，并结合截获报文，简述其 DR 选举的过程。</p>
+</blockquote>
+<p><strong>选举结果：</strong></p>
+<ul>
+<li><strong>DR</strong>：优先级最高的路由器；若优先级相同，Router ID 最大者为 DR。</li>
+<li><strong>BDR</strong>：除 DR 外，次高者为 BDR。</li>
+</ul>
+<p><strong>选举过程：</strong></p>
+<ol>
+<li>重启 OSPF 后先发送 Hello 报文。</li>
+<li>Hello Packet中携带了本端的 Router ID、Priority、当前认为的 DR/BDR、邻居列表等字段。</li>
+<li>初始时 DR/BDR 可能为 0.0.0.0，表示尚未选出。</li>
+<li>路由器收到对方 Hello 后，比较 OSPF Priority；Priority 为 0 的不参与选举。</li>
+<li>根据优先级和Router ID 先选 BDR，再选 DR。</li>
+<li>选举完成后，后续 Hello 报文中的 DR/BDR 字段会填写最终结果。</li>
+</ol>
+<blockquote>
+<p>在 R1 和 S1 之间截获完整的 OSPF 报文，保存并上传。写出 DD 报文的结构，写出主从路由器，说明为什么要确认主从关系？并描述 DD 报文的交互过程。</p>
+</blockquote>
+<p><strong>DD 报文主体主要字段：</strong></p>
+<ul>
+<li>Interface MTU：接口 MTU。</li>
+<li>Options：支持的 OSPF 可选能力。</li>
+<li>I：Init，表示第一个 DD 报文，开始协商 DD 主从关系。</li>
+<li>M：More，表示后面还有 DD 报文。</li>
+<li>MS：Master/Slave，表示主从身份，Master 为 1。</li>
+<li>DD Sequence Number：DD 序列号，用于保证 DD 报文有序可靠交换。</li>
+<li>LSA Header：LSA 摘要信息，不携带完整 LSA 内容。</li>
+</ul>
+<p>Router ID 大者为 Master，小者为 Slave。</p>
+<p><strong>为什么确认主从关系：</strong></p>
+<p>为了避免双方同时控制 DD 序列号导致混乱。</p>
+<p>确认主从后，Master 负责产生和递增 DD Sequence Number，Slave 只响应 Master 的序列号。</p>
+<p>（注意这个序列号和 TCP 有 0 个关系）</p>
+<p><strong>DD 交互过程：</strong></p>
+<ol>
+<li>peer 进入 ExStart 状态，双方互发第一个 DD 报文，I=1, M=1, MS=1，都声称自己是 Master。</li>
+<li>双方比较 Router ID，Router ID 大者成为 Master，小者成为 Slave。</li>
+<li>Slave 用与 Master 的 DD 报文相等 的序列号发出回复。</li>
+<li>peer 进入 ExChange状态。Master 收到 Slave 回复后，将序列号加 1，发送携带 LSA Header 的 DD 报文。</li>
+<li>Slave 继续用与 Master 的 DD 报文相等的序列号发出回复。</li>
+<li>双方通过 M 位判断是否还有更多 DD 报文。</li>
+<li>当双方 DD 交换完成后，进入 Loading 状态，根据 DD 中发现的不同，发送 LSR 请求完整 LSA。</li>
+</ol>
+<blockquote>
+<p>画出以 R1 为根的 OSPF 路由计算的最短路径树。</p>
+</blockquote>
+<p>直接以 R1 为根，以 cost 为权值构建最小生成树即可。</p>
+<p>难点在作图方面：</p>
+<ul>
+<li>一个大圆圈表示设备。 填上设备名称和 router id。</li>
+<li>画出各设备结点构成的树，边使用双向箭头表示。</li>
+<li>对每条边标记cost值，以及端点的IP地址。</li>
+<li>容易发现每条边也代表一个网段。垂直于边画一条线，再画出TransNet(长椅状)网段。标记网段的IP。</li>
+<li>对于在最小生成树上不连接其他设备，而是仅与根设备直连的网段（末梢网络），应作为StubNet(矩形)与根设备相连，同样记录cost值。</li>
+</ul>
+<p>给大家一个组网的例子，红色线表示最小生成树。</p>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/net.png"
+	width="768"
+	height="586"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/net_hu2252749840728263161.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/net_hu1700690418651362117.png 1024w"
+	loading="lazy"
+	
+		alt="net"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="131"
+		data-flex-basis="314px"
+	
+></p>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/tree.png"
+	width="742"
+	height="597"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/tree_hu14823032323605969239.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/tree_hu13231840555322262784.png 1024w"
+	loading="lazy"
+	
+		alt="生成树图例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="124"
+		data-flex-basis="298px"
+	
+></p>
+<h3 id="tcp-2">TCP
+</h3><h4 id="中途shutdown">中途shutdown
+</h4><blockquote>
+<p>超时重传开始的报文序号？在发生报文超时重传时，RTT 和 RTO 值有何变化？特别是 RTO 值有何特定变化规律？为什么？继续正常报文传输时 RTT 和 RTO 值又有何变化？</p>
+</blockquote>
+<p>超时重传开始的报文序号是<strong>链路断开后第一个没有收到 ACK 的 TCP 数据段序号</strong>，也就是抓包中第一个标记为 TCP Retransmission 的报文的 Seq。</p>
+<p>超时重传时间差规律：</p>
+<p>第一次超时后重传，之后重传间隔大致按 <strong>指数退避</strong> 增长。</p>
+<p>原因是链路关闭后 ACK 回不来，发送端认为网络拥塞或路径不可达，于是 <strong>TCP 重传定时器超时</strong>，并按指数退避增大等待时间，避免继续大量发送加重网络负担。</p>
+<ul>
+<li><strong>RTT</strong>：因为重传报文的 ACK 无法判断对应原报文还是重传报文，通常不用于更新 RTT，RTT 估计可能暂停或不可靠。(Karn 算法)</li>
+<li><strong>RTO</strong>：每次超时后按指数退避增大。</li>
+</ul>
+<p>链路恢复、继续正常传输后：</p>
+<ul>
+<li><strong>RTT</strong>：重新根据正常 ACK 样本更新，逐渐恢复到实际网络时延附近。</li>
+<li><strong>RTO</strong>：随着 RTT/RTT 偏差重新估计，逐渐下降到较合理值。</li>
+</ul>
+<h4 id="设置休眠">设置休眠
+</h4><blockquote>
+<p>给出 TCP 连接建立后，数据传输对应的滑动窗口变化的过程和规律，并解释为什么。</p>
+<p>列出零窗口探查报文的序号和报文发送的时间，解释其过程和时间规律。</p>
+</blockquote>
+<p>数据传输开始时，发送窗口由 min(cwnd, rwnd) 决定。初期接收缓存还充足，rwnd 较大，主要受拥塞窗口 cwnd 限制；TCP 处于慢启动，收到 ACK 后 cwnd 增大，所以发送窗口逐渐增大。</p>
+<p>接收端休眠后，应用层不读缓存，接收缓存逐渐被占满，通告窗口 rwnd 逐渐减小，发送窗口随之缩小，最后变为 0，发送方停止正常发送数据。</p>
+<p>出现 0 窗口后，发送方不能继续发送正常数据，但会发送零窗口探查报文，防止接收方窗口重新打开的通知丢失后双方永久等待。</p>
+<ul>
+<li>
+<p>若窗口仍为 0，发送方继续探查，时间间隔通常逐渐增大，近似<strong>指数退避</strong>。</p>
+</li>
+<li>
+<p>若接收方通告非零窗口，发送方恢复正常传输。</p>
+</li>
+</ul>
+<p>报文发送的时间可以在报文详细信息的最外层看到。</p>
+<h4 id="丢包与快重传">丢包与快重传
+</h4><blockquote>
+<p>请写出前三个重复 ACK 的报文序号。在第三个重复 ACK 报文到达后，发送报文发生什么变化？为什么？</p>
+<p>在此期间，ssthresh 和 cwnd 有何变化？RTT 和 RTO 有何变化？为什么？</p>
+</blockquote>
+<p>接收方连续发出的、<strong>ACK 号相同</strong>的三个 ACK，一直在说自己还在等这个字节开始的数据。</p>
+<p>这种情况一般被作为丢包的标志。</p>
+<p>第三个重复 ACK 到达后，发送方会<strong>立即重传丢失的报文段</strong>，不再等待超时定时器到期。</p>
+<p>与超时不同，发送方正常收到了ACK，因此网络只是发生了丢包，TCP 触发<strong>快速重传</strong>，并且 ssthresh和cwnd变为原cwnd的一半，并进入拥塞避免，cwnd 线性增长。</p>
+<p>因为没有发生超时，RTO <strong>不会指数退避翻倍</strong>。</p>
+<p>RTT也基本不变，因为无法判断 ACK 是确认原报文还是重传报文，重传报文的 RTT 不用于更新 RTT 估计。</p>
+<h4 id="正常传输">正常传输
+</h4><blockquote>
+<p>填写数据传输前N个报文的报文序号，源IP，目的IP，左边沿，指针，右边沿</p>
+</blockquote>
+<p>注意DATA报文和ACK报文对窗口的影响是不同的。</p>
+<p>DATA改变指针，ACK改变左边沿和右边沿。</p>
+<p>具体值可以在tcpsndwnddata.txt里面找。</p>
+<h3 id="ftp">FTP
+</h3><blockquote>
+<p>开启报文捕获，访问 FTP 服务器，并下载一个文件。保存、上传和分析截获的 FTP 协议报文，其所基于的传输层协议是什么？其熟知端口号和用途是什么？所用的命令是什么？写出 FTP 协议工作的过程。</p>
+</blockquote>
+<p>FTP 基于 <strong>TCP</strong>，因为它需要可靠、有序的文件传输。</p>
+<p>TCP 21号端口：<strong>控制连接</strong>，用于登录、认证、发送命令和接收响应</p>
+<p>TCP 20号端口：<strong>数据连接</strong>，主动模式下服务器用 20 端口建立数据连接传输文件，被动模式下数据连接不一定用 20 端口，而是服务器临时开放一个高端口给Client连接。</p>
+<p>常用命令，考试根据报文如实填写即可：</p>
+<p>USER 用户名      登录用户名</p>
+<p>PASS 密码        登录密码</p>
+<p>SYST             查询服务器系统类型</p>
+<p>PWD              查询当前目录</p>
+<p>TYPE I           设置二进制传输</p>
+<p>PASV / PORT      建立数据连接方式</p>
+<p>LIST / RETR      列目录 / 下载文件</p>
+<p>QUIT             退出</p>
+<p><strong>FTP 工作过程</strong>（在此主要理解结构，考试根据实际报文情况填写）：</p>
+<ol>
+<li>C -&gt; S：TCP SYN，目的端口 21</li>
+<li>S -&gt; C：TCP SYN ACK，源端口 21</li>
+<li>C -&gt; S：TCP ACK，控制连接建立</li>
+<li>S -&gt; C：220，FTP 服务就绪</li>
+<li>C-&gt; S：USER 用户名</li>
+<li>S -&gt; C：331，需要密码</li>
+<li>C -&gt; S：PASS 密码</li>
+<li>S -&gt; C：230，登录成功</li>
+</ol>
+<hr>
+<p>TCP SYN/ACK，数据连接建立（主动/被动）</p>
+<p>C -&gt; S：RETR 文件名，请求下载文件</p>
+<p>S -&gt; C：150，准备打开数据连接并传输文件</p>
+<p>文件传完后，数据连接 TCP FIN/ACK 挥手关闭</p>
+<hr>
+<ol>
+<li>S -&gt; C：226 Transfer complete，文件传输完成</li>
+<li>C -&gt; S：QUIT</li>
+<li>S -&gt; C：221 Goodbye</li>
+</ol>
+<h3 id="状态转移">状态转移
+</h3><p>常考的是PAP、OSPF与BGP。</p>
+<p>其中前者已提供配置命令，需要当场完成PAP配置、debug信息截图与画状态转移图。</p>
+<blockquote>
+<p>所以会背了也还是要会配！ 背下来只是以防万一。</p>
+</blockquote>
+<p>后两者考试时往往将命令书写作为题目之一填写。</p>
+<p>倒也简单，分别是</p>
+<p>debugging ospf event</p>
+<p>terminal debugging</p>
+<p>和</p>
+<p>debugging bgp event</p>
+<p>terminal debugging</p>
 <h2 id="配置上传">配置上传
-</h2><p>留一台干净的电脑，比如PCD。</p>
+</h2><p>留一台干净的电脑，比如PCC。</p>
 <p>将其IP地址设置为自动获取。</p>
-<p>打开PCD的PuTTY，依次将PCD串口与S1,S2,R1,R2,R3,R4的CONSOLE口相连。</p>
+<p>打开PCC的PuTTY，依次将PCC串口与S1,S2,R1,R2,R3,R4的CONSOLE口相连。</p>
 <p>每次连接后，ctrl+G或者dis cu，然后按空格进行快速加载，加载完毕后秒切下一台。</p>
 <p>全部加载完毕后，直接点击左上角菜单项的copy all to clipboard，</p>
 <p>在桌面新建“组号座位号-学号姓名.txt”文本文件，粘贴内容。</p>
-<p>为PCD连接校园网，上传至FTP。</p>
+<p>为PCC连接校园网，上传至FTP。</p>
 <h2 id="结语">结语
 </h2><p>祝顺利。</p>
 </section>
