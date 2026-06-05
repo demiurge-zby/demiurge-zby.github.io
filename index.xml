@@ -37,7 +37,7 @@
 &lt;p&gt;X的值会由老师手写在每一份卷子上。如果没有，请及时举手询问。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;完成实验组网后需举手示意老师，老师会草率地检查后催促你完成配置上传与简答题作答。&lt;/p&gt;
+&lt;p&gt;完成实验组网后需举手示意老师，老师会草率地检查后催促你完成配置上传。&lt;/p&gt;
 &lt;p&gt;老师的检查很粗糙，&lt;strong&gt;切勿直接作为组网成功的标准&lt;/strong&gt;。最终评分还是由你上传的配置决定。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -97,7 +97,7 @@
 &lt;h3 id=&#34;s2-r4-含-loopback-4-的-bgp-报文&#34;&gt;S2-R4 含 loopback 4 的 BGP 报文
 &lt;/h3&gt;&lt;p&gt;要求写出所有BGP报文种类，以及含 loopback 4 的 BGP 报文字段。&lt;/p&gt;
 &lt;p&gt;这道题其实在变相考验你ACL配置是否正确。&lt;/p&gt;
-&lt;p&gt;loopback4只是不由S2传给R2\R3，但是R4还是要传给R2。&lt;/p&gt;
+&lt;p&gt;loopback4只是不由S2传给R2\R3，但是R4还是要传给S2。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;对loopback4本身做文章的技俩会被指破。&lt;/p&gt;
 &lt;/blockquote&gt;
