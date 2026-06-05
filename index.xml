@@ -7,7 +7,105 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Demiurge</copyright>
-        <lastBuildDate>Thu, 28 May 2026 20:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 05 Jun 2026 16:15:30 +0800</lastBuildDate><atom:link href="https://demiurge-zby.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BUAA CN Week9 期末考试</title>
+        <link>https://demiurge-zby.github.io/p/buaa-cn-week9-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/</link>
+        <pubDate>Fri, 05 Jun 2026 16:15:30 +0800</pubDate>
+        
+        <guid>https://demiurge-zby.github.io/p/buaa-cn-week9-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/</guid>
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week9-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/anti.png" alt="Featured image of post BUAA CN Week9 期末考试" /&gt;&lt;h2 id=&#34;说在前面&#34;&gt;说在前面
+&lt;/h2&gt;&lt;p&gt;有一些经验是上机后才能感受到的，在这里先提前说一声。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;考前5-10min到达F330门口，要携带 &lt;strong&gt;实验报告&lt;/strong&gt; 与 &lt;strong&gt;学生证/校园卡&lt;/strong&gt; 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考前5min可以入场填写答题卡相关信息，并打开电源，完成上机必做。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;答题卡和其他理论课的期末考试一样，是一张大纸，须填写&lt;strong&gt;任课老师&lt;/strong&gt;等信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上机必做在5min内是做不完的，&lt;strong&gt;请务必考虑该时间预算&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考试过程中有问题可以及时向老师提问，能否回答取决于老师的判断。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;X的值会由老师手写在每一份卷子上。如果没有，请及时举手询问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完成实验组网后需举手示意老师，老师会草率地检查后催促你完成配置上传与简答题作答。&lt;/p&gt;
+&lt;p&gt;老师的检查很粗糙，&lt;strong&gt;切勿直接作为组网成功的标准&lt;/strong&gt;。最终评分还是由你上传的配置决定。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实验配置请务必在上传前认真检查是否完整。在考试中被指出问题会&lt;strong&gt;直接扣除&lt;/strong&gt;对应分数（5/10/15）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考试的 ftp 文件夹是&lt;strong&gt;专用的&lt;/strong&gt;，之前的 ftp 不能正常打开，&lt;strong&gt;upload 和 download 都要&lt;/strong&gt;用新的 ftp 文件夹。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PC 网口连接校园网网口后，需要&lt;strong&gt;等候一定时间&lt;/strong&gt;才能连接。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于报文分析题，请你先及时停止截获并保存报文，&lt;/p&gt;
+&lt;p&gt;然后断开HUB口，连接校园网，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不要等待&lt;/strong&gt;，而是直接完成笔试作答，最后再上传文件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不要等待。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ftp文件夹有刷新键。你退出重进也未必会更新，点击刷新后才会更新。&lt;/p&gt;
+&lt;p&gt;不要误判了其他同学的进度。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虽然原则上不建议大家过于关注其他同学的考试进度。&lt;/p&gt;
+&lt;p&gt;但是无意间低估了其他同学的进度可能会诱发你的懈怠，所以还是在此作提醒。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;考题信息&#34;&gt;考题信息
+&lt;/h2&gt;&lt;p&gt;编号：70&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week9-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/net.png&#34;
+	width=&#34;1128&#34;
+	height=&#34;527&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week9-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/net_hu7518095587494812127.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week9-%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/net_hu2347009429217119819.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;组网&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;214&#34;
+		data-flex-basis=&#34;513px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实现loopback互通&#34;&gt;实现loopback互通
+&lt;/h3&gt;&lt;p&gt;值得注意的是，本题在划分了AS之外，仅仅要求S1不配置BGP，并没有提供具体的BGP对等体要求。&lt;/p&gt;
+&lt;p&gt;AS之间当然都要配置EBGP对等体。关于IBGP，笔者还是选择了经典的R1-R2与R1-R3两对IBGP，没有多配。&lt;/p&gt;
+&lt;p&gt;所以要做的主要就是四条默认路由：S1去loopback1/2/3/4该怎么走。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关于配loopback2/3/4时下一跳究竟是R2还是R3还是都写，我觉得应该都可以。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;s2-不向-as20-转发-loopback-4-的路由信息&#34;&gt;S2 不向 AS20 转发 loopback 4 的路由信息
+&lt;/h3&gt;&lt;p&gt;题目给出了新的要求，使得 loopback 1和 loopback 4 不能互通。&lt;/p&gt;
+&lt;p&gt;这个是基于ACL的路由过滤。&lt;/p&gt;
+&lt;p&gt;所以S2要配制acl去deny loopback4的IP，然后bgp把这个acl用在R2和R3这两个AS20的peer上。&lt;/p&gt;
+&lt;h3 id=&#34;s1-r2-的-ospf-报文-分析-dd-报文&#34;&gt;S1-R2 的 OSPF 报文 分析 DD 报文
+&lt;/h3&gt;&lt;p&gt;分析DD主从关系协商与后续的LSA摘要同步交互即可。&lt;/p&gt;
+&lt;p&gt;注意结合具体报文进行分析。&lt;/p&gt;
+&lt;h3 id=&#34;s2-r4-含-loopback-4-的-bgp-报文&#34;&gt;S2-R4 含 loopback 4 的 BGP 报文
+&lt;/h3&gt;&lt;p&gt;要求写出所有BGP报文种类，以及含 loopback 4 的 BGP 报文字段。&lt;/p&gt;
+&lt;p&gt;这道题其实在变相考验你ACL配置是否正确。&lt;/p&gt;
+&lt;p&gt;loopback4只是不由S2传给R2\R3，但是R4还是要传给R2。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对loopback4本身做文章的技俩会被指破。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;后记&#34;&gt;后记
+&lt;/h2&gt;&lt;p&gt;整体难度上中规中矩，大多数同学可以按时完成实验组网。&lt;/p&gt;
+&lt;p&gt;题目出的比较基础，也没涉及TCP和NAT，笔者对此比较熟练，大约40min完成组网。&lt;/p&gt;
+&lt;p&gt;由于做完不能提前离场，在闲暇时间看了下前几天考试的upload，居然还考察过DHCP。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>BUAA CN Week8 期末模拟</title>
         <link>https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/</link>
         <pubDate>Thu, 28 May 2026 20:15:30 +0800</pubDate>
