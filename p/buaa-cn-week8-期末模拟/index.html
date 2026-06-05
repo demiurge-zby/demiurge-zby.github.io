@@ -268,7 +268,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#配置设置">配置设置</a></li>
+    <li><a href="#资料下载">资料下载</a></li>
     <li><a href="#正确组网">正确组网</a></li>
     <li><a href="#pc-ip配置">PC IP配置</a></li>
     <li><a href="#基本操作">基本操作</a>
@@ -357,6 +357,7 @@
       <ol>
         <li><a href="#icmp-1">ICMP</a></li>
         <li><a href="#ospf-3">OSPF</a></li>
+        <li><a href="#bgp-3">BGP</a></li>
         <li><a href="#tcp-2">TCP</a>
           <ol>
             <li><a href="#中途shutdown">中途shutdown</a></li>
@@ -366,6 +367,7 @@
           </ol>
         </li>
         <li><a href="#ftp">FTP</a></li>
+        <li><a href="#http">HTTP</a></li>
         <li><a href="#状态转移">状态转移</a></li>
       </ol>
     </li>
@@ -451,7 +453,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 18 分钟
+                    阅读时长: 19 分钟
                 </time>
             </div>
         
@@ -464,11 +466,12 @@
 </header>
 
     <section class="article-content">
-    <h2 id="配置设置">配置设置
-</h2><p>开局先连接好PC串口，连接各设备并执行重启操作。</p>
+    <h2 id="资料下载">资料下载
+</h2><p>PC网口连接校园网下载考试相关资料。</p>
+<p>(可选) PC串口连接各设备并执行重启操作。</p>
 <p>reset saved-con   Y</p>
 <p>reboot  N  Y</p>
-<p>趁这个等待时间进行组网和PC配置。</p>
+<p>趁这个等待时间进行下面的组网和PC配置。</p>
 <blockquote>
 <p>QUESTION:</p>
 <p>S1 S2 R1 R2 R3 R4六台设备却对应四台电脑</p>
@@ -906,14 +909,19 @@
 <p>tracert（windows）的工作机理是发ttl逐步递增的ping。</p>
 <p>使用的是 <strong>Echo Request(类型8)</strong> 和 <strong>Echo Reply(类型0)</strong>。</p>
 <h3 id="ospf-2">OSPF
-</h3><p>五类报文。Hello,DD,LSR,LSU,LSAck。</p>
+</h3><p>算法：Link-State算法</p>
+<p>五类报文。Hello,DD,LSR,LSU,LSAck。</p>
 <p>DD主从关系协商过程的意义。</p>
 <p>详见：<a href="https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#ospf报文及简单交互" onclick="window.open(this.href,'_blank');return false;"> Week3-OSPF</a>.</p>
 <p>LSU里的LSA有五种。</p>
 <p>详见：<a href="https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa" onclick="window.open(this.href,'_blank');return false;"> Week3-OSPF</a>.</p>
 <p>注意五类LSA的范围。</p>
 <h3 id="bgp-2">BGP
-</h3><p>network注入的意义（把本地路由表中已经存在的某条路由注入到 BGP 表中，并对外发布）。</p>
+</h3><p>算法：Path-Vector算法</p>
+<blockquote>
+<p>RIP是Distance-Vector算法</p>
+</blockquote>
+<p>network注入的意义（把本地路由表中已经存在的某条路由注入到 BGP 表中，并对外发布）。</p>
 <p>ping -a的意义（可检测 Loopback 能不能连通对侧 Loopback）。</p>
 <p>Notification与Update报文。</p>
 <p>黑洞问题。（路由聚合）</p>
@@ -1008,7 +1016,7 @@
 <ol>
 <li><strong>Type 1 Router-LSA</strong>：由每台路由器产生，描述本路由器的接口、链路状态和开销，只在本区域内泛洪。</li>
 <li><strong>Type 2 Network-LSA</strong>：由 DR 产生，描述一个广播网络/NBMA 网络中有哪些路由器连接在该网段，只在本区域内泛洪。</li>
-<li><strong>Type 3 Summary-LSA</strong>：由 ABR 产生，把一个区域内的网段路由通告到其他区域。</li>
+<li><strong>Type 3 Network-Summary-LSA</strong>：由 ABR 产生，把一个区域内的网段路由通告到其他区域。</li>
 <li><strong>Type 4 ASBR-Summary-LSA</strong>：由 ABR 产生，告诉其他区域如何到达 ASBR。</li>
 <li><strong>Type 5 AS-External-LSA</strong>：由 ASBR 产生，描述 OSPF 自治系统外部路由，比如静态路由、RIP/BGP 引入路由。</li>
 </ol>
@@ -1067,7 +1075,7 @@
 <li>画出各设备结点构成的树，边使用双向箭头表示。</li>
 <li>对每条边标记cost值，以及端点的IP地址。</li>
 <li>容易发现每条边也代表一个网段。垂直于边画一条线，再画出TransNet(长椅状)网段。标记网段的IP。</li>
-<li>对于在最小生成树上不连接其他设备，而是仅与根设备直连的网段（末梢网络），应作为StubNet(矩形)与根设备相连，同样记录cost值。</li>
+<li>对于在最小生成树上仅与单台设备直连的网段（末梢网络），应作为StubNet(矩形)与设备相连，同样记录cost值。</li>
 </ul>
 <p>给大家一个组网的例子，红色线表示最小生成树。</p>
 <p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/net.png"
@@ -1098,6 +1106,65 @@
 		data-flex-basis="298px"
 	
 ></p>
+<h3 id="bgp-3">BGP
+</h3><blockquote>
+<p>BGP协议的路由算法是什么？AS之间形成了自环，为何BGP路由未产生环路？</p>
+</blockquote>
+<p>路由算法为Path-Vector算法。</p>
+<p>BGP协议本身存在源自于PATH属性的防环规则。</p>
+<p>详情见协议分析的10.4. BGP部分的PATH属性介绍。</p>
+<blockquote>
+<p>在 R2 和 S2 之间截获 BGP 所有报文种类，写出 BGP 报文种类名称和报文首部，以及 S2 向 R2 通告的 5.5.5.5 网段路由信息在 BGP 报文中的描述。同时，将相关信息以截图方式保存到试卷。</p>
+</blockquote>
+<p>BGP报文共有五种，从Type1-Type5分别是：</p>
+<ul>
+<li>
+<p>OPEN：协商BGP参数</p>
+</li>
+<li>
+<p>UPDATE：最核心的报文，有什么字段信息可以在下图看</p>
+</li>
+<li>
+<p>NOTIFICATION：报告异常情况。 例如手动undo可触发 cease (6)</p>
+</li>
+<li>
+<p>KEEPALIVE：最常见的报文，确认邻居还活着</p>
+</li>
+<li>
+<p>ROUTE-REFRESH：没学过应该不考</p>
+</li>
+</ul>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/text.png"
+	width="871"
+	height="456"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/text_hu14811764056819628544.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/text_hu15437131125367346156.png 1024w"
+	loading="lazy"
+	
+		alt="报文信息"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="458px"
+	
+></p>
+<p>如果配置了lp和med，会在<code>Path attributes</code>里出现新的表项。</p>
+<p>如下图展示了两个UPDATE报文，第二个就是修改了lp和med信息后出现的新UPDATE报文。</p>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/lpmed.png"
+	width="791"
+	height="448"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/lpmed_hu4394330779281232818.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/lpmed_hu8105847102117724907.png 1024w"
+	loading="lazy"
+	
+		alt="修改lp与med"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="423px"
+	
+></p>
+<p>因为此题截获的 R2 和 S2 是EBGP对等体，不传输 lp 信息，所以Path attributes里没有出现该表项。</p>
 <h3 id="tcp-2">TCP
 </h3><h4 id="中途shutdown">中途shutdown
 </h4><blockquote>
@@ -1156,8 +1223,8 @@
 <p>开启报文捕获，访问 FTP 服务器，并下载一个文件。保存、上传和分析截获的 FTP 协议报文，其所基于的传输层协议是什么？其熟知端口号和用途是什么？所用的命令是什么？写出 FTP 协议工作的过程。</p>
 </blockquote>
 <p>FTP 基于 <strong>TCP</strong>，因为它需要可靠、有序的文件传输。</p>
-<p>TCP 21号端口：<strong>控制连接</strong>，用于登录、认证、发送命令和接收响应</p>
-<p>TCP 20号端口：<strong>数据连接</strong>，主动模式下服务器用 20 端口建立数据连接传输文件，被动模式下数据连接不一定用 20 端口，而是服务器临时开放一个高端口给Client连接。</p>
+<p>TCP <strong>21</strong>号端口：<strong>控制连接</strong>，用于登录、认证、发送命令和接收响应</p>
+<p>TCP <strong>20</strong>号端口：<strong>数据连接</strong>，主动模式下服务器用 20 端口建立数据连接传输文件，被动模式下数据连接不一定用 20 端口，而是服务器临时开放一个高端口给Client连接。</p>
 <p>常用命令，考试根据报文如实填写即可：</p>
 <p>USER 用户名      登录用户名</p>
 <p>PASS 密码        登录密码</p>
@@ -1189,6 +1256,13 @@
 <li>C -&gt; S：QUIT</li>
 <li>S -&gt; C：221 Goodbye</li>
 </ol>
+<h3 id="http">HTTP
+</h3><blockquote>
+<p>在 PCA 上启动报文截获并访问<code>www.buaa.edu.cn</code>。分析截获的 http 协议报文，其所基于的传输层协议是什么？端口号是什么？指出报文中出现的 http 报文的种类，并写出它们的报文结构。同时，将相关信息以截图方式保存到试卷。</p>
+</blockquote>
+<p>HTTP 基于 <strong>TCP</strong>，端口号为 <strong>80</strong>。</p>
+<p>请求报文 (Request) 由客户端发送给服务器，如 <code>GET / HTTP/1.1</code>。</p>
+<p>响应报文 (Response) 由服务器返回给客户端，如 <code> HTTP/1/1 200 OK</code>。</p>
 <h3 id="状态转移">状态转移
 </h3><p>常考的是PAP、OSPF与BGP。</p>
 <p>其中前者已提供配置命令，需要当场完成PAP配置、debug信息截图与画状态转移图。</p>

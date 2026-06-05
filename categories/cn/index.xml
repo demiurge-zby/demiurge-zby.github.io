@@ -13,11 +13,12 @@
         <pubDate>Thu, 28 May 2026 20:15:30 +0800</pubDate>
         
         <guid>https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/</guid>
-        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/q.png" alt="Featured image of post BUAA CN Week8 期末模拟" /&gt;&lt;h2 id=&#34;配置设置&#34;&gt;配置设置
-&lt;/h2&gt;&lt;p&gt;开局先连接好PC串口，连接各设备并执行重启操作。&lt;/p&gt;
+        <description>&lt;img src="https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/q.png" alt="Featured image of post BUAA CN Week8 期末模拟" /&gt;&lt;h2 id=&#34;资料下载&#34;&gt;资料下载
+&lt;/h2&gt;&lt;p&gt;PC网口连接校园网下载考试相关资料。&lt;/p&gt;
+&lt;p&gt;(可选) PC串口连接各设备并执行重启操作。&lt;/p&gt;
 &lt;p&gt;reset saved-con   Y&lt;/p&gt;
 &lt;p&gt;reboot  N  Y&lt;/p&gt;
-&lt;p&gt;趁这个等待时间进行组网和PC配置。&lt;/p&gt;
+&lt;p&gt;趁这个等待时间进行下面的组网和PC配置。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;QUESTION:&lt;/p&gt;
 &lt;p&gt;S1 S2 R1 R2 R3 R4六台设备却对应四台电脑&lt;/p&gt;
@@ -455,14 +456,19 @@
 &lt;p&gt;tracert（windows）的工作机理是发ttl逐步递增的ping。&lt;/p&gt;
 &lt;p&gt;使用的是 &lt;strong&gt;Echo Request(类型8)&lt;/strong&gt; 和 &lt;strong&gt;Echo Reply(类型0)&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;ospf-2&#34;&gt;OSPF
-&lt;/h3&gt;&lt;p&gt;五类报文。Hello,DD,LSR,LSU,LSAck。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;算法：Link-State算法&lt;/p&gt;
+&lt;p&gt;五类报文。Hello,DD,LSR,LSU,LSAck。&lt;/p&gt;
 &lt;p&gt;DD主从关系协商过程的意义。&lt;/p&gt;
 &lt;p&gt;详见：&lt;a href=&#34;https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#ospf报文及简单交互&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;LSU里的LSA有五种。&lt;/p&gt;
 &lt;p&gt;详见：&lt;a href=&#34;https://demiurge-zby.github.io/p/buaa-cn-week3-ospf/?t=1780299669755#什么是lsa&#34; onclick=&#34;window.open(this.href,&#39;_blank&#39;);return false;&#34;&gt; Week3-OSPF&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;注意五类LSA的范围。&lt;/p&gt;
 &lt;h3 id=&#34;bgp-2&#34;&gt;BGP
-&lt;/h3&gt;&lt;p&gt;network注入的意义（把本地路由表中已经存在的某条路由注入到 BGP 表中，并对外发布）。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;算法：Path-Vector算法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;RIP是Distance-Vector算法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;network注入的意义（把本地路由表中已经存在的某条路由注入到 BGP 表中，并对外发布）。&lt;/p&gt;
 &lt;p&gt;ping -a的意义（可检测 Loopback 能不能连通对侧 Loopback）。&lt;/p&gt;
 &lt;p&gt;Notification与Update报文。&lt;/p&gt;
 &lt;p&gt;黑洞问题。（路由聚合）&lt;/p&gt;
@@ -557,7 +563,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Type 1 Router-LSA&lt;/strong&gt;：由每台路由器产生，描述本路由器的接口、链路状态和开销，只在本区域内泛洪。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Type 2 Network-LSA&lt;/strong&gt;：由 DR 产生，描述一个广播网络/NBMA 网络中有哪些路由器连接在该网段，只在本区域内泛洪。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Type 3 Summary-LSA&lt;/strong&gt;：由 ABR 产生，把一个区域内的网段路由通告到其他区域。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Type 3 Network-Summary-LSA&lt;/strong&gt;：由 ABR 产生，把一个区域内的网段路由通告到其他区域。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Type 4 ASBR-Summary-LSA&lt;/strong&gt;：由 ABR 产生，告诉其他区域如何到达 ASBR。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Type 5 AS-External-LSA&lt;/strong&gt;：由 ASBR 产生，描述 OSPF 自治系统外部路由，比如静态路由、RIP/BGP 引入路由。&lt;/li&gt;
 &lt;/ol&gt;
@@ -616,7 +622,7 @@
 &lt;li&gt;画出各设备结点构成的树，边使用双向箭头表示。&lt;/li&gt;
 &lt;li&gt;对每条边标记cost值，以及端点的IP地址。&lt;/li&gt;
 &lt;li&gt;容易发现每条边也代表一个网段。垂直于边画一条线，再画出TransNet(长椅状)网段。标记网段的IP。&lt;/li&gt;
-&lt;li&gt;对于在最小生成树上不连接其他设备，而是仅与根设备直连的网段（末梢网络），应作为StubNet(矩形)与根设备相连，同样记录cost值。&lt;/li&gt;
+&lt;li&gt;对于在最小生成树上仅与单台设备直连的网段（末梢网络），应作为StubNet(矩形)与设备相连，同样记录cost值。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;给大家一个组网的例子，红色线表示最小生成树。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/net.png&#34;
@@ -647,6 +653,65 @@
 		data-flex-basis=&#34;298px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h3 id=&#34;bgp-3&#34;&gt;BGP
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;BGP协议的路由算法是什么？AS之间形成了自环，为何BGP路由未产生环路？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;路由算法为Path-Vector算法。&lt;/p&gt;
+&lt;p&gt;BGP协议本身存在源自于PATH属性的防环规则。&lt;/p&gt;
+&lt;p&gt;详情见协议分析的10.4. BGP部分的PATH属性介绍。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 R2 和 S2 之间截获 BGP 所有报文种类，写出 BGP 报文种类名称和报文首部，以及 S2 向 R2 通告的 5.5.5.5 网段路由信息在 BGP 报文中的描述。同时，将相关信息以截图方式保存到试卷。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;BGP报文共有五种，从Type1-Type5分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;OPEN：协商BGP参数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;UPDATE：最核心的报文，有什么字段信息可以在下图看&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NOTIFICATION：报告异常情况。 例如手动undo可触发 cease (6)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;KEEPALIVE：最常见的报文，确认邻居还活着&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ROUTE-REFRESH：没学过应该不考&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/text.png&#34;
+	width=&#34;871&#34;
+	height=&#34;456&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/text_hu14811764056819628544.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/text_hu15437131125367346156.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;报文信息&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;458px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果配置了lp和med，会在&lt;code&gt;Path attributes&lt;/code&gt;里出现新的表项。&lt;/p&gt;
+&lt;p&gt;如下图展示了两个UPDATE报文，第二个就是修改了lp和med信息后出现的新UPDATE报文。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/lpmed.png&#34;
+	width=&#34;791&#34;
+	height=&#34;448&#34;
+	srcset=&#34;https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/lpmed_hu4394330779281232818.png 480w, https://demiurge-zby.github.io/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/lpmed_hu8105847102117724907.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;修改lp与med&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;因为此题截获的 R2 和 S2 是EBGP对等体，不传输 lp 信息，所以Path attributes里没有出现该表项。&lt;/p&gt;
 &lt;h3 id=&#34;tcp-2&#34;&gt;TCP
 &lt;/h3&gt;&lt;h4 id=&#34;中途shutdown&#34;&gt;中途shutdown
 &lt;/h4&gt;&lt;blockquote&gt;
@@ -705,8 +770,8 @@
 &lt;p&gt;开启报文捕获，访问 FTP 服务器，并下载一个文件。保存、上传和分析截获的 FTP 协议报文，其所基于的传输层协议是什么？其熟知端口号和用途是什么？所用的命令是什么？写出 FTP 协议工作的过程。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;FTP 基于 &lt;strong&gt;TCP&lt;/strong&gt;，因为它需要可靠、有序的文件传输。&lt;/p&gt;
-&lt;p&gt;TCP 21号端口：&lt;strong&gt;控制连接&lt;/strong&gt;，用于登录、认证、发送命令和接收响应&lt;/p&gt;
-&lt;p&gt;TCP 20号端口：&lt;strong&gt;数据连接&lt;/strong&gt;，主动模式下服务器用 20 端口建立数据连接传输文件，被动模式下数据连接不一定用 20 端口，而是服务器临时开放一个高端口给Client连接。&lt;/p&gt;
+&lt;p&gt;TCP &lt;strong&gt;21&lt;/strong&gt;号端口：&lt;strong&gt;控制连接&lt;/strong&gt;，用于登录、认证、发送命令和接收响应&lt;/p&gt;
+&lt;p&gt;TCP &lt;strong&gt;20&lt;/strong&gt;号端口：&lt;strong&gt;数据连接&lt;/strong&gt;，主动模式下服务器用 20 端口建立数据连接传输文件，被动模式下数据连接不一定用 20 端口，而是服务器临时开放一个高端口给Client连接。&lt;/p&gt;
 &lt;p&gt;常用命令，考试根据报文如实填写即可：&lt;/p&gt;
 &lt;p&gt;USER 用户名      登录用户名&lt;/p&gt;
 &lt;p&gt;PASS 密码        登录密码&lt;/p&gt;
@@ -738,6 +803,13 @@
 &lt;li&gt;C -&amp;gt; S：QUIT&lt;/li&gt;
 &lt;li&gt;S -&amp;gt; C：221 Goodbye&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h3 id=&#34;http&#34;&gt;HTTP
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;在 PCA 上启动报文截获并访问&lt;code&gt;www.buaa.edu.cn&lt;/code&gt;。分析截获的 http 协议报文，其所基于的传输层协议是什么？端口号是什么？指出报文中出现的 http 报文的种类，并写出它们的报文结构。同时，将相关信息以截图方式保存到试卷。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;HTTP 基于 &lt;strong&gt;TCP&lt;/strong&gt;，端口号为 &lt;strong&gt;80&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;请求报文 (Request) 由客户端发送给服务器，如 &lt;code&gt;GET / HTTP/1.1&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;响应报文 (Response) 由服务器返回给客户端，如 &lt;code&gt; HTTP/1/1 200 OK&lt;/code&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;状态转移&#34;&gt;状态转移
 &lt;/h3&gt;&lt;p&gt;常考的是PAP、OSPF与BGP。&lt;/p&gt;
 &lt;p&gt;其中前者已提供配置命令，需要当场完成PAP配置、debug信息截图与画状态转移图。&lt;/p&gt;
