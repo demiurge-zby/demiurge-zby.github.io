@@ -515,6 +515,12 @@
 &lt;p&gt;重启R1的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
 &lt;h4 id=&#34;ospf邻居状态&#34;&gt;OSPF邻居状态
 &lt;/h4&gt;&lt;p&gt;DOWN-&amp;gt;INIT-&amp;gt;2-WAY-&amp;gt;EXSTART-&amp;gt;EXCHANGE-&amp;gt;LOADING-&amp;gt;FULL&lt;/p&gt;
+&lt;p&gt;DOWN&amp;mdash;&amp;mdash;&amp;mdash;HelloReceived Event&amp;mdash;&amp;mdash;&amp;mdash;INIT&lt;/p&gt;
+&lt;p&gt;INIT&amp;mdash;&amp;mdash;&amp;mdash;2-WayReceived Event&amp;mdash;&amp;mdash;&amp;mdash;2-WAY&lt;/p&gt;
+&lt;p&gt;2-WAY&amp;mdash;&amp;mdash;&amp;mdash;AdjOK? Event&amp;mdash;&amp;mdash;&amp;mdash;EXSTART&lt;/p&gt;
+&lt;p&gt;EXSTART&amp;mdash;&amp;mdash;&amp;mdash;NegotiationDone Event&amp;mdash;&amp;mdash;&amp;mdash;EXCHANGE&lt;/p&gt;
+&lt;p&gt;EXCHANGE&amp;mdash;&amp;mdash;&amp;mdash;ExchangeDone Event&amp;mdash;&amp;mdash;&amp;mdash;LOADING&lt;/p&gt;
+&lt;p&gt;LOADING&amp;mdash;&amp;mdash;&amp;mdash;LoadingDone Event&amp;mdash;&amp;mdash;&amp;mdash;FULL&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;进入R1用户态:&lt;/p&gt;
 &lt;p&gt;debugging ospf event&lt;/p&gt;

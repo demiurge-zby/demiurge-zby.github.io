@@ -864,6 +864,12 @@
 <p>重启R1的相关Serial口：shutdown后undo shutdown</p>
 <h4 id="ospf邻居状态">OSPF邻居状态
 </h4><p>DOWN-&gt;INIT-&gt;2-WAY-&gt;EXSTART-&gt;EXCHANGE-&gt;LOADING-&gt;FULL</p>
+<p>DOWN&mdash;&mdash;&mdash;HelloReceived Event&mdash;&mdash;&mdash;INIT</p>
+<p>INIT&mdash;&mdash;&mdash;2-WayReceived Event&mdash;&mdash;&mdash;2-WAY</p>
+<p>2-WAY&mdash;&mdash;&mdash;AdjOK? Event&mdash;&mdash;&mdash;EXSTART</p>
+<p>EXSTART&mdash;&mdash;&mdash;NegotiationDone Event&mdash;&mdash;&mdash;EXCHANGE</p>
+<p>EXCHANGE&mdash;&mdash;&mdash;ExchangeDone Event&mdash;&mdash;&mdash;LOADING</p>
+<p>LOADING&mdash;&mdash;&mdash;LoadingDone Event&mdash;&mdash;&mdash;FULL</p>
 <hr>
 <p>进入R1用户态:</p>
 <p>debugging ospf event</p>
