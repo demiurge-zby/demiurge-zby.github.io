@@ -335,7 +335,7 @@
         <li><a href="#状态转移图">状态转移图</a>
           <ol>
             <li><a href="#lcp协商过程">LCP协商过程</a></li>
-            <li><a href="#ipcp协商过程">IPCP协商过程</a></li>
+            <li><a href="#ipcpncp协商过程">IPCP(NCP)协商过程</a></li>
             <li><a href="#pap验证过程">PAP验证过程</a></li>
             <li><a href="#chap验证过程">CHAP验证过程</a></li>
             <li><a href="#ospf邻居状态">OSPF邻居状态</a></li>
@@ -806,10 +806,11 @@
 <p>terminal debugging</p>
 <p>shutdown R2的无关Serial口</p>
 <p>重启R2的相关Serial口：shutdown后undo shutdown</p>
-<h4 id="ipcp协商过程">IPCP协商过程
+<h4 id="ipcpncp协商过程">IPCP(NCP)协商过程
 </h4><blockquote>
 <p>和LCP基本一致</p>
 </blockquote>
+<p>若题目考察 NCP 状态转移图，可直接写IPCP。 IPCP 是 NCP 里负责 IPv4 的具体协议。</p>
 <p>initial&mdash;&mdash;&mdash;IPCP Open Event&mdash;&mdash;&mdash;starting</p>
 <p>starting&mdash;&mdash;&mdash;IPCP Lower Up Event&mdash;&mdash;&mdash;reqsent</p>
 <p>reqsent&mdash;&mdash;&mdash;IPCP RCR+ Event&mdash;&mdash;&mdash;acksent    (RCR+:  Receive Config Good Request)</p>

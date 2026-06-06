@@ -457,10 +457,11 @@
 &lt;p&gt;terminal debugging&lt;/p&gt;
 &lt;p&gt;shutdown R2的无关Serial口&lt;/p&gt;
 &lt;p&gt;重启R2的相关Serial口：shutdown后undo shutdown&lt;/p&gt;
-&lt;h4 id=&#34;ipcp协商过程&#34;&gt;IPCP协商过程
+&lt;h4 id=&#34;ipcpncp协商过程&#34;&gt;IPCP(NCP)协商过程
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;和LCP基本一致&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;若题目考察 NCP 状态转移图，可直接写IPCP。 IPCP 是 NCP 里负责 IPv4 的具体协议。&lt;/p&gt;
 &lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;IPCP Open Event&amp;mdash;&amp;mdash;&amp;mdash;starting&lt;/p&gt;
 &lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;IPCP Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
 &lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;mdash;IPCP RCR+ Event&amp;mdash;&amp;mdash;&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
