@@ -45,6 +45,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;考试的 ftp 文件夹是&lt;strong&gt;专用的&lt;/strong&gt;，之前的 ftp 不能正常打开，&lt;strong&gt;upload 和 download 都要&lt;/strong&gt;用新的 ftp 文件夹。&lt;/p&gt;
+&lt;p&gt;其中 download 文件夹的内容为原 ftp 的 download 中 &lt;strong&gt;考试相关&lt;/strong&gt; 文件夹的内容。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;PC 网口连接校园网网口后，需要&lt;strong&gt;等候一定时间&lt;/strong&gt;才能连通。&lt;/p&gt;
