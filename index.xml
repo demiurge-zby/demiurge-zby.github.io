@@ -448,7 +448,7 @@
 &lt;/h4&gt;&lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;LCP Open Event&amp;mdash;&amp;mdash;&amp;mdash;starting&lt;/p&gt;
 &lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;LCP Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
 &lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCR+ Event&amp;mdash;&amp;mdash;&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
-&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCA&amp;mdash;&amp;mdash;&amp;mdash;opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
+&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;LCP RCA Event&amp;mdash;&amp;mdash;&amp;mdash;opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;作用于两个Router之间。&lt;/p&gt;
 &lt;p&gt;为两台设备相连的Serial口配置：link-protocol ppp 并刷新配置：shutdown后undo shutdown&lt;/p&gt;
@@ -465,7 +465,7 @@
 &lt;p&gt;initial&amp;mdash;&amp;mdash;&amp;mdash;IPCP Open Event&amp;mdash;&amp;mdash;&amp;mdash;starting&lt;/p&gt;
 &lt;p&gt;starting&amp;mdash;&amp;mdash;&amp;mdash;IPCP Lower Up Event&amp;mdash;&amp;mdash;&amp;mdash;reqsent&lt;/p&gt;
 &lt;p&gt;reqsent&amp;mdash;&amp;mdash;&amp;mdash;IPCP RCR+ Event&amp;mdash;&amp;mdash;&amp;mdash;acksent    (RCR+:  Receive Config Good Request)&lt;/p&gt;
-&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;IPCP RCA&amp;mdash;&amp;mdash;&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
+&lt;p&gt;acksent&amp;mdash;&amp;mdash;&amp;mdash;IPCP RCA Event&amp;mdash;&amp;mdash;&amp;mdash; opened  (RCA:  Receive Config Ack Event)&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;操作也和LCP一样，或者说debugging ppp all的时候，&lt;/p&gt;
 &lt;p&gt;LCP协商过程完成后，若有验证过程则需经过PAP/CHAP的验证过程，之后便进入IPCP的协商过程。&lt;/p&gt;

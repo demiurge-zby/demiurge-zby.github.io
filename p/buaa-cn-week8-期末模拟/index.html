@@ -797,7 +797,7 @@
 </h4><p>initial&mdash;&mdash;&mdash;LCP Open Event&mdash;&mdash;&mdash;starting</p>
 <p>starting&mdash;&mdash;&mdash;LCP Lower Up Event&mdash;&mdash;&mdash;reqsent</p>
 <p>reqsent&mdash;&mdash;&mdash;LCP RCR+ Event&mdash;&mdash;&mdash;acksent    (RCR+:  Receive Config Good Request)</p>
-<p>acksent&mdash;&mdash;&mdash;LCP RCA&mdash;&mdash;&mdash;opened  (RCA:  Receive Config Ack Event)</p>
+<p>acksent&mdash;&mdash;&mdash;LCP RCA Event&mdash;&mdash;&mdash;opened  (RCA:  Receive Config Ack Event)</p>
 <hr>
 <p>作用于两个Router之间。</p>
 <p>为两台设备相连的Serial口配置：link-protocol ppp 并刷新配置：shutdown后undo shutdown</p>
@@ -814,7 +814,7 @@
 <p>initial&mdash;&mdash;&mdash;IPCP Open Event&mdash;&mdash;&mdash;starting</p>
 <p>starting&mdash;&mdash;&mdash;IPCP Lower Up Event&mdash;&mdash;&mdash;reqsent</p>
 <p>reqsent&mdash;&mdash;&mdash;IPCP RCR+ Event&mdash;&mdash;&mdash;acksent    (RCR+:  Receive Config Good Request)</p>
-<p>acksent&mdash;&mdash;&mdash;IPCP RCA&mdash;&mdash;&mdash; opened  (RCA:  Receive Config Ack Event)</p>
+<p>acksent&mdash;&mdash;&mdash;IPCP RCA Event&mdash;&mdash;&mdash; opened  (RCA:  Receive Config Ack Event)</p>
 <hr>
 <p>操作也和LCP一样，或者说debugging ppp all的时候，</p>
 <p>LCP协商过程完成后，若有验证过程则需经过PAP/CHAP的验证过程，之后便进入IPCP的协商过程。</p>
