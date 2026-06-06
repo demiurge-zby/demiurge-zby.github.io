@@ -556,6 +556,7 @@
 &lt;p&gt;reset bgp all 即可观察到。&lt;/p&gt;
 &lt;h2 id=&#34;协议分析&#34;&gt;协议分析
 &lt;/h2&gt;&lt;p&gt;理论相关知识在博客中或理论课已有讲述，在此仅做回顾。&lt;/p&gt;
+&lt;p&gt;在 &lt;strong&gt;往年常考题目&lt;/strong&gt; 章节中有详细回答。&lt;/p&gt;
 &lt;h3 id=&#34;arp&#34;&gt;ARP
 &lt;/h3&gt;&lt;p&gt;目的是根据下一跳的IP地址找到其MAC地址。&lt;/p&gt;
 &lt;p&gt;有ARP Cache。&lt;/p&gt;
