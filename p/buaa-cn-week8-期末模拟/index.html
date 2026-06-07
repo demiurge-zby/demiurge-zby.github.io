@@ -268,6 +268,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#说在前面">说在前面</a></li>
     <li><a href="#资料下载">资料下载</a></li>
     <li><a href="#正确组网">正确组网</a></li>
     <li><a href="#pc-ip配置">PC IP配置</a></li>
@@ -291,6 +292,7 @@
         <li><a href="#重启-1">重启</a></li>
         <li><a href="#路由聚合">路由聚合</a></li>
         <li><a href="#ping-通全网">ping 通全网</a></li>
+        <li><a href="#禁用-next-hop-local">禁用 next-hop-local</a></li>
         <li><a href="#路由过滤">路由过滤</a>
           <ol>
             <li><a href="#基于acl">基于ACL</a></li>
@@ -366,6 +368,7 @@
             <li><a href="#正常传输">正常传输</a></li>
           </ol>
         </li>
+        <li><a href="#nat-1">NAT</a></li>
         <li><a href="#ftp">FTP</a></li>
         <li><a href="#http">HTTP</a></li>
         <li><a href="#状态转移">状态转移</a></li>
@@ -453,7 +456,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 20 分钟
+                    阅读时长: 21 分钟
                 </time>
             </div>
         
@@ -466,7 +469,9 @@
 </header>
 
     <section class="article-content">
-    <h2 id="资料下载">资料下载
+    <h2 id="说在前面">说在前面
+</h2><p>你好！如果你前往这里是针对分析题进行复习，请移步第12章 <strong>往年常考题目</strong>，里面存放着笔者通过各种渠道获取的分析题真题题面。</p>
+<h2 id="资料下载">资料下载
 </h2><p>PC网口连接校园网下载考试相关资料。</p>
 <p>(可选) PC串口连接各设备并执行重启操作。</p>
 <p>reset saved-con   Y</p>
@@ -577,6 +582,32 @@
 </h3><p>其实也就是同步问题，关键在于纯IGP路由器。</p>
 <p>为其配好其他AS的静态路由：</p>
 <p>ip route-static + 目标IP + mask + 下一跳IP</p>
+<h3 id="禁用-next-hop-local">禁用 next-hop-local
+</h3><p>IBGP间的路由传递往往不更新下一跳。</p>
+<blockquote>
+<p>例如： R1&mdash;&mdash;EBGP&mdash;&mdash;R2&mdash;&mdash;IBGP&mdash;&mdash;R3</p>
+<p>当R2传递来自于R1所在AS的路由时，R3收到的下一跳依旧与R2相同，指向R1。</p>
+<p>R1对于R2是DIRECT可达，但对于R3便不是这样。</p>
+<p>next-hop-local便是为此而生的，把下一条改成同AS的R2.</p>
+</blockquote>
+<p>因此，当考试禁用next-hop-local时，</p>
+<p>你需要配置R3到R1的静态路由，下一跳为R2即可。</p>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/nex.png"
+	width="1018"
+	height="417"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/nex_hu18224153825941282003.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/nex_hu1050544594988822494.png 1024w"
+	loading="lazy"
+	
+		alt="example"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="244"
+		data-flex-basis="585px"
+	
+></p>
+<p>对于此题，由于next-hop-local的禁用，你需要额外配置：</p>
+<p>S2-&gt; <code>1.x.0.0/16</code> 的静态路由，S1-&gt; <code>2.x.0.0\16</code>的静态路由。</p>
 <h3 id="路由过滤">路由过滤
 </h3><h4 id="基于acl">基于ACL
 </h4><p>配置ACL路由策略，阻止<strong>5.0.0.0/8网段</strong>的路由<strong>传递给AS200</strong>。</p>
@@ -645,7 +676,7 @@
 <p>nat <strong>outbound</strong> 2000 <strong>address-group</strong> 1  # 绑定 ACL 和 group</p>
 <h3 id="配置缺省静态路由">配置缺省静态路由
 </h3><p>ip route-static 0.0.0.0 0.0.0.0 外网网关</p>
-<p>这一步很关键。你是学不到外网的任何东西的。</p>
+<p>这一步很关键。内网里的设备是不知道外网的任何事情的。</p>
 <h2 id="tcp">TCP
 </h2><p>TCP实验需要在vmware的linux虚拟机内完成实验。</p>
 <h3 id="基本流程">基本流程
@@ -1119,7 +1150,7 @@
 </blockquote>
 <p>路由算法为Path-Vector算法。</p>
 <p>BGP协议本身存在源自于PATH属性的防环规则。</p>
-<p>详情见协议分析的10.4. BGP部分的PATH属性介绍。</p>
+<p>详情见协议分析的11.4. BGP部分的PATH属性介绍。</p>
 <blockquote>
 <p>在 R2 和 S2 之间截获 BGP 所有报文种类，写出 BGP 报文种类名称和报文首部，以及 S2 向 R2 通告的 5.5.5.5 网段路由信息在 BGP 报文中的描述。同时，将相关信息以截图方式保存到试卷。</p>
 </blockquote>
@@ -1220,11 +1251,32 @@
 <p>RTT也基本不变，因为无法判断 ACK 是确认原报文还是重传报文，重传报文的 RTT 不用于更新 RTT 估计。</p>
 <h4 id="正常传输">正常传输
 </h4><blockquote>
-<p>填写数据传输前N个报文的报文序号，源IP，目的IP，左边沿，指针，右边沿</p>
+<p>根据数据传输前N个报文填写表格。</p>
+<p>（报文序号，源IP，目的IP，左边沿，指针，右边沿，ssthresh，cwnd等等）</p>
 </blockquote>
 <p>注意DATA报文和ACK报文对窗口的影响是不同的。</p>
 <p>DATA改变指针，ACK改变左边沿和右边沿。</p>
 <p>具体值可以在tcpsndwnddata.txt里面找。</p>
+<h3 id="nat-1">NAT
+</h3><blockquote>
+<p>在相关设备上配置静态路由，使 PCB 能够 ping 通 PCC 。此时 PCC 可以 ping 通 PCB 吗？为什么？</p>
+</blockquote>
+<p><img src="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/nat.png"
+	width="753"
+	height="370"
+	srcset="/p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/nat_hu3767996137995338410.png 480w, /p/buaa-cn-week8-%E6%9C%9F%E6%9C%AB%E6%A8%A1%E6%8B%9F/nat_hu499925217030750727.png 1024w"
+	loading="lazy"
+	
+		alt="内外网问题"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="203"
+		data-flex-basis="488px"
+	
+></p>
+<p>不能。因为 R1 对内网地址进行了 NAT 转换，PCB 访问 PCC 时会在 R1 上产生 <strong>NAT 表项</strong>，PCC 的Echo Reply报文可以<strong>根据该表项转换</strong>回 PCB。</p>
+<p>但这个NAT是动态的、临时的，当 PCC 主动访问 PCB 时没有相应的 NAT 映射，因此不能 ping 通。</p>
 <h3 id="ftp">FTP
 </h3><blockquote>
 <p>开启报文捕获，访问 FTP 服务器，并下载一个文件。保存、上传和分析截获的 FTP 协议报文，其所基于的传输层协议是什么？其熟知端口号和用途是什么？所用的命令是什么？写出 FTP 协议工作的过程。</p>
