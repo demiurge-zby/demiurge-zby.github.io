@@ -1065,16 +1065,13 @@ MIPS主要是分页机制，内存管理粒度更统一。</p>
         </span>
     </p>
 
-    <div class="comments-section__embed" data-comments-embed>
-        <script src="https://utteranc.es/client.js"
-                repo="demiurge-zby/blog-comments"
-                issue-term="pathname"
-                
-                theme="github-light"
-                crossorigin="anonymous"
-                async>
-        </script>
-    </div>
+    <div class="comments-section__embed" data-comments-embed
+         data-comments-repo="demiurge-zby/blog-comments"
+         data-comments-issue-term="pathname"
+         
+         data-comments-url="https://demiurge-zby.github.io/p/buaa-os-lab2-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"
+         data-comments-title="BUAA OS Lab2 内存管理"
+         data-comments-description="实验报告"></div>
 
     <noscript>
         <p class="comments-section__noscript">
@@ -1084,80 +1081,6 @@ MIPS主要是分页机制，内存管理粒度更统一。</p>
         </p>
     </noscript>
 </section>
-
-<script>
-    (function () {
-        var state = window.__demiurgeUtterancesState || (window.__demiurgeUtterancesState = {
-            loaded: false,
-            bound: false
-        });
-
-        var section = document.getElementById('comments');
-        var embed = section && section.querySelector('[data-comments-embed]');
-
-        function markCommentsReady() {
-            var currentSection = document.getElementById('comments');
-            if (currentSection) currentSection.classList.add('is-ready');
-        }
-
-        function prepareFrame() {
-            var frame = embed && embed.querySelector('.utterances-frame');
-            if (!frame) return false;
-
-            frame.setAttribute('loading', 'eager');
-            if (!frame.dataset.commentsPrepared) {
-                frame.dataset.commentsPrepared = 'true';
-                frame.addEventListener('load', markCommentsReady);
-            }
-            return true;
-        }
-
-        if (!prepareFrame() && embed) {
-            var observer = new MutationObserver(function () {
-                if (prepareFrame()) observer.disconnect();
-            });
-
-            observer.observe(embed, { childList: true, subtree: true });
-        }
-
-        function setUtterancesTheme(theme) {
-            var utterances = document.querySelector('#comments .utterances iframe');
-            if (utterances) {
-                utterances.contentWindow.postMessage(
-                    {
-                        type: 'set-theme',
-                        theme: `github-${theme}`
-                    },
-                    'https://utteranc.es'
-                );
-            }
-        }
-
-        if (!state.bound) {
-            addEventListener('message', function (event) {
-                if (event.origin !== 'https://utteranc.es') return;
-
-                state.loaded = true;
-                markCommentsReady();
-                setUtterancesTheme(document.documentElement.dataset.scheme);
-            });
-
-            window.addEventListener('onColorSchemeChange', function (event) {
-                if (!state.loaded) return;
-                setUtterancesTheme(event.detail);
-            });
-
-            state.bound = true;
-        }
-
-        window.setTimeout(function () {
-            var currentSection = document.getElementById('comments');
-            if (currentSection && !currentSection.classList.contains('is-ready')) {
-                currentSection.classList.add('is-delayed');
-            }
-        }, 8000);
-    })();
-</script>
 
 
     
@@ -1471,7 +1394,7 @@ MIPS主要是分页机制，内存管理粒度更统一。</p>
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.js" defer></script><script type="text/javascript" src="/ts/custom.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
