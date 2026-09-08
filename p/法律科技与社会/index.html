@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/%E6%B3%95%E5%BE%8B%E7%A7%91%E6%8A%80%E4%B8%8E%E7%A4%BE%E4%BC%9A/'>
 
-<link rel="stylesheet" href="/scss/style.min.8117f3cc164a1254f8c9057a64e72ce05bed3ac3535f72c9d77f86608a5fa457.css"><meta property='og:title' content="法律、科技与社会">
+<link rel="stylesheet" href="/scss/style.min.648fc15ddc7c9dff1ad248c92849e861512d00eb6ff2a95a552a308765bfea0e.css"><meta property='og:title' content="法律、科技与社会">
 <meta property='og:description' content="2024秋期">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/%E6%B3%95%E5%BE%8B%E7%A7%91%E6%8A%80%E4%B8%8E%E7%A4%BE%E4%BC%9A/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -275,7 +275,7 @@
 
 
 
-                    <span>评论</span>
+                    <span>评论区</span>
                 </a>
             
         </div>
@@ -527,7 +527,7 @@
 
 
 
-                <a href="#comments">评论</a>
+                <a href="#comments">评论区</a>
             </div>
         
     </footer>
@@ -1489,12 +1489,10 @@ pjax.handleResponse = function(responseText, request, href, options) {
   if (request.responseText.match("<html")) {
     
     let newDom = new DOMParser().parseFromString(responseText, 'text/html');
-            
-            let bodyClass = newDom.body.className;
-            document.body.setAttribute("class", bodyClass)
-    setTimeout(() =>{
-        pjax._handleResponse(responseText, request, href, options);
-    }, 500)
+    
+    let bodyClass = newDom.body.className;
+    document.body.setAttribute("class", bodyClass);
+    pjax._handleResponse(responseText, request, href, options);
   } else {
     
   }
@@ -1517,17 +1515,6 @@ topbar.config({
 </script>
 
 <div class="js-Pjax"></div>
-    <script>
-        
-        (function() {
-            let script = document.createElement('script');
-            
-             script.setAttribute('key', 'value');
-            ...
-            
-            document.querySelector('xxx').appendchild(script)
-        })(document)
-    </script>
-<div>
+
     </body>
 </html>

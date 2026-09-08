@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/demiurgefirstblog/'>
 
-<link rel="stylesheet" href="/scss/style.min.8117f3cc164a1254f8c9057a64e72ce05bed3ac3535f72c9d77f86608a5fa457.css"><meta property='og:title' content="DemiurgeFirstBlog">
+<link rel="stylesheet" href="/scss/style.min.648fc15ddc7c9dff1ad248c92849e861512d00eb6ff2a95a552a308765bfea0e.css"><meta property='og:title' content="DemiurgeFirstBlog">
 <meta property='og:description' content="Welcome!! I feel so excited and interested to create my first blog!\nI plan to name my blog &lsquo;Demiurge&rsquo; just because this song is really astonishing and touching&hellip;\n(By the way, the illustration is also fantastic)\nI am suddenly awared that 我可以说中文\n那么，今后请多多指教！\n">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/demiurgefirstblog/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -330,7 +330,7 @@
 
 
 
-                <a href="#comments">评论</a>
+                <a href="#comments">评论区</a>
             </div>
         
     </footer>
@@ -970,12 +970,10 @@ pjax.handleResponse = function(responseText, request, href, options) {
   if (request.responseText.match("<html")) {
     
     let newDom = new DOMParser().parseFromString(responseText, 'text/html');
-            
-            let bodyClass = newDom.body.className;
-            document.body.setAttribute("class", bodyClass)
-    setTimeout(() =>{
-        pjax._handleResponse(responseText, request, href, options);
-    }, 500)
+    
+    let bodyClass = newDom.body.className;
+    document.body.setAttribute("class", bodyClass);
+    pjax._handleResponse(responseText, request, href, options);
   } else {
     
   }
@@ -998,17 +996,6 @@ topbar.config({
 </script>
 
 <div class="js-Pjax"></div>
-    <script>
-        
-        (function() {
-            let script = document.createElement('script');
-            
-             script.setAttribute('key', 'value');
-            ...
-            
-            document.querySelector('xxx').appendchild(script)
-        })(document)
-    </script>
-<div>
+
     </body>
 </html>

@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/'>
 
-<link rel="stylesheet" href="/scss/style.min.8117f3cc164a1254f8c9057a64e72ce05bed3ac3535f72c9d77f86608a5fa457.css"><meta property='og:title' content="BUAA CO P5 流水线CPU搭建（1）">
+<link rel="stylesheet" href="/scss/style.min.648fc15ddc7c9dff1ad248c92849e861512d00eb6ff2a95a552a308765bfea0e.css"><meta property='og:title' content="BUAA CO P5 流水线CPU搭建（1）">
 <meta property='og:description' content="P5课下搭建任务    压力最大的一集">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-co-p5-%E6%B5%81%E6%B0%B4%E7%BA%BFcpu%E6%90%AD%E5%BB%BA1/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -276,7 +276,7 @@
 
 
 
-                    <span>评论</span>
+                    <span>评论区</span>
                 </a>
             
         </div>
@@ -407,7 +407,7 @@
 
 
 
-                <a href="#comments">评论</a>
+                <a href="#comments">评论区</a>
             </div>
         
     </footer>
@@ -1724,12 +1724,10 @@ pjax.handleResponse = function(responseText, request, href, options) {
   if (request.responseText.match("<html")) {
     
     let newDom = new DOMParser().parseFromString(responseText, 'text/html');
-            
-            let bodyClass = newDom.body.className;
-            document.body.setAttribute("class", bodyClass)
-    setTimeout(() =>{
-        pjax._handleResponse(responseText, request, href, options);
-    }, 500)
+    
+    let bodyClass = newDom.body.className;
+    document.body.setAttribute("class", bodyClass);
+    pjax._handleResponse(responseText, request, href, options);
   } else {
     
   }
@@ -1752,17 +1750,6 @@ topbar.config({
 </script>
 
 <div class="js-Pjax"></div>
-    <script>
-        
-        (function() {
-            let script = document.createElement('script');
-            
-             script.setAttribute('key', 'value');
-            ...
-            
-            document.querySelector('xxx').appendchild(script)
-        })(document)
-    </script>
-<div>
+
     </body>
 </html>
