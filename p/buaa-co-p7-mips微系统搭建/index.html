@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/'>
 
-<link rel="stylesheet" href="/scss/style.min.d7afc1e05036bf3df63920e369730525ae72eb86af62769b6302568a4a95454e.css"><meta property='og:title' content="BUAA CO P7 MIPS微系统搭建">
+<link rel="stylesheet" href="/scss/style.min.3f04056f797e1381de21a10195bd8d98eba241f8926978051df25d3878f4355d.css"><meta property='og:title' content="BUAA CO P7 MIPS微系统搭建">
 <meta property='og:description' content="P7课下搭建任务">
 <meta property='og:url' content='https://demiurge-zby.github.io/p/buaa-co-p7-mips%E5%BE%AE%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/'>
 <meta property='og:site_name' content='Demiurge'>
@@ -2072,20 +2072,59 @@ if(`ctrl[2:1] == 2&rsquo;b00)，那么就一直中断，进入IDLE继续循环�
      
     
         
-    <script src="https://utteranc.es/client.js"
-        repo="demiurge-zby/blog-comments"
-        issue-term="pathname"
-        
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+    <a class="comments-jump" href="#comments" aria-label="前往评论区" title="前往评论区">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
 
-<style>
-    .utterances {
-        max-width: unset;
-    }
-</style>
+
+
+    <span>评论</span>
+</a>
+
+<section class="comments-section" id="comments" aria-labelledby="comments-title">
+    <header class="comments-section__header">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+        <h2 id="comments-title">评论区</h2>
+    </header>
+
+    <p class="comments-section__status" data-comments-status>
+        <span class="comments-section__loading">正在加载评论...</span>
+        <span class="comments-section__delayed">
+            评论区未能加载。可前往
+            <a href="https://github.com/demiurge-zby/blog-comments/issues" target="_blank" rel="noopener noreferrer">GitHub 评论仓库</a>
+            查看。
+        </span>
+    </p>
+
+    <div class="comments-section__embed" data-comments-embed>
+        <script src="https://utteranc.es/client.js"
+                repo="demiurge-zby/blog-comments"
+                issue-term="pathname"
+                
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </div>
+
+    <noscript>
+        <p class="comments-section__noscript">
+            请启用 JavaScript，或前往
+            <a href="https://github.com/demiurge-zby/blog-comments/issues">GitHub 评论仓库</a>
+            查看评论。
+        </p>
+    </noscript>
+</section>
 
 <script>
     (function () {
@@ -2094,8 +2133,49 @@ if(`ctrl[2:1] == 2&rsquo;b00)，那么就一直中断，进入IDLE继续循环�
             bound: false
         });
 
+        var section = document.getElementById('comments');
+        var embed = section && section.querySelector('[data-comments-embed]');
+        var jump = document.querySelector('.comments-jump');
+
+        if (section && jump && 'IntersectionObserver' in window) {
+            var sectionObserver = new IntersectionObserver(function (entries) {
+                var isVisible = entries.some(function (entry) {
+                    return entry.isIntersecting;
+                });
+
+                jump.classList.toggle('is-hidden', isVisible);
+            }, { rootMargin: '80px 0px 80px' });
+
+            sectionObserver.observe(section);
+        }
+
+        function markCommentsReady() {
+            var currentSection = document.getElementById('comments');
+            if (currentSection) currentSection.classList.add('is-ready');
+        }
+
+        function prepareFrame() {
+            var frame = embed && embed.querySelector('.utterances-frame');
+            if (!frame) return false;
+
+            frame.setAttribute('loading', 'eager');
+            if (!frame.dataset.commentsPrepared) {
+                frame.dataset.commentsPrepared = 'true';
+                frame.addEventListener('load', markCommentsReady);
+            }
+            return true;
+        }
+
+        if (!prepareFrame() && embed) {
+            var observer = new MutationObserver(function () {
+                if (prepareFrame()) observer.disconnect();
+            });
+
+            observer.observe(embed, { childList: true, subtree: true });
+        }
+
         function setUtterancesTheme(theme) {
-            var utterances = document.querySelector('.utterances iframe');
+            var utterances = document.querySelector('#comments .utterances iframe');
             if (utterances) {
                 utterances.contentWindow.postMessage(
                     {
@@ -2112,6 +2192,7 @@ if(`ctrl[2:1] == 2&rsquo;b00)，那么就一直中断，进入IDLE继续循环�
                 if (event.origin !== 'https://utteranc.es') return;
 
                 state.loaded = true;
+                markCommentsReady();
                 setUtterancesTheme(document.documentElement.dataset.scheme);
             });
 
@@ -2122,6 +2203,13 @@ if(`ctrl[2:1] == 2&rsquo;b00)，那么就一直中断，进入IDLE继续循环�
 
             state.bound = true;
         }
+
+        window.setTimeout(function () {
+            var currentSection = document.getElementById('comments');
+            if (currentSection && !currentSection.classList.contains('is-ready')) {
+                currentSection.classList.add('is-delayed');
+            }
+        }, 8000);
     })();
 </script>
 
